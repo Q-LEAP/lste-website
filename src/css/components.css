@@ -191,8 +191,9 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .footer-brand p { max-width: 320px; color: rgba(255, 255, 255, 0.6); }
-.footer-col h6 {
+.footer-col-heading {
   font-size: var(--fs-sm);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
@@ -219,6 +220,8 @@
   font-size: var(--fs-sm);
 }
 .footer-bottom ul { display: flex; gap: var(--space-5); flex-wrap: wrap; }
+.footer-bottom a { color: rgba(255, 255, 255, 0.75); }
+.footer-bottom a:hover { color: #fff; }
 
 @media (min-width: 768px) {
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
@@ -269,7 +272,7 @@
   object-fit: cover;
   border: 3px solid var(--color-primary-tint);
 }
-.speaker-card h4 { margin-bottom: var(--space-1); }
+.speaker-card h3 { font-size: 1.0625rem; margin-bottom: var(--space-1); }
 .speaker-card .role { color: var(--color-muted); font-size: var(--fs-sm); }
 
 .badge {
