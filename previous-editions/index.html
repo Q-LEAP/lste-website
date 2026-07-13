@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previous Editions — LSTE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    .editions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .edition-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.08); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+    .edition-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.15); }
+    .edition-card__year { background: var(--gradient-primary); color: #fff; font-family: var(--font-heading); font-size: 3rem; font-weight: 800; padding: 1.5rem 2rem; line-height: 1; }
+    .edition-card__body { padding: 1.5rem 2rem; flex: 1; }
+    .edition-card__body h3 { font-size: 1.25rem; color: var(--color-dark); margin-bottom: .75rem; }
+    .edition-meta { display: flex; align-items: center; gap: .5rem; font-size: .875rem; color: var(--color-text); margin-bottom: .5rem; }
+    .edition-meta i { color: var(--color-primary); }
+    .edition-card .btn { margin: 0 2rem 1.5rem; align-self: flex-start; }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" id="masthead" role="banner">
+  <div class="header-inner">
+    <div class="header-col header-col--logo">
+      <a href="../index.html" class="site-logo" aria-label="LSTE Home">
+        <img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="160" height="53" loading="eager">
+      </a>
+    </div>
+    <div class="header-col header-col--nav">
+      <div id="mega-menu-wrap-main" class="mega-menu-wrap">
+        <div class="mega-menu-toggle">
+          <button class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false" aria-label="Toggle Menu">
+            <span class="mega-toggle-animated-box">
+              <span class="mega-toggle-animated-inner"></span>
+            </span>
+          </button>
+        </div>
+        <ul id="mega-menu-main" class="mega-menu">
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../ticket/index.html">Book Your Ticket</a></li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+          <li class="mega-menu-item mega-menu-item-has-children">
+            <a class="mega-menu-link" href="../about/index.html" aria-haspopup="true" aria-expanded="false">About the Event<span class="mega-indicator" aria-hidden="true"></span></a>
+            <ul class="mega-sub-menu">
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../about/index.html">About the LSTE</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../previous-editions/index.html">Previous Editions</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../gallery/index.html">Gallery</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../press/index.html">Press</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../contact/index.html">Contact us</a></li>
+            </ul>
+          </li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../call-for-speakers/index.html">Call for Speakers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-col header-col--cta">
+      <a href="../ticket/index.html" class="header-ticket-btn">
+        <i class="fas fa-hand-point-right" aria-hidden="true"></i>
+        Get a Ticket
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav-panel" id="mobile-nav-panel" aria-label="Mobile navigation">
+  <ul class="mobile-nav-list">
+    <li><a href="../ticket/index.html">Book Your Ticket</a></li>
+    <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li class="has-submenu">
+      <a href="../about/index.html">About the Event <span class="mobile-sub-toggle" aria-hidden="true">&#9660;</span></a>
+      <ul class="mobile-submenu">
+        <li><a href="../about/index.html">About the LSTE</a></li>
+        <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+        <li><a href="../press/index.html">Press</a></li>
+        <li><a href="../contact/index.html">Contact us</a></li>
+      </ul>
+    </li>
+    <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+    <li><a href="../ticket/index.html" class="btn"><i class="fas fa-hand-point-right" aria-hidden="true"></i> Get a Ticket</a></li>
+  </ul>
+</nav>
+
+
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="--hero-bg: url('https://i0.wp.com/lste.lu/wp-content/uploads/2023/11/DSC_8752-scaled.jpg?w=1200&ssl=1') center/cover no-repeat;">
+      <div class="page-hero__overlay"></div>
+      <div class="container page-hero__content">
+        <h1 class="page-hero__title">Previous Editions</h1>
+        <p class="page-hero__subtitle">8 years of software testing excellence in Luxembourg</p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section">
+      <div class="container">
+        <div class="section-intro" style="max-width: 760px; margin: 0 auto; text-align: center;">
+          <p style="font-size: 1.125rem; color: var(--color-text); line-height: 1.8;">
+            Since its inaugural edition in 2018, LSTE has brought together the software testing community in Luxembourg every year for a day of learning, networking, and sharing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editions Grid -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="editions-grid">
+
+          <!-- 2025 -->
+          <article class="edition-card fade-up">
+            <div class="edition-card__year">2025</div>
+            <div class="edition-card__body">
+              <h3>7th Edition</h3>
+              <p class="edition-meta"><i class="fa-solid fa-calendar"></i> November 27, 2025</p>
+              <p class="edition-meta"><i class="fa-solid fa-location-dot"></i> Chambre des Métiers, Luxembourg-Kirchberg</p>
+              <p class="edition-meta"><i class="fa-solid fa-users"></i> 320+ attendees</p>
+              <p>Theme: AI &amp; the Future of Quality</p>
+            </div>
+            <a href="../previous-editions/edition-2025/index.html" class="btn btn--outline">View Edition</a>
+          </article>
+
+          <!-- 2024 -->
+          <article class="edition-card fade-up">
+            <div class="edition-card__year">2024</div>
+            <div class="edition-card__body">
+              <h3>6th Edition</h3>
+              <p class="edition-meta"><i class="fa-solid fa-calendar"></i> November 28, 2024</p>
+              <p class="edition-meta"><i class="fa-solid fa-location-dot"></i> Chambre des Métiers, Luxembourg-Kirchberg</p>
+              <p class="edition-meta"><i class="fa-solid fa-users"></i> 280+ attendees</p>
+              <p>Theme: Continuous Quality</p>
+            </div>
+            <a href="../previous-editions/edition-2024/index.html" class="btn btn--outline">View Edition</a>
+          </article>
+
+          <!-- 2023 -->
+          <article class="edition-card fade-up">
+            <div class="edition-card__year">2023</div>
+            <div class="edition-card__body">
+              <h3>5th Edition</h3>
+              <p class="edition-meta"><i class="fa-solid fa-calendar"></i> November 30, 2023</p>
+              <p class="edition-meta"><i class="fa-solid fa-location-dot"></i> Chambre des Métiers, Luxembourg-Kirchberg</p>
+              <p class="edition-meta"><i class="fa-solid fa-users"></i> 250+ attendees</p>
+              <p>Theme: Testing in the Age of AI</p>
+            </div>
+            <a href="#" class="btn btn--outline">View Edition</a>
+          </article>
+
+          <!-- 2022 -->
+          <article class="edition-card fade-up">
+            <div class="edition-card__year">2022</div>
+            <div class="edition-card__body">
+              <h3>4th Edition</h3>
+              <p class="edition-meta"><i class="fa-solid fa-calendar"></i> November 24, 2022</p>
+              <p class="edition-meta"><i class="fa-solid fa-location-dot"></i> Chambre de Commerce, Luxembourg</p>
+              <p class="edition-meta"><i class="fa-solid fa-users"></i> 200+ attendees</p>
+              <p>Theme: Quality at Scale</p>
+            </div>
+            <a href="#" class="btn btn--outline">View Edition</a>
+          </article>
+
+          <!-- 2021 -->
+          <article class="edition-card fade-up">
+            <div class="edition-card__year">2021</div>
+            <div class="edition-card__body">
+              <h3>3rd Edition</h3>
+              <p class="edition-meta"><i class="fa-solid fa-calendar"></i> December 2, 2021</p>
+              <p class="edition-meta"><i class="fa-solid fa-location-dot"></i> Virtual (Hopin platform)</p>
+              <p class="edition-meta"><i class="fa-solid fa-users"></i> 300+ attendees</p>
+              <p>Theme: Testing Without Borders</p>
+            </div>
+            <a href="#" class="btn btn--outline">View Edition</a>
+          </article>
+
+          <!-- 2019 -->
+          <article class="edition-card fade-up">
+            <div class="edition-card__year">2019</div>
+            <div class="edition-card__body">
+              <h3>2nd Edition</h3>
+              <p class="edition-meta"><i class="fa-solid fa-calendar"></i> November 28, 2019</p>
+              <p class="edition-meta"><i class="fa-solid fa-location-dot"></i> Chambre de Commerce, Luxembourg</p>
+              <p class="edition-meta"><i class="fa-solid fa-users"></i> 180+ attendees</p>
+              <p>Theme: Agile Quality</p>
+            </div>
+            <a href="#" class="btn btn--outline">View Edition</a>
+          </article>
+
+          <!-- 2018 -->
+          <article class="edition-card fade-up">
+            <div class="edition-card__year">2018</div>
+            <div class="edition-card__body">
+              <h3>1st Edition</h3>
+              <p class="edition-meta"><i class="fa-solid fa-calendar"></i> November 29, 2018</p>
+              <p class="edition-meta"><i class="fa-solid fa-location-dot"></i> Luxembourg</p>
+              <p class="edition-meta"><i class="fa-solid fa-users"></i> 100+ attendees</p>
+              <p>Theme: Testing Foundations</p>
+            </div>
+            <a href="#" class="btn btn--outline">View Edition</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats-section" style="background: var(--color-dark); color: #fff;">
+      <div class="container">
+        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center;">
+          <div class="stat-item">
+            <div class="stat-number" style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; color: var(--color-primary); line-height: 1;">7</div>
+            <div class="stat-label" style="font-size: 1rem; margin-top: .5rem; opacity: .85;">Editions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; color: var(--color-primary); line-height: 1;">1,500+</div>
+            <div class="stat-label" style="font-size: 1rem; margin-top: .5rem; opacity: .85;">Total Attendees</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; color: var(--color-primary); line-height: 1;">100+</div>
+            <div class="stat-label" style="font-size: 1rem; margin-top: .5rem; opacity: .85;">Speakers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; color: var(--color-primary); line-height: 1;">50+</div>
+            <div class="stat-label" style="font-size: 1rem; margin-top: .5rem; opacity: .85;">Sponsors over the years</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section" style="text-align: center;">
+      <div class="container">
+        <h2 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-dark); margin-bottom: 1rem;">Save the date: LSTE 2026</h2>
+        <p style="font-size: 1.25rem; color: var(--color-text); margin-bottom: .5rem;">
+          <i class="fa-solid fa-calendar-star" aria-hidden="true" style="color: var(--color-primary);"></i>
+          November 26, 2026 — Terres Rouges Building, Esch-sur-Alzette
+        </p>
+        <p style="font-size: 1rem; color: var(--color-text); margin-bottom: 2rem;">Join us for the 8th edition of Luxembourg's premier software testing event.</p>
+        <a href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Register Now</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="../index.html" class="site-logo"><img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="140" height="46" loading="lazy"></a>
+          <p>Luxembourg Software Testing Event — The annual gathering of QA &amp; testing professionals in the Grand Duchy.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/lste/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com/LSTElu" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@LSTElu" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Event</h4>
+          <ul>
+            <li><a href="../about/index.html">About LSTE</a></li>
+            <li><a href="../schedule/index.html">Schedule</a></li>
+            <li><a href="../speakers/index.html">Speakers</a></li>
+            <li><a href="../venue/index.html">Venue</a></li>
+            <li><a href="../ticket/index.html">Tickets</a></li>
+            <li><a href="../become-a-sponsor/index.html">Become a Sponsor</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="../gallery/index.html">Gallery</a></li>
+            <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+            <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+            <li><a href="../news/index.html">News</a></li>
+            <li><a href="../press/index.html">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@lste.lu">hello@lste.lu</a></li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+35220211700">+352 20 21 17</a></li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Q-Leap SA<br>10B rue des mérovingiens<br>L-8070 Bertrange</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LSTE – Luxembourg Software Testing Event. Organised by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap SA</a>.</p>
+        <p><a href="../privacy-policy/index.html">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="../assets/js/nav-config.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
+

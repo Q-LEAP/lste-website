@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — LSTE 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-info-card { background: var(--color-dark); color: #fff; padding: 2rem; border-radius: 8px; }
+    .contact-info-card h3 { color: #fff; margin-bottom: 1.5rem; }
+    .contact-info-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+    .contact-info-card li { display: flex; align-items: flex-start; gap: .75rem; }
+    .contact-info-card i { color: var(--color-primary); margin-top: .2rem; flex-shrink: 0; }
+    .contact-info-card a { color: #fff; text-decoration: none; }
+    .contact-info-card a:hover { color: var(--color-primary); }
+    .map-embed { margin-top: 3rem; border-radius: 8px; overflow: hidden; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" id="masthead" role="banner">
+  <div class="header-inner">
+    <div class="header-col header-col--logo">
+      <a href="../index.html" class="site-logo" aria-label="LSTE Home">
+        <img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="160" height="53" loading="eager">
+      </a>
+    </div>
+    <div class="header-col header-col--nav">
+      <div id="mega-menu-wrap-main" class="mega-menu-wrap">
+        <div class="mega-menu-toggle">
+          <button class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false" aria-label="Toggle Menu">
+            <span class="mega-toggle-animated-box">
+              <span class="mega-toggle-animated-inner"></span>
+            </span>
+          </button>
+        </div>
+        <ul id="mega-menu-main" class="mega-menu">
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../ticket/index.html">Book Your Ticket</a></li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+          <li class="mega-menu-item mega-menu-item-has-children">
+            <a class="mega-menu-link" href="../about/index.html" aria-haspopup="true" aria-expanded="false">About the Event<span class="mega-indicator" aria-hidden="true"></span></a>
+            <ul class="mega-sub-menu">
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../about/index.html">About the LSTE</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../previous-editions/index.html">Previous Editions</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../gallery/index.html">Gallery</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../press/index.html">Press</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../contact/index.html">Contact us</a></li>
+            </ul>
+          </li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../call-for-speakers/index.html">Call for Speakers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-col header-col--cta">
+      <a href="../ticket/index.html" class="header-ticket-btn">
+        <i class="fas fa-hand-point-right" aria-hidden="true"></i>
+        Get a Ticket
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav-panel" id="mobile-nav-panel" aria-label="Mobile navigation">
+  <ul class="mobile-nav-list">
+    <li><a href="../ticket/index.html">Book Your Ticket</a></li>
+    <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li class="has-submenu">
+      <a href="../about/index.html">About the Event <span class="mobile-sub-toggle" aria-hidden="true">&#9660;</span></a>
+      <ul class="mobile-submenu">
+        <li><a href="../about/index.html">About the LSTE</a></li>
+        <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+        <li><a href="../press/index.html">Press</a></li>
+        <li><a href="../contact/index.html">Contact us</a></li>
+      </ul>
+    </li>
+    <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+    <li><a href="../ticket/index.html" class="btn"><i class="fas fa-hand-point-right" aria-hidden="true"></i> Get a Ticket</a></li>
+  </ul>
+</nav>
+
+
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="--hero-bg: url('https://i0.wp.com/lste.lu/wp-content/uploads/2023/11/DSC_8855-1-scaled.jpg?w=1200&ssl=1') center/cover no-repeat;" aria-label="Contact page hero">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p class="hero-subtitle">We'd love to hear from you</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" aria-label="Contact information and form">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Left: Contact Form -->
+          <div>
+            <form class="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST" novalidate>
+              <!-- Honeypot anti-spam -->
+              <input type="text" name="_gotcha" class="hp-field" tabindex="-1" aria-hidden="true">
+
+              <div class="form-group">
+                <label for="contact-name">Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Your full name">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">Email <span aria-hidden="true">*</span></label>
+                <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="your@email.com">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <input type="text" id="contact-subject" name="subject" placeholder="What is your message about?">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message <span aria-hidden="true">*</span></label>
+                <textarea id="contact-message" name="message" rows="6" required placeholder="Tell us how we can help…"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary">Send Message</button>
+
+              <div class="form-msg" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <!-- Right: Contact Info Card -->
+          <div>
+            <div class="contact-info-card">
+              <h3>Get in Touch</h3>
+              <ul>
+                <li>
+                  <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                  <span><a href="mailto:hello@lste.lu">hello@lste.lu</a></span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                  <span><a href="tel:+35220211700">+352 20 21 17</a></span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  <address style="font-style: normal;">
+                    Q-Leap SA<br>
+                    10B rue des mérovingiens<br>
+                    L-8070 Bertrange<br>
+                    Luxembourg
+                  </address>
+                </li>
+                <li>
+                  <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                  <span>Monday–Friday, 9:00–17:00</span>
+                </li>
+                <li>
+                  <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                  <span>
+                    <a href="https://www.linkedin.com/company/lste/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://twitter.com/LSTElu" target="_blank" rel="noopener" aria-label="Twitter/X">Twitter/X</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://www.youtube.com/@LSTElu" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+                  </span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                  <span>Sponsorship enquiries: <a href="../become-a-sponsor/index.html">Become a Sponsor</a></span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                  <span>Speaker submissions: <a href="../call-for-speakers/index.html">Call for Speakers</a></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Map -->
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2585.9!2d6.0632!3d49.6133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479545a1f1b4e9a5%3A0x1234!2sQ-Leap+SA%2C+10B+Rue+des+M%C3%A9rovingiens%2C+8070+Bertrange!5e0!3m2!1sen!2slu!4v1700000000" width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Q-Leap office location"></iframe>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="../index.html" class="site-logo"><img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="140" height="46" loading="lazy"></a>
+          <p>Luxembourg Software Testing Event — The annual gathering of QA &amp; testing professionals in the Grand Duchy.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/lste/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com/LSTElu" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@LSTElu" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Event</h4>
+          <ul>
+            <li><a href="../about/index.html">About LSTE</a></li>
+            <li><a href="../schedule/index.html">Schedule</a></li>
+            <li><a href="../speakers/index.html">Speakers</a></li>
+            <li><a href="../venue/index.html">Venue</a></li>
+            <li><a href="../ticket/index.html">Tickets</a></li>
+            <li><a href="../become-a-sponsor/index.html">Become a Sponsor</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="../gallery/index.html">Gallery</a></li>
+            <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+            <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+            <li><a href="../news/index.html">News</a></li>
+            <li><a href="../press/index.html">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@lste.lu">hello@lste.lu</a></li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+35220211700">+352 20 21 17</a></li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Q-Leap SA<br>10B rue des mérovingiens<br>L-8070 Bertrange</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LSTE – Luxembourg Software Testing Event. Organised by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap SA</a>.</p>
+        <p><a href="../privacy-policy/index.html">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="../assets/js/nav-config.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
+
+

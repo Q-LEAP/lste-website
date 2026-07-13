@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:lste.lu)",
+      "PowerShell($response = Invoke-WebRequest -Uri \"https://lste.lu/press/\" -UseBasicParsing; $response.Content | Select-String -Pattern \"wp-content|img|hero|press|headline|section|h1|h2|h3|button|cta|background\" -AllMatches | Select-Object -First 100 | ForEach-Object { $_.Line })",
+      "WebFetch(domain:web.archive.org)",
+      "WebSearch",
+      "PowerShell($client = New-Object System.Net.WebClient; $client.Headers.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\"\\); $html = $client.DownloadString\\(\"https://lste.lu/press/\"\\); $html.Length)",
+      "WebFetch(domain:webcache.googleusercontent.com)",
+      "PowerShell(Out-File *)",
+      "WebFetch(domain:archive.org)",
+      "PowerShell(head *)",
+      "WebFetch(domain:timetravel.mementoweb.org)",
+      "PowerShell($client = New-Object System.Net.WebClient; $client.Headers.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\"\\); $html = $client.DownloadString\\(\"https://lste.lu/press/\"\\); Write-Host \"Lines: $\\(\\($html -split \"`n\"\\).Count\\)\"; Write-Host \"Chars: $\\($html.Length\\)\")",
+      "WebFetch(domain:itnation.lu)",
+      "WebFetch(domain:www.siliconluxembourg.lu)",
+      "PowerShell($client = New-Object System.Net.WebClient; $client.Headers.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\"\\); $html = $client.DownloadString\\(\"https://lste.lu/press/\"\\); # Find body start $bodyStart = $html.IndexOf\\('<body'\\); $bodyContent = $html.Substring\\($bodyStart\\); Write-Host \"Body length: $\\($bodyContent.Length\\)\"; $bodyContent | Out-File -FilePath \"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\press_body.html\" -Encoding utf8)",
+      "WebFetch(domain:cnpd.public.lu)",
+      "PowerShell($response = Invoke-WebRequest -Uri \"https://lste.lu/previous-editions/edition-2014/\" -UseBasicParsing -TimeoutSec 30; Write-Output \"Status: $\\($response.StatusCode\\)\"; Write-Output \"Content length: $\\($response.Content.Length\\)\")",
+      "PowerShell($response = Invoke-WebRequest -Uri \"https://lste.lu/previous-editions/edition-2014/\" -UseBasicParsing -TimeoutSec 60 -Headers @{\"User-Agent\"=\"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\"}; Write-Output \"Status: $\\($response.StatusCode\\)\"; Write-Output \"Content length: $\\($response.Content.Length\\)\")",
+      "PowerShell($client = New-Object System.Net.WebClient; $client.Headers.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\"\\); $html = $client.DownloadString\\(\"https://lste.lu/press/\"\\); Write-Host \"Total: $\\($html.Length\\)\"; # Check last 5000 chars $html.Substring\\($html.Length - 5000\\))",
+      "PowerShell($client = New-Object System.Net.WebClient; $client.Headers.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\"\\); $html = $client.DownloadString\\(\"https://lste.lu/press/\"\\); $tail = $html.Substring\\($html.Length - 3000\\); [System.IO.File]::WriteAllText\\(\"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\press_tail.txt\", $tail\\); Write-Host \"Saved tail\")",
+      "PowerShell($response = Invoke-WebRequest -Uri \"https://lste.lu/\" -UseBasicParsing -TimeoutSec 60 -Headers @{\"User-Agent\"=\"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\"}; Write-Output \"Status: $\\($response.StatusCode\\)\"; Write-Output \"Content length: $\\($response.Content.Length\\)\")",
+      "WebFetch(domain:www.q-leap.eu)",
+      "PowerShell(Add-Type -AssemblyName System.Net.Http; $handler = New-Object System.Net.Http.HttpClientHandler; $client = New-Object System.Net.Http.HttpClient\\($handler\\); $client.DefaultRequestHeaders.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120\"\\); $response = $client.GetAsync\\(\"https://lste.lu/press/\"\\).Result; $bytes = $response.Content.ReadAsByteArrayAsync\\(\\).Result; $html = [System.Text.Encoding]::UTF8.GetString\\($bytes\\); Write-Host \"Length: $\\($html.Length\\)\"; [System.IO.File]::WriteAllText\\(\"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\press_full.html\", $html\\); Write-Host \"Saved full HTML\")",
+      "WebFetch(domain:securitymadein.lu)",
+      "WebFetch(domain:myconnectivity.lu)",
+      "PowerShell($html = [System.IO.File]::ReadAllText\\(\"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\press_full.html\"\\); $bodyStart = $html.IndexOf\\(\"<body \"\\); Write-Host \"Body starts at: $bodyStart\"; $bodyContent = $html.Substring\\($bodyStart\\); Write-Host \"Body length: $\\($bodyContent.Length\\)\"; [System.IO.File]::WriteAllText\\(\"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\press_body_only.html\", $bodyContent\\); Write-Host \"Saved\")",
+      "WebFetch(domain:i0.wp.com)",
+      "WebFetch(domain:q-leap.eu)",
+      "WebFetch(domain:paperjam.lu)",
+      "PowerShell(Add-Type -AssemblyName System.Net.Http; $handler = New-Object System.Net.Http.HttpClientHandler; $client = New-Object System.Net.Http.HttpClient\\($handler\\); $client.DefaultRequestHeaders.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120\"\\); $response = $client.GetAsync\\(\"https://lste.lu/wp-json/wp/v2/posts?categories=&per_page=20&_fields=id,title,excerpt,content,date,slug,featured_media,_links\"\\).Result; $json = $response.Content.ReadAsStringAsync\\(\\).Result; Write-Host \"JSON length: $\\($json.Length\\)\"; [System.IO.File]::WriteAllText\\(\"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\press_posts.json\", $json\\))",
+      "WebFetch(domain:eventful.com)",
+      "WebFetch(domain:www.tech.tickets)",
+      "WebFetch(domain:qa-platforms.com)",
+      "PowerShell(Add-Type -AssemblyName System.Net.Http; $handler = New-Object System.Net.Http.HttpClientHandler; $client = New-Object System.Net.Http.HttpClient\\($handler\\); $client.DefaultRequestHeaders.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120\"\\); # Try to get posts with category \"press\" or all posts $response = $client.GetAsync\\(\"https://lste.lu/wp-json/wp/v2/posts?per_page=20&_fields=id,title,excerpt,date,slug,link,featured_media\"\\).Result; $json = $response.Content.ReadAsStringAsync\\(\\).Result; Write-Host $json)",
+      "PowerShell(Add-Type -AssemblyName System.Net.Http; $handler = New-Object System.Net.Http.HttpClientHandler; $client = New-Object System.Net.Http.HttpClient\\($handler\\); $client.DefaultRequestHeaders.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120\"\\); $response = $client.GetAsync\\(\"https://lste.lu/wp-json/wp/v2/posts?per_page=20\"\\).Result; $statusCode = [int]$response.StatusCode; Write-Host \"Status: $statusCode\"; $json = $response.Content.ReadAsStringAsync\\(\\).Result; Write-Host \"Length: $\\($json.Length\\)\"; [System.IO.File]::WriteAllText\\(\"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\wp_posts.json\", $json\\))",
+      "PowerShell(cd \"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\"; \\(Get-Item \"assets\\\\css\\\\styles.css\"\\).Length; Get-Content \"assets\\\\css\\\\styles.css\" | Measure-Object -Line)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\" -Force | Where-Object {$_.Name -match '\\(robots\\\\.txt|sitemap\\\\.xml|\\\\.htaccess|\\\\.env|package\\\\.json|config\\)' -or $_.PSIsContainer -eq $false} | Select-Object Name)"
+    ]
+  }
+}

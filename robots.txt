@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_source/
+Disallow: /.claude/
+
+Sitemap: https://lste.lu/sitemap.xml

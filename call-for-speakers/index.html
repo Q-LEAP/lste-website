@@ -1,0 +1,535 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call for Speakers — LSTE 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    /* Deadline banner */
+    .deadline-banner {
+      background: var(--gradient-primary);
+      color: #fff;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    /* Talk format cards */
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .format-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      border-top: 4px solid var(--color-primary);
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    }
+    .format-card .format-icon {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+    .format-card h3 {
+      margin-bottom: .5rem;
+      color: var(--color-dark);
+    }
+    .format-card p {
+      color: var(--color-dark);
+      opacity: .75;
+    }
+    .format-card .format-duration {
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 1rem;
+      opacity: 1;
+    }
+
+    /* Topics tag cloud */
+    .topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      list-style: none;
+      padding: 0;
+      margin-top: 1.5rem;
+    }
+    .topics-list li a,
+    .topics-list li span {
+      display: inline-block;
+      background: rgba(217, 14, 144, .08);
+      color: var(--color-primary);
+      border: 1px solid rgba(217, 14, 144, .35);
+      border-radius: 100px;
+      padding: .4rem 1.1rem;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .topics-list li span:hover,
+    .topics-list li a:hover {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+
+    /* Speaker benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .benefit-item {
+      text-align: center;
+    }
+    .benefit-item .benefit-icon {
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin-bottom: .75rem;
+    }
+    .benefit-item h4 {
+      margin-bottom: .25rem;
+      color: var(--color-dark);
+    }
+    .benefit-item p {
+      color: var(--color-dark);
+      opacity: .7;
+    }
+
+    /* Submission guidelines */
+    .guidelines-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+    .guidelines-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+    }
+    .guidelines-list li i {
+      color: var(--color-primary);
+      margin-top: .25rem;
+      flex-shrink: 0;
+    }
+
+    /* Submission CTA box */
+    .submission-cta {
+      background: var(--color-dark);
+      color: #fff;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .submission-cta h3 {
+      color: #fff;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    .submission-cta p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.05rem;
+    }
+    .submission-cta .mailto-hint {
+      font-size: .9rem;
+      opacity: .8;
+      margin-top: 1rem;
+    }
+
+    /* FAQ accordion */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-list details {
+      border: 1px solid var(--color-border, #e0e0e0);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .faq-list summary {
+      font-weight: 600;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      color: var(--color-dark);
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: '\f078';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: .8rem;
+      color: var(--color-primary);
+      transition: transform .25s;
+    }
+    .faq-list details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .faq-list details[open] summary {
+      border-bottom: 1px solid var(--color-border, #e0e0e0);
+    }
+    .faq-list .faq-answer {
+      padding: 1rem 1.25rem;
+      background: #fff;
+      color: var(--color-dark);
+      opacity: .8;
+    }
+    .faq-list .faq-answer p { color: inherit; }
+
+    @media (max-width: 900px) {
+      .formats-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" id="masthead" role="banner">
+  <div class="header-inner">
+    <div class="header-col header-col--logo">
+      <a href="../index.html" class="site-logo" aria-label="LSTE Home">
+        <img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="160" height="53" loading="eager">
+      </a>
+    </div>
+    <div class="header-col header-col--nav">
+      <div id="mega-menu-wrap-main" class="mega-menu-wrap">
+        <div class="mega-menu-toggle">
+          <button class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false" aria-label="Toggle Menu">
+            <span class="mega-toggle-animated-box">
+              <span class="mega-toggle-animated-inner"></span>
+            </span>
+          </button>
+        </div>
+        <ul id="mega-menu-main" class="mega-menu">
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../ticket/index.html">Book Your Ticket</a></li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+          <li class="mega-menu-item mega-menu-item-has-children">
+            <a class="mega-menu-link" href="../about/index.html" aria-haspopup="true" aria-expanded="false">About the Event<span class="mega-indicator" aria-hidden="true"></span></a>
+            <ul class="mega-sub-menu">
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../about/index.html">About the LSTE</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../previous-editions/index.html">Previous Editions</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../gallery/index.html">Gallery</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../press/index.html">Press</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../contact/index.html">Contact us</a></li>
+            </ul>
+          </li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../call-for-speakers/index.html">Call for Speakers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-col header-col--cta">
+      <a href="../ticket/index.html" class="header-ticket-btn">
+        <i class="fas fa-hand-point-right" aria-hidden="true"></i>
+        Get a Ticket
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav-panel" id="mobile-nav-panel" aria-label="Mobile navigation">
+  <ul class="mobile-nav-list">
+    <li><a href="../ticket/index.html">Book Your Ticket</a></li>
+    <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li class="has-submenu">
+      <a href="../about/index.html">About the Event <span class="mobile-sub-toggle" aria-hidden="true">&#9660;</span></a>
+      <ul class="mobile-submenu">
+        <li><a href="../about/index.html">About the LSTE</a></li>
+        <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+        <li><a href="../gallery/index.html">Gallery</a></li>
+        <li><a href="../press/index.html">Press</a></li>
+        <li><a href="../contact/index.html">Contact us</a></li>
+      </ul>
+    </li>
+    <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+    <li><a href="../ticket/index.html" class="btn"><i class="fas fa-hand-point-right" aria-hidden="true"></i> Get a Ticket</a></li>
+  </ul>
+</nav>
+
+
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="--hero-bg: url('https://i0.wp.com/lste.lu/wp-content/uploads/2023/11/DSC_8959-scaled.jpg?w=1200&ssl=1') center/cover no-repeat;" aria-label="Call for Speakers page hero">
+      <div class="container">
+        <h1>Call for Speakers</h1>
+        <p class="hero-subtitle">Share your expertise at LSTE 2026 — November 26, Esch-Belval</p>
+      </div>
+    </section>
+
+    <!-- Deadline Banner -->
+    <div class="deadline-banner" role="note" aria-label="Submission deadline">
+      Submission deadline: September 30, 2026 &mdash; Submit early for best consideration
+    </div>
+
+    <!-- Intro Section -->
+    <section class="section" aria-labelledby="cfs-intro-heading">
+      <div class="container" style="max-width: 800px;">
+        <h2 id="cfs-intro-heading">Join the LSTE 2026 Lineup</h2>
+        <p style="font-size: 1.1rem; line-height: 1.7;">
+          Join the lineup of LSTE 2026 and share your testing expertise with Luxembourg's QA community. Whether you have a war story from the trenches, a new methodology to showcase, or a tool demo to present — we want to hear from you. The Call for Speakers is open until <strong>September 30, 2026</strong> and we invite software testing and quality assurance professionals to share their knowledge with 300+ colleagues.
+        </p>
+      </div>
+    </section>
+
+    <!-- Talk Formats -->
+    <section class="section" style="background: var(--color-surface, #f8f8f8);" aria-labelledby="formats-heading">
+      <div class="container">
+        <h2 id="formats-heading">Talk Formats</h2>
+        <div class="formats-grid">
+
+          <div class="format-card">
+            <div class="format-icon" aria-hidden="true"><i class="fa-solid fa-microphone"></i></div>
+            <h3>Keynote</h3>
+            <p class="format-duration">45 minutes</p>
+            <p>For thought-provoking big-picture topics. Strategic view, broad appeal, strong storytelling. Keynotes open or close the main programme and set the tone for the day.</p>
+          </div>
+
+          <div class="format-card">
+            <div class="format-icon" aria-hidden="true"><i class="fa-solid fa-chalkboard-teacher"></i></div>
+            <h3>Conference Talk</h3>
+            <p class="format-duration">30 minutes</p>
+            <p>Technical or methodological deep-dives. Case studies, lessons learned, practical frameworks. The backbone of the LSTE programme — show us what you've built or discovered.</p>
+          </div>
+
+          <div class="format-card">
+            <div class="format-icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>Tutorial / Workshop</h3>
+            <p class="format-duration">3 hours</p>
+            <p>Hands-on learning experiences held in the morning before the conference. Practical skills, interactive exercises. Limited to 20 participants for an intimate learning environment.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics We Love -->
+    <section class="section" aria-labelledby="topics-heading">
+      <div class="container">
+        <h2 id="topics-heading">Topics We Love</h2>
+        <p>We welcome proposals across the full spectrum of software quality and testing. Here are some areas we're especially excited about this year:</p>
+        <ul class="topics-list" aria-label="Suggested topics">
+          <li><span>Software Testing Strategy</span></li>
+          <li><span>Test Automation</span></li>
+          <li><span>AI &amp; ML in Testing</span></li>
+          <li><span>Quality Engineering</span></li>
+          <li><span>DevOps &amp; Continuous Testing</span></li>
+          <li><span>Exploratory Testing</span></li>
+          <li><span>Performance Testing</span></li>
+          <li><span>Security Testing</span></li>
+          <li><span>API Testing</span></li>
+          <li><span>Mobile Testing</span></li>
+          <li><span>Agile Testing</span></li>
+          <li><span>Test Management</span></li>
+          <li><span>Career Development in QA</span></li>
+          <li><span>Testing Tools &amp; Frameworks</span></li>
+          <li><span>Quality Metrics</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- What We Offer Speakers -->
+    <section class="section" style="background: var(--color-surface, #f8f8f8);" aria-labelledby="benefits-heading">
+      <div class="container">
+        <h2 id="benefits-heading">What We Offer Speakers</h2>
+        <div class="benefits-grid">
+
+          <div class="benefit-item">
+            <div class="benefit-icon" aria-hidden="true"><i class="fa-solid fa-ticket"></i></div>
+            <h4>Free Attendance</h4>
+            <p>All accepted speakers receive complimentary access to the full LSTE 2026 event.</p>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon" aria-hidden="true"><i class="fa-solid fa-utensils"></i></div>
+            <h4>Speaker Networking Dinner</h4>
+            <p>Join fellow speakers and organisers at our exclusive evening dinner the night before the event.</p>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon" aria-hidden="true"><i class="fa-solid fa-share-nodes"></i></div>
+            <h4>Website &amp; Social Media Feature</h4>
+            <p>Your bio, photo, and talk details will be prominently featured on our website and across our social channels.</p>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon" aria-hidden="true"><i class="fa-solid fa-plane"></i></div>
+            <h4>Travel Support</h4>
+            <p>We evaluate travel and accommodation support on a case-by-case basis. Please mention your location in your submission.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Submission Guidelines -->
+    <section class="section" aria-labelledby="guidelines-heading">
+      <div class="container" style="max-width: 800px;">
+        <h2 id="guidelines-heading">Submission Guidelines</h2>
+        <p>Please note the following requirements when preparing your proposal:</p>
+        <ul class="guidelines-list">
+          <li>
+            <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+            <span><strong>Abstract:</strong> 200–400 words describing your talk — what attendees will learn and why the topic matters now.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-id-card" aria-hidden="true"></i>
+            <span><strong>Bio:</strong> A 100–150 word speaker biography in the third person.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-image" aria-hidden="true"></i>
+            <span><strong>Photo:</strong> A professional headshot at high resolution (minimum 800 × 800 px).</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <span><strong>Vendor-neutral content</strong> is strongly preferred. Talks must not be sales pitches or product promotions.</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span><strong>First-time speakers are welcome and encouraged.</strong> Our programme committee provides feedback and support to help you prepare.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Submission CTA -->
+    <section class="section" aria-labelledby="submit-heading">
+      <div class="container">
+        <div class="submission-cta">
+          <h3 id="submit-heading">Ready to Submit?</h3>
+          <p>Send your proposal to <strong>hello@lste.lu</strong> with the subject line:<br><em>[CFS 2026] Your Talk Title</em></p>
+          <a
+            href="mailto:hello@lste.lu?subject=%5BCFS%202026%5D%20Your%20Talk%20Title&body=Talk%20Title%3A%0ATalk%20Format%3A%0AAbstract%3A%0ASpeaker%20Bio%3A"
+            class="btn btn--primary"
+          >Submit via Email</a>
+          <p class="mailto-hint">Clicking the button will open your email client pre-filled with the required fields.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="background: var(--color-surface, #f8f8f8);" aria-labelledby="faq-heading">
+      <div class="container" style="max-width: 800px;">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+
+          <details>
+            <summary>Do I need to pay to speak?</summary>
+            <div class="faq-answer">
+              <p>No. All speakers receive free admission to the full LSTE 2026 event and are featured on our website and social media channels.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Can I submit more than one proposal?</summary>
+            <div class="faq-answer">
+              <p>Yes! We encourage submitting multiple topics. Please send each proposal in a separate email so our programme committee can evaluate them individually.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>When will I be notified?</summary>
+            <div class="faq-answer">
+              <p>We aim to notify all applicants of the outcome by <strong>October 15, 2026</strong>. We review proposals on a rolling basis, so submitting early is to your advantage.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Is travel reimbursement available?</summary>
+            <div class="faq-answer">
+              <p>We evaluate travel and accommodation support on a case-by-case basis, depending on availability and the distance travelled. Please mention your location clearly in your submission email so we can assess your situation.</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="../index.html" class="site-logo"><img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="140" height="46" loading="lazy"></a>
+          <p>Luxembourg Software Testing Event — The annual gathering of QA &amp; testing professionals in the Grand Duchy.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/lste/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com/LSTElu" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@LSTElu" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Event</h4>
+          <ul>
+            <li><a href="../about/index.html">About LSTE</a></li>
+            <li><a href="../schedule/index.html">Schedule</a></li>
+            <li><a href="../speakers/index.html">Speakers</a></li>
+            <li><a href="../venue/index.html">Venue</a></li>
+            <li><a href="../ticket/index.html">Tickets</a></li>
+            <li><a href="../become-a-sponsor/index.html">Become a Sponsor</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="../gallery/index.html">Gallery</a></li>
+            <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+            <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+            <li><a href="../news/index.html">News</a></li>
+            <li><a href="../press/index.html">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@lste.lu">hello@lste.lu</a></li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+35220211700">+352 20 21 17</a></li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Q-Leap SA<br>10B rue des mérovingiens<br>L-8070 Bertrange</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LSTE – Luxembourg Software Testing Event. Organised by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap SA</a>.</p>
+        <p><a href="../privacy-policy/index.html">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="../assets/js/nav-config.js"></script>
+<script src="../assets/js/admin.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
+
+

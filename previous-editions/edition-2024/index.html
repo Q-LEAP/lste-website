@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LSTE 2024 — 6th Edition recap. Luxembourg Software Testing Event, November 28, 2024.">
+  <title>LSTE 2024 — 6th Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <style>
+    .edition-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .edition-info-card { background: var(--color-dark); color: #fff; padding: 2rem; border-radius: 12px; }
+    .edition-info-card h3 { color: #fff; margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: .05em; }
+    .edition-info-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+    .edition-info-list li { display: flex; align-items: flex-start; gap: .75rem; font-size: .925rem; }
+    .edition-info-list i { color: var(--color-primary); margin-top: .2rem; flex-shrink: 0; }
+    .edition-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    .edition-photos img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; cursor: pointer; transition: opacity .3s; }
+    .edition-photos img:hover { opacity: .85; }
+    .takeaway-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .takeaway-card { background: #fff; border-radius: 12px; padding: 1.75rem; box-shadow: 0 4px 20px rgba(0,0,0,.07); border-top: 4px solid var(--color-primary); }
+    .takeaway-card h4 { margin-bottom: .5rem; color: var(--color-dark); }
+    .edition-nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e8e8f0; }
+    .mini-speakers { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+    .mini-speaker { text-align: center; }
+    .mini-speaker img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto .75rem; display: block; border: 3px solid var(--color-primary); }
+    .mini-speaker strong { display: block; font-size: .875rem; color: var(--color-dark); }
+    .mini-speaker span { font-size: .8rem; color: var(--color-text); }
+    @media (max-width: 768px) { .edition-overview { grid-template-columns: 1fr; } .edition-photos { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ── Header ─────────────────────────────────────────────────── -->
+  <header class="site-header" id="masthead" role="banner">
+  <div class="header-inner">
+    <div class="header-col header-col--logo">
+      <a href="../../index.html" class="site-logo" aria-label="LSTE Home">
+        <img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="160" height="53" loading="eager">
+      </a>
+    </div>
+    <div class="header-col header-col--nav">
+      <div id="mega-menu-wrap-main" class="mega-menu-wrap">
+        <div class="mega-menu-toggle">
+          <button class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false" aria-label="Toggle Menu">
+            <span class="mega-toggle-animated-box">
+              <span class="mega-toggle-animated-inner"></span>
+            </span>
+          </button>
+        </div>
+        <ul id="mega-menu-main" class="mega-menu">
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../../ticket/index.html">Book Your Ticket</a></li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../../become-a-sponsor/index.html">Become a sponsor</a></li>
+          <li class="mega-menu-item mega-menu-item-has-children">
+            <a class="mega-menu-link" href="../../about/index.html" aria-haspopup="true" aria-expanded="false">About the Event<span class="mega-indicator" aria-hidden="true"></span></a>
+            <ul class="mega-sub-menu">
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../../about/index.html">About the LSTE</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../../previous-editions/index.html">Previous Editions</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../../gallery/index.html">Gallery</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../../press/index.html">Press</a></li>
+              <li class="mega-menu-item"><a class="mega-menu-link" href="../../contact/index.html">Contact us</a></li>
+            </ul>
+          </li>
+          <li class="mega-menu-item"><a class="mega-menu-link" href="../../call-for-speakers/index.html">Call for Speakers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-col header-col--cta">
+      <a href="../../ticket/index.html" class="header-ticket-btn">
+        <i class="fas fa-hand-point-right" aria-hidden="true"></i>
+        Get a Ticket
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav-panel" id="mobile-nav-panel" aria-label="Mobile navigation">
+  <ul class="mobile-nav-list">
+    <li><a href="../../ticket/index.html">Book Your Ticket</a></li>
+    <li><a href="../../become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li class="has-submenu">
+      <a href="../../about/index.html">About the Event <span class="mobile-sub-toggle" aria-hidden="true">&#9660;</span></a>
+      <ul class="mobile-submenu">
+        <li><a href="../../about/index.html">About the LSTE</a></li>
+        <li><a href="../../previous-editions/index.html">Previous Editions</a></li>
+        <li><a href="../../gallery/index.html">Gallery</a></li>
+        <li><a href="../../press/index.html">Press</a></li>
+        <li><a href="../../contact/index.html">Contact us</a></li>
+      </ul>
+    </li>
+    <li><a href="../../call-for-speakers/index.html">Call for Speakers</a></li>
+    <li><a href="../../ticket/index.html" class="btn"><i class="fas fa-hand-point-right" aria-hidden="true"></i> Get a Ticket</a></li>
+  </ul>
+</nav>
+
+
+  <main id="main-content">
+
+    <!-- ── Page Hero ───────────────────────────────────────────── -->
+    <section class="page-hero" style="--hero-bg: url('https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-01.jpg?w=1200&ssl=1') center/cover no-repeat;">
+      <div class="container">
+        <p class="page-hero__eyebrow fade-up" style="color:var(--color-secondary);font-family:var(--font-heading);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;">Previous Edition</p>
+        <h1 class="fade-up">LSTE 2024</h1>
+        <p class="page-hero__sub fade-up" style="transition-delay:.1s">6th Edition — November 28, 2024 — Chambre des Métiers, Luxembourg-Kirchberg</p>
+      </div>
+    </section>
+
+    <!-- ── Overview ────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="edition-overview fade-up">
+          <div>
+            <h2>About the 6th Edition</h2>
+            <p style="margin-bottom:1rem;">The 6th Luxembourg Software Testing Event brought together over 280 testing and quality professionals for a full day dedicated to the theme of <strong>Continuous Quality</strong>. The event explored how modern organisations are embedding quality throughout their software delivery pipelines — from requirements to production monitoring.</p>
+            <p style="margin-bottom:1rem;">Held at the Chambre des Métiers in Luxembourg-Kirchberg, LSTE 2024 featured 8 keynote sessions, 7 live demos, a hands-on tutorial, and a dedicated exhibition area where 14 sponsors showcased their latest tools and services.</p>
+            <p>Standout moments included a provocative keynote on the death of the traditional QA role, a live AI-assisted testing demonstration that drew standing-room-only attendance, and a candid panel debate on whether "shift left" has gone too far.</p>
+          </div>
+          <div class="edition-info-card">
+            <h3>Edition Details</h3>
+            <ul class="edition-info-list">
+              <li><i class="fa-solid fa-calendar"></i><div><strong>Date</strong><br>November 28, 2024</div></li>
+              <li><i class="fa-solid fa-clock"></i><div><strong>Time</strong><br>08:30 – 18:00</div></li>
+              <li><i class="fa-solid fa-location-dot"></i><div><strong>Venue</strong><br>Chambre des Métiers<br>Luxembourg-Kirchberg</div></li>
+              <li><i class="fa-solid fa-users"></i><div><strong>Attendees</strong><br>280+</div></li>
+              <li><i class="fa-solid fa-microphone"></i><div><strong>Talks</strong><br>8 keynotes + 7 demos</div></li>
+              <li><i class="fa-solid fa-tag"></i><div><strong>Theme</strong><br>Continuous Quality</div></li>
+              <li><i class="fa-solid fa-ticket"></i><div><strong>Admission</strong><br>Free (conference)</div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Photos ──────────────────────────────────────────────── -->
+    <section class="section section--light">
+      <div class="container">
+        <h2 class="section-title fade-up">Photo Highlights</h2>
+        <div class="edition-photos fade-up">
+          <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-01.jpg?w=600&ssl=1" alt="LSTE 2024 Opening" loading="lazy" data-full="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-01.jpg?w=1200&ssl=1">
+          <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-02.jpg?w=600&ssl=1" alt="LSTE 2024 Keynote" loading="lazy" data-full="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-02.jpg?w=1200&ssl=1">
+          <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-03.jpg?w=600&ssl=1" alt="LSTE 2024 Workshop" loading="lazy" data-full="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-03.jpg?w=1200&ssl=1">
+          <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-04.jpg?w=600&ssl=1" alt="LSTE 2024 Exhibition" loading="lazy" data-full="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-04.jpg?w=1200&ssl=1">
+          <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-05.jpg?w=600&ssl=1" alt="LSTE 2024 Networking" loading="lazy" data-full="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-05.jpg?w=1200&ssl=1">
+          <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-06.jpg?w=600&ssl=1" alt="LSTE 2024 Sponsors" loading="lazy" data-full="https://i0.wp.com/lste.lu/wp-content/uploads/2024/11/lste2024-06.jpg?w=1200&ssl=1">
+        </div>
+        <div style="text-align:center;margin-top:1.5rem;">
+          <a href="../../gallery/index.html" class="btn btn--outline">View Full Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Key Takeaways ───────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title fade-up">Key Takeaways</h2>
+        <div class="takeaway-grid">
+          <div class="takeaway-card fade-up">
+            <h4>Continuous Quality Is a Culture</h4>
+            <p>The consensus from LSTE 2024: continuous quality is not a tooling problem — it's a cultural transformation that starts with leadership and requires shared ownership across all teams.</p>
+          </div>
+          <div class="takeaway-card fade-up" style="transition-delay:.1s;border-top-color:var(--color-secondary);">
+            <h4>Automation Is a Means, Not an End</h4>
+            <p>Multiple speakers challenged the automation-first mindset. Effective test automation must be selective, maintained, and always in service of a broader quality strategy — not pursued for its own sake.</p>
+          </div>
+          <div class="takeaway-card fade-up" style="transition-delay:.2s;border-top-color:#822ea8;">
+            <h4>Production Is the New Testing Environment</h4>
+            <p>With canary deployments, feature flags, and real-user monitoring becoming standard, the line between testing and production monitoring is blurring — and testers must adapt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Speakers ────────────────────────────────────────────── -->
+    <section class="section section--light">
+      <div class="container">
+        <h2 class="section-title fade-up">Speakers</h2>
+        <div class="mini-speakers fade-up">
+          <div class="mini-speaker">
+            <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2024/09/nathalie-graindorge.jpg?fit=160%2C160&ssl=1" alt="Nathalie Graindorge" loading="lazy">
+            <strong>Nathalie Graindorge</strong>
+            <span>CEO @ Q-Leap</span>
+          </div>
+          <div class="mini-speaker">
+            <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2022/09/gojko-adzic.jpg?fit=160%2C160&ssl=1" alt="Gojko Adzic" loading="lazy">
+            <strong>Gojko Adzic</strong>
+            <span>Author &amp; Speaker</span>
+          </div>
+          <div class="mini-speaker">
+            <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2023/02/bas-dijkstra.jpg?fit=160%2C160&ssl=1" alt="Bas Dijkstra" loading="lazy">
+            <strong>Bas Dijkstra</strong>
+            <span>Test Automation Expert</span>
+          </div>
+          <div class="mini-speaker">
+            <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2023/02/maaret-pyhajrvi.jpg?fit=160%2C160&ssl=1" alt="Maaret Pyhäjärvi" loading="lazy">
+            <strong>Maaret Pyhäjärvi</strong>
+            <span>Principal Test Engineer</span>
+          </div>
+          <div class="mini-speaker">
+            <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2023/09/huib-schoots.jpg?fit=160%2C160&ssl=1" alt="Huib Schoots" loading="lazy">
+            <strong>Huib Schoots</strong>
+            <span>Testing &amp; Agile Expert</span>
+          </div>
+          <div class="mini-speaker">
+            <img src="https://i0.wp.com/lste.lu/wp-content/uploads/2023/09/lisi-hocke.jpg?fit=160%2C160&ssl=1" alt="Lisi Hocke" loading="lazy">
+            <strong>Lisi Hocke</strong>
+            <span>Testing Coach</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Navigation ──────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="edition-nav fade-up">
+          <a href="../../previous-editions/index.html" class="btn btn--outline"><i class="fa-solid fa-arrow-left"></i> All Previous Editions</a>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="../../previous-editions/edition-2025/index.html" class="btn btn--outline">LSTE 2025 →</a>
+            <a href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" class="btn btn--primary" target="_blank" rel="noopener">Register for LSTE 2026</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="../../index.html" class="site-logo"><img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="140" height="46" loading="lazy"></a>
+          <p>Luxembourg Software Testing Event — The annual gathering of QA &amp; testing professionals in the Grand Duchy.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/lste/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://twitter.com/LSTElu" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@LSTElu" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Event</h4>
+          <ul>
+            <li><a href="../../about/index.html">About LSTE</a></li>
+            <li><a href="../../schedule/index.html">Schedule</a></li>
+            <li><a href="../../speakers/index.html">Speakers</a></li>
+            <li><a href="../../venue/index.html">Venue</a></li>
+            <li><a href="../../ticket/index.html">Tickets</a></li>
+            <li><a href="../../become-a-sponsor/index.html">Become a Sponsor</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="../../gallery/index.html">Gallery</a></li>
+            <li><a href="../../previous-editions/index.html">Previous Editions</a></li>
+            <li><a href="../../call-for-speakers/index.html">Call for Speakers</a></li>
+            <li><a href="../../news/index.html">News</a></li>
+            <li><a href="../../press/index.html">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-contact">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@lste.lu">hello@lste.lu</a></li>
+            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+35220211700">+352 20 21 17</a></li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Q-Leap SA<br>10B rue des mérovingiens<br>L-8070 Bertrange</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LSTE – Luxembourg Software Testing Event. Organised by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap SA</a>.</p>
+        <p><a href="../../privacy-policy/index.html">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox__close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox__prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <img class="lightbox__img" src="" alt="">
+    <button class="lightbox__next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+  <script src="../../assets/js/nav-config.js"></script>
+<script src="../../assets/js/admin.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
+
+
