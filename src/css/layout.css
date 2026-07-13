@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Layout — containers, sections, grid utilities
+   ========================================================================== */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+.container--narrow { max-width: var(--container-narrow); }
+
+.section { padding: var(--space-12) 0; }
+.section--tight { padding: var(--space-8) 0; }
+
+.section--dark {
+  background: var(--color-ink);
+  color: rgba(255, 255, 255, 0.82);
+}
+.section--dark h1, .section--dark h2, .section--dark h3,
+.section--dark h4, .section--dark h5 { color: #fff; }
+
+.section--alt { background: var(--color-surface-alt); }
+
+.section--brand {
+  background: var(--gradient-hero);
+  color: rgba(255, 255, 255, 0.92);
+}
+.section--brand h1, .section--brand h2, .section--brand h3,
+.section--brand h4, .section--brand h5 { color: #fff; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+.eyebrow--on-dark { color: #f2c9e3; }
+
+.text-center { text-align: center; }
+.text-white { color: #fff !important; }
+.text-muted { color: var(--color-muted); }
+
+.stack { display: flex; flex-direction: column; }
+.cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+
+.grid { display: grid; gap: var(--space-6); }
+.grid--2 { grid-template-columns: repeat(1, 1fr); }
+.grid--3 { grid-template-columns: repeat(1, 1fr); }
+.grid--4 { grid-template-columns: repeat(2, 1fr); }
+
+@media (min-width: 768px) {
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto var(--space-8);
+  text-align: center;
+}
+.section-head p { color: var(--color-muted); font-size: 1.0625rem; }

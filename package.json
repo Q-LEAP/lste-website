@@ -1,0 +1,23 @@
+{
+  "name": "lste-website",
+  "version": "2026.1.0",
+  "private": true,
+  "description": "Luxembourg Software Testing Event — static site build tooling",
+  "type": "module",
+  "scripts": {
+    "images:download": "node scripts/download-images.mjs",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "css:build": "node scripts/build-css.mjs",
+    "partials:inject": "node scripts/inject-partials.mjs",
+    "build": "npm run css:build && npm run images:optimize && npm run partials:inject"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.1",
+    "sharp": "^0.33.5"
+  }
+}

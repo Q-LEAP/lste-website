@@ -1,338 +1,313 @@
 /* ============================================================
-   LSTE – Main JavaScript
-   Countdown | Navigation | Tabs | Gallery | Forms | Animations
+   LSTE – Main JavaScript (vanilla, no dependencies)
+   Nav is now static HTML (built at build time — see
+   scripts/inject-partials.mjs), so this file only handles
+   interaction: menu, forms, reveal, countdown, tabs, lightbox.
    ============================================================ */
-
 (function () {
   'use strict';
 
-  /* ── Countdown Timer ───────────────────────────────────────── */
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  function trapFocus(container, onEscape) {
+    let lastFocused = document.activeElement;
+    function handleKeydown(e) {
+      if (e.key === 'Escape') { onEscape(); return; }
+      if (e.key !== 'Tab') return;
+      const focusables = Array.from(container.querySelectorAll(FOCUSABLE)).filter((el) => el.offsetParent !== null);
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+    document.addEventListener('keydown', handleKeydown);
+    return function release() {
+      document.removeEventListener('keydown', handleKeydown);
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    };
+  }
+
+  /* ── Sticky header ─────────────────────────────────────────── */
+  function initHeader() {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ── Announcement bar ─────────────────────────────────────── */
+  function initAnnouncement() {
+    const bar = document.getElementById('announcement-bar');
+    if (!bar) return;
+    function setHeight() {
+      document.documentElement.style.setProperty('--ann-h', bar.offsetHeight + 'px');
+    }
+    setHeight();
+    window.addEventListener('resize', setHeight);
+    const closeBtn = bar.querySelector('.announcement-bar__close');
+    closeBtn && closeBtn.addEventListener('click', () => {
+      bar.remove();
+      document.documentElement.style.setProperty('--ann-h', '0px');
+    });
+  }
+
+  /* ── Mobile nav ────────────────────────────────────────────── */
+  function initMobileMenu() {
+    const toggle = document.getElementById('nav-toggle');
+    const panel = document.getElementById('mobile-nav-panel');
+    if (!toggle || !panel) return;
+
+    let releaseFocus = null;
+
+    function close() {
+      panel.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+      if (releaseFocus) { releaseFocus(); releaseFocus = null; }
+    }
+
+    function open() {
+      panel.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      document.body.style.overflow = 'hidden';
+      const firstLink = panel.querySelector('a');
+      firstLink && firstLink.focus();
+      releaseFocus = trapFocus(panel, close);
+    }
+
+    toggle.addEventListener('click', () => {
+      panel.classList.contains('is-open') ? close() : open();
+    });
+
+    panel.addEventListener('click', (e) => {
+      if (e.target.closest('a')) close();
+    });
+  }
+
+  /* ── Countdown ─────────────────────────────────────────────── */
   function initCountdown() {
     const els = document.querySelectorAll('[data-countdown]');
     if (!els.length) return;
-
-    // November 26 2026 13:00 Luxembourg time (UTC+1)
     const TARGET = new Date('2026-11-26T13:00:00+01:00').getTime();
+    const pad = (n) => String(n).padStart(2, '0');
 
-    function pad(n) { return String(n).padStart(2, '0'); }
-
-    function tick() {
-      const now  = Date.now();
-      const diff = TARGET - now;
-
-      if (diff <= 0) {
-        els.forEach(el => {
-          const d = el.querySelector('[data-cd-days]');
-          const h = el.querySelector('[data-cd-hours]');
-          const m = el.querySelector('[data-cd-minutes]');
-          const s = el.querySelector('[data-cd-seconds]');
-          if (d) d.textContent = '00';
-          if (h) h.textContent = '00';
-          if (m) m.textContent = '00';
-          if (s) s.textContent = '00';
-        });
-        return;
-      }
-
-      const days    = Math.floor(diff / 86400000);
-      const hours   = Math.floor((diff % 86400000) / 3600000);
-      const minutes = Math.floor((diff % 3600000)  / 60000);
-      const seconds = Math.floor((diff % 60000)    / 1000);
-
-      els.forEach(el => {
+    function render(diff) {
+      const clamped = Math.max(diff, 0);
+      const days = Math.floor(clamped / 86400000);
+      const hours = Math.floor((clamped % 86400000) / 3600000);
+      const minutes = Math.floor((clamped % 3600000) / 60000);
+      const seconds = Math.floor((clamped % 60000) / 1000);
+      els.forEach((el) => {
         const d = el.querySelector('[data-cd-days]');
         const h = el.querySelector('[data-cd-hours]');
-        const mn = el.querySelector('[data-cd-minutes]');
+        const m = el.querySelector('[data-cd-minutes]');
         const s = el.querySelector('[data-cd-seconds]');
-        if (d)  d.textContent  = pad(days);
-        if (h)  h.textContent  = pad(hours);
-        if (mn) mn.textContent = pad(minutes);
-        if (s)  s.textContent  = pad(seconds);
+        if (d) d.textContent = pad(days);
+        if (h) h.textContent = pad(hours);
+        if (m) m.textContent = pad(minutes);
+        if (s) s.textContent = pad(seconds);
       });
-
-      setTimeout(tick, 1000);
     }
 
+    function tick() {
+      const diff = TARGET - Date.now();
+      render(diff);
+      if (diff > 0) setTimeout(tick, 1000);
+    }
     tick();
   }
 
-  /* ── Sticky Header ─────────────────────────────────────────── */
-  function initHeader() {
-    const header = document.querySelector('.site-header');
-    if (!header) return;
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
-  }
-
-  /* ── Mobile Menu (mega-toggle-animated-slider) ─────────────── */
-  function initMobileMenu() {
-    const toggle = document.querySelector('.mega-toggle-animated');
-    const panel  = document.querySelector('.mobile-nav-panel');
-    if (!toggle || !panel) return;
-
-    toggle.addEventListener('click', () => {
-      const open = panel.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-
-    // Event delegation – works after nav-config.js re-renders the list
-    panel.addEventListener('click', e => {
-      const a = e.target.closest('a');
-      if (!a) return;
-
-      if (a.matches('.has-submenu > a')) {
-        const li = a.closest('.has-submenu');
-        if (!li.classList.contains('open')) {
-          e.preventDefault();
-          li.classList.add('open');
+  /* ── Reveal on scroll ──────────────────────────────────────── */
+  function initReveal() {
+    const els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
-        return;
-      }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => observer.observe(el));
+  }
 
-      // Close panel on any regular link click
-      panel.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+  /* ── Back to top ───────────────────────────────────────────── */
+  function initBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('is-visible', window.scrollY > 480);
+    }, { passive: true });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  /* ── Smooth in-page anchors ────────────────────────────────── */
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 76;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerH - 16;
+        window.scrollTo({ top, behavior: 'smooth' });
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      });
     });
   }
 
-  /* Expose so nav-config can call after re-render */
-  function reinitMobileMenu() { initMobileMenu(); }
-
-  /* ── Schedule Tabs ─────────────────────────────────────────── */
+  /* ── Tabs ──────────────────────────────────────────────────── */
   function initTabs() {
-    document.querySelectorAll('.tabs-component').forEach(component => {
-      const navBtns  = component.querySelectorAll('.tabs-nav__item button, .tabs-nav__btn');
-      const panels   = component.querySelectorAll('.tab-panel');
+    document.querySelectorAll('[data-tabs]').forEach((component) => {
+      const tabs = Array.from(component.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(component.querySelectorAll('[role="tabpanel"]'));
+      if (!tabs.length) return;
 
-      function activate(index) {
-        navBtns.forEach((b, i) => b.classList.toggle('active', i === index));
-        panels.forEach((p, i) => p.classList.toggle('active', i === index));
+      function activate(index, focus) {
+        tabs.forEach((tab, i) => {
+          const active = i === index;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          if (panels[i]) panels[i].hidden = !active;
+        });
+        if (focus) tabs[index].focus();
       }
 
-      navBtns.forEach((btn, i) => {
-        btn.addEventListener('click', () => activate(i));
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => activate(i, false));
+        tab.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowRight') { e.preventDefault(); activate((i + 1) % tabs.length, true); }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); activate((i - 1 + tabs.length) % tabs.length, true); }
+        });
       });
 
-      activate(0);
+      activate(0, false);
     });
   }
 
-  /* ── Schedule item expand/collapse ────────────────────────── */
-  function initScheduleItems() {
-    document.querySelectorAll('.schedule-item:not(.break)').forEach(item => {
-      item.addEventListener('click', () => {
-        item.classList.toggle('open');
-      });
-    });
-  }
-
-  /* ── Gallery Lightbox ──────────────────────────────────────── */
+  /* ── Gallery lightbox ──────────────────────────────────────── */
   function initGallery() {
     const grids = document.querySelectorAll('.gallery-grid');
-    if (!grids.length) return;
-
     const lightbox = document.querySelector('.lightbox');
-    if (!lightbox) return;
+    if (!grids.length || !lightbox) return;
 
-    const imgEl   = lightbox.querySelector('.lightbox__img');
+    const imgEl = lightbox.querySelector('.lightbox__img');
     const closeBtn = lightbox.querySelector('.lightbox__close');
-    const prevBtn  = lightbox.querySelector('.lightbox__prev');
-    const nextBtn  = lightbox.querySelector('.lightbox__next');
+    const prevBtn = lightbox.querySelector('.lightbox__prev');
+    const nextBtn = lightbox.querySelector('.lightbox__next');
 
-    let items = [];
+    const items = [];
     let current = 0;
+    let releaseFocus = null;
 
-    function open(idx) {
-      current = idx;
+    function show() {
       imgEl.src = items[current].src;
       imgEl.alt = items[current].alt || '';
-      lightbox.classList.add('open');
+    }
+    function open(idx) {
+      current = idx;
+      show();
+      lightbox.classList.add('is-open');
       document.body.style.overflow = 'hidden';
+      closeBtn && closeBtn.focus();
+      releaseFocus = trapFocus(lightbox, close);
     }
-
     function close() {
-      lightbox.classList.remove('open');
+      lightbox.classList.remove('is-open');
       document.body.style.overflow = '';
+      if (releaseFocus) { releaseFocus(); releaseFocus = null; }
     }
+    function prev() { current = (current - 1 + items.length) % items.length; show(); }
+    function next() { current = (current + 1) % items.length; show(); }
 
-    function prev() { current = (current - 1 + items.length) % items.length; imgEl.src = items[current].src; }
-    function next() { current = (current + 1) % items.length;              imgEl.src = items[current].src; }
-
-    grids.forEach(grid => {
-      const galleryItems = grid.querySelectorAll('.gallery-item');
-      galleryItems.forEach((item, idx) => {
+    grids.forEach((grid) => {
+      grid.querySelectorAll('.gallery-item').forEach((item) => {
         const img = item.querySelector('img');
+        if (!img) return;
+        const idx = items.length;
         items.push({ src: img.dataset.full || img.src, alt: img.alt });
         item.addEventListener('click', () => open(idx));
       });
     });
 
     closeBtn && closeBtn.addEventListener('click', close);
-    prevBtn  && prevBtn.addEventListener('click',  prev);
-    nextBtn  && nextBtn.addEventListener('click',  next);
-
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
-
-    document.addEventListener('keydown', e => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft')  prev();
+    prevBtn && prevBtn.addEventListener('click', prev);
+    nextBtn && nextBtn.addEventListener('click', next);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+    lightbox.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prev();
       if (e.key === 'ArrowRight') next();
     });
   }
 
-  /* ── Contact Form (Formspree) ──────────────────────────────── */
-  function initContactForm() {
-    const form = document.querySelector('.contact-form');
-    if (!form) return;
-
-    const msg = form.querySelector('.form-msg');
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-
-      // Honeypot check
-      const hp = form.querySelector('.hp-field');
-      if (hp && hp.value) return;
-
+  /* ── Forms (Contact / Newsletter — Formspree) ─────────────── */
+  function initForms() {
+    document.querySelectorAll('form[data-async]').forEach((form) => {
+      const msg = form.querySelector('.form-msg');
       const btn = form.querySelector('[type="submit"]');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
+      const btnLabel = btn ? btn.textContent : '';
 
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
-        });
-
-        if (res.ok) {
-          if (msg) { msg.textContent = 'Message sent! We will get back to you soon.'; msg.className = 'form-msg success'; }
-          form.reset();
-        } else {
-          throw new Error('Server error');
-        }
-      } catch {
-        if (msg) { msg.textContent = 'Something went wrong. Please email us at hello@lste.lu'; msg.className = 'form-msg error'; }
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Send Message';
-      }
-    });
-  }
-
-  /* ── Newsletter Form ───────────────────────────────────────── */
-  function initNewsletterForm() {
-    const forms = document.querySelectorAll('.newsletter-form');
-    forms.forEach(form => {
-      form.addEventListener('submit', async e => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const input = form.querySelector('input[type="email"]');
-        const btn   = form.querySelector('button');
-        if (!input || !input.value) return;
+        const hp = form.querySelector('.hp-field');
+        if (hp && hp.value) return;
 
-        btn.disabled = true;
-        btn.textContent = '…';
+        if (btn) { btn.disabled = true; btn.textContent = form.dataset.sendingLabel || 'Sending…'; }
+        if (msg) { msg.textContent = ''; msg.className = 'form-msg'; }
 
         try {
           const res = await fetch(form.action, {
             method: 'POST',
             body: new FormData(form),
-            headers: { Accept: 'application/json' }
+            headers: { Accept: 'application/json' },
           });
-          if (res.ok) {
-            form.innerHTML = '<p style="color:#fff;font-family:var(--font-heading);font-size:18px;">Thanks for subscribing!</p>';
+          if (!res.ok) throw new Error('Server error');
+          if (msg) {
+            msg.textContent = form.dataset.successMessage || 'Thank you — we will be in touch soon.';
+            msg.className = 'form-msg form-msg--success';
           }
+          form.reset();
         } catch {
-          btn.disabled = false;
-          btn.textContent = 'Subscribe';
+          if (msg) {
+            msg.textContent = form.dataset.errorMessage || 'Something went wrong. Please email hello@lste.lu directly.';
+            msg.className = 'form-msg form-msg--error';
+          }
+        } finally {
+          if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
         }
       });
     });
   }
 
-  /* ── Scroll animations ─────────────────────────────────────── */
-  function initScrollAnimations() {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.fade-up, .fade-in').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 40 && rect.bottom > 0) {
-        el.classList.add('visible');
-      } else {
-        observer.observe(el);
-      }
-    });
+  /* ── Footer year ───────────────────────────────────────────── */
+  function initFooterYear() {
+    // Deliberately static content — a build-time year avoids a client
+    // render just for text and keeps output cacheable/deterministic.
   }
 
-  /* ── Back-to-top ───────────────────────────────────────────── */
-  function initBackToTop() {
-    const btn = document.getElementById('back-to-top');
-    if (!btn) return;
-
-    window.addEventListener('scroll', () => {
-      btn.classList.toggle('visible', window.scrollY > 400);
-    }, { passive: true });
-
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
-
-  /* ── Smooth anchor links ───────────────────────────────────── */
-  function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const target = document.getElementById(id);
-        if (!target) return;
-        e.preventDefault();
-        const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'));
-        const top = target.getBoundingClientRect().top + window.scrollY - headerH - 20;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
-    });
-  }
-
-  /* ── Active nav link ───────────────────────────────────────── */
-  function initActiveNav() {
-    const path = window.location.pathname.replace(/\/$/, '') || '/';
-    document.querySelectorAll('.mega-menu-link, .mobile-nav-list a').forEach(a => {
-      try {
-        const href = new URL(a.href, location.href).pathname.replace(/\/$/, '');
-        if (href && href === path) {
-          a.closest('.mega-menu-item')?.classList.add('mega-current-menu-item');
-        }
-      } catch (_) {}
-    });
-  }
-
-  /* ── Init all ──────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
-    initCountdown();
     initHeader();
+    initAnnouncement();
     initMobileMenu();
-    initTabs();
-    initScheduleItems();
-    initGallery();
-    initContactForm();
-    initNewsletterForm();
-    initScrollAnimations();
+    initCountdown();
+    initReveal();
     initBackToTop();
     initSmoothScroll();
-    initActiveNav();
-
-    // Expose reinitMobileMenu for nav-config.js
-    window.LSTE = window.LSTE || {};
-    window.LSTE.reinitMobileMenu = reinitMobileMenu;
+    initTabs();
+    initGallery();
+    initForms();
+    initFooterYear();
   });
-
 })();
