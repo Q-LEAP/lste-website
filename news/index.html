@@ -1,233 +1,204 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News — LSTE</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <style>
-    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .news-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.08); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; }
-    .news-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.15); }
-    .news-card__date { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--color-primary); font-weight: 600; padding: 1.5rem 1.5rem .5rem; }
-    .news-card__body { padding: .5rem 1.5rem 1.5rem; flex: 1; }
-    .news-card__body h3 { font-size: 1.125rem; margin-bottom: .75rem; color: var(--color-dark); }
-    .news-card__body p { font-size: .9rem; color: var(--color-text); line-height: 1.6; }
-    .news-card .btn { margin: 0 1.5rem 1.5rem; align-self: flex-start; }
-    .newsletter-section { background: var(--color-dark); color: #fff; padding: 4rem 0; text-align: center; }
-    .newsletter-section h2 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: .75rem; }
-    .newsletter-section p { font-size: 1rem; opacity: .85; margin-bottom: 2rem; }
-    .newsletter-form { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 520px; margin: 0 auto; }
-    .newsletter-form input[type="email"] { flex: 1; min-width: 220px; padding: .875rem 1.25rem; border: none; border-radius: 8px; font-family: var(--font-body, Barlow, sans-serif); font-size: 1rem; outline: none; }
-    .newsletter-form input[type="email"]::placeholder { color: #aaa; }
-    .newsletter-form button { padding: .875rem 1.75rem; background: var(--color-primary); color: #fff; border: none; border-radius: 8px; font-family: var(--font-body, Barlow, sans-serif); font-size: 1rem; font-weight: 700; cursor: pointer; transition: opacity .2s; white-space: nowrap; }
-    .newsletter-form button:hover { opacity: .85; }
-    .newsletter-disclaimer { font-size: .8rem; opacity: .6; margin-top: 1rem; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News — LSTE</title>
+<meta name="description" content="The latest news and announcements from LSTE — speaker highlights, press coverage, and event updates.">
+<link rel="canonical" href="https://lste.lu/news/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="News — LSTE">
+<meta property="og:description" content="The latest news and announcements from LSTE.">
+<meta property="og:url" content="https://lste.lu/news/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/lste-logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" id="masthead" role="banner">
-  <div class="header-inner">
-    <div class="header-col header-col--logo">
-      <a href="../index.html" class="site-logo" aria-label="LSTE Home">
-        <img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="160" height="53" loading="eager">
-      </a>
-    </div>
-    <div class="header-col header-col--nav">
-      <div id="mega-menu-wrap-main" class="mega-menu-wrap">
-        <div class="mega-menu-toggle">
-          <button class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false" aria-label="Toggle Menu">
-            <span class="mega-toggle-animated-box">
-              <span class="mega-toggle-animated-inner"></span>
-            </span>
-          </button>
-        </div>
-        <ul id="mega-menu-main" class="mega-menu">
-          <li class="mega-menu-item"><a class="mega-menu-link" href="../ticket/index.html">Book Your Ticket</a></li>
-          <li class="mega-menu-item"><a class="mega-menu-link" href="../become-a-sponsor/index.html">Become a sponsor</a></li>
-          <li class="mega-menu-item mega-menu-item-has-children">
-            <a class="mega-menu-link" href="../about/index.html" aria-haspopup="true" aria-expanded="false">About the Event<span class="mega-indicator" aria-hidden="true"></span></a>
-            <ul class="mega-sub-menu">
-              <li class="mega-menu-item"><a class="mega-menu-link" href="../about/index.html">About the LSTE</a></li>
-              <li class="mega-menu-item"><a class="mega-menu-link" href="../previous-editions/index.html">Previous Editions</a></li>
-              <li class="mega-menu-item"><a class="mega-menu-link" href="../gallery/index.html">Gallery</a></li>
-              <li class="mega-menu-item"><a class="mega-menu-link" href="../press/index.html">Press</a></li>
-              <li class="mega-menu-item"><a class="mega-menu-link" href="../contact/index.html">Contact us</a></li>
-            </ul>
-          </li>
-          <li class="mega-menu-item"><a class="mega-menu-link" href="../call-for-speakers/index.html">Call for Speakers</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="header-col header-col--cta">
-      <a href="../ticket/index.html" class="header-ticket-btn">
-        <i class="fas fa-hand-point-right" aria-hidden="true"></i>
-        Get a Ticket
-      </a>
+<!--NAV_START-->
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header">
+  <div class="container">
+    <a class="site-logo" href="/" aria-label="LSTE — home">
+      <img src="/assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <ul class="main-nav-list">
+        <li><a class="main-nav-link" href="/">Home</a></li>
+        <li><a class="main-nav-link" href="/about/">About</a></li>
+        <li><a class="main-nav-link" href="/previous-editions/">Previous Editions</a></li>
+        <li><a class="main-nav-link" href="/speakers/">Speakers</a></li>
+        <li><a class="main-nav-link" href="/become-a-speaker/">Become a Speaker</a></li>
+        <li><a class="main-nav-link" href="/venue/">Venue</a></li>
+        <li><a class="main-nav-link" href="/gallery/">Gallery</a></li>
+        <li><a class="main-nav-link" href="/resources/">Resources</a></li>
+        <li><a class="main-nav-link" href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn--primary header-register-btn" href="/register/">Register</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
-<nav class="mobile-nav-panel" id="mobile-nav-panel" aria-label="Mobile navigation">
+
+<div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../ticket/index.html">Book Your Ticket</a></li>
-    <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
-    <li class="has-submenu">
-      <a href="../about/index.html">About the Event <span class="mobile-sub-toggle" aria-hidden="true">&#9660;</span></a>
-      <ul class="mobile-submenu">
-        <li><a href="../about/index.html">About the LSTE</a></li>
-        <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-        <li><a href="../gallery/index.html">Gallery</a></li>
-        <li><a href="../press/index.html">Press</a></li>
-        <li><a href="../contact/index.html">Contact us</a></li>
-      </ul>
-    </li>
-    <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
-    <li><a href="../ticket/index.html" class="btn"><i class="fas fa-hand-point-right" aria-hidden="true"></i> Get a Ticket</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/previous-editions/">Previous Editions</a></li>
+    <li><a href="/speakers/">Speakers</a></li>
+    <li><a href="/become-a-speaker/">Become a Speaker</a></li>
+    <li><a href="/venue/">Venue</a></li>
+    <li><a href="/gallery/">Gallery</a></li>
+    <li><a href="/resources/">Resources</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a class="btn btn--primary btn--block" href="/register/">Register</a></li>
   </ul>
-</nav>
+</div>
 
+<!--NAV_END-->
 
-  <main id="main-content">
+<main id="main">
 
-    <!-- Page Hero -->
-    <section class="page-hero" style="background: var(--color-dark);">
-      <div class="container page-hero__content">
-        <h1 class="page-hero__title">News</h1>
-        <p class="page-hero__subtitle">Latest from LSTE and the Luxembourg testing community</p>
-      </div>
-    </section>
-
-    <!-- News Grid -->
-    <section class="section">
-      <div class="container">
-        <div class="news-grid">
-
-          <!-- Card 1 -->
-          <article class="news-card">
-            <div class="news-card__date">
-              <i class="fa-solid fa-calendar" aria-hidden="true" style="margin-right:.4rem;"></i>May 15, 2026
-            </div>
-            <div class="news-card__body">
-              <h3>LSTE 2026 Call for Speakers is Open</h3>
-              <p>We are thrilled to announce that submissions are now open for LSTE 2026. If you have a story to tell, a case study to share, or a new approach to demonstrate — we want to hear from you. Deadline: September 30, 2026.</p>
-            </div>
-            <a href="../call-for-speakers/index.html" class="btn btn--outline">Read More</a>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="news-card">
-            <div class="news-card__date">
-              <i class="fa-solid fa-calendar" aria-hidden="true" style="margin-right:.4rem;"></i>March 10, 2026
-            </div>
-            <div class="news-card__body">
-              <h3>LSTE 2026 Confirmed for November 26 at Terres Rouges, Esch-Belval</h3>
-              <p>We are excited to announce that the 8th edition of LSTE will take place on November 26, 2026 at the iconic Terres Rouges building in Esch-sur-Alzette. Free registration is already open.</p>
-            </div>
-            <a href="../ticket/index.html" class="btn btn--outline">Register Now</a>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="news-card">
-            <div class="news-card__date">
-              <i class="fa-solid fa-calendar" aria-hidden="true" style="margin-right:.4rem;"></i>December 5, 2025
-            </div>
-            <div class="news-card__body">
-              <h3>LSTE 2025 Wrap-up: 320 Attendees, 8 Keynotes, Unforgettable Moments</h3>
-              <p>Thank you to all 320 attendees, 8 keynote speakers, 14 sponsors, and the amazing LSTE community that made the 7th edition of LSTE unforgettable. See you at LSTE 2026!</p>
-            </div>
-            <a href="../previous-editions/edition-2025/index.html" class="btn btn--outline">View Edition</a>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter Signup -->
-    <section class="newsletter-section">
-      <div class="container">
-        <h2>Stay in the Loop</h2>
-        <p>Get the latest LSTE news, speaker announcements, and event updates delivered to your inbox.</p>
-        <form
-          class="newsletter-form"
-          action="https://formspree.io/f/lste-newsletter"
-          method="POST"
-          aria-label="Newsletter signup"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="your@email.com"
-            required
-            aria-label="Email address"
-            autocomplete="email"
-          >
-          <button type="submit">Subscribe</button>
-        </form>
-        <p class="newsletter-disclaimer">We respect your privacy. No spam — only LSTE updates. Unsubscribe at any time. See our <a href="../privacy-policy/index.html" style="color: rgba(255,255,255,.7); text-decoration: underline;">Privacy Policy</a>.</p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
+  <section class="page-hero">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col footer-brand">
-          <a href="../index.html" class="site-logo"><img src="https://lste.lu/wp-content/uploads/2019/10/White-LSTE-Logo-v1.svg" alt="LSTE" width="140" height="46" loading="lazy"></a>
-          <p>Luxembourg Software Testing Event — The annual gathering of QA &amp; testing professionals in the Grand Duchy.</p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/company/lste/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://twitter.com/LSTElu" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.youtube.com/@LSTElu" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Event</h4>
-          <ul>
-            <li><a href="../about/index.html">About LSTE</a></li>
-            <li><a href="../schedule/index.html">Schedule</a></li>
-            <li><a href="../speakers/index.html">Speakers</a></li>
-            <li><a href="../venue/index.html">Venue</a></li>
-            <li><a href="../ticket/index.html">Tickets</a></li>
-            <li><a href="../become-a-sponsor/index.html">Become a Sponsor</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Community</h4>
-          <ul>
-            <li><a href="../gallery/index.html">Gallery</a></li>
-            <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-            <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
-            <li><a href="../news/index.html">News</a></li>
-            <li><a href="../press/index.html">Press</a></li>
-          </ul>
-        </div>
-        <div class="footer-col footer-contact">
-          <h4>Contact</h4>
-          <ul>
-            <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@lste.lu">hello@lste.lu</a></li>
-            <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+35220211700">+352 20 21 17</a></li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Q-Leap SA<br>10B rue des mérovingiens<br>L-8070 Bertrange</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 LSTE – Luxembourg Software Testing Event. Organised by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap SA</a>.</p>
-        <p><a href="../privacy-policy/index.html">Privacy Policy</a></p>
+      <span class="eyebrow">News</span>
+      <h1>What's happening at LSTE.</h1>
+      <p style="max-width:52ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Announcements, speaker highlights, and press coverage — archived from lste.lu.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="grid grid--3 reveal">
+
+        <article class="card news-card">
+          <p class="news-date">19 November 2025</p>
+          <h3>Avanti Sharma announced as Master of Ceremonies for LSTE 2025</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Avanti Sharma will moderate the main panel and act as Master of Ceremonies for this year's edition.</p>
+          <a class="news-link" href="https://lste.lu/avanti-sharma-announced-as-master-of-ceremonies-and-panel-moderator-at-lste2025/" target="_blank" rel="noopener">Read on lste.lu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="card news-card">
+          <p class="news-date">19 November 2025</p>
+          <h3>LSTE 2025: AI at the heart of the 7th edition</h3>
+          <p class="text-muted" style="font-size:0.9rem;">The 7th edition placed artificial intelligence at the centre of QA and testing discussions in Luxembourg.</p>
+          <a class="news-link" href="https://lste.lu/luxembourg-sofpress-release-silicon-luxembourg-software-testing-event-2025tware-testing-event-2025-2/" target="_blank" rel="noopener">Read on lste.lu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="card news-card">
+          <p class="news-date">11 December 2024</p>
+          <h3>Learning how to live with the digital colleague</h3>
+          <p class="text-muted" style="font-size:0.9rem;">At LSTE 2024, Dr. Anne Kramer (Smartesting) shared her thoughts on the evolving role of software testers and AI.</p>
+          <a class="news-link" href="https://lste.lu/learning-how-to-live-with-the-digital-colleague/" target="_blank" rel="noopener">Read on lste.lu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="card news-card">
+          <p class="news-date">11 December 2024</p>
+          <h3>LSTE: a landmark event for software testing professionals</h3>
+          <p class="text-muted" style="font-size:0.9rem;">The 6th edition at the Digital Learning Hub in Esch-Belval brought together over 350 professionals.</p>
+          <a class="news-link" href="https://lste.lu/lste-a-landmark-event-for-software-testing-professionals/" target="_blank" rel="noopener">Read on lste.lu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="card news-card">
+          <p class="news-date">11 November 2024</p>
+          <h3>Deloitte at LSTE 2024: driving innovation in software testing</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Deloitte announced its role as a silver sponsor of LSTE 2024, held on 14 November in Esch-Belval.</p>
+          <a class="news-link" href="https://lste.lu/deloitte-at-the-luxembourg-software-testing-event-2024-driving-innovation-in-software-testing/" target="_blank" rel="noopener">Read on lste.lu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </article>
+
+        <article class="card news-card">
+          <p class="news-date">11 November 2024</p>
+          <h3>Sogeti at LSTE 2024: exploring GenAI in testing</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Sogeti announced its participation as a gold sponsor, presenting a keynote on generative AI in testing.</p>
+          <a class="news-link" href="https://lste.lu/sogeti-at-the-luxembourg-software-testing-event-2024-exploring-genai-in-testing/" target="_blank" rel="noopener">Read on lste.lu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </article>
+
       </div>
     </div>
-  </footer>
-  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-  <script src="../assets/js/nav-config.js"></script>
-<script src="../assets/js/admin.js"></script>
-<script src="../assets/js/main.js"></script>
+  </section>
 
+  <section class="section section--alt" aria-labelledby="newsletter-heading">
+    <div class="container text-center">
+      <h2 id="newsletter-heading">Never miss an update.</h2>
+      <p style="max-width:44ch;margin:0 auto var(--space-6);">Follow LSTE on LinkedIn for announcements between editions.</p>
+      <a class="btn btn--primary" href="https://www.linkedin.com/company/lste/" target="_blank" rel="noopener">Follow on LinkedIn <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+</main>
+
+<!--FOOTER_START-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="site-logo" href="/" aria-label="LSTE — home">
+          <img src="/assets/img/lste-logo-white.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="lazy">
+        </a>
+        <p>Luxembourg's software testing conference — one day, every autumn, for the community that makes software worth trusting.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/lste/" aria-label="LSTE on LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/LSTElu" aria-label="LSTE on X (Twitter)" target="_blank" rel="noopener"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="https://www.youtube.com/@LSTElu" aria-label="LSTE on YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h6>Event</h6>
+        <ul>
+          <li><a href="/about/">About LSTE</a></li>
+          <li><a href="/previous-editions/">Previous Editions</a></li>
+          <li><a href="/speakers/">Speakers</a></li>
+          <li><a href="/schedule/">Programme</a></li>
+          <li><a href="/venue/">Venue</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Get Involved</h6>
+        <ul>
+          <li><a href="/become-a-speaker/">Become a Speaker</a></li>
+          <li><a href="/sponsors/">Sponsors &amp; Partners</a></li>
+          <li><a href="/resources/">Sponsor With Us</a></li>
+          <li><a href="/register/">Register</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h6>Resources</h6>
+        <ul>
+          <li><a href="/resources/">Media &amp; Press Kit</a></li>
+          <li><a href="/gallery/">Gallery</a></li>
+          <li><a href="/news/">News</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2026</span> LSTE — Luxembourg Software Testing Event. Organized by Q-Leap.</p>
+      <ul>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!--FOOTER_END-->
+
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>
-

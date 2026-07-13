@@ -35,3 +35,34 @@
 .venue-feature-list li { display: flex; align-items: flex-start; gap: var(--space-3); font-size: 0.9375rem; color: var(--color-body-text); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
 .venue-feature-list li:last-child { border-bottom: none; }
 .venue-feature-list i { color: var(--color-primary); margin-top: 0.2em; width: 1.2rem; flex-shrink: 0; }
+
+/* ── Contact ─────────────────────────────────────────────────────── */
+.contact-info-card { padding: var(--space-6); }
+.contact-info-card ul { display: flex; flex-direction: column; gap: var(--space-4); }
+.contact-info-card li { display: flex; align-items: flex-start; gap: var(--space-3); font-size: 0.9375rem; color: var(--color-body-text); }
+.contact-info-card i { color: var(--color-primary); width: 1.2rem; margin-top: 0.2em; flex-shrink: 0; }
+.contact-info-card address { font-style: normal; }
+
+/* ── Resources ───────────────────────────────────────────────────── */
+.resource-card { padding: var(--space-6); }
+.resource-card__icon {
+  width: 48px; height: 48px; margin-bottom: var(--space-4);
+  border-radius: var(--radius-sm); background: var(--color-primary-tint);
+  display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-size: 1.25rem;
+}
+.resource-card .file-meta { font-size: 0.8125rem; color: var(--color-muted); margin-bottom: var(--space-4); }
+
+/* ── Policy / legal content ─────────────────────────────────────── */
+.policy-toc { background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); margin-bottom: var(--space-8); }
+.policy-toc h3 { font-size: 1rem; margin-bottom: var(--space-3); }
+.policy-toc ol { display: grid; grid-template-columns: 1fr; gap: var(--space-2); padding-left: 1.2em; list-style: decimal; }
+.policy-body h2 { font-size: 1.375rem; margin: var(--space-8) 0 var(--space-3); }
+.policy-body h2:first-of-type { margin-top: 0; }
+.policy-body h3 { font-size: 1.0625rem; margin: var(--space-5) 0 var(--space-2); }
+.policy-body ul { padding-left: 1.3em; list-style: disc; margin-bottom: var(--space-4); }
+.policy-body li { margin-bottom: var(--space-2); }
+.policy-highlight { background: var(--color-surface-alt); border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-5); border-radius: var(--radius-sm); margin: var(--space-4) 0; }
+
+@media (min-width: 640px) {
+  .policy-toc ol { grid-template-columns: 1fr 1fr; }
+}
