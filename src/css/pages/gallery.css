@@ -4,6 +4,7 @@
   column-gap: var(--space-4);
 }
 .masonry .gallery-item {
+  position: relative;
   display: block;
   margin-bottom: var(--space-4);
   border-radius: var(--radius-md);
@@ -17,6 +18,20 @@
   transition: transform var(--dur-slow) var(--ease);
 }
 .masonry .gallery-item:hover img { transform: scale(1.04); }
+
+.gallery-item__year {
+  position: absolute;
+  bottom: var(--space-2);
+  left: var(--space-2);
+  background: rgba(15, 12, 30, 0.72);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.25em 0.65em;
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+}
 
 @media (min-width: 640px) { .masonry { column-count: 2; } }
 @media (min-width: 1024px) { .masonry { column-count: 3; } }

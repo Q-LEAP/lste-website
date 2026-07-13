@@ -121,6 +121,46 @@
     tick();
   }
 
+  /* ── Animated stat counters ───────────────────────────────── */
+  function initCounters() {
+    const els = document.querySelectorAll('.stat-value');
+    if (!els.length) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animate(el) {
+      const text = el.textContent.trim();
+      const match = text.match(/^([\d,]+)(.*)$/);
+      if (!match) return;
+      const target = parseInt(match[1].replace(/,/g, ''), 10);
+      const suffix = match[2];
+      const hasComma = match[1].includes(',');
+      const looksLikeYear = suffix === '' && match[1].length === 4 && target > 1900 && target < 2100;
+      if (reduceMotion || !target || looksLikeYear) return;
+
+      const duration = 1100;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        el.textContent = (hasComma ? value.toLocaleString('en-US') : value) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    els.forEach((el) => observer.observe(el));
+  }
+
   /* ── Reveal on scroll ──────────────────────────────────────── */
   function initReveal() {
     const els = document.querySelectorAll('.reveal');
@@ -302,6 +342,7 @@
     initAnnouncement();
     initMobileMenu();
     initCountdown();
+    initCounters();
     initReveal();
     initBackToTop();
     initSmoothScroll();

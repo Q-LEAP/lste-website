@@ -1,0 +1,14 @@
+{
+  "name": "LSTE — Luxembourg Software Testing Event",
+  "short_name": "LSTE",
+  "description": "Luxembourg's annual conference for software testing and QA professionals.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#5546ae",
+  "icons": [
+    { "src": "/assets/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/img/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

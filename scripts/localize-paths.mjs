@@ -64,7 +64,7 @@ function rewriteOne(url, prefix) {
 function rewriteHtml(html, depth) {
   const prefix = relPrefix(depth);
 
-  html = html.replace(/(href|src)="(\/[^"]*)"/g, (m, attr, url) => `${attr}="${rewriteOne(url, prefix)}"`);
+  html = html.replace(/(href|src|data-full)="(\/[^"]*)"/g, (m, attr, url) => `${attr}="${rewriteOne(url, prefix)}"`);
 
   html = html.replace(/srcset="([^"]*)"/g, (m, list) => {
     const rewritten = list
