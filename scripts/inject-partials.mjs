@@ -19,7 +19,7 @@ async function findHtmlFiles(dir) {
     if (entry.isDirectory()) {
       if (EXCLUDE_DIRS.has(entry.name)) continue;
       files.push(...(await findHtmlFiles(path.join(dir, entry.name))));
-    } else if (entry.name.endsWith('.html')) {
+    } else if (entry.name.endsWith('.html') && !entry.name.startsWith('.')) {
       files.push(path.join(dir, entry.name));
     }
   }

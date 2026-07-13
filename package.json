@@ -10,7 +10,8 @@
     "css:build": "node scripts/build-css.mjs",
     "js:build": "node scripts/build-js.mjs",
     "partials:inject": "node scripts/inject-partials.mjs",
-    "build": "npm run css:build && npm run js:build && npm run images:optimize && npm run partials:inject"
+    "paths:localize": "node scripts/localize-paths.mjs",
+    "build": "npm run css:build && npm run js:build && npm run images:optimize && npm run partials:inject && npm run paths:localize"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
