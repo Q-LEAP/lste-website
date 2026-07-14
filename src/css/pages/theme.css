@@ -35,7 +35,7 @@
 /* On mobile the secondary "Become a speaker" action lives in the slide-out
    panel, so hide it in the header to keep logo · toggle · Register · menu from
    overflowing narrow viewports. */
-@media (max-width: 1023px) {
+@media (max-width: 1179px) {
   .header-speaker-btn { display: none; }
 }
 
