@@ -356,31 +356,102 @@
     let busy = false;
     let greeted = false;
 
-    const SUGGESTIONS = [
-      'When and where is LSTE 2026?',
-      'How do I register?',
-      'How can I become a speaker?',
-      'Is it free? Is lunch included?',
-    ];
+    // UI language for the greeting + starter chips, from the browser.
+    const uiLang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
 
-    // Curated fallback answers when no backend is configured or a request
-    // fails — keeps the widget useful and never dead.
-    const FALLBACK = [
-      { k: ['when', 'date', 'where', 'venue', 'location', 'quand', 'où', 'lieu'], a: 'LSTE 2026 takes place on 26 November 2026, 08:30–18:00, at the Bâtiment des Terres Rouges, Esch-Belval (14 Porte de France, 4360 Esch-sur-Alzette). More: /venue/' },
-      { k: ['register', 'ticket', 'sign up', 'inscri', 'billet'], a: 'The conference is free to attend — register here: /register/. An optional Tutorial Pass (hands-on workshop) is €250 + VAT.' },
-      { k: ['free', 'price', 'cost', 'gratuit', 'prix', 'lunch', 'repas', 'food'], a: 'Attending the conference is free, and a networking lunch and coffee breaks are included. The optional Tutorial Pass is €250 + VAT. See /register/.' },
-      { k: ['speaker', 'talk', 'cfp', 'submit', 'parler', 'conférenc'], a: 'We welcome talk proposals until 30 September 2026 — submit yours here: /become-a-speaker/' },
-      { k: ['sponsor', 'partner', 'partenaire'], a: 'Interested in sponsoring? See /sponsors/ and /resources/, or email hello@lste.lu.' },
-      { k: ['park', 'car', 'train', 'parking', 'voiture', 'access'], a: 'Free parking is available on site, and Belval is ~30 min by train from Luxembourg City. Details: /venue/' },
-      { k: ['student', 'academic', 'étudiant'], a: 'Students and academics can attend free with a valid student ID (application required). Apply when registering: /register/' },
-      { k: ['language', 'langue', 'english', 'français'], a: 'The event is held in English.' },
+    const SUGGESTIONS = {
+      en: ['What is LSTE?', 'When & where is it?', 'How do I register?', 'How can I speak?'],
+      fr: ['C’est quoi le LSTE ?', 'Quand et où ?', 'Comment s’inscrire ?', 'Comment intervenir ?'],
+    };
+
+    const GREETING = {
+      en: 'Hi! I’m the LSTE assistant — ask me about dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
+      fr: 'Bonjour ! Je suis l’assistant du LSTE — pose-moi tes questions sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?',
+    };
+
+    const MISS = {
+      en: 'I don’t have that exact detail here. You can ask me about dates, tickets, the venue, speaking or sponsoring — or email hello@lste.lu / see /contact/.',
+      fr: 'Je n’ai pas ce détail précis ici. Tu peux me demander les dates, les billets, le lieu, comment intervenir ou sponsoriser — ou écrire à hello@lste.lu / voir /contact/.',
+    };
+
+    // Lowercase, strip accents, and flatten punctuation (hyphens, apostrophes,
+    // "?") to spaces so "qui es-tu ?" and "c'est" match plain keywords.
+    function norm(s) {
+      return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+
+    // Lightweight FR/EN detector: accented chars or common French tokens → fr.
+    function detectLang(text) {
+      if (/[àâçéèêëîïôûùü]/i.test(text)) return 'fr';
+      const t = ' ' + norm(text) + ' ';
+      const fr = [' le ', ' la ', ' les ', ' un ', ' une ', ' des ', ' du ', ' est ', ' quoi', ' ou ', ' quand', ' comment', ' qui ', ' vous', ' tu ', ' je ', ' quel', ' quelle', ' pour ', ' avec ', ' bonjour', ' salut', ' merci', ' gratuit', ' inscri', ' billet', ' lieu', ' repas', ' etes', ' parler', ' conferenc', ' combien', ' prix', ' sponsor', ' etudiant'];
+      let n = 0;
+      fr.forEach((w) => { if (t.indexOf(w) !== -1) n++; });
+      return n >= 1 ? 'fr' : 'en';
+    }
+
+    // Curated, bilingual intents used when no backend is configured or a
+    // request fails — keeps the widget genuinely useful offline. Keywords are
+    // accent-stripped; the best-scoring intent wins.
+    const INTENTS = [
+      { kw: ['who are you', 'what are you', 'who r u', 'what can you do', 'what do you do', 'who is this', 'your name', 'help me', 'qui es tu', 'es tu', 'qui etes', 'etes vous', 'tu es qui', 'vous etes qui', 'c est quoi ce', 'que sais tu', 'tu fais quoi', 'tu sers a quoi', 'ton nom', 'presente toi'],
+        en: 'I’m the LSTE assistant. LSTE — the Luxembourg Software Testing Event — is Luxembourg’s annual one-day conference for software testing and QA professionals (8th edition: 26 November 2026, Esch-Belval, free to attend). I can help with dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
+        fr: 'Je suis l’assistant du LSTE. Le LSTE — Luxembourg Software Testing Event — est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg (8e édition : 26 novembre 2026, Esch-Belval, entrée gratuite). Je peux t’aider sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?' },
+      { kw: ['what is lste', 'about lste', 'tell me about', 'what s lste', 'whats lste', 'c est quoi lste', 'c est quoi le lste', 'quoi le lste', 'quoi lste', 'qu est ce que lste', 'a propos', 'presente lste', 'lste c est quoi', 'parle moi'],
+        en: 'LSTE (the Luxembourg Software Testing Event) is Luxembourg’s annual one-day conference for software testing & QA professionals — keynotes, talks, live demos, workshops and networking, drawing 300+ attendees. The 8th edition is on 26 November 2026 in Esch-Belval, free to attend. More: /about/',
+        fr: 'Le LSTE (Luxembourg Software Testing Event) est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg — keynotes, talks, démos, ateliers et networking, avec 300+ participants. La 8e édition a lieu le 26 novembre 2026 à Esch-Belval, entrée gratuite. Plus d’infos : /about/' },
+      { kw: ['when', 'date', 'where', 'venue', 'location', 'address', 'quand', 'ou ', 'lieu', 'adresse', 'endroit'],
+        en: 'LSTE 2026 is on 26 November 2026, 08:30–18:00, at the Bâtiment des Terres Rouges, Esch-Belval (14 Porte de France, 4360 Esch-sur-Alzette). More: /venue/',
+        fr: 'Le LSTE 2026 a lieu le 26 novembre 2026, de 08h30 à 18h00, au Bâtiment des Terres Rouges, Esch-Belval (14 Porte de France, 4360 Esch-sur-Alzette). Plus d’infos : /venue/' },
+      { kw: ['register', 'registration', 'ticket', 'sign up', 'attend', 'inscri', 'billet', 's inscrire', 'participer'],
+        en: 'The conference is free to attend — register here: /register/. An optional Tutorial Pass (a hands-on half-day workshop) is €250 + VAT.',
+        fr: 'La conférence est gratuite — inscris-toi ici : /register/. Un Tutorial Pass optionnel (atelier pratique d’une demi-journée) coûte 250 € + TVA.' },
+      { kw: ['free', 'price', 'cost', 'how much', 'fee', 'gratuit', 'prix', 'cout', 'combien', 'tarif', 'payer'],
+        en: 'Attending the conference is free (a networking lunch and coffee breaks are included). The optional Tutorial Pass is €250 + VAT. See /register/.',
+        fr: 'Assister à la conférence est gratuit (un déjeuner networking et les pauses café sont inclus). Le Tutorial Pass optionnel coûte 250 € + TVA. Voir /register/.' },
+      { kw: ['lunch', 'food', 'eat', 'meal', 'coffee', 'repas', 'dejeuner', 'manger', 'nourriture', 'cafe'],
+        en: 'Yes — a networking lunch and coffee breaks are included with every ticket, at no cost. See /register/.',
+        fr: 'Oui — un déjeuner networking et les pauses café sont inclus avec chaque billet, sans frais. Voir /register/.' },
+      { kw: ['speaker', 'speak', 'talk', 'cfp', 'submit', 'call for', 'present', 'parler', 'conferenc', 'intervenir', 'proposer'],
+        en: 'We welcome talk proposals (keynote, talk or workshop) until 30 September 2026 — submit yours here: /become-a-speaker/',
+        fr: 'Nous accueillons les propositions (keynote, talk ou atelier) jusqu’au 30 septembre 2026 — propose la tienne ici : /become-a-speaker/' },
+      { kw: ['sponsor', 'partner', 'exhibit', 'partenaire', 'sponsoriser', 'stand'],
+        en: 'Interested in sponsoring? See the tiers on /sponsors/ and the “Sponsor With Us” info on /resources/, or email hello@lste.lu.',
+        fr: 'Envie de sponsoriser ? Vois les formules sur /sponsors/ et la rubrique « Sponsor With Us » sur /resources/, ou écris à hello@lste.lu.' },
+      { kw: ['park', 'parking', 'car', 'train', 'bus', 'get there', 'travel', 'voiture', 'acces', 'venir', 'transport', 'se garer'],
+        en: 'Free parking is available on site, and Belval is about 30 min by train from Luxembourg City. Full travel details: /venue/',
+        fr: 'Un parking gratuit est disponible sur place, et Belval est à environ 30 min en train depuis Luxembourg-Ville. Tous les détails d’accès : /venue/' },
+      { kw: ['student', 'academic', 'university', 'etudiant', 'academique', 'universite'],
+        en: 'Students and academics can attend free with a valid student ID (application required, limited seats). Apply when registering: /register/',
+        fr: 'Étudiants et académiques peuvent participer gratuitement avec une carte d’étudiant valide (candidature requise, places limitées). Postule lors de l’inscription : /register/' },
+      { kw: ['language', 'langue', 'english', 'anglais', 'francais', 'spoken'],
+        en: 'The event is held in English.',
+        fr: 'L’événement se déroule en anglais.' },
+      { kw: ['speakers', 'lineup', 'who is speaking', 'programme', 'program', 'schedule', 'agenda', 'conferenciers', 'orateurs', 'programmes'],
+        en: 'You can see past speakers on /speakers/ and the programme on /schedule/. The detailed 2026 programme is published closer to the event.',
+        fr: 'Tu peux voir les intervenants sur /speakers/ et le programme sur /schedule/. Le programme détaillé 2026 sera publié plus près de l’événement.' },
+      { kw: ['contact', 'email', 'reach', 'phone', 'contacter', 'joindre', 'ecrire'],
+        en: 'You can reach the team at hello@lste.lu or via /contact/.',
+        fr: 'Tu peux contacter l’équipe à hello@lste.lu ou via /contact/.' },
+      { kw: ['thanks', 'thank you', 'thx', 'merci', 'super', 'parfait', 'great'],
+        en: 'You’re welcome! Anything else about LSTE I can help with?',
+        fr: 'Avec plaisir ! Autre chose sur le LSTE ?' },
+      { kw: ['hello', 'hi ', 'hey', 'bonjour', 'salut', 'coucou', 'yo '],
+        en: 'Hi! Ask me anything about LSTE — dates, tickets, the venue, speaking or sponsoring.',
+        fr: 'Bonjour ! Pose-moi tes questions sur le LSTE — dates, billets, lieu, intervenir ou sponsoriser.' },
     ];
 
     function fallbackAnswer(text) {
-      const q = text.toLowerCase();
-      const hit = FALLBACK.find((f) => f.k.some((kw) => q.includes(kw)));
-      return (hit ? hit.a + '\n\n' : "I don't have that detail here. ") +
-        'For anything else, email hello@lste.lu or use the Contact page: /contact/';
+      const lang = detectLang(text);
+      const q = ' ' + norm(text) + ' ';
+      let best = null;
+      let bestScore = 0;
+      INTENTS.forEach((it) => {
+        let score = 0;
+        it.kw.forEach((kw) => { if (q.indexOf(norm(kw)) !== -1) score++; });
+        if (score > bestScore) { bestScore = score; best = it; }
+      });
+      return best ? best[lang] : MISS[lang];
     }
 
     // Escape HTML, then linkify — in a single pass so an internal path that
@@ -408,7 +479,7 @@
     function addSuggestions() {
       const wrap = document.createElement('div');
       wrap.className = 'chat-suggestions';
-      SUGGESTIONS.forEach((s) => {
+      SUGGESTIONS[uiLang].forEach((s) => {
         const b = document.createElement('button');
         b.type = 'button';
         b.textContent = s;
@@ -421,7 +492,13 @@
     function greet() {
       if (greeted) return;
       greeted = true;
-      addMessage('bot', 'Hi! I can answer questions about LSTE — dates, tickets, the venue, speaking, and more. What would you like to know?');
+      // Localise the input placeholder + header status to the browser language.
+      if (uiLang === 'fr') {
+        input.setAttribute('placeholder', 'Pose une question sur le LSTE…');
+        const status = panel.querySelector('.chat-header__status');
+        if (status) status.textContent = 'Pose-moi tes questions sur l’événement';
+      }
+      addMessage('bot', GREETING[uiLang]);
       addSuggestions();
     }
 
