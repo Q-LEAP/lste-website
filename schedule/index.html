@@ -208,6 +208,36 @@
   </div>
 </footer>
 
+<!-- AI assistant widget (LSTE-scoped). Set data-endpoint to your deployed
+     Cloudflare Worker URL (see worker/README.md). Until then, the widget
+     shows a curated FAQ fallback. -->
+<div id="lste-chat" data-endpoint="">
+  <button type="button" class="chat-launcher" id="chat-launcher" aria-expanded="false" aria-controls="chat-panel" aria-label="Open the LSTE assistant">
+    <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+    <span class="chat-launcher__label">Ask about LSTE</span>
+  </button>
+
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title" hidden>
+    <div class="chat-header">
+      <span class="chat-header__icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></span>
+      <span class="chat-header__titles">
+        <span class="chat-header__title" id="chat-title">LSTE Assistant</span>
+        <span class="chat-header__status">Ask me anything about the event</span>
+      </span>
+      <button type="button" class="chat-close" id="chat-close" aria-label="Close the assistant"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+
+    <div class="chat-log" id="chat-log" aria-live="polite" aria-atomic="false"></div>
+
+    <form class="chat-form" id="chat-form">
+      <label class="sr-only" for="chat-input">Your question about LSTE</label>
+      <textarea id="chat-input" name="message" rows="1" placeholder="Ask about dates, tickets, venue…" autocomplete="off" maxlength="2000"></textarea>
+      <button type="submit" class="chat-send" id="chat-send" aria-label="Send message"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+    </form>
+    <p class="chat-disclaimer">AI assistant — answers about LSTE only. It can make mistakes; verify important details.</p>
+  </div>
+</div>
+
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>

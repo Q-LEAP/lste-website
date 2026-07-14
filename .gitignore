@@ -3,3 +3,7 @@ node_modules/
 ._*
 assets/img/source/
 npm-debug.log*
+
+# Cloudflare Worker local dev — never commit the API key
+worker/.dev.vars
+.wrangler/

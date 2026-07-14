@@ -4,6 +4,7 @@ Disallow: /_source/
 Disallow: /.claude/
 Disallow: /scripts/
 Disallow: /src/
+Disallow: /worker/
 Disallow: /node_modules/
 
 Sitemap: https://lste.lu/sitemap.xml

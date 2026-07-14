@@ -337,6 +337,211 @@
     // render just for text and keeps output cacheable/deterministic.
   }
 
+  /* ── AI chat assistant ─────────────────────────────────────── */
+  function initChat() {
+    const root = document.getElementById('lste-chat');
+    if (!root) return;
+    const launcher = document.getElementById('chat-launcher');
+    const panel = document.getElementById('chat-panel');
+    const closeBtn = document.getElementById('chat-close');
+    const log = document.getElementById('chat-log');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send');
+    if (!launcher || !panel || !log || !form || !input) return;
+
+    const endpoint = (root.dataset.endpoint || '').trim();
+    const history = []; // { role: 'user' | 'assistant', content }
+    let releaseFocus = null;
+    let busy = false;
+    let greeted = false;
+
+    const SUGGESTIONS = [
+      'When and where is LSTE 2026?',
+      'How do I register?',
+      'How can I become a speaker?',
+      'Is it free? Is lunch included?',
+    ];
+
+    // Curated fallback answers when no backend is configured or a request
+    // fails — keeps the widget useful and never dead.
+    const FALLBACK = [
+      { k: ['when', 'date', 'where', 'venue', 'location', 'quand', 'où', 'lieu'], a: 'LSTE 2026 takes place on 26 November 2026, 08:30–18:00, at the Bâtiment des Terres Rouges, Esch-Belval (14 Porte de France, 4360 Esch-sur-Alzette). More: /venue/' },
+      { k: ['register', 'ticket', 'sign up', 'inscri', 'billet'], a: 'The conference is free to attend — register here: /register/. An optional Tutorial Pass (hands-on workshop) is €250 + VAT.' },
+      { k: ['free', 'price', 'cost', 'gratuit', 'prix', 'lunch', 'repas', 'food'], a: 'Attending the conference is free, and a networking lunch and coffee breaks are included. The optional Tutorial Pass is €250 + VAT. See /register/.' },
+      { k: ['speaker', 'talk', 'cfp', 'submit', 'parler', 'conférenc'], a: 'We welcome talk proposals until 30 September 2026 — submit yours here: /become-a-speaker/' },
+      { k: ['sponsor', 'partner', 'partenaire'], a: 'Interested in sponsoring? See /sponsors/ and /resources/, or email hello@lste.lu.' },
+      { k: ['park', 'car', 'train', 'parking', 'voiture', 'access'], a: 'Free parking is available on site, and Belval is ~30 min by train from Luxembourg City. Details: /venue/' },
+      { k: ['student', 'academic', 'étudiant'], a: 'Students and academics can attend free with a valid student ID (application required). Apply when registering: /register/' },
+      { k: ['language', 'langue', 'english', 'français'], a: 'The event is held in English.' },
+    ];
+
+    function fallbackAnswer(text) {
+      const q = text.toLowerCase();
+      const hit = FALLBACK.find((f) => f.k.some((kw) => q.includes(kw)));
+      return (hit ? hit.a + '\n\n' : "I don't have that detail here. ") +
+        'For anything else, email hello@lste.lu or use the Contact page: /contact/';
+    }
+
+    // Escape HTML, then linkify — in a single pass so an internal path that
+    // happens to sit inside a full URL isn't double-matched. Handles external
+    // URLs (https://…), emails, and internal site paths (/foo/).
+    function render(text) {
+      const esc = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const pattern = /(https?:\/\/[^\s<]+|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}|\/[a-z0-9\-/]+\/)/gi;
+      return esc.replace(pattern, (match) => {
+        if (/^https?:\/\//i.test(match)) return '<a href="' + match + '" target="_blank" rel="noopener">' + match + '</a>';
+        if (match.indexOf('@') !== -1) return '<a href="mailto:' + match + '">' + match + '</a>';
+        return '<a href="' + match + '">' + match + '</a>';
+      });
+    }
+
+    function addMessage(role, text) {
+      const el = document.createElement('div');
+      el.className = 'chat-msg chat-msg--' + (role === 'user' ? 'user' : 'bot');
+      el.innerHTML = render(text);
+      log.appendChild(el);
+      log.scrollTop = log.scrollHeight;
+      return el;
+    }
+
+    function addSuggestions() {
+      const wrap = document.createElement('div');
+      wrap.className = 'chat-suggestions';
+      SUGGESTIONS.forEach((s) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = s;
+        b.addEventListener('click', () => { if (!busy) { input.value = s; submit(); } });
+        wrap.appendChild(b);
+      });
+      log.appendChild(wrap);
+    }
+
+    function greet() {
+      if (greeted) return;
+      greeted = true;
+      addMessage('bot', 'Hi! I can answer questions about LSTE — dates, tickets, the venue, speaking, and more. What would you like to know?');
+      addSuggestions();
+    }
+
+    function typingIndicator() {
+      const el = document.createElement('div');
+      el.className = 'chat-msg chat-msg--bot';
+      el.innerHTML = '<span class="chat-typing" aria-label="Assistant is typing"><span></span><span></span><span></span></span>';
+      log.appendChild(el);
+      log.scrollTop = log.scrollHeight;
+      return el;
+    }
+
+    async function streamReply(bubble) {
+      // Streams SSE from the Worker. Returns the accumulated text.
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      });
+      if (!res.ok || !res.body) throw new Error('bad response');
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let acc = '';
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          if (!line.startsWith('data:')) continue;
+          const payload = line.slice(5).trim();
+          if (!payload) continue;
+          try {
+            const delta = JSON.parse(payload);
+            if (typeof delta === 'string') {
+              acc += delta;
+              bubble.innerHTML = render(acc);
+              log.scrollTop = log.scrollHeight;
+            }
+          } catch { /* ignore keep-alives / non-JSON */ }
+        }
+      }
+      if (!acc) throw new Error('empty reply');
+      return acc;
+    }
+
+    async function submit() {
+      const text = input.value.trim();
+      if (!text || busy) return;
+      busy = true;
+      if (sendBtn) sendBtn.disabled = true;
+      addMessage('user', text);
+      history.push({ role: 'user', content: text });
+      input.value = '';
+      input.style.height = 'auto';
+
+      const typing = typingIndicator();
+
+      if (!endpoint) {
+        // No backend configured — use the curated fallback.
+        const answer = fallbackAnswer(text);
+        typing.remove();
+        addMessage('bot', answer);
+        history.push({ role: 'assistant', content: answer });
+        busy = false; if (sendBtn) sendBtn.disabled = false;
+        return;
+      }
+
+      try {
+        typing.innerHTML = '';
+        const answer = await streamReply(typing);
+        history.push({ role: 'assistant', content: answer });
+      } catch {
+        typing.remove();
+        const answer = fallbackAnswer(text);
+        addMessage('bot', answer);
+        history.push({ role: 'assistant', content: answer });
+      } finally {
+        busy = false;
+        if (sendBtn) sendBtn.disabled = false;
+        input.focus();
+      }
+    }
+
+    function open() {
+      panel.hidden = false;
+      // next frame so the transition runs
+      requestAnimationFrame(() => panel.classList.add('is-open'));
+      launcher.setAttribute('aria-expanded', 'true');
+      greet();
+      releaseFocus = trapFocus(panel, close);
+      input.focus();
+    }
+    function close() {
+      panel.classList.remove('is-open');
+      launcher.setAttribute('aria-expanded', 'false');
+      const done = () => { panel.hidden = true; panel.removeEventListener('transitionend', done); };
+      panel.addEventListener('transitionend', done);
+      // fallback in case transitions are disabled (reduced motion)
+      setTimeout(() => { if (!panel.classList.contains('is-open')) panel.hidden = true; }, 300);
+      if (releaseFocus) { releaseFocus(); releaseFocus = null; }
+    }
+
+    launcher.addEventListener('click', open);
+    closeBtn && closeBtn.addEventListener('click', close);
+
+    form.addEventListener('submit', (e) => { e.preventDefault(); submit(); });
+
+    // Enter to send, Shift+Enter for newline; auto-grow the textarea.
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); }
+    });
+    input.addEventListener('input', () => {
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initAnnouncement();
@@ -350,5 +555,6 @@
     initGallery();
     initForms();
     initFooterYear();
+    initChat();
   });
 })();

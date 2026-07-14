@@ -1,0 +1,15 @@
+name = "lste-chat"
+main = "chat-worker.js"
+compatibility_date = "2024-11-01"
+
+# Import the system prompt + knowledge base (Markdown) as text at build time,
+# so `import ... from '../src/chat/*.md'` works and the guardrails ship inside
+# the Worker (never exposed to the browser).
+[[rules]]
+type = "Text"
+globs = ["../src/chat/*.md"]
+fallthrough = true
+
+# GEMINI_API_KEY is NOT set here — it is stored as an encrypted secret:
+#   wrangler secret put GEMINI_API_KEY
+# (see README.md). Never commit the key.
