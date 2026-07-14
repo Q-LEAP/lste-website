@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <title>LSTE 2026 — Luxembourg Software Testing Event</title>
 <meta name="description" content="LSTE 2026 is Luxembourg's premier software testing &amp; QA conference — 8th edition, 26 November 2026, free to attend. Keynotes, workshops, and 300+ testing professionals.">
 <link rel="canonical" href="https://lste.lu/">
@@ -92,19 +93,20 @@
 
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" aria-current="page" href="./index.html">Home</a></li>
         <li><a class="main-nav-link" href="./about/index.html">About</a></li>
         <li><a class="main-nav-link" href="./previous-editions/index.html">Previous Editions</a></li>
         <li><a class="main-nav-link" href="./speakers/index.html">Speakers</a></li>
-        <li><a class="main-nav-link" href="./become-a-speaker/index.html">Become a Speaker</a></li>
         <li><a class="main-nav-link" href="./venue/index.html">Venue</a></li>
         <li><a class="main-nav-link" href="./gallery/index.html">Gallery</a></li>
-        <li><a class="main-nav-link" href="./resources/index.html">Resources</a></li>
         <li><a class="main-nav-link" href="./contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
+      <a class="btn btn--ghost header-speaker-btn" href="./become-a-speaker/index.html">Become a speaker</a>
       <a class="btn btn--primary header-register-btn" href="./register/index.html">Register</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -115,15 +117,13 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="./index.html">Home</a></li>
     <li><a href="./about/index.html">About</a></li>
     <li><a href="./previous-editions/index.html">Previous Editions</a></li>
     <li><a href="./speakers/index.html">Speakers</a></li>
-    <li><a href="./become-a-speaker/index.html">Become a Speaker</a></li>
     <li><a href="./venue/index.html">Venue</a></li>
     <li><a href="./gallery/index.html">Gallery</a></li>
-    <li><a href="./resources/index.html">Resources</a></li>
     <li><a href="./contact/index.html">Contact</a></li>
+    <li><a class="btn btn--ghost btn--block" href="./become-a-speaker/index.html">Become a speaker</a></li>
     <li><a class="btn btn--primary btn--block" href="./register/index.html">Register</a></li>
   </ul>
 </div>

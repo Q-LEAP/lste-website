@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Theme layer — sharp-edge neumorphism + light/dark polish.
+   Loads LAST so it refines components without touching their base rules.
+   Neumorphism is used only for elevation on interactive surfaces; text stays
+   on adequate-contrast surfaces and the LSTE brand hues/gradient are untouched.
+   ========================================================================== */
+
+/* Smooth, cheap cross-fade when toggling themes (skipped for reduced motion). */
+.site-header, .card, .btn, .chat-panel, .chat-launcher, .faq-item,
+.tabs-nav button, .timeline__content details, input, textarea, select,
+.mobile-nav-panel, #back-to-top {
+  transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease),
+    box-shadow var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+}
+
+/* ── Neumorphic surfaces — shadow does the work, so drop the borders ──── */
+.card {
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+
+/* Cards that sit ON the alternate band still need to read as raised — the
+   dual shadow already handles that since surface == band tone. */
+
+/* ── Header: frosted neu bar ──────────────────────────────────────────── */
+.site-header.is-scrolled {
+  border-bottom-color: transparent;
+  box-shadow: 0 6px 20px rgba(27, 24, 48, 0.10);
+}
+:root[data-theme="dark"] .site-header.is-scrolled {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* On mobile the secondary "Become a speaker" action lives in the slide-out
+   panel, so hide it in the header to keep logo · toggle · Register · menu from
+   overflowing narrow viewports. */
+@media (max-width: 1023px) {
+  .header-speaker-btn { display: none; }
+}
+
+/* ── Theme toggle button ──────────────────────────────────────────────── */
+.theme-toggle {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-pill);
+  color: var(--color-ink);
+  font-size: 1.05rem;
+  background: transparent;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.theme-toggle:hover { background: var(--color-primary-tint); color: var(--color-primary); }
+
+/* ── Brand CTAs: give the gradient button a brand-tinted lift instead of
+      the neutral neu shadow, so it stays the clear focal accent ────────── */
+.btn--primary { box-shadow: 0 6px 16px rgba(85, 70, 174, 0.35); }
+.btn--primary:hover { box-shadow: 0 10px 24px rgba(85, 70, 174, 0.45); }
+.header-register-btn, .header-speaker-btn { box-shadow: none; }
+.header-register-btn { box-shadow: 0 4px 12px rgba(85, 70, 174, 0.32); }
+
+/* ── Inputs / textareas: pressed-in neu wells ─────────────────────────── */
+.form-group input,
+.form-group textarea,
+.form-group select,
+.chat-form textarea {
+  background: var(--color-surface);
+  border: none;
+  box-shadow: var(--shadow-inset);
+  color: var(--color-ink);
+}
+.form-group input:focus-visible,
+.form-group textarea:focus-visible,
+.form-group select:focus-visible,
+.chat-form textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-inset), var(--shadow-focus);
+}
+
+/* ── Tabs / FAQ / pills use raised neu chips ──────────────────────────── */
+.tabs-nav button { box-shadow: var(--shadow-sm); }
+.tabs-nav button[aria-selected="true"] { box-shadow: var(--shadow-md); }
+
+/* ── Chat widget on the neu base ──────────────────────────────────────── */
+.chat-panel { border-color: transparent; box-shadow: var(--shadow-lg); }
+.chat-launcher { box-shadow: 0 8px 22px rgba(85, 70, 174, 0.4); }
+.chat-msg--bot { border-color: transparent; box-shadow: var(--shadow-sm); }
+.chat-form textarea { max-height: 120px; }
+
+/* ── Back-to-top: real neu button (also fixes the id/class style gap) ──── */
+#back-to-top {
+  position: fixed;
+  right: var(--space-5);
+  bottom: calc(var(--space-5) + 68px);
+  z-index: 500;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0; visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--dur-base) var(--ease), visibility var(--dur-base), transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
+}
+#back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+#back-to-top:hover { box-shadow: var(--shadow-lg); }
+
+/* ── Sponsor logo tiles: keep a light plate so logos stay legible in both
+      themes (most brand logos assume a light background) ────────────────── */
+.sponsor-strip a { background: #fff; box-shadow: var(--shadow-sm); border-color: transparent; }
+:root[data-theme="dark"] .sponsor-strip img { filter: none; opacity: 1; }
+
+/* ── Policy / surface-alt panels read as gently inset on the neu base ──── */
+.policy-toc, .policy-highlight { box-shadow: var(--shadow-inset); }
+
+/* ── Dark-mode fine-tuning that can't be tokenised ────────────────────── */
+:root[data-theme="dark"] .hero__scrim {
+  background: linear-gradient(180deg, rgba(12, 10, 24, 0.82) 0%, rgba(30, 24, 60, 0.8) 100%);
+}
+:root[data-theme="dark"] .btn--outline { border-color: var(--color-border); }
+
+/* Never animate away the reduced-motion guarantee. */
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .card, .btn, .chat-panel, .chat-launcher, .faq-item,
+  .tabs-nav button, input, textarea, select, .mobile-nav-panel, #back-to-top,
+  body { transition: none; }
+}
+
+/* ── Forced-colors / OS high-contrast mode ────────────────────────────────
+   Neumorphism communicates surface boundaries with box-shadow alone, but
+   box-shadow is stripped entirely under Windows High Contrast / forced-colors
+   (and can wash out for some low-vision users even outside that mode). Put
+   a real 1px border back wherever a shadow is currently doing that job, so
+   cards, inputs, chips, and the theme toggle stay legible — same layout,
+   just an outline where none was visually needed before. */
+@media (forced-colors: active) {
+  .card, .chat-panel, .chat-msg--bot, .theme-toggle, #back-to-top,
+  .tabs-nav button, .sponsor-strip a, .policy-toc, .policy-highlight,
+  .form-group input, .form-group textarea, .form-group select, .chat-form textarea {
+    forced-color-adjust: none;
+    border: 1px solid CanvasText;
+    box-shadow: none;
+  }
+  .form-group input:focus-visible, .form-group textarea:focus-visible,
+  .form-group select:focus-visible, .chat-form textarea:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 1px;
+  }
+}

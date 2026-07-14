@@ -337,6 +337,31 @@
     // render just for text and keeps output cacheable/deterministic.
   }
 
+  /* ── Theme toggle (light / dark) ───────────────────────────── */
+  function initTheme() {
+    const root = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+    // The inline <head> script already set data-theme before first paint;
+    // here we just sync the button and handle clicks.
+    function apply(theme) {
+      root.setAttribute('data-theme', theme);
+      if (!toggle) return;
+      const dark = theme === 'dark';
+      toggle.setAttribute('aria-pressed', String(dark));
+      toggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+      const icon = toggle.querySelector('i');
+      if (icon) icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+    apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try { localStorage.setItem('lste-theme', next); } catch (e) { /* private mode */ }
+      });
+    }
+  }
+
   /* ── AI chat assistant ─────────────────────────────────────── */
   function initChat() {
     const root = document.getElementById('lste-chat');
@@ -632,6 +657,7 @@
     initGallery();
     initForms();
     initFooterYear();
+    initTheme();
     initChat();
   });
 })();

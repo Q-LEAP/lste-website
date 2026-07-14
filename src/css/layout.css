@@ -12,7 +12,7 @@
 .section--tight { padding: var(--space-8) 0; }
 
 .section--dark {
-  background: var(--color-ink);
+  background: var(--panel-invert);
   color: rgba(255, 255, 255, 0.82);
 }
 .section--dark h1, .section--dark h2, .section--dark h3,

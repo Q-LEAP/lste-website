@@ -13,8 +13,9 @@ body {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--color-body-text);
-  background: var(--color-surface);
+  background: var(--page-bg);
   overflow-x: hidden;
+  transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
 }
 
 img, picture, video, svg { max-width: 100%; height: auto; display: block; }
@@ -70,7 +71,7 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   top: -100%;
   left: var(--space-4);
   z-index: 1000;
-  background: var(--color-ink);
+  background: var(--panel-invert);
   color: #fff;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-sm);

@@ -3,26 +3,38 @@
    Brand source: LSTE Brand Guidelines.pdf — primary #5546AE + Open Sans.
    The purple→pink gradient is kept as a secondary accent (sanctioned by the
    guideline's own illustrated logo variant) — see plan §1 for rationale.
+
+   Theming: light (default) uses a soft, indigo-tinted neumorphic base with
+   sharp edges; dark ([data-theme="dark"]) mirrors it with a dark neu base.
+   Both keep the exact same brand hues, gradient, and typography — the
+   neumorphism only governs elevation/surfaces, never the brand identity.
    ========================================================================== */
 :root {
-  /* Brand color */
+  /* Brand color (identical in both themes) */
   --color-primary:      #5546ae;
   --color-primary-dark: #423685;
-  --color-primary-tint: #efeafb;
+  --color-primary-tint: #e6e2f6;
   --color-accent:       #d90e90; /* pink end of the sanctioned gradient */
   --color-accent-dark:  #a80a70;
 
   --gradient-brand: linear-gradient(135deg, #5546ae 0%, #822ea8 55%, #d90e90 100%);
   --gradient-hero:  linear-gradient(120deg, #423685 0%, #5546ae 45%, #822ea8 100%);
 
-  /* Neutrals */
+  /* Neutrals — light theme, indigo-tinted neumorphic base */
   --color-ink:        #1b1830;
-  --color-body-text:  #55506e; /* ≥4.5:1 on white, replaces the old #8b8b9a (3.4:1) */
-  --color-muted:      #78738f;
-  --color-border:     #e4e1f0;
-  --color-surface:    #ffffff;
-  --color-surface-alt:#f7f6fc;
-  --color-footer:     #14122a;
+  --color-body-text:  #494461; /* ≥4.5:1 on the neu base */
+  --color-muted:      #5c5776; /* ≥4.5:1 on the neu base */
+  --color-border:     #d7d3e6;
+  --color-surface:    #e9e7f1; /* neu base — surface == page bg for depth */
+  --color-surface-alt:#e3e1ee; /* slightly deeper band for rhythm */
+  --color-footer:     #14122a; /* dark in both themes */
+  --page-bg:          #e9e7f1;
+  --panel-invert:     #1b1830; /* .section--dark band; distinct per theme */
+  --header-bg:        rgba(233, 231, 241, 0.82); /* frosted neu bar */
+
+  /* Neumorphism — dual light/dark shadow pair over the neu base */
+  --neu-light: #ffffff;
+  --neu-dark:  #c5c1d8;
 
   /* Typography — Open Sans everywhere, per brand guidelines */
   --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -52,17 +64,19 @@
   --space-12: 5rem;
   --space-16: 7rem;
 
-  /* Shape */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-pill: 999px;
+  /* Shape — sharpened for the "sharp-edge" neumorphism direction */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px; /* brand CTAs/badges/chips stay pill-shaped */
 
-  /* Elevation */
-  --shadow-sm: 0 2px 8px rgba(27, 24, 48, 0.06);
-  --shadow-md: 0 8px 24px rgba(27, 24, 48, 0.10);
-  --shadow-lg: 0 24px 56px rgba(27, 24, 48, 0.16);
-  --shadow-focus: 0 0 0 3px rgba(85, 70, 174, 0.35);
+  /* Elevation — neumorphic dual shadow (raised). Inset variants defined in
+     the theme layer for pressed/inset fields. */
+  --shadow-sm: 3px 3px 7px var(--neu-dark), -3px -3px 7px var(--neu-light);
+  --shadow-md: 5px 5px 11px var(--neu-dark), -5px -5px 11px var(--neu-light);
+  --shadow-lg: 8px 8px 18px var(--neu-dark), -6px -6px 16px var(--neu-light);
+  --shadow-inset: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
+  --shadow-focus: 0 0 0 3px rgba(85, 70, 174, 0.45);
 
   /* Motion */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -76,17 +90,37 @@
   --header-h: 76px;
   --ann-h: 0px;
 
-  /* Breakpoints (reference only — media queries are authored inline,
-     mobile-first, using these pixel values consistently) */
+  /* Breakpoints (reference only) */
   --bp-sm: 480px;
   --bp-md: 768px;
   --bp-lg: 1024px;
   --bp-xl: 1280px;
+
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  /* Reserved: the brand guidelines specify a light-surface identity;
-     dark-mode is intentionally not implemented to avoid diverging from
-     the sanctioned brand system. Nav/footer already use dark brand
-     panels for contrast regardless of OS theme. */
+/* ── Dark theme — dark neumorphic base, same brand identity ───────────── */
+:root[data-theme="dark"] {
+  /* Brand: lift the primary a touch for legibility on dark surfaces; the
+     gradient and accent are unchanged so the DA stays intact. */
+  --color-primary:      #9a8be8;
+  --color-primary-dark: #7c6bd6;
+  --color-primary-tint: #2e2a45;
+
+  --color-ink:        #f4f2fb;
+  --color-body-text:  #c9c5dc; /* ≥4.5:1 on the dark neu base */
+  --color-muted:      #a29dbb; /* ≥4.5:1 on the dark neu base */
+  --color-border:     #34314a;
+  --color-surface:    #262436;
+  --color-surface-alt:#211f2f;
+  --page-bg:          #262436;
+  --panel-invert:     #1c1a28;
+
+  --header-bg:        rgba(38, 36, 54, 0.82);
+  --neu-light: #302d43;
+  --neu-dark:  #1a1826;
+
+  --shadow-focus: 0 0 0 3px rgba(154, 139, 232, 0.5);
+
+  color-scheme: dark;
 }
