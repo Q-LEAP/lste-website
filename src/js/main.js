@@ -88,6 +88,40 @@
     });
   }
 
+  /* ── Desktop nav "More" dropdown ──────────────────────────────── */
+  function initNavDropdown() {
+    const trigger = document.getElementById('nav-more-trigger');
+    const menu = document.getElementById('nav-more-menu');
+    if (!trigger || !menu) return;
+
+    function close() {
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+    function open() {
+      menu.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    trigger.addEventListener('click', () => {
+      menu.hidden ? open() : close();
+    });
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) close();
+    });
+    menu.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { close(); trigger.focus(); }
+    });
+    document.addEventListener('click', (e) => {
+      if (!menu.hidden && !e.target.closest('.main-nav-item--dropdown')) close();
+    });
+    document.addEventListener('focusout', (e) => {
+      if (menu.hidden) return;
+      const next = e.relatedTarget;
+      if (!next || !next.closest('.main-nav-item--dropdown')) close();
+    });
+  }
+
   /* ── Countdown ─────────────────────────────────────────────── */
   function initCountdown() {
     const els = document.querySelectorAll('[data-countdown]');
@@ -169,6 +203,11 @@
       els.forEach((el) => el.classList.add('is-visible'));
       return;
     }
+    // threshold: 0 (not a fraction like 0.12) — a reveal target that wraps a
+    // tall multi-item grid/masonry can be many viewport-heights tall, so its
+    // visible fraction never reaches a percentage-based threshold and it
+    // never fires. Firing on any intersection at all works for both a small
+    // card and a long grid.
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -176,7 +215,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
     els.forEach((el) => observer.observe(el));
   }
 
@@ -301,6 +340,7 @@
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
         const hp = form.querySelector('.hp-field');
         if (hp && hp.value) return;
 
@@ -648,6 +688,7 @@
     initHeader();
     initAnnouncement();
     initMobileMenu();
+    initNavDropdown();
     initCountdown();
     initCounters();
     initReveal();

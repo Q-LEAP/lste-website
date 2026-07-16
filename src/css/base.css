@@ -8,6 +8,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Any in-page anchor (TOC, jump nav) lands below the fixed header instead
+   of having its heading hidden underneath it. */
+[id] { scroll-margin-top: calc(var(--header-h) + var(--space-4)); }
+
 body {
   font-family: var(--font-body);
   font-size: var(--fs-body);

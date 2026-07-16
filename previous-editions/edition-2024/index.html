@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
   <title>LSTE 2024 — 6th Edition Recap</title>
-  <meta name="description" content="LSTE 2024 recap — the 6th Luxembourg Software Testing Event, held 28 November 2024 at the Chambre des Métiers, Luxembourg-Kirchberg. Theme: Continuous Quality.">
+  <meta name="description" content="LSTE 2024 recap — the 6th Luxembourg Software Testing Event, held 14 November 2024 at the Digital Learning Hub, Esch-Belval. Theme: Continuous Quality.">
   <link rel="canonical" href="https://lste.lu/previous-editions/edition-2024/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="LSTE 2024 — 6th Edition Recap">
-  <meta property="og:description" content="The 6th Luxembourg Software Testing Event — Continuous Quality, 28 November 2024.">
+  <meta property="og:description" content="The 6th Luxembourg Software Testing Event — Continuous Quality, 14 November 2024.">
   <meta property="og:url" content="https://lste.lu/previous-editions/edition-2024/">
   <meta property="og:image" content="https://lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -19,8 +19,7 @@
   <meta name="theme-color" content="#5546ae">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body>
@@ -37,11 +36,19 @@
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="../../about/index.html">About</a></li>
-        <li><a class="main-nav-link" href="../../previous-editions/index.html">Previous Editions</a></li>
+        <li><a class="main-nav-link" href="../../schedule/index.html">Programme</a></li>
         <li><a class="main-nav-link" href="../../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../../gallery/index.html">Gallery</a></li>
         <li><a class="main-nav-link" href="../../sponsors/index.html">Sponsors</a></li>
+        <li class="main-nav-item--dropdown">
+          <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../../resources/index.html">Media Kit &amp; Resources</a></li>
+            <li><a href="../../previous-editions/index.html">Previous Editions</a></li>
+            <li><a href="../../gallery/index.html">Gallery</a></li>
+            <li><a href="../../news/index.html">News</a></li>
+          </ul>
+        </li>
         <li><a class="main-nav-link" href="../../contact/index.html">Contact</a></li>
       </ul>
     </nav>
@@ -51,7 +58,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../../register/index.html">Register</a>
+      <a class="btn btn--primary header-register-btn" href="../../register/index.html">Get Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -62,14 +69,17 @@
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
     <li><a href="../../about/index.html">About</a></li>
-    <li><a href="../../previous-editions/index.html">Previous Editions</a></li>
+    <li><a href="../../schedule/index.html">Programme</a></li>
     <li><a href="../../speakers/index.html">Speakers</a></li>
     <li><a href="../../venue/index.html">Venue</a></li>
-    <li><a href="../../gallery/index.html">Gallery</a></li>
     <li><a href="../../sponsors/index.html">Sponsors</a></li>
+    <li><a href="../../resources/index.html">Resources</a></li>
+    <li><a href="../../previous-editions/index.html">Previous Editions</a></li>
+    <li><a href="../../gallery/index.html">Gallery</a></li>
+    <li><a href="../../news/index.html">News</a></li>
     <li><a href="../../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../../register/index.html">Register</a></li>
+    <li><a class="btn btn--primary btn--block" href="../../register/index.html">Get Ticket</a></li>
   </ul>
 </div>
 
@@ -80,9 +90,9 @@
   <section class="page-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../../previous-editions/index.html">Previous Editions</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">LSTE 2024</span></nav>
-      <span class="eyebrow">6th Edition — 28 November 2024</span>
+      <span class="eyebrow">6th Edition — 14 November 2024</span>
       <h1>Continuous Quality.</h1>
-      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">280+ testing and quality professionals gathered at the Chambre des Métiers in Luxembourg-Kirchberg for a day dedicated to embedding quality throughout the software delivery pipeline.</p>
+      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">280+ testing and quality professionals gathered at the Digital Learning Hub in Esch-Belval for a day dedicated to embedding quality throughout the software delivery pipeline.</p>
     </div>
   </section>
 
@@ -92,15 +102,15 @@
         <div>
           <h2>About the 6th edition</h2>
           <p style="margin-bottom:1rem;color:var(--color-body-text);">The 6th Luxembourg Software Testing Event brought together over 280 testing and quality professionals for a full day dedicated to the theme of <strong>Continuous Quality</strong>. The event explored how modern organisations are embedding quality throughout their software delivery pipelines — from requirements to production monitoring.</p>
-          <p style="margin-bottom:1rem;color:var(--color-body-text);">Held at the Chambre des Métiers in Luxembourg-Kirchberg, LSTE 2024 featured 8 keynote sessions, 7 live demos, a hands-on tutorial, and a dedicated exhibition area where 14 sponsors showcased their latest tools and services.</p>
+          <p style="margin-bottom:1rem;color:var(--color-body-text);">Held at the Digital Learning Hub in Esch-Belval, LSTE 2024 featured 8 keynote sessions, 7 live demos, a hands-on tutorial, and a dedicated exhibition area where 14 sponsors showcased their latest tools and services.</p>
           <p style="color:var(--color-body-text);">Standout moments included a provocative keynote on the death of the traditional QA role, a live AI-assisted testing demonstration that drew standing-room-only attendance, and a candid panel debate on whether "shift left" has gone too far.</p>
         </div>
         <div class="card contact-info-card">
           <h3 style="margin-bottom:var(--space-4);">Edition details</h3>
           <ul>
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i><span><strong>Date</strong><br>28 November 2024</span></li>
+            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i><span><strong>Date</strong><br>14 November 2024</span></li>
             <li><i class="fa-solid fa-clock" aria-hidden="true"></i><span><strong>Time</strong><br>08:30 – 18:00</span></li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><strong>Venue</strong><br>Chambre des Métiers, Luxembourg-Kirchberg</span></li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><strong>Venue</strong><br>Digital Learning Hub, Esch-Belval</span></li>
             <li><i class="fa-solid fa-users" aria-hidden="true"></i><span><strong>Attendees</strong><br>280+</span></li>
             <li><i class="fa-solid fa-microphone" aria-hidden="true"></i><span><strong>Talks</strong><br>8 keynotes + 7 demos</span></li>
             <li><i class="fa-solid fa-tag" aria-hidden="true"></i><span><strong>Theme</strong><br>Continuous Quality</span></li>
@@ -117,12 +127,36 @@
         <h2>Moments from LSTE 2024.</h2>
       </div>
       <div class="masonry gallery-grid reveal">
-        <div class="gallery-item"><img src="../../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.jpg" data-full="../../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg" width="2048" height="1536" loading="lazy" alt="Full conference room at LSTE 2024"></div>
-        <div class="gallery-item"><img src="../../assets/img/CTG-LSTE-2024--C2-A9Silicon-Luxembourg-061-min-1-800.jpg" data-full="../../assets/img/CTG-LSTE-2024--C2-A9Silicon-Luxembourg-061-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Session at LSTE 2024"></div>
-        <div class="gallery-item"><img src="../../assets/img/Q-Leap-LSTE-2024--C2-A9Silicon-Luxembourg-17-min-1-800.jpg" data-full="../../assets/img/Q-Leap-LSTE-2024--C2-A9Silicon-Luxembourg-17-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Q-Leap team at LSTE 2024"></div>
-        <div class="gallery-item"><img src="../../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.jpg" data-full="../../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-1200.jpg" width="2048" height="1536" loading="lazy" alt="Smartesting session at LSTE 2024"></div>
-        <div class="gallery-item"><img src="../../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-1-800.jpg" data-full="../../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Sogeti session at LSTE 2024"></div>
-        <div class="gallery-item"><img src="../../assets/img/Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1-800.jpg" data-full="../../assets/img/Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Q-Guard booth at LSTE 2024"></div>
+        <div class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.avif">
+          <source type="image/webp" srcset="../../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.webp">
+          <img src="../../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.jpg" data-full="../../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg" width="2048" height="1536" loading="lazy" alt="Full conference room at LSTE 2024">
+        </picture></div>
+        <div class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/CTG-LSTE-2024--C2-A9Silicon-Luxembourg-061-min-1-800.avif">
+          <source type="image/webp" srcset="../../assets/img/CTG-LSTE-2024--C2-A9Silicon-Luxembourg-061-min-1-800.webp">
+          <img src="../../assets/img/CTG-LSTE-2024--C2-A9Silicon-Luxembourg-061-min-1-800.jpg" data-full="../../assets/img/CTG-LSTE-2024--C2-A9Silicon-Luxembourg-061-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Session at LSTE 2024">
+        </picture></div>
+        <div class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/Q-Leap-LSTE-2024--C2-A9Silicon-Luxembourg-17-min-1-800.avif">
+          <source type="image/webp" srcset="../../assets/img/Q-Leap-LSTE-2024--C2-A9Silicon-Luxembourg-17-min-1-800.webp">
+          <img src="../../assets/img/Q-Leap-LSTE-2024--C2-A9Silicon-Luxembourg-17-min-1-800.jpg" data-full="../../assets/img/Q-Leap-LSTE-2024--C2-A9Silicon-Luxembourg-17-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Q-Leap team at LSTE 2024">
+        </picture></div>
+        <div class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.avif">
+          <source type="image/webp" srcset="../../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.webp">
+          <img src="../../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.jpg" data-full="../../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-1200.jpg" width="2048" height="1536" loading="lazy" alt="Smartesting session at LSTE 2024">
+        </picture></div>
+        <div class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-1-800.avif">
+          <source type="image/webp" srcset="../../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-1-800.webp">
+          <img src="../../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-1-800.jpg" data-full="../../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Sogeti session at LSTE 2024">
+        </picture></div>
+        <div class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1-800.avif">
+          <source type="image/webp" srcset="../../assets/img/Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1-800.webp">
+          <img src="../../assets/img/Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1-800.jpg" data-full="../../assets/img/Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1-1200.jpg" width="1900" height="1425" loading="lazy" alt="Q-Guard booth at LSTE 2024">
+        </picture></div>
       </div>
       <div class="text-center" style="margin-top:var(--space-6);">
         <a href="../../gallery/index.html" class="btn btn--outline">View full gallery</a>
@@ -176,7 +210,7 @@
         <a href="../../previous-editions/index.html" class="btn btn--outline"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All previous editions</a>
         <div class="cluster">
           <a href="../../previous-editions/edition-2025/index.html" class="btn btn--outline">LSTE 2025 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" class="btn btn--primary" target="_blank" rel="noopener">Register for LSTE 2026</a>
+          <a href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" class="btn btn--primary" target="_blank" rel="noopener">Get your ticket for LSTE 2026</a>
         </div>
       </div>
     </div>
@@ -217,7 +251,7 @@
           <li><a href="../../become-a-speaker/index.html">Become a Speaker</a></li>
           <li><a href="../../sponsors/index.html">Sponsors &amp; Partners</a></li>
           <li><a href="../../resources/index.html">Sponsor With Us</a></li>
-          <li><a href="../../register/index.html">Register</a></li>
+          <li><a href="../../register/index.html">Get Your Ticket</a></li>
         </ul>
       </div>
 

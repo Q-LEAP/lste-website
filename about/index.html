@@ -19,8 +19,7 @@
   <meta name="theme-color" content="#5546ae">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
@@ -37,11 +36,19 @@
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" aria-current="page" href="../about/index.html">About</a></li>
-        <li><a class="main-nav-link" href="../previous-editions/index.html">Previous Editions</a></li>
+        <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
         <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../gallery/index.html">Gallery</a></li>
         <li><a class="main-nav-link" href="../sponsors/index.html">Sponsors</a></li>
+        <li class="main-nav-item--dropdown">
+          <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
+            <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+            <li><a href="../gallery/index.html">Gallery</a></li>
+            <li><a href="../news/index.html">News</a></li>
+          </ul>
+        </li>
         <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
@@ -51,7 +58,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Register</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -62,14 +69,17 @@
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
     <li><a href="../about/index.html">About</a></li>
-    <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+    <li><a href="../schedule/index.html">Programme</a></li>
     <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
-    <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
+    <li><a href="../resources/index.html">Resources</a></li>
+    <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+    <li><a href="../gallery/index.html">Gallery</a></li>
+    <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Register</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
   </ul>
 </div>
 
@@ -83,11 +93,17 @@
       <span class="eyebrow">About LSTE</span>
       <h1>Software quality, taken seriously.</h1>
       <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">The annual gathering of software testing and QA professionals in the Grand Duchy of Luxembourg.</p>
+      <nav class="section-jump reveal" aria-label="On this page">
+        <a href="#what">What is LSTE</a>
+        <a href="#mission">Our mission</a>
+        <a href="#format">Format</a>
+        <a href="#organizer">Organiser</a>
+      </nav>
     </div>
   </section>
 
   <!-- What is LSTE -->
-  <section class="section" style="padding-top:0;">
+  <section id="what" class="section" style="padding-top:0;">
     <div class="container">
       <div class="grid grid--2" style="align-items:start;">
         <div class="reveal">
@@ -108,14 +124,14 @@
             <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> 8th edition</li>
             <li><i class="fa-solid fa-ticket" aria-hidden="true"></i> Free to attend</li>
           </ul>
-          <a class="btn btn--primary btn--block" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Register free</a>
+          <a class="btn btn--primary btn--block" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Mission -->
-  <section class="section section--alt" aria-labelledby="mission-heading">
+  <section id="mission" class="section section--alt" aria-labelledby="mission-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Our mission</span>
@@ -143,7 +159,7 @@
   </section>
 
   <!-- Event format -->
-  <section class="section" aria-labelledby="format-heading">
+  <section id="format" class="section" aria-labelledby="format-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Event format</span>
@@ -187,7 +203,7 @@
   </section>
 
   <!-- Organizer -->
-  <section class="section" aria-labelledby="organizer-heading">
+  <section id="organizer" class="section" aria-labelledby="organizer-heading">
     <div class="container">
       <div class="grid grid--2 reveal" style="align-items:center;">
         <div>
@@ -208,7 +224,7 @@
       <h2 class="text-white">Join us on 26 November 2026.</h2>
       <p style="max-width:44ch;margin:0 auto;opacity:0.9;">Reserve your free spot at Luxembourg's premier software testing event.</p>
       <div class="final-cta__actions">
-        <a class="btn btn--white btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Register free</a>
+        <a class="btn btn--white btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket</a>
         <a class="btn btn--ghost-on-dark btn--lg" href="../speakers/index.html">View speakers</a>
       </div>
     </div>
@@ -249,7 +265,7 @@
           <li><a href="../become-a-speaker/index.html">Become a Speaker</a></li>
           <li><a href="../sponsors/index.html">Sponsors &amp; Partners</a></li>
           <li><a href="../resources/index.html">Sponsor With Us</a></li>
-          <li><a href="../register/index.html">Register</a></li>
+          <li><a href="../register/index.html">Get Your Ticket</a></li>
         </ul>
       </div>
 

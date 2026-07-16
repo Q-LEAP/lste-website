@@ -13,7 +13,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'src/css');
 const OUT = path.join(ROOT, 'assets/css/styles.css');
 
-const LAYER_ORDER = ['tokens.css', 'base.css', 'layout.css', 'components.css'];
+const LAYER_ORDER = ['icons.css', 'tokens.css', 'base.css', 'layout.css', 'components.css'];
 
 async function main() {
   let combined = '';

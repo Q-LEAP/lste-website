@@ -35,7 +35,7 @@
 /* On mobile the secondary "Become a speaker" action lives in the slide-out
    panel, so hide it in the header to keep logo · toggle · Register · menu from
    overflowing narrow viewports. */
-@media (max-width: 1179px) {
+@media (max-width: 1299px) {
   .header-speaker-btn { display: none; }
 }
 
@@ -78,7 +78,16 @@
 
 /* ── Tabs / FAQ / pills use raised neu chips ──────────────────────────── */
 .tabs-nav button { box-shadow: var(--shadow-sm); }
+.tabs-nav button:hover { box-shadow: var(--shadow-md); }
 .tabs-nav button[aria-selected="true"] { box-shadow: var(--shadow-md); }
+
+/* ── Chat quick-reply chips: same raised neu chip as tabs, not a border ── */
+.chat-suggestions button { border-color: transparent; box-shadow: var(--shadow-sm); }
+.chat-suggestions button:hover { border-color: transparent; box-shadow: var(--shadow-md); }
+
+/* ── In-page jump nav chips: same raised neu chip treatment ───────────── */
+.section-jump a { box-shadow: var(--shadow-sm); }
+.section-jump a:hover { box-shadow: var(--shadow-md); color: var(--color-primary); }
 
 /* ── Chat widget on the neu base ──────────────────────────────────────── */
 .chat-panel { border-color: transparent; box-shadow: var(--shadow-lg); }
@@ -136,6 +145,7 @@
 @media (forced-colors: active) {
   .card, .chat-panel, .chat-msg--bot, .theme-toggle, #back-to-top,
   .tabs-nav button, .sponsor-strip a, .policy-toc, .policy-highlight,
+  .chat-suggestions button, .section-jump a, .resource-card__preview, .main-nav-dropdown,
   .form-group input, .form-group textarea, .form-group select, .chat-form textarea {
     forced-color-adjust: none;
     border: 1px solid CanvasText;
@@ -145,5 +155,12 @@
   .form-group select:focus-visible, .chat-form textarea:focus-visible {
     outline: 2px solid Highlight;
     outline-offset: 1px;
+  }
+  /* The news cards deliberately keep white text on a dark photo scrim in
+     every theme — that authored contrast is the point, so opt these bits
+     out of the forced-colors recolor instead of losing the scrim (which
+     would otherwise leave white text sitting straight on the photo). */
+  .news-card::after, .news-card .news-date, .news-card__body, .news-card__body * {
+    forced-color-adjust: none;
   }
 }

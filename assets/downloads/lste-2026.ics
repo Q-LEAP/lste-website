@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//LSTE//Luxembourg Software Testing Event//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:lste-2026@lste.lu
+DTSTAMP:20260716T064523Z
+DTSTART:20261126T073000Z
+DTEND:20261126T170000Z
+SUMMARY:LSTE 2026 — Luxembourg Software Testing Event
+LOCATION:Bâtiment des Terres Rouges\, 14 Porte de France\, 4360 Esch-sur-A
+ lzette\, Luxembourg
+DESCRIPTION:Luxembourg's software testing conference\, 8th edition. Free to
+  attend. https://lste.lu/
+URL:https://lste.lu/
+END:VEVENT
+END:VCALENDAR

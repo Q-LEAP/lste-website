@@ -33,6 +33,28 @@
   pointer-events: none;
 }
 
+/* A single standout shot breaks the masonry to full width so it reads as
+   the pick of the set, not just another tile. */
+.gallery-item--highlight { column-span: all; }
+.gallery-item--highlight img { max-height: 70vh; object-fit: cover; }
+.gallery-item__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.35em 0.85em;
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(85, 70, 174, 0.4);
+}
+
 @media (min-width: 640px) { .masonry { column-count: 2; } }
 @media (min-width: 1024px) { .masonry { column-count: 3; } }
 

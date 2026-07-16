@@ -15,7 +15,7 @@
   --color-primary-dark: #423685;
   --color-primary-tint: #e6e2f6;
   --color-accent:       #d90e90; /* pink end of the sanctioned gradient */
-  --color-accent-dark:  #a80a70;
+  --color-accent-dark:  #a80a70; /* ≥4.5:1 on the light neu base, used for .eyebrow text — the gradient stop above stays untouched */
 
   --gradient-brand: linear-gradient(135deg, #5546ae 0%, #822ea8 55%, #d90e90 100%);
   --gradient-hero:  linear-gradient(120deg, #423685 0%, #5546ae 45%, #822ea8 100%);
@@ -87,7 +87,7 @@
   /* Layout */
   --container: 1240px;
   --container-narrow: 800px;
-  --header-h: 76px;
+  --header-h: 84px;
   --ann-h: 0px;
 
   /* Breakpoints (reference only) */
@@ -101,11 +101,13 @@
 
 /* ── Dark theme — dark neumorphic base, same brand identity ───────────── */
 :root[data-theme="dark"] {
-  /* Brand: lift the primary a touch for legibility on dark surfaces; the
-     gradient and accent are unchanged so the DA stays intact. */
+  /* Brand: lift the primary and the accent's text-legible variant a touch
+     for contrast on dark surfaces; the gradient itself is unchanged so the
+     DA stays intact. */
   --color-primary:      #9a8be8;
   --color-primary-dark: #7c6bd6;
   --color-primary-tint: #2e2a45;
+  --color-accent-dark:  #f550ba; /* ≥4.5:1 on the dark neu base, used for .eyebrow text */
 
   --color-ink:        #f4f2fb;
   --color-body-text:  #c9c5dc; /* ≥4.5:1 on the dark neu base */

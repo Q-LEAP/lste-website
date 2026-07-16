@@ -18,8 +18,7 @@
   <meta name="theme-color" content="#5546ae">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
@@ -36,11 +35,19 @@
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="../about/index.html">About</a></li>
-        <li><a class="main-nav-link" href="../previous-editions/index.html">Previous Editions</a></li>
+        <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
         <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../gallery/index.html">Gallery</a></li>
         <li><a class="main-nav-link" href="../sponsors/index.html">Sponsors</a></li>
+        <li class="main-nav-item--dropdown">
+          <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
+            <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+            <li><a href="../gallery/index.html">Gallery</a></li>
+            <li><a href="../news/index.html">News</a></li>
+          </ul>
+        </li>
         <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
@@ -50,7 +57,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Register</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -61,14 +68,17 @@
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
     <li><a href="../about/index.html">About</a></li>
-    <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+    <li><a href="../schedule/index.html">Programme</a></li>
     <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
-    <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
+    <li><a href="../resources/index.html">Resources</a></li>
+    <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+    <li><a href="../gallery/index.html">Gallery</a></li>
+    <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Register</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
   </ul>
 </div>
 
@@ -82,11 +92,17 @@
       <span class="eyebrow">Resources</span>
       <h1>Media kit, brand assets &amp; sponsorship.</h1>
       <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Everything press, sponsors, and partners need in one place.</p>
+      <nav class="section-jump reveal" aria-label="On this page">
+        <a href="#media">Media &amp; brand</a>
+        <a href="#press">Press</a>
+        <a href="#sponsor">Sponsor with us</a>
+        <a href="#links">Useful links</a>
+      </nav>
     </div>
   </section>
 
   <!-- Media & Brand -->
-  <section class="section" style="padding-top:0;" aria-labelledby="media-heading">
+  <section id="media" class="section" style="padding-top:0;" aria-labelledby="media-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Media &amp; brand assets</span>
@@ -94,29 +110,41 @@
       </div>
       <div class="grid grid--3 reveal">
         <div class="card resource-card">
-          <div class="resource-card__icon" aria-hidden="true"><i class="fa-solid fa-book"></i></div>
-          <h3 style="font-size:1.0625rem;">Brand guidelines</h3>
-          <p class="file-meta">PDF · logo usage, color, typography</p>
-          <a class="btn btn--outline btn--sm" href="../assets/downloads/LSTE-Brand-Guidelines.pdf" download>Download PDF <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+          <div class="resource-card__preview">
+            <img src="../assets/img/lste-brand-guidelines-cover-800.jpg" width="1000" height="707" loading="lazy" alt="Cover of the LSTE brand guidelines document">
+          </div>
+          <div class="resource-card__body">
+            <h3 style="font-size:1.0625rem;">Brand guidelines</h3>
+            <p class="file-meta">PDF · logo usage, color, typography</p>
+            <a class="btn btn--outline btn--sm" href="../assets/downloads/LSTE-Brand-Guidelines.pdf" download>Download PDF <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+          </div>
         </div>
         <div class="card resource-card">
-          <div class="resource-card__icon" aria-hidden="true"><i class="fa-solid fa-image"></i></div>
-          <h3 style="font-size:1.0625rem;">Logo — colour</h3>
-          <p class="file-meta">SVG · for light backgrounds</p>
-          <a class="btn btn--outline btn--sm" href="../assets/img/lste-logo.svg" download>Download SVG <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+          <div class="resource-card__preview">
+            <img src="../assets/img/lste-logo.svg" width="160" height="40" loading="lazy" alt="LSTE logo, colour version">
+          </div>
+          <div class="resource-card__body">
+            <h3 style="font-size:1.0625rem;">Logo — colour</h3>
+            <p class="file-meta">SVG · for light backgrounds</p>
+            <a class="btn btn--outline btn--sm" href="../assets/img/lste-logo.svg" download>Download SVG <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+          </div>
         </div>
         <div class="card resource-card">
-          <div class="resource-card__icon" aria-hidden="true"><i class="fa-solid fa-moon"></i></div>
-          <h3 style="font-size:1.0625rem;">Logo — white</h3>
-          <p class="file-meta">SVG · for dark backgrounds</p>
-          <a class="btn btn--outline btn--sm" href="../assets/img/lste-logo-white.svg" download>Download SVG <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+          <div class="resource-card__preview resource-card__preview--dark">
+            <img src="../assets/img/lste-logo-white.svg" width="160" height="40" loading="lazy" alt="LSTE logo, white version">
+          </div>
+          <div class="resource-card__body">
+            <h3 style="font-size:1.0625rem;">Logo — white</h3>
+            <p class="file-meta">SVG · for dark backgrounds</p>
+            <a class="btn btn--outline btn--sm" href="../assets/img/lste-logo-white.svg" download>Download SVG <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Press -->
-  <section class="section section--alt" aria-labelledby="press-heading">
+  <section id="press" class="section section--alt" aria-labelledby="press-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Press</span>
@@ -143,12 +171,12 @@
   </section>
 
   <!-- Sponsorship -->
-  <section class="section" aria-labelledby="sponsor-heading">
+  <section id="sponsor" class="section" aria-labelledby="sponsor-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Sponsor with us</span>
         <h2 id="sponsor-heading">Put your brand in front of 300+ QA professionals.</h2>
-        <p>LSTE offers Gold, Silver, and Bronze sponsorship tiers, plus a Platinum tier for custom partnerships. See our current sponsors on the <a href="../sponsors/index.html">Sponsors &amp; Partners</a> page.</p>
+        <p>LSTE offers Gold, Silver, and Bronze sponsorship tiers, plus custom partnerships for larger collaborations. See our current sponsors on the <a href="../sponsors/index.html">Sponsors &amp; Partners</a> page.</p>
       </div>
       <div class="text-center reveal">
         <a class="btn btn--primary btn--lg" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Request the sponsorship prospectus</a>
@@ -157,7 +185,7 @@
   </section>
 
   <!-- Useful links -->
-  <section class="section section--alt" aria-labelledby="links-heading">
+  <section id="links" class="section section--alt" aria-labelledby="links-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Useful links</span>
@@ -218,7 +246,7 @@
           <li><a href="../become-a-speaker/index.html">Become a Speaker</a></li>
           <li><a href="../sponsors/index.html">Sponsors &amp; Partners</a></li>
           <li><a href="../resources/index.html">Sponsor With Us</a></li>
-          <li><a href="../register/index.html">Register</a></li>
+          <li><a href="../register/index.html">Get Your Ticket</a></li>
         </ul>
       </div>
 

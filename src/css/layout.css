@@ -21,11 +21,31 @@
 .section--alt { background: var(--color-surface-alt); }
 
 .section--brand {
+  position: relative;
+  overflow: hidden;
   background: var(--gradient-hero);
   color: rgba(255, 255, 255, 0.92);
 }
 .section--brand h1, .section--brand h2, .section--brand h3,
 .section--brand h4, .section--brand h5 { color: #fff; }
+/* Luxembourg skyline flourish from the brand guidelines' "logo with
+   illustration" variant — the same asset the gradient itself was sanctioned
+   from. Kept faint and behind the content so it reads as texture, not a
+   second logo. */
+.section--brand::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  right: -30px;
+  bottom: -15px;
+  width: 320px;
+  height: 188px;
+  max-width: 45%;
+  background: url('../img/White-LSTE-Logo-Illustration-e1683481222712-400.webp') no-repeat center / contain;
+  opacity: 0.16;
+  pointer-events: none;
+}
+.section--brand .container { position: relative; z-index: 1; }
 
 .eyebrow {
   display: inline-block;
@@ -33,7 +53,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-dark);
   margin-bottom: var(--space-3);
 }
 .eyebrow--on-dark { color: #f2c9e3; }
@@ -48,14 +68,14 @@
 .grid { display: grid; gap: var(--space-6); }
 .grid--2 { grid-template-columns: repeat(1, 1fr); }
 .grid--3 { grid-template-columns: repeat(1, 1fr); }
-.grid--4 { grid-template-columns: repeat(2, 1fr); }
+.grid--4 { grid-template-columns: repeat(1, 1fr); }
 
 @media (min-width: 768px) {
   .grid--2 { grid-template-columns: repeat(2, 1fr); }
   .grid--3 { grid-template-columns: repeat(2, 1fr); }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1300px) {
   .grid--3 { grid-template-columns: repeat(3, 1fr); }
   .grid--4 { grid-template-columns: repeat(4, 1fr); }
 }

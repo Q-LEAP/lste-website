@@ -36,7 +36,11 @@
       "PowerShell(Add-Type -AssemblyName System.Net.Http; $handler = New-Object System.Net.Http.HttpClientHandler; $client = New-Object System.Net.Http.HttpClient\\($handler\\); $client.DefaultRequestHeaders.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120\"\\); # Try to get posts with category \"press\" or all posts $response = $client.GetAsync\\(\"https://lste.lu/wp-json/wp/v2/posts?per_page=20&_fields=id,title,excerpt,date,slug,link,featured_media\"\\).Result; $json = $response.Content.ReadAsStringAsync\\(\\).Result; Write-Host $json)",
       "PowerShell(Add-Type -AssemblyName System.Net.Http; $handler = New-Object System.Net.Http.HttpClientHandler; $client = New-Object System.Net.Http.HttpClient\\($handler\\); $client.DefaultRequestHeaders.Add\\(\"User-Agent\", \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120\"\\); $response = $client.GetAsync\\(\"https://lste.lu/wp-json/wp/v2/posts?per_page=20\"\\).Result; $statusCode = [int]$response.StatusCode; Write-Host \"Status: $statusCode\"; $json = $response.Content.ReadAsStringAsync\\(\\).Result; Write-Host \"Length: $\\($json.Length\\)\"; [System.IO.File]::WriteAllText\\(\"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\\\\wp_posts.json\", $json\\))",
       "PowerShell(cd \"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\"; \\(Get-Item \"assets\\\\css\\\\styles.css\"\\).Length; Get-Content \"assets\\\\css\\\\styles.css\" | Measure-Object -Line)",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\" -Force | Where-Object {$_.Name -match '\\(robots\\\\.txt|sitemap\\\\.xml|\\\\.htaccess|\\\\.env|package\\\\.json|config\\)' -or $_.PSIsContainer -eq $false} | Select-Object Name)"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Lucas\\\\Documents\\\\Sites\\\\LSTE\" -Force | Where-Object {$_.Name -match '\\(robots\\\\.txt|sitemap\\\\.xml|\\\\.htaccess|\\\\.env|package\\\\.json|config\\)' -or $_.PSIsContainer -eq $false} | Select-Object Name)",
+      "Bash(Read)",
+      "Bash(mkdir -p /Users/q-leapmontage/.claude/jobs/8db42f5a/tmp)",
+      "Bash(curl -sI \"https://nexusluxembourg.com/startups-awards-2027\")",
+      "Bash(git add *)"
     ]
   }
 }

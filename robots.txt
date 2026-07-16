@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /_source/
 Disallow: /.claude/
 Disallow: /scripts/
 Disallow: /src/

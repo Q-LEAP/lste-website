@@ -18,6 +18,40 @@
 .breadcrumb [aria-current] { color: var(--color-ink); font-weight: 600; }
 .breadcrumb .sep { opacity: 0.5; }
 .breadcrumb--on-dark, .breadcrumb--on-dark a { color: rgba(255, 255, 255, 0.7); }
+
+.calendar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+.calendar-actions__label {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--color-ink);
+}
+.calendar-actions__label i { color: var(--color-primary); margin-right: var(--space-1); }
+
+/* ── In-page jump nav — quick links to a long page's own sections ────── */
+.section-jump {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+.section-jump a {
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-alt);
+  color: var(--color-body-text);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
 .breadcrumb--on-dark a:hover { color: #fff; }
 .breadcrumb--on-dark [aria-current] { color: #fff; }
 
@@ -61,12 +95,19 @@
 .contact-info-card address { font-style: normal; }
 
 /* ── Resources ───────────────────────────────────────────────────── */
-.resource-card { padding: var(--space-6); }
-.resource-card__icon {
-  width: 48px; height: 48px; margin-bottom: var(--space-4);
-  border-radius: var(--radius-sm); background: var(--color-primary-tint);
-  display: flex; align-items: center; justify-content: center; color: var(--color-primary); font-size: 1.25rem;
+.resource-card { padding: 0; overflow: hidden; }
+.resource-card__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: var(--space-5);
+  background: var(--color-surface-alt);
+  box-shadow: var(--shadow-inset);
 }
+.resource-card__preview img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.resource-card__preview--dark { background: var(--panel-invert); }
+.resource-card__body { padding: var(--space-6); }
 .resource-card .file-meta { font-size: 0.8125rem; color: var(--color-muted); margin-bottom: var(--space-4); }
 
 /* ── Policy / legal content ─────────────────────────────────────── */
