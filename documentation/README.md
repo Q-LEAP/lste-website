@@ -163,3 +163,31 @@ directly by the client). To add a new one:
 Only **public** posts can be embedded this way. If an author deletes the
 original post, both its thumbnail and the modal embed break — remove the
 card when that happens.
+
+## News page (`/news/`)
+
+As of 2026-07-17, the 6 articles listed on `/news/` are fully self-hosted
+(no more "Read on lste.lu" external links) — this was done ahead of the
+lste.lu WordPress site being decommissioned once the HTML migration is
+complete. Each card links to a local `news/<slug>/index.html` page that
+reproduces the original article's real text and photo, styled with the
+site's own `.article-body`/`.article-meta`/`.article-hero-img` classes
+(defined in `src/css/pages/inner.css`, reusing the `.policy-body` prose
+layout). Source content was pulled from lste.lu's `/press/` articles
+(now offline) — nothing here is invented.
+
+The 6 slugs, in the order shown on `/news/`:
+
+1. `avanti-sharma-mc` — Avanti Sharma announced as MC for LSTE 2025
+2. `lste-2025-ai-7th-edition` — LSTE 2025: AI at the heart of the 7th edition
+3. `digital-colleague` — Learning how to live with the digital colleague (Dr. Anne Kramer, Smartesting)
+4. `lste-2024-landmark` — LSTE: a landmark event for software testing professionals
+5. `deloitte-lste-2024` — Deloitte at LSTE 2024: driving innovation in software testing
+6. `sogeti-lste-2024` — Sogeti at LSTE 2024: exploring GenAI in testing
+
+All 6 reuse images that already existed in `assets/img/` from earlier work
+on the site — no new source images were added. Each article's bottom CTA
+points to the relevant `previous-editions/edition-2024|2025/` recap page
+(or, for the Avanti Sharma piece, straight to `register/` for the next
+edition) instead of the stale "Register for [past event]" CTA that ran in
+the original piece.
