@@ -151,7 +151,8 @@
   .card, .chat-panel, .chat-msg--bot, .theme-toggle, #back-to-top,
   .tabs-nav button, .sponsor-strip a, .policy-toc, .policy-highlight,
   .chat-suggestions button, .section-jump a, .resource-card__preview, .main-nav-dropdown,
-  .form-group input, .form-group textarea, .form-group select, .chat-form textarea {
+  .form-group input, .form-group textarea, .form-group select, .chat-form textarea,
+  .linkedin-card, .gallery-item, .media-modal-dialog {
     forced-color-adjust: none;
     border: 1px solid CanvasText;
     box-shadow: none;

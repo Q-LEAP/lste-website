@@ -67,18 +67,33 @@
 .edition-card__meta { display: flex; flex-direction: column; gap: var(--space-1); font-size: 0.875rem; color: var(--color-muted); }
 .edition-card__meta i { color: var(--color-primary); width: 1.1rem; }
 .edition-card__theme { font-weight: 600; color: var(--color-ink); }
+/* Push whichever CTA a card ends with (real link or placeholder button)
+   to the bottom, so cards with less content don't leave it floating
+   mid-card next to fuller siblings in the same grid row. */
+.edition-card > :last-child { margin-top: auto; }
 .edition-card .muted-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
   color: var(--color-muted);
   font-size: var(--fs-sm);
   font-weight: 600;
   background: none;
-  border: none;
-  padding: 0;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1rem;
   font-family: inherit;
   cursor: pointer;
 }
 .edition-card .muted-link:hover,
-.edition-card .muted-link:focus-visible { color: var(--color-primary); text-decoration: underline; }
+.edition-card .muted-link:focus-visible { color: var(--color-primary); border-color: var(--color-primary); }
+/* 7 cards in a 3-column grid leaves a lone card in the last row — center
+   it. .grid--3 only reaches 3 actual columns at ≥1300px (it's 2 columns
+   from 768–1299px), so that's the breakpoint this needs to match. */
+@media (min-width: 1300px) {
+  .edition-grid > .edition-card:nth-child(7):last-child { grid-column: 2; }
+}
 
 .transport-card, .hotel-card { padding: var(--space-6); text-align: center; }
 .transport-card__icon {
@@ -225,22 +240,3 @@
   .timeline__item { grid-template-columns: 5.5rem 1.5rem 1fr; }
 }
 
-/* ── QA-themed "no archive" modal (previous editions) ─────────────── */
-.empty-edition-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-5);
-  background: rgba(15, 12, 30, 0.55);
-}
-.empty-edition-dialog {
-  width: 100%;
-  max-width: 420px;
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-}

@@ -17,6 +17,16 @@ historical editions, read this file first and cross-check against
   - `flyer.lste 2019.pdf` — 2019 edition flyer.
   - `Program LSTE 2024 (1).pdf`, `Program LSTE_Tuto_2024JPG.pdf` — 2024 edition programme and tutorial track.
   - `LSTE-Program-2025 1.pdf` — 2025 edition programme.
+  - A `LSTE 2018/` and `LSTE 2019/` folder (Masterslide/programme decks, sponsoring
+    PDFs, photos) were supplied on 2026-07-17, used to build
+    `previous-editions/edition-2018/` and `edition-2019/`, and then deleted per
+    the client's instruction once their useful content was extracted — see
+    "Verified facts" below for what was pulled from them. The best ~12/~9
+    photos from each were moved into `assets/img/source/` (prefixed
+    `LSTE-2018-…` / `LSTE-2019-…`) and the rest (RAW files, budgets, attendee
+    lists, sponsorship contracts, PSD/AI design files) were deleted — not
+    kept anywhere, so don't expect to find them again if more detail is
+    needed later than what's recorded here.
 
 ## What's NOT here (known gaps — don't invent to fill them)
 
@@ -53,14 +63,34 @@ someone confirms otherwise from Q-Leap directly.
   6th edition, theme "Continuous Quality."
 - **2025 edition:** 27 November 2025, Parc Belle-Vue, Luxembourg City — 7th
   edition, theme "AI & the Future of Quality."
-- **Official "About the Event" copy** (lste.lu/about, verbatim): headings
-  "Who we are" / "The uNique testing event in Luxembourg" and "For who" /
-  "For all testers and IT practitioners", plus the Q-LEAP organiser
-  paragraph. This copy was ported into `about/index.html` — do not rewrite
-  it freely; if it needs to change, re-pull from the live page first.
-  - Marketing lines used verbatim: "THE BIGGEST TESTING EVENT IN
-    LUXEMBOURG." / "FOR ALL TESTERS AND PASSIONNATE TESTERS" (sic — the
-    typo is in the official copy).
+- **2019 edition** (from the now-deleted `LSTE 2019/` folder): 5th edition,
+  Thursday 10 October 2019, 17:30–20:30, House of Startups (9 rue du
+  Laboratoire, Luxembourg-city). 150+ registrations, 80 companies (per the
+  event's own opening slide). Sponsors: Q-Leap, Docler Holding, Neotys,
+  Luxembourg-City Incubator, Hacknowledge, GASQ, House of Startups. No
+  ticket prices were carried over onto the site (site-wide no-pricing rule).
+- **2018 edition** (from the now-deleted `LSTE 2018/` folder): 4th edition,
+  Thursday 4 October 2018 (date confirmed via photo EXIF, matching the
+  programme deck's own title slide). 120+ attendees, 88 organizations per
+  the 2019 sponsoring deck's retrospective table (the day-of deck itself
+  said "115 attendees / 70 organizations" — a minor real-source discrepancy;
+  the more official-looking retrospective number was used). Sponsors: Q-Leap,
+  Docler Holding, Neotys, Luxair Group. **No venue name was found in any
+  surviving material** — don't invent one if asked to fill it in later.
+- **History table (2014→2018), from the 2019 sponsoring deck:** 2014: 60
+  attendees / 35 orgs. 2016: 75 / 40. 2017: 100 / 55. 2018: 120 / 88. Used to
+  fill in the previously-empty attendee counts on the 2014/2016/2017 cards
+  on `previous-editions/index.html`.
+- **Official "About the Event" copy** (lste.lu/about, meaning/content
+  verbatim): headings "Who we are" / "The unique testing event in
+  Luxembourg" and "For who" / "For all testers and IT practitioners", plus
+  the Q-LEAP organiser paragraph. This copy was ported into
+  `about/index.html` — do not rewrite it freely; if it needs to change,
+  re-pull from the live page first.
+  - Note: the live page has a few small typos ("uNique", "PASSIONNATE",
+    "practioners") that were silently corrected for spelling only during
+    the 2026-07-17 UX/DA review pass — the wording and meaning are
+    otherwise unchanged from the official source.
 - **Sponsors (2026, confirmed only):** Q-Leap. Every other sponsor
   previously listed (Deloitte, NSI, Sogeti, AINOS, Xray, Thales, Uni.lu,
   SQAI Suite, Tricentis, SnT, Q-Guard, jemmic, Q-Bot, Luxembourg Testing

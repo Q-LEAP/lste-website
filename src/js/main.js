@@ -169,7 +169,11 @@
       const suffix = match[2];
       const hasComma = match[1].includes(',');
       const looksLikeYear = suffix === '' && match[1].length === 4 && target > 1900 && target < 2100;
-      if (reduceMotion || !target || looksLikeYear) return;
+      // Ordinals (e.g. "8th") aren't a quantity to count up to — animating
+      // the numeral alone produces grammatically wrong intermediates like
+      // "1th, 2th, 3th" before landing on the real suffix.
+      const looksLikeOrdinal = /^(st|nd|rd|th)$/i.test(suffix.trim());
+      if (reduceMotion || !target || looksLikeYear || looksLikeOrdinal) return;
 
       const duration = 1100;
       const start = performance.now();
@@ -699,9 +703,15 @@
       // next frame so the transition runs
       requestAnimationFrame(() => panel.classList.add('is-open'));
       launcher.setAttribute('aria-expanded', 'true');
+      const isFirstOpen = !greeted;
       greet();
       releaseFocus = trapFocus(panel, close);
-      input.focus();
+      // On first open, greet() just rendered the FR/EN picker buttons —
+      // send focus there first rather than past them into the empty
+      // textarea. Later opens (or if no picker exists) focus the input.
+      const firstPickerBtn = isFirstOpen && log.querySelector('.chat-suggestions button');
+      if (firstPickerBtn) firstPickerBtn.focus();
+      else input.focus();
     }
     function close() {
       panel.classList.remove('is-open');
@@ -728,33 +738,23 @@
     });
   }
 
-  /* ── QA-themed empty state for editions with no archive ───────── */
-  function initEmptyEditionModal() {
-    const triggers = document.querySelectorAll('.js-empty-edition');
-    const modal = document.getElementById('empty-edition-modal');
+  /* ── Shared simple modal: backdrop + dialog, focus trap, Escape and
+     backdrop-click to close. Used by the "no archive" QA joke and the
+     LinkedIn post player below — both just supply what happens on open
+     (onOpen) and, optionally, on close (onClose). ──────────────────── */
+  function initSimpleModal({ triggers, modal, closeBtn, onOpen, onClose }) {
     if (!triggers.length || !modal) return;
-    const closeBtn = document.getElementById('empty-edition-close');
-    const messageEl = document.getElementById('empty-edition-message');
     let releaseFocus = null;
-
-    const JOKES = [
-      'Looks like this edition escaped our regression tests.',
-      "Even our testers couldn't find any archives for this one.",
-      "404: recap not found. We've logged a bug and moved on.",
-      'This edition shipped to production, but the archives never made it past QA.',
-      'We searched high and low — this recap is still stuck in a "pending review" state.',
-    ];
 
     function close() {
       modal.hidden = true;
+      if (onClose) onClose();
       if (releaseFocus) { releaseFocus(); releaseFocus = null; }
     }
 
-    triggers.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const year = btn.dataset.edition || 'this edition';
-        const joke = JOKES[Math.floor(Math.random() * JOKES.length)];
-        messageEl.textContent = joke + ' (LSTE ' + year + ')';
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        if (onOpen) onOpen(trigger);
         modal.hidden = false;
         releaseFocus = trapFocus(modal, close);
         closeBtn.focus();
@@ -766,35 +766,41 @@
     modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
   }
 
+  /* ── QA-themed empty state for editions with no archive ───────── */
+  function initEmptyEditionModal() {
+    const messageEl = document.getElementById('empty-edition-message');
+    const JOKES = [
+      'Looks like this edition escaped our regression tests.',
+      "Even our testers couldn't find any archives for this one.",
+      "404: recap not found. We've logged a bug and moved on.",
+      'This edition shipped to production, but the archives never made it past QA.',
+      'We searched high and low — this recap is still stuck in a "pending review" state.',
+    ];
+    initSimpleModal({
+      triggers: document.querySelectorAll('.js-empty-edition'),
+      modal: document.getElementById('empty-edition-modal'),
+      closeBtn: document.getElementById('empty-edition-close'),
+      onOpen: (trigger) => {
+        const year = trigger.dataset.edition || 'this edition';
+        const joke = JOKES[Math.floor(Math.random() * JOKES.length)];
+        messageEl.textContent = joke + ' (LSTE ' + year + ')';
+      },
+    });
+  }
+
   /* ── LinkedIn post cards: open the real embed in a lazy modal ──── */
   function initLinkedInModal() {
-    const cards = document.querySelectorAll('.linkedin-card[data-activity]');
-    const modal = document.getElementById('linkedin-modal');
-    if (!cards.length || !modal) return;
-    const closeBtn = document.getElementById('linkedin-modal-close');
     const iframe = document.getElementById('linkedin-modal-iframe');
-    let releaseFocus = null;
-
-    function close() {
-      modal.hidden = true;
-      iframe.src = ''; // stop any playing video
-      if (releaseFocus) { releaseFocus(); releaseFocus = null; }
-    }
-
-    cards.forEach((card) => {
-      card.addEventListener('click', () => {
-        const id = card.dataset.activity;
-        if (!id) return;
-        iframe.src = 'https://www.linkedin.com/embed/feed/update/urn:li:activity:' + id;
-        modal.hidden = false;
-        releaseFocus = trapFocus(modal, close);
-        closeBtn.focus();
-      });
+    if (!iframe) return;
+    initSimpleModal({
+      triggers: document.querySelectorAll('.linkedin-card[data-activity]'),
+      modal: document.getElementById('linkedin-modal'),
+      closeBtn: document.getElementById('linkedin-modal-close'),
+      onOpen: (card) => {
+        iframe.src = 'https://www.linkedin.com/embed/feed/update/urn:li:activity:' + card.dataset.activity;
+      },
+      onClose: () => { iframe.src = ''; }, // stop any playing video
     });
-
-    closeBtn && closeBtn.addEventListener('click', close);
-    modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
   }
 
   document.addEventListener('DOMContentLoaded', () => {

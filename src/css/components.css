@@ -145,6 +145,8 @@
   left: 50%;
   transform: translateX(-50%);
   min-width: 190px;
+  max-height: calc(100vh - var(--header-h) - var(--space-8));
+  overflow-y: auto;
   background: var(--color-surface);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
@@ -510,3 +512,26 @@
   transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease), visibility var(--dur-base);
 }
 .back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* ── Shared simple modal (backdrop + centered dialog) — used by any
+   on-page dialog opened via initSimpleModal() in main.js, e.g. the
+   "no archive" QA joke and the LinkedIn post player. Page-specific CSS
+   only needs to override sizing (e.g. .media-modal-dialog's max-width). */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: rgba(15, 12, 30, 0.6);
+}
+.modal-dialog {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
