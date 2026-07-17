@@ -11,6 +11,7 @@
 <meta property="og:title" content="Venue — LSTE 2026">
 <meta property="og:description" content="Conference Center of Hôtel Parc Belle-Vue, Luxembourg City — everything you need to plan your visit.">
 <meta property="og:url" content="https://lste.lu/venue/">
+<meta property="og:image" content="https://lste.lu/assets/img/Parking-at-Hotel-Parc-Bellevue2-e1758201211776-800.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/img/lste-logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
@@ -26,6 +27,36 @@
   "@type": "Place",
   "name": "Conference Center Hôtel Parc Belle-Vue",
   "address": { "@type": "PostalAddress", "streetAddress": "5 Avenue Marie-Thérèse", "addressLocality": "Luxembourg", "postalCode": "L-2132", "addressCountry": "LU" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How do I get to the venue from Findel Airport?", "acceptedAnswer": { "@type": "Answer", "text": "Take the free bus (lines 16 or 29) or the tram from the airport to Hamilius — about 25 minutes, no ticket needed — then it's a 4-minute walk to Hôtel Parc Belle-Vue." } },
+    { "@type": "Question", "name": "Is the venue wheelchair accessible?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the Conference Center of Hôtel Parc Belle-Vue is fully wheelchair accessible." } },
+    { "@type": "Question", "name": "Is Wi-Fi available?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — high-speed Wi-Fi is available throughout the building for all attendees." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lste.lu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Venue"
+    }
+  ]
 }
 </script>
 </head>
@@ -123,8 +154,12 @@
             <li><i class="fa-solid fa-wifi" aria-hidden="true"></i> High-speed Wi-Fi throughout the building</li>
           </ul>
         </div>
-        <div class="reveal map-embed">
-          <iframe src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
+        <div class="reveal map-embed js-map-embed">
+          <iframe src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
+          <button type="button" class="map-embed__activate">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>Click to interact with the map</span>
+          </button>
         </div>
       </div>
     </div>
@@ -134,14 +169,41 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Getting there</span>
-        <h2 id="transport-heading">Easily reachable by tram, bus, or car.</h2>
+        <h2 id="transport-heading">Coming from outside Luxembourg? Here's the journey.</h2>
+        <p>Flying in, or already in the city — every leg from Findel Airport to the venue door is on free public transport.</p>
       </div>
-      <div class="grid grid--3 reveal">
-        <div class="card transport-card">
-          <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-train-tram"></i></div>
-          <h3 style="font-size:1.125rem;">By tram &amp; bus</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Hamilius (tram &amp; bus) is about a 4-minute walk, and Luxembourg–Amélie (bus) about 2 minutes. Bus lines 6, 10, 15, 16, and 609 all serve Hamilius. See <a href="https://www.mobiliteit.lu" target="_blank" rel="noopener">mobiliteit.lu</a> for routes.</p>
+
+      <!-- Airport → tram/bus → venue, sourced from lux-airport.lu (bus 16/29
+           schedules) and transports.public.lu (airport tram, live since
+           2 March 2025) — verified 2026-07, not invented. -->
+      <div class="timeline reveal">
+        <div class="timeline__item">
+          <span class="timeline__time">Findel</span>
+          <span class="timeline__marker"><span class="timeline__dot"></span></span>
+          <div class="timeline__content">
+            <p class="timeline__title">Findel Airport (LUX)</p>
+            <p class="timeline__desc">Free bus lines 16 &amp; 29 run directly from the airport to Hamilius, or take the tram (live since March 2025) from the airport stop.</p>
+          </div>
         </div>
+        <div class="timeline__item">
+          <span class="timeline__time">~25 min</span>
+          <span class="timeline__marker"><span class="timeline__dot"></span></span>
+          <div class="timeline__content">
+            <p class="timeline__title">Free of charge, all the way</p>
+            <p class="timeline__desc">All public transport in Luxembourg has been free since 2020 — no ticket needed. From elsewhere in the city, bus lines 6, 10, 15, and 609 also serve Hamilius; see <a href="https://www.mobiliteit.lu" target="_blank" rel="noopener">mobiliteit.lu</a> for full routes.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">4 min</span>
+          <span class="timeline__marker"><span class="timeline__dot"></span></span>
+          <div class="timeline__content">
+            <p class="timeline__title">Hamilius → the venue</p>
+            <p class="timeline__desc">Hôtel Parc Belle-Vue is a short walk from the Hamilius tram &amp; bus stop, right in the heart of Luxembourg City.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid--2 reveal" style="margin-top:var(--space-8);">
         <div class="card transport-card">
           <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-car"></i></div>
           <h3 style="font-size:1.125rem;">By car</h3>
@@ -182,6 +244,29 @@
           <p class="text-muted" style="font-size:0.9rem;">A contemporary hotel in Kirchberg with a spa and easy tram links to the city centre.</p>
           <div class="distance"><i class="fa-solid fa-train-tram" aria-hidden="true"></i> ~15 min by tram</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="venue-faq-heading">
+    <div class="container container--narrow">
+      <div class="section-head reveal">
+        <span class="eyebrow">Good to know</span>
+        <h2 id="venue-faq-heading">Venue questions.</h2>
+      </div>
+      <div class="reveal">
+        <details class="faq-item" open>
+          <summary>How do I get to the venue from Findel Airport?</summary>
+          <p>Take the free bus (lines 16 or 29) or the tram from the airport to Hamilius — about 25 minutes, no ticket needed — then it's a 4-minute walk to Hôtel Parc Belle-Vue.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the venue wheelchair accessible?</summary>
+          <p>Yes — the Conference Center of Hôtel Parc Belle-Vue is fully wheelchair accessible.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is Wi-Fi available?</summary>
+          <p>Yes — high-speed Wi-Fi is available throughout the building for all attendees.</p>
+        </details>
       </div>
     </div>
   </section>

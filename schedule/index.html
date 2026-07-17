@@ -11,6 +11,7 @@
 <meta property="og:title" content="Programme — LSTE">
 <meta property="og:description" content="The full LSTE programme across four tracks.">
 <meta property="og:url" content="https://lste.lu/schedule/">
+<meta property="og:image" content="https://lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/img/lste-logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
@@ -20,6 +21,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lste.lu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Programme"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -106,33 +126,28 @@
   </section>
 
   <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div data-tabs>
-      <div role="tablist" aria-label="Schedule tracks" class="tabs-nav">
-        <button role="tab" id="tab-keynote" aria-controls="panel-keynote">Keynote Room</button>
-        <button role="tab" id="tab-demo" aria-controls="panel-demo">Demo Room</button>
-        <button role="tab" id="tab-exhibition" aria-controls="panel-exhibition">Exhibition</button>
-        <button role="tab" id="tab-networking" aria-controls="panel-networking">Networking</button>
+    <div class="container container--narrow">
+      <div class="cluster reveal" style="justify-content:center;margin-bottom:var(--space-6);">
+        <span class="badge">Keynote Room</span>
+        <span class="badge">Demo Room</span>
+        <span class="badge">Exhibition</span>
+        <span class="badge">Networking</span>
       </div>
 
-      <!-- 2026 session content isn't published yet — each track panel shows
-           a placeholder that keeps the tab/timeline structure ready to drop
-           the real programme into once it's confirmed. -->
-      <div id="panel-keynote" role="tabpanel" aria-labelledby="tab-keynote" class="timeline">
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">The Keynote Room schedule for LSTE 2026 will be published here closer to the event.</p></div></div>
-      </div>
-
-      <div id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" class="timeline" hidden>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">The Demo Room schedule for LSTE 2026 will be published here closer to the event.</p></div></div>
-      </div>
-
-      <div id="panel-exhibition" role="tabpanel" aria-labelledby="tab-exhibition" class="timeline" hidden>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">The Exhibition schedule for LSTE 2026 will be published here as sponsors confirm — see <a href="../sponsors/index.html">Sponsors &amp; Partners</a>.</p></div></div>
-      </div>
-
-      <div id="panel-networking" role="tabpanel" aria-labelledby="tab-networking" class="timeline" hidden>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">The Networking schedule for LSTE 2026 will be published here closer to the event.</p></div></div>
-      </div>
+      <!-- 2026 session content isn't published yet. A single placeholder
+           replaces the old 4-tab layout (all four tabs showed identical
+           "coming soon" text) — same information, less UI to parse.
+           Reintroduce per-track tabs (data-tabs / role=tablist, see
+           assets/js/main.js initTabs()) once real sessions differ. -->
+      <div class="timeline reveal">
+        <div class="timeline__item timeline__item--break">
+          <span class="timeline__time">—</span>
+          <span class="timeline__marker"><span class="timeline__dot"></span></span>
+          <div class="timeline__content">
+            <p class="timeline__title">Programme coming soon</p>
+            <p class="timeline__desc">The full LSTE 2026 schedule across all four tracks will be published here closer to the event — see <a href="../sponsors/index.html">Sponsors &amp; Partners</a> for exhibition updates as they confirm.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

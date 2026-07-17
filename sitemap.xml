@@ -3,17 +3,26 @@
   <url><loc>https://lste.lu/</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://lste.lu/register/</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://lste.lu/about/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lste.lu/become-a-speaker/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lste.lu/speakers/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://lste.lu/schedule/</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lste.lu/venue/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lste.lu/previous-editions/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lste.lu/previous-editions/edition-2024/</loc><lastmod>2026-07-13</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://lste.lu/previous-editions/edition-2025/</loc><lastmod>2026-07-13</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://lste.lu/become-a-speaker/</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lste.lu/schedule/</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lste.lu/venue/</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lste.lu/previous-editions/</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lste.lu/previous-editions/edition-2025/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://lste.lu/previous-editions/edition-2024/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://lste.lu/previous-editions/edition-2019/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lste.lu/previous-editions/edition-2018/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lste.lu/previous-editions/edition-2016/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://lste.lu/gallery/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lste.lu/sponsors/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lste.lu/resources/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://lste.lu/news/</loc><lastmod>2026-07-13</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lste.lu/contact/</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://lste.lu/privacy-policy/</loc><lastmod>2026-07-13</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lste.lu/sponsors/</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lste.lu/resources/</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lste.lu/news/</loc><lastmod>2026-07-17</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lste.lu/news/avanti-sharma-mc/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lste.lu/news/lste-2025-ai-7th-edition/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lste.lu/news/digital-colleague/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lste.lu/news/lste-2024-landmark/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lste.lu/news/deloitte-lste-2024/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lste.lu/news/sogeti-lste-2024/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://lste.lu/linkedin/</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lste.lu/contact/</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lste.lu/privacy-policy/</loc><lastmod>2026-07-17</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

@@ -191,3 +191,115 @@ points to the relevant `previous-editions/edition-2024|2025/` recap page
 (or, for the Avanti Sharma piece, straight to `register/` for the next
 edition) instead of the stale "Register for [past event]" CTA that ran in
 the original piece.
+
+## 2026-07 audit & polish pass
+
+A full-site UX/UI/accessibility/SEO/performance audit (3 parallel research
+passes: design-system/JS, SEO, accessibility/UX) followed by a matching
+implementation pass, done without touching the colour palette, typography,
+or neumorphic shadow system. Kept deliberately incremental — no new
+dependencies, no new animation infrastructure beyond what `initReveal()`
+already provided.
+
+**Accessibility**
+- Fixed the h1→h3 heading-hierarchy skip that existed on all 6 news
+  articles (subheadings promoted h3→h2) and on `previous-editions/`,
+  `news/`, `speakers/`, `contact/` (added a heading — visible where it adds
+  real orientation value, `sr-only` where a visible one would just repeat
+  the hero's `<h1>`).
+- Fixed the `<h4>`/`<h3>` inconsistency between the 3 card grids on
+  `become-a-speaker/index.html` (two used `<h4>`, one used `<h3>` for the
+  same visual weight — aligned on `<h3>`).
+- `privacy-policy/index.html`'s "Contents" TOC label was an `<h3>` sitting
+  *before* the page's first `<h2>` — changed to a non-heading
+  `.policy-toc__label` (the `<nav>` already carries `aria-label`, so no
+  information is lost).
+- `base.css`'s `prefers-reduced-motion` block zeroed `transition-duration`
+  but not `transition-delay` — a latent gap that would have made any
+  future staggered animation (see below) still visibly cascade in for
+  motion-sensitive users. Fixed before adding the stagger.
+- `.footer-social a` bumped from 38×38px to 44×44px to meet the same
+  click-target size used by every other icon button on the site.
+
+**Performance/UX: map embeds**
+- Both Google Maps iframes (venue, contact) loaded unconditionally and
+  could scroll-jack the page. Replaced with a click-to-activate overlay
+  (`.js-map-embed` / `initMapEmbeds()` in `src/js/main.js`) — same lazy
+  philosophy as the existing LinkedIn modal, just inline instead of in a
+  dialog. The iframe request only happens once a visitor actually clicks.
+
+**Page-specific restructuring** (see the brief's own reasoning — applied
+only where it adds real value, not generalised everywhere):
+- **Venue** — "Getting there" rebuilt around a 3-step `.timeline` journey
+  (Findel Airport → free bus 16/29 or tram, ~25 min → Hamilius → 4-min walk),
+  reusing the existing timeline component (`schedule/`, `become-a-speaker/`)
+  instead of the previous 3 same-size transport cards. Local car/street
+  parking kept as a secondary block underneath. Facts verified via
+  lux-airport.lu (bus 16/29 schedules) and transports.public.lu (airport
+  tram, live since 2 March 2025) — not invented. Added a small venue-only
+  FAQ (airport transfer, wheelchair access, Wi-Fi) with its own `FAQPage`
+  JSON-LD, deliberately not duplicating the homepage's parking FAQ entry.
+- **Schedule** — the 4 track tabs all showed identical "coming soon" text.
+  Collapsed to one placeholder panel + a row of track-name badges; the
+  `data-tabs`/`role=tablist` markup (and `initTabs()`) stay in the codebase
+  for reuse once real per-track sessions exist.
+- **Sponsors** — Gold and Silver were two near-identical "will be announced"
+  paragraphs. Merged into one section with one CTA.
+- **Previous editions** — the 2025 (7th edition, latest) card gets a
+  "Latest edition" ribbon + elevated shadow (same visual language as
+  `.pricing-card--featured`'s ribbon), for grid rhythm without changing
+  column span. The 2019 card's missing "theme" field was left as-is —
+  no verified theme exists for that edition, so nothing was invented to
+  fill it.
+- **News articles** — the 4 direct Dr. Kramer quotes in `digital-colleague`
+  are now `<blockquote>`s (reusing the `.policy-highlight` left-accent-border
+  look) to break up the otherwise monotonous single-column long-form pages.
+
+**SEO**
+- Added `og:image` to the 17 pages that had none (news articles reuse their
+  own hero photo; pages without a dedicated photo fall back to the same
+  generic conference photo already used as `index.html`'s default).
+  `privacy-policy/index.html` had no OpenGraph block at all — added the
+  full set.
+- Trimmed 5 meta descriptions that ran past ~160 characters (would have
+  truncated in search results) down to ~125–155 chars each, without
+  changing their meaning.
+- Added `NewsArticle` JSON-LD to all 6 `news/*` article pages (headline,
+  image, datePublished, publisher `Organization`, `mainEntityOfPage`).
+- Added `BreadcrumbList` JSON-LD to every page that already renders a
+  visible breadcrumb, via a new one-off, re-runnable script:
+  `scripts/inject-breadcrumb-schema.mjs` (`node scripts/inject-breadcrumb-schema.mjs`).
+  It parses each page's own breadcrumb nav and mirrors it into schema — it
+  doesn't invent hierarchy, and it's idempotent (skips pages that already
+  have a `BreadcrumbList` block, and skips anything `noindex`, e.g.
+  `speakers/index.html`). Re-run it whenever a new page gets a breadcrumb.
+- `sitemap.xml`: added the 6 news article pages, `linkedin/`, and the
+  3 previously-missing edition recaps (2016/2018/2019). Also **removed**
+  `speakers/` from the sitemap — it carries `<meta name="robots"
+  content="noindex">` and had no business being listed for crawling in
+  the first place.
+- Twitter Card tags were already present sitewide (`summary_large_image`)
+  and were left as-is — no new Twitter-specific tags were added, per
+  instruction not to add them without a clear use case.
+
+**Subtle motion/premium polish** (all CSS `transform`/`opacity` only,
+riding the same `.reveal`/`.is-visible` toggle `initReveal()` already
+manages via `IntersectionObserver` — no new JS observers):
+- Card grids, the sponsor strip, clusters, the gallery masonry, the
+  LinkedIn grid, and timelines now cascade their items in one at a time
+  (small `nth-child` `transition-delay`, capped at 300ms) instead of
+  popping in as a single block. The reduced-motion fix above makes sure
+  this fully disappears under `prefers-reduced-motion`.
+- Trailing arrow/external-link icons in `.btn`, `.news-link`, and
+  `.muted-link` nudge 3px on hover/focus — a small, GPU-cheap cue that the
+  action moves you forward.
+- Considered and **deliberately skipped**: a mouse-follow tilt effect on
+  cards. Given animations are the lowest priority in the brief's own
+  ordering and the effort/JS-complexity (per-card mousemove listeners)
+  didn't clear the "does this genuinely help" bar for a first pass.
+
+**Not touched, and why**: the Formspree contact/newsletter placeholder IDs
+(still need a real Formspree ID from the client — see the section above);
+the "Platinium" spelling (used consistently across the site — this was
+the client's own explicit wording, not a typo); the About page's
+organiser photo placeholder (no real team photo supplied yet).

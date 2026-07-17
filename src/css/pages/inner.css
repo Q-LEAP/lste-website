@@ -56,6 +56,19 @@
 .breadcrumb--on-dark [aria-current] { color: #fff; }
 
 .edition-card { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); }
+.edition-card--latest { position: relative; border: 2px solid var(--color-primary); box-shadow: var(--shadow-lg); }
+.edition-card__ribbon {
+  position: absolute;
+  top: -12px; right: var(--space-5);
+  background: var(--gradient-brand);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3em 1em;
+  border-radius: var(--radius-pill);
+}
 .edition-card__year {
   font-family: var(--font-heading);
   font-size: 2.5rem;
@@ -111,8 +124,42 @@
    With no definite parent height (single-column/mobile), a percentage
    height is invalid and computes to auto, so `aspect-ratio` takes over and
    gives the iframe a sensible self-contained size instead of collapsing. */
-.map-embed { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
-.map-embed iframe { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; min-height: 320px; border: 0; }
+.map-embed { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+.map-embed iframe { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; min-height: 320px; border: 0; pointer-events: none; }
+/* Frosted-glass "click to activate" overlay: the real map is already
+   loading underneath (native loading="lazy", so it only fetches once
+   scrolled close), just softly blurred and dimmed until the visitor
+   chooses to interact — avoids the classic scroll-jacking annoyance of
+   an embedded map capturing the mouse wheel. Reuses --header-bg, the
+   same theme-aware translucent surface already used for the frosted
+   site header, so the glass tint stays correct in dark mode too. */
+.map-embed__activate {
+  position: absolute;
+  inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-3);
+  background: var(--header-bg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-ink);
+  font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem;
+  text-align: center;
+  transition: background var(--dur-base) var(--ease), backdrop-filter var(--dur-base) var(--ease), -webkit-backdrop-filter var(--dur-base) var(--ease);
+}
+.map-embed__activate i { font-size: 1.75rem; color: var(--color-primary); }
+.map-embed__activate span {
+  background: var(--color-surface);
+  padding: 0.5em 1.1em;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+/* Hover/focus sharpens the preview (less blur) to invite the click — it
+   must stay translucent throughout, never flip to an opaque fill, or the
+   map "disappears" behind a flat panel instead of coming into focus. */
+.map-embed__activate:hover, .map-embed__activate:focus-visible {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
 
 .venue-feature-list { display: flex; flex-direction: column; gap: var(--space-3); margin: var(--space-5) 0; }
 .venue-feature-list li { display: flex; align-items: flex-start; gap: var(--space-3); font-size: 0.9375rem; color: var(--color-body-text); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
@@ -145,7 +192,7 @@
 /* ── Policy / legal content — also reused by long-form news articles
    (.article-body) since both are the same "readable prose" layout ──── */
 .policy-toc { background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); margin-bottom: var(--space-8); }
-.policy-toc h3 { font-size: 1rem; margin-bottom: var(--space-3); }
+.policy-toc__label { font-size: 1rem; font-weight: 700; font-family: var(--font-heading); color: var(--color-ink); margin-bottom: var(--space-3); }
 .policy-toc ol { display: grid; grid-template-columns: 1fr; gap: var(--space-2); padding-left: 1.2em; list-style: decimal; }
 .policy-body h2, .article-body h2 { font-size: 1.375rem; margin: var(--space-8) 0 var(--space-3); }
 .policy-body h2:first-of-type, .article-body h2:first-of-type { margin-top: 0; }
@@ -154,6 +201,16 @@
 .policy-body li, .article-body li { margin-bottom: var(--space-2); }
 .policy-highlight { background: var(--color-surface-alt); border-left: 3px solid var(--color-primary); padding: var(--space-4) var(--space-5); border-radius: var(--radius-sm); margin: var(--space-4) 0; }
 .article-body p { margin-bottom: var(--space-4); color: var(--color-body-text); }
+.article-body blockquote {
+  background: var(--color-surface-alt);
+  border-left: 3px solid var(--color-primary);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-sm);
+  margin: var(--space-5) 0;
+  font-style: italic;
+  color: var(--color-ink);
+}
+.article-body blockquote p { margin-bottom: 0; }
 .article-meta { display: flex; align-items: center; gap: var(--space-3); color: var(--color-muted); font-size: 0.875rem; margin-bottom: var(--space-6); }
 .article-hero-img { border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-8); box-shadow: var(--shadow-md); }
 .article-hero-img img { width: 100%; height: auto; display: block; }
@@ -202,9 +259,25 @@
   left: 50%;
   width: 2px;
   background: var(--color-border);
-  transform: translateX(-50%);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  transition: transform var(--dur-slow) var(--ease);
 }
 .timeline__item:last-child .timeline__marker::before { display: none; }
+/* The connecting line "grows" downward from each dot once its item has
+   appeared — shortly after the item's own fade-in (same nth-child cascade
+   used by the shared .reveal stagger, offset by +150ms so the line always
+   trails its item), giving the sense of a path being drawn top to bottom
+   rather than the whole timeline popping in at once. Transform-only, so
+   it's as GPU-cheap as the rest of the reveal system, and it's neutralized
+   the same way under prefers-reduced-motion (see base.css). */
+.timeline.reveal.is-visible .timeline__marker::before { transform: translateX(-50%) scaleY(1); }
+.timeline.reveal.is-visible > *:nth-child(1) .timeline__marker::before { transition-delay: 150ms; }
+.timeline.reveal.is-visible > *:nth-child(2) .timeline__marker::before { transition-delay: 210ms; }
+.timeline.reveal.is-visible > *:nth-child(3) .timeline__marker::before { transition-delay: 270ms; }
+.timeline.reveal.is-visible > *:nth-child(4) .timeline__marker::before { transition-delay: 330ms; }
+.timeline.reveal.is-visible > *:nth-child(5) .timeline__marker::before { transition-delay: 390ms; }
+.timeline.reveal.is-visible > *:nth-child(n+6) .timeline__marker::before { transition-delay: 450ms; }
 .timeline__dot {
   width: 12px;
   height: 12px;

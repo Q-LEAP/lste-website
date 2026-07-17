@@ -803,6 +803,24 @@
     });
   }
 
+  /* ── Google Maps embeds: click-to-activate ─────────────────────────
+     The map iframe is already there (native loading="lazy" defers the
+     actual fetch until it's scrolled near), just visually blurred behind
+     a frosted-glass overlay with pointer-events disabled — so scrolling
+     past it never gets captured by the map's own scroll/zoom handling.
+     Clicking the overlay removes it and hands control to the map. ──── */
+  function initMapEmbeds() {
+    document.querySelectorAll('.js-map-embed').forEach((el) => {
+      const btn = el.querySelector('.map-embed__activate');
+      const iframe = el.querySelector('iframe');
+      if (!btn || !iframe) return;
+      btn.addEventListener('click', () => {
+        btn.remove();
+        iframe.style.pointerEvents = 'auto';
+      }, { once: true });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initAnnouncement();
@@ -821,5 +839,6 @@
     initChat();
     initEmptyEditionModal();
     initLinkedInModal();
+    initMapEmbeds();
   });
 })();

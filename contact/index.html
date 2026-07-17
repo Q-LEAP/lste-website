@@ -11,6 +11,7 @@
 <meta property="og:title" content="Contact — LSTE">
 <meta property="og:description" content="Get in touch with the LSTE team.">
 <meta property="og:url" content="https://lste.lu/contact/">
+<meta property="og:image" content="https://lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/img/lste-logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
@@ -20,6 +21,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://lste.lu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -118,6 +138,7 @@
           message defined below.
         -->
         <form class="reveal" data-async data-success-message="Message sent — we'll get back to you soon." data-error-message="Something went wrong. Please email us directly at hello@lste.lu." action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST" novalidate>
+          <h2 class="sr-only">Send us a message</h2>
           <input type="text" name="_gotcha" class="hp-field" tabindex="-1" aria-hidden="true">
 
           <div class="form-group">
@@ -141,7 +162,7 @@
         </form>
 
         <div class="card contact-info-card reveal">
-          <h3 style="margin-bottom:var(--space-5);">Get in touch</h3>
+          <h2 style="margin-bottom:var(--space-5);font-size:1.0625rem;">Get in touch</h2>
           <ul>
             <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@lste.lu">hello@lste.lu</a></li>
             <li><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+35220211700">+352 20 21 17</a></li>
@@ -154,8 +175,12 @@
 
       </div>
 
-      <div class="reveal map-embed" style="margin-top:var(--space-10);">
-        <iframe src="https://www.google.com/maps?q=10B+rue+des+m%C3%A9rovingiens,+8070+Bertrange,+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Q-Leap SA offices, Bertrange"></iframe>
+      <div class="reveal map-embed js-map-embed" style="margin-top:var(--space-10);">
+        <iframe src="https://www.google.com/maps?q=10B+rue+des+m%C3%A9rovingiens,+8070+Bertrange,+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Q-Leap SA offices, Bertrange"></iframe>
+        <button type="button" class="map-embed__activate">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <span>Click to interact with the map</span>
+        </button>
       </div>
     </div>
   </section>

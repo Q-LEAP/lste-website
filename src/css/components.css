@@ -21,6 +21,20 @@
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 
+/* Trailing icon on a CTA nudges forward on hover/focus — a small, purely
+   decorative cue that the action moves you onward. Transform only, so it
+   rides on the same GPU-friendly, reduced-motion-safe transition system
+   as everything else here. */
+.btn i:last-child, .news-link i:last-child, .muted-link i:last-child {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.btn:hover i:last-child, .btn:focus-visible i:last-child,
+.news-link:hover i:last-child, .news-link:focus-visible i:last-child,
+.muted-link:hover i:last-child, .muted-link:focus-visible i:last-child {
+  transform: translateX(3px);
+}
+
 /* A long CTA label (e.g. "Request the sponsorship prospectus") only fits
    on one line down to a point — let it wrap instead of overflowing the
    viewport on narrow phones. */
@@ -273,7 +287,7 @@
 .footer-social { display: flex; gap: var(--space-3); margin-top: var(--space-4); }
 .footer-social a {
   display: flex; align-items: center; justify-content: center;
-  width: 38px; height: 38px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
@@ -492,6 +506,40 @@
   transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Multi-item reveal containers (card grids, clusters, the sponsor strip,
+   timelines, masonry) cascade their children in one at a time instead of
+   popping the whole block in as a single unit — the container itself stops
+   animating (opacity/transform reset to their end state) and its direct
+   children each get their own fade + a small nth-child transition-delay.
+   Still pure CSS/transform/opacity, still driven by the same .is-visible
+   toggle from initReveal()'s IntersectionObserver — no JS changes needed. */
+.grid.reveal, .cluster.reveal, .gallery-preview-grid.reveal,
+.linkedin-grid.reveal, .masonry.reveal, .timeline.reveal, .sponsor-strip.reveal {
+  opacity: 1;
+  transform: none;
+}
+.grid.reveal > *, .cluster.reveal > *, .gallery-preview-grid.reveal > *,
+.linkedin-grid.reveal > *, .masonry.reveal > *, .timeline.reveal > *, .sponsor-strip.reveal > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+.grid.reveal.is-visible > *, .cluster.reveal.is-visible > *, .gallery-preview-grid.reveal.is-visible > *,
+.linkedin-grid.reveal.is-visible > *, .masonry.reveal.is-visible > *, .timeline.reveal.is-visible > *, .sponsor-strip.reveal.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.grid.reveal.is-visible > *:nth-child(2), .cluster.reveal.is-visible > *:nth-child(2), .gallery-preview-grid.reveal.is-visible > *:nth-child(2),
+.linkedin-grid.reveal.is-visible > *:nth-child(2), .masonry.reveal.is-visible > *:nth-child(2), .timeline.reveal.is-visible > *:nth-child(2), .sponsor-strip.reveal.is-visible > *:nth-child(2) { transition-delay: 60ms; }
+.grid.reveal.is-visible > *:nth-child(3), .cluster.reveal.is-visible > *:nth-child(3), .gallery-preview-grid.reveal.is-visible > *:nth-child(3),
+.linkedin-grid.reveal.is-visible > *:nth-child(3), .masonry.reveal.is-visible > *:nth-child(3), .timeline.reveal.is-visible > *:nth-child(3), .sponsor-strip.reveal.is-visible > *:nth-child(3) { transition-delay: 120ms; }
+.grid.reveal.is-visible > *:nth-child(4), .cluster.reveal.is-visible > *:nth-child(4), .gallery-preview-grid.reveal.is-visible > *:nth-child(4),
+.linkedin-grid.reveal.is-visible > *:nth-child(4), .masonry.reveal.is-visible > *:nth-child(4), .timeline.reveal.is-visible > *:nth-child(4), .sponsor-strip.reveal.is-visible > *:nth-child(4) { transition-delay: 180ms; }
+.grid.reveal.is-visible > *:nth-child(5), .cluster.reveal.is-visible > *:nth-child(5), .gallery-preview-grid.reveal.is-visible > *:nth-child(5),
+.linkedin-grid.reveal.is-visible > *:nth-child(5), .masonry.reveal.is-visible > *:nth-child(5), .timeline.reveal.is-visible > *:nth-child(5), .sponsor-strip.reveal.is-visible > *:nth-child(5) { transition-delay: 240ms; }
+.grid.reveal.is-visible > *:nth-child(n+6), .cluster.reveal.is-visible > *:nth-child(n+6), .gallery-preview-grid.reveal.is-visible > *:nth-child(n+6),
+.linkedin-grid.reveal.is-visible > *:nth-child(n+6), .masonry.reveal.is-visible > *:nth-child(n+6), .timeline.reveal.is-visible > *:nth-child(n+6), .sponsor-strip.reveal.is-visible > *:nth-child(n+6) { transition-delay: 300ms; }
 
 /* ── Back to top ─────────────────────────────────────────────────── */
 .back-to-top {
