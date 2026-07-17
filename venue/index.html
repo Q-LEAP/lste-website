@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-<title>Venue — LSTE 2026 at Terres Rouges, Esch-Belval</title>
-<meta name="description" content="LSTE 2026 takes place at Bâtiment des Terres Rouges, Esch-Belval — address, transport, parking, and hotel recommendations for visitors.">
+<title>Venue — LSTE 2026 at Hôtel Parc Belle-Vue, Luxembourg City</title>
+<meta name="description" content="LSTE 2026 takes place at the Conference Center of Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, Luxembourg City — address, transport, and parking for visitors.">
 <link rel="canonical" href="https://lste.lu/venue/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Venue — LSTE 2026">
-<meta property="og:description" content="Bâtiment des Terres Rouges, Esch-Belval — everything you need to plan your visit.">
+<meta property="og:description" content="Conference Center of Hôtel Parc Belle-Vue, Luxembourg City — everything you need to plan your visit.">
 <meta property="og:url" content="https://lste.lu/venue/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/img/lste-logo.svg" type="image/svg+xml">
@@ -24,8 +24,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Place",
-  "name": "Bâtiment des Terres Rouges",
-  "address": { "@type": "PostalAddress", "streetAddress": "14 Porte de France", "addressLocality": "Esch-sur-Alzette", "postalCode": "4360", "addressCountry": "LU" }
+  "name": "Conference Center Hôtel Parc Belle-Vue",
+  "address": { "@type": "PostalAddress", "streetAddress": "5 Avenue Marie-Thérèse", "addressLocality": "Luxembourg", "postalCode": "L-2132", "addressCountry": "LU" }
 }
 </script>
 </head>
@@ -40,23 +40,27 @@
       <img src="../assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
+    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
+         per the nav simplification pass — everything else lives in the
+         "More" dropdown / mobile hamburger. Speakers is intentionally not
+         linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
         <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" aria-current="page" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../sponsors/index.html">Sponsors</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
             <li><a href="../previous-editions/index.html">Previous Editions</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../news/index.html">News</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
-        <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -65,7 +69,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Reserve Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -75,10 +79,9 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../about/index.html">About</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../resources/index.html">Resources</a></li>
     <li><a href="../previous-editions/index.html">Previous Editions</a></li>
@@ -86,7 +89,7 @@
     <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Reserve Ticket</a></li>
   </ul>
 </div>
 
@@ -98,8 +101,8 @@
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Venue</span></nav>
       <span class="eyebrow">Venue</span>
-      <h1>Bâtiment des Terres Rouges, Esch-Belval.</h1>
-      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Set against Belval's former blast furnaces, Terres Rouges pairs Luxembourg's industrial heritage with modern conference facilities.</p>
+      <h1>Hôtel Parc Belle-Vue, Luxembourg City.</h1>
+      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Right in the heart of Luxembourg City, the Conference Center of Hôtel Parc Belle-Vue is minutes from Hamilius by tram, bus, or foot.</p>
     </div>
   </section>
 
@@ -108,18 +111,18 @@
       <div class="grid grid--2">
         <div class="reveal">
           <h2>About the venue</h2>
-          <p>LSTE 2026 is held at the iconic Terres Rouges Building in the heart of the Belval innovation district in Esch-sur-Alzette. This striking venue symbolises Luxembourg's transformation from industrial past to knowledge-driven future — modern conference facilities, spacious networking areas, and excellent transport links.</p>
+          <p>LSTE 2026 is held at the Conference Center of Hôtel Parc Belle-Vue, right in the heart of Luxembourg City. The venue is easily accessible by public transport, including tram and bus, and for those coming by car, parking is available on-site.</p>
           <ul class="venue-feature-list">
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> 14 Porte de France, 4360 Esch-sur-Alzette, Luxembourg</li>
-            <li><i class="fa-solid fa-train" aria-hidden="true"></i> Easy access by train — Esch-sur-Alzette station nearby</li>
-            <li><i class="fa-solid fa-square-parking" aria-hidden="true"></i> Free parking available on site</li>
-            <li><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Modern conference facilities &amp; breakout rooms</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> 5 Avenue Marie-Thérèse, L-2132 Luxembourg</li>
+            <li><i class="fa-solid fa-train-tram" aria-hidden="true"></i> Hamilius (tram &amp; bus) — about a 4-minute walk</li>
+            <li><i class="fa-solid fa-bus" aria-hidden="true"></i> Luxembourg, Amélie (bus) — about a 2-minute walk</li>
+            <li><i class="fa-solid fa-square-parking" aria-hidden="true"></i> Free on-site parking for guests (70 spaces, no reservations)</li>
             <li><i class="fa-solid fa-wheelchair" aria-hidden="true"></i> Fully wheelchair accessible</li>
             <li><i class="fa-solid fa-wifi" aria-hidden="true"></i> High-speed Wi-Fi throughout the building</li>
           </ul>
         </div>
         <div class="reveal map-embed">
-          <iframe src="https://www.google.com/maps?q=14+Porte+de+France,+4360+Esch-sur-Alzette,+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Bâtiment des Terres Rouges, Esch-sur-Alzette"></iframe>
+          <iframe src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
         </div>
       </div>
     </div>
@@ -129,23 +132,23 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Getting there</span>
-        <h2 id="transport-heading">Easily reachable by train, car, or bus.</h2>
+        <h2 id="transport-heading">Easily reachable by tram, bus, or car.</h2>
       </div>
       <div class="grid grid--3 reveal">
         <div class="card transport-card">
-          <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-train"></i></div>
-          <h3 style="font-size:1.125rem;">By train</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Luxembourg City to Esch-sur-Alzette takes about 30 minutes, with regular services throughout the day. Belval is a short walk or local bus ride from Esch station.</p>
+          <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-train-tram"></i></div>
+          <h3 style="font-size:1.125rem;">By tram &amp; bus</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Hamilius (tram &amp; bus) is about a 4-minute walk, and Luxembourg–Amélie (bus) about 2 minutes. Bus lines 6, 10, 15, 16, and 609 all serve Hamilius. See <a href="https://www.mobiliteit.lu" target="_blank" rel="noopener">mobiliteit.lu</a> for routes.</p>
         </div>
         <div class="card transport-card">
           <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-car"></i></div>
           <h3 style="font-size:1.125rem;">By car</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Take the A4 motorway southbound and exit at Esch-Belval, following signs for Belval / Porte de France. Free parking is available at the venue and nearby.</p>
+          <p class="text-muted" style="font-size:0.9rem;">Free parking for guests at the Belle-Vue Conference Center (70 spaces, no reservations — enter the underground garage and turn right). Overflow options: Parkolux Monterey (24b Av. Monterey, 5-minute walk) or Park &amp; Ride Bouillon via bus 15.</p>
         </div>
         <div class="card transport-card">
-          <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-bus"></i></div>
-          <h3 style="font-size:1.125rem;">By bus</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Multiple lines serve Esch-Belval and connect to Esch-sur-Alzette town centre. Check <a href="https://www.tram.lu" target="_blank" rel="noopener">tram.lu</a> for current routes.</p>
+          <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-square-parking"></i></div>
+          <h3 style="font-size:1.125rem;">Street parking</h3>
+          <p class="text-muted" style="font-size:0.9rem;">If both car parks are full, street parking around Luxembourg City is available and free after 6 PM.</p>
         </div>
       </div>
     </div>
@@ -160,22 +163,22 @@
       </div>
       <div class="grid grid--3 reveal">
         <div class="card hotel-card">
-          <span class="badge">Upscale</span>
-          <h3 style="font-size:1.0625rem;">Melia Luxembourg</h3>
-          <p class="text-muted" style="font-size:0.9rem;">A contemporary hotel in Kirchberg with a spa and easy transport links to Esch-Belval.</p>
-          <div class="distance"><i class="fa-solid fa-car" aria-hidden="true"></i> ~25 min by car or train</div>
+          <span class="badge">On site</span>
+          <h3 style="font-size:1.0625rem;">Hôtel Parc Belle-Vue</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Stay right where the event is held — the conference venue is also a hotel, in the heart of Luxembourg City.</p>
+          <div class="distance"><i class="fa-solid fa-person-walking" aria-hidden="true"></i> On site</div>
         </div>
         <div class="card hotel-card">
           <span class="badge">Luxury</span>
           <h3 style="font-size:1.0625rem;">Hotel Le Royal</h3>
           <p class="text-muted" style="font-size:0.9rem;">One of Luxembourg City's most prestigious addresses, in the city centre with excellent dining.</p>
-          <div class="distance"><i class="fa-solid fa-car" aria-hidden="true"></i> ~30 min by car</div>
+          <div class="distance"><i class="fa-solid fa-person-walking" aria-hidden="true"></i> ~10 min walk</div>
         </div>
         <div class="card hotel-card">
-          <span class="badge">Walking distance</span>
-          <h3 style="font-size:1.0625rem;">Hotel Christophe Colomb</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Conveniently located in Esch-sur-Alzette town centre, minutes from the venue.</p>
-          <div class="distance"><i class="fa-solid fa-person-walking" aria-hidden="true"></i> ~15 min walk</div>
+          <span class="badge">Upscale</span>
+          <h3 style="font-size:1.0625rem;">Melia Luxembourg</h3>
+          <p class="text-muted" style="font-size:0.9rem;">A contemporary hotel in Kirchberg with a spa and easy tram links to the city centre.</p>
+          <div class="distance"><i class="fa-solid fa-train-tram" aria-hidden="true"></i> ~15 min by tram</div>
         </div>
       </div>
     </div>
@@ -184,7 +187,7 @@
   <section class="section--brand final-cta">
     <div class="container">
       <h2 class="text-white">Ready to join us?</h2>
-      <p style="max-width:44ch;margin:0 auto;opacity:0.9;">Secure your place at LSTE 2026 — 26 November at Terres Rouges, Esch-sur-Alzette.</p>
+      <p style="max-width:44ch;margin:0 auto;opacity:0.9;">Secure your place at LSTE 2026 — 26 November at Hôtel Parc Belle-Vue, Luxembourg City.</p>
       <div class="final-cta__actions">
         <a class="btn btn--white btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your ticket</a>
       </div>
@@ -214,7 +217,6 @@
         <ul>
           <li><a href="../about/index.html">About LSTE</a></li>
           <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="../speakers/index.html">Speakers</a></li>
           <li><a href="../schedule/index.html">Programme</a></li>
           <li><a href="../venue/index.html">Venue</a></li>
         </ul>

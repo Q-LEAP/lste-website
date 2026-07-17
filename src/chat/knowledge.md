@@ -22,15 +22,15 @@ depends entirely on it.
 
 - **Date:** Thursday **26 November 2026**.
 - **Hours:** 08:30 – 18:00.
-- **Venue:** Bâtiment des Terres Rouges, Esch-Belval —
-  **14 Porte de France, 4360 Esch-sur-Alzette, Luxembourg**.
+- **Venue:** Conference Center of Hôtel Parc Belle-Vue, Luxembourg City —
+  **5 Avenue Marie-Thérèse, L-2132 Luxembourg**.
 - **Admission:** the conference is **free to attend** (registration required).
 - **Language:** the event is held in **English**.
 - **Expected attendance:** 300+ testing and QA professionals.
 - The detailed 2026 programme (talks, tracks, times) is **not published yet** —
-  it will be released closer to the event. The `/schedule/` page currently
-  shows the most recent (2025) programme as a reference for the shape of the
-  day.
+  it will be released closer to the event. The `/schedule/` page shows a
+  "coming soon" placeholder for each track (Keynote Room, Demo Room,
+  Exhibition, Networking) until then.
 
 ## Tickets & registration
 
@@ -61,39 +61,44 @@ depends entirely on it.
 
 ## Becoming a sponsor
 
-- LSTE offers sponsorship tiers (Gold, Silver, Bronze) plus partner slots.
+- LSTE offers sponsorship tiers: Platinium, Gold, and Silver.
+- For 2026, Q-Leap (the organiser) is the confirmed Platinium sponsor; Gold
+  and Silver are open for other companies to confirm.
 - Interested companies can start via the "Sponsor With Us" section
   (`/resources/`) or see current sponsors on the Sponsors & Partners page
   (`/sponsors/`). For sponsorship enquiries, contact hello@lste.lu.
 
 ## Venue, getting there & practical info
 
-- **Venue:** Bâtiment des Terres Rouges, 14 Porte de France, 4360
-  Esch-sur-Alzette (Esch-Belval), Luxembourg.
-- **By train:** Luxembourg City to Esch-sur-Alzette takes about 30 minutes,
-  with regular services; Belval is a short walk or local bus ride from Esch
-  station.
-- **By car:** head to Esch-Belval following signs for Belval / Porte de France.
-- **Parking:** **free parking** available on site and nearby.
+- **Venue:** Conference Center of Hôtel Parc Belle-Vue, 5 Avenue
+  Marie-Thérèse, L-2132 Luxembourg (Luxembourg City centre).
+- **By tram/bus:** Hamilius (tram & bus) is about a 4-minute walk;
+  Luxembourg–Amélie (bus) about 2 minutes. Bus lines 6, 10, 15, 16, and 609
+  serve Hamilius.
+- **By car:** free on-site parking for guests at the Belle-Vue Conference
+  Center (70 spaces, no reservations). Overflow: Parkolux Monterey (5-minute
+  walk) or Park & Ride Bouillon via bus 15. Street parking is free after 6 PM.
 - **Accessibility:** the venue is **fully wheelchair accessible**, with
   high-speed Wi-Fi throughout and modern conference facilities & breakout
   rooms.
 - **Food:** a **networking lunch and coffee breaks are included** with every
   ticket (free ticket included).
-- **Hotels nearby:** Melia Luxembourg (Belval), Hotel Le Royal, and Hotel
-  Christophe Colomb (Esch-sur-Alzette town centre). See `/venue/` for details.
+- **Hotels nearby:** stay on site at Hôtel Parc Belle-Vue itself, or nearby at
+  Hotel Le Royal (city centre) or Melia Luxembourg (Kirchberg, short tram
+  ride). See `/venue/` for details.
 
 ## Past editions
 
-- LSTE has run **since 2018** — **7 editions so far**, **1,500+ total
-  attendees** and **100+ speakers** over the years.
-- **LSTE 2025** (7th edition): 27 November 2025, Chambre des Métiers,
-  Luxembourg-Kirchberg. Theme: "AI & the Future of Quality." 320+ attendees.
-- **LSTE 2024** (6th edition): 28 November 2024, Chambre des Métiers,
-  Luxembourg-Kirchberg. Theme: "Continuous Quality." 280+ attendees.
+- LSTE first launched in **2014** and has run **7 editions since then**: 2014,
+  2016, 2017, 2018, 2019, 2024, and 2025. The event was not held in 2015 or
+  2020–2023.
+- **LSTE 2025** (7th edition): 27 November 2025, Parc Belle-Vue, Luxembourg
+  City. Theme: "AI & the Future of Quality." 320+ attendees.
+- **LSTE 2024** (6th edition): 14 November 2024, Digital Learning Hub,
+  Esch-Belval. Theme: "Continuous Quality." 280+ attendees.
 - Recaps and photos: `/previous-editions/` and `/gallery/`.
-- Note: LSTE 2026 moves to a new venue (Terres Rouges, Esch-Belval); earlier
-  recent editions were at the Chambre des Métiers in Kirchberg.
+- LSTE 2026 returns to Parc Belle-Vue in Luxembourg City, the same venue as
+  the 2025 edition.
 
 ## Contact
 

@@ -15,7 +15,7 @@ const EVENT = {
   // Luxembourg is UTC+1 (CET, no DST) in late November.
   dtstart: '20261126T073000Z',
   dtend: '20261126T170000Z',
-  location: 'Bâtiment des Terres Rouges, 14 Porte de France, 4360 Esch-sur-Alzette, Luxembourg',
+  location: 'Conference Center Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg',
   description: "Luxembourg's software testing conference, 8th edition. Free to attend. https://lste.lu/",
   url: 'https://lste.lu/',
 };

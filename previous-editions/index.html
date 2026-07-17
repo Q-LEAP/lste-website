@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-<title>Previous Editions — 8 Years of LSTE</title>
-<meta name="description" content="Explore LSTE's history — 7 editions since 2018, 1,500+ attendees, 100+ speakers, and how Luxembourg's software testing conference has grown over the years.">
+<title>Previous Editions — LSTE History Since 2014</title>
+<meta name="description" content="Explore LSTE's history — 7 editions since 2014, with a gap between 2019 and 2024, and how Luxembourg's software testing conference has grown over the years.">
 <link rel="canonical" href="https://lste.lu/previous-editions/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Previous Editions — LSTE">
@@ -33,23 +33,27 @@
       <img src="../assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
+    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
+         per the nav simplification pass — everything else lives in the
+         "More" dropdown / mobile hamburger. Speakers is intentionally not
+         linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
         <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../sponsors/index.html">Sponsors</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
             <li><a href="../previous-editions/index.html">Previous Editions</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../news/index.html">News</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
-        <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -58,7 +62,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Reserve Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -68,10 +72,9 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../about/index.html">About</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../resources/index.html">Resources</a></li>
     <li><a href="../previous-editions/index.html">Previous Editions</a></li>
@@ -79,7 +82,7 @@
     <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Reserve Ticket</a></li>
   </ul>
 </div>
 
@@ -90,9 +93,9 @@
   <section class="page-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Previous Editions</span></nav>
-      <span class="eyebrow">Since 2018</span>
-      <h1>8 years of software testing excellence.</h1>
-      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Since its inaugural edition in 2018, LSTE has brought Luxembourg's testing community together every year to learn, network, and share.</p>
+      <span class="eyebrow">Since 2014</span>
+      <h1>A decade of software testing excellence.</h1>
+      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Since its inaugural edition in 2014, LSTE has brought Luxembourg's testing community together to learn, network, and share — 7 editions so far, with a pause between 2019 and 2024.</p>
     </div>
   </section>
 
@@ -125,85 +128,87 @@
         </article>
 
         <article class="card edition-card">
-          <div class="edition-card__year">2023</div>
+          <div class="edition-card__year">2019</div>
           <h3>5th Edition</h3>
           <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 30 November 2023</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Chambre des Métiers, Kirchberg</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 250+ attendees</li>
+            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 10 October 2019</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> House of Startups, Luxembourg-city</li>
           </ul>
-          <p class="edition-card__theme">Testing in the Age of AI</p>
-          <span class="muted-link">Recap coming soon</span>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2022</div>
-          <h3>4th Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 24 November 2022</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Chambre de Commerce, Luxembourg</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 200+ attendees</li>
-          </ul>
-          <p class="edition-card__theme">Quality at Scale</p>
-          <span class="muted-link">Recap coming soon</span>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2021</div>
-          <h3>3rd Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 2 December 2021</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Virtual event</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 300+ attendees</li>
-          </ul>
-          <p class="edition-card__theme">Testing Without Borders</p>
-          <span class="muted-link">Recap coming soon</span>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2019</div>
-          <h3>2nd Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 28 November 2019</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Chambre de Commerce, Luxembourg</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 180+ attendees</li>
-          </ul>
-          <p class="edition-card__theme">Agile Quality</p>
-          <span class="muted-link">Recap coming soon</span>
+          <button type="button" class="muted-link js-empty-edition" data-edition="2019">Recap not available</button>
         </article>
 
         <article class="card edition-card">
           <div class="edition-card__year">2018</div>
-          <h3>1st Edition</h3>
+          <h3>4th Edition</h3>
+          <button type="button" class="muted-link js-empty-edition" data-edition="2018">Recap not available</button>
+        </article>
+
+        <article class="card edition-card">
+          <div class="edition-card__year">2017</div>
+          <h3>3rd Edition</h3>
           <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 29 November 2018</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Luxembourg</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 100+ attendees</li>
+            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 5 October 2017</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Forum Da Vinci, Luxembourg</li>
           </ul>
-          <p class="edition-card__theme">Testing Foundations</p>
-          <span class="muted-link">Recap coming soon</span>
+          <button type="button" class="muted-link js-empty-edition" data-edition="2017">Recap not available</button>
+        </article>
+
+        <article class="card edition-card">
+          <div class="edition-card__year">2016</div>
+          <h3>2nd Edition</h3>
+          <ul class="edition-card__meta">
+            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 6 October 2016</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Forum Da Vinci, Luxembourg</li>
+          </ul>
+          <a class="btn btn--outline btn--sm" href="../previous-editions/edition-2016/index.html">View edition</a>
+        </article>
+
+        <article class="card edition-card">
+          <div class="edition-card__year">2014</div>
+          <h3>1st Edition</h3>
+          <p class="text-muted" style="font-size:0.875rem;">The inaugural edition of LSTE.</p>
+          <button type="button" class="muted-link js-empty-edition" data-edition="2014">Recap not available</button>
         </article>
 
       </div>
+      <p class="text-muted text-center reveal" style="margin-top:var(--space-6);font-size:0.875rem;">No LSTE was held in 2015 or between 2020 and 2023.</p>
     </div>
   </section>
 
   <section class="section section--dark stats-strip" aria-label="LSTE growth over the years">
     <div class="container">
       <div class="grid grid--4 reveal">
-        <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Editions since 2018</div></div>
-        <div class="stat-item"><div class="stat-value">1,500+</div><div class="stat-label">Total attendees</div></div>
-        <div class="stat-item"><div class="stat-value">100+</div><div class="stat-label">Speakers</div></div>
-        <div class="stat-item"><div class="stat-value">50+</div><div class="stat-label">Sponsors over the years</div></div>
+        <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Editions since 2014</div></div>
+        <div class="stat-item"><div class="stat-value">2014</div><div class="stat-label">Year founded</div></div>
+        <div class="stat-item"><div class="stat-value">320+</div><div class="stat-label">Attendees, latest edition</div></div>
+        <div class="stat-item"><div class="stat-value">8th</div><div class="stat-label">Edition, coming Nov 2026</div></div>
       </div>
     </div>
   </section>
+
+  <!-- QA-themed empty state for editions with no recap page yet — modal
+       revealed via .js-empty-edition triggers, see assets/js/main.js -->
+  <div class="empty-edition-backdrop" id="empty-edition-modal" role="dialog" aria-modal="true" aria-labelledby="empty-edition-title" hidden>
+    <div class="empty-edition-dialog">
+      <div class="chat-header">
+        <span class="chat-header__icon" aria-hidden="true"><i class="fa-solid fa-bug"></i></span>
+        <span class="chat-header__titles">
+          <span class="chat-header__title" id="empty-edition-title">No archive found</span>
+        </span>
+        <button type="button" class="chat-close" id="empty-edition-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div style="padding:var(--space-5);">
+        <p id="empty-edition-message" style="margin-bottom:var(--space-4);"></p>
+        <a class="btn btn--outline btn--sm" href="../contact/index.html">Have archives to share? Contact us</a>
+      </div>
+    </div>
+  </div>
 
   <section class="section--brand final-cta">
     <div class="container">
       <span class="eyebrow eyebrow--on-dark">26 November 2026</span>
       <h2 class="text-white">Save the date for the 8th edition.</h2>
-      <p style="max-width:44ch;margin:0 auto;opacity:0.9;">Join us at Terres Rouges, Esch-sur-Alzette, for LSTE 2026.</p>
+      <p style="max-width:44ch;margin:0 auto;opacity:0.9;">Join us at Hôtel Parc Belle-Vue, Luxembourg City, for LSTE 2026.</p>
       <div class="final-cta__actions">
         <a class="btn btn--white btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your ticket</a>
       </div>
@@ -233,7 +238,6 @@
         <ul>
           <li><a href="../about/index.html">About LSTE</a></li>
           <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="../speakers/index.html">Speakers</a></li>
           <li><a href="../schedule/index.html">Programme</a></li>
           <li><a href="../venue/index.html">Venue</a></li>
         </ul>

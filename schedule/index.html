@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-<title>Programme — LSTE 2025 Schedule</title>
-<meta name="description" content="The full LSTE 2025 programme — keynotes, live demos, exhibition, and networking, across four tracks throughout the day.">
+<title>Programme — LSTE 2026 Schedule</title>
+<meta name="description" content="The LSTE 2026 programme is coming soon — keynotes, live demos, exhibition, and networking, across four tracks throughout the day.">
 <link rel="canonical" href="https://lste.lu/schedule/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Programme — LSTE">
@@ -32,23 +32,27 @@
       <img src="../assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
+    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
+         per the nav simplification pass — everything else lives in the
+         "More" dropdown / mobile hamburger. Speakers is intentionally not
+         linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
         <li><a class="main-nav-link" aria-current="page" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../sponsors/index.html">Sponsors</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
             <li><a href="../previous-editions/index.html">Previous Editions</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../news/index.html">News</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
-        <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -57,7 +61,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Reserve Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -67,10 +71,9 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../about/index.html">About</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../resources/index.html">Resources</a></li>
     <li><a href="../previous-editions/index.html">Previous Editions</a></li>
@@ -78,7 +81,7 @@
     <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Reserve Ticket</a></li>
   </ul>
 </div>
 
@@ -89,12 +92,12 @@
   <section class="page-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Programme</span></nav>
-      <span class="eyebrow">LSTE 2025 recap</span>
-      <h1>The full programme.</h1>
-      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Four tracks, one day — this is the programme from our most recent edition. The 2026 schedule will be published closer to the event.</p>
+      <span class="eyebrow">LSTE 2026</span>
+      <h1>Coming soon.</h1>
+      <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">Four tracks, one day — the full 2026 programme is being finalised and will be published here closer to the event.</p>
       <div class="calendar-actions reveal">
         <span class="calendar-actions__label"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Save the date — 26 November 2026</span>
-        <a class="btn btn--outline btn--sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=LSTE%202026%20%E2%80%94%20Luxembourg%20Software%20Testing%20Event&amp;dates=20261126T083000/20261126T180000&amp;details=Luxembourg%27s%20software%20testing%20conference%2C%208th%20edition.%20Free%20to%20attend.%20https%3A//lste.lu/&amp;location=B%C3%A2timent%20des%20Terres%20Rouges%2C%2014%20Porte%20de%20France%2C%204360%20Esch-sur-Alzette%2C%20Luxembourg&amp;ctz=Europe/Luxembourg" target="_blank" rel="noopener">Add to Google Calendar</a>
+        <a class="btn btn--outline btn--sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=LSTE%202026%20%E2%80%94%20Luxembourg%20Software%20Testing%20Event&amp;dates=20261126T083000/20261126T180000&amp;details=Luxembourg%27s%20software%20testing%20conference%2C%208th%20edition.%20Free%20to%20attend.%20https%3A//lste.lu/&amp;location=Conference%20Center%20H%C3%B4tel%20Parc%20Belle-Vue%2C%205%20Avenue%20Marie-Th%C3%A9r%C3%A8se%2C%20L-2132%20Luxembourg&amp;ctz=Europe/Luxembourg" target="_blank" rel="noopener">Add to Google Calendar</a>
         <a class="btn btn--outline btn--sm" href="../assets/downloads/lste-2026.ics" download>Download .ics <span class="text-muted" style="font-weight:400;">(Apple / Outlook)</span></a>
       </div>
     </div>
@@ -110,47 +113,23 @@
         <button role="tab" id="tab-networking" aria-controls="panel-networking">Networking</button>
       </div>
 
+      <!-- 2026 session content isn't published yet — each track panel shows
+           a placeholder that keeps the tab/timeline structure ready to drop
+           the real programme into once it's confirmed. -->
       <div id="panel-keynote" role="tabpanel" aria-labelledby="tab-keynote" class="timeline">
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">08:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Registration &amp; Welcome Coffee</p></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">09:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Welcome &amp; Opening</p><span class="timeline__speaker">Nathalie Graindorge, Q-Leap SA</span></div></div>
-        <div class="timeline__item"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">From Testing to Quality Engineering: The Transformation Journey</span><span class="timeline__speaker">Huib Schoots</span></summary><p class="timeline__desc">A deep dive into how organizations need to shift their mindset from testing as a quality gate to engineering quality throughout the entire development lifecycle.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">10:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">AI in the Testing Trenches: Real-world Experiences</span><span class="timeline__speaker">Maxime Moret</span></summary><p class="timeline__desc">Concrete AI/ML applications in test automation, test case generation, and defect prediction from real production deployments.</p></details></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">10:45</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coffee Break &amp; Exhibition</p></div></div>
-        <div class="timeline__item"><span class="timeline__time">11:15</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Continuous Testing in a DevOps World</span><span class="timeline__speaker">Thierry Wyns</span></summary><p class="timeline__desc">Integrating testing seamlessly into CI/CD pipelines without becoming a bottleneck — practical patterns from large-scale implementations.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">12:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">The Art of Exploratory Testing</span><span class="timeline__speaker">Lisi Hocke</span></summary><p class="timeline__desc">Structured approaches, heuristics, and cognitive models that make exploratory testing a powerful complement to scripted testing.</p></details></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">12:45</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Networking Lunch</p></div></div>
-        <div class="timeline__item"><span class="timeline__time">14:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">BDD That Actually Works</span><span class="timeline__speaker">Gojko Adzic</span></summary><p class="timeline__desc">What it actually takes to make Behaviour-Driven Development deliver on its promise of better collaboration.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">14:45</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Performance Testing at Scale</span><span class="timeline__speaker">Bas Dijkstra</span></summary><p class="timeline__desc">Tools, strategies, and organisational practices for sustained performance testing programs.</p></details></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">15:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coffee Break</p></div></div>
-        <div class="timeline__item"><span class="timeline__time">16:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Testing in Regulated Industries: Compliance Without Pain</span><span class="timeline__speaker">Thierry Soliña</span></summary><p class="timeline__desc">Practical strategies for maintaining quality and speed under compliance requirements in banking, health, and government.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">16:45</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">The Future of Quality: Panel Discussion</span><span class="timeline__speaker">All speakers</span></summary><p class="timeline__desc">A moderated discussion on AI disruption, the evolving role of the tester, and what skills will matter most by 2030.</p></details></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">17:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Closing Ceremony &amp; Networking Drinks</p></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">The Keynote Room line-up for LSTE 2026 will be published here closer to the event.</p></div></div>
       </div>
 
       <div id="panel-demo" role="tabpanel" aria-labelledby="tab-demo" class="timeline" hidden>
-        <div class="timeline__item"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Tool Showcase: Modern Test Management</span><span class="timeline__speaker">Xray Team</span></summary><p class="timeline__desc">A live demonstration of test planning, execution tracking, and reporting with Xray.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">10:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Live Demo: AI Test Generation</span><span class="timeline__speaker">Q-Leap Tech Team</span></summary><p class="timeline__desc">AI-powered test generation, live on stage: from requirements to executable test cases.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">11:15</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Security Testing Tools Overview</span><span class="timeline__speaker">Thales Team</span></summary><p class="timeline__desc">SAST, DAST, and IAST tools demonstrated with real-world vulnerability scenarios.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">12:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Continuous Testing Pipeline Demo</span><span class="timeline__speaker">NSI Team</span></summary><p class="timeline__desc">A full walkthrough from commit trigger through parallel test execution to quality gate enforcement.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">14:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Performance Testing with k6</span><span class="timeline__speaker">Sogeti Team</span></summary><p class="timeline__desc">Scripting, threshold configuration, and integrating load-test results into CI/CD dashboards.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">14:45</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Test Data Management Best Practices</span><span class="timeline__speaker">SQAI Suite Team</span></summary><p class="timeline__desc">Data provisioning, masking, synthetic data generation, and consistency across environments.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">16:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Automation Frameworks Showdown</span><span class="timeline__speaker">Deloitte Team</span></summary><p class="timeline__desc">Playwright, Cypress, Selenium, and Robot Framework compared on speed, maintainability, and ecosystem maturity.</p></details></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">The Demo Room line-up for LSTE 2026 will be published here closer to the event.</p></div></div>
       </div>
 
       <div id="panel-exhibition" role="tabpanel" aria-labelledby="tab-exhibition" class="timeline" hidden>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">08:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Sponsor Booths Open</p></div></div>
-        <div class="timeline__item"><span class="timeline__time">All day</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Gold Sponsor Booths</span><span class="timeline__speaker">Deloitte · Q-Leap · NSI · Sogeti</span></summary><p class="timeline__desc">Demos, giveaways, and expert conversations throughout the day.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">All day</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Silver Sponsor Booths</span><span class="timeline__speaker">AINOS · LNDS · Xray · Thales · Uni.lu · SQAI Suite · Tricentis</span></summary><p class="timeline__desc">Product demos, technical discussions, and networking with industry peers.</p></details></div></div>
-        <div class="timeline__item"><span class="timeline__time">All day</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Bronze Sponsor Booths</span><span class="timeline__speaker">SnT · Q-Guard · jemmic · Q-Bot</span></summary><p class="timeline__desc">Meet the Bronze sponsors and discover tools from the Luxembourg testing ecosystem.</p></details></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">18:00</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Exhibition Closes</p></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">The 2026 exhibition line-up will be published here as sponsors confirm — see <a href="../sponsors/index.html">Sponsors &amp; Partners</a>.</p></div></div>
       </div>
 
       <div id="panel-networking" role="tabpanel" aria-labelledby="tab-networking" class="timeline" hidden>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">08:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Welcome Coffee &amp; Registration</p></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">10:45</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Morning Coffee Break</p><span class="timeline__speaker">Exhibition Hall</span></div></div>
-        <div class="timeline__item"><span class="timeline__time">12:45</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><details><summary><span class="timeline__title">Networking Lunch</span><span class="timeline__speaker">Sponsored by Deloitte</span></summary><p class="timeline__desc">Connect with fellow QA professionals, speakers, and sponsors in a relaxed atmosphere.</p></details></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">15:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Afternoon Coffee Break</p></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">17:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Closing Drinks</p></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">—</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Coming soon</p><p class="timeline__desc">Networking break times for LSTE 2026 will be published here closer to the event.</p></div></div>
       </div>
       </div>
     </div>
@@ -189,7 +168,6 @@
         <ul>
           <li><a href="../about/index.html">About LSTE</a></li>
           <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="../speakers/index.html">Speakers</a></li>
           <li><a href="../schedule/index.html">Programme</a></li>
           <li><a href="../venue/index.html">Venue</a></li>
         </ul>

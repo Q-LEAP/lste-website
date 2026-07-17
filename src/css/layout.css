@@ -46,6 +46,9 @@
   pointer-events: none;
 }
 .section--brand .container { position: relative; z-index: 1; }
+/* Opt out of the corner flourish for tighter CTA strips where it doesn't
+   have room to breathe (e.g. the mid-page "Free to attend" nudge). */
+.section--brand--plain::before { display: none; }
 
 .eyebrow {
   display: inline-block;

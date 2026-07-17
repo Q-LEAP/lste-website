@@ -33,23 +33,27 @@
       <img src="../assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
+    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
+         per the nav simplification pass — everything else lives in the
+         "More" dropdown / mobile hamburger. Speakers is intentionally not
+         linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" aria-current="page" href="../about/index.html">About</a></li>
         <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../sponsors/index.html">Sponsors</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
             <li><a href="../previous-editions/index.html">Previous Editions</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../news/index.html">News</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
-        <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -58,7 +62,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Reserve Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -68,10 +72,9 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../about/index.html">About</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../resources/index.html">Resources</a></li>
     <li><a href="../previous-editions/index.html">Previous Editions</a></li>
@@ -79,7 +82,7 @@
     <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Reserve Ticket</a></li>
   </ul>
 </div>
 
@@ -94,8 +97,8 @@
       <h1>Software quality, taken seriously.</h1>
       <p style="max-width:56ch;margin:0 auto;color:var(--color-muted);font-size:1.0625rem;">The annual gathering of software testing and QA professionals in the Grand Duchy of Luxembourg.</p>
       <nav class="section-jump reveal" aria-label="On this page">
-        <a href="#what">What is LSTE</a>
-        <a href="#mission">Our mission</a>
+        <a href="#what">Who we are</a>
+        <a href="#for-who">For who</a>
         <a href="#format">Format</a>
         <a href="#organizer">Organiser</a>
       </nav>
@@ -107,19 +110,19 @@
     <div class="container">
       <div class="grid grid--2" style="align-items:start;">
         <div class="reveal">
-          <h2>What is LSTE?</h2>
-          <p>LSTE — Luxembourg Software Testing Event — is the annual gathering of software quality and testing professionals in the Grand Duchy. Now in its 8th edition, it has grown from a small meetup into the region's most anticipated QA event, welcoming 300+ attendees from Luxembourg, Belgium, France, and Germany.</p>
-          <p>The event features international keynote speakers, hands-on tutorials, live demos, and an exhibition area — all in a single day, free of charge for attendees.</p>
-          <h2 style="margin-top:var(--space-8);">Why software testing matters</h2>
-          <p>Software failures are expensive, embarrassing, and increasingly consequential — in banking, healthcare, and critical infrastructure alike. Testing is how the industry earns trust in the systems it ships. LSTE exists to give that discipline the stage it deserves.</p>
-          <h2 style="margin-top:var(--space-8);">Why Luxembourg</h2>
-          <p>Luxembourg's dense financial-services and tech sector makes software quality a genuinely high-stakes concern, and its size means the testing community here can actually get in one room — which is exactly what LSTE sets out to do, once a year.</p>
+          <span class="eyebrow">Who we are</span>
+          <h2>The uNique testing event in Luxembourg</h2>
+          <p>The Luxembourg Software Testing Event is a widely acknowledged gathering of Quality Assurance professionals in Luxembourg. The first edition was in 2014. The Luxembourg &amp; Greater Region Testing community have come together to share knowledge, testing practices about the latest trends in software testing. The Luxembourg Software Testing event comprises 3-4 conferences followed by a networking cocktail.</p>
+          <p style="font-weight:700;color:var(--color-primary);">THE BIGGEST TESTING EVENT IN LUXEMBOURG.<br>FOR ALL TESTERS AND PASSIONNATE TESTERS</p>
+          <h2 id="for-who" style="margin-top:var(--space-8);">For all testers and IT practitioners</h2>
+          <p>Every year, the entire community of testers and IT practitioners join this event. An event to get valuable insights about testing practices from experts that help enhancing everyday tasks.</p>
+          <p>Over the years, this conference has gained a reputation of being one of the key and most awaited events on Luxembourg's IT agenda.</p>
         </div>
         <div class="card reveal" style="padding:var(--space-6);">
           <h3 style="font-size:1.125rem;margin-bottom:var(--space-5);">Event details</h3>
           <ul class="venue-feature-list">
             <li><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 08:30–18:00</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Terres Rouges Building, Esch-Belval</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hôtel Parc Belle-Vue, Luxembourg City</li>
             <li><i class="fa-solid fa-users" aria-hidden="true"></i> 300+ attendees expected</li>
             <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> 8th edition</li>
             <li><i class="fa-solid fa-ticket" aria-hidden="true"></i> Free to attend</li>
@@ -163,29 +166,34 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Event format</span>
-        <h2 id="format-heading">A full day of learning, demos, and networking.</h2>
+        <h2 id="format-heading">A Full Day Experience.</h2>
+        <p>From an optional morning tutorial to the closing networking cocktail — here's how the day unfolds.</p>
       </div>
       <div class="grid grid--4 reveal">
         <div class="card pillar-card">
+          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-store"></i></div>
+          <h4 style="font-size:1rem;">Exhibition area</h4>
+          <p class="text-muted" style="font-size:0.875rem;">From 13:00 — meet sponsors, discover tools, explore career opportunities.</p>
+        </div>
+        <div class="card pillar-card">
           <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></div>
-          <h4 style="font-size:1rem;">Keynote stage</h4>
-          <p class="text-muted" style="font-size:0.875rem;">Plenary talks on strategy, AI, automation, and quality culture.</p>
+          <h4 style="font-size:1rem;">Keynote Room</h4>
+          <p class="text-muted" style="font-size:0.875rem;">From 13:30 — plenary talks on strategy, AI, automation, and quality culture.</p>
         </div>
         <div class="card pillar-card">
           <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></div>
-          <h4 style="font-size:1rem;">Demo room</h4>
-          <p class="text-muted" style="font-size:0.875rem;">Live technical demonstrations of tools and frameworks.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-store"></i></div>
-          <h4 style="font-size:1rem;">Exhibition area</h4>
-          <p class="text-muted" style="font-size:0.875rem;">Meet sponsors, discover tools, explore career opportunities.</p>
+          <h4 style="font-size:1rem;">Demo Room</h4>
+          <p class="text-muted" style="font-size:0.875rem;">From 14:00 — live technical demonstrations of tools and frameworks.</p>
         </div>
         <div class="card pillar-card">
           <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></div>
-          <h4 style="font-size:1rem;">Networking</h4>
-          <p class="text-muted" style="font-size:0.875rem;">Structured and informal networking over coffee and lunch.</p>
+          <h4 style="font-size:1rem;">Networking Cocktail</h4>
+          <p class="text-muted" style="font-size:0.875rem;">From 19:00 — structured and informal networking to close the day.</p>
         </div>
+      </div>
+      <div class="card reveal" style="margin-top:var(--space-6);padding:var(--space-6);text-align:center;">
+        <h4 style="font-size:1.0625rem;margin-bottom:var(--space-2);"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Morning tutorials</h4>
+        <p class="text-muted" style="font-size:0.9375rem;">An optional hands-on tutorial session runs from 10:00, ahead of the main conference. Spaces are limited — <a href="../contact/index.html">contact us</a> to request the brochure for full details.</p>
       </div>
     </div>
   </section>
@@ -209,9 +217,11 @@
         <div>
           <span class="eyebrow">Who organises LSTE</span>
           <h2 id="organizer-heading">Organised by Q-Leap SA.</h2>
-          <p>LSTE is organised by Q-Leap SA, a Luxembourg-based QA consulting and training company. With deep roots in the local and international testing community, Q-Leap brings the network and expertise that make LSTE the region's premier software quality event, year after year.</p>
+          <p>The success of the Luxembourg Software Testing Event is due to the dedicated involvement of Q-LEAP. The company is the primary and actual organizer. The Software Quality company has contributed to the conference's Concept and Character.</p>
           <a class="btn btn--outline" href="https://q-leap.eu" target="_blank" rel="noopener">Visit Q-Leap.eu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
         </div>
+        <!-- TODO: replace this logo with a real Q-Leap team photo once one is
+             supplied — none was found in the repo or provided. -->
         <div style="text-align:center;">
           <img src="../assets/img/QLEAP_01-logo-800.webp" width="280" height="84" loading="lazy" alt="Q-Leap SA" style="margin:0 auto;">
         </div>
@@ -225,7 +235,7 @@
       <p style="max-width:44ch;margin:0 auto;opacity:0.9;">Reserve your free spot at Luxembourg's premier software testing event.</p>
       <div class="final-cta__actions">
         <a class="btn btn--white btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket</a>
-        <a class="btn btn--ghost-on-dark btn--lg" href="../speakers/index.html">View speakers</a>
+        <a class="btn btn--ghost-on-dark btn--lg" href="../schedule/index.html">View programme</a>
       </div>
     </div>
   </section>
@@ -253,7 +263,6 @@
         <ul>
           <li><a href="../about/index.html">About LSTE</a></li>
           <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="../speakers/index.html">Speakers</a></li>
           <li><a href="../schedule/index.html">Programme</a></li>
           <li><a href="../venue/index.html">Venue</a></li>
         </ul>

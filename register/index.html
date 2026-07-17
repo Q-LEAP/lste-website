@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <title>Get Your Ticket — LSTE 2026 (Free)</title>
-<meta name="description" content="Get your free ticket for LSTE 2026, 26 November, Esch-Belval. Free to attend for everyone — no tiers, no catch.">
+<meta name="description" content="Get your free ticket for LSTE 2026, 26 November, Hôtel Parc Belle-Vue, Luxembourg City. Free to attend for everyone — no tiers, no catch.">
 <link rel="canonical" href="https://lste.lu/register/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Get Your Ticket — LSTE 2026">
@@ -43,23 +43,27 @@
       <img src="../assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
+    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
+         per the nav simplification pass — everything else lives in the
+         "More" dropdown / mobile hamburger. Speakers is intentionally not
+         linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
         <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="../sponsors/index.html">Sponsors</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
             <li><a href="../previous-editions/index.html">Previous Editions</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../news/index.html">News</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
-        <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -68,7 +72,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Reserve Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -78,10 +82,9 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../about/index.html">About</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../resources/index.html">Resources</a></li>
     <li><a href="../previous-editions/index.html">Previous Editions</a></li>
@@ -89,7 +92,7 @@
     <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Reserve Ticket</a></li>
   </ul>
 </div>
 
@@ -100,7 +103,7 @@
   <section class="section--brand" style="padding-top:calc(var(--header-h) + var(--space-10));padding-bottom:var(--space-10);">
     <div class="container text-center">
       <nav class="breadcrumb breadcrumb--on-dark" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Tickets</span></nav>
-      <span class="eyebrow eyebrow--on-dark">26 November 2026 · Esch-Belval</span>
+      <span class="eyebrow eyebrow--on-dark">26 November 2026 · Luxembourg City</span>
       <h1 class="text-white">Get your ticket for LSTE 2026</h1>
       <p style="max-width:52ch;margin:0 auto;font-size:1.125rem;opacity:0.92;">Free to attend, for everyone — no tiers. Reserve your seat in a couple of minutes through our ticketing partner.</p>
       <div style="margin-top:var(--space-6);">
@@ -188,7 +191,6 @@
         <ul>
           <li><a href="../about/index.html">About LSTE</a></li>
           <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="../speakers/index.html">Speakers</a></li>
           <li><a href="../schedule/index.html">Programme</a></li>
           <li><a href="../venue/index.html">Venue</a></li>
         </ul>

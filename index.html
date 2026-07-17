@@ -10,7 +10,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="LSTE 2026 — Luxembourg Software Testing Event">
-<meta property="og:description" content="Luxembourg's premier software testing &amp; QA conference. 8th edition — 26 November 2026, Terres Rouges, Esch-Belval. Free to attend.">
+<meta property="og:description" content="Luxembourg's premier software testing &amp; QA conference. 8th edition — 26 November 2026, Hôtel Parc Belle-Vue, Luxembourg City. Free to attend.">
 <meta property="og:url" content="https://lste.lu/">
 <meta property="og:image" content="https://lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -40,12 +40,12 @@
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
     "@type": "Place",
-    "name": "Bâtiment des Terres Rouges — Belval",
+    "name": "Conference Center Hôtel Parc Belle-Vue",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "14 Porte de France",
-      "addressLocality": "Esch-sur-Alzette",
-      "postalCode": "4360",
+      "streetAddress": "5 Avenue Marie-Thérèse",
+      "addressLocality": "Luxembourg",
+      "postalCode": "L-2132",
       "addressCountry": "LU"
     }
   },
@@ -69,7 +69,7 @@
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Is the conference free to attend?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — LSTE is always free to attend. Register online to confirm your seat; it's made possible by our sponsors." } },
-    { "@type": "Question", "name": "Where can I park?", "acceptedAnswer": { "@type": "Answer", "text": "Free parking is available on site at the Terres Rouges building in Esch-Belval. The venue is also reachable by direct train from Luxembourg City in about 30 minutes." } },
+    { "@type": "Question", "name": "Where can I park?", "acceptedAnswer": { "@type": "Answer", "text": "Free on-site parking is available for guests at the Belle-Vue Conference Center (70 spaces). The venue is also a short walk from the Hamilius tram and bus stop in the heart of Luxembourg City." } },
     { "@type": "Question", "name": "What language is the conference held in?", "acceptedAnswer": { "@type": "Answer", "text": "English — all talks, workshops, and event materials are in English." } },
     { "@type": "Question", "name": "How do I become a speaker?", "acceptedAnswer": { "@type": "Answer", "text": "Submit a talk through the Become a Speaker page. LSTE welcomes proposals from testing and QA professionals at any experience level." } },
     { "@type": "Question", "name": "How do I become a sponsor?", "acceptedAnswer": { "@type": "Answer", "text": "Get in touch via the Sponsor With Us page, or see the sponsorship tiers on the Sponsors & Partners page." } },
@@ -90,23 +90,27 @@
       <img src="./assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
+    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
+         per the nav simplification pass — everything else lives in the
+         "More" dropdown / mobile hamburger. Speakers is intentionally not
+         linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="./about/index.html">About</a></li>
         <li><a class="main-nav-link" href="./schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="./speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="./venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="./sponsors/index.html">Sponsors</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="./about/index.html">About</a></li>
+            <li><a href="./sponsors/index.html">Sponsors</a></li>
             <li><a href="./resources/index.html">Media Kit &amp; Resources</a></li>
             <li><a href="./previous-editions/index.html">Previous Editions</a></li>
             <li><a href="./gallery/index.html">Gallery</a></li>
             <li><a href="./news/index.html">News</a></li>
+            <li><a href="./contact/index.html">Contact</a></li>
           </ul>
         </li>
-        <li><a class="main-nav-link" href="./contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -115,7 +119,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="./become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="./register/index.html">Get Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="./register/index.html">Reserve Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -125,10 +129,9 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="./about/index.html">About</a></li>
     <li><a href="./schedule/index.html">Programme</a></li>
-    <li><a href="./speakers/index.html">Speakers</a></li>
     <li><a href="./venue/index.html">Venue</a></li>
+    <li><a href="./about/index.html">About</a></li>
     <li><a href="./sponsors/index.html">Sponsors</a></li>
     <li><a href="./resources/index.html">Resources</a></li>
     <li><a href="./previous-editions/index.html">Previous Editions</a></li>
@@ -136,7 +139,7 @@
     <li><a href="./news/index.html">News</a></li>
     <li><a href="./contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="./become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="./register/index.html">Get Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="./register/index.html">Reserve Ticket</a></li>
   </ul>
 </div>
 
@@ -158,12 +161,12 @@
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="container hero__content">
       <span class="eyebrow eyebrow--on-dark reveal is-visible">8th Edition · 26 November 2026</span>
-      <h1 class="reveal is-visible">Where Luxembourg's software testing community meets.</h1>
-      <p class="reveal is-visible" style="font-size:1.125rem;max-width:52ch;">One day, one venue, 300+ QA and testing professionals. Keynotes from world-class speakers, hands-on workshops, and the conversations that move the craft forward — free to attend.</p>
+      <h1 class="reveal is-visible">Luxembourg Software Testing Event</h1>
+      <p class="hero__subtitle reveal is-visible">Where Luxembourg's software testing community meets.</p>
 
       <div class="hero__meta reveal is-visible">
         <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 08:30–18:00</span>
-        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Terres Rouges, Esch-Belval</span>
+        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hôtel Parc Belle-Vue, Luxembourg City</span>
         <span><i class="fa-solid fa-ticket" aria-hidden="true"></i> Free admission</span>
       </div>
 
@@ -240,7 +243,8 @@
     </div>
   </section>
 
-  <!-- Speakers preview -->
+  <!-- Speakers preview — HIDDEN per request (kept in code to re-enable
+       later; just uncomment this block when speakers are announced).
   <section class="section" aria-labelledby="speakers-heading">
     <div class="container">
       <div class="section-head reveal">
@@ -275,6 +279,7 @@
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./speakers/index.html">See all speakers <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
+  -->
 
   <!-- Testimonials -->
   <section class="section" aria-labelledby="testimonials-heading">
@@ -306,7 +311,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Programme</span>
         <h2 id="programme-heading">One day, packed end to end.</h2>
-        <p>A look at the flow of the day — see the full programme for every talk, room, and track.</p>
+        <p>A look at the flow of the day. The detailed 2026 line-up of talks is coming soon.</p>
       </div>
       <div class="timeline reveal" style="max-width:640px;margin:0 auto;">
         <div class="timeline__item timeline__item--break"><span class="timeline__time">08:30</span><span class="timeline__marker"><span class="timeline__dot"></span></span><div class="timeline__content"><p class="timeline__title">Registration &amp; welcome coffee</p></div></div>
@@ -320,7 +325,7 @@
   </section>
 
   <!-- Mid-page CTA nudge -->
-  <section class="section--brand" style="padding:var(--space-8) 0;text-align:center;">
+  <section class="section--brand section--brand--plain" style="padding:var(--space-8) 0;text-align:center;">
     <div class="container">
       <p class="text-white" style="font-family:var(--font-heading);font-weight:700;font-size:1.25rem;margin-bottom:var(--space-5);">Free to attend. Seats are limited — register now.</p>
       <a class="btn btn--white btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
@@ -335,12 +340,7 @@
         <h2 id="sponsors-heading">Backed by the companies investing in QA.</h2>
       </div>
       <div class="sponsor-strip reveal">
-        <a href="https://www.deloitte.com/lu/en.html" target="_blank" rel="noopener" aria-label="Deloitte"><img src="./assets/img/Deloitte.svg-400.webp" width="140" height="31" loading="lazy" alt="Deloitte"></a>
         <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap"><img src="./assets/img/QLEAP_01-logo-400.webp" width="140" height="42" loading="lazy" alt="Q-Leap"></a>
-        <a href="https://www.sogeti.lu/" target="_blank" rel="noopener" aria-label="Sogeti"><img src="./assets/img/1669629513287-400.webp" width="140" height="35" loading="lazy" alt="Sogeti"></a>
-        <a href="https://www.tricentis.com/" target="_blank" rel="noopener" aria-label="Tricentis"><img src="./assets/img/Tricentis-Logo-1-1120x446-1-400.webp" width="140" height="56" loading="lazy" alt="Tricentis"></a>
-        <a href="https://cds.thalesgroup.com/en" target="_blank" rel="noopener" aria-label="Thales"><img src="./assets/img/Thales_LOGO_Baseline_RGB-400.webp" width="140" height="53" loading="lazy" alt="Thales"></a>
-        <a href="https://www.getxray.app/" target="_blank" rel="noopener" aria-label="Xray"><img src="./assets/img/1704990655352-400.webp" width="140" height="74" loading="lazy" alt="Xray"></a>
       </div>
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./sponsors/index.html">View all sponsors <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
@@ -398,7 +398,7 @@
         </details>
         <details class="faq-item">
           <summary>Where can I park?</summary>
-          <p>Free parking is available on site at the Terres Rouges building in Esch-Belval. The venue is also reachable by direct train from Luxembourg City in about 30 minutes.</p>
+          <p>Free on-site parking is available for guests at the Belle-Vue Conference Center (70 spaces). The venue is also a short walk from the Hamilius tram and bus stop in the heart of Luxembourg City.</p>
         </details>
         <details class="faq-item">
           <summary>What language is the conference held in?</summary>
@@ -459,7 +459,6 @@
         <ul>
           <li><a href="./about/index.html">About LSTE</a></li>
           <li><a href="./previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="./speakers/index.html">Speakers</a></li>
           <li><a href="./schedule/index.html">Programme</a></li>
           <li><a href="./venue/index.html">Venue</a></li>
         </ul>

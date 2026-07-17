@@ -421,8 +421,17 @@
     let busy = false;
     let greeted = false;
 
-    // UI language for the greeting + starter chips, from the browser.
-    const uiLang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+    // UI language — the visitor picks it explicitly on first open (see
+    // addLangPicker/greet below). Browser locale only seeds the initial guess
+    // for the button order; it's overwritten as soon as a choice is made.
+    let uiLang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+    let langChosen = false;
+
+    const LANG_PICKER_PROMPT = 'Français 🇫🇷 ou English 🇬🇧 ?';
+    const LANG_OPTIONS = [
+      { code: 'fr', label: 'Français 🇫🇷' },
+      { code: 'en', label: 'English 🇬🇧' },
+    ];
 
     const SUGGESTIONS = {
       en: ['What is LSTE?', 'When & where is it?', 'How do I register?', 'How can I speak?'],
@@ -460,14 +469,14 @@
     // accent-stripped; the best-scoring intent wins.
     const INTENTS = [
       { kw: ['who are you', 'what are you', 'who r u', 'what can you do', 'what do you do', 'who is this', 'your name', 'help me', 'qui es tu', 'es tu', 'qui etes', 'etes vous', 'tu es qui', 'vous etes qui', 'c est quoi ce', 'que sais tu', 'tu fais quoi', 'tu sers a quoi', 'ton nom', 'presente toi'],
-        en: 'I’m the LSTE assistant. LSTE — the Luxembourg Software Testing Event — is Luxembourg’s annual one-day conference for software testing and QA professionals (8th edition: 26 November 2026, Esch-Belval, free to attend). I can help with dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
-        fr: 'Je suis l’assistant du LSTE. Le LSTE — Luxembourg Software Testing Event — est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg (8e édition : 26 novembre 2026, Esch-Belval, entrée gratuite). Je peux t’aider sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?' },
+        en: 'I’m the LSTE assistant. LSTE — the Luxembourg Software Testing Event — is Luxembourg’s annual one-day conference for software testing and QA professionals (8th edition: 26 November 2026, Hôtel Parc Belle-Vue, Luxembourg City, free to attend). I can help with dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
+        fr: 'Je suis l’assistant du LSTE. Le LSTE — Luxembourg Software Testing Event — est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg (8e édition : 26 novembre 2026, Hôtel Parc Belle-Vue, Luxembourg-Ville, entrée gratuite). Je peux t’aider sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?' },
       { kw: ['what is lste', 'about lste', 'tell me about', 'what s lste', 'whats lste', 'c est quoi lste', 'c est quoi le lste', 'quoi le lste', 'quoi lste', 'qu est ce que lste', 'a propos', 'presente lste', 'lste c est quoi', 'parle moi'],
-        en: 'LSTE (the Luxembourg Software Testing Event) is Luxembourg’s annual one-day conference for software testing & QA professionals — keynotes, talks, live demos, workshops and networking, drawing 300+ attendees. The 8th edition is on 26 November 2026 in Esch-Belval, free to attend. More: /about/',
-        fr: 'Le LSTE (Luxembourg Software Testing Event) est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg — keynotes, talks, démos, ateliers et networking, avec 300+ participants. La 8e édition a lieu le 26 novembre 2026 à Esch-Belval, entrée gratuite. Plus d’infos : /about/' },
+        en: 'LSTE (the Luxembourg Software Testing Event) is Luxembourg’s annual one-day conference for software testing & QA professionals — keynotes, talks, live demos, workshops and networking, drawing 300+ attendees. The 8th edition is on 26 November 2026 at Hôtel Parc Belle-Vue, Luxembourg City, free to attend. More: /about/',
+        fr: 'Le LSTE (Luxembourg Software Testing Event) est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg — keynotes, talks, démos, ateliers et networking, avec 300+ participants. La 8e édition a lieu le 26 novembre 2026 à l’Hôtel Parc Belle-Vue, Luxembourg-Ville, entrée gratuite. Plus d’infos : /about/' },
       { kw: ['when', 'date', 'where', 'venue', 'location', 'address', 'quand', 'ou ', 'lieu', 'adresse', 'endroit'],
-        en: 'LSTE 2026 is on 26 November 2026, 08:30–18:00, at the Bâtiment des Terres Rouges, Esch-Belval (14 Porte de France, 4360 Esch-sur-Alzette). More: /venue/',
-        fr: 'Le LSTE 2026 a lieu le 26 novembre 2026, de 08h30 à 18h00, au Bâtiment des Terres Rouges, Esch-Belval (14 Porte de France, 4360 Esch-sur-Alzette). Plus d’infos : /venue/' },
+        en: 'LSTE 2026 is on 26 November 2026, 08:30–18:00, at the Conference Center of Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg. More: /venue/',
+        fr: 'Le LSTE 2026 a lieu le 26 novembre 2026, de 08h30 à 18h00, au Conference Center de l’Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg. Plus d’infos : /venue/' },
       { kw: ['register', 'registration', 'ticket', 'sign up', 'attend', 'inscri', 'billet', 's inscrire', 'participer'],
         en: 'The conference is free to attend — register here: /register/. An optional Tutorial Pass (a hands-on half-day workshop) is €250 + VAT.',
         fr: 'La conférence est gratuite — inscris-toi ici : /register/. Un Tutorial Pass optionnel (atelier pratique d’une demi-journée) coûte 250 € + TVA.' },
@@ -484,8 +493,8 @@
         en: 'Interested in sponsoring? See the tiers on /sponsors/ and the “Sponsor With Us” info on /resources/, or email hello@lste.lu.',
         fr: 'Envie de sponsoriser ? Vois les formules sur /sponsors/ et la rubrique « Sponsor With Us » sur /resources/, ou écris à hello@lste.lu.' },
       { kw: ['park', 'parking', 'car', 'train', 'bus', 'get there', 'travel', 'voiture', 'acces', 'venir', 'transport', 'se garer'],
-        en: 'Free parking is available on site, and Belval is about 30 min by train from Luxembourg City. Full travel details: /venue/',
-        fr: 'Un parking gratuit est disponible sur place, et Belval est à environ 30 min en train depuis Luxembourg-Ville. Tous les détails d’accès : /venue/' },
+        en: 'Free on-site parking is available for guests, right by the Hamilius tram and bus stop in Luxembourg City. Full travel details: /venue/',
+        fr: 'Un parking gratuit est disponible sur place, juste à côté de l’arrêt Hamilius (tram et bus) à Luxembourg-Ville. Tous les détails d’accès : /venue/' },
       { kw: ['student', 'academic', 'university', 'etudiant', 'academique', 'universite'],
         en: 'Students and academics can attend free with a valid student ID (application required, limited seats). Apply when registering: /register/',
         fr: 'Étudiants et académiques peuvent participer gratuitement avec une carte d’étudiant valide (candidature requise, places limitées). Postule lors de l’inscription : /register/' },
@@ -507,7 +516,9 @@
     ];
 
     function fallbackAnswer(text) {
-      const lang = detectLang(text);
+      // Once the visitor has picked a language, honour it for every reply
+      // rather than re-guessing per message.
+      const lang = langChosen ? uiLang : detectLang(text);
       const q = ' ' + norm(text) + ' ';
       let best = null;
       let bestScore = 0;
@@ -554,10 +565,27 @@
       log.appendChild(wrap);
     }
 
-    function greet() {
-      if (greeted) return;
-      greeted = true;
-      // Localise the input placeholder + header status to the browser language.
+    function addLangPicker() {
+      const wrap = document.createElement('div');
+      wrap.className = 'chat-suggestions';
+      LANG_OPTIONS.forEach((opt) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = opt.label;
+        b.addEventListener('click', () => {
+          if (langChosen) return;
+          langChosen = true;
+          uiLang = opt.code;
+          wrap.remove();
+          showGreeting();
+        });
+        wrap.appendChild(b);
+      });
+      log.appendChild(wrap);
+    }
+
+    function showGreeting() {
+      // Localise the input placeholder + header status to the chosen language.
       if (uiLang === 'fr') {
         input.setAttribute('placeholder', 'Pose une question sur le LSTE…');
         const status = panel.querySelector('.chat-header__status');
@@ -565,6 +593,14 @@
       }
       addMessage('bot', GREETING[uiLang]);
       addSuggestions();
+    }
+
+    function greet() {
+      if (greeted) return;
+      greeted = true;
+      // Ask for a language first — the assistant must not assume one.
+      addMessage('bot', LANG_PICKER_PROMPT);
+      addLangPicker();
     }
 
     function typingIndicator() {
@@ -617,6 +653,14 @@
       if (!text || busy) return;
       busy = true;
       if (sendBtn) sendBtn.disabled = true;
+      // If the visitor types before picking a language (skipping the flag
+      // buttons), infer it from their message so they're never stuck.
+      if (!langChosen) {
+        langChosen = true;
+        uiLang = detectLang(text);
+        const picker = log.querySelector('.chat-suggestions');
+        if (picker) picker.remove();
+      }
       addMessage('user', text);
       history.push({ role: 'user', content: text });
       input.value = '';
@@ -684,6 +728,44 @@
     });
   }
 
+  /* ── QA-themed empty state for editions with no archive ───────── */
+  function initEmptyEditionModal() {
+    const triggers = document.querySelectorAll('.js-empty-edition');
+    const modal = document.getElementById('empty-edition-modal');
+    if (!triggers.length || !modal) return;
+    const closeBtn = document.getElementById('empty-edition-close');
+    const messageEl = document.getElementById('empty-edition-message');
+    let releaseFocus = null;
+
+    const JOKES = [
+      'Looks like this edition escaped our regression tests.',
+      "Even our testers couldn't find any archives for this one.",
+      "404: recap not found. We've logged a bug and moved on.",
+      'This edition shipped to production, but the archives never made it past QA.',
+      'We searched high and low — this recap is still stuck in a "pending review" state.',
+    ];
+
+    function close() {
+      modal.hidden = true;
+      if (releaseFocus) { releaseFocus(); releaseFocus = null; }
+    }
+
+    triggers.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const year = btn.dataset.edition || 'this edition';
+        const joke = JOKES[Math.floor(Math.random() * JOKES.length)];
+        messageEl.textContent = joke + ' (LSTE ' + year + ')';
+        modal.hidden = false;
+        releaseFocus = trapFocus(modal, close);
+        closeBtn.focus();
+      });
+    });
+
+    closeBtn && closeBtn.addEventListener('click', close);
+    modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initAnnouncement();
@@ -700,5 +782,6 @@
     initFooterYear();
     initTheme();
     initChat();
+    initEmptyEditionModal();
   });
 })();

@@ -5,12 +5,12 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:lste-2026@lste.lu
-DTSTAMP:20260716T064523Z
+DTSTAMP:20260717T061425Z
 DTSTART:20261126T073000Z
 DTEND:20261126T170000Z
 SUMMARY:LSTE 2026 — Luxembourg Software Testing Event
-LOCATION:Bâtiment des Terres Rouges\, 14 Porte de France\, 4360 Esch-sur-A
- lzette\, Luxembourg
+LOCATION:Conference Center Hôtel Parc Belle-Vue\, 5 Avenue Marie-Thérèse
+ \, L-2132 Luxembourg
 DESCRIPTION:Luxembourg's software testing conference\, 8th edition. Free to
   attend. https://lste.lu/
 URL:https://lste.lu/

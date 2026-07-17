@@ -18,7 +18,12 @@
   border-color: transparent;
   box-shadow: var(--shadow-md);
 }
-.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+/* scale(), not translateY(): translating the card away from the cursor moves
+   its hit-box with it, so a cursor resting near an edge falls outside the
+   card, triggering mouseleave → un-hover → the card slides back under the
+   cursor → mouseenter again, looping rapidly. A centered scale grows the
+   hit-box in every direction instead, so the cursor is always still inside. */
+.card:hover { box-shadow: var(--shadow-lg); transform: scale(1.015); }
 
 /* Cards that sit ON the alternate band still need to read as raised — the
    dual shadow already handles that since surface == band tone. */

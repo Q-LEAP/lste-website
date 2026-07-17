@@ -25,6 +25,7 @@
 }
 .hero__content { max-width: 760px; color: rgba(255, 255, 255, 0.92); }
 .hero__content h1 { color: #fff; }
+.hero__subtitle { font-size: 1.25rem; font-weight: 600; color: rgba(255, 255, 255, 0.85); margin-top: var(--space-2); }
 .hero__meta {
   display: flex;
   flex-wrap: wrap;

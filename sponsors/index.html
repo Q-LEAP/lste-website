@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <title>Sponsors &amp; Partners — LSTE 2026</title>
-<meta name="description" content="The companies making LSTE 2026 possible — gold, silver, and bronze sponsors, plus partner organisations investing in Luxembourg's software testing community.">
+<meta name="description" content="The companies making LSTE 2026 possible — Platinium, Gold, and Silver sponsors investing in Luxembourg's software testing community.">
 <link rel="canonical" href="https://lste.lu/sponsors/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sponsors &amp; Partners — LSTE">
@@ -32,23 +32,27 @@
       <img src="../assets/img/lste-logo.svg" alt="LSTE — Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
+    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
+         per the nav simplification pass — everything else lives in the
+         "More" dropdown / mobile hamburger. Speakers is intentionally not
+         linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
         <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" aria-current="page" href="../sponsors/index.html">Sponsors</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../resources/index.html">Media Kit &amp; Resources</a></li>
             <li><a href="../previous-editions/index.html">Previous Editions</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../news/index.html">News</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
-        <li><a class="main-nav-link" href="../contact/index.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -57,7 +61,7 @@
         <i class="fa-solid fa-moon" aria-hidden="true"></i>
       </button>
       <a class="btn btn--ghost header-speaker-btn" href="../become-a-speaker/index.html">Become a speaker</a>
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Reserve Ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -67,10 +71,9 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../about/index.html">About</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../resources/index.html">Resources</a></li>
     <li><a href="../previous-editions/index.html">Previous Editions</a></li>
@@ -78,7 +81,7 @@
     <li><a href="../news/index.html">News</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="../become-a-speaker/index.html">Become a speaker</a></li>
-    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Reserve Ticket</a></li>
   </ul>
 </div>
 
@@ -98,46 +101,24 @@
   <section class="section" style="padding-top:0;">
     <div class="container">
 
+      <!-- Confirmed sponsor logos from past editions are kept as image assets
+           (assets/img/) even though unused below, so they can be re-added
+           quickly once each sponsor confirms for 2026. -->
       <div class="reveal" style="margin-bottom:var(--space-10);">
-        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-star" aria-hidden="true" style="color:#b8960c;"></i> Gold sponsors</h2>
+        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-trophy" aria-hidden="true" style="color:#b8960c;"></i> Platinium sponsor</h2>
         <div class="sponsor-strip" style="justify-content:flex-start;">
-          <a href="https://www.deloitte.com/lu/en.html" target="_blank" rel="noopener" aria-label="Deloitte"><img src="../assets/img/Deloitte.svg-400.webp" width="160" height="35" loading="lazy" alt="Deloitte"></a>
           <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap"><img src="../assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap"></a>
-          <a href="https://www.nsi.lu/" target="_blank" rel="noopener" aria-label="NSI"><img src="../assets/img/Logo-couleur-PNG-400.webp" width="160" height="80" loading="lazy" alt="NSI"></a>
-          <a href="https://www.sogeti.lu/" target="_blank" rel="noopener" aria-label="Sogeti"><img src="../assets/img/1669629513287-400.webp" width="160" height="40" loading="lazy" alt="Sogeti"></a>
         </div>
       </div>
 
       <div class="reveal" style="margin-bottom:var(--space-10);">
-        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-medal" aria-hidden="true" style="color:#7a8799;"></i> Silver sponsors</h2>
-        <div class="sponsor-strip" style="justify-content:flex-start;">
-          <a href="https://www.ainos.lu/" target="_blank" rel="noopener" aria-label="AINOS"><img src="../assets/img/W11039803FIA-400.webp" width="140" height="47" loading="lazy" alt="AINOS"></a>
-          <a href="https://www.getxray.app/" target="_blank" rel="noopener" aria-label="Xray"><img src="../assets/img/1704990655352-400.webp" width="140" height="74" loading="lazy" alt="Xray"></a>
-          <a href="https://cds.thalesgroup.com/en" target="_blank" rel="noopener" aria-label="Thales"><img src="../assets/img/Thales_LOGO_Baseline_RGB-400.webp" width="140" height="53" loading="lazy" alt="Thales"></a>
-          <a href="https://www.uni.lu/" target="_blank" rel="noopener" aria-label="Université du Luxembourg"><img src="../assets/img/Uni-Logo-1-e1760086446337-400.webp" width="140" height="73" loading="lazy" alt="Université du Luxembourg"></a>
-          <a href="https://www.sqai-suite.com/" target="_blank" rel="noopener" aria-label="SQAI Suite"><img src="../assets/img/SQAISuite-400.webp" width="140" height="78" loading="lazy" alt="SQAI Suite"></a>
-          <a href="https://www.tricentis.com/" target="_blank" rel="noopener" aria-label="Tricentis"><img src="../assets/img/Tricentis-Logo-1-1120x446-1-400.webp" width="140" height="56" loading="lazy" alt="Tricentis"></a>
-        </div>
-      </div>
-
-      <div class="reveal" style="margin-bottom:var(--space-10);">
-        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-award" aria-hidden="true" style="color:#a0522d;"></i> Bronze sponsors</h2>
-        <div class="sponsor-strip" style="justify-content:flex-start;">
-          <a href="https://www.uni.lu/snt-fr/" target="_blank" rel="noopener" aria-label="SnT — University of Luxembourg"><img src="../assets/img/snt-tile-400.webp" width="140" height="86" loading="lazy" alt="SnT"></a>
-          <a href="https://q-guard.app/" target="_blank" rel="noopener" aria-label="Q-Guard"><img src="../assets/img/QGUARD_01-logo-400.webp" width="140" height="36" loading="lazy" alt="Q-Guard"></a>
-          <a href="https://jemmic.com/" target="_blank" rel="noopener" aria-label="jemmic"><img src="../assets/img/jemmic_logo_retina-400.webp" width="140" height="46" loading="lazy" alt="jemmic"></a>
-          <a href="https://q-bot.eu/" target="_blank" rel="noopener" aria-label="Q-Bot"><img src="../assets/img/Design-sans-titre-5-1-e1763388244973-400.webp" width="140" height="48" loading="lazy" alt="Q-Bot"></a>
-        </div>
+        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-star" aria-hidden="true" style="color:#7a8799;"></i> Gold sponsors</h2>
+        <p class="text-muted">2026 Gold sponsors will be announced here as they confirm. <a href="../resources/index.html">Become a sponsor</a>.</p>
       </div>
 
       <div class="reveal">
-        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-handshake" aria-hidden="true" style="color:var(--color-primary);"></i> Partners</h2>
-        <div class="sponsor-strip" style="justify-content:flex-start;">
-          <a href="https://www.luxembourg-testing-board.com/" target="_blank" rel="noopener" aria-label="Luxembourg Testing Board"><img src="../assets/img/ltb-logo-transparent-9d6563e0-200.webp" width="140" height="34" loading="lazy" alt="Luxembourg Testing Board"></a>
-          <a href="https://www.siliconluxembourg.lu/" target="_blank" rel="noopener" aria-label="Silicon Luxembourg"><img src="../assets/img/Silicon_Luxembourg_Rocket-400.webp" width="140" height="104" loading="lazy" alt="Silicon Luxembourg"></a>
-          <a href="https://www.gasq.org/fr/accueil.html" target="_blank" rel="noopener" aria-label="GASQ"><img src="../assets/img/GASQ_Logo-400.webp" width="140" height="34" loading="lazy" alt="GASQ"></a>
-          <a href="https://itnation.lu/" target="_blank" rel="noopener" aria-label="ITNation"><img src="../assets/img/itnation-400.webp" width="140" height="27" loading="lazy" alt="ITNation"></a>
-        </div>
+        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-medal" aria-hidden="true" style="color:#a0522d;"></i> Silver sponsors</h2>
+        <p class="text-muted">2026 Silver sponsors will be announced here as they confirm. <a href="../resources/index.html">Become a sponsor</a>.</p>
       </div>
 
     </div>
@@ -174,7 +155,6 @@
         <ul>
           <li><a href="../about/index.html">About LSTE</a></li>
           <li><a href="../previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="../speakers/index.html">Speakers</a></li>
           <li><a href="../schedule/index.html">Programme</a></li>
           <li><a href="../venue/index.html">Venue</a></li>
         </ul>
