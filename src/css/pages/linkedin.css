@@ -1,0 +1,90 @@
+/* ── LinkedIn updates page ──────────────────────────────────────────
+   LinkedIn's own post embed is a cross-origin iframe — its internals
+   can't be restyled — so the grid shows each post's own preview image
+   (LinkedIn bakes a play button into video thumbnails itself) with the
+   caption revealed on hover. Clicking opens the real, playable LinkedIn
+   embed in an on-site modal (see initLinkedInModal in main.js). */
+.linkedin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+@media (min-width: 700px) { .linkedin-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1100px) { .linkedin-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.linkedin-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 0;
+  padding: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  background: var(--color-ink);
+}
+.linkedin-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.linkedin-card:hover img,
+.linkedin-card:focus-visible img { transform: scale(1.05); }
+
+.linkedin-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4);
+  background: linear-gradient(180deg, rgba(15, 12, 30, 0) 45%, rgba(15, 12, 30, 0.92) 100%);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease);
+}
+.linkedin-card:hover .linkedin-card__overlay,
+.linkedin-card:focus-visible .linkedin-card__overlay { opacity: 1; }
+
+.linkedin-card__excerpt {
+  color: #fff;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+/* ── Shared lazy-loaded media modal ─────────────────────────────── */
+.media-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: rgba(15, 12, 30, 0.7);
+}
+.media-modal-dialog {
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.media-modal-body {
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  background: var(--color-ink);
+}
+.media-modal-body iframe {
+  width: 100%;
+  max-width: 504px;
+  border: 0;
+}

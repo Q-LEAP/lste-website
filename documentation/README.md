@@ -90,9 +90,46 @@ silently fail until real IDs are set:
 
 ## Social media
 
-LinkedIn has no public, partnership-free way to embed a company page's post
-feed on a third-party site — `news/index.html` links out to LinkedIn
-instead. YouTube uploads CAN be auto-embedded, but need the channel's
+LinkedIn has no public, partnership-free way to auto-sync a company page's
+post feed onto a third-party site — that requires the Community Management
+API (registered business + LinkedIn app approval + a backend to hold OAuth
+tokens). YouTube uploads CAN be auto-embedded, but need the channel's
 numeric Channel ID (not the `@LSTElu` handle) — see the HTML comment above
 the "Never miss an update" section in `news/index.html` for the exact
 iframe snippet to drop in once that ID is available.
+
+### LinkedIn Updates page (`/linkedin/`)
+
+Per Q-Leap's decision (2026-07-17), individual posts are embedded manually —
+there's no public auto-sync feed API. LinkedIn's post embed is also a
+cross-origin iframe (its internals can't be restyled with CSS), so rather
+than showing 11 raw LinkedIn embeds back to back, the page shows a clean
+grid of preview-image cards (LinkedIn bakes a play button into video
+thumbnails itself) with the caption revealed on hover; clicking a card
+opens the real, playable LinkedIn embed in an on-site modal (lazy-loaded —
+the iframe `src` is only set when a card is clicked, and cleared on close).
+
+This page ships with 11 real posts (added 2026-07-17 from URLs supplied
+directly by the client). To add a new one:
+
+1. From the post's share URL (e.g. from "Copy link to post"), the number
+   after `-activity-` is the activity ID —
+   `.../posts/luxembourg-software-testing-event_xxx-activity-7475793676074455040-WD34`
+   → activity ID `7475793676074455040`.
+2. Fetch `https://www.linkedin.com/embed/feed/update/urn:li:activity:ACTIVITY_ID`
+   (loads without login) and read its `<meta property="og:image">` and
+   `<meta property="og:description">` tags for the real thumbnail URL and
+   caption — **never invent these**, always pull them from the real page.
+3. Add a new card at the **top** of `.linkedin-grid` in `linkedin/index.html`
+   (posts are shown newest-first; the activity ID is a reliable proxy for
+   order — higher = newer):
+   ```html
+   <button type="button" class="linkedin-card" data-activity="ACTIVITY_ID" aria-label="Open LinkedIn post: EXCERPT">
+     <img src="OG_IMAGE_URL" alt="" loading="lazy">
+     <span class="linkedin-card__overlay"><span class="linkedin-card__excerpt">EXCERPT</span></span>
+   </button>
+   ```
+
+Only **public** posts can be embedded this way. If an author deletes the
+original post, both its thumbnail and the modal embed break — remove the
+card when that happens.

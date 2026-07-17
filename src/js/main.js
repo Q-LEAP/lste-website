@@ -766,6 +766,37 @@
     modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
   }
 
+  /* ── LinkedIn post cards: open the real embed in a lazy modal ──── */
+  function initLinkedInModal() {
+    const cards = document.querySelectorAll('.linkedin-card[data-activity]');
+    const modal = document.getElementById('linkedin-modal');
+    if (!cards.length || !modal) return;
+    const closeBtn = document.getElementById('linkedin-modal-close');
+    const iframe = document.getElementById('linkedin-modal-iframe');
+    let releaseFocus = null;
+
+    function close() {
+      modal.hidden = true;
+      iframe.src = ''; // stop any playing video
+      if (releaseFocus) { releaseFocus(); releaseFocus = null; }
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.activity;
+        if (!id) return;
+        iframe.src = 'https://www.linkedin.com/embed/feed/update/urn:li:activity:' + id;
+        modal.hidden = false;
+        releaseFocus = trapFocus(modal, close);
+        closeBtn.focus();
+      });
+    });
+
+    closeBtn && closeBtn.addEventListener('click', close);
+    modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initAnnouncement();
@@ -783,5 +814,6 @@
     initTheme();
     initChat();
     initEmptyEditionModal();
+    initLinkedInModal();
   });
 })();
