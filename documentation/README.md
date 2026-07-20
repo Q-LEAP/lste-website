@@ -900,3 +900,11 @@ source actually supports, producing soft/blocky playback.
   recap-networking-*`) were already extracted from the full-resolution
   raw source via `qlmanage`, not from the old low-res encode — no change
   needed there.
+
+## 2026-07-20 (homepage FAQ removed)
+
+Client asked to remove the homepage FAQ section for now. Removed the
+visible section (`#faq-heading`) and the matching `FAQPage` JSON-LD
+block from `index.html` (structured data should reflect visible content,
+so both had to go together). The same FAQ content still exists on the
+Register page (`register/index.html`), which is untouched.
