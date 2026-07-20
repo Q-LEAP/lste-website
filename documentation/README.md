@@ -908,3 +908,40 @@ visible section (`#faq-heading`) and the matching `FAQPage` JSON-LD
 block from `index.html` (structured data should reflect visible content,
 so both had to go together). The same FAQ content still exists on the
 Register page (`register/index.html`), which is untouched.
+
+## 2026-07-20 (performance): self-hosted webfonts
+
+Client asked if there were performance wins available without touching
+layout/design. Audited image sizes (fine — responsive AVIF/WebP/JPG
+already in place), CSS/JS size (58/23KB minified, reasonable), icon
+fonts (already self-hosted subset, not the full FA CDN), and the biggest
+remaining lever: **every one of the 31 pages was still loading fonts
+from Google's CDN** (`fonts.googleapis.com` -> `fonts.gstatic.com`), a
+2-hop, 2-extra-domain dependency on top of `preconnect`.
+
+- Fetched Google's font CSS directly (with a browser UA to get woff2)
+  and discovered Open Sans and Space Grotesk are served as **variable
+  fonts** — all 4 Open Sans weights (400/600/700/800) and both Space
+  Grotesk weights (600/700) resolve to the *same* file each, just
+  exposed as separate static instances. So only 3 files needed
+  downloading total (Open Sans variable, Space Grotesk variable,
+  JetBrains Mono 500), not 7 — ~87KB combined, saved to `assets/fonts/`
+  alongside the icon font that was already self-hosted there.
+  Real license (Google Fonts = open-license fonts, self-hosting is
+  standard practice).
+- Added the matching `@font-face` rules to `tokens.css` (one per family,
+  using a `font-weight` range for the two variable fonts, matching
+  exactly what Google's own CSS does), and removed the Google Fonts
+  `<link>` + the 2 `fonts.googleapis.com`/`fonts.gstatic.com`
+  `preconnect` tags from all 31 pages (mechanical, identical text on
+  every page).
+- Net effect: one fewer external round trip (no more CSS-then-font
+  waterfall to a second domain) and 2 fewer DNS/TLS handshakes, on
+  *every* page load, with the exact same visual fonts/weights — no
+  layout or design change. Browser cache-partitioning (standard since
+  ~2020) already meant the "shared CDN cache across sites" argument for
+  using Google's hosted fonts no longer applied anyway.
+- Checked and left alone (already fine): image formats/sizes, CSS/JS
+  minification, icon font subsetting, `loading="lazy"` on below-the-fold
+  images, hero image `fetchpriority="high"`, GitHub Pages' own gzip/
+  Brotli compression (not something we control or need to).

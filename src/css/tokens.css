@@ -9,6 +9,36 @@
    Both keep the exact same brand hues, gradient, and typography — the
    neumorphism only governs elevation/surfaces, never the brand identity.
    ========================================================================== */
+
+/* Self-hosted webfonts (latin-subset variable woff2 files pulled from
+   Google Fonts once, then served from our own origin) — removes the
+   fonts.googleapis.com -> fonts.gstatic.com round trip and the two extra
+   DNS/TLS handshakes every page previously paid on top of preconnect.
+   Each file is a variable font; one @font-face with a weight range
+   covers every static weight the site actually uses (400/600/700/800
+   for Open Sans, 600/700 for Space Grotesk), same as Google's own CSS. */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../fonts/open-sans-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('../fonts/space-grotesk-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/jetbrains-mono-500.woff2') format('woff2');
+}
+
 :root {
   /* Brand color (identical in both themes) */
   --color-primary:      #5546ae;
