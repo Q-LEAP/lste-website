@@ -1037,3 +1037,39 @@ redundant with sponsoring.
 
 Rebuilt CSS/JS/partials/paths/asset-versioning; all 31 pages still pass
 the HTML tag-balance check.
+
+## 2026-07-20 (correction): swapped merge direction — Become a Sponsor is now primary
+
+Client corrected the previous merge: the surviving page/label should be
+**"Become a Sponsor"**, not "Become a Speaker" — speaking is the perk
+that comes with sponsoring, not the other way around, so the primary
+CTA/URL should reflect the actual commercial action.
+
+- Moved the full page content (hero, Why-speak, Talk formats, Selection
+  process, FAQ, final CTA — all from the previous pass, hero copy
+  untouched) from `become-a-speaker/index.html` into
+  `become-a-sponsor/index.html`. Updated its own identity: title,
+  meta/og description, canonical, breadcrumb, and eyebrow now say
+  "Become a Sponsor"; the hero H1/subtitle/"Submit a talk" CTA are
+  exactly as the client asked to keep.
+- Turned `become-a-speaker/index.html` into the redirect stub instead
+  (mirroring the pattern), pointing to `/become-a-sponsor/`.
+  `call-for-speakers/index.html` (which redirected to
+  become-a-speaker) now redirects straight to become-a-sponsor too, so
+  there's no double hop.
+- Updated the shared partials (`src/partials/nav.html`,
+  `src/partials/footer.html`) — header CTA button, mobile nav, and
+  footer link now all read "Become a sponsor" / point to
+  `/become-a-sponsor/` — and re-ran `partials:inject` so every page
+  picked it up.
+- Fixed page-specific (non-partial) links that also pointed at the old
+  URL: homepage hero secondary CTA and final-CTA "Submit a talk" button,
+  homepage Sponsors-section CTA (now points straight to the full page
+  instead of `resources/#sponsor`), Contact page's quick-links list
+  (merged its separate "Sponsorship" and "Speaking" lines into one,
+  since they're the same contact now), Resources' cross-link, and the
+  Speakers page's "Want to speak at LSTE 2026?" CTA (also dropped a
+  leftover "accepting submissions until 30 September 2026" claim there
+  that the sponsor-tier model no longer supports).
+- Verified zero remaining `become-a-speaker` references anywhere in the
+  built site except the redirect stub's own target.
