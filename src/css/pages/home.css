@@ -12,10 +12,25 @@
 .hero__bg {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+/* Trace motif, faint, between the photo and the colour scrim — the very
+   first pixels a visitor sees already carry LSTE's own graphic signature
+   rather than just a stock-feeling photo + purple wash. Larger scale and
+   a touch more present than the section-texture use, since this is the
+   one flagship moment; still well short of "decoration for its own sake". */
+.hero__motif {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--motif-trace);
+  background-repeat: repeat;
+  background-size: 180px 90px;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
 }
 .hero__scrim {
   position: absolute;
@@ -24,7 +39,20 @@
   background: linear-gradient(180deg, rgba(20, 15, 50, 0.86) 0%, rgba(66, 54, 133, 0.82) 45%, rgba(85, 70, 174, 0.78) 100%);
 }
 .hero__content { max-width: 760px; color: rgba(255, 255, 255, 0.92); }
-.hero__content h1 { color: #fff; }
+.hero__content h1 {
+  color: #fff;
+  font-size: clamp(2.75rem, 5.5vw + 1rem, 4.75rem);
+  letter-spacing: -0.02em;
+}
+/* One deliberate moment of brand colour in the whole hero — the actual
+   name of the discipline, not the whole headline, reusing the exact
+   gradient-text-clip technique already proven on .stat-value. */
+.hero__highlight {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .hero__subtitle { font-size: 1.25rem; font-weight: 600; color: rgba(255, 255, 255, 0.85); margin-top: var(--space-2); }
 .hero__meta {
   display: flex;

@@ -72,7 +72,7 @@
 .edition-card__year {
   font-family: var(--font-heading);
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 700;
   background: var(--gradient-brand);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   line-height: 1;
@@ -243,9 +243,9 @@
 }
 .timeline__item:last-child { padding-bottom: 0; }
 .timeline__time {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.8125rem;
   color: var(--color-primary);
   text-align: right;
   padding-top: 0.15rem;

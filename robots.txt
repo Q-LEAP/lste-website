@@ -1,9 +1,8 @@
+# TEMPORARY: this build isn't at its official URL yet, and every page also
+# carries <meta name="robots" content="noindex, nofollow">. Once the site
+# is ready to go live at lste.lu, revert this file to allow crawling (see
+# documentation/README.md) and remove the meta tag site-wide.
 User-agent: *
-Allow: /
-Disallow: /.claude/
-Disallow: /scripts/
-Disallow: /src/
-Disallow: /worker/
-Disallow: /node_modules/
+Disallow: /
 
 Sitemap: https://lste.lu/sitemap.xml

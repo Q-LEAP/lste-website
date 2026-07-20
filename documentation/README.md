@@ -1,5 +1,14 @@
 # LSTE website — documentation & source materials
 
+> ⚠️ **BEFORE GOING LIVE:** as of 2026-07-20, every single page carries
+> `<meta name="robots" content="noindex, nofollow">` and `robots.txt` is set
+> to `Disallow: /` — done deliberately because this build isn't at its
+> official URL yet. **Both must be reverted** (remove the meta tag
+> site-wide, restore `robots.txt`'s `Allow: /` + per-directory disallows)
+> before the real launch, or the site will never get indexed. See the
+> dated note near the bottom of this file for the exact prior `robots.txt`
+> contents to restore.
+
 This folder is the single place to check before making any significant
 content change to the site. It holds source materials (old programmes,
 flyers) and a running record of facts that were verified against official
@@ -301,5 +310,111 @@ manages via `IntersectionObserver` — no new JS observers):
 **Not touched, and why**: the Formspree contact/newsletter placeholder IDs
 (still need a real Formspree ID from the client — see the section above);
 the "Platinium" spelling (used consistently across the site — this was
-the client's own explicit wording, not a typo); the About page's
-organiser photo placeholder (no real team photo supplied yet).
+the client's own explicit wording, not a typo).
+
+## 2026-07-20 art-direction pass ("give the site a real event identity")
+
+A visual-identity system change (typography, contrast, a signature graphic
+motif, hero impact, neumorphism nuance) done at the tokens/components layer
+so it's the new baseline everywhere at once — not a content pass, no new
+photos-as-full-bleed-bands (that was tried once already and reverted; the
+client clarified the actual problem was the fixed-height full-bleed format
+itself, not real photos in general — contained treatments remain fine).
+
+- **Typography**: `--font-heading` (tokens.css) is now **Space Grotesk**
+  (previously identical to `--font-body`, i.e. Open Sans for literally
+  everything). New `--font-mono` token (**JetBrains Mono**, weight 500
+  only) applied narrowly to `.eyebrow`, `.countdown__value`, `.badge`,
+  `.timeline__time` — small "technical" UI accents, never headings or
+  body copy. Google Fonts `<link>` updated sitewide (26 pages) to load all
+  three families in one request. **Important:** Space Grotesk has no
+  800/900 weight — every `font-weight: 800` tied to `--font-heading`
+  (h1/h2, `.stat-value`, `.avatar-initials`, `.pricing-card__price`,
+  `.edition-card__year`) was dropped to 700 to avoid a synthetic/faux-bold
+  fallback. If a heading-adjacent component is added later, check this
+  before assuming 800 is safe.
+- **Signature motif ("Trace")**: a small reusable SVG — a thin stepped
+  line with hollow "checkpoint" circles and one filled accent dot —
+  stored as themed data-URI custom properties (`--motif-trace` in
+  tokens.css, one value per theme so it stays visible on both light and
+  dark surfaces). Used as a low-opacity tiled texture on `.section--alt`
+  (new) and `.section--brand` (replacing the old single reused
+  logo-illustration corner flourish — that image file is still on disk,
+  just no longer referenced), as a small `mask-image` glyph before every
+  `.eyebrow` (tinted via `currentColor`, no separate theme variant
+  needed), and as a faint layer in the hero between the photo and the
+  colour scrim (`.hero__motif`, `src/css/pages/home.css`).
+- **Contrast/rhythm**: `.section--dark` (real contrast, previously used
+  in exactly 3 places, all the same stats-strip) is now also used for the
+  homepage testimonials section — no new CSS, just broader use of an
+  existing tool.
+- **Hero**: also fixed a real pre-existing bug while touching this markup
+  — the hero background was wrapped in an invalid nested `<picture>`
+  inside `<picture>` (two source sets, one redundant). Consolidated to
+  one. H1 now sized/spaced independently of the shared `--fs-h1` (hero
+  only), with one phrase ("Software Testing") gradient-clipped via the
+  same text-clip technique already used on `.stat-value`
+  (`.hero__highlight`).
+- **Neumorphism**: new `.testimonial-card--accent` (flat surface +
+  2px brand border, no soft shadow) reuses the exact recipe already
+  proven once on `.pricing-card--featured` — a soft neu shadow tuned for
+  the light page background doesn't read correctly on an arbitrary dark
+  section, so cards meant to sit on `.section--dark` opt into this
+  instead. Used on the (now real, re-added) homepage testimonials.
+- **Reinstated from the reverted pass, unchanged in format**: the 3 real
+  attributed testimonial quotes (originally Dr. Anne Kramer, Cristiano
+  Cunha, Jonathan Bernales — `.avatar-initials`, no fabricated photo,
+  since updated again below) and the About page's real "Q-Leap team at
+  LSTE 2024" photo in its Organiser section (contained in its existing
+  grid column — this exact format was confirmed fine by the client; only
+  the full-bleed band was rejected).
+
+## 2026-07-20 (later): em-dash cleanup, testimonial swap, temporary noindex
+
+- **Em-dashes removed site-wide.** The client dislikes the "—" character
+  ("ça fait très IA"). Every visible occurrence across all 30 pages plus
+  the chat widget's bilingual fallback answers (`src/js/main.js`) was
+  rewritten with alternative punctuation (commas, colons, semicolons,
+  parentheses, or clause restructuring), preserving every fact/date/name
+  exactly. Only em-dashes inside developer HTML/JS comments (never
+  user-visible) were left alone. **If you write any new copy for this
+  site, don't use em-dashes** — this is a standing style rule now, not a
+  one-time cleanup.
+- **Homepage testimonials swapped again**, using real quotes the client
+  sourced directly from LinkedIn posts:
+  - Kept: Dr. Anne Kramer (unchanged, links to `news/digital-colleague/`).
+  - Replaced Cristiano Cunha / Jonathan Bernales with:
+    - **Anna Kabanova** ("Project QA Lead", per the client — her
+      `linkedin/index.html` card caption previously said "Senior QA
+      Engineer"; updated that too so both mentions agree).
+    - **Avanti Sharma**, given the featured/first card position per the
+      client — title updated to her real professional role, "Director of
+      Artificial Intelligence & Growth, Workshop4Me" (already verified in
+      `news/avanti-sharma-mc/`, which her card links to), rather than her
+      LSTE-specific "Master of Ceremonies" role.
+  - Cunha's real affiliation (Xray) surfaced in the same source material
+    but his quote wasn't reused here — he's still featured on
+    `linkedin/index.html`. Ainos/Quentin Ostertag's post was reviewed too
+    but wasn't a first-person quote (company-page framing "à travers le
+    regard de Quentin Ostertag"), so it wasn't used as a testimonial.
+- **Site-wide `noindex, nofollow`** (see the warning at the top of this
+  file). `robots.txt` was previously:
+  ```
+  User-agent: *
+  Allow: /
+  Disallow: /.claude/
+  Disallow: /scripts/
+  Disallow: /src/
+  Disallow: /worker/
+  Disallow: /node_modules/
+
+  Sitemap: https://lste.lu/sitemap.xml
+  ```
+  Restore exactly that (or re-derive from `sitemap.xml`'s page list, kept
+  up to date separately) when the site is ready to go live, and remove
+  `<meta name="robots" content="noindex, nofollow">` from every page
+  (it was either newly inserted or replaced an existing, different value —
+  `privacy-policy/index.html` previously had `"index, follow"`,
+  `speakers/index.html` and the 4 redirect stubs previously had bare
+  `"noindex"` — check `git log` on this commit for the exact prior
+  per-page values if a page needs something other than `"index, follow"`).

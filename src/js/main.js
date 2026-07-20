@@ -359,7 +359,7 @@
           });
           if (!res.ok) throw new Error('Server error');
           if (msg) {
-            msg.textContent = form.dataset.successMessage || 'Thank you — we will be in touch soon.';
+            msg.textContent = form.dataset.successMessage || 'Thank you, we will be in touch soon.';
             msg.className = 'form-msg form-msg--success';
           }
           form.reset();
@@ -443,13 +443,13 @@
     };
 
     const GREETING = {
-      en: 'Hi! I’m the LSTE assistant — ask me about dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
-      fr: 'Bonjour ! Je suis l’assistant du LSTE — pose-moi tes questions sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?',
+      en: 'Hi! I’m the LSTE assistant, here to help with dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
+      fr: 'Bonjour ! Je suis l’assistant du LSTE, ici pour répondre à tes questions sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?',
     };
 
     const MISS = {
-      en: 'I don’t have that exact detail here. You can ask me about dates, tickets, the venue, speaking or sponsoring — or email hello@lste.lu / see /contact/.',
-      fr: 'Je n’ai pas ce détail précis ici. Tu peux me demander les dates, les billets, le lieu, comment intervenir ou sponsoriser — ou écrire à hello@lste.lu / voir /contact/.',
+      en: 'I don’t have that exact detail here. You can ask me about dates, tickets, the venue, speaking or sponsoring, or email hello@lste.lu / see /contact/.',
+      fr: 'Je n’ai pas ce détail précis ici. Tu peux me demander les dates, les billets, le lieu, comment intervenir ou sponsoriser, ou écrire à hello@lste.lu / voir /contact/.',
     };
 
     // Lowercase, strip accents, and flatten punctuation (hyphens, apostrophes,
@@ -473,26 +473,26 @@
     // accent-stripped; the best-scoring intent wins.
     const INTENTS = [
       { kw: ['who are you', 'what are you', 'who r u', 'what can you do', 'what do you do', 'who is this', 'your name', 'help me', 'qui es tu', 'es tu', 'qui etes', 'etes vous', 'tu es qui', 'vous etes qui', 'c est quoi ce', 'que sais tu', 'tu fais quoi', 'tu sers a quoi', 'ton nom', 'presente toi'],
-        en: 'I’m the LSTE assistant. LSTE — the Luxembourg Software Testing Event — is Luxembourg’s annual one-day conference for software testing and QA professionals (8th edition: 26 November 2026, Hôtel Parc Belle-Vue, Luxembourg City, free to attend). I can help with dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
-        fr: 'Je suis l’assistant du LSTE. Le LSTE — Luxembourg Software Testing Event — est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg (8e édition : 26 novembre 2026, Hôtel Parc Belle-Vue, Luxembourg-Ville, entrée gratuite). Je peux t’aider sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?' },
+        en: 'I’m the LSTE assistant. LSTE (the Luxembourg Software Testing Event) is Luxembourg’s annual one-day conference for software testing and QA professionals (8th edition: 26 November 2026, Hôtel Parc Belle-Vue, Luxembourg City, free to attend). I can help with dates, tickets, the venue, speaking, sponsoring and more. What would you like to know?',
+        fr: 'Je suis l’assistant du LSTE. Le LSTE (Luxembourg Software Testing Event) est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg (8e édition : 26 novembre 2026, Hôtel Parc Belle-Vue, Luxembourg-Ville, entrée gratuite). Je peux t’aider sur les dates, les billets, le lieu, comment intervenir ou sponsoriser, etc. Que veux-tu savoir ?' },
       { kw: ['what is lste', 'about lste', 'tell me about', 'what s lste', 'whats lste', 'c est quoi lste', 'c est quoi le lste', 'quoi le lste', 'quoi lste', 'qu est ce que lste', 'a propos', 'presente lste', 'lste c est quoi', 'parle moi'],
-        en: 'LSTE (the Luxembourg Software Testing Event) is Luxembourg’s annual one-day conference for software testing & QA professionals — keynotes, talks, live demos, workshops and networking, drawing 300+ attendees. The 8th edition is on 26 November 2026 at Hôtel Parc Belle-Vue, Luxembourg City, free to attend. More: /about/',
-        fr: 'Le LSTE (Luxembourg Software Testing Event) est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg — keynotes, talks, démos, ateliers et networking, avec 300+ participants. La 8e édition a lieu le 26 novembre 2026 à l’Hôtel Parc Belle-Vue, Luxembourg-Ville, entrée gratuite. Plus d’infos : /about/' },
+        en: 'LSTE (the Luxembourg Software Testing Event) is Luxembourg’s annual one-day conference for software testing & QA professionals: keynotes, talks, live demos, workshops and networking, drawing 400+ attendees. The 8th edition is on 26 November 2026 at Hôtel Parc Belle-Vue, Luxembourg City, free to attend. More: /about/',
+        fr: 'Le LSTE (Luxembourg Software Testing Event) est la conférence annuelle d’une journée dédiée aux professionnels du test logiciel et de la QA au Luxembourg : keynotes, talks, démos, ateliers et networking, avec 400+ participants. La 8e édition a lieu le 26 novembre 2026 à l’Hôtel Parc Belle-Vue, Luxembourg-Ville, entrée gratuite. Plus d’infos : /about/' },
       { kw: ['when', 'date', 'where', 'venue', 'location', 'address', 'quand', 'ou ', 'lieu', 'adresse', 'endroit'],
         en: 'LSTE 2026 is on 26 November 2026, 08:30–18:00, at the Conference Center of Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg. More: /venue/',
         fr: 'Le LSTE 2026 a lieu le 26 novembre 2026, de 08h30 à 18h00, au Conference Center de l’Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg. Plus d’infos : /venue/' },
       { kw: ['register', 'registration', 'ticket', 'sign up', 'attend', 'inscri', 'billet', 's inscrire', 'participer'],
-        en: 'The conference is free to attend — register here: /register/. An optional Tutorial Pass (a hands-on half-day workshop) is €250 + VAT.',
-        fr: 'La conférence est gratuite — inscris-toi ici : /register/. Un Tutorial Pass optionnel (atelier pratique d’une demi-journée) coûte 250 € + TVA.' },
+        en: 'The conference is free to attend, register here: /register/. An optional Tutorial Pass (a hands-on half-day workshop) is €250 + VAT.',
+        fr: 'La conférence est gratuite, inscris-toi ici : /register/. Un Tutorial Pass optionnel (atelier pratique d’une demi-journée) coûte 250 € + TVA.' },
       { kw: ['free', 'price', 'cost', 'how much', 'fee', 'gratuit', 'prix', 'cout', 'combien', 'tarif', 'payer'],
         en: 'Attending the conference is free (a networking lunch and coffee breaks are included). The optional Tutorial Pass is €250 + VAT. See /register/.',
         fr: 'Assister à la conférence est gratuit (un déjeuner networking et les pauses café sont inclus). Le Tutorial Pass optionnel coûte 250 € + TVA. Voir /register/.' },
       { kw: ['lunch', 'food', 'eat', 'meal', 'coffee', 'repas', 'dejeuner', 'manger', 'nourriture', 'cafe'],
-        en: 'Yes — a networking lunch and coffee breaks are included with every ticket, at no cost. See /register/.',
-        fr: 'Oui — un déjeuner networking et les pauses café sont inclus avec chaque billet, sans frais. Voir /register/.' },
+        en: 'Yes, a networking lunch and coffee breaks are included with every ticket, at no cost. See /register/.',
+        fr: 'Oui, un déjeuner networking et les pauses café sont inclus avec chaque billet, sans frais. Voir /register/.' },
       { kw: ['speaker', 'speak', 'talk', 'cfp', 'submit', 'call for', 'present', 'parler', 'conferenc', 'intervenir', 'proposer'],
-        en: 'We welcome talk proposals (keynote, talk or workshop) until 30 September 2026 — submit yours here: /become-a-speaker/',
-        fr: 'Nous accueillons les propositions (keynote, talk ou atelier) jusqu’au 30 septembre 2026 — propose la tienne ici : /become-a-speaker/' },
+        en: 'We welcome talk proposals (keynote, talk or workshop) until 30 September 2026, submit yours here: /become-a-speaker/',
+        fr: 'Nous accueillons les propositions (keynote, talk ou atelier) jusqu’au 30 septembre 2026, propose la tienne ici : /become-a-speaker/' },
       { kw: ['sponsor', 'partner', 'exhibit', 'partenaire', 'sponsoriser', 'stand'],
         en: 'Interested in sponsoring? See the tiers on /sponsors/ and the “Sponsor With Us” info on /resources/, or email hello@lste.lu.',
         fr: 'Envie de sponsoriser ? Vois les formules sur /sponsors/ et la rubrique « Sponsor With Us » sur /resources/, ou écris à hello@lste.lu.' },
@@ -515,8 +515,8 @@
         en: 'You’re welcome! Anything else about LSTE I can help with?',
         fr: 'Avec plaisir ! Autre chose sur le LSTE ?' },
       { kw: ['hello', 'hi ', 'hey', 'bonjour', 'salut', 'coucou', 'yo '],
-        en: 'Hi! Ask me anything about LSTE — dates, tickets, the venue, speaking or sponsoring.',
-        fr: 'Bonjour ! Pose-moi tes questions sur le LSTE — dates, billets, lieu, intervenir ou sponsoriser.' },
+        en: 'Hi! Ask me anything about LSTE: dates, tickets, the venue, speaking or sponsoring.',
+        fr: 'Bonjour ! Pose-moi tes questions sur le LSTE : dates, billets, lieu, intervenir ou sponsoriser.' },
     ];
 
     function fallbackAnswer(text) {
@@ -774,7 +774,7 @@
       "Even our testers couldn't find any archives for this one.",
       "404: recap not found. We've logged a bug and moved on.",
       'This edition shipped to production, but the archives never made it past QA.',
-      'We searched high and low — this recap is still stuck in a "pending review" state.',
+      'We searched high and low; this recap is still stuck in a "pending review" state.',
     ];
     initSimpleModal({
       triggers: document.querySelectorAll('.js-empty-edition'),
