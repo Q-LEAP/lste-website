@@ -107,13 +107,23 @@ someone confirms otherwise from Q-Leap directly.
   **not yet confirmed for 2026**. Their logo assets are kept in
   `assets/img/` unreferenced so they can be re-added quickly once/if they
   confirm — do not delete those image files.
-- **Sponsorship tiers:** Platinium / Gold / Silver (Bronze retired).
-- **Full-day structure** (from the live schedule page, used as the closest
-  real substitute for the unavailable PPTX page 5): Morning Tutorials from
-  10:00 (optional, limited seats — never mention the price; the CTA should
-  only invite people to contact hello@lste.lu for the brochure), Exhibition
-  Area from 13:00, Keynote Room from 13:30, Demo Room from 14:00, Networking
-  Cocktail from 19:00.
+- **Sponsorship tiers:** Platinum / Gold / Silver (Bronze retired). The site
+  originally used the client's own explicit earlier spelling, "Platinium";
+  when the 2026-07-20 sponsor brochure turned up spelling it the standard
+  way ("PLATINUM"), this was flagged back to the client, who confirmed
+  aligning the site to the brochure's spelling — updated everywhere
+  (`sponsors/index.html`, `resources/index.html`).
+- **Full-day structure** (current, per the homepage schedule preview /
+  `schedule/index.html`'s Google Calendar link / the .ics file, all
+  consistent as of 2026-07-20): Registration & welcome coffee 08:30,
+  Keynotes/talks + live demos from 09:15, Networking lunch 12:45, Closing
+  ceremony & networking drinks from 17:30 (day runs 08:30–18:00 overall).
+  This superseded an older schedule draft (Morning Tutorials from 10:00,
+  Exhibition Area from 13:00, Keynote Room from 13:30, Demo Room from
+  14:00, Networking Cocktail from 19:00) that the About page's "Event
+  format" pillar cards had been left showing — reconciled during the
+  2026-07-20 sponsor-brochure pass below. Morning tutorial pricing is still
+  never mentioned; the CTA only invites people to contact hello@lste.lu.
 
 ## Formspree setup (contact form + newsletter)
 
@@ -492,3 +502,93 @@ itself, not real photos in general — contained treatments remain fine).
   on the About page's own stats strip, so nothing was lost, just
   de-duplicated off the homepage). Removed the now-unused
   `.hero__countdown-label` CSS rule.
+
+## 2026-07-20 (latest): sponsor-brochure fact reconciliation
+
+Client provided `documentation/archives/LSTE_2026_Sponsor_Brochure.pdf` (the
+2026 sponsoring deck) and asked for the whole site to be cross-checked
+against it as the source of truth for numbers, dates, and other
+potentially-stale claims. Full text of all 14 pages was read and compared
+against every numeric/factual claim findable via grep across the site.
+
+- **About page stats band — this was the specific issue flagged.**
+  `about/index.html`'s "LSTE by the numbers" strip said "2018" for Year
+  founded, contradicting the already-corrected "2014" on
+  `previous-editions/index.html` (2014 is right — see the 2026-07-17
+  Verified Facts entry above). Fixed to 2014. Also bumped "100+ Speakers
+  over the years" → "150+": the brochure itself doesn't give a cumulative
+  historical speaker count (only per-2025-edition stats), and the site's
+  own edition pages only ever highlighted a curated handful of speakers per
+  year (not a full roster), so no exact authoritative total exists anywhere
+  in the project. 150+ is a conservative, defensible bump consistent with
+  the client's own statement that the true count is "well over 100" across
+  7 real editions — not a brochure-sourced figure. If an exact count
+  matters, it should come from Q-Leap's own internal records.
+- **2025 attendee count corrected from "320+" to "400+".** The brochure's
+  "LSTE 2025 in numbers" page states 400+ QA professionals, +40% growth,
+  60+ organisations, 15+ sponsors. Sanity check: 2024's already-verified
+  280+ attendees × 1.4 ≈ 392–400, which matches the brochure's 400+ almost
+  exactly — strong confirmation that 400+ is the real number and "320+"
+  was simply stale. Updated in `previous-editions/index.html` (edition
+  card + stats-strip) and `previous-editions/edition-2025/index.html`
+  (hero copy, body copy, edition-details list), also adding "60+
+  organizations" alongside the attendee count on both pages to match the
+  richer 2-stat pattern already used on the 2018/2019 edition entries.
+- **2024 attendee count: fixed an internal contradiction, unrelated to the
+  brochure.** The news pages (`news/index.html`,
+  `news/lste-2024-landmark/index.html`) said "over 350 professionals" for
+  the 2024 (6th) edition, while `previous-editions/index.html` and
+  `previous-editions/edition-2024/index.html` both said "280+" for the
+  same edition. 280+ is the verified figure (2019 sponsoring-deck lineage,
+  see above) and is also the number that makes the brochure's "+40%
+  growth to 400+ in 2025" math work. Corrected the news pages' "350" → "280"
+  everywhere (meta description, og:description, body copy).
+- **About page's "Event format" schedule cards were stale relative to a
+  later schedule change.** They still showed the older draft schedule
+  documented in the 2026-07-17 Verified Facts section (Exhibition 13:00 /
+  Keynote 13:30 / Demo 14:00 / Cocktail 19:00) even though the homepage's
+  own schedule preview, `schedule/index.html`'s Google Calendar link, and
+  the generated `.ics` file had all since moved to a different, internally
+  consistent schedule (08:30 registration → 09:15 keynotes/demos → 12:45
+  lunch → 17:30 closing, 08:30–18:00 overall) as part of the header/nav/
+  countdown pass earlier the same day. Reconciled the About page's 4
+  pillar cards to the current schedule; renamed "Networking Cocktail" to
+  "Closing & Networking" and softened "Exhibition area" to "open
+  throughout the day" (no specific time for it exists in the current
+  schedule, so a vague-but-true claim beats a stale specific one).
+- **Brochure vs. site: two things checked and deliberately left alone.**
+  (1) The brochure's page 5 subtitle reads "...from 9AM to 9P[M]"
+  (truncated in extraction) for the overall day span — this was *not*
+  used to change the site's 08:30–18:00, since that time is precise,
+  appears consistently in the JSON-LD `Event` schema / hero / schedule
+  page / `.ics` file, and is now further corroborated by the homepage's
+  own detailed timeline ending at 17:30–18:00 with a closing/networking
+  moment (which is what the brochure's "evening" framing was almost
+  certainly describing). Treated the brochure's vaguer marketing phrasing
+  as lower-confidence than the site's own precise, multiply-consistent
+  time. (2) The brochure's sponsorship package prices (Silver €1,500 /
+  Gold €3,500 / Platinum €4,700, all excl. VAT) were **not** added to
+  `sponsors/index.html` or `resources/index.html` — this actually confirms
+  and explains the site's existing "never publish sponsor prices, only
+  invite people to contact hello@lste.lu for the brochure" convention
+  rather than contradicting it. No site change needed there.
+- **Flagged and resolved:** the brochure spells the top sponsor tier
+  "PLATINUM"; the site (per explicit earlier client instruction) used
+  "Platinium." Flagged to the client rather than silently overriding their
+  own earlier wording choice — client confirmed aligning to the brochure's
+  spelling, so the site now reads "Platinum" everywhere (see the updated
+  Verified Facts entry above).
+- **New brochure info not added to the site (would be additions, not
+  corrections, so left for a future explicit request):** Silicon
+  Luxembourg's 23K+ digital reach, 3,000+ newsletter subscribers, 800+
+  LinkedIn followers (+100% YoY), and "IT Nation" as a media/press
+  partner. IT Nation was already known as a past (non-2026-confirmed)
+  sponsor per the Verified Facts sponsor list above; the brochure frames
+  it in a media-partner role instead, which is new context worth knowing
+  but wasn't acted on here.
+- Also verified and left unchanged (already correct/consistent):
+  8th edition/26 November 2026 date, Q-Leap SA's address, the "since 2014"
+  /7-editions framing, and the chatbot's (`src/js/main.js`) attendee-count
+  and edition copy (already said 400+/8th edition).
+- Ran `npm run build` (css/js/ics/images/partials/paths) after the edits;
+  all touched pages pass the project's HTML tag-balance checker.
