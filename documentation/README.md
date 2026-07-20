@@ -471,3 +471,24 @@ itself, not real photos in general — contained treatments remain fine).
     FAQ says ("students... welcome, free of charge, just like every
     other attendee... the same way"). Reworded to match that FAQ exactly
     instead of asserting an invented process.
+
+## 2026-07-20 (yet later): header/nav simplification, countdown moved
+
+- **"More" dropdown + mobile nav trimmed from 8 to 4 items.** Removed
+  Media Kit & Resources, Previous Editions, News, and LinkedIn Updates
+  from `src/partials/nav.html` (both the desktop dropdown and the mobile
+  panel) per the client's request to reduce nav cognitive load — these 4
+  pages are unchanged and still fully reachable from the footer (Event/
+  Get Involved/Resources columns), nothing was deleted or made
+  unreachable. Re-run `npm run partials:inject` after any further nav
+  edits — don't hand-edit each page's injected copy.
+- **Countdown moved out of the Hero into its own band.** The Hero was
+  carrying too much simultaneously (eyebrow, title, subtitle, meta row,
+  2 CTAs, and a live countdown). The countdown (`.countdown`/`data-countdown`
+  — `initCountdown()` in `src/js/main.js` already queries all matching
+  elements generically, so no JS change was needed) now lives in the
+  section right after the Hero, replacing the previous static stats
+  band (8th edition / 1,500+ / 100+ / 50+ — that same info still exists
+  on the About page's own stats strip, so nothing was lost, just
+  de-duplicated off the homepage). Removed the now-unused
+  `.hero__countdown-label` CSS rule.

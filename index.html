@@ -104,11 +104,7 @@
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
             <li><a href="./about/index.html">About</a></li>
             <li><a href="./sponsors/index.html">Sponsors</a></li>
-            <li><a href="./resources/index.html">Media Kit &amp; Resources</a></li>
-            <li><a href="./previous-editions/index.html">Previous Editions</a></li>
             <li><a href="./gallery/index.html">Gallery</a></li>
-            <li><a href="./news/index.html">News</a></li>
-            <li><a href="./linkedin/index.html">LinkedIn Updates</a></li>
             <li><a href="./contact/index.html">Contact</a></li>
           </ul>
         </li>
@@ -134,11 +130,7 @@
     <li><a href="./venue/index.html">Venue</a></li>
     <li><a href="./about/index.html">About</a></li>
     <li><a href="./sponsors/index.html">Sponsors</a></li>
-    <li><a href="./resources/index.html">Media Kit &amp; Resources</a></li>
-    <li><a href="./previous-editions/index.html">Previous Editions</a></li>
     <li><a href="./gallery/index.html">Gallery</a></li>
-    <li><a href="./news/index.html">News</a></li>
-    <li><a href="./linkedin/index.html">LinkedIn Updates</a></li>
     <li><a href="./contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="./become-a-speaker/index.html">Become a speaker</a></li>
     <li><a class="btn btn--primary btn--block" href="./register/index.html">Reserve Ticket</a></li>
@@ -173,27 +165,24 @@
         <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         <a class="btn btn--ghost-on-dark btn--lg" href="./become-a-speaker/index.html">Become a speaker</a>
       </div>
-
-      <div>
-        <p class="hero__countdown-label">Countdown to LSTE 2026</p>
-        <div class="countdown" data-countdown>
-          <div class="countdown__item"><span class="countdown__value" data-cd-days>00</span><span class="countdown__unit">Days</span></div>
-          <div class="countdown__item"><span class="countdown__value" data-cd-hours>00</span><span class="countdown__unit">Hours</span></div>
-          <div class="countdown__item"><span class="countdown__value" data-cd-minutes>00</span><span class="countdown__unit">Min</span></div>
-          <div class="countdown__item"><span class="countdown__value" data-cd-seconds>00</span><span class="countdown__unit">Sec</span></div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="section section--dark stats-strip" aria-label="LSTE in numbers">
-    <div class="container">
-      <div class="grid grid--4 reveal">
-        <div class="stat-item"><div class="stat-value">8th</div><div class="stat-label">Edition in 2026</div></div>
-        <div class="stat-item"><div class="stat-value">1,500+</div><div class="stat-label">Attendees since 2018</div></div>
-        <div class="stat-item"><div class="stat-value">100+</div><div class="stat-label">Speakers to date</div></div>
-        <div class="stat-item"><div class="stat-value">50+</div><div class="stat-label">Sponsors over the years</div></div>
+  <!-- Countdown — moved out of the Hero (which was carrying too much at
+       once: eyebrow, title, subtitle, meta row, 2 CTAs, and a live
+       countdown all in one block) into its own clean band, replacing the
+       previous static stats (8th/1,500+/100+/50+ — that info still lives
+       on the About page's own stats strip, nothing lost). A countdown is
+       simply more relevant right after the Hero than historical numbers. -->
+  <section class="section section--dark stats-strip" aria-labelledby="countdown-heading">
+    <div class="container text-center">
+      <span class="eyebrow eyebrow--on-dark">Save the date</span>
+      <h2 id="countdown-heading" class="text-white">26 November 2026.</h2>
+      <div class="countdown reveal" data-countdown style="margin-top:var(--space-6);">
+        <div class="countdown__item"><span class="countdown__value" data-cd-days>00</span><span class="countdown__unit">Days</span></div>
+        <div class="countdown__item"><span class="countdown__value" data-cd-hours>00</span><span class="countdown__unit">Hours</span></div>
+        <div class="countdown__item"><span class="countdown__value" data-cd-minutes>00</span><span class="countdown__unit">Min</span></div>
+        <div class="countdown__item"><span class="countdown__value" data-cd-seconds>00</span><span class="countdown__unit">Sec</span></div>
       </div>
     </div>
   </section>
