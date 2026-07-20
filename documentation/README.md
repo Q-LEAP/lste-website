@@ -592,3 +592,71 @@ against every numeric/factual claim findable via grep across the site.
   and edition copy (already said 400+/8th edition).
 - Ran `npm run build` (css/js/ics/images/partials/paths) after the edits;
   all touched pages pass the project's HTML tag-balance checker.
+
+## 2026-07-20 (later still): homepage overhaul — make it feel alive
+
+Client wanted the homepage to feel more immersive/representative of the
+event rather than a static brochure, with concrete asks: drop the
+redundant "Free admission" meta line, remove the (fabricated-sounding)
+testimonial quotes, integrate 3 of the real LinkedIn videos from
+`/linkedin/`, integrate the 2 raw event clips in `assets/vid/`, and add a
+News preview — explicitly asked to be "force de proposition" on the video
+placement rather than "just drop in 3 embeds in a row."
+
+- **Hero:** removed the "Free admission" `hero__meta` line — redundant
+  with the "Get your free ticket" button right below it.
+- **Official video clips analyzed and compressed for web.** No ffprobe/
+  ffmpeg on this machine; used macOS's built-in `avconvert` (AVFoundation
+  CLI) + `qlmanage -t` (QuickTime thumbnail) to inspect them instead of
+  guessing. Both `lste-2025_v1.mp4` and `lste-recap-1.mp4` are portrait
+  1080×1920, ~29.5s, QuickTime-container exports (likely straight off a
+  phone) — 54–55MB raw, far too heavy to ship as-is. Re-encoded both with
+  `avconvert -p PresetMediumQuality` to ~3MB each (still 100% recognizable
+  at the card sizes they're shown at) as `assets/vid/lste-2025-selfie-
+  booth.mp4` and `assets/vid/lste-recap-networking.mp4` — raw originals
+  left untouched/unstaged (still pending the client's call from the
+  previous session on whether to keep them in the repo at all).
+  Because both clips are portrait, they were **not** forced into a
+  landscape hero/full-bleed band (would mean cropping out most of the
+  frame) — see below for how they were actually used.
+- **New "The atmosphere" section** (after "Why attend"): the 2 official
+  clips shown as a pair of portrait "story" tiles next to a short intro +
+  CTA to `/linkedin/` (`.split-media` / `.atmosphere-videos` /
+  `.atmosphere-video` in `home.css`). Videos are muted/loop/playsinline,
+  `preload="none"` with a real poster frame (extracted via `qlmanage`,
+  pushed through the normal `assets/img/source/` -> `images:optimize`
+  pipeline like any other photo), and only actually start loading/playing
+  once scrolled into view — new `initAmbientVideo()` in `main.js`
+  (IntersectionObserver play/pause, respects `prefers-reduced-motion`,
+  sets `src` from `data-src` lazily). Keeps initial page weight down
+  despite adding 2 videos.
+- **Testimonials removed, replaced with a real LinkedIn video showcase**
+  ("Community showcase," reusing the `.section--dark` slot for continuity
+  in the scroll rhythm). Picked 3 of the videos already on `/linkedin/`
+  deliberately, not just "the first 3": the 8th-edition announcement
+  teaser (relevance/urgency), an AI-in-testing thought-leadership snippet
+  (industry hook), and a real interview-zone glimpse featuring Anna
+  Kabanova (continuity with one of the removed testimonials, and genuine
+  event atmosphere). Laid out as 1 featured post + 2 supporting posts
+  (`.community-showcase` in `home.css`, same asymmetric-spanning idea
+  already used by `.gallery-preview-grid`), not 3 identical tiles.
+  Reuses the existing `.linkedin-card` component and `initLinkedInModal()`
+  from `main.js` as-is (already page-agnostic — just needed the same
+  `#linkedin-modal` markup duplicated locally, since LinkedIn's iframe
+  can't be shared across pages); no JS changes needed for this part.
+- **New News preview section** (after Sponsors, before Gallery): 2 cards
+  reusing the `.news-card` component that already existed, unused, in
+  `home.css` — the 2 most recent articles from `/news/` (Avanti Sharma MC
+  announcement, "AI at the heart of the 7th edition"), both dated 19
+  November 2025.
+- **Section rhythm:** inserting 2 new sections broke the previous plain/
+  alt alternation by one; rather than chase perfect alternation, changed
+  Gallery preview from `section--alt` to plain `section` so the new News
+  section could take the `alt` slot right before it — the minor
+  plain/plain adjacency (Gallery, FAQ) is a non-issue since their content
+  (photo grid vs. text accordion) already reads differently.
+- Ran the full `npm run build` pipeline; `index.html` passes the tag-
+  balance + duplicate-id checks. No browser tool available this session
+  (Claude in Chrome isn't connected) — verified structurally and via the
+  local `python3 -m http.server 8931`, but the client should still give
+  it a visual look before this ships.

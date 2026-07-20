@@ -158,7 +158,6 @@
       <div class="hero__meta reveal is-visible">
         <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 08:30–18:00</span>
         <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hôtel Parc Belle-Vue, Luxembourg City</span>
-        <span><i class="fa-solid fa-ticket" aria-hidden="true"></i> Free admission</span>
       </div>
 
       <div class="hero__actions reveal is-visible">
@@ -231,6 +230,34 @@
     </div>
   </section>
 
+  <!-- The atmosphere: 2 short vertical clips from the 2025 edition,
+       muted/looping, played only once scrolled into view (initAmbientVideo
+       in main.js). Native footage is portrait 9:16, so it's shown as a
+       pair of "story" tiles rather than force-cropped into a landscape
+       hero — see documentation/README.md for the source/compression note. -->
+  <section class="section section--alt" aria-labelledby="atmosphere-heading">
+    <div class="container">
+      <div class="split-media reveal">
+        <div>
+          <span class="eyebrow">The atmosphere</span>
+          <h2 id="atmosphere-heading">This is what a day at LSTE feels like.</h2>
+          <p>Packed rooms, a show floor buzzing between talks, and hallway conversations that run long. Straight from the 2025 edition, unscripted.</p>
+          <a class="btn btn--outline" href="./linkedin/index.html">More from LSTE <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="atmosphere-videos">
+          <div class="atmosphere-video">
+            <video class="js-ambient-video" data-src="./assets/vid/lste-2025-selfie-booth.mp4" poster="./assets/img/lste-2025-selfie-booth-800.jpg" muted loop playsinline preload="none" aria-label="Attendees at the LSTE 2025 selfie booth"></video>
+            <span class="atmosphere-video__caption">Snap &amp; share booth</span>
+          </div>
+          <div class="atmosphere-video">
+            <video class="js-ambient-video" data-src="./assets/vid/lste-recap-networking.mp4" poster="./assets/img/lste-recap-networking-800.jpg" muted loop playsinline preload="none" aria-label="Attendees networking on the LSTE 2025 exhibition floor"></video>
+            <span class="atmosphere-video__caption">Show floor &amp; networking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Speakers preview — HIDDEN per request (kept in code to re-enable
        later; just uncomment this block when speakers are announced).
   <section class="section" aria-labelledby="speakers-heading">
@@ -269,45 +296,53 @@
   </section>
   -->
 
-  <!-- Testimonials — .section--dark is the site's one real-contrast band,
-       previously confined to the stats-strip; used here too so the site
-       has more than one "beat" in the scroll. Cards drop the neu shadow
-       for a flat, brand-bordered look (.testimonial-card--accent, reusing
-       the .pricing-card--featured recipe) since a soft neu shadow tuned
-       for the light page background doesn't read correctly against an
-       arbitrary dark section. -->
-  <section class="section section--dark" aria-labelledby="testimonials-heading">
+  <!-- Community showcase — replaces the old testimonials grid with real
+       LinkedIn video posts (was: 3 quote cards; now: the same "from the
+       community" beat, but with actual video, not paraphrased quotes).
+       Deliberately asymmetric (1 featured post + 2 supporting), not 3
+       identical tiles. Reuses the existing .linkedin-card component and
+       initLinkedInModal() from main.js — the modal below is the same
+       lazy-loaded pattern as /linkedin/, just a second, page-local
+       instance since LinkedIn's embed iframe can't be shared across
+       pages. -->
+  <section class="section section--dark" aria-labelledby="community-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--on-dark">From the community</span>
-        <h2 id="testimonials-heading">Why people keep coming back.</h2>
+        <h2 id="community-heading">Straight from LinkedIn, in their own words.</h2>
       </div>
-      <div class="grid grid--3 reveal">
-        <figure class="card testimonial-card testimonial-card--accent">
-          <blockquote>"Luxembourg has been working on creating a resilient IT backbone for upcoming technologies, well enabled by the annual Luxembourg Software Testing Event."</blockquote>
-          <figcaption>
-            <div class="avatar-initials" aria-hidden="true" style="width:44px;height:44px;margin:0;font-size:0.875rem;">AS</div>
-            <div><p class="name">Avanti Sharma</p><p class="title">Director of Artificial Intelligence &amp; Growth, Workshop4Me</p></div>
-          </figcaption>
-          <p style="margin-top:var(--space-3);"><a class="news-link" href="./news/avanti-sharma-mc/index.html" style="font-size:0.8125rem;">Read more about Avanti <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-        </figure>
-        <figure class="card testimonial-card testimonial-card--accent">
-          <blockquote>"There is a misconception among some managers that with tools like ChatGPT, we will no longer need testers... Testing remains an essential and invaluable profession."</blockquote>
-          <figcaption>
-            <div class="avatar-initials" aria-hidden="true" style="width:44px;height:44px;margin:0;font-size:0.875rem;">AK</div>
-            <div><p class="name">Dr. Anne Kramer</p><p class="title">Global Customer Success Manager &amp; Head of Training, Smartesting</p></div>
-          </figcaption>
-          <p style="margin-top:var(--space-3);"><a class="news-link" href="./news/digital-colleague/index.html" style="font-size:0.8125rem;">Read the full interview <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-        </figure>
-        <figure class="card testimonial-card testimonial-card--accent">
-          <blockquote>"One of those events where you leave not only inspired, but also reminded how strong and supportive the testing community is."</blockquote>
-          <figcaption>
-            <div class="avatar-initials" aria-hidden="true" style="width:44px;height:44px;margin:0;font-size:0.875rem;">AK</div>
-            <div><p class="name">Anna Kabanova</p><p class="title">Project QA Lead</p></div>
-          </figcaption>
-        </figure>
+      <div class="community-showcase reveal">
+        <button type="button" class="linkedin-card linkedin-card--featured" data-activity="7457403342525267970" aria-label="Open LinkedIn post: We're back! The 8th edition of LSTE takes place November 26">
+          <span class="linkedin-card__eyebrow">🎬 Watch</span>
+          <img src="https://dms.licdn.com/playlist/vid/v2/D4E05AQHT0mWGx6ye2Q/thumbnail-with-play-button-overlay-high/B4EZ33A0c8KEC0-/0/1777965682627?e=2147483647&amp;v=beta&amp;t=qNtHDApuKMehTywn3dxEFILjjmrAOmeDlPARObdESlA" alt="" loading="lazy">
+          <span class="linkedin-card__overlay"><span class="linkedin-card__excerpt">We're back! The 8th edition of LSTE will take place on November 26 in Luxembourg City: new voices, new ideas, same ambition.</span></span>
+        </button>
+        <div class="community-showcase__side">
+          <button type="button" class="linkedin-card linkedin-card--wide" data-activity="7475793676074455040" aria-label="Open LinkedIn post: Do you think AI will one day design and execute a full testing strategy?">
+            <img src="https://dms.licdn.com/playlist/vid/v2/D4E05AQGqbRm2Qkoi-A/thumbnail-with-play-button-overlay-high/B4EZ7akFM1JMC4-/0/1781783359915?e=2147483647&amp;v=beta&amp;t=0jcls-o3c2R5Hf4qyuHyl5EK-08Wx781d2dfmu5y9r0" alt="" loading="lazy">
+            <span class="linkedin-card__overlay"><span class="linkedin-card__excerpt">Do you think AI will one day design and execute a full testing strategy without humans? "Testing isn't simply pass or fail," reminds Cristiano Cunha.</span></span>
+          </button>
+          <button type="button" class="linkedin-card linkedin-card--wide" data-activity="7458441626974216193" aria-label="Open LinkedIn post: A quick glimpse from our interview zone during the 2025 edition">
+            <img src="https://dms.licdn.com/playlist/vid/v2/D4E05AQGS6FOs2symoQ/thumbnail-with-play-button-overlay-high/B4EZ4B2QFTGYC0-/0/1778147461109?e=2147483647&amp;v=beta&amp;t=_x8--_y6LWcuIm-RKFh-GrLAVPfn2ojj4ygGpI7PwcU" alt="" loading="lazy">
+            <span class="linkedin-card__overlay"><span class="linkedin-card__excerpt">A quick glimpse from our interview zone during the 2025 edition, here with Anna Kabanova, Project QA Lead. The 2026 edition is coming up!</span></span>
+          </button>
+        </div>
       </div>
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--ghost-on-dark" href="./linkedin/index.html">More from the community <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+
+      <!-- Lazy-loaded modal: iframe src only set on click, cleared on
+           close (see initLinkedInModal in main.js). -->
+      <div class="modal-backdrop" id="linkedin-modal" role="dialog" aria-modal="true" aria-labelledby="linkedin-modal-title" hidden>
+        <div class="modal-dialog media-modal-dialog">
+          <div class="media-modal-header">
+            <span class="media-modal-header__title" id="linkedin-modal-title">LSTE on LinkedIn</span>
+            <button type="button" class="media-modal-close" id="linkedin-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          </div>
+          <div class="media-modal-body">
+            <iframe id="linkedin-modal-iframe" src="" height="700" width="504" frameborder="0" allowfullscreen title="LinkedIn post"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -352,8 +387,49 @@
     </div>
   </section>
 
+  <!-- News preview — shows the site is actively updated, not a static
+       brochure. Reuses the .news-card component (full-bleed photo,
+       bottom scrim) already defined in home.css. -->
+  <section class="section section--alt" aria-labelledby="news-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">News</span>
+        <h2 id="news-heading">The latest from LSTE.</h2>
+      </div>
+      <div class="grid grid--2 reveal">
+        <article class="card news-card">
+          <picture>
+            <source type="image/avif" srcset="./assets/img/rsw_1200cg_true-2-800.avif">
+            <source type="image/webp" srcset="./assets/img/rsw_1200cg_true-2-800.webp">
+            <img class="news-card__media" src="./assets/img/rsw_1200cg_true-2-800.jpg" width="800" height="533" loading="lazy" alt="Avanti Sharma presenting on stage">
+          </picture>
+          <p class="news-date">19 November 2025</p>
+          <div class="news-card__body">
+            <h3>Avanti Sharma announced as Master of Ceremonies for LSTE 2025</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Avanti Sharma will moderate the main panel and act as Master of Ceremonies for this year's edition.</p>
+            <a class="news-link" href="./news/avanti-sharma-mc/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="card news-card">
+          <picture>
+            <source type="image/avif" srcset="./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.avif">
+            <source type="image/webp" srcset="./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.webp">
+            <img class="news-card__media" src="./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.jpg" width="800" height="600" loading="lazy" alt="Full conference room at LSTE">
+          </picture>
+          <p class="news-date">19 November 2025</p>
+          <div class="news-card__body">
+            <h3>LSTE 2025: AI at the heart of the 7th edition</h3>
+            <p class="text-muted" style="font-size:0.9rem;">The 7th edition placed artificial intelligence at the centre of QA and testing discussions in Luxembourg.</p>
+            <a class="news-link" href="./news/lste-2025-ai-7th-edition/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+      </div>
+      <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./news/index.html">All news <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+    </div>
+  </section>
+
   <!-- Gallery preview -->
-  <section class="section section--alt" aria-labelledby="gallery-heading">
+  <section class="section" aria-labelledby="gallery-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Gallery</span>

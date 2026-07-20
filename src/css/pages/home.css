@@ -68,6 +68,79 @@
 /* ── Stats strip ─────────────────────────────────────────────────── */
 .stats-strip { padding: var(--space-10) 0; }
 
+/* ── Generic "text + media" 2-column split, reused by any section that
+   needs the venue-preview-style layout without being venue-specific. ── */
+.split-media { display: grid; gap: var(--space-8); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 900px) {
+  .split-media { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Atmosphere: ambient video duo, muted/looping, played only once
+   scrolled into view (see initAmbientVideo() in main.js). Portrait
+   9:16 source footage, shown as a pair of "story" tiles rather than
+   forced into a landscape crop. ────────────────────────────────────── */
+.atmosphere-videos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.atmosphere-video {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 9/16;
+  background: var(--color-ink);
+}
+.atmosphere-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.atmosphere-video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(10, 8, 24, 0) 60%, rgba(10, 8, 24, 0.65) 100%);
+  pointer-events: none;
+}
+.atmosphere-video__caption {
+  position: absolute;
+  left: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 2;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(10, 8, 24, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-pill);
+  padding: 0.4em 0.85em;
+}
+
+/* ── Community showcase: 1 featured LinkedIn video + 2 supporting ones,
+   replacing the old testimonials grid. Deliberately asymmetric (not 3
+   identical tiles): the featured post keeps the portrait linkedin-card
+   proportions, the 2 supporting posts crop wider so the pair reads as
+   a considered collage rather than a repeated pattern. ────────────── */
+.community-showcase { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+.community-showcase__side { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+@media (min-width: 800px) {
+  .community-showcase { grid-template-columns: 1.15fr 1fr; }
+  .community-showcase__side { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+}
+.community-showcase .linkedin-card--wide { aspect-ratio: 4/3; }
+.community-showcase .linkedin-card--featured .linkedin-card__overlay { opacity: 1; }
+.community-showcase .linkedin-card__eyebrow {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--gradient-brand);
+  border-radius: var(--radius-pill);
+  padding: 0.35em 0.85em;
+}
+
 /* ── Pillars ─────────────────────────────────────────────────────── */
 .pillar-card { padding: var(--space-6); text-align: center; }
 .pillar-card__icon {

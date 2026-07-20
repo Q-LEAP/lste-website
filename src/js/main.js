@@ -836,6 +836,35 @@
     });
   }
 
+  /* ── Ambient background videos: only fetch/play once scrolled into
+     view (these are muted highlight loops, not essential content — no
+     reason to spend bandwidth/battery on them before they're seen), and
+     never autoplay at all for prefers-reduced-motion. Poster image covers
+     both the pre-load and reduced-motion cases. ─────────────────────── */
+  function initAmbientVideo() {
+    const videos = document.querySelectorAll('.js-ambient-video');
+    if (!videos.length) return;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach((v) => { v.muted = true; v.preload = 'auto'; v.play().catch(() => {}); });
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (!video.src && video.dataset.src) video.src = video.dataset.src;
+          video.muted = true;
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    videos.forEach((v) => observer.observe(v));
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initAnnouncement();
@@ -855,5 +884,6 @@
     initEmptyEditionModal();
     initLinkedInModal();
     initMapEmbeds();
+    initAmbientVideo();
   });
 })();
