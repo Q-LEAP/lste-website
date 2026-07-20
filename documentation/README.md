@@ -972,3 +972,68 @@ upscale well past native resolution, which is exactly what pixelates.
 - No fix exists to get literally sharper source pixels from LinkedIn's
   CDN for these specific video-thumbnail URLs; capping display size to
   match what's actually available is the real remedy here.
+
+## 2026-07-20 (4-part follow-up): hero revert, contrast fix, speaker/sponsor merge, homepage rewrite
+
+**1. Reverted the hero left-alignment change.** Client didn't like it —
+removed the `margin: 0` override on `.hero__content`, restoring the
+previous (intentional, kept) centered-block layout.
+
+**2. Fixed "Software Testing" being nearly invisible in light mode.**
+Root cause: `.hero__scrim`'s gradient (light mode only — dark mode has
+its own override further down and was never affected) ended at
+`rgba(85, 70, 174, .78)`, which is essentially `#5546ae` — the exact
+start color of `--gradient-brand`, the same gradient clipped onto the
+"Software Testing" highlight text. The highlight was blending into its
+own background right where it sits. Darkened the scrim's lower stops
+(same brand-purple hue, just meaningfully darker/more opaque) so it
+stays legible in both themes without changing the gradient-text concept
+itself.
+
+**3. Merged "Become a Sponsor" into "Become a Speaker".** Client's real
+policy: speaking slots at LSTE come as part of sponsorship packages
+(matches the brochure — every tier includes a roundtable seat, Platinum
+adds a keynote + workshop), so the site's old "open call for papers with
+a Sept 30 deadline" framing was actually wrong/misleading, not just
+redundant with sponsoring.
+- Kept the hero exactly as asked (H1/subtitle/CTA unchanged), only
+  swapped its eyebrow from "Call for Speakers · closes 30 September
+  2026" to "Speaking opportunities" (no more invented deadline framing).
+- Rewrote the "Selection process" timeline (Submit/Review/Confirmation
+  -> Get in touch/Pick your slot/Shape the talk), and the FAQ ("Who can
+  submit a talk?" -> "How do I get a speaking slot?", answer now
+  explains the sponsorship-tier connection; removed the "programme
+  committee reviews every submission" framing that implied an open CFP).
+  Added a "See sponsorship tiers" link into the Why-Speak section-head.
+- Removed the "Become a sponsor" line from the footer's Get Involved
+  column (`src/partials/footer.html`) — "Become a Speaker" now covers
+  both.
+- Retargeted `become-a-sponsor/index.html` (an orphaned legacy redirect
+  stub, not linked from anywhere live) from `/resources/#sponsor` to
+  `/become-a-speaker/`.
+- Added a one-line cross-link on `resources/index.html`'s sponsor section
+  back to Become a Speaker, closing the loop both ways.
+
+**4. Homepage: added a mission section, rewrote "Why attend".**
+- New section right after the countdown ("Who we are" / "The unique
+  testing event in Luxembourg.") — a paraphrased, shortened version of
+  the About page's own official copy (that copy is verbatim/official on
+  `about/index.html` and shouldn't be rewritten there — see the Verified
+  Facts note above — so this is a distinct rewrite of the same facts,
+  not a duplicate, with a "Read our story" link to About for the full
+  version).
+- Replaced "Why attend" ("Software quality, taken seriously for one day
+  a year." + a generic 6-item pillar grid) with "Five ways to make the
+  most of your one day at LSTE." — reusing the same 5-pillar structure
+  and wording rhythm as the homepage's Sponsors pitch further down
+  (Keynotes/Workshops/Panels/Exhibition/Networking), but rewritten
+  attendee-side (what you get) instead of sponsor-side (brand
+  visibility), since the client flagged the old copy as reading more
+  like sponsor material. Both sections now share the same 5-format
+  through-line, told from two different audiences.
+- Updated homepage order: Hero -> Countdown -> **Mission (new)** ->
+  **Why attend (rewritten)** -> Atmosphere -> Community showcase ->
+  Programme -> mid-CTA -> Sponsors -> News -> Gallery -> Final CTA.
+
+Rebuilt CSS/JS/partials/paths/asset-versioning; all 31 pages still pass
+the HTML tag-balance check.

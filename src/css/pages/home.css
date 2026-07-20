@@ -32,11 +32,18 @@
   opacity: 0.16;
   mix-blend-mode: soft-light;
 }
+/* The 100% stop was rgba(85, 70, 174, .78) — practically the same color
+   as #5546ae, the start of --gradient-brand used to fill the "Software
+   Testing" text-clip highlight lower in the hero. In light mode (dark
+   mode overrides this whole rule below) that made the highlight nearly
+   vanish into its own background right where it sits. Darkened the
+   lower stops so the scrim stays legible-dark all the way down without
+   changing its brand-purple character or the gradient concept itself. */
 .hero__scrim {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(20, 15, 50, 0.86) 0%, rgba(66, 54, 133, 0.82) 45%, rgba(85, 70, 174, 0.78) 100%);
+  background: linear-gradient(180deg, rgba(20, 15, 50, 0.86) 0%, rgba(40, 32, 88, 0.85) 45%, rgba(50, 40, 100, 0.85) 100%);
 }
 .hero__content { max-width: 760px; color: rgba(255, 255, 255, 0.92); }
 .hero__content h1 {

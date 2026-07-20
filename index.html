@@ -24,7 +24,7 @@
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#5546ae">
 
-<link rel="stylesheet" href="./assets/css/styles.css?v=4e93757f">
+<link rel="stylesheet" href="./assets/css/styles.css?v=28e9ec1b">
 
 <script type="application/ld+json">
 {
@@ -169,44 +169,63 @@
     </div>
   </section>
 
-  <!-- Why attend -->
+  <!-- Mission: a short, paraphrased version of the About page's own
+       official "unique testing event" copy (that copy is verbatim/
+       official on about/index.html and shouldn't be rewritten there —
+       see documentation/README.md's Verified Facts note — but repeating
+       it word-for-word here would just be duplicate content, so this is
+       a distinct, shorter version of the same facts with a link to the
+       full story). Sits right after the countdown, ahead of the "why
+       attend" pitch below, so the page explains *what LSTE is* before
+       it explains *what's in it for you*. -->
+  <section class="section section--alt" aria-labelledby="mission-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who we are</span>
+        <h2 id="mission-heading">The unique testing event in Luxembourg.</h2>
+        <p>Since 2014, LSTE has been where the Luxembourg &amp; Greater Region testing community gathers once a year to compare notes on the craft — a full day of talks and demos, closed out with a networking cocktail. <a href="./about/index.html">Read our story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why attend: reworked from a generic 6-item pillar grid into the
+       same "5 formats" framing used later for the Sponsors pitch
+       (Keynotes/Workshops/Panels/Exhibition/Networking) — same 5
+       pillars, reused as a through-line down the page, but told from
+       the attendee's side (what you get) rather than the sponsor's
+       side (visibility). -->
   <section class="section" aria-labelledby="why-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Why attend</span>
-        <h2 id="why-heading">Software quality, taken seriously for one day a year.</h2>
-        <p>LSTE is Luxembourg's annual gathering for software testing and QA professionals. Now in its 8th edition, it has grown from a small meetup into the region's most anticipated testing conference, free of charge, for everyone in the craft.</p>
+        <h2 id="why-heading">Five ways to make the most of your one day at LSTE.</h2>
+        <p>LSTE isn't a general tech conference, it's the one day a year Luxembourg's entire QA community gathers in one room: 400+ testers, engineers, and QA leads from banking, insurance, telecom, and the public sector. Here's what a day on the inside looks like.</p>
       </div>
-      <div class="grid grid--3 reveal">
+      <div class="grid grid--5 reveal">
         <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-handshake"></i></div>
+          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></div>
+          <h3 style="font-size:1.0625rem;">Keynotes</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Sit in on big-picture talks from speakers shaping where testing is headed next.</p>
+        </div>
+        <div class="card pillar-card">
+          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3 style="font-size:1.0625rem;">Workshops</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Get hands-on in small-group sessions you can put to work back at the office.</p>
+        </div>
+        <div class="card pillar-card">
+          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-comment-dots"></i></div>
+          <h3 style="font-size:1.0625rem;">Panels</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Hear practitioners debate the calls that don't have easy answers.</p>
+        </div>
+        <div class="card pillar-card">
+          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-store"></i></div>
+          <h3 style="font-size:1.0625rem;">Exhibition</h3>
+          <p class="text-muted" style="font-size:0.9rem;">Walk the floor and see the tools and platforms testing teams actually use.</p>
+        </div>
+        <div class="card pillar-card">
+          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-champagne-glasses"></i></div>
           <h3 style="font-size:1.0625rem;">Networking</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Connect with 400+ testing and QA professionals from across the region.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-microphone"></i></div>
-          <h3 style="font-size:1.0625rem;">Expert talks</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Keynotes and deep dives from world-class speakers shaping the craft.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-lightbulb"></i></div>
-          <h3 style="font-size:1.0625rem;">Real-world lessons</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Hear how teams actually solved their hardest quality problems.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></div>
-          <h3 style="font-size:1.0625rem;">Innovation</h3>
-          <p class="text-muted" style="font-size:0.9rem;">See what's next in AI-driven testing, automation, and quality engineering.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
-          <h3 style="font-size:1.0625rem;">Community</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Meet the people building Luxembourg's testing scene, in person.</p>
-        </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3 style="font-size:1.0625rem;">Hands-on learning</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Tutorials and workshops you can apply back at work the next day.</p>
+          <p class="text-muted" style="font-size:0.9rem;">Turn the people in the room into your next go-to contacts, over the closing cocktail.</p>
         </div>
       </div>
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./about/index.html">More about LSTE <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
@@ -530,7 +549,6 @@
         <ul>
           <li><a href="./become-a-speaker/index.html">Become a Speaker</a></li>
           <li><a href="./sponsors/index.html">Partners</a></li>
-          <li><a href="./resources/index.html#sponsor">Become a sponsor</a></li>
           <li><a href="./register/index.html">Reserve Ticket</a></li>
         </ul>
       </div>
