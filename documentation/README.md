@@ -740,3 +740,36 @@ domain cutover happens.
   project site served under a `/lste-website/` subpath — affects "Add to
   Home Screen" behavior, not normal page rendering, so it wasn't bundled
   into this fix.
+
+## 2026-07-20 (yet another pass): Venue page restructured by traveller profile
+
+Client asked to break up the Venue page's one dense mixed block into
+clearer sections: a first section answering only "where is it?" (address
++ map), and a proper "How are you coming?" section organized by traveller
+profile (car / public transport / plane), citing Paris Games Week's
+"Comment venir" page as loose inspiration.
+
+- Checked the reference (`parisgamesweek.com/fr`, via WebFetch) — it's
+  actually a plain categorized list, not tabs. Took the initiative (as
+  invited) to do better: a real tabbed profile switcher (🚗 / 🚆 / ✈️)
+  reusing the site's existing, already-generic `initTabs()` in `main.js`
+  (`[data-tabs]`/`role=tablist/tab/tabpanel` — was unused since the
+  Schedule page's per-track tabs were replaced by a placeholder; no JS
+  changes needed, just new markup + new `.profile-tabs*` CSS in
+  `inner.css`). Segmented-pill tab style, `.transport-card` grid per
+  panel (3 items each), consistent with the "By car"/"Street parking"
+  cards the old layout already had.
+- Section 1 (`location-heading`) now holds only the address + map + a
+  "Get directions" Google Maps deep link — the old combined transit/
+  parking/accessibility/Wi-Fi list was removed from here.
+- Section 2 (`transport-heading`) replaces the old timeline + car/street-
+  parking cards with 3 profile tabs, same underlying facts just
+  regrouped by who needs them: By car (parking, overflow options, GPS +
+  directions link), By public transport (tram, bus, "free since 2020"),
+  By plane (Findel Airport, bus 16 &amp; 29, airport tram since March
+  2025). Nothing invented — Luxembourg's airport has no train link, so
+  that example slot from the brief became "airport tram" instead.
+- Accessibility/Wi-Fi facts weren't dropped: they already lived in the
+  "Venue questions" FAQ section further down (unchanged), so removing
+  them from the new address-only section loses no information.
+- Hotels and FAQ sections unchanged, just now follow a cleaner page flow.

@@ -166,6 +166,32 @@
 .venue-feature-list li:last-child { border-bottom: none; }
 .venue-feature-list i { color: var(--color-primary); margin-top: 0.2em; width: 1.2rem; flex-shrink: 0; }
 
+/* ── Profile tabs: "how are you getting here" switcher — reuses the
+   existing generic initTabs() in main.js (role=tablist/tab/tabpanel),
+   no JS changes needed. Segmented-pill look, consistent with the site's
+   existing badge/pill vocabulary. ──────────────────────────────────── */
+.profile-tabs__list { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-bottom: var(--space-8); }
+.profile-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.7em 1.4em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-body-text);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  font-family: var(--font-heading);
+  cursor: pointer;
+  transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+}
+.profile-tabs__tab span[aria-hidden] { font-size: 1.15em; }
+.profile-tabs__tab[aria-selected="true"] { background: var(--gradient-brand); border-color: transparent; color: #fff; }
+.profile-tabs__tab:not([aria-selected="true"]):hover,
+.profile-tabs__tab:not([aria-selected="true"]):focus-visible { border-color: var(--color-primary); color: var(--color-primary); }
+.transport-card__icon--emoji { font-size: 1.5rem; }
+
 /* ── Contact ─────────────────────────────────────────────────────── */
 .contact-info-card { padding: var(--space-6); }
 .contact-info-card ul { display: flex; flex-direction: column; gap: var(--space-4); }

@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/styles.css?v=2b276d35">
+<link rel="stylesheet" href="../assets/css/styles.css?v=5b5336ef">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -132,20 +132,19 @@
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <!-- Section 1: answers exactly one question — "where is it?" Address
+       and map only; transport/parking/amenities all moved to their own
+       sections below, per the restructure request. -->
+  <section class="section" style="padding-top:0;" aria-labelledby="location-heading">
     <div class="container">
       <div class="grid grid--2">
         <div class="reveal">
-          <h2>About the venue</h2>
-          <p>LSTE 2026 is held at the Conference Center of Hôtel Parc Belle-Vue, right in the heart of Luxembourg City. The venue is easily accessible by public transport, including tram and bus, and for those coming by car, parking is available on-site.</p>
+          <span class="eyebrow">Location</span>
+          <h2 id="location-heading">Where does LSTE take place?</h2>
           <ul class="venue-feature-list">
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> 5 Avenue Marie-Thérèse, L-2132 Luxembourg</li>
-            <li><i class="fa-solid fa-train-tram" aria-hidden="true"></i> Hamilius (tram &amp; bus), about a 4-minute walk</li>
-            <li><i class="fa-solid fa-bus" aria-hidden="true"></i> Luxembourg, Amélie (bus), about a 2-minute walk</li>
-            <li><i class="fa-solid fa-square-parking" aria-hidden="true"></i> Free on-site parking for guests (70 spaces, no reservations)</li>
-            <li><i class="fa-solid fa-wheelchair" aria-hidden="true"></i> Fully wheelchair accessible</li>
-            <li><i class="fa-solid fa-wifi" aria-hidden="true"></i> High-speed Wi-Fi throughout the building</li>
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Conference Center, Hôtel Parc Belle-Vue<br>5 Avenue Marie-Thérèse, L-2132 Luxembourg</li>
           </ul>
+          <a class="btn btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
         </div>
         <div class="reveal map-embed js-map-embed">
           <iframe src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
@@ -158,54 +157,87 @@
     </div>
   </section>
 
+  <!-- Section 2: "How are you coming?" — organized by traveller profile
+       instead of one dense mixed block, so each visitor only reads the
+       part that applies to them. Real facts only (bus 16/29, airport tram
+       since March 2025, Hamilius/Amélie stops, on-site parking) — same
+       sourced info the old "Getting there" timeline had, just regrouped;
+       nothing invented (Luxembourg's airport has no train link, so that
+       slot became "airport tram" instead of forcing a nonexistent train). -->
   <section class="section section--alt" aria-labelledby="transport-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Getting there</span>
-        <h2 id="transport-heading">Coming from outside Luxembourg? Here's the journey.</h2>
-        <p>Whether you're flying in or already in the city, every leg from Findel Airport to the venue door is on free public transport.</p>
+        <h2 id="transport-heading">How are you coming?</h2>
+        <p>Pick how you're travelling and get exactly the directions that apply to you.</p>
       </div>
 
-      <!-- Airport → tram/bus → venue, sourced from lux-airport.lu (bus 16/29
-           schedules) and transports.public.lu (airport tram, live since
-           2 March 2025) — verified 2026-07, not invented. -->
-      <div class="timeline reveal">
-        <div class="timeline__item">
-          <span class="timeline__time">Findel</span>
-          <span class="timeline__marker"><span class="timeline__dot"></span></span>
-          <div class="timeline__content">
-            <p class="timeline__title">Findel Airport (LUX)</p>
-            <p class="timeline__desc">Free bus lines 16 &amp; 29 run directly from the airport to Hamilius, or take the tram (live since March 2025) from the airport stop.</p>
-          </div>
+      <div class="profile-tabs reveal" data-tabs>
+        <div class="profile-tabs__list" role="tablist" aria-label="Choose how you're travelling to LSTE">
+          <button type="button" class="profile-tabs__tab" id="tab-car" role="tab" aria-selected="true" aria-controls="panel-car" tabindex="0"><span aria-hidden="true">🚗</span> By car</button>
+          <button type="button" class="profile-tabs__tab" id="tab-transit" role="tab" aria-selected="false" aria-controls="panel-transit" tabindex="-1"><span aria-hidden="true">🚆</span> By public transport</button>
+          <button type="button" class="profile-tabs__tab" id="tab-plane" role="tab" aria-selected="false" aria-controls="panel-plane" tabindex="-1"><span aria-hidden="true">✈️</span> By plane</button>
         </div>
-        <div class="timeline__item">
-          <span class="timeline__time">~25 min</span>
-          <span class="timeline__marker"><span class="timeline__dot"></span></span>
-          <div class="timeline__content">
-            <p class="timeline__title">Free of charge, all the way</p>
-            <p class="timeline__desc">All public transport in Luxembourg has been free since 2020, so no ticket is needed. From elsewhere in the city, bus lines 6, 10, 15, and 609 also serve Hamilius; see <a href="https://www.mobiliteit.lu" target="_blank" rel="noopener">mobiliteit.lu</a> for full routes.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <span class="timeline__time">4 min</span>
-          <span class="timeline__marker"><span class="timeline__dot"></span></span>
-          <div class="timeline__content">
-            <p class="timeline__title">Hamilius → the venue</p>
-            <p class="timeline__desc">Hôtel Parc Belle-Vue is a short walk from the Hamilius tram &amp; bus stop, right in the heart of Luxembourg City.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="grid grid--2 reveal" style="margin-top:var(--space-8);">
-        <div class="card transport-card">
-          <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-car"></i></div>
-          <h3 style="font-size:1.125rem;">By car</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Free parking for guests at the Belle-Vue Conference Center (70 spaces, no reservations): enter the underground garage and turn right. Overflow options: Parkolux Monterey (24b Av. Monterey, 5-minute walk) or Park &amp; Ride Bouillon via bus 15.</p>
+        <div class="profile-tabs__panel" id="panel-car" role="tabpanel" aria-labelledby="tab-car">
+          <div class="grid grid--3">
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-square-parking"></i></div>
+              <h3 style="font-size:1.0625rem;">Parking</h3>
+              <p class="text-muted" style="font-size:0.9rem;">Free on-site parking for guests, 70 spaces, no reservations: enter the underground garage and turn right.</p>
+            </div>
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-car"></i></div>
+              <h3 style="font-size:1.0625rem;">If it's full</h3>
+              <p class="text-muted" style="font-size:0.9rem;">Try Parkolux Monterey (24b Av. Monterey, 5-minute walk) or Park &amp; Ride Bouillon via bus 15. Street parking nearby is free after 6 PM.</p>
+            </div>
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
+              <h3 style="font-size:1.0625rem;">GPS</h3>
+              <p class="text-muted" style="font-size:0.9rem;">5 Avenue Marie-Thérèse, L-2132 Luxembourg.</p>
+              <p style="margin-top:var(--space-2);"><a class="news-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener" style="font-size:0.8125rem;">Get directions <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+            </div>
+          </div>
         </div>
-        <div class="card transport-card">
-          <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-square-parking"></i></div>
-          <h3 style="font-size:1.125rem;">Street parking</h3>
-          <p class="text-muted" style="font-size:0.9rem;">If both car parks are full, street parking around Luxembourg City is available and free after 6 PM.</p>
+
+        <div class="profile-tabs__panel" id="panel-transit" role="tabpanel" aria-labelledby="tab-transit" hidden>
+          <div class="grid grid--3">
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-train-tram"></i></div>
+              <h3 style="font-size:1.0625rem;">Tram</h3>
+              <p class="text-muted" style="font-size:0.9rem;">Hamilius stop, about a 4-minute walk from the venue.</p>
+            </div>
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-bus"></i></div>
+              <h3 style="font-size:1.0625rem;">Bus</h3>
+              <p class="text-muted" style="font-size:0.9rem;">Luxembourg, Amélie stop, about a 2-minute walk. Lines 6, 10, 15, and 609 also serve Hamilius.</p>
+            </div>
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-ticket"></i></div>
+              <h3 style="font-size:1.0625rem;">Free of charge</h3>
+              <p class="text-muted" style="font-size:0.9rem;">All public transport in Luxembourg has been free since 2020, no ticket needed. Full routes at <a href="https://www.mobiliteit.lu" target="_blank" rel="noopener">mobiliteit.lu</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-tabs__panel" id="panel-plane" role="tabpanel" aria-labelledby="tab-plane" hidden>
+          <div class="grid grid--3">
+            <div class="card transport-card">
+              <div class="transport-card__icon transport-card__icon--emoji" aria-hidden="true">✈️</div>
+              <h3 style="font-size:1.0625rem;">Findel Airport</h3>
+              <p class="text-muted" style="font-size:0.9rem;">About 25 minutes from the venue, with two free options straight into town.</p>
+            </div>
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-bus"></i></div>
+              <h3 style="font-size:1.0625rem;">Bus 16 &amp; 29</h3>
+              <p class="text-muted" style="font-size:0.9rem;">Free buses run directly from the airport to Hamilius.</p>
+            </div>
+            <div class="card transport-card">
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-train-tram"></i></div>
+              <h3 style="font-size:1.0625rem;">Airport tram</h3>
+              <p class="text-muted" style="font-size:0.9rem;">Live since March 2025, also running from the airport stop to Hamilius, then a 4-minute walk to the venue.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
