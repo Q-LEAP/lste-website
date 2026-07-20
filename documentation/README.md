@@ -700,3 +700,43 @@ benefits, wanting people to sponsor), so that's the one that was reworked;
   link.
 - Rebuilt CSS/partials/paths; `index.html` still passes the tag-balance
   and duplicate-id checks.
+
+## 2026-07-20 (final pass): diagnosed and fixed the "local vs live" video bug
+
+Client reported the homepage videos looked "gigantic, off-center, wrong
+size" on the live site (this recurring "local looks fine, live is broken"
+complaint had happened once before earlier in the project too). The
+actual live URL turned out to be GitHub Pages (`https://q-leap.github.io/
+lste-website/`) — **`lste.lu` itself is currently an unrelated WordPress
+site** (Automattic/Atomic-hosted, confirmed via response headers), not
+this repo; don't assume `lste.lu` reflects this codebase until the real
+domain cutover happens.
+
+- Fetched the live HTML, CSS, and both video files directly (`curl`) and
+  diffed/byte-compared them against local: **everything already matched
+  exactly** (identical `index.html`, identical `styles.css` including the
+  new `.atmosphere-video` rules, identical video file sizes). So there was
+  no server-side content bug by the time this was investigated — most
+  likely explanation is a stale browser/CDN cache: GitHub Pages serves
+  `assets/css/styles.css` and `assets/js/main.js` under the exact same
+  URL on every deploy with only a 10-minute `cache-control: max-age=600`,
+  so a visitor (or edge cache) who fetched the page shortly before a push
+  can keep serving the pre-change CSS/JS for a while after, while the HTML
+  (which changes on every push) already reflects the new markup — exactly
+  the kind of mismatch that would make unstyled `<video>` tags render at
+  huge, uncropped, uncentered native size. This is almost certainly what
+  happened the first time this same complaint came up too.
+- **Fix: real cache-busting**, not just a one-off hard refresh. New
+  `scripts/version-assets.mjs`, wired in as the last step of `npm run
+  build`: hashes the built `assets/css/styles.css` / `assets/js/main.js`
+  content and appends `?v=<8-char hash>` to every reference to them across
+  all 31 pages. Any future content change automatically produces a new
+  URL, so stale caches (browser or CDN) are simply never consulted for
+  it — nothing to expire or manually purge. Idempotent (re-running with
+  unchanged content touches 0 files).
+- Also noted, not fixed (out of scope for this pass, flagged for later):
+  `manifest.json`'s `start_url`/`scope`/icon paths are root-absolute
+  (`"/"`, `/assets/img/icons/...`), which is wrong for a GitHub Pages
+  project site served under a `/lste-website/` subpath — affects "Add to
+  Home Screen" behavior, not normal page rendering, so it wasn't bundled
+  into this fix.

@@ -13,7 +13,8 @@
     "icons:build": "node scripts/subset-icons.mjs",
     "partials:inject": "node scripts/inject-partials.mjs",
     "paths:localize": "node scripts/localize-paths.mjs",
-    "build": "npm run css:build && npm run js:build && npm run ics:build && npm run images:optimize && npm run partials:inject && npm run paths:localize"
+    "assets:version": "node scripts/version-assets.mjs",
+    "build": "npm run css:build && npm run js:build && npm run ics:build && npm run images:optimize && npm run partials:inject && npm run paths:localize && npm run assets:version"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
