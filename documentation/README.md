@@ -418,3 +418,26 @@ itself, not real photos in general — contained treatments remain fine).
   `speakers/index.html` and the 4 redirect stubs previously had bare
   `"noindex"` — check `git log` on this commit for the exact prior
   per-page values if a page needs something other than `"index, follow"`).
+
+## 2026-07-20 (later still): FAQ correction, X/Twitter + YouTube removed
+
+- **"Is lunch included?" FAQ removed** (homepage visible FAQ + its
+  `FAQPage` JSON-LD entry) — the client wasn't confident it's actually
+  free/included, so rather than guess, the claim was dropped everywhere
+  it appeared: `register/index.html`'s ticket feature list ("Networking
+  lunch & coffee breaks" → "Coffee breaks throughout the day"), and both
+  the chat widget's `free/price` intent and its dedicated `lunch` intent
+  in `src/js/main.js` (now points lunch-specific questions to
+  hello@lste.lu instead of asserting it's included). **If real info on
+  lunch ever gets confirmed, it can be reintroduced** — don't re-add the
+  "included free" claim without checking with the client first.
+- **No X/Twitter or YouTube account exists yet** — every icon/link to
+  `twitter.com/LSTElu` and `youtube.com/@LSTElu` was removed sitewide:
+  the shared `footer-social` block (`src/partials/footer.html`, cascades
+  everywhere via `partials:inject`), the homepage `Organization` JSON-LD
+  `sameAs` array (LinkedIn only now), and `news/index.html`'s "Watch on
+  YouTube" CTA (paragraph/section simplified to LinkedIn-only). Only
+  LinkedIn (real, confirmed: `linkedin.com/company/lste/`) remains. If
+  official X/Twitter or YouTube accounts are created later, re-add them
+  in `src/partials/footer.html` and re-run `npm run partials:inject` —
+  don't hand-edit each page.
