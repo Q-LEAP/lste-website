@@ -482,11 +482,11 @@
         en: 'LSTE 2026 is on 26 November 2026, 08:30–18:00, at the Conference Center of Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg. More: /venue/',
         fr: 'Le LSTE 2026 a lieu le 26 novembre 2026, de 08h30 à 18h00, au Conference Center de l’Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg. Plus d’infos : /venue/' },
       { kw: ['register', 'registration', 'ticket', 'sign up', 'attend', 'inscri', 'billet', 's inscrire', 'participer'],
-        en: 'The conference is free to attend, register here: /register/. An optional Tutorial Pass (a hands-on half-day workshop) is €250 + VAT.',
-        fr: 'La conférence est gratuite, inscris-toi ici : /register/. Un Tutorial Pass optionnel (atelier pratique d’une demi-journée) coûte 250 € + TVA.' },
+        en: 'The conference is free to attend, register here: /register/. There’s also an optional morning tutorial workshop, contact hello@lste.lu for the brochure and details.',
+        fr: 'La conférence est gratuite, inscris-toi ici : /register/. Il existe aussi un atelier optionnel le matin, contacte hello@lste.lu pour la brochure et les détails.' },
       { kw: ['free', 'price', 'cost', 'how much', 'fee', 'gratuit', 'prix', 'cout', 'combien', 'tarif', 'payer'],
-        en: 'Attending the conference is free (coffee breaks are included throughout the day). The optional Tutorial Pass is €250 + VAT. See /register/.',
-        fr: 'Assister à la conférence est gratuit (les pauses café sont incluses toute la journée). Le Tutorial Pass optionnel coûte 250 € + TVA. Voir /register/.' },
+        en: 'Attending the conference is free (coffee breaks are included throughout the day). There’s also an optional morning tutorial workshop, contact hello@lste.lu for the brochure and details. See /register/.',
+        fr: 'Assister à la conférence est gratuit (les pauses café sont incluses toute la journée). Il existe aussi un atelier optionnel le matin, contacte hello@lste.lu pour la brochure et les détails. Voir /register/.' },
       { kw: ['lunch', 'food', 'eat', 'meal', 'coffee', 'repas', 'dejeuner', 'manger', 'nourriture', 'cafe'],
         en: 'Coffee breaks are included throughout the day, at no cost. For specifics on lunch, contact hello@lste.lu.',
         fr: 'Les pauses café sont incluses toute la journée, sans frais. Pour les détails concernant le déjeuner, contacte hello@lste.lu.' },
@@ -500,8 +500,8 @@
         en: 'Free on-site parking is available for guests, right by the Hamilius tram and bus stop in Luxembourg City. Full travel details: /venue/',
         fr: 'Un parking gratuit est disponible sur place, juste à côté de l’arrêt Hamilius (tram et bus) à Luxembourg-Ville. Tous les détails d’accès : /venue/' },
       { kw: ['student', 'academic', 'university', 'etudiant', 'academique', 'universite'],
-        en: 'Students and academics can attend free with a valid student ID (application required, limited seats). Apply when registering: /register/',
-        fr: 'Étudiants et académiques peuvent participer gratuitement avec une carte d’étudiant valide (candidature requise, places limitées). Postule lors de l’inscription : /register/' },
+        en: 'Yes, students and academic researchers are welcome free of charge, just like every other attendee. Register the same way: /register/',
+        fr: 'Oui, les étudiants et chercheurs académiques sont les bienvenus gratuitement, comme tout autre participant. Inscris-toi de la même façon : /register/' },
       { kw: ['language', 'langue', 'english', 'anglais', 'francais', 'spoken'],
         en: 'The event is held in English.',
         fr: 'L’événement se déroule en anglais.' },
@@ -534,16 +534,31 @@
       return best ? best[lang] : MISS[lang];
     }
 
+    // Internal chat paths are written root-relative ("/foo/") in INTENTS
+    // above for readability, but this same script runs on every page at
+    // every folder depth, and the site has no server-side routing — a
+    // literal "/foo/" 404s under file:// and under any deployment that
+    // isn't the domain root. Derive the real "../" prefix at runtime from
+    // the site logo's own href (already correctly localized per page by
+    // scripts/localize-paths.mjs at build time) instead of hardcoding one.
+    function sitePrefix() {
+      const logo = document.querySelector('.site-logo');
+      const href = (logo && logo.getAttribute('href')) || './index.html';
+      return href.replace(/index\.html$/, '');
+    }
+
     // Escape HTML, then linkify — in a single pass so an internal path that
     // happens to sit inside a full URL isn't double-matched. Handles external
     // URLs (https://…), emails, and internal site paths (/foo/).
     function render(text) {
       const esc = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const prefix = sitePrefix();
       const pattern = /(https?:\/\/[^\s<]+|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}|\/[a-z0-9\-/]+\/)/gi;
       return esc.replace(pattern, (match) => {
         if (/^https?:\/\//i.test(match)) return '<a href="' + match + '" target="_blank" rel="noopener">' + match + '</a>';
         if (match.indexOf('@') !== -1) return '<a href="mailto:' + match + '">' + match + '</a>';
-        return '<a href="' + match + '">' + match + '</a>';
+        const href = prefix + match.slice(1) + 'index.html';
+        return '<a href="' + href + '">' + match + '</a>';
       });
     }
 

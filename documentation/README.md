@@ -441,3 +441,33 @@ itself, not real photos in general — contained treatments remain fine).
   official X/Twitter or YouTube accounts are created later, re-add them
   in `src/partials/footer.html` and re-run `npm run partials:inject` —
   don't hand-edit each page.
+
+## 2026-07-20 (even later): chat widget bug fixes (FR + EN)
+
+- **Real bug found and fixed: chat-generated internal links were broken
+  everywhere except the homepage.** `INTENTS` in `src/js/main.js` writes
+  internal paths root-relative (`/register/`, `/venue/`, etc.) for
+  readability, and `render()` linkifies them into real `<a href>`s at
+  runtime — but this script is shared across every page at every folder
+  depth, and the site has no server-side routing. A literal `/register/`
+  href 404s under `file://` and under any deployment that isn't the
+  domain root (only works by coincidence on a page actually served at
+  root). Fixed by adding `sitePrefix()`, which reads the already-correct,
+  per-page-localized `.site-logo` href (set at build time by
+  `scripts/localize-paths.mjs`) and uses it to rewrite each internal path
+  to a real relative one (`/venue/` → `../venue/index.html` from one
+  folder down, etc.) before turning it into a link. If you add new
+  chat-widget-generated links in the future, they'll go through this
+  same fix automatically — don't hardcode `/foo/` hrefs anywhere else in
+  `main.js` without routing them through `render()`.
+- **Stale/inaccurate chatbot answers corrected (both FR and EN):**
+  - The `register`/`ticket` and `free`/`price` intents asserted an
+    "optional Tutorial Pass... €250 + VAT" — this directly contradicted
+    the site's own established rule (see "Verified facts" above) of
+    never publishing a price for the morning tutorial and only inviting
+    people to contact hello@lste.lu for the brochure. Reworded to match.
+  - The `student` intent claimed "application required, limited seats"
+    and a student-ID requirement — this isn't what the real, existing
+    FAQ says ("students... welcome, free of charge, just like every
+    other attendee... the same way"). Reworded to match that FAQ exactly
+    instead of asserting an invented process.
