@@ -773,3 +773,26 @@ profile (car / public transport / plane), citing Paris Games Week's
   "Venue questions" FAQ section further down (unchanged), so removing
   them from the new address-only section loses no information.
 - Hotels and FAQ sections unchanged, just now follow a cleaner page flow.
+
+## 2026-07-20 (footer tweak): shorter Get Involved labels
+
+Client asked for two footer link labels to be shortened: "Sponsors &
+Partners" -> "Partners" and "Sponsor With Us" -> "Become a sponsor",
+scoped to the footer only.
+
+- Edited `src/partials/footer.html` (the single source for the footer,
+  injected into all 31 pages via `npm run partials:inject`) rather than
+  hand-editing each page.
+- Left every other use of "Sponsors & Partners" alone: it's the actual
+  title/breadcrumb/eyebrow of `sponsors/index.html` itself (confirmed via
+  its own H1, which is actually "The companies making LSTE possible." —
+  "Sponsors & Partners" is just its nav/meta label, still accurate) and
+  is referenced descriptively as such elsewhere (`schedule/index.html`,
+  `resources/index.html`) — none of that is "the footer."
+- Did update the two spots on the homepage FAQ (JSON-LD + visible
+  accordion) that explicitly named "Sponsor With Us" as the thing to look
+  for ("Get in touch via the Sponsor With Us page...") — since the footer
+  link people would actually click no longer says that, left unchanged
+  it would have been a real findability mismatch. Now says "Become a
+  Sponsor" to match; also pointed that link at `resources/index.html#sponsor`
+  directly (was missing the anchor) while touching it.
