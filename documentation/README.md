@@ -660,3 +660,43 @@ placement rather than "just drop in 3 embeds in a row."
   (Claude in Chrome isn't connected) — verified structurally and via the
   local `python3 -m http.server 8931`, but the client should still give
   it a visual look before this ships.
+
+## 2026-07-20 (even later still): homepage Sponsors section rewritten as a real pitch
+
+Client asked to rework "the section dedicated to sponsoring" on the
+homepage, referencing the brochure's "5 ways to be seen" concept
+(Keynotes/Workshops/Panels/Exhibition/Networking) as inspiration, content
+to be reworded rather than copied. The heading they quoted ("Software
+quality, taken seriously for one day a year.") is actually the attendee-
+facing "Why attend" section, not the sponsor one — the actual Sponsors
+section further down the page ("Backed by the companies investing in
+QA.") was the one matching everything else in the request (sponsor
+benefits, wanting people to sponsor), so that's the one that was reworked;
+"Why attend" was left untouched.
+
+- Old section was a passive, attendee-facing "who backs us" logo strip
+  with one link out. New version pitches sponsoring directly: eyebrow
+  "Become a sponsor," a headline framed around the brochure's "5 ways to
+  be seen," and a rewritten (not copied) intro paragraph pulling in the
+  brochure's audience data (400+ attendees, industries represented).
+- 5 pillar cards — Keynotes / Workshops / Panels / Exhibition /
+  Networking — reusing the existing `.pillar-card` component, each
+  rewritten in the site's voice from the brochure's page 5/6/7 content
+  (e.g. brochure's "Pre-registration, scan & save visitor data" for
+  Workshops became "walk away with genuinely qualified leads").
+  Deliberately did **not** carry over the brochure's tier-gating (keynote
+  and workshop slots are Platinum-only per page 8/13, exhibition booths
+  are Gold+) or its prices (Silver €1,500 / Gold €3,500 / Platinum
+  €4,700) — the site's tier/pricing detail always lives behind the
+  existing "contact us" flow, not on public pages; this section stays
+  aspirational and hands off to Resources/Sponsors for specifics.
+- Added a new `.grid--5` utility to `layout.css` (1/2/3/5 columns at
+  increasing breakpoints, same pattern as the existing `.grid--2/3/4`)
+  since no 5-column layout existed yet.
+- Kept the existing Q-Leap logo (only confirmed 2026 sponsor) under a
+  small "Already on board for 2026" label, and added a second CTA
+  ("Become a sponsor" -> `resources/index.html#sponsor`, the existing
+  sponsor contact anchor) alongside the pre-existing "View all sponsors"
+  link.
+- Rebuilt CSS/partials/paths; `index.html` still passes the tag-balance
+  and duplicate-id checks.
