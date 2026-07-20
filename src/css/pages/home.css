@@ -117,8 +117,15 @@
    replacing the old testimonials grid. Deliberately asymmetric (not 3
    identical tiles): the featured post keeps the portrait linkedin-card
    proportions, the 2 supporting posts crop wider so the pair reads as
-   a considered collage rather than a repeated pattern. ────────────── */
-.community-showcase { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+   a considered collage rather than a repeated pattern.
+   max-width caps how large these render: the source images are
+   LinkedIn's own fixed-resolution post thumbnails (720x1280, no bigger
+   variant available from their CDN) — left to stretch across the full
+   ~1160px container on a wide screen, a 2x/retina display would need to
+   upscale them well past their native resolution, which is exactly the
+   pixelation that was reported. Capped so even the featured card stays
+   close to native res at typical pixel densities. ─────────────────── */
+.community-showcase { display: grid; gap: var(--space-4); grid-template-columns: 1fr; max-width: 780px; margin: 0 auto; }
 .community-showcase__side { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
 @media (min-width: 900px) {
   .community-showcase { grid-template-columns: 1.15fr 1fr; }

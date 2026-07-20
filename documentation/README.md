@@ -945,3 +945,30 @@ from Google's CDN** (`fonts.googleapis.com` -> `fonts.gstatic.com`), a
   minification, icon font subsetting, `loading="lazy"` on below-the-fold
   images, hero image `fetchpriority="high"`, GitHub Pages' own gzip/
   Brotli compression (not something we control or need to).
+
+## 2026-07-20 (LinkedIn embed pixelation): capped display size to native resolution
+
+Client reported the LinkedIn images in the homepage "Community showcase"
+looked pixelated. Downloaded the actual images LinkedIn serves and
+checked: all 3 are exactly 720x1280 (that's the fixed resolution
+LinkedIn's public embed metadata provides for video-post thumbnails —
+nothing bigger is available from their CDN, this isn't something we
+control). The section's grid (`.community-showcase`, 1.15fr/1fr inside
+a ~1160px container) was stretching the featured card to ~620px CSS
+width and the two side cards to ~540px each — on any 2x/retina display
+that demands 1080-1240 physical pixels from a 720px source, i.e. a real
+upscale well past native resolution, which is exactly what pixelates.
+
+- Capped `.community-showcase` to `max-width: 780px; margin: 0 auto`
+  (only takes effect at the ≥900px breakpoint where the 2-column layout
+  applies — below that the section is already narrower than 780px, so
+  no change on mobile). Keeps the exact same asymmetric collage
+  (1 featured + 2 supporting), just sized so the featured card lands
+  close to ~400px CSS width and the side cards ~345px — near enough to
+  the 720px source that even 2x displays stay close to 1:1.
+- Added the missing `width="720" height="1280"` attributes to all 3
+  `<img>` tags (present on the same images' cards on `/linkedin/`, but
+  missing here) — a small unrelated CLS fix noticed while in this code.
+- No fix exists to get literally sharper source pixels from LinkedIn's
+  CDN for these specific video-thumbnail URLs; capping display size to
+  match what's actually available is the real remedy here.
