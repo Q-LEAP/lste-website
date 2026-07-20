@@ -869,3 +869,34 @@ spec, so the intended bottom margin was silently collapsing to nothing —
 not a deliberate design choice, a typo. Fixed to `var(--space-6)` (2rem),
 matching the token actually used a few lines earlier in the same rule's
 `gap`.
+
+## 2026-07-20 (video quality fix): re-encoded the atmosphere clips properly
+
+Client reported the two homepage "atmosphere" videos looked visibly worse
+online than expected. Root cause: back when they were first compressed,
+the only encoder available on this machine was macOS's `avconvert`, whose
+blunt named presets (`PresetMediumQuality`) downscaled the raw footage
+all the way to 320x568 to hit a small file size — far below what the
+source actually supports, producing soft/blocky playback.
+
+- Found the real source quality via `ffmpeg -i`: the raw clips are
+  actually 10-bit HEVC at ~14.8 Mbps, 1080x1920 — a much better source
+  than the previous encode suggested.
+- Installed a real `ffmpeg` binary this session via `pip install
+  imageio-ffmpeg` (ships a static ffmpeg executable, no system package
+  manager needed), giving proper control over resolution/CRF/codec
+  instead of `avconvert`'s fixed presets.
+- Re-encoded both at 540x960 (was 320x568), H.264 High profile, CRF 23,
+  `-an` (dropped the audio track — these play `muted` in HTML anyway,
+  per `initAmbientVideo()` in `main.js`), `+faststart`. Compared frame
+  grabs side by side before committing: the old encode was visibly noisy/
+  blocky, the new one is clean at the same rough file-size class.
+  `lste-2025-selfie-booth.mp4`: 3.1MB -> 6.8MB. `lste-recap-networking.mp4`:
+  3.1MB -> 6.2MB (~13MB combined). Still lazy-loaded via
+  `initAmbientVideo()`'s IntersectionObserver (only fetched once scrolled
+  into view), so this doesn't add to initial page weight.
+  Filenames unchanged, so no HTML edits were needed.
+- Poster images (`assets/img/lste-2025-selfie-booth-*`, `assets/img/lste-
+  recap-networking-*`) were already extracted from the full-resolution
+  raw source via `qlmanage`, not from the old low-res encode — no change
+  needed there.
