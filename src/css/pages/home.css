@@ -58,7 +58,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3) var(--space-6);
-  margin: var(--space-5) 0 var(--space-7);
+  margin: var(--space-5) 0 var(--space-6);
   font-weight: 600;
   font-size: 0.9375rem;
 }
@@ -120,7 +120,7 @@
    a considered collage rather than a repeated pattern. ────────────── */
 .community-showcase { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
 .community-showcase__side { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .community-showcase { grid-template-columns: 1.15fr 1fr; }
   .community-showcase__side { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
 }

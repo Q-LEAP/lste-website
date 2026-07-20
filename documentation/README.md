@@ -796,3 +796,76 @@ scoped to the footer only.
   it would have been a real findability mismatch. Now says "Become a
   Sponsor" to match; also pointed that link at `resources/index.html#sponsor`
   directly (was missing the anchor) while touching it.
+
+## 2026-07-20 (final pass): sitewide consistency audit
+
+Client asked for a last full-site pass checking spacing, alignment, font
+sizes, CTAs, components, buttons, cards, icons, animations, colors,
+transitions, responsive breakpoints, and cross-page consistency — "one
+coherent product," not a collection of pages. No browser tool available
+this session, so this was a systematic static-analysis audit (grep across
+all 31 pages + all CSS files for divergent values), not a visual one;
+worth a manual look before considering it fully verified.
+
+**Real inconsistencies found and fixed:**
+- **`404.html` was missing Space Grotesk / JetBrains Mono** — the only
+  page still linking just Open Sans, even though its own inline `<style>`
+  sets the big "404" numeral to `font-family: var(--font-heading)`
+  (Space Grotesk). It was silently falling back to a generic sans-serif.
+  Fixed the Google Fonts `<link>` to match all 30 other pages.
+- **`.pillar-card` title size drifted**: 33 instances site-wide use
+  `1.0625rem`, but 7 (About's "Event format" cards, Resources' "Useful
+  links" cards) used `1rem`. Standardized to `1.0625rem`.
+- **`.pillar-card` paragraph size drifted the other way**: the two
+  sections added in recent sessions (About's rewritten "Event format",
+  the homepage's new "5 ways to be seen" sponsor pitch) used `0.875rem`
+  while every pre-existing `.pillar-card` instance (About's "Learn/
+  Connect/Share", homepage's "Why attend", Become-a-Speaker's "why
+  speak") uses `0.9rem`. Standardized the 9 newer instances to match the
+  established convention rather than the reverse.
+- **Breakpoint mismatch between two near-identical homepage layouts**:
+  `.split-media` (the atmosphere-videos section) switches to 2-column at
+  900px; `.community-showcase` (the LinkedIn video collage) was doing the
+  same thing at 800px. Both are the same "stack on mobile, 2-up above"
+  pattern — moved `.community-showcase` to 900px to match.
+- **`register/index.html`'s FAQ heading was missing its trailing period**
+  ("Frequently asked questions" vs. every other page's "...questions.").
+- **`previous-editions/edition-2016/index.html` had leftover French
+  content** on an otherwise all-English site (`lang="en"` throughout):
+  two eyebrow labels ("Le programme", "Les orateurs" — every other
+  edition page says "The programme" / "Speakers") and, more
+  substantially, the entire evening timeline was still in French
+  ("Ouverture des portes", "Message de bienvenue", full French talk
+  titles and a French job title for one speaker) — almost certainly
+  carried over verbatim from the original French-language 2016 programme
+  source material (see the Verified Facts note on that folder). Translated
+  faithfully (not reworded/invented) to match the rest of the site.
+
+**Checked and found already consistent (no changes needed):** hardcoded
+hex colors (none outside expected one-offs: `#fff`, circular-icon `50%`
+radii, and 3 intentional sponsor-tier icon colors on the Sponsors page);
+transition durations (100% use `--dur-fast/base/slow` tokens, zero
+hardcoded); border-radius (all use `--radius-*` tokens except legitimate
+`50%` circles); final-CTA button pairing/order across all 9 pages that
+have one; `rel="noopener"` paired with every `target="_blank"` (zero
+gaps); `<html lang="en">` on all 31 pages; breadcrumb `aria-current`
+present and correct on every page (the real, consistent "you are here"
+mechanism — top-nav highlighting only exists for Programme/Venue since
+the other 4 destinations live inside the collapsible "More" menu, which
+is a reasonable structural difference, not a bug); calendar icon split
+(`fa-calendar-days` for the upcoming 2026 date vs. plain `fa-calendar` for
+historical editions) is a deliberate, meaningful distinction, not drift.
+
+Rebuilt CSS/partials/paths/asset-versioning; all 31 pages still pass the
+HTML tag-balance check.
+
+## 2026-07-20 (hero spacing fix)
+
+Client felt the Hero's date/venue line sat too close to the CTA buttons.
+Root cause: `.hero__meta`'s margin shorthand referenced `var(--space-7)`,
+a token that doesn't exist in `tokens.css` (the scale jumps 6 -> 8). A
+`var()` that fails to resolve invalidates the whole shorthand it's in per
+spec, so the intended bottom margin was silently collapsing to nothing —
+not a deliberate design choice, a typo. Fixed to `var(--space-6)` (2rem),
+matching the token actually used a few lines earlier in the same rule's
+`gap`.
