@@ -125,17 +125,19 @@ someone confirms otherwise from Q-Leap directly.
   2026-07-20 sponsor-brochure pass below. Morning tutorial pricing is still
   never mentioned; the CTA only invites people to contact hello@lste.lu.
 
-## Formspree setup (contact form + newsletter)
+## Formspree setup (newsletter only)
 
-Both `contact/index.html` and the newsletter form in `news/index.html` post
-to a placeholder Formspree ID (`REPLACE_WITH_YOUR_FORMSPREE_ID`) and will
-silently fail until real IDs are set:
+`contact/index.html` no longer uses a form — per client request (2026-07-21)
+it's now a plain `mailto:hello@lste.lu` button, so there's nothing to wire up
+there. The newsletter form in `news/index.html` still posts to a placeholder
+Formspree ID (`REPLACE_WITH_YOUR_FORMSPREE_ID`) and will silently fail until
+a real one is set:
 
-1. Create one Formspree form per use case (contact, newsletter) at
-   https://formspree.io, with `hello@lste.lu` as the recipient.
-2. Swap each form's `action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID"`
+1. Create a Formspree form at https://formspree.io, with `hello@lste.lu` as
+   the recipient.
+2. Swap the form's `action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID"`
    for the real endpoint Formspree gives you.
-3. Submit a real test message on each form and confirm delivery.
+3. Submit a real test signup and confirm delivery.
 
 ## Social media
 
@@ -317,8 +319,9 @@ manages via `IntersectionObserver` — no new JS observers):
   ordering and the effort/JS-complexity (per-card mousemove listeners)
   didn't clear the "does this genuinely help" bar for a first pass.
 
-**Not touched, and why**: the Formspree contact/newsletter placeholder IDs
-(still need a real Formspree ID from the client — see the section above);
+**Not touched, and why**: the Formspree newsletter placeholder ID
+(still needs a real Formspree ID from the client — see the section above;
+the contact form itself no longer depends on Formspree, see that section);
 the "Platinium" spelling (used consistently across the site — this was
 the client's own explicit wording, not a typo).
 

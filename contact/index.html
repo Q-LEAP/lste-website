@@ -114,42 +114,11 @@
     <div class="container">
       <div class="grid grid--2" style="align-items:start;">
 
-        <!--
-          SETUP REQUIRED BEFORE GOING LIVE: this form will not deliver any
-          email until "REPLACE_WITH_YOUR_FORMSPREE_ID" below is swapped for a
-          real Formspree form ID.
-            1. Create a free form at https://formspree.io (or reuse an
-               existing LSTE one) using hello@lste.lu as the recipient.
-            2. Replace REPLACE_WITH_YOUR_FORMSPREE_ID in the action="" URL
-               with the ID Formspree gives you (format: https://formspree.io/f/xxxxxxxx).
-            3. Submit a test message and confirm it arrives at hello@lste.lu.
-          See documentation/README.md for the same steps. Until this is done,
-          submissions will fail with the generic "Something went wrong" error
-          message defined below.
-        -->
-        <form class="reveal" data-async data-success-message="Message sent. We'll get back to you soon." data-error-message="Something went wrong. Please email us directly at hello@lste.lu." action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST" novalidate>
-          <h2 class="sr-only">Send us a message</h2>
-          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" aria-hidden="true">
-
-          <div class="form-group">
-            <label for="contact-name">Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label for="contact-email">Email <span aria-hidden="true">*</span></label>
-            <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label for="contact-subject">Subject</label>
-            <input type="text" id="contact-subject" name="subject" placeholder="What's this about?">
-          </div>
-          <div class="form-group">
-            <label for="contact-message">Message <span aria-hidden="true">*</span></label>
-            <textarea id="contact-message" name="message" rows="6" required placeholder="Tell us how we can help…"></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary btn--block">Send message</button>
-          <div class="form-msg" role="alert" aria-live="polite"></div>
-        </form>
+        <div class="card reveal" style="padding:var(--space-6);">
+          <h2 style="margin-bottom:var(--space-3);font-size:1.0625rem;">Send us a message</h2>
+          <p class="text-muted" style="margin-bottom:var(--space-5);">General questions, speaker submissions, sponsorship, or press — email us directly and we'll get back to you.</p>
+          <a class="btn btn--primary btn--block" href="mailto:hello@lste.lu">Email hello@lste.lu <i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+        </div>
 
         <div class="card contact-info-card reveal">
           <h2 style="margin-bottom:var(--space-5);font-size:1.0625rem;">Get in touch</h2>
