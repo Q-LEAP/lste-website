@@ -40,12 +40,41 @@
 }
 .section--alt .container { position: relative; z-index: 1; }
 
+/* .section--tint — a second rhythm note alongside .section--alt. The
+   homepage previously alternated only near-identical greys (surface vs
+   surface-alt) plus the brand gradient, which read as monochrome next to
+   the palette-varied sites it was benchmarked against. Reserved for
+   sections that should feel like their own moment rather than "one more
+   grey band" — currently just Sponsors. */
+.section--tint {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-tint);
+}
+.section--tint::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--motif-trace);
+  background-repeat: repeat;
+  background-size: 120px 60px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.section--tint .container { position: relative; z-index: 1; }
+
 .section--brand {
   position: relative;
   overflow: hidden;
   background: var(--gradient-hero);
   color: rgba(255, 255, 255, 0.92);
 }
+/* Solid-purple take on .section--brand (no gradient) — for short CTA
+   strips that sit between two full-gradient moments (hero, final CTA);
+   keeps the brand color without the same gradient reading a third time
+   in one scroll. */
+.section--brand--solid { background: var(--color-primary-dark); }
 .section--brand h1, .section--brand h2, .section--brand h3,
 .section--brand h4, .section--brand h5 { color: #fff; }
 /* Same Trace motif as .section--alt, replacing the previous single reused

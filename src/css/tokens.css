@@ -57,6 +57,12 @@
   --color-border:     #d7d3e6;
   --color-surface:    #e9e7f1; /* neu base — surface == page bg for depth */
   --color-surface-alt:#e3e1ee; /* slightly deeper band for rhythm */
+  --color-tint:       #f2e3ef; /* warm pink-tinted band — a second rhythm
+                                   note beyond the grey surface/alt pair,
+                                   for sections that should register as
+                                   their own moment rather than "another
+                                   grey block" (contrast-checked ≥4.5:1
+                                   for body/muted text, see plan). */
   --color-footer:     #14122a; /* dark in both themes */
   --page-bg:          #e9e7f1;
   --panel-invert:     #1b1830; /* .section--dark band; distinct per theme */
@@ -163,6 +169,7 @@
   --color-border:     #34314a;
   --color-surface:    #262436;
   --color-surface-alt:#211f2f;
+  --color-tint:       #332536;
   --page-bg:          #262436;
   --panel-invert:     #1c1a28;
 
