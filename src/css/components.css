@@ -317,6 +317,54 @@
   border: 1px solid var(--color-border);
   transition: transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
 }
+
+/* ── Numbered card — the brand's own "01/02/03" numeral language, lifted
+   from the sponsor brochure's "5 ways to be seen" / "3 reasons to
+   sponsor" pages (documentation/archives/LSTE_2026_Sponsor_Brochure.pdf)
+   rather than invented from scratch. A second, bolder facet of the same
+   big-gradient-numeral idea already used by .stat-item, plus a ghosted
+   Trace-motif corner so LSTE's one bespoke graphic mark shows up at a
+   larger, more confident scale than the whole-section texture use.
+   Used wherever the site tells its "5 formats" story from a *different*
+   angle than the icon-tile .pillar-card, so the two takes on the same
+   5 items (attendee side vs sponsor side) don't read as a copy-paste. */
+.numbered-card {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6) var(--space-5) var(--space-5);
+}
+.numbered-card::before {
+  content: '';
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 68px;
+  height: 34px;
+  background-image: var(--motif-trace);
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.16;
+  pointer-events: none;
+}
+.numbered-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--gradient-brand);
+}
+.numbered-card__num {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: var(--space-3);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .card:hover { box-shadow: var(--shadow-md); }
 
 .stat-item { text-align: center; }
