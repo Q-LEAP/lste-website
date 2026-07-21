@@ -315,6 +315,22 @@
   z-index: 1;
 }
 .timeline__item--break .timeline__dot { background: var(--color-muted); }
+/* Icon-carrying dot — an optional, larger take on the same marker used by
+   the homepage's programme preview, so each format (keynote/demo/break)
+   reads at a glance instead of only through a plain colour dot. Sized to
+   the existing 1.5rem marker column so it drops in without touching the
+   shared .timeline grid used by /schedule. */
+.timeline__dot--icon {
+  width: 24px;
+  height: 24px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.6875rem;
+}
+.timeline__item--demo .timeline__dot { background: linear-gradient(135deg, #822ea8 0%, #d90e90 100%); }
 .timeline__content { min-width: 0; padding-top: 0.1rem; }
 .timeline__title { font-size: 1rem; font-weight: 700; color: var(--color-ink); }
 .timeline__item--break .timeline__title { font-weight: 600; color: var(--color-muted); }
