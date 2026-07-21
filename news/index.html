@@ -228,23 +228,7 @@
       <span class="eyebrow">Stay updated</span>
       <h2 id="newsletter-heading">Get LSTE news by email.</h2>
       <p style="max-width:48ch;margin:0 auto var(--space-6);">Speaker announcements, ticket openings, and recaps, delivered straight to your inbox a few times a year.</p>
-      <!--
-        SETUP REQUIRED BEFORE GOING LIVE: same as the contact form — replace
-        REPLACE_WITH_YOUR_FORMSPREE_ID with a real Formspree form ID (a
-        separate form/ID from the contact one is recommended, so replies are
-        easy to tell apart). See documentation/README.md.
-      -->
-      <form class="reveal newsletter-form" data-async data-success-message="Thanks! You're on the list!" data-error-message="Something went wrong. Please try again or email hello@lste.lu." action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST" novalidate style="max-width:420px;margin:0 auto;">
-        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" aria-hidden="true">
-        <div style="display:flex;gap:var(--space-3);align-items:flex-start;">
-          <div class="form-group" style="flex:1;margin-bottom:0;">
-            <label class="sr-only" for="newsletter-email">Email address</label>
-            <input type="email" id="newsletter-email" name="email" required autocomplete="email" placeholder="your@email.com">
-          </div>
-          <button type="submit" class="btn btn--primary">Subscribe</button>
-        </div>
-        <div class="form-msg" role="alert" aria-live="polite"></div>
-      </form>
+      <a class="btn btn--primary reveal" style="display:inline-flex;" href="mailto:hello@lste.lu?subject=Newsletter%20signup&amp;body=Please%20add%20me%20to%20the%20LSTE%20newsletter.">Email hello@lste.lu to subscribe <i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
     </div>
   </section>
 

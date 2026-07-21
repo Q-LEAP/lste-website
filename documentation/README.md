@@ -125,19 +125,13 @@ someone confirms otherwise from Q-Leap directly.
   2026-07-20 sponsor-brochure pass below. Morning tutorial pricing is still
   never mentioned; the CTA only invites people to contact hello@lste.lu.
 
-## Formspree setup (newsletter only)
+## Formspree — removed (2026-07-21)
 
-`contact/index.html` no longer uses a form — per client request (2026-07-21)
-it's now a plain `mailto:hello@lste.lu` button, so there's nothing to wire up
-there. The newsletter form in `news/index.html` still posts to a placeholder
-Formspree ID (`REPLACE_WITH_YOUR_FORMSPREE_ID`) and will silently fail until
-a real one is set:
-
-1. Create a Formspree form at https://formspree.io, with `hello@lste.lu` as
-   the recipient.
-2. Swap the form's `action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID"`
-   for the real endpoint Formspree gives you.
-3. Submit a real test signup and confirm delivery.
+Neither `contact/index.html` nor the newsletter signup in `news/index.html`
+use Formspree (or any form backend) any more — both were never-configured
+`REPLACE_WITH_YOUR_FORMSPREE_ID` placeholders that silently failed every
+submission. Per client request, both are now plain `mailto:hello@lste.lu`
+buttons instead. Nothing to set up; there's no form to wire a backend to.
 
 ## Social media
 
@@ -319,10 +313,7 @@ manages via `IntersectionObserver` — no new JS observers):
   ordering and the effort/JS-complexity (per-card mousemove listeners)
   didn't clear the "does this genuinely help" bar for a first pass.
 
-**Not touched, and why**: the Formspree newsletter placeholder ID
-(still needs a real Formspree ID from the client — see the section above;
-the contact form itself no longer depends on Formspree, see that section);
-the "Platinium" spelling (used consistently across the site — this was
+**Not touched, and why**: the "Platinium" spelling (used consistently across the site — this was
 the client's own explicit wording, not a typo).
 
 ## 2026-07-20 art-direction pass ("give the site a real event identity")
