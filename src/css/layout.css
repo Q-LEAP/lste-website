@@ -52,11 +52,17 @@
    surface-alt) plus the brand gradient, which read as monochrome next to
    the palette-varied sites it was benchmarked against. Reserved for
    sections that should feel like their own moment rather than "one more
-   grey band" — currently just Sponsors. */
+   grey band" — currently just Sponsors.
+
+   Background fades to --color-surface-alt in its last 10% instead of
+   cutting straight to it — the flat block read as pasted on rather than
+   part of the page. Only the bottom needs a fade: this section is always
+   preceded by .section--brand--solid, whose own gradient already ends
+   on this exact --color-tint value, so the top seam is already seamless. */
 .section--tint {
   position: relative;
   overflow: hidden;
-  background: var(--color-tint);
+  background: linear-gradient(180deg, var(--color-tint) 0%, var(--color-tint) 90%, var(--color-surface-alt) 100%);
 }
 .section--tint::before {
   content: '';
@@ -77,11 +83,19 @@
   background: var(--gradient-hero);
   color: rgba(255, 255, 255, 0.92);
 }
-/* Solid-purple take on .section--brand (no gradient) — for short CTA
-   strips that sit between two full-gradient moments (hero, final CTA);
-   keeps the brand color without the same gradient reading a third time
-   in one scroll. */
-.section--brand--solid { background: var(--color-primary-dark); }
+/* Solid-purple take on .section--brand (no diagonal gradient) — for short
+   CTA strips that sit between two full-gradient moments (hero, final CTA);
+   keeps the brand color without the same hero gradient reading a third
+   time in one scroll. Still a (vertical) gradient, though: it eases in
+   from --color-surface-alt (the section before, Programme) and out to
+   --color-tint (the section after, Sponsors) instead of cutting straight
+   to a flat block — the flat version read as slapped on rather than part
+   of the same page. The two flat middle stops keep a wide enough solid-
+   purple band that the white CTA text always sits well clear of either
+   fade. */
+.section--brand--solid {
+  background: linear-gradient(180deg, var(--color-surface-alt) 0%, var(--color-primary-dark) 30%, var(--color-primary-dark) 70%, var(--color-tint) 100%);
+}
 .section--brand h1, .section--brand h2, .section--brand h3,
 .section--brand h4, .section--brand h5 { color: #fff; }
 /* Same Trace motif as .section--alt, replacing the previous single reused
