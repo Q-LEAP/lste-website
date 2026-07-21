@@ -8,7 +8,14 @@
 }
 .container--narrow { max-width: var(--container-narrow); }
 
-.section { padding: var(--space-12) 0; }
+/* var(--space-10), not --space-12: the previous 5rem top+bottom, repeated
+   across ~9 stacked homepage sections, read as dead air rather than
+   breathing room. Trimmed one notch on the existing scale — still a full
+   4rem of clearance per section, just not stacked into a wall of empty
+   grey between every block. --space-12 itself is untouched (still used by
+   .hero, .final-cta, .card) since those are meant to read as bigger,
+   deliberate moments. */
+.section { padding: var(--space-10) 0; }
 .section--tight { padding: var(--space-8) 0; }
 
 .section--dark {
