@@ -1,23 +1,54 @@
 /* ── Shared inner-page pieces: editions, venue, hotels ────────────── */
+/* Moody ambient glow behind every inner-page header — same visual
+   language as the homepage hero's glow (not a photo: keeps every inner
+   page in the flat/neumorphic DA rather than reintroducing imagery). */
 .page-hero {
+  position: relative;
+  overflow: hidden;
   padding: calc(var(--header-h) + var(--space-10)) 0 var(--space-8);
   text-align: center;
 }
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 480px;
+  background: radial-gradient(ellipse, rgba(109, 40, 217, 0.28), transparent 65%);
+  pointer-events: none;
+}
+.page-hero > .container { position: relative; }
 
+/* Bold, high-contrast breadcrumb: the trail (e.g. "Home") gets a brand
+   accent instead of muted gray, the current page stays ink-white — a
+   punchier reading than a fully muted trail, then a "-" divider (via
+   ::before, not the literal "/" already in the markup, so every page's
+   existing breadcrumb HTML doesn't need touching). */
 .breadcrumb {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: var(--space-2);
   flex-wrap: wrap;
+  font-family: var(--font-heading);
   font-size: var(--fs-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--color-muted);
   margin-bottom: var(--space-5);
 }
-.breadcrumb a { color: var(--color-muted); }
-.breadcrumb a:hover { color: var(--color-primary); }
-.breadcrumb [aria-current] { color: var(--color-ink); font-weight: 600; }
-.breadcrumb .sep { opacity: 0.5; }
+.breadcrumb a { color: var(--color-lime); }
+.breadcrumb a:hover { color: var(--color-cyan); }
+.breadcrumb [aria-current] { color: var(--color-ink); font-weight: 700; }
+.breadcrumb .sep { font-size: 0; opacity: 0.6; }
+.breadcrumb .sep::before { content: '-'; font-size: var(--fs-sm); }
 .breadcrumb--on-dark, .breadcrumb--on-dark a { color: rgba(255, 255, 255, 0.7); }
+.breadcrumb--on-dark a { color: var(--color-lime); }
+
+.page-hero h1 { text-transform: uppercase; }
 
 .calendar-actions {
   display: flex;
