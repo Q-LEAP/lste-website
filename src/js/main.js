@@ -302,6 +302,34 @@
     });
   }
 
+  /* ── News carousel: clone the card set once and animate a slow
+     translateX(-50%) loop, so it reads as a continuous right-to-left
+     ticker rather than an obvious jump-cut. Skipped (leaving the plain
+     scrollable row from the CSS base state) under reduced motion or on
+     narrow viewports, where an auto-scrolling row is harder to read and
+     fights with touch scrolling. ─────────────────────────────────── */
+  function initNewsCarousel() {
+    const carousel = document.querySelector('.news-carousel');
+    const track = carousel && carousel.querySelector('.news-carousel__track');
+    if (!carousel || !track) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.innerWidth < 768) return;
+
+    const cards = Array.from(track.children);
+    if (cards.length < 2) return;
+    cards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+      track.appendChild(clone);
+    });
+
+    const pxPerSecond = 40; // slow, deliberate pace
+    const halfWidth = track.scrollWidth / 2;
+    track.style.setProperty('--news-scroll-duration', halfWidth / pxPerSecond + 's');
+    carousel.classList.add('news-carousel--animated');
+  }
+
   /* ── Forms (Contact / Newsletter — Formspree) ─────────────── */
   function initForms() {
     document.querySelectorAll('form[data-async]').forEach((form) => {
@@ -471,6 +499,7 @@
     initSmoothScroll();
     initTabs();
     initGallery();
+    initNewsCarousel();
     initForms();
     initFooterYear();
     initEmptyEditionModal();

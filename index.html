@@ -28,7 +28,7 @@ redirect_from:
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#6d28d9">
 
-<link rel="stylesheet" href="./assets/css/styles.css?v=a96a3cdc">
+<link rel="stylesheet" href="./assets/css/styles.css?v=066e046a">
 
 <script type="application/ld+json">
 {
@@ -247,56 +247,6 @@ redirect_from:
        fabricated copy sitting in the codebase ready to be uncommented as-is.
        When speakers are announced, rebuild this from verified data instead. -->
 
-  <!-- Community showcase — replaces the old testimonials grid with real
-       LinkedIn video posts (was: 3 quote cards; now: the same "from the
-       community" beat, but with actual video, not paraphrased quotes).
-       Deliberately asymmetric (1 featured post + 2 supporting), not 3
-       identical tiles. Reuses the existing .linkedin-card component and
-       initLinkedInModal() from main.js — the modal below is the same
-       lazy-loaded pattern as /linkedin/, just a second, page-local
-       instance since LinkedIn's embed iframe can't be shared across
-       pages. -->
-  <section class="section section--dark" aria-labelledby="community-heading">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--on-dark">From the community</span>
-        <h2 id="community-heading">Straight from LinkedIn, in their own words.</h2>
-      </div>
-      <div class="community-showcase reveal">
-        <button type="button" class="linkedin-card linkedin-card--featured" data-activity="7457403342525267970" aria-label="Open LinkedIn post: We're back! The 8th edition of LSTE takes place November 26">
-          <span class="linkedin-card__eyebrow">🎬 Watch</span>
-          <img width="720" height="1280" src="https://dms.licdn.com/playlist/vid/v2/D4E05AQHT0mWGx6ye2Q/thumbnail-with-play-button-overlay-high/B4EZ33A0c8KEC0-/0/1777965682627?e=2147483647&amp;v=beta&amp;t=qNtHDApuKMehTywn3dxEFILjjmrAOmeDlPARObdESlA" alt="" loading="lazy">
-          <span class="linkedin-card__overlay"><span class="linkedin-card__excerpt">We're back! The 8th edition of LSTE will take place on November 26 in Luxembourg City: new voices, new ideas, same ambition.</span></span>
-        </button>
-        <div class="community-showcase__side">
-          <button type="button" class="linkedin-card linkedin-card--wide" data-activity="7475793676074455040" aria-label="Open LinkedIn post: Do you think AI will one day design and execute a full testing strategy?">
-            <img width="720" height="1280" src="https://dms.licdn.com/playlist/vid/v2/D4E05AQGqbRm2Qkoi-A/thumbnail-with-play-button-overlay-high/B4EZ7akFM1JMC4-/0/1781783359915?e=2147483647&amp;v=beta&amp;t=0jcls-o3c2R5Hf4qyuHyl5EK-08Wx781d2dfmu5y9r0" alt="" loading="lazy">
-            <span class="linkedin-card__overlay"><span class="linkedin-card__excerpt">Do you think AI will one day design and execute a full testing strategy without humans? "Testing isn't simply pass or fail," reminds Cristiano Cunha.</span></span>
-          </button>
-          <button type="button" class="linkedin-card linkedin-card--wide" data-activity="7458441626974216193" aria-label="Open LinkedIn post: A quick glimpse from our interview zone during the 2025 edition">
-            <img width="720" height="1280" src="https://dms.licdn.com/playlist/vid/v2/D4E05AQGS6FOs2symoQ/thumbnail-with-play-button-overlay-high/B4EZ4B2QFTGYC0-/0/1778147461109?e=2147483647&amp;v=beta&amp;t=_x8--_y6LWcuIm-RKFh-GrLAVPfn2ojj4ygGpI7PwcU" alt="" loading="lazy">
-            <span class="linkedin-card__overlay"><span class="linkedin-card__excerpt">A quick glimpse from our interview zone during the 2025 edition, here with Anna Kabanova, Project QA Lead. The 2026 edition is coming up!</span></span>
-          </button>
-        </div>
-      </div>
-      <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--ghost-on-dark" href="./linkedin/index.html">More from the community <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-
-      <!-- Lazy-loaded modal: iframe src only set on click, cleared on
-           close (see initLinkedInModal in main.js). -->
-      <div class="modal-backdrop" id="linkedin-modal" role="dialog" aria-modal="true" aria-labelledby="linkedin-modal-title" hidden>
-        <div class="modal-dialog media-modal-dialog">
-          <div class="media-modal-header">
-            <span class="media-modal-header__title" id="linkedin-modal-title">LSTE on LinkedIn</span>
-            <button type="button" class="media-modal-close" id="linkedin-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-          </div>
-          <div class="media-modal-body">
-            <iframe id="linkedin-modal-iframe" src="" height="700" width="504" frameborder="0" allowfullscreen title="LinkedIn post"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Programme preview -->
   <section class="section section--alt" aria-labelledby="programme-heading">
     <div class="container">
@@ -333,15 +283,20 @@ redirect_from:
   </section>
 
   <!-- News preview — shows the site is actively updated, not a static
-       brochure. Reuses the .news-card component (full-bleed photo,
-       bottom scrim) already defined in home.css. -->
+       brochure. An auto-scrolling ticker (all 6 real articles, duplicated
+       once for a seamless loop) rather than a static 2-up grid — pauses on
+       hover/focus and sits still entirely under prefers-reduced-motion
+       (see news-carousel rules in home.css + initNewsCarousel in main.js
+       for the hover/focus pause). -->
   <section class="section section--alt" aria-labelledby="news-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">News</span>
         <h2 id="news-heading">The latest from LSTE.</h2>
       </div>
-      <div class="grid grid--2 reveal">
+    </div>
+    <div class="news-carousel reveal">
+      <div class="news-carousel__track">
         <article class="card news-card">
           <picture>
             <source type="image/avif" srcset="./assets/img/rsw_1200cg_true-2-800.avif">
@@ -368,7 +323,61 @@ redirect_from:
             <a class="news-link" href="./news/lste-2025-ai-7th-edition/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </article>
+        <article class="card news-card">
+          <picture>
+            <source type="image/avif" srcset="./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.avif">
+            <source type="image/webp" srcset="./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.webp">
+            <img class="news-card__media" src="./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.jpg" width="800" height="600" loading="lazy" alt="Smartesting session at LSTE 2024">
+          </picture>
+          <p class="news-date">11 December 2024</p>
+          <div class="news-card__body">
+            <h3>Learning how to live with the digital colleague</h3>
+            <p class="text-muted" style="font-size:0.9rem;">At LSTE 2024, Dr. Anne Kramer (Smartesting) shared her thoughts on the evolving role of software testers and AI.</p>
+            <a class="news-link" href="./news/digital-colleague/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="card news-card">
+          <picture>
+            <source type="image/avif" srcset="./assets/img/Break-Tuto-4-800.avif">
+            <source type="image/webp" srcset="./assets/img/Break-Tuto-4-800.webp">
+            <img class="news-card__media" src="./assets/img/Break-Tuto-4-800.jpg" width="800" height="1067" loading="lazy" alt="Workshop break at LSTE 2024">
+          </picture>
+          <p class="news-date">11 December 2024</p>
+          <div class="news-card__body">
+            <h3>LSTE: a landmark event for software testing professionals</h3>
+            <p class="text-muted" style="font-size:0.9rem;">The 6th edition at the Digital Learning Hub in Esch-Belval brought together over 280 professionals.</p>
+            <a class="news-link" href="./news/lste-2024-landmark/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="card news-card">
+          <picture>
+            <source type="image/avif" srcset="./assets/img/Deloitte-2-min-800.avif">
+            <source type="image/webp" srcset="./assets/img/Deloitte-2-min-800.webp">
+            <img class="news-card__media" src="./assets/img/Deloitte-2-min-800.jpg" width="800" height="533" loading="lazy" alt="Deloitte booth at LSTE">
+          </picture>
+          <p class="news-date">11 November 2024</p>
+          <div class="news-card__body">
+            <h3>Deloitte at LSTE 2024: driving innovation in software testing</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Deloitte announced its role as a silver sponsor of LSTE 2024, held on 14 November in Esch-Belval.</p>
+            <a class="news-link" href="./news/deloitte-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="card news-card">
+          <picture>
+            <source type="image/avif" srcset="./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.avif">
+            <source type="image/webp" srcset="./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.webp">
+            <img class="news-card__media" src="./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.jpg" width="800" height="600" loading="lazy" alt="Sogeti keynote session at LSTE 2024">
+          </picture>
+          <p class="news-date">11 November 2024</p>
+          <div class="news-card__body">
+            <h3>Sogeti at LSTE 2024: exploring GenAI in testing</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Sogeti announced its participation as a gold sponsor, presenting a keynote on generative AI in testing.</p>
+            <a class="news-link" href="./news/sogeti-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
       </div>
+    </div>
+    <div class="container">
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./news/index.html">All news <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
@@ -414,6 +423,23 @@ redirect_from:
         </picture><span class="gallery-preview-grid__caption">Behind the scenes</span></a>
       </div>
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./gallery/index.html">Full gallery <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+    </div>
+  </section>
+
+  <!-- Sponsor CTA card -->
+  <section class="section" aria-labelledby="sponsor-cta-heading">
+    <div class="container">
+      <div class="sponsor-cta reveal">
+        <div class="sponsor-cta__content">
+          <span class="eyebrow">Become a sponsor</span>
+          <h2 id="sponsor-cta-heading">Get your brand in front of Luxembourg's QA community.</h2>
+          <p class="text-muted">400+ testers, engineers and IT decision-makers from banking, insurance, telecom and the public sector — in one room.</p>
+        </div>
+        <div class="sponsor-cta__actions">
+          <a class="btn btn--primary" href="./become-a-sponsor/index.html">Become a sponsor <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn--outline" href="./sponsors/index.html">View all sponsors</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -489,6 +515,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=8a5b4846" defer></script>
+<script src="./assets/js/main.js?v=2be9e7e8" defer></script>
 </body>
 </html>
