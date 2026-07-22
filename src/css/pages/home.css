@@ -301,60 +301,6 @@
   .venue-preview { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── Gallery preview ─────────────────────────────────────────────── */
-.gallery-preview-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-3);
-}
-.gallery-preview-grid a {
-  position: relative;
-  display: block;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  aspect-ratio: 4/3;
-}
-.gallery-preview-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
-.gallery-preview-grid a:hover img { transform: scale(1.05); }
-.gallery-preview-grid a:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-
-/* Caption scrim — same bottom-gradient-+-label pattern already used by
-   .news-card and .atmosphere-video, so the gallery reads as a proper
-   editorial showcase instead of a bare thumbnail grid. Shown on
-   hover/focus (desktop) and always-on where there's no hover to trigger
-   it (touch), so it's never permanently invisible. */
-.gallery-preview-grid a::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 8, 24, 0) 55%, rgba(10, 8, 24, 0.75) 100%);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease);
-  pointer-events: none;
-}
-.gallery-preview-grid__caption {
-  position: absolute;
-  left: var(--space-3);
-  bottom: var(--space-3);
-  z-index: 1;
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
-}
-.gallery-preview-grid a:hover::after, .gallery-preview-grid a:focus-visible::after { opacity: 1; }
-.gallery-preview-grid a:hover .gallery-preview-grid__caption,
-.gallery-preview-grid a:focus-visible .gallery-preview-grid__caption { opacity: 1; transform: translateY(0); }
-@media (hover: none) {
-  .gallery-preview-grid a::after { opacity: 1; }
-  .gallery-preview-grid__caption { opacity: 1; transform: none; }
-}
-
-@media (min-width: 640px) {
-  .gallery-preview-grid { grid-template-columns: repeat(4, 1fr); }
-}
 
 /* ── Final CTA ───────────────────────────────────────────────────── */
 .final-cta { text-align: center; padding: var(--space-12) 0; }
@@ -393,9 +339,9 @@
   justify-content: space-between;
   gap: var(--space-8);
   padding: var(--space-8);
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
 }
 .sponsor-cta__content { max-width: 560px; }
 .sponsor-cta__content h2 { margin-top: var(--space-2); }
@@ -407,29 +353,77 @@
   .sponsor-cta__actions { width: 100%; }
 }
 
-/* ── News carousel ───────────────────────────────────────────────────
+/* ── Auto-scroll carousel (generic) ───────────────────────────────────
    Base state is a plain horizontally-scrollable row (works everywhere,
-   no JS required). initNewsCarousel() (main.js) upgrades it to an
-   auto-scrolling loop — cloning the card set once and animating a
-   translateX(-50%) — only when the visitor doesn't prefer reduced
-   motion and the viewport is wide enough for it to read as a ticker
-   rather than a confusing auto-swipe. */
-.news-carousel { margin-top: var(--space-8); overflow-x: auto; }
-.news-carousel__track {
+   no JS required). initAutoScrollCarousels() (main.js) upgrades any
+   .js-auto-scroll it finds into an auto-scrolling loop — cloning the
+   item set once and animating a translateX(-50%) — only when the
+   visitor doesn't prefer reduced motion and the viewport is wide enough
+   for it to read as a ticker rather than a confusing auto-swipe.
+   data-direction="reverse" (News default forward/right-to-left; Gallery
+   uses reverse/left-to-right) flips which keyframe runs. */
+.js-auto-scroll { margin-top: var(--space-8); overflow-x: auto; }
+.js-auto-scroll__track {
   display: flex;
   gap: var(--space-5);
   width: max-content;
   padding: 0 var(--space-6);
 }
-.news-carousel .news-card { flex: 0 0 320px; width: 320px; }
-.news-carousel--animated { overflow: hidden; }
-.news-carousel--animated .news-carousel__track {
-  animation: news-scroll var(--news-scroll-duration, 50s) linear infinite;
+.js-auto-scroll.is-animated { overflow: hidden; }
+.js-auto-scroll.is-animated .js-auto-scroll__track {
+  animation: auto-scroll-forward var(--auto-scroll-duration, 50s) linear infinite;
 }
-.news-carousel--animated:hover .news-carousel__track,
-.news-carousel--animated:focus-within .news-carousel__track {
+.js-auto-scroll.is-animated[data-direction="reverse"] .js-auto-scroll__track {
+  animation-name: auto-scroll-reverse;
+}
+.js-auto-scroll.is-animated:hover .js-auto-scroll__track,
+.js-auto-scroll.is-animated:focus-within .js-auto-scroll__track {
   animation-play-state: paused;
 }
-@keyframes news-scroll {
-  to { transform: translateX(-50%); }
+@keyframes auto-scroll-forward { to { transform: translateX(-50%); } }
+@keyframes auto-scroll-reverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.news-carousel .news-card { flex: 0 0 320px; width: 320px; }
+
+/* ── Gallery carousel — same rounded-tile + hover-scrim treatment as the
+   old .gallery-preview-grid, just laid out in a scrolling row instead of
+   a fixed grid (the "featured 2x2" tile doesn't translate to a carousel,
+   so every tile is equal-sized here). ─────────────────────────────────── */
+.gallery-carousel .gallery-tile {
+  position: relative;
+  flex: 0 0 260px;
+  width: 260px;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
+.gallery-tile:hover img { transform: scale(1.05); }
+.gallery-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 8, 24, 0) 55%, rgba(10, 8, 24, 0.75) 100%);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease);
+  pointer-events: none;
+}
+.gallery-tile__caption {
+  position: absolute;
+  left: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 1;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+}
+.gallery-tile:hover::after, .gallery-tile:focus-visible::after { opacity: 1; }
+.gallery-tile:hover .gallery-tile__caption,
+.gallery-tile:focus-visible .gallery-tile__caption { opacity: 1; transform: translateY(0); }
+@media (hover: none) {
+  .gallery-tile::after { opacity: 1; }
+  .gallery-tile__caption { opacity: 1; transform: none; }
 }

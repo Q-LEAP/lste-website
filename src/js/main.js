@@ -302,32 +302,37 @@
     });
   }
 
-  /* ── News carousel: clone the card set once and animate a slow
-     translateX(-50%) loop, so it reads as a continuous right-to-left
-     ticker rather than an obvious jump-cut. Skipped (leaving the plain
-     scrollable row from the CSS base state) under reduced motion or on
-     narrow viewports, where an auto-scrolling row is harder to read and
-     fights with touch scrolling. ─────────────────────────────────── */
-  function initNewsCarousel() {
-    const carousel = document.querySelector('.news-carousel');
-    const track = carousel && carousel.querySelector('.news-carousel__track');
-    if (!carousel || !track) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.innerWidth < 768) return;
+  /* ── Auto-scroll carousels (News, Gallery): clone each .js-auto-scroll's
+     item set once and animate a slow translateX loop, so it reads as a
+     continuous ticker rather than an obvious jump-cut. Direction (News
+     right-to-left / Gallery left-to-right) is just which keyframe the
+     [data-direction] CSS selects — same clone-and-measure logic either
+     way. Skipped entirely (leaving the plain scrollable row from the CSS
+     base state) under reduced motion or on narrow viewports, where an
+     auto-scrolling row is harder to read and fights with touch
+     scrolling. ─────────────────────────────────────────────────────── */
+  function initAutoScrollCarousels() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || window.innerWidth < 768) return; // plain scrollable row instead
 
-    const cards = Array.from(track.children);
-    if (cards.length < 2) return;
-    cards.forEach((card) => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      clone.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
-      track.appendChild(clone);
+    document.querySelectorAll('.js-auto-scroll').forEach((carousel) => {
+      const track = carousel.querySelector('.js-auto-scroll__track');
+      if (!track) return;
+      const items = Array.from(track.children);
+      if (items.length < 2) return;
+
+      items.forEach((item) => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+        track.appendChild(clone);
+      });
+
+      const pxPerSecond = Number(carousel.dataset.speed) || 40; // slow, deliberate pace
+      const halfWidth = track.scrollWidth / 2;
+      track.style.setProperty('--auto-scroll-duration', halfWidth / pxPerSecond + 's');
+      carousel.classList.add('is-animated');
     });
-
-    const pxPerSecond = 40; // slow, deliberate pace
-    const halfWidth = track.scrollWidth / 2;
-    track.style.setProperty('--news-scroll-duration', halfWidth / pxPerSecond + 's');
-    carousel.classList.add('news-carousel--animated');
   }
 
   /* ── Forms (Contact / Newsletter — Formspree) ─────────────── */
@@ -499,7 +504,7 @@
     initSmoothScroll();
     initTabs();
     initGallery();
-    initNewsCarousel();
+    initAutoScrollCarousels();
     initForms();
     initFooterYear();
     initEmptyEditionModal();

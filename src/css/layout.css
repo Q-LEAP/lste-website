@@ -57,6 +57,7 @@
 /* Fixed color, not theme-driven — for eyebrows sitting on a .section--dark
    band, which stays dark regardless of the page's own light/dark theme. */
 .eyebrow--on-dark { color: #b8b2c4; }
+.eyebrow--violet { color: var(--color-primary-light); }
 .eyebrow--cyan { color: var(--color-cyan); }
 .eyebrow--lime { color: var(--color-lime); }
 
