@@ -111,6 +111,12 @@
 
 .site-logo { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
 .site-logo img { height: 32px; width: auto; }
+/* The wordmark's own SVG ink sits low in its box relative to its declared
+   height, so centering it against the much-smaller nav text (via the
+   header's align-items: center) leaves it visually low/misaligned — this
+   nudges it up to actually match the nav links' baseline. Footer's logo
+   doesn't need this (nothing next to it to align against). */
+#site-header .site-logo { transform: translateY(-6px); }
 .site-logo__tag {
   font-family: var(--font-mono);
   font-size: 0.65625rem;
