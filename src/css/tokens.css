@@ -6,10 +6,8 @@
    cyan, lime). Space Grotesk (headings) + Hanken Grotesk (body) + JetBrains
    Mono (labels).
 
-   Theming: DARK is now the default (the mockup's own look — ink page,
-   near-white text); [data-theme="light"] is the override, swapping to the
-   near-white page / ink text pairing. Same brand hue and typography in
-   both — theming only governs surface tone.
+   Dark-only (the mockup's own look — ink page, near-white text). No
+   light theme, no toggle — see git history if that's ever wanted back.
    ========================================================================== */
 
 /* Self-hosted webfonts (latin-subset variable woff2 files pulled from
@@ -39,12 +37,12 @@
 }
 
 :root {
-  /* Brand color (identical in both themes unless noted) */
+  /* Brand color */
   --color-primary:       #6d28d9;
-  --color-primary-dark:  #7c3aed; /* hover — brighter, reads against a dark bg */
-  --color-primary-tint:  #f1edfb; /* pale fill for badges/hovers on a light bg */
-  --color-primary-light: #8b5cf6; /* violet-400 — headline/accent highlight, same both themes */
-  --color-link:          #c4b5fd; /* default link color on dark bg */
+  --color-primary-dark:  #7c3aed; /* hover — brighter, reads against the dark bg */
+  --color-primary-tint:  #f1edfb; /* pale fill, used sparingly (badge text on light pill bg) */
+  --color-primary-light: #8b5cf6; /* violet-400 — headline/accent highlight */
+  --color-link:          #c4b5fd; /* default link color on the dark bg */
 
   /* Functional accents (the charte's own "renforcée" extension) — used for
      small eyebrows, dividers and single-word emphasis, never as a section
@@ -52,19 +50,19 @@
   --color-cyan: #22d3ee;
   --color-lime: #a3e635;
 
-  /* Neutrals — dark theme (default) */
+  /* Neutrals */
   --color-ink:        #fbfafc; /* main text */
   --color-body-text:  #b8b2c4; /* paragraph text */
   --color-muted:      #9a94a8; /* discreet/label text */
   --color-border:     rgba(255, 255, 255, 0.08);
   --color-surface:    #1c1826; /* card surface */
   --color-surface-alt:#211c2e;
-  --color-footer:     #100d16; /* dark in both themes */
+  --color-footer:     #100d16;
   --page-bg:          #17141f;
   --panel-invert:     #100d16; /* a band darker than the page itself */
   --header-bg:        rgba(23, 20, 31, 0.72); /* frosted header bar */
 
-  /* Elevation — a light dual shadow (raised), tuned per theme */
+  /* Elevation — a light dual shadow (raised) */
   --neu-light: #241f30;
   --neu-dark:  #0d0b12;
 
@@ -134,31 +132,4 @@
   --bp-xl: 1280px;
 
   color-scheme: dark;
-}
-
-/* ── Light theme — the override. Near-white page, ink text, same brand hue. */
-:root[data-theme="light"] {
-  --color-primary-dark: #5b21b6; /* darker hover, reads against a light bg */
-  --color-primary-tint: #f1edfb;
-  --color-link:         var(--color-primary);
-
-  --color-cyan: #0e7490; /* darkened for ≥4.5:1 on a light bg */
-  --color-lime: #3f6212; /* darkened for ≥4.5:1 on a light bg */
-
-  --color-ink:        #17141f;
-  --color-body-text:  #514b5e;
-  --color-muted:      #6b6478; /* darker than the dark-theme value — same "discreet" role, tuned for contrast on white */
-  --color-border:     #ece9f1;
-  --color-surface:    #fbfafc;
-  --color-surface-alt:#f1edfb;
-  --page-bg:          #fbfafc;
-  --panel-invert:     #17141f;
-  --header-bg:        rgba(251, 250, 252, 0.82);
-
-  --neu-light: #ffffff;
-  --neu-dark:  #e3e0ea;
-
-  --shadow-focus: 0 0 0 3px rgba(109, 40, 217, 0.45);
-
-  color-scheme: light;
 }

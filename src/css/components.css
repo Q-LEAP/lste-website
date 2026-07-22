@@ -55,7 +55,6 @@
   border: 2px solid rgba(255, 255, 255, 0.18);
 }
 .btn--outline:hover { border-color: var(--color-cyan); color: var(--color-cyan); }
-:root[data-theme="light"] .btn--outline { border-color: var(--color-border); }
 
 .btn--white {
   background: #fff;
@@ -111,14 +110,6 @@
 
 .site-logo { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
 .site-logo img { height: 32px; width: auto; }
-/* Header carries both logo colorways and shows the one that reads against
-   its own frosted background — white on the dark-by-default header,
-   swapped to the brand-violet mark only when the visitor opts into the
-   light theme. Plain <img src> can't react to a CSS attribute selector on
-   its own, hence two images instead of one. */
-.site-logo__img--light { display: none; }
-:root[data-theme="light"] .site-logo__img--dark { display: none; }
-:root[data-theme="light"] .site-logo__img--light { display: block; }
 /* The wordmark's own SVG ink sits low in its box relative to its declared
    height, so centering it against the much-smaller nav text (via the
    header's align-items: center) leaves it visually low/misaligned — this
@@ -321,17 +312,6 @@
   color: #fff;
 }
 .footer-social a:hover { background: var(--color-primary); }
-/* Dark-mode toggle moved here from the header (client feedback: not
-   useful enough to earn a spot in the main nav) — reuse the same
-   translucent-white circle treatment as the LinkedIn icon beside it
-   rather than the header's ink-on-transparent styling, which would be
-   invisible against the footer's dark background. */
-.footer-social .theme-toggle {
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-.footer-social .theme-toggle:hover { background: var(--color-primary); color: #fff; }
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -475,25 +455,6 @@
 }
 .card.testimonial-card--accent:hover { box-shadow: none; transform: none; }
 
-/* ── Countdown ───────────────────────────────────────────────────── */
-.countdown { display: flex; gap: var(--space-3); flex-wrap: wrap; }
-.countdown__item {
-  flex: 1;
-  min-width: 110px;
-  padding: var(--space-5) var(--space-5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.02);
-}
-.countdown__value { font-family: var(--font-heading); font-weight: 700; font-size: clamp(2rem, 3vw + 1rem, 3.25rem); line-height: 1; color: var(--color-ink); }
-.countdown__unit { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); margin-top: var(--space-3); display: block; }
-/* Seconds tick, so it gets the "live" accent treatment to draw the eye. */
-.countdown__item--live {
-  border-color: rgba(34, 211, 238, 0.35);
-  background: rgba(34, 211, 238, 0.05);
-}
-.countdown__item--live .countdown__value,
-.countdown__item--live .countdown__unit { color: var(--color-cyan); }
 
 /* ── Forms ───────────────────────────────────────────────────────── */
 .form-group { margin-bottom: var(--space-4); }

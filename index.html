@@ -8,7 +8,6 @@ redirect_from:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>(function(){try{var t=localStorage.getItem("lste-theme");document.documentElement.setAttribute("data-theme",t||"dark");}catch(e){}})();</script>
 <title>LSTE 2026: Luxembourg Software Testing Event</title>
 <meta name="description" content="LSTE 2026 is Luxembourg's premier software testing and QA conference, 8th edition, 26 November 2026, free to attend. Keynotes, workshops, and 400+ testing professionals.">
 <link rel="canonical" href="https://lste.lu/">
@@ -29,7 +28,7 @@ redirect_from:
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#6d28d9">
 
-<link rel="stylesheet" href="./assets/css/styles.css?v=346c6691">
+<link rel="stylesheet" href="./assets/css/styles.css?v=a96a3cdc">
 
 <script type="application/ld+json">
 {
@@ -75,8 +74,7 @@ redirect_from:
 <header class="site-header" id="site-header">
   <div class="container">
     <a class="site-logo" href="./index.html" aria-label="LSTE home">
-      <img class="site-logo__img--dark" src="./assets/img/lste-logo-white.svg" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
-      <img class="site-logo__img--light" src="./assets/img/lste-logo.svg" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager">
+      <img src="./assets/img/lste-logo-white.svg" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
       <span class="site-logo__tag">26 Nov 2026</span>
     </a>
 
@@ -147,13 +145,6 @@ redirect_from:
           <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           <a class="btn btn--outline btn--lg" href="./become-a-speaker/index.html">Submit a talk</a>
         </div>
-
-        <div class="countdown hero__countdown reveal is-visible" data-countdown aria-label="Countdown to LSTE 2026">
-          <div class="countdown__item"><span class="countdown__value" data-cd-days>0</span><span class="countdown__unit">Days</span></div>
-          <div class="countdown__item"><span class="countdown__value" data-cd-hours>00</span><span class="countdown__unit">Hours</span></div>
-          <div class="countdown__item"><span class="countdown__value" data-cd-minutes>00</span><span class="countdown__unit">Minutes</span></div>
-          <div class="countdown__item countdown__item--live"><span class="countdown__value" data-cd-seconds>00</span><span class="countdown__unit">Seconds</span></div>
-        </div>
       </div>
       <div class="hero__media reveal is-visible">
         <picture>
@@ -176,7 +167,14 @@ redirect_from:
   </section>
 
   <!-- Mission: text left, visual right — client feedback asked for this to
-       stop reading as a second wall of text right after the Hero. -->
+       stop reading as a second wall of text right after the Hero. Visual is
+       the ambient video duo (previously its own "atmosphere" section below,
+       now merged in here instead of a static photo) — 2 short vertical
+       clips from the 2025 edition, muted/looping, played only once scrolled
+       into view (initAmbientVideo in main.js). Native footage is portrait
+       9:16, so it's shown as a pair of "story" tiles rather than
+       force-cropped into a landscape hero — see documentation/README.md
+       for the source/compression note. -->
   <section class="section section--alt" aria-labelledby="mission-heading">
     <div class="container">
       <div class="split-media reveal">
@@ -185,11 +183,16 @@ redirect_from:
           <h2 id="mission-heading">One day. Luxembourg's entire QA community.</h2>
           <p>Since 2014, LSTE has brought together software testing and Quality Assurance professionals from Luxembourg and the Greater Region to share knowledge, explore the latest testing practices and build meaningful connections. <a href="./about/index.html">Read our story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
         </div>
-        <picture>
-          <source type="image/avif" srcset="./assets/img/lste-2025-keynote-speaker-400.avif 400w, ./assets/img/lste-2025-keynote-speaker-800.avif 800w, ./assets/img/lste-2025-keynote-speaker-1200.avif 1200w" sizes="(min-width: 900px) 50vw, 100vw">
-          <source type="image/webp" srcset="./assets/img/lste-2025-keynote-speaker-400.webp 400w, ./assets/img/lste-2025-keynote-speaker-800.webp 800w, ./assets/img/lste-2025-keynote-speaker-1200.webp 1200w" sizes="(min-width: 900px) 50vw, 100vw">
-          <img src="./assets/img/lste-2025-keynote-speaker-800.jpg" srcset="./assets/img/lste-2025-keynote-speaker-400.jpg 400w, ./assets/img/lste-2025-keynote-speaker-800.jpg 800w, ./assets/img/lste-2025-keynote-speaker-1200.jpg 1200w" sizes="(min-width: 900px) 50vw, 100vw" width="800" height="533" loading="lazy" style="border-radius:var(--radius-lg);" alt="A speaker addressing the audience at LSTE 2025">
-        </picture>
+        <div class="atmosphere-videos">
+          <div class="atmosphere-video">
+            <video class="js-ambient-video" data-src="./assets/vid/lste-2025-selfie-booth.mp4" poster="./assets/img/lste-2025-selfie-booth-800.jpg" muted loop playsinline preload="none" aria-label="Attendees at the LSTE 2025 selfie booth"></video>
+            <span class="atmosphere-video__caption">Snap &amp; share booth</span>
+          </div>
+          <div class="atmosphere-video">
+            <video class="js-ambient-video" data-src="./assets/vid/lste-recap-networking.mp4" poster="./assets/img/lste-recap-networking-800.jpg" muted loop playsinline preload="none" aria-label="Attendees networking on the LSTE 2025 exhibition floor"></video>
+            <span class="atmosphere-video__caption">Show floor &amp; networking</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -234,34 +237,6 @@ redirect_from:
         </div>
       </div>
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./about/index.html">More about LSTE <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-    </div>
-  </section>
-
-  <!-- The atmosphere: 2 short vertical clips from the 2025 edition,
-       muted/looping, played only once scrolled into view (initAmbientVideo
-       in main.js). Native footage is portrait 9:16, so it's shown as a
-       pair of "story" tiles rather than force-cropped into a landscape
-       hero — see documentation/README.md for the source/compression note. -->
-  <section class="section section--alt" aria-labelledby="atmosphere-heading">
-    <div class="container">
-      <div class="split-media reveal">
-        <div>
-          <span class="eyebrow">The atmosphere</span>
-          <h2 id="atmosphere-heading">See what a day at LSTE looks like.</h2>
-          <p>Keynotes, hands-on workshops, live demos, exhibitions and conversations with Luxembourg's QA community.</p>
-          <a class="btn btn--outline" href="./previous-editions/index.html">Explore past editions <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </div>
-        <div class="atmosphere-videos">
-          <div class="atmosphere-video">
-            <video class="js-ambient-video" data-src="./assets/vid/lste-2025-selfie-booth.mp4" poster="./assets/img/lste-2025-selfie-booth-800.jpg" muted loop playsinline preload="none" aria-label="Attendees at the LSTE 2025 selfie booth"></video>
-            <span class="atmosphere-video__caption">Snap &amp; share booth</span>
-          </div>
-          <div class="atmosphere-video">
-            <video class="js-ambient-video" data-src="./assets/vid/lste-recap-networking.mp4" poster="./assets/img/lste-recap-networking-800.jpg" muted loop playsinline preload="none" aria-label="Attendees networking on the LSTE 2025 exhibition floor"></video>
-            <span class="atmosphere-video__caption">Show floor &amp; networking</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -467,9 +442,6 @@ redirect_from:
         <p>One day. Luxembourg's entire QA community.</p>
         <div class="footer-social">
           <a href="https://www.linkedin.com/company/lste/" aria-label="LSTE on LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-            <i class="fa-solid fa-moon" aria-hidden="true"></i>
-          </button>
         </div>
       </div>
 
@@ -517,6 +489,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=9eaa8a20" defer></script>
+<script src="./assets/js/main.js?v=8a5b4846" defer></script>
 </body>
 </html>

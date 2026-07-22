@@ -122,39 +122,6 @@
     });
   }
 
-  /* ── Countdown ─────────────────────────────────────────────── */
-  function initCountdown() {
-    const els = document.querySelectorAll('[data-countdown]');
-    if (!els.length) return;
-    const TARGET = new Date('2026-11-26T08:30:00+01:00').getTime();
-    const pad = (n) => String(n).padStart(2, '0');
-
-    function render(diff) {
-      const clamped = Math.max(diff, 0);
-      const days = Math.floor(clamped / 86400000);
-      const hours = Math.floor((clamped % 86400000) / 3600000);
-      const minutes = Math.floor((clamped % 3600000) / 60000);
-      const seconds = Math.floor((clamped % 60000) / 1000);
-      els.forEach((el) => {
-        const d = el.querySelector('[data-cd-days]');
-        const h = el.querySelector('[data-cd-hours]');
-        const m = el.querySelector('[data-cd-minutes]');
-        const s = el.querySelector('[data-cd-seconds]');
-        if (d) d.textContent = String(days);
-        if (h) h.textContent = pad(hours);
-        if (m) m.textContent = pad(minutes);
-        if (s) s.textContent = pad(seconds);
-      });
-    }
-
-    function tick() {
-      const diff = TARGET - Date.now();
-      render(diff);
-      if (diff > 0) setTimeout(tick, 1000);
-    }
-    tick();
-  }
-
   /* ── Animated stat counters ───────────────────────────────── */
   function initCounters() {
     const els = document.querySelectorAll('.stat-value');
@@ -381,31 +348,6 @@
     // render just for text and keeps output cacheable/deterministic.
   }
 
-  /* ── Theme toggle (light / dark) ───────────────────────────── */
-  function initTheme() {
-    const root = document.documentElement;
-    const toggle = document.getElementById('theme-toggle');
-    // The inline <head> script already set data-theme before first paint;
-    // here we just sync the button and handle clicks.
-    function apply(theme) {
-      root.setAttribute('data-theme', theme);
-      if (!toggle) return;
-      const dark = theme === 'dark';
-      toggle.setAttribute('aria-pressed', String(dark));
-      toggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-      const icon = toggle.querySelector('i');
-      if (icon) icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-    }
-    apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        apply(next);
-        try { localStorage.setItem('lste-theme', next); } catch (e) { /* private mode */ }
-      });
-    }
-  }
-
   /* ── Shared simple modal: backdrop + dialog, focus trap, Escape and
      backdrop-click to close. Used by the "no archive" QA joke and the
      LinkedIn post player below — both just supply what happens on open
@@ -523,7 +465,6 @@
     initAnnouncement();
     initMobileMenu();
     initNavDropdown();
-    initCountdown();
     initCounters();
     initReveal();
     initBackToTop();
@@ -532,7 +473,6 @@
     initGallery();
     initForms();
     initFooterYear();
-    initTheme();
     initEmptyEditionModal();
     initLinkedInModal();
     initMapEmbeds();
