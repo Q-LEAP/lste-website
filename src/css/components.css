@@ -293,6 +293,17 @@
   color: #fff;
 }
 .footer-social a:hover { background: var(--color-primary); }
+/* Dark-mode toggle moved here from the header (client feedback: not
+   useful enough to earn a spot in the main nav) — reuse the same
+   translucent-white circle treatment as the LinkedIn icon beside it
+   rather than the header's ink-on-transparent styling, which would be
+   invisible against the footer's dark background. */
+.footer-social .theme-toggle {
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.footer-social .theme-toggle:hover { background: var(--color-primary); color: #fff; }
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
