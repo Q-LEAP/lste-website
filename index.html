@@ -29,7 +29,7 @@ redirect_from:
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#5546ae">
 
-<link rel="stylesheet" href="./assets/css/styles.css?v=28e9ec1b">
+<link rel="stylesheet" href="./assets/css/styles.css?v=3c0074c6">
 
 <script type="application/ld+json">
 {
@@ -78,11 +78,13 @@ redirect_from:
       <img src="./assets/img/lste-logo.svg" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
     </a>
 
-    <!-- Trimmed to the 3 priority actions (Programme, Reserve Ticket, Venue)
-         per the nav simplification pass — everything else lives in the
-         "More" dropdown / mobile hamburger. Speakers is intentionally not
-         linked here while that section is hidden (kept in code, see
-         speakers/index.html and the homepage speakers section). -->
+    <!-- Trimmed to the 3 priority actions (Programme, Get your free ticket,
+         Venue) per the nav simplification pass — everything else lives in
+         the "More" dropdown / mobile hamburger. Speakers is intentionally
+         not linked here while that section is hidden (kept in code, see
+         speakers/index.html and the homepage speakers section). Dark-mode
+         toggle lives in the footer now, not here (client feedback: not
+         useful enough to earn a spot in the main nav). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="./schedule/index.html">Programme</a></li>
@@ -100,11 +102,8 @@ redirect_from:
     </nav>
 
     <div class="header-actions">
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-        <i class="fa-solid fa-moon" aria-hidden="true"></i>
-      </button>
       <a class="btn btn--ghost header-speaker-btn" href="./become-a-sponsor/index.html">Become a sponsor</a>
-      <a class="btn btn--primary header-register-btn" href="./register/index.html">Reserve Ticket</a>
+      <a class="btn btn--primary header-register-btn" href="./register/index.html">Get your free ticket</a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -121,7 +120,7 @@ redirect_from:
     <li><a href="./gallery/index.html">Gallery</a></li>
     <li><a href="./contact/index.html">Contact</a></li>
     <li><a class="btn btn--ghost btn--block" href="./become-a-sponsor/index.html">Become a sponsor</a></li>
-    <li><a class="btn btn--primary btn--block" href="./register/index.html">Reserve Ticket</a></li>
+    <li><a class="btn btn--primary btn--block" href="./register/index.html">Get your free ticket</a></li>
   </ul>
 </div>
 
@@ -139,9 +138,9 @@ redirect_from:
     <div class="hero__motif" aria-hidden="true"></div>
     <div class="hero__scrim" aria-hidden="true"></div>
     <div class="container hero__content">
-      <span class="eyebrow eyebrow--on-dark reveal is-visible">8th Edition · 26 November 2026</span>
+      <span class="eyebrow eyebrow--on-dark reveal is-visible">8th edition</span>
       <h1 class="reveal is-visible">Luxembourg <span class="hero__highlight">Software Testing</span> Event</h1>
-      <p class="hero__subtitle reveal is-visible">Where Luxembourg's software testing community meets.</p>
+      <p class="hero__subtitle reveal is-visible">One day. 400+ QA professionals. Practical talks, live demos and real conversations.</p>
 
       <div class="hero__meta reveal is-visible">
         <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 08:30–18:00</span>
@@ -155,40 +154,37 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Countdown — moved out of the Hero (which was carrying too much at
-       once: eyebrow, title, subtitle, meta row, 2 CTAs, and a live
-       countdown all in one block) into its own clean band, replacing the
-       previous static stats (8th/1,500+/100+/50+ — that info still lives
-       on the About page's own stats strip, nothing lost). A countdown is
-       simply more relevant right after the Hero than historical numbers. -->
-  <section class="section section--dark stats-strip" aria-labelledby="countdown-heading">
+  <!-- LSTE 2025 in figures — replaces the countdown per client feedback:
+       a live countdown just repeated the date already shown in the Hero.
+       A quick "last edition, in numbers" band earns its place instead. -->
+  <section class="section section--dark stats-strip" aria-labelledby="figures-heading">
     <div class="container text-center">
-      <span class="eyebrow eyebrow--on-dark">Save the date</span>
-      <h2 id="countdown-heading" class="text-white">26 November 2026.</h2>
-      <div class="countdown reveal" data-countdown style="margin-top:var(--space-6);">
-        <div class="countdown__item"><span class="countdown__value" data-cd-days>00</span><span class="countdown__unit">Days</span></div>
-        <div class="countdown__item"><span class="countdown__value" data-cd-hours>00</span><span class="countdown__unit">Hours</span></div>
-        <div class="countdown__item"><span class="countdown__value" data-cd-minutes>00</span><span class="countdown__unit">Min</span></div>
-        <div class="countdown__item"><span class="countdown__value" data-cd-seconds>00</span><span class="countdown__unit">Sec</span></div>
+      <span class="eyebrow eyebrow--on-dark">LSTE Luxembourg 2025, in figures</span>
+      <h2 id="figures-heading" class="text-white">A packed 7th edition.</h2>
+      <div class="grid grid--4 reveal" style="margin-top:var(--space-6);">
+        <div class="stat-item"><div class="stat-value">400+</div><div class="stat-label">Attendees</div></div>
+        <div class="stat-item"><div class="stat-value">60+</div><div class="stat-label">Organizations</div></div>
+        <div class="stat-item"><div class="stat-value">8</div><div class="stat-label">Keynotes</div></div>
+        <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">Live demos</div></div>
       </div>
     </div>
   </section>
 
-  <!-- Mission: a short, paraphrased version of the About page's own
-       official "unique testing event" copy (that copy is verbatim/
-       official on about/index.html and shouldn't be rewritten there —
-       see documentation/README.md's Verified Facts note — but repeating
-       it word-for-word here would just be duplicate content, so this is
-       a distinct, shorter version of the same facts with a link to the
-       full story). Sits right after the countdown, ahead of the "why
-       attend" pitch below, so the page explains *what LSTE is* before
-       it explains *what's in it for you*. -->
+  <!-- Mission: text left, visual right — client feedback asked for this to
+       stop reading as a second wall of text right after the Hero. -->
   <section class="section section--alt" aria-labelledby="mission-heading">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Who we are</span>
-        <h2 id="mission-heading">The unique testing event in Luxembourg.</h2>
-        <p>Since 2014, LSTE has been where the Luxembourg &amp; Greater Region testing community gathers once a year to compare notes on the craft — a full day of talks and demos, closed out with a networking cocktail. <a href="./about/index.html">Read our story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+      <div class="split-media reveal">
+        <div>
+          <span class="eyebrow">Who we are</span>
+          <h2 id="mission-heading">One day. Luxembourg's entire QA community.</h2>
+          <p>Since 2014, LSTE has brought together software testing and Quality Assurance professionals from Luxembourg and the Greater Region to share knowledge, explore the latest testing practices and build meaningful connections. <a href="./about/index.html">Read our story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+        </div>
+        <picture>
+          <source type="image/avif" srcset="./assets/img/lste-2025-keynote-speaker-400.avif 400w, ./assets/img/lste-2025-keynote-speaker-800.avif 800w, ./assets/img/lste-2025-keynote-speaker-1200.avif 1200w" sizes="(min-width: 900px) 50vw, 100vw">
+          <source type="image/webp" srcset="./assets/img/lste-2025-keynote-speaker-400.webp 400w, ./assets/img/lste-2025-keynote-speaker-800.webp 800w, ./assets/img/lste-2025-keynote-speaker-1200.webp 1200w" sizes="(min-width: 900px) 50vw, 100vw">
+          <img src="./assets/img/lste-2025-keynote-speaker-800.jpg" srcset="./assets/img/lste-2025-keynote-speaker-400.jpg 400w, ./assets/img/lste-2025-keynote-speaker-800.jpg 800w, ./assets/img/lste-2025-keynote-speaker-1200.jpg 1200w" sizes="(min-width: 900px) 50vw, 100vw" width="800" height="533" loading="lazy" style="border-radius:var(--radius-lg);" alt="A speaker addressing the audience at LSTE 2025">
+        </picture>
       </div>
     </div>
   </section>
@@ -205,7 +201,7 @@ redirect_from:
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Why attend</span>
-        <h2 id="why-heading">Five ways to make the most of your one day at LSTE.</h2>
+        <h2 id="why-heading">What you'll experience at LSTE.</h2>
         <p>LSTE isn't a general tech conference, it's the one day a year Luxembourg's entire QA community gathers in one room: 400+ testers, engineers, and QA leads from banking, insurance, telecom, and the public sector. Here's what a day on the inside looks like.</p>
       </div>
       <div class="grid grid--5 reveal">
@@ -249,9 +245,9 @@ redirect_from:
       <div class="split-media reveal">
         <div>
           <span class="eyebrow">The atmosphere</span>
-          <h2 id="atmosphere-heading">This is what a day at LSTE feels like.</h2>
-          <p>Packed rooms, a show floor buzzing between talks, and hallway conversations that run long. Straight from the 2025 edition, unscripted.</p>
-          <a class="btn btn--outline" href="./linkedin/index.html">More from LSTE <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <h2 id="atmosphere-heading">See what a day at LSTE looks like.</h2>
+          <p>Keynotes, hands-on workshops, live demos, exhibitions and conversations with Luxembourg's QA community.</p>
+          <a class="btn btn--outline" href="./previous-editions/index.html">Explore past editions <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
         <div class="atmosphere-videos">
           <div class="atmosphere-video">
@@ -352,60 +348,17 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Sponsors -->
-  <!-- Sponsors: rewritten from a passive "who backs us" logo strip into an
-       actual sponsor pitch, built around the brochure's "5 ways to be
-       seen" concept (Keynotes/Workshops/Panels/Exhibition/Networking),
-       reworded for the site's tone rather than copied. No prices/tier
-       gating shown here (site-wide no-pricing rule) — the CTA hands off
-       to the existing contact flow for exact package details.
-
-       Uses .numbered-card (not .pillar-card) — same 5 pillars as "Why
-       attend" above, told from the sponsor's angle, but the brochure's own
-       "01/02/03" numeral treatment instead of the icon-tile grid so the
-       two sections don't read as the same block repeated on scroll. -->
-  <section class="section section--tint" aria-labelledby="sponsors-heading">
-    <div class="container">
+  <!-- Sponsors teaser — kept deliberately short per client feedback: the
+       detailed "5 ways to be seen" pitch lives on /become-a-sponsor/ now,
+       not duplicated here. This block just points there. -->
+  <section class="section" aria-labelledby="sponsors-heading">
+    <div class="container text-center">
       <div class="section-head reveal">
         <span class="eyebrow">Become a sponsor</span>
-        <h2 id="sponsors-heading">Five ways to get your brand in front of Luxembourg's QA community.</h2>
-        <p>LSTE isn't a general tech event, it's the one day a year the region's entire QA community gathers in one room: 400+ testers, engineers, and IT decision-makers from banking, insurance, telecom, and the public sector. Sponsors get five different ways to be part of it.</p>
+        <h2 id="sponsors-heading">Reach Luxembourg's QA community.</h2>
+        <p>Meet 400+ QA professionals and decision-makers in one focused day.</p>
       </div>
-      <div class="grid grid--5 reveal">
-        <div class="card numbered-card">
-          <span class="numbered-card__num">01</span>
-          <h3 style="font-size:1.0625rem;">Keynotes</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Take the main stage for a keynote slot in front of the full room: maximum visibility for your brand and your expertise.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">02</span>
-          <h3 style="font-size:1.0625rem;">Workshops</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Run your own hands-on session for a small, pre-registered group, and walk away with genuinely qualified leads.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">03</span>
-          <h3 style="font-size:1.0625rem;">Panels</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Put an expert from your team on a roundtable panel, debating the topics the community actually cares about.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">04</span>
-          <h3 style="font-size:1.0625rem;">Exhibition</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Meet the community face to face at your own booth, running live demos all day long.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">05</span>
-          <h3 style="font-size:1.0625rem;">Networking</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Keep the conversation going at the evening cocktail, where the day's connections become real business relationships.</p>
-        </div>
-      </div>
-      <p class="text-center text-muted reveal" style="margin-top:var(--space-8);font-size:0.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">Already on board for 2026</p>
-      <div class="sponsor-strip reveal" style="margin-top:var(--space-4);">
-        <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap"><img src="./assets/img/QLEAP_01-logo-400.webp" width="140" height="42" loading="lazy" alt="Q-Leap"></a>
-      </div>
-      <div class="final-cta__actions reveal">
-        <a class="btn btn--primary" href="./become-a-sponsor/index.html">Become a sponsor <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        <a class="btn btn--outline" href="./sponsors/index.html">View all sponsors</a>
-      </div>
+      <p class="reveal"><a class="btn btn--primary" href="./sponsors/index.html">Explore sponsorship opportunities <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
@@ -516,9 +469,12 @@ redirect_from:
         <a class="site-logo" href="./index.html" aria-label="LSTE home">
           <img src="./assets/img/lste-logo-white.svg" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="lazy">
         </a>
-        <p>Luxembourg's software testing conference, one day every autumn, for the community that makes software worth trusting.</p>
+        <p>One day. Luxembourg's entire QA community.</p>
         <div class="footer-social">
           <a href="https://www.linkedin.com/company/lste/" aria-label="LSTE on LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
 
@@ -536,8 +492,8 @@ redirect_from:
         <p class="footer-col-heading">Get Involved</p>
         <ul>
           <li><a href="./become-a-sponsor/index.html">Become a Sponsor</a></li>
-          <li><a href="./sponsors/index.html">Partners</a></li>
-          <li><a href="./register/index.html">Reserve Ticket</a></li>
+          <li><a href="./sponsors/index.html">Sponsors</a></li>
+          <li><a href="./register/index.html">Get your free ticket</a></li>
         </ul>
       </div>
 
@@ -554,7 +510,7 @@ redirect_from:
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; <span id="current-year">2026</span> LSTE, Luxembourg Software Testing Event. Organized by Q-Leap.</p>
+      <p>&copy; <span id="current-year">2026</span> LSTE. Organized by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap</a>.</p>
       <ul>
         <li><a href="./privacy-policy/index.html">Privacy Policy</a></li>
       </ul>
@@ -562,39 +518,9 @@ redirect_from:
   </div>
 </footer>
 
-<!-- AI assistant widget (LSTE-scoped). Set data-endpoint to your deployed
-     Cloudflare Worker URL (see worker/README.md). Until then, the widget
-     shows a curated FAQ fallback. -->
-<div id="lste-chat" data-endpoint="">
-  <button type="button" class="chat-launcher" id="chat-launcher" aria-expanded="false" aria-controls="chat-panel" aria-label="Open the LSTE assistant">
-    <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
-    <span class="chat-launcher__label">Ask about LSTE</span>
-  </button>
-
-  <div class="chat-panel" id="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title" hidden>
-    <div class="chat-header">
-      <span class="chat-header__icon" aria-hidden="true"><i class="fa-solid fa-robot"></i></span>
-      <span class="chat-header__titles">
-        <span class="chat-header__title" id="chat-title">LSTE Assistant</span>
-        <span class="chat-header__status">Ask me anything about the event</span>
-      </span>
-      <button type="button" class="chat-close" id="chat-close" aria-label="Close the assistant"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-    </div>
-
-    <div class="chat-log" id="chat-log" aria-live="polite" aria-atomic="false"></div>
-
-    <form class="chat-form" id="chat-form">
-      <label class="sr-only" for="chat-input">Your question about LSTE</label>
-      <textarea id="chat-input" name="message" rows="1" placeholder="Ask about dates, tickets, venue…" autocomplete="off" maxlength="2000"></textarea>
-      <button type="submit" class="chat-send" id="chat-send" aria-label="Send message"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
-    </form>
-    <p class="chat-disclaimer">AI assistant, answers about LSTE only. It can make mistakes; verify important details.</p>
-  </div>
-</div>
-
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=97f43e99" defer></script>
+<script src="./assets/js/main.js?v=01da4a87" defer></script>
 </body>
 </html>
