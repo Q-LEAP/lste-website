@@ -25,17 +25,6 @@
 }
 .hero__content { max-width: 560px; }
 .hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
-.hero__eyebrow-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-lime);
-  animation: pulse-dot 2.4s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__eyebrow-dot { animation: none; }
-}
-@keyframes pulse-dot { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 .hero__content h1 {
   color: var(--color-ink);
   font-size: clamp(2.5rem, 4.5vw + 1rem, 4rem);
@@ -331,7 +320,7 @@
 /* ── Sponsor CTA card — a boxed, self-contained banner rather than a full
    section pitch (the detailed "5 ways to be seen" story already lives on
    /become-a-sponsor/); this is just a compact, recurring reminder that
-   sponsoring exists as a path, same spirit as the tickets CTA above it. */
+   sponsoring exists as a path. */
 .sponsor-cta {
   display: flex;
   flex-wrap: wrap;
@@ -360,8 +349,8 @@
    item set once and animating a translateX(-50%) — only when the
    visitor doesn't prefer reduced motion and the viewport is wide enough
    for it to read as a ticker rather than a confusing auto-swipe.
-   data-direction="reverse" (News default forward/right-to-left; Gallery
-   uses reverse/left-to-right) flips which keyframe runs. */
+   Default direction is right-to-left; data-direction="reverse" flips
+   which keyframe runs, for a left-to-right ticker instead. */
 .js-auto-scroll { margin-top: var(--space-8); overflow-x: auto; }
 .js-auto-scroll__track {
   display: flex;
@@ -384,46 +373,3 @@
 @keyframes auto-scroll-reverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 .news-carousel .news-card { flex: 0 0 320px; width: 320px; }
-
-/* ── Gallery carousel — same rounded-tile + hover-scrim treatment as the
-   old .gallery-preview-grid, just laid out in a scrolling row instead of
-   a fixed grid (the "featured 2x2" tile doesn't translate to a carousel,
-   so every tile is equal-sized here). ─────────────────────────────────── */
-.gallery-carousel .gallery-tile {
-  position: relative;
-  flex: 0 0 260px;
-  width: 260px;
-  aspect-ratio: 4/3;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-}
-.gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease); }
-.gallery-tile:hover img { transform: scale(1.05); }
-.gallery-tile::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 8, 24, 0) 55%, rgba(10, 8, 24, 0.75) 100%);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease);
-  pointer-events: none;
-}
-.gallery-tile__caption {
-  position: absolute;
-  left: var(--space-3);
-  bottom: var(--space-3);
-  z-index: 1;
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
-}
-.gallery-tile:hover::after, .gallery-tile:focus-visible::after { opacity: 1; }
-.gallery-tile:hover .gallery-tile__caption,
-.gallery-tile:focus-visible .gallery-tile__caption { opacity: 1; transform: translateY(0); }
-@media (hover: none) {
-  .gallery-tile::after { opacity: 1; }
-  .gallery-tile__caption { opacity: 1; transform: none; }
-}

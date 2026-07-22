@@ -54,10 +54,14 @@
   color: var(--color-muted);
   margin-bottom: var(--space-3);
 }
+/* "//" prefix baked in here (not typed into every eyebrow's own text) so
+   every section kicker gets it automatically and consistently. */
+.eyebrow::before { content: '// '; }
 /* Fixed color, not theme-driven — for eyebrows sitting on a .section--dark
    band, which stays dark regardless of the page's own light/dark theme. */
 .eyebrow--on-dark { color: #b8b2c4; }
 .eyebrow--violet { color: var(--color-primary-light); }
+.eyebrow--purple { color: var(--color-primary); }
 .eyebrow--cyan { color: var(--color-cyan); }
 .eyebrow--lime { color: var(--color-lime); }
 

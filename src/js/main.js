@@ -302,14 +302,15 @@
     });
   }
 
-  /* ── Auto-scroll carousels (News, Gallery): clone each .js-auto-scroll's
-     item set once and animate a slow translateX loop, so it reads as a
-     continuous ticker rather than an obvious jump-cut. Direction (News
-     right-to-left / Gallery left-to-right) is just which keyframe the
-     [data-direction] CSS selects — same clone-and-measure logic either
-     way. Skipped entirely (leaving the plain scrollable row from the CSS
-     base state) under reduced motion or on narrow viewports, where an
-     auto-scrolling row is harder to read and fights with touch
+  /* ── Auto-scroll carousels: clone each .js-auto-scroll's item set once
+     and animate a slow translateX loop, so it reads as a continuous
+     ticker rather than an obvious jump-cut. Direction (right-to-left by
+     default) is just which keyframe the [data-direction="reverse"] CSS
+     selects — same clone-and-measure logic either way, so a future
+     reversed carousel is a one-line data attribute, not new JS. Skipped
+     entirely (leaving the plain scrollable row from the CSS base state)
+     under reduced motion or on narrow viewports, where an auto-scrolling
+     row is harder to read and fights with touch
      scrolling. ─────────────────────────────────────────────────────── */
   function initAutoScrollCarousels() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
