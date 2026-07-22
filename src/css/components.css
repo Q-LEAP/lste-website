@@ -295,7 +295,7 @@
   padding-bottom: var(--space-8);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-.footer-brand p { max-width: 320px; color: rgba(255, 255, 255, 0.6); }
+.footer-brand p { max-width: 320px; margin-top: var(--space-4); color: rgba(255, 255, 255, 0.6); }
 .footer-col-heading {
   font-size: var(--fs-sm);
   font-weight: 700;
