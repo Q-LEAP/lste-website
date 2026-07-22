@@ -42,10 +42,12 @@
   gap: var(--space-3) var(--space-6);
   margin: var(--space-5) 0 var(--space-6);
   font-weight: 600;
-  font-size: 0.9375rem;
-  color: var(--color-muted);
+  font-size: 1.0625rem;
+  color: var(--color-ink);
 }
 .hero__meta span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.hero__meta span:first-child i { color: var(--color-lime); }
+.hero__meta span:last-child i { color: var(--color-cyan); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: 0; }
 .hero__media {
   position: relative;
