@@ -200,42 +200,6 @@
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  /* ── Goo button hover ──────────────────────────────────────── */
-  /* Wraps every .btn in a <span class="btn-goo"> with a decorative
-     "fx" sibling at runtime (a center fill pill + 3 particles bursting
-     from the top-left corner + 3 from bottom-right), rather than
-     hand-authoring that markup on every button across every page —
-     replicates the classic "gooey bubble button" (circles + a center
-     fill, merged by an SVG goo filter) rather than just two plain
-     blobs. The particles have to live in a sibling, not inside .btn
-     itself, because the SVG goo filter applied to them would blur the
-     button's own label text too if it were inside the filtered
-     element. Skipped under prefers-reduced-motion. */
-  function initGooButtons() {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-    const particles = ['tl1', 'tl2', 'tl3', 'br1', 'br2', 'br3'];
-    document.querySelectorAll('.btn').forEach((btn) => {
-      if (btn.classList.contains('btn--block') || btn.closest('.btn-goo')) return;
-      const wrapper = document.createElement('span');
-      wrapper.className = 'btn-goo';
-      btn.parentNode.insertBefore(wrapper, btn);
-      wrapper.appendChild(btn);
-      const fx = document.createElement('span');
-      fx.className = 'btn-goo__fx';
-      fx.setAttribute('aria-hidden', 'true');
-      const fill = document.createElement('span');
-      fill.className = 'btn-goo__fill';
-      fx.appendChild(fill);
-      particles.forEach((name) => {
-        const particle = document.createElement('span');
-        particle.className = `btn-goo__particle btn-goo__particle--${name}`;
-        fx.appendChild(particle);
-      });
-      wrapper.appendChild(fx);
-    });
-  }
-
   /* ── Smooth in-page anchors ────────────────────────────────── */
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
@@ -538,7 +502,6 @@
     initCounters();
     initReveal();
     initBackToTop();
-    initGooButtons();
     initSmoothScroll();
     initTabs();
     initGallery();
