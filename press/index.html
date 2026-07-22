@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#6d28d9">
-<link rel="stylesheet" href="../assets/css/styles.css?v=7e703e7f">
+<link rel="stylesheet" href="../assets/css/styles.css?v=b33e261b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -114,111 +114,181 @@
 
   <!-- Ports lste.lu/press/'s real article list verbatim (titles + excerpts).
        Only entries we have a full article for on our own /news/ pages
-       are linked — the rest are listed as historical record, unlinked,
-       rather than pointing "Read more" at a page that doesn't exist. -->
+       get a real photo (reused from that article) and a "Read more"
+       link — the rest are neumorphic text-only cards (still get the
+       .pillar-card--tag hover), rather than a fabricated image or a
+       link to a page that doesn't exist. -->
   <section class="section" style="padding-top:0;">
-    <div class="container container--narrow">
-      <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-6);">
+    <div class="container">
+      <div class="grid grid--3 reveal">
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Avanti Sharma Announced as Master of Ceremonies and Panel Moderator at LSTE2025</h3>
-          <p class="text-muted" style="font-size:0.9rem;">The Luxembourg Software Testing Event 2025 (LSTE2025) is pleased to...</p>
-          <a class="news-link" href="../news/avanti-sharma-mc/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <article class="card pillar-card--tag press-card">
+          <picture>
+            <source type="image/avif" srcset="../assets/img/rsw_1200cg_true-2-800.avif">
+            <source type="image/webp" srcset="../assets/img/rsw_1200cg_true-2-800.webp">
+            <img class="press-card__media" src="../assets/img/rsw_1200cg_true-2-800.jpg" width="800" height="500" loading="lazy" alt="Avanti Sharma presenting on stage">
+          </picture>
+          <div class="press-card__body">
+            <h3>Avanti Sharma Announced as Master of Ceremonies and Panel Moderator at LSTE2025</h3>
+            <p class="text-muted" style="font-size:0.9rem;">The Luxembourg Software Testing Event 2025 (LSTE2025) is pleased to...</p>
+            <a class="news-link" href="../news/avanti-sharma-mc/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Luxembourg Software Testing Event 2025: AI at the Heart of the 7th Edition</h3>
-          <p class="text-muted" style="font-size:0.9rem;">The 7th Luxembourg Software Testing Event (LSTE) returns this year,...</p>
-          <a class="news-link" href="../news/lste-2025-ai-7th-edition/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <article class="card pillar-card--tag press-card">
+          <picture>
+            <source type="image/avif" srcset="../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.avif">
+            <source type="image/webp" srcset="../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.webp">
+            <img class="press-card__media" src="../assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.jpg" width="800" height="500" loading="lazy" alt="Full conference room at LSTE">
+          </picture>
+          <div class="press-card__body">
+            <h3>Luxembourg Software Testing Event 2025: AI at the Heart of the 7th Edition</h3>
+            <p class="text-muted" style="font-size:0.9rem;">The 7th Luxembourg Software Testing Event (LSTE) returns this year,...</p>
+            <a class="news-link" href="../news/lste-2025-ai-7th-edition/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Press release Silicon – Luxembourg Software Testing Event 2025</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Silicon Luxembourg — Luxembourg Software Testing Event 2025: A New...</p>
-          <a class="news-link" href="../news/lste-2024-landmark/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <article class="card pillar-card--tag press-card">
+          <picture>
+            <source type="image/avif" srcset="../assets/img/Break-Tuto-4-800.avif">
+            <source type="image/webp" srcset="../assets/img/Break-Tuto-4-800.webp">
+            <img class="press-card__media" src="../assets/img/Break-Tuto-4-800.jpg" width="800" height="500" loading="lazy" alt="Workshop break at LSTE 2024">
+          </picture>
+          <div class="press-card__body">
+            <h3>Press release Silicon – Luxembourg Software Testing Event 2025</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Silicon Luxembourg — Luxembourg Software Testing Event 2025: A New...</p>
+            <a class="news-link" href="../news/lste-2024-landmark/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Learning How To Live With The Digital Colleague</h3>
-          <p class="text-muted" style="font-size:0.9rem;">At the LSTE 2024 event, Dr. Anne Kramer, Global...</p>
-          <a class="news-link" href="../news/digital-colleague/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <article class="card pillar-card--tag press-card">
+          <picture>
+            <source type="image/avif" srcset="../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.avif">
+            <source type="image/webp" srcset="../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.webp">
+            <img class="press-card__media" src="../assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.jpg" width="800" height="500" loading="lazy" alt="Smartesting session at LSTE 2024">
+          </picture>
+          <div class="press-card__body">
+            <h3>Learning How To Live With The Digital Colleague</h3>
+            <p class="text-muted" style="font-size:0.9rem;">At the LSTE 2024 event, Dr. Anne Kramer, Global...</p>
+            <a class="news-link" href="../news/digital-colleague/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">LSTE: A Landmark Event For Software Testing Professionals</h3>
-          <p class="text-muted" style="font-size:0.9rem;">On November 14, 2024, the Luxembourg Software Testing Event (LSTE)...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>LSTE: A Landmark Event For Software Testing Professionals</h3>
+            <p class="text-muted" style="font-size:0.9rem;">On November 14, 2024, the Luxembourg Software Testing Event (LSTE)...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Excellium Services : Conférence sur l'intégration des tests et de la sécurité</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Excellium Services est une entreprise spécialisée dans la cybersécurité, fondée...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Excellium Services : Conférence sur l'intégration des tests et de la sécurité</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Excellium Services est une entreprise spécialisée dans la cybersécurité, fondée...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Deloitte at the Luxembourg Software Testing Event 2024: Driving Innovation in Software Testing</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Deloitte, a global leader in audit, consulting, tax, and advisory...</p>
-          <a class="news-link" href="../news/deloitte-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <article class="card pillar-card--tag press-card">
+          <picture>
+            <source type="image/avif" srcset="../assets/img/Deloitte-2-min-800.avif">
+            <source type="image/webp" srcset="../assets/img/Deloitte-2-min-800.webp">
+            <img class="press-card__media" src="../assets/img/Deloitte-2-min-800.jpg" width="800" height="500" loading="lazy" alt="Deloitte booth at LSTE">
+          </picture>
+          <div class="press-card__body">
+            <h3>Deloitte at the Luxembourg Software Testing Event 2024: Driving Innovation in Software Testing</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Deloitte, a global leader in audit, consulting, tax, and advisory...</p>
+            <a class="news-link" href="../news/deloitte-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Sogeti at the Luxembourg Software Testing Event 2024: Exploring GenAI in Testing</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Sogeti, a leader in quality engineering and testing, proudly announces...</p>
-          <a class="news-link" href="../news/sogeti-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <article class="card pillar-card--tag press-card">
+          <picture>
+            <source type="image/avif" srcset="../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.avif">
+            <source type="image/webp" srcset="../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.webp">
+            <img class="press-card__media" src="../assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.jpg" width="800" height="500" loading="lazy" alt="Sogeti keynote session at LSTE 2024">
+          </picture>
+          <div class="press-card__body">
+            <h3>Sogeti at the Luxembourg Software Testing Event 2024: Exploring GenAI in Testing</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Sogeti, a leader in quality engineering and testing, proudly announces...</p>
+            <a class="news-link" href="../news/sogeti-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Get Ready for the Luxembourg Software Testing Event 2024!</h3>
-          <p class="text-muted" style="font-size:0.9rem;">On November 14, 2024, the Digital Learning Hub in Esch...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Get Ready for the Luxembourg Software Testing Event 2024!</h3>
+            <p class="text-muted" style="font-size:0.9rem;">On November 14, 2024, the Digital Learning Hub in Esch...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Luxembourg Software Testing Event</h3>
-          <p class="text-muted" style="font-size:0.9rem;">The CNPD is supporting the Luxembourg Software Testing Event being...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Luxembourg Software Testing Event</h3>
+            <p class="text-muted" style="font-size:0.9rem;">The CNPD is supporting the Luxembourg Software Testing Event being...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">L'assurance qualité et le testing, activités de plus en plus transverses</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Article published in IT Nation magazine on October 17, 2019...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>L'assurance qualité et le testing, activités de plus en plus transverses</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Article published in IT Nation magazine on October 17, 2019...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Press Release from our Securitymadein.lu Partner covering the #LSTE2018</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Excerpt from the article published on securitymadein.lu The Luxembourg Software...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Press Release from our Securitymadein.lu Partner covering the #LSTE2018</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Excerpt from the article published on securitymadein.lu The Luxembourg Software...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">LSTE 2018 : un trésor d'expertise en testing réuni en un seul lieu</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Le 4 octobre dernier se tenait au Forum Da Vinci...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>LSTE 2018 : un trésor d'expertise en testing réuni en un seul lieu</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Le 4 octobre dernier se tenait au Forum Da Vinci...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Get To Know The Emerging Trends In Software Testing At LSTE</h3>
-          <p class="text-muted" style="font-size:0.9rem;">On October 4th, the Luxembourg Software Testing Event is going...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Get To Know The Emerging Trends In Software Testing At LSTE</h3>
+            <p class="text-muted" style="font-size:0.9rem;">On October 4th, the Luxembourg Software Testing Event is going...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Les grandes tendances du testing : protection des données et IoT, les enjeux du test en sécurité</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Lors d'un précédent article, nous évoquions les enjeux du test...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Les grandes tendances du testing : protection des données et IoT, les enjeux du test en sécurité</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Lors d'un précédent article, nous évoquions les enjeux du test...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">SnT at the Heart of Luxembourg's ICT Community</h3>
-          <p class="text-muted" style="font-size:0.9rem;">The Interdisciplinary Centre for Security, Reliability and Trust (SnT) was...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>SnT at the Heart of Luxembourg's ICT Community</h3>
+            <p class="text-muted" style="font-size:0.9rem;">The Interdisciplinary Centre for Security, Reliability and Trust (SnT) was...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Les grandes tendances du testing: Le test mobile et la virtualisation</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Acteur spécialisé dans le testing et l'assurance qualité logicielle au...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Les grandes tendances du testing: Le test mobile et la virtualisation</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Acteur spécialisé dans le testing et l'assurance qualité logicielle au...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">q-leap is gathering the software players in Luxembourg</h3>
-          <p class="text-muted" style="font-size:0.9rem;">On October 5th, q-leap gathers the Luxembourg community of testers...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>q-leap is gathering the software players in Luxembourg</h3>
+            <p class="text-muted" style="font-size:0.9rem;">On October 5th, q-leap gathers the Luxembourg community of testers...</p>
+          </div>
         </article>
 
-        <article class="card" style="padding:var(--space-5);">
-          <h3 style="font-size:1.0625rem;margin-bottom:var(--space-2);">Retour sur le Luxembourg Software Testing Event 2016</h3>
-          <p class="text-muted" style="font-size:0.9rem;">L'événement de l'année dans le domaine du test logiciel et...</p>
+        <article class="card pillar-card--tag press-card press-card--text-only">
+          <div class="press-card__body">
+            <h3>Retour sur le Luxembourg Software Testing Event 2016</h3>
+            <p class="text-muted" style="font-size:0.9rem;">L'événement de l'année dans le domaine du test logiciel et...</p>
+          </div>
         </article>
 
       </div>

@@ -440,31 +440,14 @@
 .badge--exhibition { background: #fdba74; color: #17141f; }
 .badge--networking { background: #22d3ee; color: #17141f; }
 
-/* ── Partner logo strip — a premium hover on each tile (lift + violet
-   glow ring), same trick as .pillar-card--tag: a deeper resting shadow,
-   then a pronounced glow on hover so a plain logo grid still feels
-   "designed" rather than a bare row of images. ────────────────────── */
-.partner-logos { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; justify-content: center; }
-.partner-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  width: 160px;
-  height: 88px;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
-}
-.partner-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
-.partner-logo:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.35), 0 20px 40px -12px rgba(109, 40, 217, 0.45);
-}
-@media (prefers-reduced-motion: reduce) {
-  .partner-logo { transition: none; }
-}
+/* ── Press card — photo on top where we have a real one, text-only
+   otherwise; combined with .pillar-card--tag for the same lift + glow
+   hover as every other neumorphic card on the site. ────────────────── */
+.press-card { overflow: hidden; padding: 0; }
+.press-card__media { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.press-card__body { padding: var(--space-5); }
+.press-card__body h3 { font-size: 1.0625rem; margin-bottom: var(--space-2); }
+.press-card--text-only .press-card__body { padding: var(--space-6); }
 
 /* ── Testimonials ────────────────────────────────────────────────── */
 .testimonial-card { padding: var(--space-6); }
