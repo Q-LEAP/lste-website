@@ -47,7 +47,6 @@
    clear, single accent against both the dark default page and the light
    theme override. */
 .hero__highlight { color: var(--color-primary-light); }
-.hero__subtitle { font-size: 1.125rem; font-weight: 500; color: var(--color-body-text); margin-top: var(--space-3); }
 .hero__meta {
   display: flex;
   flex-wrap: wrap;

@@ -118,11 +118,20 @@
    doesn't need this (nothing next to it to align against). */
 #site-header .site-logo { transform: translateY(-6px); }
 .site-logo__tag {
+  display: none;
   font-family: var(--font-mono);
-  font-size: 0.65625rem;
-  letter-spacing: 0.12em;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--color-border);
+}
+/* Hidden below ~600px — logo, date and the nav toggle otherwise crowd the
+   same cramped row (nav links/CTA are already hidden until 1300px, so
+   this only ever shares space with the hamburger). */
+@media (min-width: 600px) {
+  .site-logo__tag { display: inline-block; }
 }
 
 .main-nav { display: none; }
