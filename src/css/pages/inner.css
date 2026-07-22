@@ -60,7 +60,7 @@
 .edition-card__ribbon {
   position: absolute;
   top: -12px; right: var(--space-5);
-  background: var(--color-primary);
+  background: var(--gradient-brand);
   color: #fff;
   font-size: 0.6875rem;
   font-weight: 700;
@@ -73,7 +73,8 @@
   font-family: var(--font-heading);
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--color-primary);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
   line-height: 1;
 }
 .edition-card__meta { display: flex; flex-direction: column; gap: var(--space-1); font-size: 0.875rem; color: var(--color-muted); }
@@ -110,7 +111,7 @@
 .transport-card, .hotel-card { padding: var(--space-6); text-align: center; }
 .transport-card__icon {
   width: 56px; height: 56px; margin: 0 auto var(--space-4);
-  border-radius: 50%; background: var(--color-primary);
+  border-radius: 50%; background: var(--gradient-brand);
   display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.25rem;
 }
 .hotel-card { text-align: left; }
@@ -186,7 +187,7 @@
   transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
 }
 .profile-tabs__tab span[aria-hidden] { font-size: 1.15em; }
-.profile-tabs__tab[aria-selected="true"] { background: var(--color-primary); border-color: transparent; color: #fff; }
+.profile-tabs__tab[aria-selected="true"] { background: var(--gradient-brand); border-color: transparent; color: #fff; }
 .profile-tabs__tab:not([aria-selected="true"]):hover,
 .profile-tabs__tab:not([aria-selected="true"]):focus-visible { border-color: var(--color-primary); color: var(--color-primary); }
 .transport-card__icon--emoji { font-size: 1.5rem; }
@@ -255,7 +256,7 @@
   color: var(--color-body-text);
   background: var(--color-surface-alt);
 }
-.tabs-nav button[aria-selected="true"] { background: var(--color-primary); color: #fff; }
+.tabs-nav button[aria-selected="true"] { background: var(--gradient-brand); color: #fff; }
 
 /* Vertical timeline — replaces the old flat schedule-item cards */
 .timeline { display: flex; flex-direction: column; }
@@ -308,7 +309,7 @@
   height: 12px;
   margin-top: 0.2rem;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--gradient-brand);
   box-shadow: 0 0 0 4px var(--color-surface);
   flex-shrink: 0;
   z-index: 1;
@@ -329,7 +330,7 @@
   color: #fff;
   font-size: 0.6875rem;
 }
-.timeline__item--demo .timeline__dot { background: #047857; } /* matches .badge--demo */
+.timeline__item--demo .timeline__dot { background: linear-gradient(135deg, #822ea8 0%, #d90e90 100%); }
 .timeline__content { min-width: 0; padding-top: 0.1rem; }
 .timeline__title { font-size: 1rem; font-weight: 700; color: var(--color-ink); }
 .timeline__item--break .timeline__title { font-weight: 600; color: var(--color-muted); }
