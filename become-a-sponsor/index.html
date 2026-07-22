@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#6d28d9">
-<link rel="stylesheet" href="../assets/css/styles.css?v=c11fa96c">
+<link rel="stylesheet" href="../assets/css/styles.css?v=e555eb11">
 </head>
 <body>
 
@@ -32,19 +32,22 @@
       <span class="site-logo__tag">'26</span>
     </a>
 
-    <!-- Trimmed to a single CTA (Get your free ticket) per the new design —
-         everything else lives in the "More" dropdown / mobile hamburger.
-         Speakers is intentionally not linked here while that section is
-         hidden (kept in code, see speakers/index.html and the homepage
-         speakers section). Dark-mode toggle lives in the footer, not here. -->
+    <!-- Matches the Claude Design mockup: logo on the left, nav links +
+         CTA clustered together on the right as one group (margin-left:auto
+         on .main-nav, not .header-actions — see components.css). Venue/
+         Sponsors/Gallery/Contact live in the "More" dropdown / mobile
+         hamburger, since the mockup's own nav didn't need to cover a full
+         multi-page site. Dark-mode toggle lives in the footer, not here. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
+        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
+        <li><a class="main-nav-link" href="../schedule/index.html">Program</a></li>
+        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
+        <li><a class="main-nav-link" href="../register/index.html">Tickets</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../venue/index.html">Venue</a></li>
             <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../contact/index.html">Contact</a></li>
@@ -64,9 +67,11 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../venue/index.html">Venue</a></li>
     <li><a href="../about/index.html">About</a></li>
+    <li><a href="../schedule/index.html">Program</a></li>
+    <li><a href="../speakers/index.html">Speakers</a></li>
+    <li><a href="../register/index.html">Tickets</a></li>
+    <li><a href="../venue/index.html">Venue</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../contact/index.html">Contact</a></li>

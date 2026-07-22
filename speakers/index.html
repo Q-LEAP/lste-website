@@ -6,23 +6,20 @@
 <script>(function(){try{var t=localStorage.getItem("lste-theme");document.documentElement.setAttribute("data-theme",t||"dark");}catch(e){}})();</script>
 <title>Speakers: LSTE 2026</title>
 <meta name="description" content="Meet the software testing and QA experts speaking at LSTE 2026, Luxembourg's premier testing event.">
-<!-- This section is currently hidden sitewide (unlinked from nav/footer) —
-     see index.html's commented-out speakers preview and the nav simplification
-     notes. Keep noindex while it's not linked anywhere, so search engines
-     don't surface it out of context; remove when the section is reactivated.
-
-     Speaker grid removed: the "2025 lineup" it showed (Nathalie Graindorge,
-     Huib Schoots, Thierry Soliña, Maxime Moret, Thierry Wyns, Anna Royzman,
-     Bas Dijkstra, Lisi Hocke, Maaret Pyhäjärvi, Gojko Adzic) did not match
-     any name in the real LSTE 2025 programme (documentation/archives/
-     LSTE-Program-2025 1.pdf — Sylvain Perez, Phu X. Mai, Mario Willems,
-     Julien Desmulier, Prof. Domenico Bianculli, Prof. Fabrizio Pastore,
-     Dr. Claudio Mandrioli, Dean Bodart, Bruno Pacheco, Silvia Martina,
-     Liubomyr Bregman, Antoine Aymer, Réka Balla, Ritabrata Banerjee,
-     Jonathan Lopez, Jonathan Bernales, João Portugues, Joost van Wendel de
-     Joode, Tessy Lantang de Groot, Avanti Sharma). Don't re-add a lineup
-     here without sourcing it from that programme or another verified
-     source — see documentation/README.md's rule against inventing facts. -->
+<!-- Now linked from the main nav. Previously this page showed a "2025
+     lineup" (Nathalie Graindorge, Huib Schoots, Thierry Soliña, Maxime
+     Moret, Thierry Wyns, Anna Royzman, Bas Dijkstra, Lisi Hocke, Maaret
+     Pyhäjärvi, Gojko Adzic) that didn't match any name in the real LSTE
+     2025 programme (documentation/archives/LSTE-Program-2025 1.pdf —
+     Sylvain Perez, Phu X. Mai, Mario Willems, Julien Desmulier, Prof.
+     Domenico Bianculli, Prof. Fabrizio Pastore, Dr. Claudio Mandrioli,
+     Dean Bodart, Bruno Pacheco, Silvia Martina, Liubomyr Bregman, Antoine
+     Aymer, Réka Balla, Ritabrata Banerjee, Jonathan Lopez, Jonathan
+     Bernales, João Portugues, Joost van Wendel de Joode, Tessy Lantang de
+     Groot, Avanti Sharma). That fabricated grid is gone; don't re-add a
+     speaker grid without sourcing it from a verified programme — see
+     documentation/README.md's rule against inventing facts. noindex below
+     is just the sitewide pre-launch default (see every other page). -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://lste.lu/speakers/">
 <meta property="og:type" content="website">
@@ -35,7 +32,7 @@
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#6d28d9">
-<link rel="stylesheet" href="../assets/css/styles.css?v=c11fa96c">
+<link rel="stylesheet" href="../assets/css/styles.css?v=e555eb11">
 </head>
 <body>
 
@@ -49,19 +46,22 @@
       <span class="site-logo__tag">'26</span>
     </a>
 
-    <!-- Trimmed to a single CTA (Get your free ticket) per the new design —
-         everything else lives in the "More" dropdown / mobile hamburger.
-         Speakers is intentionally not linked here while that section is
-         hidden (kept in code, see speakers/index.html and the homepage
-         speakers section). Dark-mode toggle lives in the footer, not here. -->
+    <!-- Matches the Claude Design mockup: logo on the left, nav links +
+         CTA clustered together on the right as one group (margin-left:auto
+         on .main-nav, not .header-actions — see components.css). Venue/
+         Sponsors/Gallery/Contact live in the "More" dropdown / mobile
+         hamburger, since the mockup's own nav didn't need to cover a full
+         multi-page site. Dark-mode toggle lives in the footer, not here. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
-        <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
+        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
+        <li><a class="main-nav-link" href="../schedule/index.html">Program</a></li>
+        <li><a class="main-nav-link" aria-current="page" href="../speakers/index.html">Speakers</a></li>
+        <li><a class="main-nav-link" href="../register/index.html">Tickets</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../venue/index.html">Venue</a></li>
             <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../contact/index.html">Contact</a></li>
@@ -81,9 +81,11 @@
 
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../schedule/index.html">Programme</a></li>
-    <li><a href="../venue/index.html">Venue</a></li>
     <li><a href="../about/index.html">About</a></li>
+    <li><a href="../schedule/index.html">Program</a></li>
+    <li><a href="../speakers/index.html">Speakers</a></li>
+    <li><a href="../register/index.html">Tickets</a></li>
+    <li><a href="../venue/index.html">Venue</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../contact/index.html">Contact</a></li>

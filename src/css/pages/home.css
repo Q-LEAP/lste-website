@@ -180,8 +180,29 @@
 .pillar-card { padding: var(--space-6); text-align: center; }
 /* Homepage variant: a track .badge tag instead of a centered icon tile
    (about/index.html still uses the centered icon-tile .pillar-card). */
-.pillar-card--tag { text-align: left; }
+/* A more overtly neumorphic treatment than the sitewide flat .card: a
+   deeper resting shadow (feels molded from the page itself), then a
+   pronounced lift + soft violet glow on hover — the one section where
+   client feedback specifically asked for a "premium" micro-interaction.
+   Selector doubles up (.card.pillar-card--tag) so it reliably beats the
+   later-loading sitewide .card:hover rule (pages/theme.css) at equal
+   specificity — same trick without !important. */
+.card.pillar-card--tag {
+  text-align: left;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+}
 .pillar-card--tag h3 { margin: var(--space-5) 0 var(--space-2); }
+.card.pillar-card--tag:hover {
+  transform: translateY(-8px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.3), 0 20px 40px -12px rgba(109, 40, 217, 0.35);
+}
+.pillar-card--tag .badge { transition: transform var(--dur-base) var(--ease); }
+.card.pillar-card--tag:hover .badge { transform: scale(1.08); }
+@media (prefers-reduced-motion: reduce) {
+  .card.pillar-card--tag, .card.pillar-card--tag:hover, .pillar-card--tag .badge { transition: none; transform: none; }
+}
 /* Still used by about/index.html's own pillar grid (centered icon tiles) —
    the homepage's cards use a .badge tag instead, but this rule stays for
    that other page. */

@@ -14,7 +14,7 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.2;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-lg);
   transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
   white-space: nowrap;
 }
@@ -122,16 +122,14 @@
 .main-nav { display: none; }
 .main-nav-list { display: flex; align-items: center; gap: var(--space-6); }
 
-/* Logo, then nav right after it, actions pushed to the far right via
-   margin-left: auto — the same layout Stripe/Linear/Vercel-style headers
-   use. This never depends on logo width matching action-button width (the
-   thing that made the old centered nav drift and, at narrower widths,
-   overlap the actions), so it can't regress if either side's content
-   changes later. */
+/* Logo on the left; nav links + CTA clustered together as one group on
+   the right (margin-left: auto on .main-nav, not .header-actions) — matches
+   the Claude Design mockup's two-zone header instead of the previous
+   three-zone logo/nav/actions spread. */
 @media (min-width: 1300px) {
   .site-header .container { padding: 0 var(--space-6); max-width: 1400px; }
-  .main-nav { display: block; margin-left: var(--space-8); }
-  .header-actions { margin-left: auto; }
+  .main-nav { display: block; margin-left: auto; }
+  .header-actions { margin-left: var(--space-8); }
 }
 .main-nav-link {
   font-family: var(--font-heading);
