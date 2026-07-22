@@ -1,66 +1,28 @@
 /* ── Home ────────────────────────────────────────────────────────── */
+/* Light, split layout (client feedback) — replaces the old full-bleed
+   photo + purple scrim. Photo is now a contained media box beside the
+   copy instead of a background, and text sits left-aligned throughout. */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: calc(var(--header-h) + var(--ann-h) + var(--space-10));
+  padding-top: calc(var(--header-h) + var(--ann-h) + var(--space-12));
   padding-bottom: var(--space-12);
-  color: #fff;
-  overflow: hidden;
 }
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -3;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero__grid { display: grid; gap: var(--space-10); grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 900px) {
+  .hero__grid { grid-template-columns: 1.15fr 1fr; }
 }
-/* Trace motif, faint, between the photo and the colour scrim — the very
-   first pixels a visitor sees already carry LSTE's own graphic signature
-   rather than just a stock-feeling photo + purple wash. Larger scale and
-   a touch more present than the section-texture use, since this is the
-   one flagship moment; still well short of "decoration for its own sake". */
-.hero__motif {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background-image: var(--motif-trace);
-  background-repeat: repeat;
-  background-size: 180px 90px;
-  opacity: 0.16;
-  mix-blend-mode: soft-light;
-}
-/* The 100% stop was rgba(85, 70, 174, .78) — practically the same color
-   as #5546ae, the start of --gradient-brand used to fill the "Software
-   Testing" text-clip highlight lower in the hero. In light mode (dark
-   mode overrides this whole rule below) that made the highlight nearly
-   vanish into its own background right where it sits. Darkened the
-   lower stops so the scrim stays legible-dark all the way down without
-   changing its brand-purple character or the gradient concept itself. */
-.hero__scrim {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, rgba(20, 15, 50, 0.86) 0%, rgba(40, 32, 88, 0.85) 45%, rgba(50, 40, 100, 0.85) 100%);
-}
-.hero__content { max-width: 760px; color: rgba(255, 255, 255, 0.92); }
+.hero__content { max-width: 560px; }
 .hero__content h1 {
-  color: #fff;
-  font-size: clamp(2.75rem, 5.5vw + 1rem, 4.75rem);
+  color: var(--color-ink);
+  font-size: clamp(2.5rem, 4.5vw + 1rem, 4rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
 }
 /* One deliberate moment of brand colour in the whole hero — the actual
-   name of the discipline, not the whole headline, reusing the exact
-   gradient-text-clip technique already proven on .stat-value. */
-.hero__highlight {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero__subtitle { font-size: 1.25rem; font-weight: 600; color: rgba(255, 255, 255, 0.85); margin-top: var(--space-2); }
+   name of the discipline, not the whole headline. Flat brand purple
+   rather than the gradient-text-clip used on .stat-value: on a white
+   background a flat color reads cleaner than a diagonal gradient here. */
+.hero__highlight { color: var(--color-primary); }
+.hero__subtitle { font-size: 1.125rem; font-weight: 500; color: var(--color-muted); margin-top: var(--space-3); }
 .hero__meta {
   display: flex;
   flex-wrap: wrap;
@@ -68,9 +30,20 @@
   margin: var(--space-5) 0 var(--space-6);
   font-weight: 600;
   font-size: 0.9375rem;
+  color: var(--color-muted);
 }
 .hero__meta span { display: inline-flex; align-items: center; gap: var(--space-2); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: 0; }
+.hero__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.hero__media img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 899px) {
+  .hero__media { aspect-ratio: 16 / 10; }
+}
 
 /* ── Stats strip ─────────────────────────────────────────────────── */
 .stats-strip { padding: var(--space-10) 0; }
