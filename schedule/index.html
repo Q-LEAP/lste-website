@@ -21,7 +21,7 @@ redirect_from:
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#6d28d9">
-<link rel="stylesheet" href="../assets/css/styles.css?v=b08e7a11">
+<link rel="stylesheet" href="../assets/css/styles.css?v=3abe6594">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,6 +46,19 @@ redirect_from:
 
 <!--NAV_START-->
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<!-- Goo filter for the button hover effect (initGooButtons in main.js) —
+     blurs two small circles then sharpens the alpha channel, so they
+     visually melt into one blob as they scale toward each other/the
+     button, instead of just overlapping as two separate discs. -->
+<svg class="btn-goo-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="btn-goo-filter">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
+      <feComposite in="goo" in2="goo" />
+    </filter>
+  </defs>
+</svg>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
   <div class="container">
@@ -222,6 +235,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=a0ea9b61" defer></script>
+<script src="../assets/js/main.js?v=d2da9179" defer></script>
 </body>
 </html>

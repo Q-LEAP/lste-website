@@ -1,4 +1,17 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<!-- Goo filter for the button hover effect (initGooButtons in main.js) —
+     blurs two small circles then sharpens the alpha channel, so they
+     visually melt into one blob as they scale toward each other/the
+     button, instead of just overlapping as two separate discs. -->
+<svg class="btn-goo-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="btn-goo-filter">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
+      <feComposite in="goo" in2="goo" />
+    </filter>
+  </defs>
+</svg>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
   <div class="container">

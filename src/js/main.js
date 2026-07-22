@@ -200,6 +200,37 @@
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
+  /* ── Goo button hover ──────────────────────────────────────── */
+  /* Wraps every .btn in a <span class="btn-goo"> with a decorative
+     "fx" sibling (2 circles) at runtime, rather than hand-authoring
+     that markup on every button across every page. The circles have
+     to live in a sibling, not inside .btn itself, because the SVG goo
+     filter applied to them would blur the button's own label text too
+     if it were inside the filtered element. Skipped under
+     prefers-reduced-motion (the blobs only ever animate on hover, so
+     there's nothing to show them at rest anyway). */
+  function initGooButtons() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    document.querySelectorAll('.btn').forEach((btn) => {
+      if (btn.classList.contains('btn--block') || btn.closest('.btn-goo')) return;
+      const wrapper = document.createElement('span');
+      wrapper.className = 'btn-goo';
+      btn.parentNode.insertBefore(wrapper, btn);
+      wrapper.appendChild(btn);
+      const fx = document.createElement('span');
+      fx.className = 'btn-goo__fx';
+      fx.setAttribute('aria-hidden', 'true');
+      const blobA = document.createElement('span');
+      blobA.className = 'btn-goo__blob btn-goo__blob--a';
+      const blobB = document.createElement('span');
+      blobB.className = 'btn-goo__blob btn-goo__blob--b';
+      fx.appendChild(blobA);
+      fx.appendChild(blobB);
+      wrapper.appendChild(fx);
+    });
+  }
+
   /* ── Smooth in-page anchors ────────────────────────────────── */
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
@@ -502,6 +533,7 @@
     initCounters();
     initReveal();
     initBackToTop();
+    initGooButtons();
     initSmoothScroll();
     initTabs();
     initGallery();
