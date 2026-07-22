@@ -9,7 +9,7 @@
 
     <!-- Matches the Claude Design mockup: logo on the left, nav links +
          CTA clustered together on the right as one group (margin-left:auto
-         on .main-nav, not .header-actions — see components.css). Venue/
+         on .main-nav, not .header-actions — see components.css). Speakers/
          Sponsors/Gallery/Contact live in the "More" dropdown / mobile
          hamburger, since the mockup's own nav didn't need to cover a full
          multi-page site. Dark-mode toggle lives in the footer, not here. -->
@@ -17,12 +17,12 @@
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="/about/">About</a></li>
         <li><a class="main-nav-link" href="/schedule/">Program</a></li>
-        <li><a class="main-nav-link" href="/speakers/">Speakers</a></li>
+        <li><a class="main-nav-link" href="/venue/">Venue</a></li>
         <li><a class="main-nav-link" href="/register/">Tickets</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="/venue/">Venue</a></li>
+            <li><a href="/speakers/">Speakers</a></li>
             <li><a href="/sponsors/">Sponsors</a></li>
             <li><a href="/gallery/">Gallery</a></li>
             <li><a href="/contact/">Contact</a></li>
@@ -44,9 +44,9 @@
   <ul class="mobile-nav-list">
     <li><a href="/about/">About</a></li>
     <li><a href="/schedule/">Program</a></li>
-    <li><a href="/speakers/">Speakers</a></li>
-    <li><a href="/register/">Tickets</a></li>
     <li><a href="/venue/">Venue</a></li>
+    <li><a href="/register/">Tickets</a></li>
+    <li><a href="/speakers/">Speakers</a></li>
     <li><a href="/sponsors/">Sponsors</a></li>
     <li><a href="/gallery/">Gallery</a></li>
     <li><a href="/contact/">Contact</a></li>

@@ -200,6 +200,34 @@
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
+  /* ── Magnetic buttons ──────────────────────────────────────── */
+  /* Every .btn leans a few pixels toward the cursor as it approaches,
+     then eases back on mouseleave — the "CTA aimanté" micro-interaction.
+     Fine-pointer devices only (skips touch) and off entirely under
+     prefers-reduced-motion. */
+  function initMagneticButtons() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    if (reduceMotion || coarsePointer) return;
+    const strength = 0.25;
+    const max = 10;
+    document.querySelectorAll('.btn').forEach((btn) => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width / 2);
+        const relY = e.clientY - (rect.top + rect.height / 2);
+        const x = Math.max(-max, Math.min(max, relX * strength));
+        const y = Math.max(-max, Math.min(max, relY * strength));
+        btn.style.setProperty('--magnet-x', `${x}px`);
+        btn.style.setProperty('--magnet-y', `${y}px`);
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.setProperty('--magnet-x', '0px');
+        btn.style.setProperty('--magnet-y', '0px');
+      });
+    });
+  }
+
   /* ── Smooth in-page anchors ────────────────────────────────── */
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
@@ -502,6 +530,7 @@
     initCounters();
     initReveal();
     initBackToTop();
+    initMagneticButtons();
     initSmoothScroll();
     initTabs();
     initGallery();

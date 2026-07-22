@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#6d28d9">
-<link rel="stylesheet" href="../assets/css/styles.css?v=c40044b5">
+<link rel="stylesheet" href="../assets/css/styles.css?v=0cde162e">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -52,7 +52,7 @@
 
     <!-- Matches the Claude Design mockup: logo on the left, nav links +
          CTA clustered together on the right as one group (margin-left:auto
-         on .main-nav, not .header-actions — see components.css). Venue/
+         on .main-nav, not .header-actions — see components.css). Speakers/
          Sponsors/Gallery/Contact live in the "More" dropdown / mobile
          hamburger, since the mockup's own nav didn't need to cover a full
          multi-page site. Dark-mode toggle lives in the footer, not here. -->
@@ -60,12 +60,12 @@
       <ul class="main-nav-list">
         <li><a class="main-nav-link" aria-current="page" href="../about/index.html">About</a></li>
         <li><a class="main-nav-link" href="../schedule/index.html">Program</a></li>
-        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
+        <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
         <li><a class="main-nav-link" href="../register/index.html">Tickets</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="../venue/index.html">Venue</a></li>
+            <li><a href="../speakers/index.html">Speakers</a></li>
             <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../contact/index.html">Contact</a></li>
@@ -87,9 +87,9 @@
   <ul class="mobile-nav-list">
     <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Program</a></li>
-    <li><a href="../speakers/index.html">Speakers</a></li>
-    <li><a href="../register/index.html">Tickets</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../register/index.html">Tickets</a></li>
+    <li><a href="../speakers/index.html">Speakers</a></li>
     <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../contact/index.html">Contact</a></li>
@@ -133,7 +133,7 @@
         <div class="card reveal" style="padding:var(--space-6);">
           <h3 style="font-size:1.125rem;margin-bottom:var(--space-5);">Event details</h3>
           <ul class="venue-feature-list">
-            <li><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 08:30–18:00</li>
+            <li><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 13:00–21:00</li>
             <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hôtel Parc Belle-Vue, Luxembourg City</li>
             <li><i class="fa-solid fa-users" aria-hidden="true"></i> 400+ attendees expected</li>
             <li><i class="fa-solid fa-trophy" aria-hidden="true"></i> 8th edition</li>
@@ -190,17 +190,17 @@
         <div class="card pillar-card">
           <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></div>
           <h3 style="font-size:1.0625rem;">Keynote Room</h3>
-          <p class="text-muted" style="font-size:0.9rem;">From 09:15, with plenary talks on strategy, AI, automation, and quality culture.</p>
+          <p class="text-muted" style="font-size:0.9rem;">From 13:30, with plenary talks on strategy, AI, automation, and quality culture.</p>
         </div>
         <div class="card pillar-card">
           <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></div>
           <h3 style="font-size:1.0625rem;">Demo Room</h3>
-          <p class="text-muted" style="font-size:0.9rem;">From 09:15, featuring live technical demonstrations of tools and frameworks.</p>
+          <p class="text-muted" style="font-size:0.9rem;">From 13:30, featuring live technical demonstrations of tools and frameworks.</p>
         </div>
         <div class="card pillar-card">
           <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></div>
           <h3 style="font-size:1.0625rem;">Closing &amp; Networking</h3>
-          <p class="text-muted" style="font-size:0.9rem;">From 17:30: closing ceremony and networking drinks to end the day.</p>
+          <p class="text-muted" style="font-size:0.9rem;">From 20:30: closing ceremony and networking drinks to end the day.</p>
         </div>
       </div>
       <div class="card reveal" style="margin-top:var(--space-6);padding:var(--space-6);text-align:center;">
@@ -315,6 +315,6 @@
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=a0ea9b61" defer></script>
+<script src="../assets/js/main.js?v=8fb8ce3c" defer></script>
 </body>
 </html>

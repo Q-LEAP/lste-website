@@ -28,7 +28,7 @@ redirect_from:
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#6d28d9">
 
-<link rel="stylesheet" href="./assets/css/styles.css?v=c40044b5">
+<link rel="stylesheet" href="./assets/css/styles.css?v=0cde162e">
 
 <script type="application/ld+json">
 {
@@ -36,8 +36,8 @@ redirect_from:
   "@type": "Event",
   "name": "Luxembourg Software Testing Event 2026 (LSTE, 8th Edition)",
   "description": "The largest annual gathering of software testing and quality assurance professionals in Luxembourg.",
-  "startDate": "2026-11-26T08:30:00+01:00",
-  "endDate": "2026-11-26T18:00:00+01:00",
+  "startDate": "2026-11-26T13:00:00+01:00",
+  "endDate": "2026-11-26T21:00:00+01:00",
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
@@ -80,7 +80,7 @@ redirect_from:
 
     <!-- Matches the Claude Design mockup: logo on the left, nav links +
          CTA clustered together on the right as one group (margin-left:auto
-         on .main-nav, not .header-actions — see components.css). Venue/
+         on .main-nav, not .header-actions — see components.css). Speakers/
          Sponsors/Gallery/Contact live in the "More" dropdown / mobile
          hamburger, since the mockup's own nav didn't need to cover a full
          multi-page site. Dark-mode toggle lives in the footer, not here. -->
@@ -88,12 +88,12 @@ redirect_from:
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="./about/index.html">About</a></li>
         <li><a class="main-nav-link" href="./schedule/index.html">Program</a></li>
-        <li><a class="main-nav-link" href="./speakers/index.html">Speakers</a></li>
+        <li><a class="main-nav-link" href="./venue/index.html">Venue</a></li>
         <li><a class="main-nav-link" href="./register/index.html">Tickets</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="./venue/index.html">Venue</a></li>
+            <li><a href="./speakers/index.html">Speakers</a></li>
             <li><a href="./sponsors/index.html">Sponsors</a></li>
             <li><a href="./gallery/index.html">Gallery</a></li>
             <li><a href="./contact/index.html">Contact</a></li>
@@ -115,9 +115,9 @@ redirect_from:
   <ul class="mobile-nav-list">
     <li><a href="./about/index.html">About</a></li>
     <li><a href="./schedule/index.html">Program</a></li>
-    <li><a href="./speakers/index.html">Speakers</a></li>
-    <li><a href="./register/index.html">Tickets</a></li>
     <li><a href="./venue/index.html">Venue</a></li>
+    <li><a href="./register/index.html">Tickets</a></li>
+    <li><a href="./speakers/index.html">Speakers</a></li>
     <li><a href="./sponsors/index.html">Sponsors</a></li>
     <li><a href="./gallery/index.html">Gallery</a></li>
     <li><a href="./contact/index.html">Contact</a></li>
@@ -133,11 +133,11 @@ redirect_from:
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__content">
-        <span class="hero__eyebrow eyebrow eyebrow--lime reveal is-visible">8th edition</span>
+        <span class="hero__eyebrow eyebrow eyebrow--cyan reveal is-visible">8th edition</span>
         <h1 class="reveal is-visible">Luxembourg<br><span class="hero__highlight">Software Testing</span> Event</h1>
 
         <div class="hero__meta reveal is-visible">
-          <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 08:30–18:00</span>
+          <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026, 13:00–21:00</span>
           <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hôtel Parc Belle-Vue, Luxembourg City</span>
         </div>
 
@@ -249,11 +249,10 @@ redirect_from:
         <p>A look at the flow of the day. The detailed 2026 line-up of talks is coming soon.</p>
       </div>
       <div class="timeline reveal" style="max-width:640px;margin:0 auto;">
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">08:30</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></span></span><div class="timeline__content"><p class="timeline__title">Registration &amp; welcome coffee</p></div></div>
-        <div class="timeline__item"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks</p><span class="badge badge--keynote">Keynote Room</span></div></div>
-        <div class="timeline__item timeline__item--demo"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></span></span><div class="timeline__content"><p class="timeline__title">Live demos &amp; tool showcases</p><span class="badge badge--demo">Demo Room</span></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">12:45</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span></span><div class="timeline__content"><p class="timeline__title">Networking lunch</p></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">17:30</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-champagne-glasses"></i></span></span><div class="timeline__content"><p class="timeline__title">Closing ceremony &amp; networking drinks</p></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">13:00</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></span></span><div class="timeline__content"><p class="timeline__title">Doors open &amp; registration</p></div></div>
+        <div class="timeline__item"><span class="timeline__time">13:30</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks</p><span class="badge badge--keynote">Keynote Room</span></div></div>
+        <div class="timeline__item timeline__item--demo"><span class="timeline__time">13:30</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></span></span><div class="timeline__content"><p class="timeline__title">Live demos &amp; tool showcases</p><span class="badge badge--demo">Demo Room</span></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">20:30</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-champagne-glasses"></i></span></span><div class="timeline__content"><p class="timeline__title">Closing ceremony &amp; networking drinks</p></div></div>
       </div>
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./schedule/index.html">View full programme <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
@@ -450,6 +449,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=a0ea9b61" defer></script>
+<script src="./assets/js/main.js?v=8fb8ce3c" defer></script>
 </body>
 </html>
