@@ -111,6 +111,14 @@
 
 .site-logo { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
 .site-logo img { height: 32px; width: auto; }
+/* Header carries both logo colorways and shows the one that reads against
+   its own frosted background — white on the dark-by-default header,
+   swapped to the brand-violet mark only when the visitor opts into the
+   light theme. Plain <img src> can't react to a CSS attribute selector on
+   its own, hence two images instead of one. */
+.site-logo__img--light { display: none; }
+:root[data-theme="light"] .site-logo__img--dark { display: none; }
+:root[data-theme="light"] .site-logo__img--light { display: block; }
 /* The wordmark's own SVG ink sits low in its box relative to its declared
    height, so centering it against the much-smaller nav text (via the
    header's align-items: center) leaves it visually low/misaligned — this
@@ -123,7 +131,7 @@
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-lime);
   padding-left: var(--space-3);
   border-left: 1px solid var(--color-border);
 }
@@ -142,7 +150,9 @@
    the Claude Design mockup's two-zone header instead of the previous
    three-zone logo/nav/actions spread. */
 @media (min-width: 1300px) {
-  .site-header .container { padding: 0 var(--space-6); max-width: 1400px; }
+  /* Same max-width/padding as the plain .container (no header-only
+     override) — the logo needs to line up with the hero heading and
+     every other section directly below it, not sit in a wider box. */
   .main-nav { display: block; margin-left: auto; }
   .header-actions { margin-left: var(--space-8); }
 }
