@@ -99,3 +99,8 @@
   text-align: center;
 }
 .section-head p { color: var(--color-muted); font-size: 1.0625rem; }
+/* For section intros carrying a real paragraph of explanatory prose
+   (not just a one-line lead-in before a grid/timeline) — matches the
+   homepage's own left-aligned "Who we are" / "Why come" blocks instead
+   of the brochure-style centered treatment. */
+.section-head--left { text-align: left; margin-left: 0; }
