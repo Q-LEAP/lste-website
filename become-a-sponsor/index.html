@@ -110,10 +110,19 @@
     </div>
   </section>
 
-  <!-- Audience stats, from the brochure's "LSTE 2025 in numbers" page -->
-  <section class="section--dark">
+  <!-- Synthesized from the brochure: this used to be 5 separate sections
+       (stats, "why sponsor" 3-card grid, "who you'll meet" 2-card grid,
+       5-format grid, media-reach grid) plus a 4-item FAQ — a real
+       usine à gaz. Condensed into 2 dense blocks, matching the About
+       page's approach: real facts, no per-item card grids. -->
+  <section class="section" style="padding-top:0;" aria-labelledby="why-heading">
     <div class="container">
-      <div class="grid grid--4" style="text-align:center;">
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--lime">Why sponsor LSTE</span>
+        <h2 id="why-heading">One event. Multiple channels. Maximum ROI.</h2>
+        <p>Not a general tech event — every attendee is a QA professional: specialists, testers, IT managers, CIOs and CTOs, developers, and digital transformation leaders, from banking, insurance, fintech, telecom, the public sector and beyond. Sponsors get direct exposure to that audience over a full day of booths, keynotes, workshops and networking, plus lead capture and talent sourcing with decision-makers from 60+ organisations.</p>
+      </div>
+      <div class="grid grid--4 reveal" style="text-align:center;">
         <div class="stat-item"><span class="stat-value">400<span style="color:var(--color-lime);">+</span></span><span class="stat-label">QA professionals, last edition</span></div>
         <div class="stat-item"><span class="stat-value">60<span style="color:var(--color-primary-light);">+</span></span><span class="stat-label">organisations represented</span></div>
         <div class="stat-item"><span class="stat-value">100<span style="color:var(--color-cyan);">%</span></span><span class="stat-label">targeted QA &amp; testing audience</span></div>
@@ -122,188 +131,14 @@
     </div>
   </section>
 
-  <!-- 3 reasons to sponsor, from the brochure page 7 -->
-  <section class="section" aria-labelledby="why-heading">
+  <section class="section section--alt" aria-labelledby="formats-heading">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow eyebrow--lime">Why sponsor LSTE</span>
-        <h2 id="why-heading">One event. Multiple channels. Maximum ROI.</h2>
+        <span class="eyebrow eyebrow--cyan">Get involved</span>
+        <h2 id="formats-heading">Multiple formats, three tiers.</h2>
+        <p>Sponsors get five ways to be part of the day — a keynote slot, a hands-on workshop, an expert seat on a panel, a booth for live demos, or the evening networking cocktail. Three tiers bundle these together: every tier includes logo placement, on-site presence, and a roundtable seat; Gold adds a Silicon Luxembourg interview, badge QR lead-scanning, and a booth; Platinum adds a 20-minute keynote and your own workshop. Reach also extends beyond the day itself, through our press partner Silicon Luxembourg, our newsletter, and LinkedIn.</p>
       </div>
-      <div class="grid grid--3 reveal">
-        <div class="card numbered-card">
-          <span class="numbered-card__num">01</span>
-          <h3 style="font-size:1.0625rem;">The right audience</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Not a general tech event. Every attendee is a QA professional — decision-makers, practitioners, and IT managers, all with real testing needs.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">02</span>
-          <h3 style="font-size:1.0625rem;">Live exposure</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Direct technical interactions with the entire Luxembourg QA community — booths, keynotes, workshops, and networking in one full day.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">03</span>
-          <h3 style="font-size:1.0625rem;">Business development</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Talent sourcing, lead capture via badge QR scanner, and direct client acquisition with decision-makers from 60+ organisations.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Who attends, from the brochure page 4 -->
-  <section class="section section--alt" aria-labelledby="audience-heading">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--violet">Who you'll meet</span>
-        <h2 id="audience-heading">All in the same place, at the same time.</h2>
-        <p>The entire Luxembourg QA &amp; testing community, once a year.</p>
-      </div>
-      <div class="grid grid--2 reveal" style="align-items:start;">
-        <div class="card" style="padding:var(--space-6);">
-          <h3 style="margin-bottom:var(--space-4);font-size:1.0625rem;">Professionals</h3>
-          <ul style="display:flex;flex-direction:column;gap:var(--space-2);color:var(--color-muted);font-size:0.9375rem;">
-            <li>QA specialists &amp; testers</li>
-            <li>IT managers, CIOs &amp; CTOs</li>
-            <li>Software developers &amp; engineers</li>
-            <li>Project managers &amp; business analysts</li>
-            <li>Digital transformation leaders</li>
-          </ul>
-        </div>
-        <div class="card" style="padding:var(--space-6);">
-          <h3 style="margin-bottom:var(--space-4);font-size:1.0625rem;">Industries represented</h3>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);">
-            <span class="badge">Banking &amp; Finance</span>
-            <span class="badge">Insurance</span>
-            <span class="badge">Fintech</span>
-            <span class="badge">Public Sector</span>
-            <span class="badge">Consulting &amp; Big 4</span>
-            <span class="badge">Telecom</span>
-            <span class="badge">Aviation</span>
-            <span class="badge">European Institutions</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 formats, same numbered-card treatment as the homepage teaser -->
-  <section class="section" aria-labelledby="formats-heading">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--cyan">Five ways to be seen</span>
-        <h2 id="formats-heading">Multiple formats, one full day.</h2>
-        <p>Conferences, booths, workshops, hands-on — pick the mix that fits your goals.</p>
-      </div>
-      <div class="grid grid--5 reveal">
-        <div class="card numbered-card">
-          <span class="numbered-card__num">01</span>
-          <h3 style="font-size:1.0625rem;">Keynotes</h3>
-          <p class="text-muted" style="font-size:0.9rem;">20-min slot in the main auditorium, full audience visibility.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">02</span>
-          <h3 style="font-size:1.0625rem;">Workshops</h3>
-          <p class="text-muted" style="font-size:0.9rem;">40-min hands-on session for a small, pre-registered group.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">03</span>
-          <h3 style="font-size:1.0625rem;">Panels</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Expert-led roundtables where sponsors can contribute an expert and gain visibility.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">04</span>
-          <h3 style="font-size:1.0625rem;">Booths &amp; live demos</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Dedicated space to meet domain experts, run demos, and present your services and tools.</p>
-        </div>
-        <div class="card numbered-card">
-          <span class="numbered-card__num">05</span>
-          <h3 style="font-size:1.0625rem;">Networking</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Evening cocktail, open access to testers and exhibitors.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Media reach, from the brochure page 9 -->
-  <section class="section section--alt" aria-labelledby="media-heading">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--purple">Your brand, amplified</span>
-        <h2 id="media-heading">Exclusive media partnership &amp; targeted digital reach.</h2>
-      </div>
-      <div class="grid grid--3 reveal">
-        <div class="card" style="padding:var(--space-6);text-align:center;">
-          <i class="fa-solid fa-newspaper" aria-hidden="true" style="font-size:1.75rem;color:var(--color-primary);"></i>
-          <h3 style="font-size:1.5rem;margin:var(--space-3) 0 0;">23K+</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Digital reach via our press partner, Silicon Luxembourg — on-site interviews and press coverage.</p>
-        </div>
-        <div class="card" style="padding:var(--space-6);text-align:center;">
-          <i class="fa-solid fa-envelope" aria-hidden="true" style="font-size:1.75rem;color:var(--color-primary);"></i>
-          <h3 style="font-size:1.5rem;margin:var(--space-3) 0 0;">3K+</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Curated, opt-in newsletter subscribers — QA &amp; IT decision-makers across Luxembourg, France, Belgium &amp; Germany.</p>
-        </div>
-        <div class="card" style="padding:var(--space-6);text-align:center;">
-          <i class="fab fa-linkedin-in" aria-hidden="true" style="font-size:1.75rem;color:var(--color-primary);"></i>
-          <h3 style="font-size:1.5rem;margin:var(--space-3) 0 0;">800+</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Active LinkedIn followers, growing fast — dedicated partner posts and live event-day coverage.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tier names only, no prices — see the head comment for why -->
-  <section class="section" aria-labelledby="tiers-heading">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--lime">Sponsorship tiers</span>
-        <h2 id="tiers-heading">Three ways to get involved.</h2>
-        <p>Every tier includes logo placement across all communications, on-site brand presence, and a roundtable seat. Higher tiers add more visibility and a bigger stage.</p>
-      </div>
-      <div class="grid grid--3 reveal">
-        <div class="card" style="padding:var(--space-6);">
-          <i class="fa-solid fa-medal" aria-hidden="true" style="color:#7a8799;font-size:1.5rem;"></i>
-          <h3 style="margin:var(--space-3) 0 var(--space-2);font-size:1.125rem;">Silver</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Logo &amp; on-site presence, roundtable seat, one video interview with the LSTE community.</p>
-        </div>
-        <div class="card" style="padding:var(--space-6);">
-          <i class="fa-solid fa-star" aria-hidden="true" style="color:#b8960c;font-size:1.5rem;"></i>
-          <h3 style="margin:var(--space-3) 0 var(--space-2);font-size:1.125rem;">Gold</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Everything in Silver, plus an exclusive Silicon Luxembourg interview, badge QR lead scanning, and an exhibition booth.</p>
-        </div>
-        <div class="card" style="padding:var(--space-6);">
-          <i class="fa-solid fa-trophy" aria-hidden="true" style="color:#8a94a6;font-size:1.5rem;"></i>
-          <h3 style="margin:var(--space-3) 0 var(--space-2);font-size:1.125rem;">Platinum</h3>
-          <p class="text-muted" style="font-size:0.9rem;">Everything in Gold, plus a 20-minute keynote slot, a larger booth, and your own hands-on workshop for up to 25 pre-registered attendees.</p>
-        </div>
-      </div>
-      <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Get full tier details &amp; pricing <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section section--alt" aria-labelledby="faq-heading">
-    <div class="container container--narrow">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--violet">FAQ</span>
-        <h2 id="faq-heading">Common questions from sponsors.</h2>
-      </div>
-      <div class="reveal">
-        <details class="faq-item" open>
-          <summary>What's included in each tier?</summary>
-          <p>Every tier includes logo placement, on-site presence, and a roundtable seat. Gold adds a Silicon Luxembourg interview, lead-scanning, and a booth; Platinum adds a keynote slot and your own hands-on workshop. <a href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Get in touch</a> for the full breakdown and pricing.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do sponsors get a speaking slot?</summary>
-          <p>Yes — Platinum includes a 20-minute keynote in the main auditorium plus a dedicated hands-on workshop, and every tier includes a seat on an expert roundtable panel.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How does lead capture work?</summary>
-          <p>Gold and Platinum sponsors get a badge QR scanner at their booth or workshop entry — scan a badge and get the attendee's name, company, and role instantly.</p>
-        </details>
-        <details class="faq-item">
-          <summary>When will I hear back?</summary>
-          <p>We typically respond to sponsorship enquiries within a couple of business days. Slots are limited, so it's worth reaching out early.</p>
-        </details>
-      </div>
+      <p class="text-center reveal"><a class="btn btn--outline" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Get full tier details &amp; pricing <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
