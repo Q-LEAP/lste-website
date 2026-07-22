@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#6d28d9">
-<link rel="stylesheet" href="../assets/css/styles.css?v=9e67f7cf">
+<link rel="stylesheet" href="../assets/css/styles.css?v=980a243f">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -175,9 +175,9 @@
 
       <div class="profile-tabs reveal" data-tabs>
         <div class="profile-tabs__list" role="tablist" aria-label="Choose how you're travelling to LSTE">
-          <button type="button" class="profile-tabs__tab" id="tab-car" role="tab" aria-selected="true" aria-controls="panel-car" tabindex="0"><span aria-hidden="true">🚗</span> By car</button>
-          <button type="button" class="profile-tabs__tab" id="tab-transit" role="tab" aria-selected="false" aria-controls="panel-transit" tabindex="-1"><span aria-hidden="true">🚆</span> By public transport</button>
-          <button type="button" class="profile-tabs__tab" id="tab-plane" role="tab" aria-selected="false" aria-controls="panel-plane" tabindex="-1"><span aria-hidden="true">✈️</span> By plane</button>
+          <button type="button" class="profile-tabs__tab" id="tab-car" role="tab" aria-selected="true" aria-controls="panel-car" tabindex="0"><i class="fa-solid fa-car" aria-hidden="true"></i> By car</button>
+          <button type="button" class="profile-tabs__tab" id="tab-transit" role="tab" aria-selected="false" aria-controls="panel-transit" tabindex="-1"><i class="fa-solid fa-train-tram" aria-hidden="true"></i> By public transport</button>
+          <button type="button" class="profile-tabs__tab" id="tab-plane" role="tab" aria-selected="false" aria-controls="panel-plane" tabindex="-1"><i class="fa-solid fa-plane-departure" aria-hidden="true"></i> By plane</button>
         </div>
 
         <div class="profile-tabs__panel" id="panel-car" role="tabpanel" aria-labelledby="tab-car">
@@ -224,7 +224,7 @@
         <div class="profile-tabs__panel" id="panel-plane" role="tabpanel" aria-labelledby="tab-plane" hidden>
           <div class="grid grid--3">
             <div class="card transport-card">
-              <div class="transport-card__icon transport-card__icon--emoji" aria-hidden="true">✈️</div>
+              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-plane-departure"></i></div>
               <h3 style="font-size:1.0625rem;">Findel Airport</h3>
               <p class="text-muted" style="font-size:0.9rem;">About 25 minutes from the venue, with two free options straight into town.</p>
             </div>
