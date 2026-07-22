@@ -198,6 +198,20 @@
   display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 1.375rem;
 }
+/* Ghost variant: no tile background, just a colored glyph that glows
+   (via drop-shadow, so the glow follows the icon's own color through
+   currentColor) when its parent card is hovered — used by
+   call-for-speakers' format cards instead of the solid icon tile. */
+.pillar-card__icon--ghost {
+  background: transparent;
+  width: auto; height: auto;
+  font-size: 1.75rem;
+  transition: filter var(--dur-base) var(--ease);
+}
+.card.pillar-card--tag:hover .pillar-card__icon--ghost { filter: drop-shadow(0 0 10px currentColor); }
+@media (prefers-reduced-motion: reduce) {
+  .pillar-card__icon--ghost { transition: none; }
+}
 
 /* ── Sponsor strip ───────────────────────────────────────────────── */
 .sponsor-strip { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; justify-content: center; }
