@@ -25,31 +25,9 @@
 .section--dark h1, .section--dark h2, .section--dark h3,
 .section--dark h4, .section--dark h5 { color: #fff; }
 
-/* .section--alt gets the Trace motif as a whole-section low-opacity
-   texture — the goal is for this band to read as a genuine rhythm break
-   (it carries LSTE's own graphic signature) rather than "background
-   colour that's barely different from the page". */
-.section--alt {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-surface-alt);
-}
-.section--alt::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: var(--motif-trace);
-  background-repeat: repeat;
-  background-size: 120px 60px;
-  opacity: 0.1;
-  pointer-events: none;
-}
-.section--alt .container { position: relative; z-index: 1; }
+.section--alt { background: var(--color-surface-alt); }
 
 .section--brand {
-  position: relative;
-  overflow: hidden;
   background: var(--gradient-hero);
   color: rgba(255, 255, 255, 0.92);
 }
@@ -63,28 +41,6 @@
 .section--brand--solid { background: var(--color-primary-dark); }
 .section--brand h1, .section--brand h2, .section--brand h3,
 .section--brand h4, .section--brand h5 { color: #fff; }
-/* Same Trace motif as .section--alt, replacing the previous single reused
-   corner logo-illustration — this is LSTE's own graphic language rather
-   than a repurposed logo mark, and it now reads as texture across the
-   whole band instead of one faint corner ghost. Stroke is baked in a
-   fixed brand colour (see tokens.css) rather than white, so it needs a
-   touch more opacity than .section--alt to register against the gradient. */
-.section--brand::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image: var(--motif-trace);
-  background-repeat: repeat;
-  background-size: 120px 60px;
-  opacity: 0.14;
-  pointer-events: none;
-  mix-blend-mode: soft-light;
-}
-.section--brand .container { position: relative; z-index: 1; }
-/* Opt out of the texture for tighter CTA strips where it doesn't have
-   room to breathe (e.g. the mid-page "Free to attend" nudge). */
-.section--brand--plain::before { display: none; }
 
 .eyebrow {
   display: inline-flex;
