@@ -448,6 +448,14 @@
 .press-card__body { padding: var(--space-5); }
 .press-card__body h3 { font-size: 1.0625rem; margin-bottom: var(--space-2); }
 .press-card--text-only .press-card__body { padding: var(--space-6); }
+/* For a partner/press-source logo rather than an event photo — its own
+   aspect ratio rarely matches 16:10, so crop-to-fill would slice off
+   half the wordmark. Contain it on a plain light tile instead. */
+.press-card__media--logo {
+  object-fit: contain;
+  background: #fff;
+  padding: var(--space-6);
+}
 
 /* ── Testimonials ────────────────────────────────────────────────── */
 .testimonial-card { padding: var(--space-6); }
