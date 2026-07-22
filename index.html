@@ -8,7 +8,7 @@ redirect_from:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>(function(){try{var t=localStorage.getItem("lste-theme");if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<script>(function(){try{var t=localStorage.getItem("lste-theme");document.documentElement.setAttribute("data-theme",t||"dark");}catch(e){}})();</script>
 <title>LSTE 2026: Luxembourg Software Testing Event</title>
 <meta name="description" content="LSTE 2026 is Luxembourg's premier software testing and QA conference, 8th edition, 26 November 2026, free to attend. Keynotes, workshops, and 400+ testing professionals.">
 <link rel="canonical" href="https://lste.lu/">
@@ -27,9 +27,9 @@ redirect_from:
 <link rel="icon" href="./assets/img/lste-logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="./manifest.json">
-  <meta name="theme-color" content="#5546ae">
+  <meta name="theme-color" content="#6d28d9">
 
-<link rel="stylesheet" href="./assets/css/styles.css?v=c6ef09db">
+<link rel="stylesheet" href="./assets/css/styles.css?v=c11fa96c">
 
 <script type="application/ld+json">
 {
@@ -76,15 +76,14 @@ redirect_from:
   <div class="container">
     <a class="site-logo" href="./index.html" aria-label="LSTE home">
       <img src="./assets/img/lste-logo.svg" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
+      <span class="site-logo__tag">'26</span>
     </a>
 
-    <!-- Trimmed to the 3 priority actions (Programme, Get your free ticket,
-         Venue) per the nav simplification pass — everything else lives in
-         the "More" dropdown / mobile hamburger. Speakers is intentionally
-         not linked here while that section is hidden (kept in code, see
-         speakers/index.html and the homepage speakers section). Dark-mode
-         toggle lives in the footer now, not here (client feedback: not
-         useful enough to earn a spot in the main nav). -->
+    <!-- Trimmed to a single CTA (Get your free ticket) per the new design —
+         everything else lives in the "More" dropdown / mobile hamburger.
+         Speakers is intentionally not linked here while that section is
+         hidden (kept in code, see speakers/index.html and the homepage
+         speakers section). Dark-mode toggle lives in the footer, not here. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="./schedule/index.html">Programme</a></li>
@@ -102,8 +101,7 @@ redirect_from:
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn--ghost header-speaker-btn" href="./become-a-sponsor/index.html">Become a sponsor</a>
-      <a class="btn btn--primary header-register-btn" href="./register/index.html">Get your free ticket</a>
+      <a class="btn btn--primary header-register-btn" href="./register/index.html">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -119,7 +117,6 @@ redirect_from:
     <li><a href="./sponsors/index.html">Sponsors</a></li>
     <li><a href="./gallery/index.html">Gallery</a></li>
     <li><a href="./contact/index.html">Contact</a></li>
-    <li><a class="btn btn--ghost btn--block" href="./become-a-sponsor/index.html">Become a sponsor</a></li>
     <li><a class="btn btn--primary btn--block" href="./register/index.html">Get your free ticket</a></li>
   </ul>
 </div>
@@ -132,7 +129,7 @@ redirect_from:
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__content">
-        <span class="eyebrow reveal is-visible">8th edition</span>
+        <span class="hero__eyebrow eyebrow reveal is-visible"><span class="hero__eyebrow-dot" aria-hidden="true"></span> 8th edition <span style="color:var(--color-cyan);">·</span> 2026</span>
         <h1 class="reveal is-visible">Luxembourg <span class="hero__highlight">Software Testing</span> Event</h1>
         <p class="hero__subtitle reveal is-visible">One day. 400+ QA professionals. Practical talks, live demos and real conversations.</p>
 
@@ -143,7 +140,14 @@ redirect_from:
 
         <div class="hero__actions reveal is-visible">
           <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn--outline btn--lg" href="./become-a-sponsor/index.html">Become a sponsor</a>
+          <a class="btn btn--outline btn--lg" href="./become-a-speaker/index.html">Submit a talk</a>
+        </div>
+
+        <div class="countdown hero__countdown reveal is-visible" data-countdown aria-label="Countdown to LSTE 2026">
+          <div class="countdown__item"><span class="countdown__value" data-cd-days>0</span><span class="countdown__unit">Days</span></div>
+          <div class="countdown__item"><span class="countdown__value" data-cd-hours>00</span><span class="countdown__unit">Hours</span></div>
+          <div class="countdown__item"><span class="countdown__value" data-cd-minutes>00</span><span class="countdown__unit">Minutes</span></div>
+          <div class="countdown__item countdown__item--live"><span class="countdown__value" data-cd-seconds>00</span><span class="countdown__unit">Seconds</span></div>
         </div>
       </div>
       <div class="hero__media reveal is-visible">
@@ -156,20 +160,12 @@ redirect_from:
     </div>
   </section>
 
-  <!-- LSTE 2025 in figures — replaces the countdown per client feedback:
-       a live countdown just repeated the date already shown in the Hero.
-       A quick "last edition, in numbers" band earns its place instead. -->
-  <section class="section section--dark stats-strip" aria-labelledby="figures-heading">
-    <div class="container text-center">
-      <span class="eyebrow eyebrow--on-dark">LSTE Luxembourg 2025, in figures</span>
-      <h2 id="figures-heading" class="text-white">A packed 7th edition.</h2>
-      <div class="grid grid--4 reveal" style="margin-top:var(--space-6);">
-        <div class="stat-item"><div class="stat-value">400+</div><div class="stat-label">Attendees</div></div>
-        <div class="stat-item"><div class="stat-value">60+</div><div class="stat-label">Organizations</div></div>
-        <div class="stat-item"><div class="stat-value">8</div><div class="stat-label">Keynotes</div></div>
-        <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">Live demos</div></div>
-      </div>
-    </div>
+  <!-- Stats -->
+  <section class="stats-row reveal" aria-label="LSTE in numbers">
+    <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-primary-light);">8th</div><div class="stats-row__label">Edition, since 2014</div></div>
+    <div class="stats-row__item"><div class="stats-row__value">400<span style="color:var(--color-lime);">+</span></div><div class="stats-row__label">Attendees per edition</div></div>
+    <div class="stats-row__item"><div class="stats-row__value">150<span style="color:var(--color-cyan);">+</span></div><div class="stats-row__label">Speakers over the years</div></div>
+    <div class="stats-row__item"><div class="stats-row__value">100<span style="color:var(--color-lime);">%</span></div><div class="stats-row__label">Free to attend</div></div>
   </section>
 
   <!-- Mission: text left, visual right — client feedback asked for this to
@@ -198,35 +194,35 @@ redirect_from:
        off the homepage now that the Sponsors teaser below is short. -->
   <section class="section" aria-labelledby="why-heading">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Why attend</span>
-        <h2 id="why-heading">What you'll experience at LSTE.</h2>
-        <p>LSTE isn't a general tech conference, it's the one day a year Luxembourg's entire QA community gathers in one room: 400+ testers, engineers, and QA leads from banking, insurance, telecom, and the public sector. Here's what a day on the inside looks like.</p>
+      <span class="eyebrow eyebrow--cyan reveal">// Why come</span>
+      <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
+        <h2 id="why-heading" style="margin:0;">What you'll experience at LSTE.</h2>
+        <p class="text-muted" style="margin:0;">LSTE isn't a general tech conference, it's the one day a year Luxembourg's entire QA community gathers in one room: 400+ testers, engineers, and QA leads from banking, insurance, telecom, and the public sector. Here's what a day on the inside looks like.</p>
       </div>
       <div class="grid grid--5 reveal">
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></div>
-          <h3 style="font-size:1.0625rem;">Keynotes</h3>
+        <div class="card pillar-card pillar-card--tag">
+          <span class="badge badge--keynote">Keynotes</span>
+          <h3 style="font-size:1.0625rem;">World-class keynotes</h3>
           <p class="text-muted" style="font-size:0.9rem;">Sit in on big-picture talks from speakers shaping where testing is headed next.</p>
         </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></div>
-          <h3 style="font-size:1.0625rem;">Workshops</h3>
+        <div class="card pillar-card pillar-card--tag">
+          <span class="badge badge--workshop">Workshops</span>
+          <h3 style="font-size:1.0625rem;">Hands-on workshops</h3>
           <p class="text-muted" style="font-size:0.9rem;">Get hands-on in small-group sessions you can put to work back at the office.</p>
         </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-comment-dots"></i></div>
-          <h3 style="font-size:1.0625rem;">Panels</h3>
+        <div class="card pillar-card pillar-card--tag">
+          <span class="badge badge--panel">Panels</span>
+          <h3 style="font-size:1.0625rem;">Practitioner panels</h3>
           <p class="text-muted" style="font-size:0.9rem;">Hear practitioners debate the calls that don't have easy answers.</p>
         </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-store"></i></div>
-          <h3 style="font-size:1.0625rem;">Exhibition</h3>
+        <div class="card pillar-card pillar-card--tag">
+          <span class="badge badge--exhibition">Exhibition</span>
+          <h3 style="font-size:1.0625rem;">Live exhibition</h3>
           <p class="text-muted" style="font-size:0.9rem;">Walk the floor and see the tools and platforms testing teams actually use.</p>
         </div>
-        <div class="card pillar-card">
-          <div class="pillar-card__icon" aria-hidden="true"><i class="fa-solid fa-champagne-glasses"></i></div>
-          <h3 style="font-size:1.0625rem;">Networking</h3>
+        <div class="card pillar-card pillar-card--tag">
+          <span class="badge badge--networking">Networking</span>
+          <h3 style="font-size:1.0625rem;">Real connections</h3>
           <p class="text-muted" style="font-size:0.9rem;">Turn the people in the room into your next go-to contacts, over the closing cocktail.</p>
         </div>
       </div>
@@ -329,8 +325,8 @@ redirect_from:
       </div>
       <div class="timeline reveal" style="max-width:640px;margin:0 auto;">
         <div class="timeline__item timeline__item--break"><span class="timeline__time">08:30</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-mug-hot"></i></span></span><div class="timeline__content"><p class="timeline__title">Registration &amp; welcome coffee</p></div></div>
-        <div class="timeline__item"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks</p><span class="badge">Keynote Room</span></div></div>
-        <div class="timeline__item timeline__item--demo"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></span></span><div class="timeline__content"><p class="timeline__title">Live demos &amp; tool showcases</p><span class="badge">Demo Room</span></div></div>
+        <div class="timeline__item"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-microphone-lines"></i></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks</p><span class="badge badge--keynote">Keynote Room</span></div></div>
+        <div class="timeline__item timeline__item--demo"><span class="timeline__time">09:15</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-laptop-code"></i></span></span><div class="timeline__content"><p class="timeline__title">Live demos &amp; tool showcases</p><span class="badge badge--demo">Demo Room</span></div></div>
         <div class="timeline__item timeline__item--break"><span class="timeline__time">12:45</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span></span><div class="timeline__content"><p class="timeline__title">Networking lunch</p></div></div>
         <div class="timeline__item timeline__item--break"><span class="timeline__time">17:30</span><span class="timeline__marker"><span class="timeline__dot timeline__dot--icon" aria-hidden="true"><i class="fa-solid fa-champagne-glasses"></i></span></span><div class="timeline__content"><p class="timeline__title">Closing ceremony &amp; networking drinks</p></div></div>
       </div>
@@ -338,26 +334,19 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Mid-page CTA nudge: solid brand purple (not the gradient) so it
-       doesn't repeat the exact hero/final-CTA treatment a third time. -->
-  <section class="section--brand section--brand--solid" style="padding:var(--space-8) 0;text-align:center;">
-    <div class="container">
-      <p class="text-white" style="font-family:var(--font-heading);font-weight:700;font-size:1.25rem;margin-bottom:var(--space-5);">Free to attend. Seats are limited, so register now.</p>
-      <a class="btn btn--white btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-    </div>
-  </section>
-
-  <!-- Sponsors teaser — kept deliberately short per client feedback: the
-       detailed "5 ways to be seen" pitch lives on /become-a-sponsor/ now,
-       not duplicated here. This block just points there. -->
-  <section class="section" aria-labelledby="sponsors-heading">
-    <div class="container text-center">
-      <div class="section-head reveal">
-        <span class="eyebrow">Become a sponsor</span>
-        <h2 id="sponsors-heading">Reach Luxembourg's QA community.</h2>
-        <p>Meet 400+ QA professionals and decision-makers in one focused day.</p>
+  <!-- Tickets CTA: one combined mid-page conversion moment (ticket +
+       sponsor) instead of two separate CTA sections back to back — the
+       detailed sponsor pitch still lives on /become-a-sponsor/, this
+       just points there. -->
+  <section class="tickets-cta" aria-labelledby="tickets-heading">
+    <div class="tickets-cta__glow" aria-hidden="true"></div>
+    <div class="container tickets-cta__inner reveal">
+      <span class="eyebrow eyebrow--lime">// Free registration open</span>
+      <h2 id="tickets-heading">Claim your seat before it's gone.</h2>
+      <div class="hero__actions" style="justify-content:center;">
+        <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="btn btn--outline btn--lg" href="./become-a-sponsor/index.html">Become a sponsor</a>
       </div>
-      <p class="reveal"><a class="btn btn--primary" href="./sponsors/index.html">Explore sponsorship opportunities <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
@@ -513,6 +502,7 @@ redirect_from:
       <ul>
         <li><a href="./privacy-policy/index.html">Privacy Policy</a></li>
       </ul>
+      <span class="footer-bottom__tag">Made in Luxembourg</span>
     </div>
   </div>
 </footer>
@@ -520,6 +510,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=01da4a87" defer></script>
+<script src="./assets/js/main.js?v=9eaa8a20" defer></script>
 </body>
 </html>

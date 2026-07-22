@@ -122,6 +122,39 @@
     });
   }
 
+  /* ── Countdown ─────────────────────────────────────────────── */
+  function initCountdown() {
+    const els = document.querySelectorAll('[data-countdown]');
+    if (!els.length) return;
+    const TARGET = new Date('2026-11-26T08:30:00+01:00').getTime();
+    const pad = (n) => String(n).padStart(2, '0');
+
+    function render(diff) {
+      const clamped = Math.max(diff, 0);
+      const days = Math.floor(clamped / 86400000);
+      const hours = Math.floor((clamped % 86400000) / 3600000);
+      const minutes = Math.floor((clamped % 3600000) / 60000);
+      const seconds = Math.floor((clamped % 60000) / 1000);
+      els.forEach((el) => {
+        const d = el.querySelector('[data-cd-days]');
+        const h = el.querySelector('[data-cd-hours]');
+        const m = el.querySelector('[data-cd-minutes]');
+        const s = el.querySelector('[data-cd-seconds]');
+        if (d) d.textContent = String(days);
+        if (h) h.textContent = pad(hours);
+        if (m) m.textContent = pad(minutes);
+        if (s) s.textContent = pad(seconds);
+      });
+    }
+
+    function tick() {
+      const diff = TARGET - Date.now();
+      render(diff);
+      if (diff > 0) setTimeout(tick, 1000);
+    }
+    tick();
+  }
+
   /* ── Animated stat counters ───────────────────────────────── */
   function initCounters() {
     const els = document.querySelectorAll('.stat-value');
@@ -490,6 +523,7 @@
     initAnnouncement();
     initMobileMenu();
     initNavDropdown();
+    initCountdown();
     initCounters();
     initReveal();
     initBackToTop();

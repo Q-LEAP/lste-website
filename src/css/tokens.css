@@ -1,35 +1,34 @@
 /* ==========================================================================
    LSTE Design Tokens
-   Brand source: LSTE Brand Guidelines.pdf — primary #5546AE + Open Sans.
-   The purple→pink gradient is kept as a secondary accent (sanctioned by the
-   guideline's own illustrated logo variant) — see plan §1 for rationale.
+   Brand source: Claude Design "LSTE Homepage" mockup (documentation/charte
+   graphique LSTE.pdf + its "charte renforcée" extension) — primary #6D28D9,
+   ink #17141F, near-white #FBFAFC, plus three functional accents (violet-400,
+   cyan, lime). Space Grotesk (headings) + Hanken Grotesk (body) + JetBrains
+   Mono (labels).
 
-   Theming: light (default) uses a soft, indigo-tinted neumorphic base with
-   sharp edges; dark ([data-theme="dark"]) mirrors it with a dark neu base.
-   Both keep the exact same brand hues, gradient, and typography — the
-   neumorphism only governs elevation/surfaces, never the brand identity.
+   Theming: DARK is now the default (the mockup's own look — ink page,
+   near-white text); [data-theme="light"] is the override, swapping to the
+   near-white page / ink text pairing. Same brand hue and typography in
+   both — theming only governs surface tone.
    ========================================================================== */
 
 /* Self-hosted webfonts (latin-subset variable woff2 files pulled from
    Google Fonts once, then served from our own origin) — removes the
    fonts.googleapis.com -> fonts.gstatic.com round trip and the two extra
-   DNS/TLS handshakes every page previously paid on top of preconnect.
-   Each file is a variable font; one @font-face with a weight range
-   covers every static weight the site actually uses (400/600/700/800
-   for Open Sans, 600/700 for Space Grotesk), same as Google's own CSS. */
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url('../fonts/open-sans-variable.woff2') format('woff2');
-}
+   DNS/TLS handshakes every page previously paid on top of preconnect. */
 @font-face {
   font-family: 'Space Grotesk';
   font-style: normal;
   font-weight: 600 700;
   font-display: swap;
   src: url('../fonts/space-grotesk-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/hanken-grotesk-variable.woff2') format('woff2');
 }
 @font-face {
   font-family: 'JetBrains Mono';
@@ -40,41 +39,42 @@
 }
 
 :root {
-  /* Brand color (identical in both themes) */
-  --color-primary:      #5546ae;
-  --color-primary-dark: #423685;
-  --color-primary-tint: #e6e2f6;
-  --color-accent:       #d90e90; /* pink end of the sanctioned gradient */
-  --color-accent-dark:  #a80a70; /* ≥4.5:1 on the light neu base, used for .eyebrow text — the gradient stop above stays untouched */
+  /* Brand color (identical in both themes unless noted) */
+  --color-primary:       #6d28d9;
+  --color-primary-dark:  #7c3aed; /* hover — brighter, reads against a dark bg */
+  --color-primary-tint:  #f1edfb; /* pale fill for badges/hovers on a light bg */
+  --color-primary-light: #8b5cf6; /* violet-400 — headline/accent highlight, same both themes */
+  --color-link:          #c4b5fd; /* default link color on dark bg */
 
-  --gradient-brand: linear-gradient(135deg, #5546ae 0%, #822ea8 55%, #d90e90 100%);
-  --gradient-hero:  linear-gradient(120deg, #423685 0%, #5546ae 45%, #822ea8 100%);
+  /* Functional accents (the charte's own "renforcée" extension) — used for
+     small eyebrows, dividers and single-word emphasis, never as a section
+     background or a brand color in its own right. */
+  --color-cyan: #22d3ee;
+  --color-lime: #a3e635;
 
-  /* Neutrals — light theme, indigo-tinted neumorphic base */
-  --color-ink:        #1b1830;
-  --color-body-text:  #494461; /* ≥4.5:1 on the neu base */
-  --color-muted:      #5c5776; /* ≥4.5:1 on the neu base */
-  --color-border:     #d7d3e6;
-  --color-surface:    #e9e7f1; /* neu base — surface == page bg for depth */
-  --color-surface-alt:#e3e1ee; /* slightly deeper band for rhythm */
-  --color-footer:     #14122a; /* dark in both themes */
-  --page-bg:          #e9e7f1;
-  --panel-invert:     #1b1830; /* .section--dark band; distinct per theme */
-  --header-bg:        rgba(233, 231, 241, 0.82); /* frosted neu bar */
+  /* Neutrals — dark theme (default) */
+  --color-ink:        #fbfafc; /* main text */
+  --color-body-text:  #b8b2c4; /* paragraph text */
+  --color-muted:      #9a94a8; /* discreet/label text */
+  --color-border:     rgba(255, 255, 255, 0.08);
+  --color-surface:    #1c1826; /* card surface */
+  --color-surface-alt:#211c2e;
+  --color-footer:     #100d16; /* dark in both themes */
+  --page-bg:          #17141f;
+  --panel-invert:     #100d16; /* a band darker than the page itself */
+  --header-bg:        rgba(23, 20, 31, 0.72); /* frosted header bar */
 
-  /* Neumorphism — dual light/dark shadow pair over the neu base */
-  --neu-light: #ffffff;
-  --neu-dark:  #c5c1d8;
+  /* Elevation — a light dual shadow (raised), tuned per theme */
+  --neu-light: #241f30;
+  --neu-dark:  #0d0b12;
 
-  /* Typography — Open Sans for body copy (per brand guidelines, unchanged).
-     Headings use Space Grotesk — a geometric, slightly engineered-feeling
-     display face that gives titles real character without breaking the
-     brand's sobriety; body text stays calm and readable. --font-mono
-     (JetBrains Mono) is a separate, narrowly-scoped accent used only for
-     small "technical" UI bits (eyebrows, countdown digits, badges, timeline
-     timestamps) — never for headings or body copy. */
-  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Space Grotesk', 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Typography — Space Grotesk for headings (bold, tight), Hanken Grotesk
+     for body copy (neutral, readable). --font-mono (JetBrains Mono) stays a
+     narrowly-scoped accent for small "technical" UI bits (eyebrows,
+     countdown digits, badges, timeline timestamps) — never headings or
+     body copy. */
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Space Grotesk', 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.25rem);
@@ -101,30 +101,19 @@
   --space-12: 5rem;
   --space-16: 7rem;
 
-  /* Shape — sharpened for the "sharp-edge" neumorphism direction */
+  /* Shape — sharpened for the "sharp-edge" direction */
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 10px;
   --radius-pill: 999px; /* brand CTAs/badges/chips stay pill-shaped */
 
-  /* Elevation — neumorphic dual shadow (raised). Inset variants defined in
+  /* Elevation — a light dual shadow (raised). Inset variants defined in
      the theme layer for pressed/inset fields. */
   --shadow-sm: 3px 3px 7px var(--neu-dark), -3px -3px 7px var(--neu-light);
   --shadow-md: 5px 5px 11px var(--neu-dark), -5px -5px 11px var(--neu-light);
   --shadow-lg: 8px 8px 18px var(--neu-dark), -6px -6px 16px var(--neu-light);
   --shadow-inset: inset 2px 2px 5px var(--neu-dark), inset -2px -2px 5px var(--neu-light);
-  --shadow-focus: 0 0 0 3px rgba(85, 70, 174, 0.45);
-
-  /* Signature graphic motif — "Trace": a thin stepped line evoking a
-     stack trace / signal path, with hollow checkpoint circles and one
-     filled accent dot standing in for "a passed check." Used as a very
-     low-opacity tiled texture (.section--alt/.section--brand, see
-     layout.css) and as a small inline glyph before .eyebrow labels — the
-     one piece of graphic language that's actually LSTE's own rather than
-     a reused logo mark or a generic icon. Baked at a fixed color per
-     theme (rather than currentColor) since it's a background-image, not
-     an inline element. */
-  --motif-trace: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40'%3E%3Cpath d='M0,20 L14,20 L22,6 L36,6 L44,34 L58,34 L66,20 L80,20' fill='none' stroke='%235546ae' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='14' cy='20' r='2.2' fill='none' stroke='%235546ae' stroke-width='1.5'/%3E%3Ccircle cx='22' cy='6' r='2.2' fill='none' stroke='%235546ae' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='6' r='2.6' fill='%23d90e90'/%3E%3Ccircle cx='44' cy='34' r='2.2' fill='none' stroke='%235546ae' stroke-width='1.5'/%3E%3Ccircle cx='58' cy='34' r='2.2' fill='none' stroke='%235546ae' stroke-width='1.5'/%3E%3Ccircle cx='66' cy='20' r='2.2' fill='none' stroke='%235546ae' stroke-width='1.5'/%3E%3C/svg%3E");
+  --shadow-focus: 0 0 0 3px rgba(109, 40, 217, 0.5);
 
   /* Motion */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -144,37 +133,32 @@
   --bp-lg: 1024px;
   --bp-xl: 1280px;
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
-/* ── Dark theme — dark neumorphic base, same brand identity ───────────── */
-:root[data-theme="dark"] {
-  /* Brand: lift the primary and the accent's text-legible variant a touch
-     for contrast on dark surfaces; the gradient itself is unchanged so the
-     DA stays intact. */
-  --color-primary:      #9a8be8;
-  --color-primary-dark: #7c6bd6;
-  --color-primary-tint: #2e2a45;
-  --color-accent-dark:  #f550ba; /* ≥4.5:1 on the dark neu base, used for .eyebrow text */
+/* ── Light theme — the override. Near-white page, ink text, same brand hue. */
+:root[data-theme="light"] {
+  --color-primary-dark: #5b21b6; /* darker hover, reads against a light bg */
+  --color-primary-tint: #f1edfb;
+  --color-link:         var(--color-primary);
 
-  --color-ink:        #f4f2fb;
-  --color-body-text:  #c9c5dc; /* ≥4.5:1 on the dark neu base */
-  --color-muted:      #a29dbb; /* ≥4.5:1 on the dark neu base */
-  --color-border:     #34314a;
-  --color-surface:    #262436;
-  --color-surface-alt:#211f2f;
-  --page-bg:          #262436;
-  --panel-invert:     #1c1a28;
+  --color-cyan: #0e7490; /* darkened for ≥4.5:1 on a light bg */
+  --color-lime: #3f6212; /* darkened for ≥4.5:1 on a light bg */
 
-  /* Trace motif recolored to the dark theme's own primary/accent so it
-     doesn't go a near-invisible dark-purple-on-near-black. */
-  --motif-trace: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40'%3E%3Cpath d='M0,20 L14,20 L22,6 L36,6 L44,34 L58,34 L66,20 L80,20' fill='none' stroke='%239a8be8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='14' cy='20' r='2.2' fill='none' stroke='%239a8be8' stroke-width='1.5'/%3E%3Ccircle cx='22' cy='6' r='2.2' fill='none' stroke='%239a8be8' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='6' r='2.6' fill='%23f550ba'/%3E%3Ccircle cx='44' cy='34' r='2.2' fill='none' stroke='%239a8be8' stroke-width='1.5'/%3E%3Ccircle cx='58' cy='34' r='2.2' fill='none' stroke='%239a8be8' stroke-width='1.5'/%3E%3Ccircle cx='66' cy='20' r='2.2' fill='none' stroke='%239a8be8' stroke-width='1.5'/%3E%3C/svg%3E");
+  --color-ink:        #17141f;
+  --color-body-text:  #514b5e;
+  --color-muted:      #6b6478; /* darker than the dark-theme value — same "discreet" role, tuned for contrast on white */
+  --color-border:     #ece9f1;
+  --color-surface:    #fbfafc;
+  --color-surface-alt:#f1edfb;
+  --page-bg:          #fbfafc;
+  --panel-invert:     #17141f;
+  --header-bg:        rgba(251, 250, 252, 0.82);
 
-  --header-bg:        rgba(38, 36, 54, 0.82);
-  --neu-light: #302d43;
-  --neu-dark:  #1a1826;
+  --neu-light: #ffffff;
+  --neu-dark:  #e3e0ea;
 
-  --shadow-focus: 0 0 0 3px rgba(154, 139, 232, 0.5);
+  --shadow-focus: 0 0 0 3px rgba(109, 40, 217, 0.45);
 
-  color-scheme: dark;
+  color-scheme: light;
 }

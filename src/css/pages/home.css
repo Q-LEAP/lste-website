@@ -1,16 +1,41 @@
 /* ── Home ────────────────────────────────────────────────────────── */
-/* Light, split layout (client feedback) — replaces the old full-bleed
-   photo + purple scrim. Photo is now a contained media box beside the
-   copy instead of a background, and text sits left-aligned throughout. */
+/* Split layout: copy left, photo right, text left-aligned throughout.
+   A soft violet radial glow sits behind the content — the one piece of
+   "decoration" the new charte allows (no gradients, no background
+   motifs, but a subtle blurred bloom reads as light, not pattern). */
 .hero {
+  position: relative;
+  overflow: hidden;
   padding-top: calc(var(--header-h) + var(--ann-h) + var(--space-12));
   padding-bottom: var(--space-12);
 }
-.hero__grid { display: grid; gap: var(--space-10); grid-template-columns: 1fr; align-items: center; }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -140px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.28), transparent 62%);
+  pointer-events: none;
+}
+.hero__grid { position: relative; display: grid; gap: var(--space-10); grid-template-columns: 1fr; align-items: center; }
 @media (min-width: 900px) {
   .hero__grid { grid-template-columns: 1.15fr 1fr; }
 }
 .hero__content { max-width: 560px; }
+.hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
+.hero__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-lime);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__eyebrow-dot { animation: none; }
+}
+@keyframes pulse-dot { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 .hero__content h1 {
   color: var(--color-ink);
   font-size: clamp(2.5rem, 4.5vw + 1rem, 4rem);
@@ -18,11 +43,11 @@
   letter-spacing: -0.02em;
 }
 /* One deliberate moment of brand colour in the whole hero — the actual
-   name of the discipline, not the whole headline. Flat brand purple
-   rather than the gradient-text-clip used on .stat-value: on a white
-   background a flat color reads cleaner than a diagonal gradient here. */
-.hero__highlight { color: var(--color-primary); }
-.hero__subtitle { font-size: 1.125rem; font-weight: 500; color: var(--color-muted); margin-top: var(--space-3); }
+   name of the discipline, not the whole headline. Violet-400 reads as a
+   clear, single accent against both the dark default page and the light
+   theme override. */
+.hero__highlight { color: var(--color-primary-light); }
+.hero__subtitle { font-size: 1.125rem; font-weight: 500; color: var(--color-body-text); margin-top: var(--space-3); }
 .hero__meta {
   display: flex;
   flex-wrap: wrap;
@@ -34,6 +59,7 @@
 }
 .hero__meta span { display: inline-flex; align-items: center; gap: var(--space-2); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: 0; }
+.hero__countdown { margin-top: var(--space-12); max-width: 620px; }
 .hero__media {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -46,7 +72,29 @@
 }
 
 /* ── Stats strip ─────────────────────────────────────────────────── */
-.stats-strip { padding: var(--space-10) 0; }
+/* A plain bordered row directly on the page background — no separate dark
+   band, since the page itself is dark by default now; a whole extra
+   "darker" section barely registers and isn't needed here. */
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+@media (min-width: 800px) {
+  .stats-row { grid-template-columns: repeat(4, 1fr); }
+}
+.stats-row__item {
+  padding: var(--space-8) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+.stats-row__item:last-child { border-bottom: none; }
+@media (min-width: 800px) {
+  .stats-row__item { border-right: 1px solid var(--color-border); border-bottom: none; }
+  .stats-row__item:last-child { border-right: none; }
+}
+.stats-row__value { font-family: var(--font-heading); font-weight: 700; font-size: clamp(2rem, 3vw + 1rem, 3.5rem); line-height: 1; color: var(--color-ink); }
+.stats-row__label { font-size: 0.9375rem; color: var(--color-body-text); margin-top: var(--space-3); }
 
 /* ── Generic "text + media" 2-column split, reused by any section that
    needs the venue-preview-style layout without being venue-specific. ── */
@@ -123,18 +171,25 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: var(--gradient-brand);
+  background: var(--color-primary);
   border-radius: var(--radius-pill);
   padding: 0.35em 0.85em;
 }
 
 /* ── Pillars ─────────────────────────────────────────────────────── */
 .pillar-card { padding: var(--space-6); text-align: center; }
+/* Homepage variant: a track .badge tag instead of a centered icon tile
+   (about/index.html still uses the centered icon-tile .pillar-card). */
+.pillar-card--tag { text-align: left; }
+.pillar-card--tag h3 { margin: var(--space-5) 0 var(--space-2); }
+/* Still used by about/index.html's own pillar grid (centered icon tiles) —
+   the homepage's cards use a .badge tag instead, but this rule stays for
+   that other page. */
 .pillar-card__icon {
   width: 56px; height: 56px;
   margin: 0 auto var(--space-4);
   border-radius: var(--radius-md);
-  background: var(--gradient-brand);
+  background: var(--color-primary);
   display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 1.375rem;
 }
@@ -210,7 +265,7 @@
 .news-card h3 { margin: 0 0 var(--space-2); font-size: 1.125rem; color: #fff; }
 .news-card__body p.text-muted { color: rgba(255, 255, 255, 0.8); }
 .news-card a.news-link { font-weight: 700; font-size: var(--fs-sm); color: #fff; }
-.news-card a.news-link:hover { color: var(--color-accent-tint, #ffc9e8); }
+.news-card a.news-link:hover { color: var(--color-primary-tint); }
 .news-card a.news-link:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 2px; }
 
 /* ── Venue preview ───────────────────────────────────────────────── */
@@ -282,3 +337,25 @@
 /* ── Final CTA ───────────────────────────────────────────────────── */
 .final-cta { text-align: center; padding: var(--space-12) 0; }
 .final-cta__actions { display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6); }
+
+/* ── Tickets CTA ─────────────────────────────────────────────────── */
+.tickets-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.tickets-cta__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(109, 40, 217, 0.22), transparent 65%);
+  pointer-events: none;
+}
+.tickets-cta__inner { position: relative; }
+.tickets-cta__inner h2 { max-width: 820px; margin: 0 auto; }
+.tickets-cta__inner .hero__actions { margin-top: var(--space-8); }
