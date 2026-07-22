@@ -150,9 +150,6 @@
    the Claude Design mockup's two-zone header instead of the previous
    three-zone logo/nav/actions spread. */
 @media (min-width: 1300px) {
-  /* Same max-width/padding as the plain .container (no header-only
-     override) — the logo needs to line up with the hero heading and
-     every other section directly below it, not sit in a wider box. */
   .main-nav { display: block; margin-left: auto; }
   .header-actions { margin-left: var(--space-8); }
 }
