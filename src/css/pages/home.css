@@ -322,7 +322,7 @@
   background: var(--color-surface);
   box-shadow: var(--shadow-md);
 }
-.sponsor-cta__content { max-width: 560px; }
+.sponsor-cta__content { max-width: 760px; }
 .sponsor-cta__content h2 { margin-top: var(--space-2); }
 .sponsor-cta__content p { margin-top: var(--space-3); margin-bottom: 0; }
 .sponsor-cta__actions { display: flex; flex-direction: column; gap: var(--space-3); flex-shrink: 0; }
