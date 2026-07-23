@@ -54,10 +54,26 @@
    same x-position as the header logo — instead of the centered
    .page-hero treatment used by every other inner-page type. Only the
    alignment changes; width/size of the hero photo, body copy and
-   nav buttons below are untouched. */
+   nav buttons below are untouched.
+
+   The article body/photo previously sat in a .container--narrow box,
+   which is centered *independently* of the outer .container — fine at
+   ~1440px (where the 1400px .container barely has room to recenter
+   anything), but on a genuinely wide viewport the two centered boxes
+   land at very different x-positions, so the article drifted well
+   left of the header logo. Fix: keep the wrapper as a plain, full
+   .container (identical box to the header's, so its left edge always
+   lines up with the logo at any viewport width) and constrain the
+   *children* to reading width directly, with no centering of their
+   own — block-level elements default to sitting flush at their
+   parent's left edge, so they hug the same x-position as the logo. */
 .page-hero--article { text-align: left; }
 .page-hero--article .breadcrumb { justify-content: flex-start; }
-.container.article-container { margin-left: 0; margin-right: auto; }
+.article-container > .article-hero-img,
+.article-container > .article-body,
+.article-container > .cluster {
+  max-width: var(--container-narrow);
+}
 
 .calendar-actions {
   display: flex;
