@@ -30,8 +30,10 @@ redirect_from:
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Is the conference really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the LSTE conference is completely free to attend, for everyone, with no ticket tiers. Get your ticket online to confirm your seat; it's made possible by our sponsors." } },
-    { "@type": "Question", "name": "Can I get an invoice for my ticket?", "acceptedAnswer": { "@type": "Answer", "text": "Tickets are free, so there's nothing to invoice. If your company needs a letter confirming your attendance, email hello@lste.lu." } }
+    { "@type": "Question", "name": "Is the event really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The event is completely free to attend. There are no ticket tiers, hidden fees or paid upgrades." } },
+    { "@type": "Question", "name": "What does my ticket include?", "acceptedAnswer": { "@type": "Answer", "text": "Your ticket includes access to all conference sessions, the demo room, exhibition stands, networking areas, refreshments and the evening cocktail reception." } },
+    { "@type": "Question", "name": "Can I attend only part of the event?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your ticket remains valid throughout the event, from 1:00 PM to 9:00 PM." } },
+    { "@type": "Question", "name": "What should I do if I can no longer attend?", "acceptedAnswer": { "@type": "Answer", "text": "Please cancel your registration or contact the event team so your place can be offered to someone else." } }
   ]
 }
 </script>
@@ -101,48 +103,44 @@ redirect_from:
 
 <main id="main">
 
+  <!-- Trimmed 2026-07-24 to a lean three-part page (hero → registration
+       block → FAQ) per the "réduire trop de contenu" request: the hero
+       carries the promise, the practical info and the primary CTA; the old
+       standalone "Important information" section was folded into the note
+       under the CTA, and the ticket card keeps only the essentials. -->
   <section class="page-hero page-hero--left">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Tickets</span></nav>
-      <h1>One day. One ticket. The full experience.</h1>
-      <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">Join us from 1:00 PM to 9:00 PM for an afternoon and evening of talks, live demos, networking and entertainment. Your free ticket includes access to the full event. Places are limited, so early registration is recommended.</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0;" aria-labelledby="important-heading">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--cyan">Important information</span>
-        <h2 id="important-heading">Free entry, limited capacity.</h2>
-        <p>Attendance is completely free, but registration is required.</p>
-        <p>Your ticket gives you access to the entire event from 1:00 PM to 9:00 PM. As capacity is limited, please register only if you plan to attend.</p>
+      <h1>Get your free ticket.</h1>
+      <p style="max-width:52ch;color:var(--color-body-text);font-size:1.125rem;">Join LSTE 2026 for talks, live demos, the exhibition area and the networking cocktail.</p>
+      <div class="hero__meta" style="margin:var(--space-5) 0 var(--space-6);">
+        <span><i class="fa-solid fa-calendar" aria-hidden="true"></i> 26 November 2026 · 13:00–21:00</span>
+        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hôtel Parc Belle-Vue · Luxembourg City</span>
       </div>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Register for free <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <p style="margin-top:var(--space-4);color:var(--color-muted);font-size:0.875rem;">Free registration. Limited capacity.</p>
     </div>
   </section>
 
-  <section class="section section--alt" aria-labelledby="pricing-heading">
+  <section class="section" style="padding-top:0;" aria-labelledby="ticket-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--lime">Your ticket</span>
-        <h2 id="pricing-heading">One ticket. Free for everyone.</h2>
-        <p>Every attendee receives the same full-access ticket.</p>
+        <h2 id="ticket-heading">One ticket. Full access.</h2>
       </div>
 
       <article class="card pricing-card reveal" style="max-width:460px;margin:0 auto;">
-        <h3 class="pricing-card__name">Conference ticket</h3>
-        <div class="pricing-card__price pricing-card__price--free">Free</div>
-        <span class="pricing-card__note">No credit card required</span>
-        <p style="font-weight:600;color:var(--color-ink);margin-bottom:var(--space-3);">Your free ticket includes:</p>
+        <p style="font-weight:600;color:var(--color-ink);margin-bottom:var(--space-3);">Your ticket includes:</p>
         <ul class="pricing-card__features">
           <li><i class="fa-solid fa-check" aria-hidden="true"></i> Conference sessions</li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Access to the demo room</li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Exhibition stands and partner areas</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Demo room</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Exhibition area</li>
           <li><i class="fa-solid fa-check" aria-hidden="true"></i> Coffee breaks and refreshments</li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Networking opportunities</li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Evening cocktail reception</li>
-          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certificate of attendance (on request)</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Networking cocktail</li>
         </ul>
-        <a class="btn btn--primary btn--block" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket</a>
+        <a class="btn btn--primary btn--block" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Register for free</a>
       </article>
     </div>
   </section>
@@ -161,10 +159,6 @@ redirect_from:
         <details class="faq-item">
           <summary>What does my ticket include?</summary>
           <p>Your ticket includes access to all conference sessions, the demo room, exhibition stands, networking areas, refreshments and the evening cocktail reception.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Do I need to register?</summary>
-          <p>Yes. Registration is required because the venue has limited capacity.</p>
         </details>
         <details class="faq-item">
           <summary>Can I attend only part of the event?</summary>
