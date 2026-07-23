@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=68373c7b">
+<link rel="stylesheet" href="./assets/css/styles.css?v=4058aa81">
 
 <script type="application/ld+json">
 {
@@ -150,7 +150,7 @@ redirect_from:
 
         <div class="hero__actions reveal is-visible">
           <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn--outline btn--lg" href="./become-a-speaker/index.html">Submit a talk</a>
+          <a class="btn btn--outline btn--lg" href="./become-a-sponsor/index.html">Become a sponsor</a>
         </div>
       </div>
     </div>
@@ -265,19 +265,20 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Sponsor CTA card -->
+  <!-- Sponsor CTA — matches the plain section-head + centered actions
+       pattern used by every other homepage block (Programme, News, etc.)
+       instead of the boxed card this used to be, which read as a
+       bolted-on widget rather than a native section. -->
   <section class="section" aria-labelledby="sponsor-cta-heading">
     <div class="container">
-      <div class="sponsor-cta reveal">
-        <div class="sponsor-cta__content">
-          <span class="eyebrow eyebrow--lime">Become a sponsor</span>
-          <h2 id="sponsor-cta-heading">Get your brand in front of Luxembourg's QA community.</h2>
-          <p class="text-muted">400+ testers, engineers and IT decision-makers from banking, insurance, telecom and the public sector — in one room.</p>
-        </div>
-        <div class="sponsor-cta__actions">
-          <a class="btn btn--primary" href="./become-a-sponsor/index.html">Become a sponsor <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn--outline" href="./sponsors/index.html">View all sponsors</a>
-        </div>
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--lime">Become a sponsor</span>
+        <h2 id="sponsor-cta-heading">Get your brand in front of Luxembourg's QA community.</h2>
+        <p>400+ testers, engineers and IT decision-makers from banking, insurance, telecom and the public sector — in one room.</p>
+      </div>
+      <div class="hero__actions reveal" style="justify-content:center;margin-top:var(--space-6);">
+        <a class="btn btn--primary" href="./become-a-sponsor/index.html">Become a sponsor <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="btn btn--outline" href="./sponsors/index.html">View all sponsors</a>
       </div>
     </div>
   </section>
