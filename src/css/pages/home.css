@@ -1,9 +1,11 @@
 /* ── Home ────────────────────────────────────────────────────────── */
-/* Single-column hero, text left-aligned, no photo — matches the Claude
-   Design mockup's layout. A soft violet radial glow sits behind the
-   content — the one piece of "decoration" the new charte allows (no
-   gradients, no background motifs, but a subtle blurred bloom reads
-   as light, not pattern). */
+/* Text left-aligned, matching the Claude Design mockup's layout. A soft
+   violet radial glow sits behind the content — the one piece of
+   "decoration" the new charte allows (no gradients, no background
+   motifs, but a subtle blurred bloom reads as light, not pattern).
+   A single loop clip sits beside the title at desktop widths (below
+   the text on mobile, stacked in DOM order) — same .js-ambient-video
+   lazy-play pattern as the atmosphere section further down. */
 .hero {
   position: relative;
   overflow: hidden;
@@ -22,6 +24,24 @@
 }
 .hero__grid { position: relative; }
 .hero__content { max-width: 1280px; }
+.hero__media {
+  margin-top: var(--space-10);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 16 / 9;
+  background: var(--color-ink);
+}
+.hero__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (min-width: 900px) {
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-10);
+    align-items: center;
+  }
+  .hero__media { margin-top: 0; }
+}
 .hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
 .hero__content h1 {
   color: var(--color-ink);
