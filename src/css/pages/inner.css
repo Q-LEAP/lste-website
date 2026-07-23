@@ -50,6 +50,15 @@
 
 .page-hero h1 { text-transform: uppercase; }
 
+/* Blog/news articles: text blocks align to the site's left edge — the
+   same x-position as the header logo — instead of the centered
+   .page-hero treatment used by every other inner-page type. Only the
+   alignment changes; width/size of the hero photo, body copy and
+   nav buttons below are untouched. */
+.page-hero--article { text-align: left; }
+.page-hero--article .breadcrumb { justify-content: flex-start; }
+.container.article-container { margin-left: 0; margin-right: auto; }
+
 .calendar-actions {
   display: flex;
   align-items: center;
