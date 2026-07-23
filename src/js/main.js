@@ -124,18 +124,25 @@
 
   /* ── Animated stat counters ───────────────────────────────── */
   function initCounters() {
-    const els = document.querySelectorAll('.stat-value');
+    const els = document.querySelectorAll('.stat-value, .stats-row__value');
     if (!els.length) return;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function animate(el) {
-      const text = el.textContent.trim();
-      const match = text.match(/^([\d,]+)(.*)$/);
-      if (!match) return;
-      const target = parseInt(match[1].replace(/,/g, ''), 10);
-      const suffix = match[2];
-      const hasComma = match[1].includes(',');
-      const looksLikeYear = suffix === '' && match[1].length === 4 && target > 1900 && target < 2100;
+      // The number lives in the element's leading text node; a trailing
+      // "+"/"%"/"th" suffix is its own colored <span> sibling. Only the
+      // text node gets mutated during the count-up — previously this set
+      // el.textContent wholesale, which flattened out and destroyed that
+      // suffix span's own color on every animation run.
+      const numNode = el.childNodes[0];
+      if (!numNode || numNode.nodeType !== Node.TEXT_NODE) return;
+      const numText = numNode.textContent.trim();
+      if (!/^[\d,]+$/.test(numText)) return;
+
+      const target = parseInt(numText.replace(/,/g, ''), 10);
+      const hasComma = numText.includes(',');
+      const suffix = el.textContent.trim().slice(numText.length);
+      const looksLikeYear = suffix === '' && numText.length === 4 && target > 1900 && target < 2100;
       // Ordinals (e.g. "8th") aren't a quantity to count up to — animating
       // the numeral alone produces grammatically wrong intermediates like
       // "1th, 2th, 3th" before landing on the real suffix.
@@ -148,7 +155,7 @@
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         const value = Math.round(target * eased);
-        el.textContent = (hasComma ? value.toLocaleString('en-US') : value) + suffix;
+        numNode.textContent = hasComma ? value.toLocaleString('en-US') : String(value);
         if (progress < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
