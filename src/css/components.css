@@ -179,7 +179,11 @@
 
 /* ── "More" dropdown ───────────────────────────────────────────────── */
 .main-nav-item--dropdown { position: relative; }
-.main-nav-link--dropdown { display: inline-flex; align-items: center; gap: 0.4em; }
+/* <button> defaults to line-height:normal in every browser's UA
+   stylesheet, unlike the <a> siblings which inherit the body's
+   line-height — made "More" sit visibly higher than the rest of the
+   nav despite identical padding. */
+.main-nav-link--dropdown { display: inline-flex; align-items: center; gap: 0.4em; line-height: inherit; }
 .main-nav-link--dropdown i { font-size: 0.7em; transition: transform var(--dur-fast) var(--ease); }
 .main-nav-link--dropdown[aria-expanded="true"] i { transform: rotate(180deg); }
 .main-nav-link--dropdown[aria-expanded="true"] { color: var(--color-primary); }
