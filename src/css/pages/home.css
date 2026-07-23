@@ -43,7 +43,7 @@
 @media (min-width: 900px) {
   .hero__grid {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: 1.6fr 1fr;
     gap: var(--space-10);
     align-items: center;
   }
@@ -65,6 +65,22 @@
   font-size: var(--fs-hero);
   line-height: 0.96;
   letter-spacing: -0.03em;
+}
+/* --fs-hero is tuned against the viewport, but once the video sits beside
+   the title (900px+) the actual text column is whatever's left of the
+   1.6fr/1fr grid — anywhere from ~475px (just past 900px) to ~783px
+   (container maxed out) — which tracks viewport width far more loosely
+   than a vw-based clamp assumes. Left as --fs-hero, "Software Testing
+   Event" wrapped to a 3rd line across most of that range instead of the
+   intended Luxembourg / Software Testing Event two-liner. A container
+   query sized off .hero__content's own (post-grid) width fixes this
+   properly instead of guessing another viewport breakpoint — lands
+   ~64-68px at laptop widths (1280-1440px) and caps ~72px on wider
+   desktops, per the original brief. Scoped to the homepage hero only —
+   other pages' .page-hero h1 still use the shared, uncapped --fs-hero. */
+@media (min-width: 900px) {
+  .hero__content { container-type: inline-size; }
+  .hero__content h1 { font-size: clamp(2.5rem, 9.15cqw, 4.5rem); }
 }
 /* One deliberate moment of brand colour in the whole hero — the actual
    name of the discipline, not the whole headline. Violet-400 reads as a
