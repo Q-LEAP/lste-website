@@ -420,8 +420,24 @@
   text-transform: uppercase;
   padding: 0.3em 0.7em;
   border-radius: var(--radius-sm);
+  box-shadow: 0 6px 16px -4px rgba(163, 230, 53, 0.5);
 }
 .card:hover { box-shadow: var(--shadow-md); }
+
+/* Same violet lift + ring language as .card.pillar-card--tag:hover — the
+   tier cards previously fell back to the plain .card:hover (which even
+   flattened the featured ring back to a plain shadow), reading as inert. */
+.numbered-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.3), 0 20px 40px -12px rgba(109, 40, 217, 0.35);
+}
+.numbered-card--featured:hover {
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.55), 0 26px 50px -12px rgba(109, 40, 217, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .numbered-card, .numbered-card:hover { transition: none; transform: none; }
+}
 
 .stat-item { text-align: center; }
 .stat-item .stat-value {
