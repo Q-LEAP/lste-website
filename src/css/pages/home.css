@@ -34,11 +34,17 @@
   to { opacity: 1; transform: scale(1); }
 }
 .hero__media {
+  position: relative;
   margin-top: var(--space-10);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.28), 0 25px 60px -18px rgba(109, 40, 217, 0.5);
-  aspect-ratio: 16 / 9;
+  /* Taller/narrower on mobile — a deliberate crop into something closer
+     to a vertical video, not the same 16:9 frame just squeezed narrower.
+     Fine if that crops out the sides of the source; see the 900px+
+     override below for the original wide frame once the video sits
+     beside the title instead of stacked full-width. */
+  aspect-ratio: 3 / 4;
   background: var(--color-ink);
   animation: hero-media-reveal 1100ms var(--ease) 150ms both;
 }
@@ -50,6 +56,16 @@
   transition: transform var(--dur-slow) var(--ease);
 }
 .hero__media:hover video { transform: scale(1.035); }
+/* Subtle bottom-to-transparent scrim — same "dark vignette" language as
+   .atmosphere-video's own caption scrim further down, just without a
+   caption sitting on it here; softens the video into its card instead of
+   a hard-cropped rectangle of footage. */
+.hero__media-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 12, 30, 0) 55%, rgba(15, 12, 30, 0.55) 100%);
+  pointer-events: none;
+}
 @media (min-width: 900px) {
   .hero__grid {
     display: grid;
@@ -57,7 +73,7 @@
     gap: var(--space-10);
     align-items: center;
   }
-  .hero__media { margin-top: 0; }
+  .hero__media { margin-top: 0; aspect-ratio: 16 / 9; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__media { animation: none; opacity: 1; transform: none; }
