@@ -216,11 +216,15 @@
 .header-register-btn { padding: 0.55rem 1.125rem; }
 
 /* Below ~480px, logo + toggle + Register + hamburger no longer all fit at
-   the default header spacing — tighten just enough to avoid the overflow. */
+   the default header spacing. Rather than keep squeezing the button
+   smaller, drop it entirely on phones — the mobile-nav-panel (opened via
+   the hamburger, still visible here) has its own full-width "Get your
+   free ticket" button as the very last item, so the action is still one
+   tap away, just not duplicated in the cramped top bar. */
 @media (max-width: 479px) {
   .site-header .container { gap: var(--space-2); padding: 0 var(--space-4); }
   .header-actions { gap: var(--space-2); }
-  .header-register-btn { padding: 0.5rem 0.85rem; }
+  .header-register-btn { display: none; }
 }
 
 .nav-toggle {
