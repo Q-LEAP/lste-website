@@ -1,113 +1,57 @@
 /* ── Home ────────────────────────────────────────────────────────── */
-/* Text left-aligned, matching the Claude Design mockup's layout. A soft
-   violet radial glow sits behind the content — the one piece of
-   "decoration" the new charte allows (no gradients, no background
-   motifs, but a subtle blurred bloom reads as light, not pattern).
-   A single loop clip sits beside the title at desktop widths (below
-   the text on mobile, stacked in DOM order) — same .js-ambient-video
-   lazy-play pattern as the atmosphere section further down. */
+/* Full-bleed background video behind the whole hero, not a boxed clip
+   beside the title — a discreet, ambient backdrop rather than a second
+   focal point. A flat, on-brand dark veil (site's own ink, not pure
+   black) sits between the video and the text so the video stays subtle
+   and every page's usual light-ink-on-dark-page contrast still holds. */
 .hero {
   position: relative;
   overflow: hidden;
+  min-height: min(82vh, 720px);
   padding-top: calc(var(--header-h) + var(--ann-h) + var(--space-12));
   padding-bottom: var(--space-12);
 }
-.hero::before {
-  content: '';
+@keyframes hero-bg-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero__bg {
   position: absolute;
-  top: -140px;
-  right: -120px;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(109, 40, 217, 0.28), transparent 62%);
-  pointer-events: none;
-}
-.hero__grid { position: relative; }
-.hero__content { max-width: 1280px; }
-/* Load-in reveal, in the spirit of parisgamesweek.com's hero visual
-   growing into place — the video scales up from slightly cropped/faded
-   into its full frame once on page load. Separate from .reveal (which
-   only fires on scroll and is pre-satisfied here via is-visible), so it
-   runs unconditionally via a keyframe animation instead of a transition. */
-@keyframes hero-media-reveal {
-  from { opacity: 0; transform: scale(0.86); }
-  to { opacity: 1; transform: scale(1); }
-}
-.hero__media {
-  position: relative;
-  margin-top: var(--space-10);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.28), 0 25px 60px -18px rgba(109, 40, 217, 0.5);
-  /* Taller/narrower on mobile — a deliberate crop into something closer
-     to a vertical video, not the same 16:9 frame just squeezed narrower.
-     Fine if that crops out the sides of the source; see the 900px+
-     override below for the original wide frame once the video sits
-     beside the title instead of stacked full-width. */
-  aspect-ratio: 3 / 4;
-  background: var(--color-ink);
-  animation: hero-media-reveal 1100ms var(--ease) 150ms both;
-}
-.hero__media video {
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform var(--dur-slow) var(--ease);
+  z-index: 0;
+  animation: hero-bg-reveal 1200ms var(--ease) both;
 }
-.hero__media:hover video { transform: scale(1.035); }
-/* Subtle bottom-to-transparent scrim — same "dark vignette" language as
-   .atmosphere-video's own caption scrim further down, just without a
-   caption sitting on it here; softens the video into its card instead of
-   a hard-cropped rectangle of footage. */
-.hero__media-scrim {
+.hero__veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 12, 30, 0) 55%, rgba(15, 12, 30, 0.55) 100%);
+  z-index: 1;
+  background: rgba(15, 12, 30, 0.7);
   pointer-events: none;
 }
-@media (min-width: 900px) {
-  .hero__grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: var(--space-10);
-    align-items: center;
-  }
-  .hero__media { margin-top: 0; aspect-ratio: 16 / 9; }
-}
 @media (prefers-reduced-motion: reduce) {
-  .hero__media { animation: none; opacity: 1; transform: none; }
-  .hero__media video { transition: none; }
-  .hero__media:hover video { transform: none; }
+  .hero__bg { animation: none; opacity: 1; }
+}
+.hero__inner { position: relative; z-index: 2; }
+/* Deliberately narrower than the container, not full-width — reads as a
+   contained text block sitting over the video/photo rather than copy
+   spanning the whole viewport, same convention as most video-hero
+   treatments. Sized off its own width via a container query so
+   "Software Testing Event" reliably stays on one line (the two-liner
+   this site always wants: Luxembourg / Software Testing Event) instead
+   of guessing a viewport breakpoint. */
+.hero__content {
+  max-width: 50rem;
+  container-type: inline-size;
 }
 .hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
 .hero__content h1 {
   color: var(--color-ink);
-  /* --fs-hero (tokens.css): tuned so laptop widths (~1366-1440px) land
-     around 64-68px and large desktop monitors (~1920px+) cap at ~76px —
-     smaller than the previous 112px ceiling, so the tagline, practical
-     info and stats strip fit within the first screen alongside it.
-     Shared with .page-hero h1 so every page's title reads at the same
-     scale. */
-  font-size: var(--fs-hero);
+  font-size: clamp(2.5rem, 9cqw, 4.75rem);
   line-height: 0.96;
   letter-spacing: -0.03em;
-}
-/* --fs-hero is tuned against the viewport, but once the video sits beside
-   the title (900px+) the actual text column is whatever's left of the
-   1.6fr/1fr grid — anywhere from ~475px (just past 900px) to ~783px
-   (container maxed out) — which tracks viewport width far more loosely
-   than a vw-based clamp assumes. Left as --fs-hero, "Software Testing
-   Event" wrapped to a 3rd line across most of that range instead of the
-   intended Luxembourg / Software Testing Event two-liner. A container
-   query sized off .hero__content's own (post-grid) width fixes this
-   properly instead of guessing another viewport breakpoint — lands
-   ~64-68px at laptop widths (1280-1440px) and caps ~72px on wider
-   desktops, per the original brief. Scoped to the homepage hero only —
-   other pages' .page-hero h1 still use the shared, uncapped --fs-hero. */
-@media (min-width: 900px) {
-  .hero__content { container-type: inline-size; }
-  .hero__content h1 { font-size: clamp(2.5rem, 9.15cqw, 4.5rem); }
 }
 /* One deliberate moment of brand colour in the whole hero — the actual
    name of the discipline, not the whole headline. Violet-400 reads as a

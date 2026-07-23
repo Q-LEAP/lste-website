@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=a3543a8a">
+<link rel="stylesheet" href="./assets/css/styles.css?v=7a0e0507">
 
 <script type="application/ld+json">
 {
@@ -133,9 +133,14 @@ redirect_from:
 
 <main id="main">
 
-  <!-- Hero -->
+  <!-- Hero: full-bleed background video (discreet ambient backdrop, not a
+       boxed clip beside the title) with a flat dark veil for legibility,
+       text on top. Same .js-ambient-video lazy-play pattern as the
+       atmosphere section further down. -->
   <section class="hero">
-    <div class="container hero__grid">
+    <video class="hero__bg js-ambient-video" data-src="./assets/vid/LSTE_hero_background_1920x1080.mp4" poster="./assets/img/lste-2026-hero-bg-poster-800.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="hero__veil" aria-hidden="true"></div>
+    <div class="container hero__inner">
       <div class="hero__content">
         <span class="hero__eyebrow eyebrow eyebrow--cyan reveal is-visible">8th edition</span>
         <h1 class="reveal is-visible">Luxembourg<br><span class="hero__highlight">Software Testing</span> Event</h1>
@@ -150,11 +155,6 @@ redirect_from:
           <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           <a class="btn btn--outline btn--lg" href="./become-a-sponsor/index.html">Become a sponsor</a>
         </div>
-      </div>
-
-      <div class="hero__media reveal is-visible">
-        <video class="js-ambient-video" data-src="./assets/vid/LSTE_hero_background_1920x1080.mp4" poster="./assets/img/lste-2026-hero-bg-poster-800.jpg" muted loop playsinline preload="none" aria-label="Attendees at LSTE"></video>
-        <div class="hero__media-scrim" aria-hidden="true"></div>
       </div>
     </div>
   </section>
