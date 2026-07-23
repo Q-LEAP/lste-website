@@ -227,6 +227,16 @@
 @media (prefers-reduced-motion: reduce) {
   .card.pillar-card--tag, .card.pillar-card--tag:hover, .pillar-card--tag .badge { transition: none; transform: none; }
 }
+/* Optional numbered header row (badge left, numeral right) — used where
+   a 4-card grid benefits from an explicit 01-04 order cue. */
+.pillar-card__head { display: flex; align-items: center; justify-content: space-between; }
+.pillar-card__num { font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; color: var(--color-border); }
+/* Emphasis variant — same violet lift language as .pricing-card--featured,
+   for the one card in a row that should read as the standout pick. */
+.card.pillar-card--tag.pillar-card--featured {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.25), 0 20px 40px -14px rgba(109, 40, 217, 0.4);
+}
 /* Still used by about/index.html's own pillar grid (centered icon tiles) —
    the homepage's cards use a .badge tag instead, but this rule stays for
    that other page. */

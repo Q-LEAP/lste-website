@@ -399,6 +399,28 @@
   margin-bottom: var(--space-3);
   color: var(--color-primary-light);
 }
+/* Emphasis variant — same violet lift as .pricing-card--featured/
+   .pillar-card--featured, with a corner ribbon instead of a top-center
+   one (numbered-card is left-aligned, not centered). */
+.numbered-card--featured {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.25), 0 20px 40px -14px rgba(109, 40, 217, 0.4);
+}
+.numbered-card--featured::after { background: var(--color-primary-light); }
+.numbered-card__ribbon {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: var(--color-lime);
+  color: var(--page-bg);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3em 0.7em;
+  border-radius: var(--radius-sm);
+}
 .card:hover { box-shadow: var(--shadow-md); }
 
 .stat-item { text-align: center; }
@@ -410,6 +432,13 @@
   line-height: 1;
 }
 .stat-item .stat-label { color: var(--color-body-text); font-size: 0.9375rem; margin-top: var(--space-2); }
+/* Left-bordered, left-aligned block instead of centered — used where a
+   stats row sits directly under a left-aligned section intro. */
+.stat-item--bordered {
+  text-align: left;
+  border-left: 2px solid rgba(163, 230, 53, 0.5);
+  padding-left: var(--space-5);
+}
 
 .avatar-initials {
   width: 96px; height: 96px;
@@ -691,4 +720,39 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
+}
+
+/* ── CTA banner ──────────────────────────────────────────────────────
+   A boxed, text-left/button-right closing CTA — a contained card sitting
+   within the page's normal content flow, as opposed to .tickets-cta's
+   full-bleed band (used sitewide). For pages where a boxed final CTA
+   reads better than a full-width divider band. */
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, var(--color-surface-alt), var(--color-surface));
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10) var(--space-8);
+}
+.cta-banner__glow {
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(163, 230, 53, 0.14), transparent 65%);
+  pointer-events: none;
+}
+.cta-banner__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+.cta-banner__text { max-width: 560px; }
+.cta-banner .btn { white-space: nowrap; }
+@media (max-width: 700px) {
+  .cta-banner__inner { flex-direction: column; align-items: flex-start; }
+  .cta-banner .btn { white-space: normal; width: 100%; text-align: center; }
 }

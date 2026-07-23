@@ -20,7 +20,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=bbee9836">
+<link rel="stylesheet" href="../assets/css/styles.css?v=04508943">
 </head>
 <body>
 
@@ -87,52 +87,72 @@
 
 <main id="main">
 
-  <!-- Rewritten 2026-07-23: restructured to match the brochure's own IA
-       (hero -> why sponsor -> key figures -> package tiers -> final CTA)
-       instead of the previous 2-dense-block condensation. Content still
-       drawn from documentation/archives/LSTE_2026_Sponsor_Brochure.pdf
-       (full history at ba53315), reworded for the site's voice rather
-       than copied. Deliberately no € amounts — same "no public pricing"
-       convention already used by the homepage sponsors section and
-       /sponsors/: tier names are public, exact pricing lives behind the
-       contact flow. -->
+  <!-- Restructured 2026-07-24 to match the positioning of the "LSTE
+       Sponsor One-Pager" mockup (Claude Design project bb057228), using
+       our own components/tokens rather than the mockup's literal
+       styling: side-by-side section intros, numbered/featured cards,
+       bordered stat blocks, a boxed final CTA. Content still drawn from
+       documentation/archives/LSTE_2026_Sponsor_Brochure.pdf, reworded
+       for the site's voice. Deliberately no € amounts — same
+       "no public pricing" convention used elsewhere: tier names are
+       public, exact pricing lives behind the contact flow. -->
   <section class="page-hero page-hero--left">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Become a Sponsor</span></nav>
       <h1>Become an LSTE sponsor</h1>
       <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">Connect with Luxembourg's entire QA and testing community in one focused, high-impact event.</p>
+      <div style="margin-top:var(--space-6);display:flex;gap:var(--space-4);justify-content:flex-start;flex-wrap:wrap;">
+        <a class="btn btn--primary btn--lg" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Request the sponsorship prospectus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="btn btn--outline btn--lg" href="../sponsors/index.html">View current sponsors</a>
+      </div>
     </div>
   </section>
 
   <!-- Why sponsor: 4-card breakdown (audience/visibility/leads/networking)
-       replaces the previous single dense paragraph — same .pillar-card
-       "why come" pattern the homepage already uses, so this reads as the
-       sponsor's-side mirror of that section rather than a one-off. -->
+       — same .pillar-card "why come" pattern the homepage already uses,
+       so this reads as the sponsor's-side mirror of that section. Head
+       and paragraph sit side by side (section-head--split), and each
+       card carries an 01-04 order cue; Networking (04) gets the
+       featured violet-lift treatment as the standout close. -->
   <section class="section" style="padding-top:0;" aria-labelledby="why-heading">
     <div class="container">
-      <div class="section-head section-head--left reveal">
-        <span class="eyebrow eyebrow--lime">Why sponsor LSTE</span>
-        <h2 id="why-heading">One event. Multiple channels. Maximum ROI.</h2>
+      <div class="section-head section-head--split reveal">
+        <div>
+          <span class="eyebrow eyebrow--lime">Why sponsor LSTE</span>
+          <h2 id="why-heading">One event. Multiple channels. Maximum ROI.</h2>
+        </div>
         <p>Reach a highly targeted audience of QA professionals, IT leaders and decision-makers from finance, telecom, government and technology. Gain visibility throughout the day with booths, keynotes, workshops and networking opportunities.</p>
       </div>
       <div class="grid grid--4 reveal">
         <div class="card pillar-card pillar-card--tag">
-          <span class="badge badge--audience">Audience</span>
+          <div class="pillar-card__head">
+            <span class="badge badge--audience">Audience</span>
+            <span class="pillar-card__num">01</span>
+          </div>
           <h3 style="font-size:1.0625rem;">Targeted audience</h3>
           <p class="text-muted" style="font-size:0.9rem;">Every attendee is a QA professional — testers, engineers, IT managers, CIOs and CTOs, and digital transformation leaders from banking, insurance, fintech, telecom and the public sector.</p>
         </div>
         <div class="card pillar-card pillar-card--tag">
-          <span class="badge badge--visibility">Visibility</span>
+          <div class="pillar-card__head">
+            <span class="badge badge--visibility">Visibility</span>
+            <span class="pillar-card__num">02</span>
+          </div>
           <h3 style="font-size:1.0625rem;">Visibility</h3>
           <p class="text-muted" style="font-size:0.9rem;">A full day of booths, keynotes and workshops, plus reach beyond the event itself through Silicon Luxembourg, our newsletter and LinkedIn.</p>
         </div>
         <div class="card pillar-card pillar-card--tag">
-          <span class="badge badge--leads">Leads</span>
+          <div class="pillar-card__head">
+            <span class="badge badge--leads">Leads</span>
+            <span class="pillar-card__num">03</span>
+          </div>
           <h3 style="font-size:1.0625rem;">Lead generation</h3>
           <p class="text-muted" style="font-size:0.9rem;">Meet decision-makers face to face all day, with badge QR lead-scanning on Gold and Platinum tiers to keep every conversation traceable.</p>
         </div>
-        <div class="card pillar-card pillar-card--tag">
-          <span class="badge badge--networking">Networking</span>
+        <div class="card pillar-card pillar-card--tag pillar-card--featured">
+          <div class="pillar-card__head">
+            <span class="badge badge--networking">Networking</span>
+            <span class="pillar-card__num">04</span>
+          </div>
           <h3 style="font-size:1.0625rem;">Networking</h3>
           <p class="text-muted" style="font-size:0.9rem;">A seat at the roundtable and the evening networking cocktail, face to face with the people who decide on testing budgets.</p>
         </div>
@@ -165,18 +185,19 @@
     </div>
   </section>
 
-  <!-- Key figures -->
+  <!-- Key figures — left-bordered blocks (stat-item--bordered) instead
+       of centered, matching the mockup's positioning. -->
   <section class="section" aria-label="LSTE in numbers">
     <div class="container">
-      <div class="section-head reveal">
+      <div class="section-head section-head--left reveal">
         <span class="eyebrow eyebrow--purple">By the numbers</span>
         <h2>An audience built for QA.</h2>
       </div>
-      <div class="grid grid--4 reveal" style="text-align:center;">
-        <div class="stat-item"><span class="stat-value" style="color:var(--color-ink);">400<span style="color:var(--color-lime);">+</span></span><span class="stat-label">QA professionals attended the last edition</span></div>
-        <div class="stat-item"><span class="stat-value" style="color:var(--color-ink);">60<span style="color:var(--color-primary-light);">+</span></span><span class="stat-label">organisations represented</span></div>
-        <div class="stat-item"><span class="stat-value" style="color:var(--color-ink);">100<span style="color:var(--color-cyan);">%</span></span><span class="stat-label">QA and testing-focused audience</span></div>
-        <div class="stat-item"><span class="stat-value" style="color:var(--color-ink);">15<span style="color:var(--color-lime);">+</span></span><span class="stat-label">trusted sponsors</span></div>
+      <div class="grid grid--4 reveal">
+        <div class="stat-item stat-item--bordered"><span class="stat-value" style="color:var(--color-ink);">400<span style="color:var(--color-lime);">+</span></span><span class="stat-label">QA professionals attended the last edition</span></div>
+        <div class="stat-item stat-item--bordered"><span class="stat-value" style="color:var(--color-ink);">60<span style="color:var(--color-primary-light);">+</span></span><span class="stat-label">organisations represented</span></div>
+        <div class="stat-item stat-item--bordered"><span class="stat-value" style="color:var(--color-ink);">100<span style="color:var(--color-cyan);">%</span></span><span class="stat-label">QA and testing-focused audience</span></div>
+        <div class="stat-item stat-item--bordered"><span class="stat-value" style="color:var(--color-ink);">15<span style="color:var(--color-lime);">+</span></span><span class="stat-label">trusted sponsors</span></div>
       </div>
     </div>
   </section>
@@ -184,12 +205,15 @@
   <!-- Sponsorship packages: 3 tiers via .numbered-card — the brochure's
        own "3 reasons to sponsor" framing, kept visually distinct from the
        icon-tile cards above so the two 3/4-item grids don't read as a
-       copy-paste of each other. -->
+       copy-paste of each other. Head/paragraph side by side; Platinum
+       (03) carries the featured treatment + corner ribbon. -->
   <section class="section section--alt" aria-labelledby="formats-heading">
     <div class="container">
-      <div class="section-head section-head--left reveal">
-        <span class="eyebrow eyebrow--cyan">Sponsorship Packages</span>
-        <h2 id="formats-heading">3 ways to connect with Luxembourg's QA community.</h2>
+      <div class="section-head section-head--split reveal">
+        <div>
+          <span class="eyebrow eyebrow--cyan">Sponsorship Packages</span>
+          <h2 id="formats-heading">3 ways to connect with Luxembourg's QA community.</h2>
+        </div>
         <p>From brand visibility to thought leadership — choose the level of visibility and engagement that best fits your objectives. Every tier includes logo placement, on-site presence and a roundtable seat.</p>
       </div>
       <div class="grid grid--3 reveal">
@@ -203,23 +227,32 @@
           <h3>Gold — Engage directly with attendees</h3>
           <p class="text-muted">Strengthen your visibility with an on-site activation, lead collection opportunities and exclusive content before and during the event.</p>
         </div>
-        <div class="card numbered-card">
+        <div class="card numbered-card numbered-card--featured">
+          <span class="numbered-card__ribbon">Most visibility</span>
           <span class="numbered-card__num">03</span>
           <h3>Platinum — Take centre stage</h3>
           <p class="text-muted">Benefit from maximum exposure through premium branding, a speaking opportunity, a dedicated workshop and direct access to attendees.</p>
         </div>
       </div>
+      <p class="reveal" style="max-width:640px;margin-top:var(--space-6);"><a class="btn btn--outline" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Get full tier details &amp; pricing <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
-  <section class="tickets-cta" aria-labelledby="sponsor-cta-final-heading">
-    <div class="tickets-cta__glow" aria-hidden="true"></div>
-    <div class="container tickets-cta__inner reveal">
-      <span class="eyebrow eyebrow--cyan">Limited slots</span>
-      <h2 id="sponsor-cta-final-heading">Ready to sponsor LSTE 2026?</h2>
-      <p class="text-muted" style="max-width:44ch;margin:var(--space-3) auto 0;">Slots are limited — get in touch and we'll send over the full prospectus.</p>
-      <div class="hero__actions" style="justify-content:center;">
-        <a class="btn btn--primary btn--lg" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Request the sponsorship prospectus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  <!-- Final CTA: boxed text-left/button-right card (cta-banner) instead
+       of the sitewide full-bleed .tickets-cta band, matching the
+       mockup's positioning for this specific close. -->
+  <section class="section" aria-labelledby="sponsor-cta-final-heading">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="cta-banner__glow" aria-hidden="true"></div>
+        <div class="cta-banner__inner">
+          <div class="cta-banner__text">
+            <span class="eyebrow eyebrow--cyan">Limited slots</span>
+            <h2 id="sponsor-cta-final-heading">Ready to sponsor LSTE 2026?</h2>
+            <p class="text-muted" style="margin-top:var(--space-3);">Slots are limited — get in touch and we'll send over the full prospectus.</p>
+          </div>
+          <a class="btn btn--primary btn--lg" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Request the sponsorship prospectus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
       </div>
     </div>
   </section>

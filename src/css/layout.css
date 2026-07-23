@@ -104,3 +104,22 @@
    homepage's own left-aligned "Who we are" / "Why come" blocks instead
    of the brochure-style centered treatment. */
 .section-head--left { text-align: left; margin-left: 0; }
+/* Heading and supporting paragraph side by side, bottom-aligned,
+   instead of stacked — heading in the first child, paragraph as a
+   second flex item (see become-a-sponsor's "Why sponsor" / "Packages"
+   intros). */
+.section-head--split {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  max-width: none;
+  margin: 0 0 var(--space-8);
+  text-align: left;
+}
+.section-head--split > div { max-width: 560px; }
+.section-head--split > p { max-width: 460px; margin: 0; flex-shrink: 0; }
+@media (max-width: 800px) {
+  .section-head--split { flex-direction: column; align-items: flex-start; }
+  .section-head--split > p { max-width: none; }
+}
