@@ -104,10 +104,13 @@
   --space-12: 5rem;
   --space-16: 7rem;
 
-  /* Shape — sharpened for the "sharp-edge" direction */
+  /* Shape — buttons at 12px per the graphic charter ("coins arrondis
+     12px"); --radius-lg carries that same value into cards/photos too
+     for one consistent corner language rather than a button-only
+     variable for a 2px difference. */
   --radius-sm: 4px;
   --radius-md: 6px;
-  --radius-lg: 10px;
+  --radius-lg: 12px;
   --radius-pill: 999px; /* brand CTAs/badges/chips stay pill-shaped */
 
   /* Elevation — a light dual shadow (raised). Inset variants defined in
