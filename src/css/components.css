@@ -179,7 +179,7 @@
 
 /* ── "More" dropdown ───────────────────────────────────────────────── */
 .main-nav-item--dropdown { position: relative; }
-.main-nav-link--dropdown { display: inline-flex; align-items: center; gap: 0.4em; font-size: 0.9375rem; }
+.main-nav-link--dropdown { display: inline-flex; align-items: center; gap: 0.4em; }
 .main-nav-link--dropdown i { font-size: 0.7em; transition: transform var(--dur-fast) var(--ease); }
 .main-nav-link--dropdown[aria-expanded="true"] i { transform: rotate(180deg); }
 .main-nav-link--dropdown[aria-expanded="true"] { color: var(--color-primary); }
