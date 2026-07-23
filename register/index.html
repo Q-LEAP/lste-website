@@ -73,7 +73,11 @@ redirect_from:
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <!-- No "Get your free ticket" CTA in this page's header: the entire
+           page IS the ticket flow (hero + pricing card CTAs below), so a
+           third identical button in the chrome was pure redundancy.
+           Intentionally diverges from the shared nav.html partial — do
+           not restore via partials:inject. -->
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
