@@ -436,12 +436,23 @@
 @media (min-width: 640px) {
   .for-who-card { padding: var(--space-10) var(--space-8); }
 }
+/* Mobile: a swipeable, one-handed carousel (native scroll-snap, no JS)
+   instead of the desktop grid — 5 asymmetric tiles don't have a sane
+   single-column reading order, and a carousel keeps every photo full-size
+   instead of cramming them into a 2-col grid. Desktop (640px+) keeps the
+   collage grid, overridden below. */
 .for-who-mosaic {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.for-who-mosaic::-webkit-scrollbar { display: none; }
 .for-who-mosaic__item {
+  flex: 0 0 82%;
+  scroll-snap-align: center;
   border-radius: var(--radius-md);
   overflow: hidden;
   aspect-ratio: 4 / 3;
@@ -454,17 +465,22 @@
    tile. Giving <picture> itself height:100% fixes the chain. */
 .for-who-mosaic__item picture { display: block; height: 100%; }
 .for-who-mosaic__item img { width: 100%; height: 100%; display: block; object-fit: cover; }
-.for-who-mosaic__item--tall-right { grid-column: 1 / 3; }
 @media (min-width: 640px) {
   .for-who-mosaic {
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(140px, 220px);
+    overflow-x: visible;
+    scroll-snap-type: none;
   }
-  .for-who-mosaic__item { aspect-ratio: auto; }
+  .for-who-mosaic__item { flex: initial; aspect-ratio: auto; }
   .for-who-mosaic__item--tall-left { grid-column: 1; grid-row: 1 / 3; }
   .for-who-mosaic__item--wide { grid-column: 2 / 4; grid-row: 1; }
   .for-who-mosaic__item--small-a { grid-column: 2; grid-row: 2; }
   .for-who-mosaic__item--small-b { grid-column: 3; grid-row: 2; }
   .for-who-mosaic__item--tall-right { grid-column: 4; grid-row: 1 / 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .for-who-mosaic { scroll-behavior: auto; }
 }
 
