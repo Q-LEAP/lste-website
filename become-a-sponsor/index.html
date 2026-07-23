@@ -234,21 +234,17 @@
     </div>
   </section>
 
-  <!-- Final CTA: boxed text-left/button-right card (cta-banner) instead
-       of the sitewide full-bleed .tickets-cta band, matching the
-       mockup's positioning for this specific close. -->
-  <section class="section" aria-labelledby="sponsor-cta-final-heading">
-    <div class="container">
-      <div class="cta-banner reveal">
-        <div class="cta-banner__glow" aria-hidden="true"></div>
-        <div class="cta-banner__inner">
-          <div class="cta-banner__text">
-            <span class="eyebrow eyebrow--cyan">Limited slots</span>
-            <h2 id="sponsor-cta-final-heading">Ready to sponsor LSTE 2026?</h2>
-            <p class="text-muted" style="margin-top:var(--space-3);">Slots are limited — get in touch and we'll send over the full prospectus.</p>
-          </div>
-          <a class="btn btn--primary btn--lg" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Request the sponsorship prospectus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        </div>
+  <!-- Final CTA: same sitewide full-bleed .tickets-cta band every other
+       page closes on, so this page's close reads consistently with the
+       rest of the site instead of its own one-off boxed card. -->
+  <section class="tickets-cta" aria-labelledby="sponsor-cta-final-heading">
+    <div class="tickets-cta__glow" aria-hidden="true"></div>
+    <div class="container tickets-cta__inner reveal">
+      <span class="eyebrow eyebrow--cyan">Limited slots</span>
+      <h2 id="sponsor-cta-final-heading">Ready to sponsor LSTE 2026?</h2>
+      <p class="text-muted" style="max-width:44ch;margin:var(--space-3) auto 0;">Slots are limited — get in touch and we'll send over the full prospectus.</p>
+      <div class="hero__actions" style="justify-content:center;">
+        <a class="btn btn--primary btn--lg" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Request the sponsorship prospectus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </section>

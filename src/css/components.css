@@ -737,38 +737,3 @@
   box-shadow: var(--shadow-lg);
   overflow: hidden;
 }
-
-/* ── CTA banner ──────────────────────────────────────────────────────
-   A boxed, text-left/button-right closing CTA — a contained card sitting
-   within the page's normal content flow, as opposed to .tickets-cta's
-   full-bleed band (used sitewide). For pages where a boxed final CTA
-   reads better than a full-width divider band. */
-.cta-banner {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(120deg, var(--color-surface-alt), var(--color-surface));
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  border-radius: var(--radius-lg);
-  padding: var(--space-10) var(--space-8);
-}
-.cta-banner__glow {
-  position: absolute;
-  top: -120px; right: -80px;
-  width: 380px; height: 380px;
-  background: radial-gradient(circle, rgba(163, 230, 53, 0.14), transparent 65%);
-  pointer-events: none;
-}
-.cta-banner__inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-8);
-  flex-wrap: wrap;
-}
-.cta-banner__text { max-width: 560px; }
-.cta-banner .btn { white-space: nowrap; }
-@media (max-width: 700px) {
-  .cta-banner__inner { flex-direction: column; align-items: flex-start; }
-  .cta-banner .btn { white-space: normal; width: 100%; text-align: center; }
-}
