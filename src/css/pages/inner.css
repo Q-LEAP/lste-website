@@ -423,3 +423,48 @@
   .timeline__item { grid-template-columns: 5.5rem 1.5rem 1fr; }
 }
 
+/* ── For-who mosaic card (About) ───────────────────────────────────
+   A boxed card — split heading + a 5-photo collage below it — instead
+   of the plain left-text/right-image split every other "about" section
+   on this page uses, so back-to-back sections don't read as a repeat. */
+.for-who-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-5);
+}
+@media (min-width: 640px) {
+  .for-who-card { padding: var(--space-10) var(--space-8); }
+}
+.for-who-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+.for-who-mosaic__item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--color-surface-alt);
+}
+/* base.css's global `picture { height: auto }` reset left <picture> (the
+   img's actual containing block) without a definite height, so the img's
+   own height:100% had nothing to resolve against and fell back to its
+   intrinsic aspect ratio instead — a visible gap at the bottom of every
+   tile. Giving <picture> itself height:100% fixes the chain. */
+.for-who-mosaic__item picture { display: block; height: 100%; }
+.for-who-mosaic__item img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.for-who-mosaic__item--tall-right { grid-column: 1 / 3; }
+@media (min-width: 640px) {
+  .for-who-mosaic {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(140px, 220px);
+  }
+  .for-who-mosaic__item { aspect-ratio: auto; }
+  .for-who-mosaic__item--tall-left { grid-column: 1; grid-row: 1 / 3; }
+  .for-who-mosaic__item--wide { grid-column: 2 / 4; grid-row: 1; }
+  .for-who-mosaic__item--small-a { grid-column: 2; grid-row: 2; }
+  .for-who-mosaic__item--small-b { grid-column: 3; grid-row: 2; }
+  .for-who-mosaic__item--tall-right { grid-column: 4; grid-row: 1 / 3; }
+}
+

@@ -20,7 +20,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=7a0e0507">
+<link rel="stylesheet" href="../assets/css/styles.css?v=53c9ec7b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -140,24 +140,55 @@
     </div>
   </section>
 
-  <!-- For who (the live page's last paragraph here is the Q-Leap
-       organiser credit, which duplicates the "Organised by" section
-       right below — dropped here rather than said twice). -->
-  <section id="for-who" class="section section--alt" aria-labelledby="for-who-heading">
+  <!-- For who: boxed card (split heading + 5-photo mosaic) instead of
+       the plain text/image split "Who we are" just above uses — so the
+       two sections don't read as a repeated pattern back to back. -->
+  <section id="for-who" class="section" aria-labelledby="for-who-heading">
     <div class="container">
-      <div class="grid grid--2" style="align-items:start;">
-        <div class="reveal" style="text-align:left;">
-          <span class="eyebrow eyebrow--cyan">For who</span>
-          <h2 id="for-who-heading" style="text-align:left;">For all testers and IT practitioners.</h2>
-          <p style="text-align:left;">Every year, the entire community of testers and IT practitioners join this event. An event to get valuable insights about testing practices from experts that help enhancing everyday tasks.</p>
-          <p style="text-align:left;">Over the years, this conference has gained a reputation of being one of the key and most awaited events on Luxembourg's IT agenda.</p>
+      <div class="for-who-card reveal">
+        <div class="section-head section-head--split">
+          <div>
+            <span class="eyebrow eyebrow--lime">For who</span>
+            <h2 id="for-who-heading">For all testers and IT practitioners.</h2>
+          </div>
+          <p>Every year, the community of testers and IT practitioners gathers for expert insights they can apply straight away — now one of the most awaited dates on Luxembourg's IT agenda.</p>
         </div>
-        <div class="reveal">
-          <picture>
-            <source type="image/avif" srcset="../assets/img/lste-2025-attendees-group-400.avif 400w, ../assets/img/lste-2025-attendees-group-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-            <source type="image/webp" srcset="../assets/img/lste-2025-attendees-group-400.webp 400w, ../assets/img/lste-2025-attendees-group-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-            <img src="../assets/img/lste-2025-attendees-group-800.jpg" width="800" height="1067" loading="lazy" alt="A group of testers and IT practitioners attending LSTE" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-md);width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:top;" decoding="async">
-          </picture>
+        <div class="for-who-mosaic">
+          <div class="for-who-mosaic__item for-who-mosaic__item--tall-left">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/lste-2025-woman-speaker-stage-400.avif 400w, ../assets/img/lste-2025-woman-speaker-stage-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+              <source type="image/webp" srcset="../assets/img/lste-2025-woman-speaker-stage-400.webp 400w, ../assets/img/lste-2025-woman-speaker-stage-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+              <img src="../assets/img/lste-2025-woman-speaker-stage-800.jpg" width="800" height="1200" loading="lazy" alt="A speaker presenting at LSTE" decoding="async">
+            </picture>
+          </div>
+          <div class="for-who-mosaic__item for-who-mosaic__item--wide">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/lste-2025-women-testing-four-400.avif 400w, ../assets/img/lste-2025-women-testing-four-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+              <source type="image/webp" srcset="../assets/img/lste-2025-women-testing-four-400.webp 400w, ../assets/img/lste-2025-women-testing-four-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+              <img src="../assets/img/lste-2025-women-testing-four-800.jpg" width="800" height="533" loading="lazy" alt="A group of QA professionals networking at LSTE" decoding="async">
+            </picture>
+          </div>
+          <div class="for-who-mosaic__item for-who-mosaic__item--small-a">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/lste-2025-networking-chat-400.avif 400w, ../assets/img/lste-2025-networking-chat-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+              <source type="image/webp" srcset="../assets/img/lste-2025-networking-chat-400.webp 400w, ../assets/img/lste-2025-networking-chat-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+              <img src="../assets/img/lste-2025-networking-chat-800.jpg" width="800" height="1200" loading="lazy" alt="Attendees chatting at LSTE" decoding="async">
+            </picture>
+          </div>
+          <div class="for-who-mosaic__item for-who-mosaic__item--small-b">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/lste-2025-workshop-briefing-400.avif 400w, ../assets/img/lste-2025-workshop-briefing-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+              <source type="image/webp" srcset="../assets/img/lste-2025-workshop-briefing-400.webp 400w, ../assets/img/lste-2025-workshop-briefing-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+              <img src="../assets/img/lste-2025-workshop-briefing-800.jpg" width="800" height="600" loading="lazy" alt="A workshop briefing session at LSTE" decoding="async">
+            </picture>
+          </div>
+          <div class="for-who-mosaic__item for-who-mosaic__item--tall-right">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/lste-2025-attendees-hug-400.avif 400w, ../assets/img/lste-2025-attendees-hug-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+              <source type="image/webp" srcset="../assets/img/lste-2025-attendees-hug-400.webp 400w, ../assets/img/lste-2025-attendees-hug-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+              <img src="../assets/img/lste-2025-attendees-hug-800.jpg" width="800" height="1200" loading="lazy" alt="Attendees greeting each other warmly at LSTE" decoding="async">
+            </picture>
+          </div>
         </div>
       </div>
     </div>
