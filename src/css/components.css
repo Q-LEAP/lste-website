@@ -211,14 +211,16 @@
 .main-nav-dropdown a:focus-visible { background: var(--color-primary-tint); color: var(--color-primary); }
 
 .header-actions { display: flex; align-items: center; gap: var(--space-5); }
-.header-register-btn { padding: 0.65rem 1.5rem; }
+/* Compact on purpose — see theme.css for the discreet outline treatment
+   that keeps this from competing with the hero's filled .btn--primary. */
+.header-register-btn { padding: 0.55rem 1.125rem; }
 
 /* Below ~480px, logo + toggle + Register + hamburger no longer all fit at
    the default header spacing — tighten just enough to avoid the overflow. */
 @media (max-width: 479px) {
   .site-header .container { gap: var(--space-2); padding: 0 var(--space-4); }
   .header-actions { gap: var(--space-2); }
-  .header-register-btn { padding: 0.6rem 1rem; }
+  .header-register-btn { padding: 0.5rem 0.85rem; }
 }
 
 .nav-toggle {
