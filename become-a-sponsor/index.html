@@ -36,12 +36,12 @@
 
     <!-- Matches the Claude Design mockup: logo on the left, nav links +
          CTA clustered together on the right as one group (margin-left:auto
-         on .main-nav, not .header-actions — see components.css). Sponsors/
-         Gallery/Press/Call for Speakers/Contact live in the "More" dropdown
-         / mobile hamburger, since the mockup's own nav didn't need to cover
+         on .main-nav, not .header-actions — see components.css). Gallery/
+         Press/Call for Speakers/Contact live in the "More" dropdown /
+         mobile hamburger, since the mockup's own nav didn't need to cover
          a full multi-page site. Dark-mode toggle lives in the footer, not
-         here. Speakers isn't linked at all — page kept on disk, intentionally
-         unlisted from navigation. -->
+         here. Speakers and Sponsors aren't linked at all — pages kept on
+         disk, intentionally unlisted from navigation. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="../about/index.html">About</a></li>
@@ -51,7 +51,6 @@
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../press/index.html">Press</a></li>
             <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
@@ -76,7 +75,6 @@
     <li><a href="../schedule/index.html">Programme</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
     <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
-    <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../press/index.html">Press</a></li>
     <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
@@ -103,10 +101,6 @@
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Become a Sponsor</span></nav>
       <h1>Become an LSTE Sponsor</h1>
       <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">Connect with Luxembourg's entire QA and testing community in one focused, high-impact event.</p>
-      <div style="margin-top:var(--space-6);display:flex;gap:var(--space-4);justify-content:flex-start;flex-wrap:wrap;">
-        <a class="btn btn--primary btn--lg" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Request the sponsorship prospectus <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        <a class="btn btn--outline btn--lg" href="../sponsors/index.html">View current sponsors</a>
-      </div>
     </div>
   </section>
 
@@ -215,7 +209,6 @@
           <p class="text-muted">Benefit from maximum exposure through premium branding, a speaking opportunity, a dedicated workshop and direct access to attendees.</p>
         </div>
       </div>
-      <p class="reveal" style="max-width:640px;margin-top:var(--space-6);"><a class="btn btn--outline" href="mailto:hello@lste.lu?subject=Sponsorship%20Enquiry">Get full tier details &amp; pricing <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
 
@@ -261,7 +254,6 @@
         <p class="footer-col-heading">Get Involved</p>
         <ul>
           <li><a href="../become-a-sponsor/index.html">Become a Sponsor</a></li>
-          <li><a href="../sponsors/index.html">Sponsors</a></li>
           <li><a href="../register/index.html">Get your free ticket</a></li>
         </ul>
       </div>
