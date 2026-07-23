@@ -32,6 +32,24 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="./assets/css/styles.css?v=d86f0acb">
 
+<style>
+  /* Homepage hero: full-bleed photo + directional gradient veil (the
+     "full-bleed + contraste typo" treatment). Scoped here rather than in
+     the built stylesheet since it's homepage-only. */
+  .hero__bg { object-position: 72% center; }
+  .hero__veil {
+    background:
+      linear-gradient(90deg, var(--page-bg) 0%, var(--page-bg) 30%, rgba(23, 20, 31, 0.74) 54%, rgba(23, 20, 31, 0.36) 80%, rgba(23, 20, 31, 0.18) 100%),
+      linear-gradient(0deg, rgba(23, 20, 31, 0.82) 0%, rgba(23, 20, 31, 0) 48%);
+  }
+  @media (max-width: 768px) {
+    .hero__bg { object-position: 66% center; }
+    .hero__veil {
+      background: linear-gradient(180deg, rgba(23, 20, 31, 0.84) 0%, rgba(23, 20, 31, 0.72) 55%, rgba(23, 20, 31, 0.9) 100%);
+    }
+  }
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -133,18 +151,21 @@ redirect_from:
 
 <main id="main">
 
-  <!-- Hero: full-bleed background video (discreet ambient backdrop, not a
-       boxed clip beside the title) with a flat dark veil for legibility,
-       text on top. Same .js-ambient-video lazy-play pattern as the
-       atmosphere section further down. -->
+  <!-- Hero: full-bleed background photo (2025 edition) anchored to the
+       right, with a left-to-right dark gradient veil so the headline keeps
+       full contrast on the left while the photo shows through on the right
+       — the "6a · full-bleed + contraste typo" treatment. Static photo, no
+       video. The directional veil + object-position overrides live in the
+       page-scoped <style> in <head> (with a near-uniform dark fallback
+       under 768px so the copy stays legible once it spans full width). -->
   <section class="hero">
-    <video class="hero__bg js-ambient-video" data-src="./assets/vid/LSTE_hero_background_1920x1080.mp4" poster="./assets/img/lste-2026-hero-bg-poster-800.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <img class="hero__bg" src="./assets/img/lste-hero-avanti-tablet.jpg" alt="" aria-hidden="true" width="800" height="533" fetchpriority="high" decoding="async">
     <div class="hero__veil" aria-hidden="true"></div>
     <div class="container hero__inner">
       <div class="hero__content">
         <span class="hero__eyebrow eyebrow eyebrow--cyan reveal is-visible">8th edition</span>
         <h1 class="reveal is-visible">Luxembourg<br><span class="hero__highlight">Software Testing</span> Event</h1>
-        <p class="hero__lead reveal is-visible">One day. 400+ QA professionals. Practical talks, live demos and real conversations.</p>
+        <p class="hero__lead reveal is-visible">400+ QA professionals. Practical talks. Live demos. Real conversations.</p>
 
         <div class="hero__meta reveal is-visible">
           <span>26 November 2026, 13:00–21:00</span>
@@ -153,7 +174,6 @@ redirect_from:
 
         <div class="hero__actions reveal is-visible">
           <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn--outline btn--lg" href="./become-a-sponsor/index.html">Become a sponsor</a>
         </div>
       </div>
     </div>
