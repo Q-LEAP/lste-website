@@ -25,11 +25,13 @@
 .hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
 .hero__content h1 {
   color: var(--color-ink);
-  /* Tuned so laptop widths (~1366-1440px) land around 64-68px and large
-     desktop monitors (~1920px+) cap at ~76px — smaller than the previous
-     112px ceiling, so the tagline, practical info and stats strip fit
-     within the first screen alongside it. */
-  font-size: clamp(3rem, 2vw + 2.3rem, 4.75rem);
+  /* --fs-hero (tokens.css): tuned so laptop widths (~1366-1440px) land
+     around 64-68px and large desktop monitors (~1920px+) cap at ~76px —
+     smaller than the previous 112px ceiling, so the tagline, practical
+     info and stats strip fit within the first screen alongside it.
+     Shared with .page-hero h1 so every page's title reads at the same
+     scale. */
+  font-size: var(--fs-hero);
   line-height: 0.96;
   letter-spacing: -0.03em;
 }

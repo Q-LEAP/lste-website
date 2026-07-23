@@ -48,7 +48,16 @@
 .breadcrumb--on-dark, .breadcrumb--on-dark a { color: rgba(255, 255, 255, 0.7); }
 .breadcrumb--on-dark a { color: var(--color-lime); }
 
-.page-hero h1 { text-transform: uppercase; }
+/* Same font-size/line-height/letter-spacing as the homepage's own hero
+   h1 (--fs-hero, tokens.css), so every page's title reads at the same
+   scale — text-transform:uppercase stays a distinct, deliberate choice
+   for inner-page titles specifically. */
+.page-hero h1 {
+  text-transform: uppercase;
+  font-size: var(--fs-hero);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
 
 /* Left-aligned inner pages: text/content blocks sit flush at the site's
    left edge — the same x-position as the header logo, matching the

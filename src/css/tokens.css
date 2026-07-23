@@ -76,6 +76,11 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --fs-h1: clamp(2.75rem, 6vw + 1rem, 5.25rem);
+  /* Shared by the homepage hero h1 and every .page-hero h1, so every
+     page's title reads at the same scale — tuned so laptop widths land
+     around 64-68px and large desktop monitors cap at ~76px (see
+     home.css .hero__content h1 for the full sizing rationale). */
+  --fs-hero: clamp(3rem, 2vw + 2.3rem, 4.75rem);
   --fs-h2: clamp(2rem, 3vw + 1rem, 3rem);
   --fs-h3: clamp(1.375rem, 1.5vw + 1rem, 1.75rem);
   --fs-h4: clamp(1.125rem, 1vw + 0.9rem, 1.375rem);
