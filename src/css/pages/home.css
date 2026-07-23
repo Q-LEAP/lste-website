@@ -24,6 +24,15 @@
 }
 .hero__grid { position: relative; }
 .hero__content { max-width: 1280px; }
+/* Load-in reveal, in the spirit of parisgamesweek.com's hero visual
+   growing into place — the video scales up from slightly cropped/faded
+   into its full frame once on page load. Separate from .reveal (which
+   only fires on scroll and is pre-satisfied here via is-visible), so it
+   runs unconditionally via a keyframe animation instead of a transition. */
+@keyframes hero-media-reveal {
+  from { opacity: 0; transform: scale(0.86); }
+  to { opacity: 1; transform: scale(1); }
+}
 .hero__media {
   margin-top: var(--space-10);
   border-radius: var(--radius-lg);
@@ -31,6 +40,7 @@
   box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.28), 0 25px 60px -18px rgba(109, 40, 217, 0.5);
   aspect-ratio: 16 / 9;
   background: var(--color-ink);
+  animation: hero-media-reveal 1100ms var(--ease) 150ms both;
 }
 .hero__media video {
   width: 100%;
@@ -50,6 +60,7 @@
   .hero__media { margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .hero__media { animation: none; opacity: 1; transform: none; }
   .hero__media video { transition: none; }
   .hero__media:hover video { transform: none; }
 }
