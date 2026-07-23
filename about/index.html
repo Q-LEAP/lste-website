@@ -20,7 +20,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=88cab6bd">
+<link rel="stylesheet" href="../assets/css/styles.css?v=68373c7b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -143,15 +143,25 @@
   </section>
 
   <!-- For who (the live page's last paragraph here is the Q-Leap
-       organiser credit — no separate "Organised by" section/photo on
-       the real site, so that's folded in rather than split out). -->
+       organiser credit, which duplicates the "Organised by" section
+       right below — dropped here rather than said twice). -->
   <section id="for-who" class="section section--alt" aria-labelledby="for-who-heading">
-    <div class="container container--narrow reveal">
-      <span class="eyebrow eyebrow--cyan">For who</span>
-      <h2 id="for-who-heading">For all testers and IT practitioners.</h2>
-      <p>Every year, the entire community of testers and IT practitioners join this event. An event to get valuable insights about testing practices from experts that help enhancing everyday tasks.</p>
-      <p>Over the years, this conference has gained a reputation of being one of the key and most awaited events on Luxembourg's IT agenda.</p>
-      <p>The success of the Luxembourg Software Testing Event is due to the dedicated involvement of Q-LEAP. The company is the primary and actual organizer. The Software Quality company has contributed to the conference's Concept and Character.</p>
+    <div class="container">
+      <div class="grid grid--2" style="align-items:start;">
+        <div class="reveal" style="text-align:left;">
+          <span class="eyebrow eyebrow--cyan">For who</span>
+          <h2 id="for-who-heading" style="text-align:left;">For all testers and IT practitioners.</h2>
+          <p style="text-align:left;">Every year, the entire community of testers and IT practitioners join this event. An event to get valuable insights about testing practices from experts that help enhancing everyday tasks.</p>
+          <p style="text-align:left;">Over the years, this conference has gained a reputation of being one of the key and most awaited events on Luxembourg's IT agenda.</p>
+        </div>
+        <div class="reveal">
+          <picture>
+            <source type="image/avif" srcset="../assets/img/lste-2025-attendees-group-400.avif 400w, ../assets/img/lste-2025-attendees-group-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+            <source type="image/webp" srcset="../assets/img/lste-2025-attendees-group-400.webp 400w, ../assets/img/lste-2025-attendees-group-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+            <img src="../assets/img/lste-2025-attendees-group-800.jpg" width="800" height="1067" loading="lazy" alt="A group of testers and IT practitioners attending LSTE" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-md);width:100%;height:auto;" decoding="async">
+          </picture>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -189,7 +199,7 @@
   </section>
 
   <!-- The LSTE in the press -->
-  <section class="section" aria-labelledby="press-heading">
+  <section class="section section--alt" aria-labelledby="press-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--purple">The LSTE in the press</span>

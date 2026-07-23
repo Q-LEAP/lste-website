@@ -95,6 +95,10 @@
 @media (min-width: 900px) {
   .split-media { grid-template-columns: 1fr 1fr; }
 }
+/* Matches the site's other lead-paragraph sizing (.hero__lead, .section-head
+   p) — plain 1rem body copy read noticeably small next to a section's own
+   h2 at this prominence. */
+.split-media p { font-size: 1.0625rem; }
 
 /* ── Atmosphere: ambient video duo, muted/looping, played only once
    scrolled into view (see initAmbientVideo() in main.js). Portrait

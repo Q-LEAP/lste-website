@@ -32,12 +32,14 @@ h1, h2, h3, h4, h5, h6 {
   line-height: var(--lh-heading);
   font-weight: 700;
   text-wrap: balance;
+  margin-bottom: var(--space-4);
 }
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child { margin-bottom: 0; }
 /* Space Grotesk tops out at weight 700 (no 800/900) — every heading uses
    its boldest real weight rather than triggering a synthetic/faux-bold
    fallback the browser would otherwise fake by skewing the 700 weight. */
-h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); font-weight: 700; letter-spacing: -0.01em; }
-h2 { font-size: var(--fs-h2); line-height: var(--lh-tight); font-weight: 700; letter-spacing: -0.01em; }
+h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); font-weight: 700; letter-spacing: -0.01em; margin-bottom: var(--space-6); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-tight); font-weight: 700; letter-spacing: -0.01em; margin-bottom: var(--space-5); }
 h3 { font-size: var(--fs-h3); font-weight: 700; }
 h4 { font-size: var(--fs-h4); font-weight: 600; }
 
