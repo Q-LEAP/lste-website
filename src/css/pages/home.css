@@ -38,6 +38,12 @@
    clear, single accent against both the dark default page and the light
    theme override. */
 .hero__highlight { color: var(--color-primary-light); }
+.hero__lead {
+  max-width: 46rem;
+  margin: var(--space-5) 0 0;
+  font-size: 1.125rem;
+  color: var(--color-body-text);
+}
 .hero__meta {
   display: flex;
   flex-wrap: wrap;
@@ -47,9 +53,6 @@
   font-size: 1.0625rem;
   color: var(--color-ink);
 }
-.hero__meta span { display: inline-flex; align-items: center; gap: var(--space-2); }
-.hero__meta span:first-child i { color: var(--color-lime); }
-.hero__meta span:last-child i { color: var(--color-cyan); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: 0; }
 
 /* ── Stats strip ─────────────────────────────────────────────────── */
