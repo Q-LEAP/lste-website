@@ -25,7 +25,11 @@
 .hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
 .hero__content h1 {
   color: var(--color-ink);
-  font-size: clamp(3rem, 7.5vw + 1rem, 7rem);
+  /* Tuned so laptop widths (~1366-1440px) land around 64-68px and large
+     desktop monitors (~1920px+) cap at ~76px — smaller than the previous
+     112px ceiling, so the tagline, practical info and stats strip fit
+     within the first screen alongside it. */
+  font-size: clamp(3rem, 2vw + 2.3rem, 4.75rem);
   line-height: 0.96;
   letter-spacing: -0.03em;
 }
