@@ -50,30 +50,29 @@
 
 .page-hero h1 { text-transform: uppercase; }
 
-/* Blog/news articles: text blocks align to the site's left edge — the
-   same x-position as the header logo — instead of the centered
-   .page-hero treatment used by every other inner-page type. Only the
-   alignment changes; width/size of the hero photo, body copy and
-   nav buttons below are untouched.
+/* Left-aligned inner pages: text/content blocks sit flush at the site's
+   left edge — the same x-position as the header logo, matching the
+   homepage's own left-aligned hero — instead of the centered .page-hero
+   treatment used by most inner-page types (About, Venue, Press, etc.,
+   which keep the centered look on purpose). Used by blog/news articles
+   and any other inner page that should read this way (e.g. Programme).
 
-   The article body/photo previously sat in a .container--narrow box,
-   which is centered *independently* of the outer .container — fine at
+   A narrower content box on one of these pages must NOT use
+   .container--narrow on the same element as .container: that class is
+   centered *independently* of the outer .container, which is fine at
    ~1440px (where the 1400px .container barely has room to recenter
-   anything), but on a genuinely wide viewport the two centered boxes
-   land at very different x-positions, so the article drifted well
-   left of the header logo. Fix: keep the wrapper as a plain, full
-   .container (identical box to the header's, so its left edge always
-   lines up with the logo at any viewport width) and constrain the
-   *children* to reading width directly, with no centering of their
-   own — block-level elements default to sitting flush at their
-   parent's left edge, so they hug the same x-position as the logo. */
-.page-hero--article { text-align: left; }
-.page-hero--article .breadcrumb { justify-content: flex-start; }
-.article-container > .article-hero-img,
-.article-container > .article-body,
-.article-container > .cluster {
-  max-width: var(--container-narrow);
-}
+   anything) but drifts hundreds of pixels left of the header logo on a
+   genuinely wide viewport, since the two centered boxes land at
+   different x-positions. Fix: keep the wrapper a plain, full .container
+   (identical box to the header's, so its left edge always lines up with
+   the logo at any viewport width) and constrain its *direct children*
+   to reading width instead, with no centering of their own — block-level
+   elements default to sitting flush at their parent's left edge, so they
+   hug the same x-position as the logo regardless of viewport width. */
+.page-hero--left { text-align: left; }
+.page-hero--left .breadcrumb { justify-content: flex-start; }
+.page-hero--left .calendar-actions { justify-content: flex-start; }
+.container--left > * { max-width: var(--container-narrow); }
 
 .calendar-actions {
   display: flex;
