@@ -1,7 +1,7 @@
 /* ==========================================================================
    Components — buttons, nav, footer, cards, forms, hero, misc
    Each component is defined exactly once (the old stylesheet duplicated
-   .btn/.pricing-card/.form-group/.about-grid — resolved here).
+   .btn/.pricing-card — resolved here).
    ========================================================================== */
 
 /* ── Buttons ─────────────────────────────────────────────────────── */
@@ -66,13 +66,6 @@
   color: var(--color-cyan);
   box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 12px 28px -10px rgba(34, 211, 238, 0.45);
 }
-
-.btn--white {
-  background: #fff;
-  color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-}
-.btn--white:hover { color: var(--color-primary-dark); }
 
 .btn--ghost-on-dark {
   background: rgba(255, 255, 255, 0.08);
@@ -318,6 +311,8 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .footer-brand p { max-width: 320px; margin-top: var(--space-4); color: rgba(255, 255, 255, 0.6); }
+.footer-brand a { color: rgba(255, 255, 255, 0.65); }
+.footer-brand a:hover { color: #fff; }
 .footer-col-heading {
   font-size: var(--fs-sm);
   font-weight: 700;
@@ -399,9 +394,9 @@
   margin-bottom: var(--space-3);
   color: var(--color-primary-light);
 }
-/* Emphasis variant — same violet lift as .pricing-card--featured/
-   .pillar-card--featured, with a corner ribbon instead of a top-center
-   one (numbered-card is left-aligned, not centered). */
+/* Emphasis variant — same violet lift as .pillar-card--featured, with a
+   corner ribbon instead of a top-center one (numbered-card is
+   left-aligned, not centered). */
 .numbered-card--featured {
   border-color: rgba(139, 92, 246, 0.4);
   box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.25), 0 20px 40px -14px rgba(109, 40, 217, 0.4);
@@ -471,13 +466,6 @@
 }
 
 .speaker-card { padding: var(--space-6); text-align: center; }
-.speaker-card__photo {
-  width: 96px; height: 96px;
-  border-radius: 50%;
-  margin: 0 auto var(--space-4);
-  object-fit: cover;
-  border: 3px solid var(--color-primary-tint);
-}
 .speaker-card h3 { font-size: 1.0625rem; margin-bottom: var(--space-1); }
 .speaker-card .role { color: var(--color-muted); font-size: var(--fs-sm); }
 .speaker-card .talk { color: var(--color-primary); font-size: 0.8125rem; font-weight: 600; margin-top: var(--space-2); }
@@ -510,14 +498,12 @@
 .badge--visibility { background: #fdba74; color: #17141f; }
 .badge--leads { background: #a3e635; color: #17141f; }
 
-/* ── Press card — photo on top where we have a real one, text-only
-   otherwise; combined with .pillar-card--tag for the same lift + glow
-   hover as every other neumorphic card on the site. ────────────────── */
+/* ── Press card — combined with .pillar-card--tag for the same lift +
+   glow hover as every other neumorphic card on the site. ────────────── */
 .press-card { overflow: hidden; padding: 0; }
 .press-card__media { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
 .press-card__body { padding: var(--space-5); }
 .press-card__body h3 { font-size: 1.0625rem; margin-bottom: var(--space-2); }
-.press-card--text-only .press-card__body { padding: var(--space-6); }
 /* For a partner/press-source logo rather than an event photo — its own
    aspect ratio rarely matches 16:10, so crop-to-fill would slice off
    half the wordmark. Contain it on a plain light tile instead. */
@@ -527,54 +513,8 @@
   padding: var(--space-6);
 }
 
-/* ── Testimonials ────────────────────────────────────────────────── */
-.testimonial-card { padding: var(--space-6); }
-.testimonial-card blockquote { font-size: 1.0625rem; color: var(--color-ink); margin-bottom: var(--space-5); }
-.testimonial-card figcaption { display: flex; align-items: center; gap: var(--space-3); }
-.testimonial-card img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
-.testimonial-card .name { font-weight: 700; color: var(--color-ink); font-size: var(--fs-sm); }
-.testimonial-card .title { color: var(--color-muted); font-size: 0.8125rem; }
-/* Flat + brand-bordered, reusing the exact .pricing-card--featured recipe —
-   the one place on the site that already breaks from the default neu
-   shadow on purpose. A soft neu shadow (tuned for the light page
-   background) doesn't read correctly floating on an arbitrary dark
-   section, so cards meant to sit on .section--dark opt into this instead
-   of the default .card shadow. */
-.card.testimonial-card--accent {
-  border: 2px solid var(--color-primary);
-  box-shadow: none;
-}
-.card.testimonial-card--accent:hover { box-shadow: none; transform: none; }
-
 
 /* ── Forms ───────────────────────────────────────────────────────── */
-.form-group { margin-bottom: var(--space-4); }
-.form-group label {
-  display: block;
-  font-weight: 600;
-  font-size: var(--fs-sm);
-  color: var(--color-ink);
-  margin-bottom: var(--space-2);
-}
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font: inherit;
-  color: var(--color-ink);
-  background: var(--color-surface-alt);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
-}
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-focus);
-}
 .hp-field { position: absolute !important; left: -9999px !important; }
 .form-msg { margin-top: var(--space-4); font-size: var(--fs-sm); font-weight: 600; }
 .form-msg--success { color: #1a7a4c; }
@@ -585,24 +525,6 @@
   padding: var(--space-8) var(--space-6);
   text-align: center;
   position: relative;
-}
-.pricing-card--featured {
-  border: 2px solid var(--color-primary);
-  box-shadow: var(--shadow-md);
-}
-.pricing-card--featured::before {
-  content: 'Most Popular';
-  position: absolute;
-  top: -12px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-primary);
-  color: #fff;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.3em 1em;
-  border-radius: var(--radius-pill);
 }
 .pricing-card__name { margin-bottom: var(--space-3); }
 .pricing-card__price {
@@ -668,31 +590,31 @@
    children each get their own fade + a small nth-child transition-delay.
    Still pure CSS/transform/opacity, still driven by the same .is-visible
    toggle from initReveal()'s IntersectionObserver — no JS changes needed. */
-.grid.reveal, .cluster.reveal, .gallery-preview-grid.reveal,
+.grid.reveal, .cluster.reveal,
 .linkedin-grid.reveal, .masonry.reveal, .timeline.reveal, .sponsor-strip.reveal {
   opacity: 1;
   transform: none;
 }
-.grid.reveal > *, .cluster.reveal > *, .gallery-preview-grid.reveal > *,
+.grid.reveal > *, .cluster.reveal > *,
 .linkedin-grid.reveal > *, .masonry.reveal > *, .timeline.reveal > *, .sponsor-strip.reveal > * {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
 }
-.grid.reveal.is-visible > *, .cluster.reveal.is-visible > *, .gallery-preview-grid.reveal.is-visible > *,
+.grid.reveal.is-visible > *, .cluster.reveal.is-visible > *,
 .linkedin-grid.reveal.is-visible > *, .masonry.reveal.is-visible > *, .timeline.reveal.is-visible > *, .sponsor-strip.reveal.is-visible > * {
   opacity: 1;
   transform: translateY(0);
 }
-.grid.reveal.is-visible > *:nth-child(2), .cluster.reveal.is-visible > *:nth-child(2), .gallery-preview-grid.reveal.is-visible > *:nth-child(2),
+.grid.reveal.is-visible > *:nth-child(2), .cluster.reveal.is-visible > *:nth-child(2),
 .linkedin-grid.reveal.is-visible > *:nth-child(2), .masonry.reveal.is-visible > *:nth-child(2), .timeline.reveal.is-visible > *:nth-child(2), .sponsor-strip.reveal.is-visible > *:nth-child(2) { transition-delay: 60ms; }
-.grid.reveal.is-visible > *:nth-child(3), .cluster.reveal.is-visible > *:nth-child(3), .gallery-preview-grid.reveal.is-visible > *:nth-child(3),
+.grid.reveal.is-visible > *:nth-child(3), .cluster.reveal.is-visible > *:nth-child(3),
 .linkedin-grid.reveal.is-visible > *:nth-child(3), .masonry.reveal.is-visible > *:nth-child(3), .timeline.reveal.is-visible > *:nth-child(3), .sponsor-strip.reveal.is-visible > *:nth-child(3) { transition-delay: 120ms; }
-.grid.reveal.is-visible > *:nth-child(4), .cluster.reveal.is-visible > *:nth-child(4), .gallery-preview-grid.reveal.is-visible > *:nth-child(4),
+.grid.reveal.is-visible > *:nth-child(4), .cluster.reveal.is-visible > *:nth-child(4),
 .linkedin-grid.reveal.is-visible > *:nth-child(4), .masonry.reveal.is-visible > *:nth-child(4), .timeline.reveal.is-visible > *:nth-child(4), .sponsor-strip.reveal.is-visible > *:nth-child(4) { transition-delay: 180ms; }
-.grid.reveal.is-visible > *:nth-child(5), .cluster.reveal.is-visible > *:nth-child(5), .gallery-preview-grid.reveal.is-visible > *:nth-child(5),
+.grid.reveal.is-visible > *:nth-child(5), .cluster.reveal.is-visible > *:nth-child(5),
 .linkedin-grid.reveal.is-visible > *:nth-child(5), .masonry.reveal.is-visible > *:nth-child(5), .timeline.reveal.is-visible > *:nth-child(5), .sponsor-strip.reveal.is-visible > *:nth-child(5) { transition-delay: 240ms; }
-.grid.reveal.is-visible > *:nth-child(n+6), .cluster.reveal.is-visible > *:nth-child(n+6), .gallery-preview-grid.reveal.is-visible > *:nth-child(n+6),
+.grid.reveal.is-visible > *:nth-child(n+6), .cluster.reveal.is-visible > *:nth-child(n+6),
 .linkedin-grid.reveal.is-visible > *:nth-child(n+6), .masonry.reveal.is-visible > *:nth-child(n+6), .timeline.reveal.is-visible > *:nth-child(n+6), .sponsor-strip.reveal.is-visible > *:nth-child(n+6) { transition-delay: 300ms; }
 
 /* ── Back to top ─────────────────────────────────────────────────── */

@@ -13,8 +13,8 @@ const EVENT = {
   uid: 'lste-2026@lste.lu',
   summary: 'LSTE 2026 — Luxembourg Software Testing Event',
   // Luxembourg is UTC+1 (CET, no DST) in late November.
-  dtstart: '20261126T073000Z',
-  dtend: '20261126T170000Z',
+  dtstart: '20261126T120000Z',
+  dtend: '20261126T200000Z',
   location: 'Conference Center Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg',
   description: "Luxembourg's software testing conference, 8th edition. Free to attend. https://lste.lu/",
   url: 'https://lste.lu/',

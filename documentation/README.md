@@ -115,12 +115,15 @@ someone confirms otherwise from Q-Leap directly.
   (`sponsors/index.html`, `resources/index.html`).
 - **Full-day structure** (current, per the homepage schedule preview /
   `schedule/index.html`'s Google Calendar link / the .ics file, all
-  consistent as of 2026-07-20): Registration & welcome coffee 08:30,
-  Keynotes/talks + live demos from 09:15, Networking lunch 12:45, Closing
-  ceremony & networking drinks from 17:30 (day runs 08:30–18:00 overall).
-  This superseded an older schedule draft (Morning Tutorials from 10:00,
-  Exhibition Area from 13:00, Keynote Room from 13:30, Demo Room from
-  14:00, Networking Cocktail from 19:00) that the About page's "Event
+  consistent as of 2026-07-23): Doors open & registration 13:00,
+  Keynotes & talks / live demos from 13:30, Closing ceremony & networking
+  drinks from 18:30 (day runs 13:00–21:00 overall). See the 2026-07-23
+  correction entry near the bottom of this file — the 08:30–18:00 time
+  documented below as "current as of 2026-07-20" was itself superseded;
+  13:00–21:00 is what the homepage actually shows and is the confirmed
+  schedule. This superseded an older schedule draft (Morning Tutorials
+  from 10:00, Exhibition Area from 13:00, Keynote Room from 13:30, Demo
+  Room from 14:00, Networking Cocktail from 19:00) that the About page's "Event
   format" pillar cards had been left showing — reconciled during the
   2026-07-20 sponsor-brochure pass below. Morning tutorial pricing is still
   never mentioned; the CTA only invites people to contact hello@lste.lu.
@@ -1067,3 +1070,28 @@ CTA/URL should reflect the actual commercial action.
   that the sponsor-tier model no longer supports).
 - Verified zero remaining `become-a-speaker` references anywhere in the
   built site except the redirect stub's own target.
+
+## 2026-07-23 (correction): schedule .ics/Google Calendar link were stale relative to the homepage
+
+A technical audit caught that the homepage (hero meta, JSON-LD `Event`,
+and the Programme timeline: doors 13:00, keynotes/demos 13:30, closing
+18:30 — day runs 13:00–21:00) no longer matched `assets/downloads/lste-2026.ics`
+(generated from `scripts/generate-ics.mjs`, which still encoded
+08:30–18:00) or `schedule/index.html`'s "Add to Google Calendar" link
+(also still 08:30–18:00). This is the same 08:30–18:00 time the
+2026-07-20 sponsor-brochure pass had reconciled everything to — the
+homepage evidently moved back to 13:00–21:00 at some point afterward
+without the two calendar exports following.
+
+Confirmed 13:00–21:00 is correct (client confirmed 2026-07-23). Fixed:
+- `scripts/generate-ics.mjs`: `DTSTART`/`DTEND` now `20261126T120000Z`/
+  `20261126T200000Z` (12:00–20:00 UTC = 13:00–21:00 CET), regenerated
+  `assets/downloads/lste-2026.ics`.
+- `schedule/index.html`'s Google Calendar link: `dates=` param now
+  `20261126T130000/20261126T210000`.
+- The "Verified facts" entry above, updated to the current schedule.
+
+The About page's old "Event format" pillar cards (the ones the
+2026-07-20 pass reconciled to 08:30–18:00) no longer exist on the page
+at all as of this check — that section was removed in a later redesign,
+so there was nothing left there to fix.

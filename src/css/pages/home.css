@@ -164,6 +164,18 @@
    p) — plain 1rem body copy read noticeably small next to a section's own
    h2 at this prominence. */
 .split-media p { font-size: 1.0625rem; }
+/* Sets the one emphasised line in the mission copy apart from the plain
+   lead paragraphs above it — same left-border-accent language as
+   .stat-item--bordered, in the section's own violet (eyebrow--violet)
+   instead of that component's lime, so it reads as this section's own
+   accent rather than a copy-paste. */
+.mission-callout {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-ink);
+  border-left: 2px solid rgba(139, 92, 246, 0.5);
+  padding-left: var(--space-5);
+}
 
 /* ── Atmosphere: ambient video duo, muted/looping, played only once
    scrolled into view (see initAmbientVideo() in main.js). Portrait
