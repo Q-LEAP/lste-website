@@ -118,9 +118,15 @@ redirect_from:
     </div>
   </section>
 
+  <!-- Reworked 2026-07-24: only the accurate 2025 recap is published for
+       launch. The earlier-edition cards, the growth stats strip and the
+       "recap not available" modal all carried unverified historical detail,
+       so they're pulled in favour of a "coming soon" note until each recap
+       is rebuilt from confirmed data. The older sub-pages themselves now
+       show the same coming-soon placeholder. -->
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <h2 class="sr-only">All editions</h2>
+      <h2 class="sr-only">Latest edition</h2>
       <div class="grid grid--3 edition-grid reveal">
 
         <article class="card edition-card edition-card--latest">
@@ -136,104 +142,19 @@ redirect_from:
           <a class="btn btn--outline btn--sm" href="../previous-editions/edition-2025/index.html">View edition</a>
         </article>
 
-        <article class="card edition-card">
-          <div class="edition-card__year">2024</div>
-          <h3>6th Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 14 November 2024</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Digital Learning Hub, Esch-Belval</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 280+ attendees</li>
-          </ul>
-          <p class="edition-card__theme">Continuous Quality</p>
-          <a class="btn btn--outline btn--sm" href="../previous-editions/edition-2024/index.html">View edition</a>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2019</div>
-          <h3>5th Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 10 October 2019</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> House of Startups, Luxembourg-city</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 150+ registrations, 80 companies</li>
-          </ul>
-          <a class="btn btn--outline btn--sm" href="../previous-editions/edition-2019/index.html">View edition</a>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2018</div>
-          <h3>4th Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 4 October 2018</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 120+ attendees, 88 organizations</li>
-          </ul>
-          <a class="btn btn--outline btn--sm" href="../previous-editions/edition-2018/index.html">View edition</a>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2017</div>
-          <h3>3rd Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 5 October 2017</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Forum Da Vinci, Luxembourg</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 100+ attendees, 55 organizations</li>
-          </ul>
-          <button type="button" class="muted-link js-empty-edition" data-edition="2017" aria-haspopup="dialog" aria-controls="empty-edition-modal">Recap not available</button>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2016</div>
-          <h3>2nd Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-calendar" aria-hidden="true"></i> 6 October 2016</li>
-            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Forum Da Vinci, Luxembourg</li>
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 75+ attendees, 40 organizations</li>
-          </ul>
-          <a class="btn btn--outline btn--sm" href="../previous-editions/edition-2016/index.html">View edition</a>
-        </article>
-
-        <article class="card edition-card">
-          <div class="edition-card__year">2014</div>
-          <h3>1st Edition</h3>
-          <ul class="edition-card__meta">
-            <li><i class="fa-solid fa-users" aria-hidden="true"></i> 60+ attendees, 35 organizations</li>
-          </ul>
-          <p class="text-muted" style="font-size:0.875rem;">The inaugural edition of LSTE.</p>
-          <button type="button" class="muted-link js-empty-edition" data-edition="2014" aria-haspopup="dialog" aria-controls="empty-edition-modal">Recap not available</button>
-        </article>
-
       </div>
-      <p class="text-muted text-center reveal" style="margin-top:var(--space-6);font-size:0.875rem;">No LSTE was held in 2015 or between 2020 and 2023.</p>
     </div>
   </section>
 
-  <section class="section section--dark stats-strip" aria-label="LSTE growth over the years">
+  <section class="section section--alt" aria-labelledby="earlier-heading">
     <div class="container">
-      <div class="grid grid--4 reveal">
-        <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Editions since 2014</div></div>
-        <div class="stat-item"><div class="stat-value">2014</div><div class="stat-label">Year founded</div></div>
-        <div class="stat-item"><div class="stat-value">400<span style="color:var(--color-lime);">+</span></div><div class="stat-label">Attendees, latest edition</div></div>
-        <div class="stat-item"><div class="stat-value">8<span style="color:var(--color-cyan);">th</span></div><div class="stat-label">Edition, coming Nov 2026</div></div>
+      <div class="section-head reveal">
+        <span class="eyebrow eyebrow--violet">Earlier editions</span>
+        <h2 id="earlier-heading">More recaps coming soon.</h2>
+        <p>We're rebuilding the recaps of LSTE's earlier editions from confirmed records. They'll appear here as each one is ready — check back soon.</p>
       </div>
     </div>
   </section>
-
-  <!-- QA-themed empty state for editions with no recap page yet — modal
-       revealed via .js-empty-edition triggers, see assets/js/main.js -->
-  <div class="modal-backdrop" id="empty-edition-modal" role="dialog" aria-modal="true" aria-labelledby="empty-edition-title" hidden>
-    <div class="modal-dialog">
-      <div class="chat-header">
-        <span class="chat-header__icon" aria-hidden="true"><i class="fa-solid fa-bug"></i></span>
-        <span class="chat-header__titles">
-          <span class="chat-header__title" id="empty-edition-title">No archive found</span>
-        </span>
-        <button type="button" class="chat-close" id="empty-edition-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-      </div>
-      <div style="padding:var(--space-5);">
-        <p id="empty-edition-message" style="margin-bottom:var(--space-4);"></p>
-        <a class="btn btn--outline btn--sm" href="../contact/index.html">Have archives to share? Contact us</a>
-      </div>
-    </div>
-  </div>
 
   <section class="tickets-cta" aria-labelledby="editions-cta-heading">
     <div class="tickets-cta__glow" aria-hidden="true"></div>
