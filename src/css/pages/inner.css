@@ -423,19 +423,20 @@
   .timeline__item { grid-template-columns: 5.5rem 1.5rem 1fr; }
 }
 
-/* ── For-who mosaic card (About) ───────────────────────────────────
-   A boxed card — split heading + a 5-photo collage below it — instead
-   of the plain left-text/right-image split every other "about" section
-   on this page uses, so back-to-back sections don't read as a repeat. */
-.for-who-card {
-  background: var(--color-surface);
+/* ── Edition tag chips (sponsor / partner name pills on recap pages) ── */
+.edition-tag {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  color: var(--color-ink);
 }
-@media (min-width: 640px) {
-  .for-who-card { padding: var(--space-10) var(--space-8); }
-}
+
+/* ── For-who mosaic (About) ────────────────────────────────────────
+   Split heading + a 5-photo collage below it. Sits directly on the page
+   background like every other "about" section — no boxed card — so it
+   reads as one homogeneous page rather than a card dropped in. */
 /* Mobile: a swipeable, one-handed carousel (native scroll-snap, no JS)
    instead of the desktop grid — 5 asymmetric tiles don't have a sane
    single-column reading order, and a carousel keeps every photo full-size
