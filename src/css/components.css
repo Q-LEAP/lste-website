@@ -23,7 +23,7 @@
   transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
   white-space: nowrap;
 }
-.btn:hover { transform: translateY(-3px); }
+.btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 
 /* Trailing icon on a CTA nudges forward on hover/focus — a small, purely
@@ -47,9 +47,9 @@
   .btn { white-space: normal; text-align: center; }
 }
 
-/* Hover glow bloom: the same "colored, blurred halo" language already
-   used by .pillar-card--tag and the ghost format icons — reusing an
-   established pattern instead of a one-off effect. */
+/* Sober hover: a clean surface change (fill / darken) with a soft shadow
+   for depth — no colored glow bloom. This is a pro testing conference, not
+   a gaming brand, so buttons stay understated rather than futuristic. */
 .btn--primary {
   background: var(--color-primary);
   color: #fff;
@@ -57,19 +57,20 @@
 }
 .btn--primary:hover {
   background: var(--color-primary-dark);
-  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.4), 0 12px 28px -8px rgba(109, 40, 217, 0.65);
+  box-shadow: var(--shadow-lg);
   color: #fff;
 }
 
 .btn--outline {
   background: transparent;
   color: var(--color-ink);
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .btn--outline:hover {
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
-  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 12px 28px -10px rgba(34, 211, 238, 0.45);
+  background: #6d28d9;
+  border-color: #8b5cf6;
+  color: #fff;
+  box-shadow: none;
 }
 
 .btn--ghost-on-dark {

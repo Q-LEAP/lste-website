@@ -47,13 +47,13 @@
 .header-register-btn {
   background: transparent;
   color: var(--color-ink);
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: none;
 }
 .header-register-btn:hover {
-  background: transparent;
-  color: var(--color-cyan);
-  border-color: var(--color-cyan);
+  background: #6d28d9;
+  color: #fff;
+  border-color: #8b5cf6;
   box-shadow: none;
 }
 
