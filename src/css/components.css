@@ -128,16 +128,15 @@
 #site-header .site-logo { transform: translateY(-6px); }
 /* Reads as one typographic system with the nav links (see image-typ / "6a"
    reference in documentation/): same mono caps, sized just under the nav
-   links so it stays a secondary info label, in the muted ink rather than the
-   lime accent it used to carry (the reference shows a quiet grey date, not a
-   bright highlight). */
+   links so it stays a secondary info label, carrying the lime accent so the
+   date reads as a highlight next to the logo. */
 .site-logo__tag {
   display: none;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-lime);
   padding-left: var(--space-4);
   margin-left: var(--space-1);
   border-left: 1px solid var(--color-border);
