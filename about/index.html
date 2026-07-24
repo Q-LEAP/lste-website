@@ -20,7 +20,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=d86f0acb">
+<link rel="stylesheet" href="../assets/css/styles.css?v=b09e59f0">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,13 +53,13 @@
       <span class="site-logo__tag">26 Nov 2026</span>
     </a>
 
-    <!-- Matches the Claude Design mockup: logo on the left, nav links +
-         CTA clustered together on the right as one group (margin-left:auto
-         on .main-nav, not .header-actions — see components.css). Gallery/
-         Press/Call for Speakers/Contact live in the "More" dropdown /
-         mobile hamburger, since the mockup's own nav didn't need to cover
-         a full multi-page site. Dark-mode toggle lives in the footer, not
-         here. Speakers and Sponsors aren't linked at all — pages kept on
+    <!-- Three-zone header (see the image-typ / "6a" reference in
+         documentation/): logo + date on the left, nav links sitting right
+         after them, and the ticket button alone on the far right
+         (margin-right:auto on .main-nav pushes the actions to the edge, see
+         components.css). Gallery/Press/Call for Speakers/Contact live in the
+         "More" dropdown / mobile hamburger. Dark-mode toggle lives in the
+         footer. Speakers and Sponsors aren't linked at all: pages kept on
          disk, intentionally unlisted from navigation. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
@@ -113,21 +113,34 @@
     </div>
   </section>
 
-  <!-- Content below ports lste.lu/about/ verbatim (text only — DA/markup
-       are ours). Matches its actual section order: Who we are -> For who
-       (incl. the Q-Leap organiser blurb, which the live page runs as
-       its last "for who" paragraph rather than a separate section) ->
-       press/news -> registration CTA. The live page's "our Testimonials"
-       stat block (0 Speakers / 0 Tickets / 0 Sponsors / 0 Sessions) is
-       left out on purpose — those counters read as broken/unpopulated
-       on the real site, not real content worth reproducing. -->
+  <!-- About page narrative order: What it is (Who we are) -> Who created it
+       (Our story / Q-Leap) -> Why it exists (Our purpose) -> What people
+       experience (The LSTE experience) -> proof (Community in numbers, News)
+       -> Registration. Text ports the meaning of lste.lu/about/ (markup/DA
+       are ours); the live page's empty "Testimonials" counters are left out
+       on purpose, as they read as broken on the real site. -->
   <section id="what" class="section" style="padding-top:0;">
     <div class="container">
-      <div class="grid grid--2" style="align-items:start;">
+      <div class="reveal" style="max-width:680px;text-align:left;">
+        <span class="eyebrow eyebrow--violet">Who we are</span>
+        <h2 style="text-align:left;">Luxembourg&rsquo;s biggest testing event.</h2>
+        <p style="text-align:left;">LSTE brings together software testing and Quality Assurance professionals from Luxembourg and across the border to share knowledge, exchange best practices and explore the latest trends in software quality, all in one focused day of expert talks, practical sessions and meaningful networking.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our story: who created LSTE and why. Leads with the core message and
+       pairs it with the Q-Leap team photo (moved here from "Who we are",
+       where it belongs to the organiser's story). -->
+  <section id="organizer" class="section section--alt" aria-labelledby="organizer-heading">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:center;">
         <div class="reveal" style="text-align:left;">
-          <span class="eyebrow eyebrow--violet">Who we are</span>
-          <h2 style="text-align:left;">Luxembourg&rsquo;s biggest testing event.</h2>
-          <p style="text-align:left;">Since 2014, LSTE has brought together software testing and Quality Assurance professionals from Luxembourg, France, Belgium and Germany to share knowledge, exchange best practices and explore the latest trends in software quality. The event combines expert talks, practical sessions and meaningful networking in one focused day.</p>
+          <span class="eyebrow eyebrow--lime">Our story</span>
+          <h2 id="organizer-heading" style="text-align:left;">Created in 2014 by Q-Leap.</h2>
+          <p style="text-align:left;">LSTE was created in 2014 by Q-Leap, a pure testing player in Luxembourg, to connect and grow the local and cross-border software testing community.</p>
+          <p style="text-align:left;">Q-Leap has specialised in software testing since 2012. Built from that real-world QA experience, LSTE gives testing professionals a place to exchange practical knowledge, discover new approaches and meet their peers, year after year.</p>
+          <a class="btn btn--outline" href="https://q-leap.eu" target="_blank" rel="noopener">Visit Q-Leap.eu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
         </div>
         <div class="reveal">
           <picture>
@@ -140,18 +153,29 @@
     </div>
   </section>
 
-  <!-- For who: boxed card (split heading + 5-photo mosaic) instead of
-       the plain text/image split "Who we are" just above uses — so the
-       two sections don't read as a repeated pattern back to back. -->
+  <!-- Our purpose: why LSTE exists. Plain text section so it reads
+       differently from the story block above it. -->
   <section id="for-who" class="section" aria-labelledby="for-who-heading">
+    <div class="container">
+      <div class="reveal" style="max-width:680px;">
+        <span class="eyebrow eyebrow--purple">Our purpose</span>
+        <h2 id="for-who-heading">By testers, for everyone involved in quality.</h2>
+        <p>LSTE is built by testers who know the daily reality of the job, and it is open to everyone whose work touches software quality, from QA engineers and developers to product and IT leaders. Every year the community gathers for expert insights it can apply straight away, now one of the most awaited dates on Luxembourg&rsquo;s IT agenda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The LSTE experience: what a day on site feels like. Boxed card with a
+       5-photo mosaic (swipeable carousel on mobile, collage grid on desktop). -->
+  <section id="experience" class="section" aria-labelledby="experience-heading">
     <div class="container">
       <div class="for-who-card reveal">
         <div class="section-head section-head--split">
           <div>
-            <span class="eyebrow eyebrow--lime">For who</span>
-            <h2 id="for-who-heading">Created by testers, for testers.</h2>
+            <span class="eyebrow eyebrow--violet">The LSTE experience</span>
+            <h2 id="experience-heading">What a day at LSTE looks like.</h2>
           </div>
-          <p>Every year, the community of testers and IT practitioners gathers for expert insights they can apply straight away — now one of the most awaited dates on Luxembourg's IT agenda.</p>
+          <p>Talks and live demos, hands-on sessions, and the conversations in between: this is what a day at LSTE feels like.</p>
         </div>
         <div class="for-who-mosaic">
           <div class="for-who-mosaic__item for-who-mosaic__item--tall-left">
@@ -194,24 +218,13 @@
     </div>
   </section>
 
-  <!-- Same stats strip as the homepage — same numbers, same markup. -->
-  <section class="stats-row" aria-label="LSTE in numbers">
+  <!-- Community in numbers: proof. Same stats strip as the homepage. -->
+  <section class="stats-row" aria-label="Community in numbers">
     <div class="container stats-row__grid reveal">
       <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-ink);">30<span style="color:var(--color-primary-light);">+</span></div><div class="stats-row__label">Organisations represented</div></div>
       <div class="stats-row__item"><div class="stats-row__value">400<span style="color:var(--color-lime);">+</span></div><div class="stats-row__label">QA professionals expected</div></div>
       <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-cyan);">4</div><div class="stats-row__label">Countries connected</div></div>
       <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-primary);">Free</div><div class="stats-row__label">Registration</div></div>
-    </div>
-  </section>
-
-  <section id="organizer" class="section" aria-labelledby="organizer-heading">
-    <div class="container">
-      <div class="reveal" style="max-width:640px;">
-        <span class="eyebrow eyebrow--lime">Who organises LSTE</span>
-        <h2 id="organizer-heading">Organised by Q-Leap SA.</h2>
-        <p>LSTE is organised by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap</a>, a Luxembourg software testing specialist active since 2012. Built from real-world QA experience, the event gives testing professionals a place to exchange practical knowledge, discover new approaches and connect with the local and cross-border community.</p>
-        <a class="btn btn--outline" href="https://q-leap.eu" target="_blank" rel="noopener">Visit Q-Leap.eu <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-      </div>
     </div>
   </section>
 
@@ -349,6 +362,6 @@
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=231123a1" defer></script>
+<script src="../assets/js/main.js?v=dce32195" defer></script>
 </body>
 </html>

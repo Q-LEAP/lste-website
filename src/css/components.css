@@ -14,7 +14,7 @@
   gap: var(--space-2);
   padding: 0.85rem 1.75rem;
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.045em;
@@ -86,8 +86,8 @@
 }
 .btn--ghost:hover { background: var(--color-primary-tint); color: var(--color-primary); }
 
-.btn--sm { padding: 0.55rem 1.25rem; font-size: var(--fs-sm); }
-.btn--lg { padding: 1rem 2.25rem; font-size: 1.0625rem; }
+.btn--sm { padding: 0.55rem 1.25rem; font-size: 0.75rem; }
+.btn--lg { padding: 1rem 2.25rem; font-size: 0.875rem; }
 .btn--block { width: 100%; justify-content: center; }
 
 /* ── Site header / nav ───────────────────────────────────────────── */
@@ -125,14 +125,20 @@
    nudges it up to actually match the nav links' baseline. Footer's logo
    doesn't need this (nothing next to it to align against). */
 #site-header .site-logo { transform: translateY(-6px); }
+/* Reads as one typographic system with the nav links (see image-typ / "6a"
+   reference in documentation/): same mono caps, sized just under the nav
+   links so it stays a secondary info label, in the muted ink rather than the
+   lime accent it used to carry (the reference shows a quiet grey date, not a
+   bright highlight). */
 .site-logo__tag {
   display: none;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-lime);
-  padding-left: var(--space-3);
+  color: var(--color-muted);
+  padding-left: var(--space-4);
+  margin-left: var(--space-1);
   border-left: 1px solid var(--color-border);
 }
 /* Hidden below ~600px — logo, date and the nav toggle otherwise crowd the
@@ -145,13 +151,16 @@
 .main-nav { display: none; }
 .main-nav-list { display: flex; align-items: center; gap: var(--space-6); }
 
-/* Logo on the left; nav links + CTA clustered together as one group on
-   the right (margin-left: auto on .main-nav, not .header-actions) — matches
-   the Claude Design mockup's two-zone header instead of the previous
-   three-zone logo/nav/actions spread. */
+/* Three-zone header matching the image-typ / "6a" reference in
+   documentation/: logo + date on the left, the nav links sitting right
+   after them (a fixed gap, NOT pushed to the far right), and the ticket
+   button alone on the far right. margin-right: auto on .main-nav absorbs
+   all the free space to its right, so the nav hugs the logo while the
+   actions get shoved to the edge. (Was previously margin-left: auto on
+   .main-nav, which clustered nav + button together on the right — the
+   layout the client flagged as not matching the reference.) */
 @media (min-width: 1300px) {
-  .main-nav { display: block; margin-left: auto; }
-  .header-actions { margin-left: var(--space-8); }
+  .main-nav { display: block; margin-left: var(--space-8); margin-right: auto; }
 }
 .main-nav-link {
   font-family: var(--font-mono);

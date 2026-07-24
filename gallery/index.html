@@ -20,7 +20,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=d86f0acb">
+<link rel="stylesheet" href="../assets/css/styles.css?v=b09e59f0">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,13 +53,13 @@
       <span class="site-logo__tag">26 Nov 2026</span>
     </a>
 
-    <!-- Matches the Claude Design mockup: logo on the left, nav links +
-         CTA clustered together on the right as one group (margin-left:auto
-         on .main-nav, not .header-actions — see components.css). Gallery/
-         Press/Call for Speakers/Contact live in the "More" dropdown /
-         mobile hamburger, since the mockup's own nav didn't need to cover
-         a full multi-page site. Dark-mode toggle lives in the footer, not
-         here. Speakers and Sponsors aren't linked at all — pages kept on
+    <!-- Three-zone header (see the image-typ / "6a" reference in
+         documentation/): logo + date on the left, nav links sitting right
+         after them, and the ticket button alone on the far right
+         (margin-right:auto on .main-nav pushes the actions to the edge, see
+         components.css). Gallery/Press/Call for Speakers/Contact live in the
+         "More" dropdown / mobile hamburger. Dark-mode toggle lives in the
+         footer. Speakers and Sponsors aren't linked at all: pages kept on
          disk, intentionally unlisted from navigation. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
@@ -119,7 +119,7 @@
         <button type="button" class="gallery-item gallery-item--highlight"><picture>
           <source type="image/avif" srcset="../assets/img/lste-2025-evening-reception-400.avif 400w, ../assets/img/lste-2025-evening-reception-800.avif 800w, ../assets/img/lste-2025-evening-reception-1200.avif 1200w" sizes="(max-width: 480px) 400px, (max-width: 900px) 800px, 1200px">
           <source type="image/webp" srcset="../assets/img/lste-2025-evening-reception-400.webp 400w, ../assets/img/lste-2025-evening-reception-800.webp 800w, ../assets/img/lste-2025-evening-reception-1200.webp 1200w" sizes="(max-width: 480px) 400px, (max-width: 900px) 800px, 1200px">
-          <img src="../assets/img/lste-2025-evening-reception-1200.jpg" width="1200" height="900" loading="lazy" alt="Evening networking reception at LSTE 2025, with sponsor booths in the background" decoding="async">
+          <img src="../assets/img/lste-2025-evening-reception-1200.jpg" width="1200" height="900" loading="eager" fetchpriority="high" alt="Evening networking reception at LSTE 2025, with sponsor booths in the background" decoding="async">
         </picture><span class="gallery-item__badge"><i class="fa-solid fa-star" aria-hidden="true"></i> Highlight</span><span class="gallery-item__year">2025</span></button>
         <button type="button" class="gallery-item"><picture>
           <source type="image/avif" srcset="../assets/img/lste-2025-keynote-speaker-400.avif 400w, ../assets/img/lste-2025-keynote-speaker-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
@@ -407,6 +407,6 @@
 </div>
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=231123a1" defer></script>
+<script src="../assets/js/main.js?v=dce32195" defer></script>
 </body>
 </html>

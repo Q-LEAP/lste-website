@@ -466,6 +466,7 @@
       const iframe = el.querySelector('iframe');
       if (!btn || !iframe) return;
       btn.addEventListener('click', () => {
+        if (iframe.dataset.src && !iframe.getAttribute('src')) iframe.src = iframe.dataset.src;
         btn.remove();
         iframe.style.pointerEvents = 'auto';
       }, { once: true });
