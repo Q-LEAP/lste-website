@@ -1200,3 +1200,23 @@ Speakers page as unsupported. The client restated the date on 2026-07-27, so
 it is treated as authoritative here, but `/call-for-speakers/` itself still
 does not display it. Either add it to that page or drop it from `llms.txt` —
 right now the two disagree.
+
+### 2026-07-27 (addendum): `/speakers/` stays out of the index
+
+The Speakers page was listed in `sitemap.xml` (priority 0.7) while carrying
+`<meta name="robots" content="noindex">` — two contradictory signals, an
+inconsistency that predates the temporary site-wide block. Client ruling on
+2026-07-27: **keep it out of the index** while it is still a placeholder
+("the confirmed 2026 lineup will be published here as speakers are
+announced"). So it was removed from the sitemap, and the go-live commit
+keeps its bare `noindex` rather than lifting it.
+
+This is consistent with navigation: per the comment in `src/partials/nav.html`,
+Speakers and Sponsors are deliberately unlisted from the nav.
+
+**When the 2026 lineup is published**, both have to be undone together — drop
+the `noindex` from `speakers/index.html` *and* put the URL back in
+`sitemap.xml`. Doing only one reproduces the contradiction.
+
+Note for later: `/sponsors/` is in the same position — unlinked from the nav —
+yet it *is* in the sitemap and indexable. That was not reviewed in this pass.
