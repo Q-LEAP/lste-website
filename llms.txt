@@ -1,0 +1,19 @@
+# LSTE - Luxembourg Software Testing Event
+
+> Luxembourg's annual software testing and QA conference, organised by Q-Leap.
+> 8th edition: 26 November 2026, 13:00-21:00,
+> Hôtel Parc Belle-Vue, Luxembourg City. Free to attend, registration required.
+> Running since 2014. 280+ attendees at the 6th edition (2024).
+> Not a general tech conference: one afternoon dedicated to software testing
+> and quality, for practitioners from Luxembourg, France, Belgium and Germany.
+
+## Pages prioritaires
+
+- [Accueil](https://lste.lu/) : l'événement, la date, le lieu, l'inscription gratuite
+- [Billetterie](https://lste.lu/register/) : inscription gratuite, contenu du ticket, FAQ
+- [Programme](https://lste.lu/schedule/) : déroulé de la journée
+- [Lieu](https://lste.lu/venue/) : adresse, accès, transports, accessibilité
+- [Appel à speakers](https://lste.lu/call-for-speakers/) : candidatures jusqu'au 30/09/2026
+- [Devenir sponsor](https://lste.lu/become-a-sponsor/) : formules et audience
+- [Éditions passées](https://lste.lu/previous-editions/) : historique depuis 2014
+- [Presse](https://lste.lu/press/) : couverture média
