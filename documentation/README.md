@@ -444,7 +444,11 @@ itself, not real photos in general — contained treatments remain fine).
   everywhere via `partials:inject`), the homepage `Organization` JSON-LD
   `sameAs` array (LinkedIn only now), and `news/index.html`'s "Watch on
   YouTube" CTA (paragraph/section simplified to LinkedIn-only). Only
-  LinkedIn (real, confirmed: `linkedin.com/company/lste/`) remains. If
+  LinkedIn remains. ⚠️ The URL recorded here on 2026-07-20 as "real,
+  confirmed" — `linkedin.com/company/lste/` — was **wrong**; it is a
+  duplicate page. The client corrected it on 2026-07-27 to
+  `linkedin.com/company/luxembourg-software-testing-event/` (see that
+  session's entry at the bottom of this file). If
   official X/Twitter or YouTube accounts are created later, re-add them
   in `src/partials/footer.html` and re-run `npm run partials:inject` —
   don't hand-edit each page.
@@ -1095,3 +1099,104 @@ The About page's old "Event format" pillar cards (the ones the
 2026-07-20 pass reconciled to 08:30–18:00) no longer exist on the page
 at all as of this check — that section was removed in a later redesign,
 so there was nothing left there to fix.
+
+## 2026-07-27: legacy `/wp-content/uploads/` paths preserved (WordPress migration)
+
+**Do not delete the top-level `wp-content/` folder.** The site it replaces
+(lste.lu, hosted on WordPress.com — `ns1/2/3.wordpress.com`, Atomic) served
+all its media from `/wp-content/uploads/YYYY/MM/…`, and Google has those URLs
+indexed — notably the LSTE 2024 speaker decks, which rank as standalone PDF
+results. Cutting the domain over to this static build would 404 every one of
+them.
+
+Inventory taken from the live WP REST API (`/wp-json/wp/v2/media`, 745 items
+reported / 730 returned): **709 images (~327 MB of originals, thumbnails on
+top) and 19 documents (~28 MB)**.
+
+What was done — **the 14 documents worth keeping** were downloaded to their
+*exact original paths* under `wp-content/uploads/`, so the old URLs keep
+returning 200 with no redirect involved:
+
+- `2025/01/` — the seven LSTE 2024 speaker decks (Excellium, Sogeti, LTB,
+  Bianculli/Pastore, StarDust NSI, Q-Leap, Smartesting).
+- `2024/10/` — `Program-LSTE.pdf`, `_Keynote`, `_Tuto`, and the sponsor
+  LinkedIn asset kit (`.zip`).
+- `2023/05/` — the 2016 and 2017 programmes.
+- `2019/09/lste2019-1.ics` — the 2019 calendar file.
+
+Deliberately **not** copied:
+
+- The 709 images. Copying them would add ~327 MB+ to a repo whose `.git` is
+  already ~500 MB, against GitHub Pages' 1 GB published-site limit — and the
+  event photos that matter were already re-published, optimised, under
+  `assets/img/`. Old image URLs will 404; that costs Google Images
+  impressions, not web-search rankings.
+- Five internal print/design artefacts (`2025/11/Bg-2-.pdf`, `Bg-2-1.pdf`,
+  `Signage-Logo-and-Title.pdf`, `-1.pdf`, `Backgrounds-1.ai_.zip`) — signage
+  artwork that was never meant to be public and carries no SEO value.
+- The two event videos: they live on `videos.files.wordpress.com`, not on
+  lste.lu, so they are unaffected by the migration either way.
+
+**Why copies and not redirects:** GitHub Pages derives `Content-Type` from the
+file extension and serves no server-side 301s. `jekyll-redirect-from` (enabled
+in `_config.yml`) emits an HTML meta-refresh page, which works for *page* URLs
+but not for a `.pdf` URL — the browser would receive HTML labelled
+`application/pdf`. Real 301s for these paths would require putting the domain
+behind a proxy that can rewrite (e.g. Cloudflare Redirect Rules; a free
+Cloudflare account already exists for the chat Worker). Until then, serving
+the bytes at the original path is the only thing that actually works.
+
+**Still open:** the old WordPress *page and post* URLs have not been mapped to
+this build's URLs. That is worth more SEO than the media files were — see
+`jekyll-redirect-from`, which handles exactly that case for HTML pages.
+
+## 2026-07-27: LinkedIn URL corrected, sitemap gaps closed, llms.txt added
+
+**LinkedIn.** The site carried two different company URLs:
+`linkedin.com/company/lste/` (footer partial → every page, plus the homepage
+`Organization` JSON-LD `sameAs`) and
+`linkedin.com/company/luxembourg-software-testing-event/` (a single CTA in
+`linkedin/index.html`). The client confirmed the **second** is the real page
+and the first is a duplicate to be closed on LinkedIn's side. All 44 HTML
+files were switched to the real URL, `src/partials/footer.html` included, so
+`partials:inject` won't reintroduce the old one. The `?viewAsMember=true`
+parameter the client supplied was **not** kept — it is a "view as member"
+preview parameter, not part of the public page URL.
+
+⚠️ Closing the duplicate `company/lste/` page is a LinkedIn admin action that
+has to be done in LinkedIn itself — nothing in this repo can do it. Until it
+is closed it will keep competing with the real page in search results.
+
+**Sitemap.** `sitemap.xml` listed 26 URLs while the build has 42 indexable
+pages. Sixteen real pages were missing and have been added:
+`/call-for-speakers/` and `/press/` (the two the client spotted) **plus 14
+news articles** — the same omission, so they were fixed in the same pass.
+`lastmod` is each page's last commit date (2026-07-24), not today's, so the
+values stay truthful. The two redirect stubs (`/become-a-speaker/`,
+`/ticket/`) are deliberately still absent — redirects don't belong in a
+sitemap.
+
+**Note on `/call-for-speakers/`:** the 2026-07-20 entry above describes this
+page as having been turned into a redirect stub to `/become-a-sponsor/`. That
+is no longer true — it is a full 209-line page with its own title, description
+and self-canonical. The earlier note is stale; trust the file, not that entry.
+
+**`llms.txt`.** Added at the site root (`/llms.txt`) — a plain-text summary
+for AI crawlers: event identity, date, venue, and a curated list of priority
+pages. Client-supplied copy, with two corrections:
+
+- "350+ attendees at the 6th edition (2024)" was changed to **280+**, because
+  `index.html:378` already states "the 6th edition […] brought together over
+  280 professionals". Shipping 350 would have made the AI cheat-sheet
+  contradict the site it summarises. **Unresolved:** if 350 is the true
+  figure, the homepage is what needs fixing, and both must move together.
+- French accents restored (`l'événement`, `déroulé`, `accès`, `Éditions
+  passées`, `média`) — they were stripped in the supplied text.
+
+`llms.txt` also asserts a **30/09/2026 deadline** for the call for speakers.
+That date appears **nowhere on the site** — the 2026-07-20 pass deliberately
+removed an "accepting submissions until 30 September 2026" claim from the
+Speakers page as unsupported. The client restated the date on 2026-07-27, so
+it is treated as authoritative here, but `/call-for-speakers/` itself still
+does not display it. Either add it to that page or drop it from `llms.txt` —
+right now the two disagree.
