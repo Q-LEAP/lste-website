@@ -1,6 +1,7 @@
 ---
 redirect_from:
   - /home-hero-section/
+  - /impression/
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -9,18 +10,17 @@ redirect_from:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LSTE 2026: Luxembourg Software Testing Event</title>
 <meta name="description" content="LSTE 2026 is Luxembourg's premier software testing and QA conference, 8th edition, 26 November 2026, free to attend. Keynotes, workshops, and 400+ testing professionals.">
-<link rel="canonical" href="https://lste.lu/">
-<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.lste.lu/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="LSTE 2026: Luxembourg Software Testing Event">
 <meta property="og:description" content="Luxembourg's premier software testing and QA conference. 8th edition, 26 November 2026, Hôtel Parc Belle-Vue, Luxembourg City. Free to attend.">
-<meta property="og:url" content="https://lste.lu/">
-<meta property="og:image" content="https://lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
+<meta property="og:url" content="https://www.lste.lu/">
+<meta property="og:image" content="https://www.lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LSTE 2026: Luxembourg Software Testing Event">
 <meta name="twitter:description" content="Luxembourg's premier software testing and QA conference. 8th edition, 26 November 2026. Free to attend.">
-<meta name="twitter:image" content="https://lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
+<meta name="twitter:image" content="https://www.lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
 
 <link rel="icon" href="./assets/img/favicon.svg?v=db5be53e" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./assets/img/icons/apple-touch-icon.png">
@@ -75,14 +75,33 @@ redirect_from:
   "offers": { "@type": "Offer", "url": "https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register", "price": "0", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
 }
 </script>
+<!-- Organization + WebSite, linked by @id. `name` is the full brand and
+     `alternateName` the acronym people actually search for ("lste"), which is
+     what Google needs to keep resolving the query to this site and to label the
+     result "Luxembourg Software Testing Event" rather than guessing. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "LSTE, Luxembourg Software Testing Event",
-  "url": "https://lste.lu/",
-  "logo": "https://lste.lu/assets/img/lste-logo.svg?v=f4352eb3",
-  "sameAs": ["https://www.linkedin.com/company/luxembourg-software-testing-event/"]
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.lste.lu/#organization",
+      "name": "Luxembourg Software Testing Event",
+      "alternateName": "LSTE",
+      "url": "https://www.lste.lu/",
+      "logo": "https://www.lste.lu/assets/img/lste-logo.svg?v=f4352eb3",
+      "sameAs": ["https://www.linkedin.com/company/luxembourg-software-testing-event/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.lste.lu/#website",
+      "name": "Luxembourg Software Testing Event",
+      "alternateName": "LSTE",
+      "url": "https://www.lste.lu/",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://www.lste.lu/#organization" }
+    }
+  ]
 }
 </script>
 </head>

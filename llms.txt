@@ -9,11 +9,11 @@
 
 ## Pages prioritaires
 
-- [Accueil](https://lste.lu/) : l'événement, la date, le lieu, l'inscription gratuite
-- [Billetterie](https://lste.lu/register/) : inscription gratuite, contenu du ticket, FAQ
-- [Programme](https://lste.lu/schedule/) : déroulé de la journée
-- [Lieu](https://lste.lu/venue/) : adresse, accès, transports, accessibilité
-- [Appel à speakers](https://lste.lu/call-for-speakers/) : candidatures jusqu'au 30/09/2026
-- [Devenir sponsor](https://lste.lu/become-a-sponsor/) : formules et audience
-- [Éditions passées](https://lste.lu/previous-editions/) : historique depuis 2014
-- [Presse](https://lste.lu/press/) : couverture média
+- [Accueil](https://www.lste.lu/) : l'événement, la date, le lieu, l'inscription gratuite
+- [Billetterie](https://www.lste.lu/register/) : inscription gratuite, contenu du ticket, FAQ
+- [Programme](https://www.lste.lu/schedule/) : déroulé de la journée
+- [Lieu](https://www.lste.lu/venue/) : adresse, accès, transports, accessibilité
+- [Appel à speakers](https://www.lste.lu/call-for-speakers/) : candidatures jusqu'au 30/09/2026
+- [Devenir sponsor](https://www.lste.lu/become-a-sponsor/) : formules et audience
+- [Éditions passées](https://www.lste.lu/previous-editions/) : historique depuis 2014
+- [Presse](https://www.lste.lu/press/) : couverture média

@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const EXCLUDE_DIRS = new Set(['node_modules', '.git', '.claude', '_source', 'scripts', 'src', 'documentation']);
-const SITE_ORIGIN = 'https://lste.lu';
+const SITE_ORIGIN = 'https://www.lste.lu';
 
 async function findHtmlFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -40,7 +40,7 @@ function decodeEntities(str) {
 }
 
 // Resolves a breadcrumb href (relative to the page's own directory) to an
-// absolute https://lste.lu/... URL, the same way a browser would.
+// absolute https://www.lste.lu/... URL, the same way a browser would.
 function resolveHref(fileDir, href) {
   const resolved = path.normalize(path.join(fileDir, href)).replace(/\\/g, '/');
   const relFromRoot = path.relative(ROOT, resolved).replace(/\\/g, '/');

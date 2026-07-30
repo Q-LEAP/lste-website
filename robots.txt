@@ -1,8 +1,8 @@
-# TEMPORARY: this build isn't at its official URL yet, and every page also
-# carries <meta name="robots" content="noindex, nofollow">. Once the site
-# is ready to go live at lste.lu, revert this file to allow crawling (see
-# documentation/README.md) and remove the meta tag site-wide.
+# Nothing is disallowed on purpose. The site inherited a stale index from the
+# WordPress build it replaces, and Google can only drop those URLs by crawling
+# them and seeing the 404 / redirect. Blocking them here would freeze them in
+# the results instead. See documentation/README.md.
 User-agent: *
-Disallow: /
+Allow: /
 
-Sitemap: https://lste.lu/sitemap.xml
+Sitemap: https://www.lste.lu/sitemap.xml

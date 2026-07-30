@@ -16,8 +16,8 @@ const EVENT = {
   dtstart: '20261126T120000Z',
   dtend: '20261126T200000Z',
   location: 'Conference Center Hôtel Parc Belle-Vue, 5 Avenue Marie-Thérèse, L-2132 Luxembourg',
-  description: "Luxembourg's software testing conference, 8th edition. Free to attend. https://lste.lu/",
-  url: 'https://lste.lu/',
+  description: "Luxembourg's software testing conference, 8th edition. Free to attend. https://www.lste.lu/",
+  url: 'https://www.lste.lu/',
 };
 
 // RFC 5545: escape , ; \ and newlines in TEXT values.

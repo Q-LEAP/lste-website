@@ -1220,3 +1220,122 @@ the `noindex` from `speakers/index.html` *and* put the URL back in
 
 Note for later: `/sponsors/` is in the same position — unlinked from the nav —
 yet it *is* in the sitemap and indexable. That was not reviewed in this pass.
+
+## 2026-07-30: site opened to indexing, canonical host switched to `www.lste.lu`
+
+**Why this pass.** The client searched "lste" on Google and got an ugly result:
+under the snippet sat a list of sitelinks pointing at the *old* WordPress site
+— "LSTE Organization", "Event Archives - LSTE", "Silicon Archives - LSTE",
+"Edition 2024" — plus one spam entry ("RAJABOM ⚡ Login Slot777"). The ask was
+"About, Programme, etc." underneath instead.
+
+Root cause: **this build was still completely invisible to Google.**
+`robots.txt` said `Disallow: /` and all 45 pages carried
+`<meta name="robots" content="noindex, nofollow">`. So none of the new pages
+could be indexed, *and* — the part that matters — Google could not recrawl the
+inherited WordPress URLs to discover they now 404. Those stale results were
+frozen in place. Sitelinks are generated algorithmically and cannot be
+specified; there was nothing to generate them from.
+
+**Host.** `lste.lu` 301s to `www.lste.lu` (GitHub Pages custom domain), while
+every canonical, `og:url`, `sitemap.xml` entry and `llms.txt` link declared
+`https://lste.lu/` — contradictory signals. Sylvain's 41 commits on 2026-07-27
+→ 29 settled `CNAME` on `www.lste.lu`, so **www is now the canonical host** and
+the 303 absolute URLs were rewritten to match. Left deliberately untouched:
+`documentation/` (historical record — rewriting it would falsify it),
+`scripts/_image-urls.txt` and `assets/img/manifest.json` (provenance of the old
+WordPress media), `worker/` (already allow-lists both hosts), `hello@lste.lu`,
+and the `.ics` UID `lste-2026@lste.lu` (changing it would duplicate the entry
+for anyone who already imported the event).
+
+**What is indexable now.** 40 pages. Five stay out, per the client's ruling:
+
+- `/speakers/` — still a placeholder (see the 2026-07-27 addendum above)
+- `/resources/` — the sponsor-only space; also removed from `sitemap.xml`,
+  which it should never have been in alongside a `noindex`
+- `/become-a-speaker/`, `/ticket/` — redirect stubs
+- `404.html` — left exactly as it was; a 404 is never indexable anyway
+
+The four real pages moved from `noindex, nofollow` to **`noindex, follow`**, so
+their outgoing links still carry. `sitemap.xml` and the indexable set now match
+exactly, 40/40, and every `lastmod` is `2026-07-30` — truthful (the canonical
+and robots meta of every page did change today) and it nudges the recrawl.
+
+**`robots.txt` disallows nothing, on purpose.** The instinct is to block
+`/wp-admin/`, `/*/feed/` and friends. Don't: a blocked URL cannot be crawled,
+so Google never sees the 404 and the URL lingers in the results instead of
+dropping out. Blocking would have preserved exactly the mess this pass exists
+to clear.
+
+**Legacy WordPress URLs — the item left open on 2026-07-27 is now closed.**
+The old URL inventory was rebuilt from the Wayback Machine CDX API
+(`web.archive.org/cdx/search/cdx?url=lste.lu*`), since the WordPress REST API
+died with the domain cutover. 91 mappings were added on top of the 29 that
+already existed, for **120 legacy URLs** total, all via `jekyll-redirect-from`:
+
+- 33 `/speaker_post/<name>/` and 27 `/schedule_posts/<talk>/` (WordPress custom
+  post types) → `/previous-editions/edition-2025/`, where that line-up and
+  those talks actually live now. `/speaker_post/lste-organization/` is the
+  exception → `/about/`; it is the "LSTE Organization" entry from the client's
+  screenshot.
+- The taxonomy archives behind the other screenshot entries: `/tag/event/`
+  ("Event Archives - LSTE") and 7 sibling tags plus `/category/highlight/`
+  → `/news/`; `/category/press-release/silicon/` ("Silicon Archives - LSTE")
+  and its two siblings → `/press/`.
+- Page slugs: `/the-story-of-the-lste/` → `/about/`, `/get-your-ticket/` and
+  `/ticket-pricing/` → `/register/`, `/event-location/` → `/venue/`,
+  `/privacy-notice/` → `/privacy-policy/`, `/lste2016|2018/` → the matching
+  edition recap, `/lste2014|2017/` → `/previous-editions/` (no 2014 or 2017
+  recap page exists).
+
+**Junk was left to 404 on purpose.** ~140 archived URLs are Elementor theme
+demo content and image attachment pages (`/article-1/`…`/article-7/`,
+`/2018-1/`…, `/partner-N/`, `/*-png/`, every `/embed/`, `/feed/` and `/amp/`
+variant, and a recursive `/category/press-release/it-nation-press-release/page/2/…`
+crawler trap). Redirecting hundreds of junk URLs to the homepage reads as soft
+404s; letting them 404 is the correct treatment and Google drops them.
+
+**One latent Jekyll conflict fixed.** `register/index.html` declared
+`redirect_from: /ticket/` while `ticket/index.html` exists as a hand-written
+stub. Two generators competing for one path — the stub was winning in
+production. The `redirect_from` entry was removed and a comment left in its
+place so it does not come back.
+
+**Search-result appearance.** The homepage's standalone `Organization` block
+became an `@graph` of `Organization` + `WebSite` linked by `@id`, both with
+`alternateName: "LSTE"` — the acronym people actually type. Page titles were
+reviewed and left alone: they already front-load the distinctive word
+("About LSTE…", "Programme: LSTE 2026 Schedule", "Venue: …"), which is what
+Google draws sitelink labels from, and the nav anchors are already short
+(About / Programme / Venue / Become a sponsor).
+
+**Source files are no longer published.** `_config.yml` gained an `exclude:`
+list. Everything below used to be served with a 200 and was therefore
+crawlable: `src/` (CSS/JS sources, and `src/chat/system-prompt.md` +
+`knowledge.md` — the chat's prompt, readable by anyone), `scripts/`, `worker/`,
+`documentation/README.md` (these internal notes), and `package.json`. Nothing
+on the site links to any of them; the browser gets the built copies under
+`assets/`, and the Worker inlines `src/chat/*.md` at build time via wrangler,
+not over HTTP. Note that setting `exclude` **replaces** Jekyll's default list,
+so the defaults are restated in the file. `wp-content/` is deliberately *not*
+excluded — those legacy media paths must keep returning 200.
+
+### Still open
+
+- **Search Console, manual.** Nothing in this repo can do these: submit
+  `https://www.lste.lu/sitemap.xml`; confirm `www.lste.lu` is the property
+  Google reports on; and find the "RAJABOM ⚡ Login Slot777" URL (it does *not*
+  appear in the Wayback archive, so it was either injected into the WordPress
+  install or never archived) and file a removal request. Everything else drops
+  out on its own now that crawling is allowed — expect weeks, not days.
+- **Sitelinks are not guaranteed.** Google decides whether to show them at all.
+  The prerequisites are now in place; the outcome is not ours to set.
+- **Internal links point at non-canonical URLs.** `paths:localize` rewrites
+  every internal link to `./about/index.html` (deliberate — it keeps the build
+  openable over `file://`, see the script header), while the canonical is
+  `/about/`. Google consolidates the two via the canonical tag, so this is an
+  inefficiency rather than a defect, but it does mean no internal link points
+  at a canonical URL. Revisiting it means giving up `file://` portability, so
+  it was not changed unilaterally.
+- `/sponsors/` is still unlinked from the nav yet indexable and in the sitemap —
+  the open question from the 2026-07-27 addendum, still unreviewed.

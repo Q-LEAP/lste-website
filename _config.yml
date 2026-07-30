@@ -1,2 +1,28 @@
 plugins:
   - jekyll-redirect-from
+
+# Keep the build tooling and internal notes out of the published site. All of
+# these used to be served with a 200 and were therefore crawlable: the CSS/JS
+# sources, the build scripts, the Cloudflare Worker source, the chat system
+# prompt and knowledge base, documentation/README.md (internal client notes),
+# and package.json. Nothing on the site links to any of them — the browser gets
+# the built copies under assets/, and the Worker inlines src/chat/*.md at build
+# time via wrangler, not over HTTP.
+#
+# Setting `exclude` replaces Jekyll's default list, so the defaults are
+# restated here. `wp-content/` is deliberately NOT excluded: those legacy
+# WordPress media paths must keep returning 200 (see documentation/README.md).
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - src/
+  - scripts/
+  - worker/
+  - documentation/
+  - package.json
+  - package-lock.json
