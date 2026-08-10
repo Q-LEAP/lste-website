@@ -100,8 +100,9 @@ someone confirms otherwise from Q-Leap directly.
     "practioners") that were silently corrected for spelling only during
     the 2026-07-17 UX/DA review pass — the wording and meaning are
     otherwise unchanged from the official source.
-- **Sponsors (2026, confirmed only):** Q-Leap (Platinum), Thales (Gold — see
-  the 2026-08-10 entry below). Every other sponsor previously listed
+- **Sponsors (2026, confirmed only):** Q-Leap (Platinum), OctoPerf (Platinum),
+  Thales (Gold) — all three per the 2026-08-10 entry below. Every other sponsor
+  previously listed
   (Deloitte, NSI, Sogeti, AINOS, Xray, Uni.lu,
   SQAI Suite, Tricentis, SnT, Q-Guard, jemmic, Q-Bot, Luxembourg Testing
   Board, Silicon Luxembourg, GASQ, ITNation) sponsored a past edition but is
@@ -1341,7 +1342,9 @@ excluded — those legacy media paths must keep returning 200.
 - `/sponsors/` is still unlinked from the nav yet indexable and in the sitemap —
   the open question from the 2026-07-27 addendum, still unreviewed.
 
-## 2026-08-10: first Gold sponsor added — Thales
+## 2026-08-10: first 2026 sponsors added — Thales (Gold), OctoPerf (Platinum)
+
+### Thales — Gold
 
 **What changed.** Thales confirmed as a **Gold** sponsor and is now live on
 `/sponsors/`. The page previously had one combined "Gold & Silver sponsors"
@@ -1390,6 +1393,51 @@ was put to the client, who chose to keep the complete official lockup. The tight
 crop above is what buys back the little headroom there is; the tile itself was
 deliberately **not** resized, because a one-off wider tile would break the strip's
 grid against the Platinum row.
+
+### OctoPerf — Platinum
+
+**What changed.** OctoPerf signed a **Platinum** contract and joins Q-Leap in
+that strip, which is why the heading is now "Platinum sponsor**s**" (plural).
+No structural change was needed — the tier already had a `.sponsor-strip`, so
+this is a second `<a>` inside it. Link target is `https://octoperf.com/`; they
+supplied no specific landing page, unlike Thales.
+
+**The logo asset.** Supplied as a 1179×399 PNG, already tight-cropped (ink
+reaches all four edges) on a pure `#ffffff` background, aspect 2.96:1 — so
+unlike the Thales export it needed no reframing. It went through the repo's
+normal raster path rather than being dropped straight into `assets/img/`:
+
+- source: `assets/img/source/octoperf-logo.png` — **gitignored**, like every
+  other entry in that directory (see below)
+- derivatives, committed: `assets/img/octoperf-logo-{400,800}.{avif,webp,jpg}`
+  — 1200w is skipped because the source is only 1179px wide, exactly as
+  `scripts/optimize-images.mjs` would decide
+- referenced: `octoperf-logo-400.webp`, matching how Q-Leap's
+  `QLEAP_01-logo-400.webp` is referenced (a plain `<img>`, no `<picture>`;
+  400w already covers the tile's ~120px display width at 3× DPR)
+
+**Provenance gap, deliberate and harmless.** `assets/img/source/` is in
+`.gitignore` and only the derivatives are committed. That has been safe so far
+because every existing source is a WordPress asset re-downloadable via
+`scripts/_image-urls.txt` + `assets/img/manifest.json`. This logo arrived by
+email, so it is in neither list and `npm run images:download` cannot restore it
+— the only copy lives on the machine that ran this. Nothing breaks (the
+committed derivatives are what the site actually serves, and a future
+`images:optimize` simply skips a source it can't see), but if the original PNG
+is ever needed at a larger size, ask the sponsor again rather than upscaling a
+derivative. Binary client material is not tracked in `documentation/` either —
+only `README.md` and `DESIGN_CONVENTIONS.md` are — so there is no in-repo home
+for it, and that convention was not changed unilaterally for one logo.
+
+**Derivatives were generated for this one source, not by running
+`npm run images:optimize`.** The script has no incremental mode — it reprocesses
+all 144 files in `assets/img/source/`, and since AVIF/WebP/JPEG output depends
+on the encoder build, that would have rewritten hundreds of unrelated binaries
+and buried this change. A one-off `sharp` call reusing the script's exact
+settings (avif q62, webp q72, mozjpeg q78 flattened on white, widths ≤ source)
+produces byte-equivalent output for this file. If a full
+`images:optimize` is ever run, nothing here needs redoing — the source is in
+place and will regenerate identically.
 
 ### Still open
 
