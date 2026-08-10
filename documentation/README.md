@@ -1529,13 +1529,23 @@ temps que les autres"). What was actually out of step:
   Become a sponsor and join them." The figure itself was checked against the
   rest of the site and is consistent (400+, phrased various ways).
 - **Tier headings were left-aligned above centred logo strips**, which read as
-  broken once a tier held only one or two tiles. Headings are centred now, so
-  each tier is one centred stack. Note the underlying cause: this page never
-  used the site's `.section-head` component, just bare `<h2>`s with inline
-  styles — the deeper reason it drifted. Converting it properly was left alone
-  as a larger refactor than a copy pass. Two redundant
-  `style="justify-content:center"` overrides were dropped (`.sponsor-strip`
-  already centres itself).
+  broken once a tier held only one or two tiles. Centring the headings was tried
+  first and rejected by the client, who wanted the page on the same left axis as
+  the rest of the site — so **everything is left-aligned now**: headings, the
+  logo strips (`.sponsor-strip` base rule changed from `justify-content: center`
+  to `flex-start`; `/sponsors/` is its only consumer, so no `--left` modifier was
+  needed) and Silver's supporting line. They now share the left edge of the
+  hero's h1, intro and breadcrumb. Note the underlying cause of the drift: this
+  page never used the site's `.section-head` component, just bare `<h2>`s with
+  inline styles. Converting it properly is a larger refactor than a copy pass.
+- **The first section hugged the colour seam.** `style="padding-top:0"` on the
+  first section after a page-hero is a real site convention (`/gallery/`,
+  `/become-a-sponsor/`, `/about/`, `/contact/`, the news pages…), but on those
+  pages the section's first child is an image grid, which carries enough visual
+  mass to sit tight. Here the first child is a small `<h2>`, and this section is
+  `section--alt`, so the heading landed directly on the background change and
+  looked like a mistake. The override was removed; the section takes the house
+  `var(--space-10)` top padding like any other.
 
 ### Still open
 

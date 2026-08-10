@@ -289,7 +289,11 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 }
 
 /* ── Sponsor strip ───────────────────────────────────────────────── */
-.sponsor-strip { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; justify-content: center; }
+/* Left-aligned, not centred: the tiles line up with their tier heading, the
+   page hero and the rest of the site. Centring only looked right back when a
+   tier held a single logo. /sponsors/ is the only consumer of this class, so
+   the base rule carries the alignment rather than a --left modifier. */
+.sponsor-strip { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; justify-content: flex-start; }
 .sponsor-strip a {
   display: flex; align-items: center; justify-content: center;
   background: #fff;
