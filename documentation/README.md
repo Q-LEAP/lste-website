@@ -1535,9 +1535,7 @@ temps que les autres"). What was actually out of step:
   logo strips (`.sponsor-strip` base rule changed from `justify-content: center`
   to `flex-start`; `/sponsors/` is its only consumer, so no `--left` modifier was
   needed) and Silver's supporting line. They now share the left edge of the
-  hero's h1, intro and breadcrumb. Note the underlying cause of the drift: this
-  page never used the site's `.section-head` component, just bare `<h2>`s with
-  inline styles. Converting it properly is a larger refactor than a copy pass.
+  hero's h1, intro and breadcrumb.
 - **The first section hugged the colour seam.** `style="padding-top:0"` on the
   first section after a page-hero is a real site convention (`/gallery/`,
   `/become-a-sponsor/`, `/about/`, `/contact/`, the news pages…), but on those
@@ -1556,6 +1554,28 @@ temps que les autres"). What was actually out of step:
 - **Discoverability of the pitches now rests on a 6px dot.** With the hint line
   gone, nothing in words tells a visitor the logos are clickable. Worth watching
   whether anyone actually opens them.
-- **`/sponsors/` should use `.section-head`.** See above — the page's headings
-  are inline-styled `<h2>`s, so it will keep drifting from the rest of the site
-  until it adopts the component.
+### Not a bug: the tier headings' inline styles
+
+An earlier version of this entry claimed `/sponsors/` had "drifted" by using
+bare `<h2 style="font-size:1.5rem;…">` instead of the site's `.section-head`
+component, and listed converting it as open work. That was wrong on both counts,
+so it is recorded here rather than left to be acted on:
+
+- **`.section-head` is the wrong component.** It is `max-width: 640px` and
+  designed for a section *title plus intro paragraph* (see `layout.css`, and the
+  `--left` / `--split` variants). The tier labels are sub-group headings *inside*
+  one section, and there are three of them; the component is not meant to repeat
+  within a section.
+- **Converting would change the design, not just the markup.** `.section-head`
+  doesn't set the h2 size, so the headings would go from `1.5rem` to `--fs-h2`
+  (`clamp(2rem, 3vw + 1rem, 3rem)` — 32–48px) and start competing with the page
+  `h1`. Bottom margin would also jump from `--space-5` to `--space-8`.
+- **The page is not an outlier.** There are only six inline-styled `<h2>`s on the
+  whole site and `contact/index.html` does exactly the same thing (a small h2
+  sized inline at `1.0625rem`). Sizing a sub-heading inline is already an
+  established habit in this codebase.
+
+The only real (and marginal) improvement available is extracting the style
+repeated 3× on this page into a named class such as `.sponsor-tier-heading`.
+Three `<h2>` siblings under the `h1` are a valid heading outline, so there is no
+accessibility issue either way.
