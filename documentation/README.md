@@ -1492,9 +1492,16 @@ harmless. One sharp edge: a pitch containing a literal `||` will split there.
 
 ### Still open
 
-- **Pitch copy is not in yet.** The mechanism shipped with zero `data-pitch`
-  attributes — the client has the pitches from the sponsors and they drop in as
-  attributes. Until then `/sponsors/` looks and behaves exactly as it did.
+- **Q-Leap has no pitch.** OctoPerf and Thales supplied theirs (both in
+  English, used verbatim — the only editorial change was splitting OctoPerf's
+  single ~105-word block at its natural break, no wording touched). Q-Leap is
+  the only tile in the Platinum strip without a pitch, so it has no dot and
+  stays a plain link — visibly the odd one out next to OctoPerf. Worth asking
+  the organiser for two or three sentences.
+- **Thales's pitch is written in the first person** ("*our* portfolio protects
+  applications…"), because that is how they supplied it. Left verbatim rather
+  than switched to "its" — it is their approved copy, and a pitch is read as
+  the sponsor's own voice. Flag it back to them if the mixed voice matters.
 - **`/sponsors/` is unreachable from the site.** It is indexable and in the
   sitemap, but no nav item, footer link, or in-page link points to it (see the
   2026-07-27 addendum — the page was intentionally unlisted while it held only
