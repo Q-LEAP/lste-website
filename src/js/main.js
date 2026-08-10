@@ -478,10 +478,6 @@
     const triggers = document.querySelectorAll('.sponsor-strip a[data-pitch]');
     if (!triggers.length) return;
 
-    // Only now is the "click a logo" hint true — it ships hidden.
-    const hint = document.getElementById('sponsor-pitch-hint');
-    if (hint) hint.hidden = false;
-
     triggers.forEach((trigger) => {
       // Only now that the handler exists does the tile behave as a dialog
       // trigger, so the ARIA hint is set here rather than in the markup.

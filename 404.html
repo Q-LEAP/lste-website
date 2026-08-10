@@ -30,10 +30,12 @@
          documentation/): logo + date on the left, nav links sitting right
          after them, and the ticket button alone on the far right
          (margin-right:auto on .main-nav pushes the actions to the edge, see
-         components.css). Gallery/Press/Call for Speakers/Contact live in the
-         "More" dropdown / mobile hamburger. Dark-mode toggle lives in the
-         footer. Speakers and Sponsors aren't linked at all: pages kept on
-         disk, intentionally unlisted from navigation. -->
+         components.css). Sponsors/Gallery/Press/Call for Speakers/Contact live
+         in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
+         the footer. Speakers still isn't linked at all — that page is kept on
+         disk but is a placeholder, so it stays intentionally unlisted.
+         Sponsors was unlisted for the same reason until 2026-08-10, when it
+         gained real sponsors with pitches worth reaching. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="./about/index.html">About</a></li>
@@ -43,6 +45,7 @@
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="./sponsors/index.html">Sponsors</a></li>
             <li><a href="./gallery/index.html">Gallery</a></li>
             <li><a href="./press/index.html">Press</a></li>
             <li><a href="./call-for-speakers/index.html">Call for Speakers</a></li>
@@ -67,6 +70,7 @@
     <li><a href="./schedule/index.html">Programme</a></li>
     <li><a href="./venue/index.html">Venue</a></li>
     <li><a href="./become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li><a href="./sponsors/index.html">Sponsors</a></li>
     <li><a href="./gallery/index.html">Gallery</a></li>
     <li><a href="./press/index.html">Press</a></li>
     <li><a href="./call-for-speakers/index.html">Call for Speakers</a></li>
@@ -178,6 +182,6 @@
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=4a00aacf" defer></script>
+<script src="./assets/js/main.js?v=3c83fefd" defer></script>
 </body>
 </html>

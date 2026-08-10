@@ -1490,21 +1490,62 @@ harmless. One sharp edge: a pitch containing a literal `||` will split there.
   extra `npm install @fortawesome/fontawesome-free` plus `fonttools` and
   regenerating the font binaries, which is not worth it for a 6px dot.
 
+### `/sponsors/` is linked again, and had a copy pass
+
+All three sponsors supplied a pitch (Q-Leap's arrived last), all in English,
+all used verbatim. The only editorial change anywhere was splitting OctoPerf's
+single ~105-word block at its natural sentence break — no wording touched. The
+"Click any logo…" hint the mechanism shipped with was **dropped** at the
+client's request, along with the JS that revealed it; the dot plus the
+hover lift now carry discoverability on their own.
+
+**`/sponsors/` is in the "More" dropdown and the mobile hamburger.** It had been
+deliberately unlisted since 2026-07-27 while it held a single logo; with three
+sponsors, pitches and outbound links on it, the tier visibility sponsors pay for
+can't depend on arriving from search. Edited in `src/partials/nav.html` (never
+the 45 pages directly) and re-injected. `/speakers/` stays unlisted — still a
+placeholder.
+
+**The copy pass the client asked for** ("cette page n'a pas été à jour en même
+temps que les autres"). What was actually out of step:
+
+- **Two links pointed at the wrong page.** "become a sponsor" in the Silver
+  block and "View sponsorship packages" in the closing CTA both went to
+  `/resources/` — the Sponsor Resource *Center*, which is `noindex`, out of the
+  sitemap and meant for sponsors who have already signed. Every other page on
+  the site sends a prospect to `/become-a-sponsor/`; this page was the lone
+  exception, so it was sending prospects into a post-sale space. Both now point
+  at `/become-a-sponsor/`. `/resources/` is once again referenced only as the
+  footer's "Media Kit & Resources", as everywhere else.
+- **`<h1>` was a sentence, not a page name.** "The companies making LSTE
+  possible." became **"Our sponsors"** — sentence case, matching "Our gallery",
+  "Previous editions", "Venue & access". The eyebrow then stopped being a
+  redundant "Sponsors" and now carries the framing like its siblings ("Who we
+  are", "Plan your visit"): **"Who backs LSTE"**. The old sentence survives as
+  the `og:description`, where it still reads correctly.
+- **The 400+ figure was stated twice on one page.** The Silver line and the
+  closing CTA both said "put your brand in front of 400+ testing and QA
+  professionals". The Silver line is now "This tier is still open for 2026.
+  Become a sponsor and join them." The figure itself was checked against the
+  rest of the site and is consistent (400+, phrased various ways).
+- **Tier headings were left-aligned above centred logo strips**, which read as
+  broken once a tier held only one or two tiles. Headings are centred now, so
+  each tier is one centred stack. Note the underlying cause: this page never
+  used the site's `.section-head` component, just bare `<h2>`s with inline
+  styles — the deeper reason it drifted. Converting it properly was left alone
+  as a larger refactor than a copy pass. Two redundant
+  `style="justify-content:center"` overrides were dropped (`.sponsor-strip`
+  already centres itself).
+
 ### Still open
 
-- **Q-Leap has no pitch.** OctoPerf and Thales supplied theirs (both in
-  English, used verbatim — the only editorial change was splitting OctoPerf's
-  single ~105-word block at its natural break, no wording touched). Q-Leap is
-  the only tile in the Platinum strip without a pitch, so it has no dot and
-  stays a plain link — visibly the odd one out next to OctoPerf. Worth asking
-  the organiser for two or three sentences.
 - **Thales's pitch is written in the first person** ("*our* portfolio protects
   applications…"), because that is how they supplied it. Left verbatim rather
   than switched to "its" — it is their approved copy, and a pitch is read as
   the sponsor's own voice. Flag it back to them if the mixed voice matters.
-- **`/sponsors/` is unreachable from the site.** It is indexable and in the
-  sitemap, but no nav item, footer link, or in-page link points to it (see the
-  2026-07-27 addendum — the page was intentionally unlisted while it held only
-  a single logo). Now that a paying Gold sponsor is on it, the tier visibility
-  they bought only exists for visitors arriving from search. Worth deciding
-  whether `/sponsors/` returns to the nav or the footer's "Event" column.
+- **Discoverability of the pitches now rests on a 6px dot.** With the hint line
+  gone, nothing in words tells a visitor the logos are clickable. Worth watching
+  whether anyone actually opens them.
+- **`/sponsors/` should use `.section-head`.** See above — the page's headings
+  are inline-styled `<h2>`s, so it will keep drifting from the rest of the site
+  until it adopts the component.

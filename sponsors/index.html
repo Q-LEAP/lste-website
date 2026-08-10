@@ -56,10 +56,12 @@
          documentation/): logo + date on the left, nav links sitting right
          after them, and the ticket button alone on the far right
          (margin-right:auto on .main-nav pushes the actions to the edge, see
-         components.css). Gallery/Press/Call for Speakers/Contact live in the
-         "More" dropdown / mobile hamburger. Dark-mode toggle lives in the
-         footer. Speakers and Sponsors aren't linked at all: pages kept on
-         disk, intentionally unlisted from navigation. -->
+         components.css). Sponsors/Gallery/Press/Call for Speakers/Contact live
+         in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
+         the footer. Speakers still isn't linked at all — that page is kept on
+         disk but is a placeholder, so it stays intentionally unlisted.
+         Sponsors was unlisted for the same reason until 2026-08-10, when it
+         gained real sponsors with pitches worth reaching. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="../about/index.html">About</a></li>
@@ -69,6 +71,7 @@
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../sponsors/index.html">Sponsors</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../press/index.html">Press</a></li>
             <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
@@ -93,6 +96,7 @@
     <li><a href="../schedule/index.html">Programme</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
     <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li><a href="../sponsors/index.html">Sponsors</a></li>
     <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../press/index.html">Press</a></li>
     <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
@@ -108,8 +112,8 @@
   <section class="page-hero page-hero--left">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Sponsors</span></nav>
-      <span class="eyebrow eyebrow--lime">Sponsors</span>
-      <h1>The companies making LSTE possible.</h1>
+      <span class="eyebrow eyebrow--lime">Who backs LSTE</span>
+      <h1>Our sponsors</h1>
       <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">LSTE is free to attend thanks to organisations that believe in Luxembourg's testing community and invest in knowledge-sharing.</p>
     </div>
   </section>
@@ -117,23 +121,19 @@
   <section class="section section--alt" style="padding-top:0;">
     <div class="container">
 
-      <!-- Confirmed sponsor logos from past editions are kept as image assets
-           (assets/img/) even though unused below, so they can be re-added
-           quickly once each sponsor confirms for 2026. -->
+      <!-- Logos of sponsors from past editions who haven't confirmed for 2026
+           are kept as unreferenced image assets in assets/img/, so they can be
+           re-added quickly once each one confirms. Don't delete those files. -->
 
       <!-- Each tile carries the sponsor's own pitch in data-pitch, opened in
            #sponsor-modal by initSponsorModal() in main.js ('||' splits
            paragraphs). The tile stays a real link to the sponsor's site, so
-           it still works without JS — a sponsor with no data-pitch yet just
+           it still works without JS — a sponsor with no data-pitch just
            behaves as a plain link, no empty dialog. -->
-      <!-- Hidden until initSponsorModal() confirms at least one tile actually
-           has a pitch, so the page never invites a click that does nothing. -->
-      <p class="text-muted text-center" id="sponsor-pitch-hint" style="margin-bottom:var(--space-8);font-size:0.9375rem;" hidden>Click any logo to read what that sponsor does.</p>
-
       <div class="reveal" style="margin-bottom:var(--space-10);">
-        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-trophy" aria-hidden="true" style="color:#8a94a6;"></i> Platinum sponsors</h2>
-        <div class="sponsor-strip" style="justify-content:center;">
-          <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap"><img src="../assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap" decoding="async"></a>
+        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);text-align:center;"><i class="fa-solid fa-trophy" aria-hidden="true" style="color:#8a94a6;"></i> Platinum sponsors</h2>
+        <div class="sponsor-strip">
+          <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap" data-sponsor="Q-Leap" data-tier="Platinum sponsor" data-pitch="Q-Leap has specialised exclusively in software testing and quality assurance since 2012. Built on that real-world experience, LSTE gives professionals a place to exchange practical knowledge, discover new approaches and connect with their peers, year after year."><img src="../assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap" decoding="async"></a>
           <a href="https://octoperf.com/" target="_blank" rel="noopener" aria-label="OctoPerf" data-sponsor="OctoPerf" data-tier="Platinum sponsor" data-pitch="OctoPerf is an enterprise-grade performance and load testing platform available both as SaaS and on-premise, designed for engineering teams working on modern, distributed applications. It enables teams to simulate realistic user traffic, identify performance bottlenecks, and validate application scalability through scalable load test execution.||By combining advanced load modeling, deep performance analytics, and flexible deployment options, OctoPerf supports a wide range of enterprise testing scenarios while remaining significantly more cost-effective than traditional performance testing solutions. As a result, teams can test earlier in the development lifecycle, reduce release risk, and deliver reliable, high-performing applications without slowing development."><img src="../assets/img/octoperf-logo-400.webp" width="160" height="54" loading="lazy" alt="OctoPerf" decoding="async"></a>
         </div>
       </div>
@@ -144,15 +144,15 @@
            "Thales" only — never the legal entity name — per the sponsor's
            own communication guidance. -->
       <div class="reveal" style="margin-bottom:var(--space-10);">
-        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-star" aria-hidden="true" style="color:#b8960c;"></i> Gold sponsor</h2>
-        <div class="sponsor-strip" style="justify-content:center;">
+        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);text-align:center;"><i class="fa-solid fa-star" aria-hidden="true" style="color:#b8960c;"></i> Gold sponsor</h2>
+        <div class="sponsor-strip">
           <a href="https://www.thalesgroup.com/en/cybersecurity" target="_blank" rel="noopener" aria-label="Thales" data-sponsor="Thales" data-tier="Gold sponsor" data-pitch="The most trusted organisations in the world rely on Thales for cybersecurity solutions that keep critical assets safe. With more than 6,000 cybersecurity experts worldwide, our portfolio protects applications, data and identities, including services that close compliance gaps, detect and monitor threats and strengthen defences.||Thales invests in the continuous development of its portfolio by leveraging the latest artificial intelligence and post-quantum cryptography technologies."><img src="../assets/img/thales-logo.svg" width="160" height="36" loading="lazy" alt="Thales" decoding="async"></a>
         </div>
       </div>
 
       <div class="reveal">
-        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-medal" aria-hidden="true" style="color:#7a8799;"></i> Silver sponsors</h2>
-        <p class="text-muted text-center">This tier is open for 2026: <a href="../resources/index.html">become a sponsor</a> and put your brand in front of 400+ testing and QA professionals.</p>
+        <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);text-align:center;"><i class="fa-solid fa-medal" aria-hidden="true" style="color:#7a8799;"></i> Silver sponsors</h2>
+        <p class="text-muted text-center">This tier is still open for 2026. <a href="../become-a-sponsor/index.html">Become a sponsor</a> and join them.</p>
       </div>
 
       <!-- One dialog, repopulated from whichever tile was clicked — no
@@ -182,7 +182,7 @@
       <h2 id="sponsors-cta-heading">Become a sponsor of LSTE 2026.</h2>
       <p class="text-muted" style="max-width:52ch;margin:var(--space-3) auto 0;">Put your brand in front of 400+ testing and QA professionals and support the community that makes software worth trusting.</p>
       <div class="hero__actions" style="justify-content:center;">
-        <a class="btn btn--primary btn--lg" href="../resources/index.html">View sponsorship packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="btn btn--primary btn--lg" href="../become-a-sponsor/index.html">View sponsorship packages <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </section>
@@ -248,6 +248,6 @@
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=4a00aacf" defer></script>
+<script src="../assets/js/main.js?v=3c83fefd" defer></script>
 </body>
 </html>
