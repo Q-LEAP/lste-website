@@ -100,8 +100,9 @@ someone confirms otherwise from Q-Leap directly.
     "practioners") that were silently corrected for spelling only during
     the 2026-07-17 UX/DA review pass — the wording and meaning are
     otherwise unchanged from the official source.
-- **Sponsors (2026, confirmed only):** Q-Leap. Every other sponsor
-  previously listed (Deloitte, NSI, Sogeti, AINOS, Xray, Thales, Uni.lu,
+- **Sponsors (2026, confirmed only):** Q-Leap (Platinum), Thales (Gold — see
+  the 2026-08-10 entry below). Every other sponsor previously listed
+  (Deloitte, NSI, Sogeti, AINOS, Xray, Uni.lu,
   SQAI Suite, Tricentis, SnT, Q-Guard, jemmic, Q-Bot, Luxembourg Testing
   Board, Silicon Luxembourg, GASQ, ITNation) sponsored a past edition but is
   **not yet confirmed for 2026**. Their logo assets are kept in
@@ -1339,3 +1340,62 @@ excluded — those legacy media paths must keep returning 200.
   it was not changed unilaterally.
 - `/sponsors/` is still unlinked from the nav yet indexable and in the sitemap —
   the open question from the 2026-07-27 addendum, still unreviewed.
+
+## 2026-08-10: first Gold sponsor added — Thales
+
+**What changed.** Thales confirmed as a **Gold** sponsor and is now live on
+`/sponsors/`. The page previously had one combined "Gold & Silver sponsors"
+heading whose whole body was a "both tiers are open" pitch; that block is split
+in two — Gold gets a real `.sponsor-strip` with the logo plus the same "more
+will be announced as they confirm" note the Platinum tier uses, and Silver keeps
+the open-tier pitch on its own. `sitemap.xml`'s `lastmod` for `/sponsors/` moved
+to `2026-08-10`.
+
+**Naming constraint — this is a client instruction, not a style choice.** The
+sponsor's email states: *"Attention pour la communication, il ne faut dire que
+Thales, Thales Cyber Solutions Luxembourg étant notre entité légale."* So every
+public mention — link `aria-label`, image `alt`, any future news post, social
+copy, badge, or programme listing — must read **"Thales"** and never the legal
+entity name. A comment in `sponsors/index.html` records this at the point of
+use so it survives the next editor.
+
+**Link target** is the cybersecurity landing page they supplied,
+`https://www.thalesgroup.com/en/cybersecurity`, not the group homepage.
+
+**The logo asset.** They sent a fresh Illustrator export ("Artboard 1 copy.svg")
+of the full lockup: the THALES wordmark with the cyan dot over the *"Building a
+future we can all trust"* baseline. Saved as `assets/img/thales-logo.svg` with
+two changes to the export:
+
+- **Tight-cropped the artboard.** The export sat in a 576×207 canvas with ~50
+  units of dead margin on all four sides, which would have rendered the logo at
+  roughly half the tile. `viewBox` is now `52.8 54 472 105.8` — the real ink
+  bbox, computed from the path data. No path was touched, so the artwork is
+  unmodified; only the frame around it changed.
+- **Renamed `.cls-1`/`.cls-2` to `.thales-navy`/`.thales-cyan`.** Illustrator's
+  default class names in the embedded `<style>` block would collide with any
+  other SVG if either is ever inlined rather than loaded via `<img>`.
+
+Vector was preferred over the pre-existing raster
+`assets/img/Thales_LOGO_Baseline_RGB-*.{avif,webp,jpg}` (kept from a past
+edition, same lockup): it stays sharp at any size and crops tighter. Per the
+standing "do not delete unreferenced sponsor assets" rule, the raster set
+stays on disk.
+
+**Baseline legibility — a known, accepted trade-off.** `.sponsor-strip a` is a
+fixed 152×84 tile with `var(--space-4)` padding, so a logo gets ~120px of width.
+At the lockup's 4.5:1 aspect that puts the baseline text at about 5px tall —
+present but not readable. The alternative (wordmark only, dropping the baseline)
+was put to the client, who chose to keep the complete official lockup. The tight
+crop above is what buys back the little headroom there is; the tile itself was
+deliberately **not** resized, because a one-off wider tile would break the strip's
+grid against the Platinum row.
+
+### Still open
+
+- **`/sponsors/` is unreachable from the site.** It is indexable and in the
+  sitemap, but no nav item, footer link, or in-page link points to it (see the
+  2026-07-27 addendum — the page was intentionally unlisted while it held only
+  a single logo). Now that a paying Gold sponsor is on it, the tier visibility
+  they bought only exists for visitors arriving from search. Worth deciding
+  whether `/sponsors/` returns to the nav or the footer's "Event" column.
