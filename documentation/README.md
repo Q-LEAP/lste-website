@@ -1439,8 +1439,62 @@ produces byte-equivalent output for this file. If a full
 `images:optimize` is ever run, nothing here needs redoing — the source is in
 place and will regenerate identically.
 
+### Sponsor pitch dialog
+
+**The ask** was nexusluxembourg.com/sponsors' behaviour — click a logo, read a
+short pitch — "en gardant notre DA". Worth knowing before copying them: Nexus
+doesn't build it. Their sponsor list is a third-party widget in an iframe
+(Fastly-served) sitting behind cookie consent; with cookies or JS off the page
+shows nothing but a "please enable cookies" card, and none of it is theirs to
+style. So the behaviour was rebuilt natively instead.
+
+**Almost no new machinery.** `initSimpleModal()` in `main.js` already gives a
+focus trap, Escape-to-close and backdrop-click-to-close, and
+`.modal-backdrop`/`.modal-dialog` in `components.css` already give the shell —
+both were built for the "no archive" joke and the LinkedIn player. This adds
+`initSponsorModal()` plus sponsor-specific styling next to `.sponsor-strip` in
+`pages/home.css`, and one dialog in `sponsors/index.html` that is repopulated
+from whichever tile was clicked (no per-sponsor markup to keep in sync).
+
+**Adding a pitch is one attribute.** On the tile's `<a>`:
+`data-pitch` (required — `||` splits paragraphs), plus optional `data-sponsor`
+(display name, defaults to the logo's `alt`) and `data-tier` (the eyebrow, e.g.
+"Platinum sponsor"). Pitch text is written with `textContent`, never
+`innerHTML`, so apostrophes and angle brackets in a sponsor's own copy are
+harmless. One sharp edge: a pitch containing a literal `||` will split there.
+
+**Three deliberate degradations, so nothing ever half-works:**
+
+- The tile stays a real `<a href>` to the sponsor's site and the click is only
+  intercepted when JS has run. With JS off or broken, clicking a logo still goes
+  where it always did, and crawlers still see the outbound link. `aria-haspopup="dialog"`
+  is set from JS for the same reason — the tile isn't a dialog trigger until it is.
+- A sponsor with **no** `data-pitch` keeps the plain link. Tiers fill up one
+  sponsor at a time, so this is the normal state, not an edge case.
+- The "Click any logo to read what that sponsor does" line ships `hidden` and is
+  revealed only once at least one tile actually has a pitch. The page cannot
+  invite a click that does nothing.
+
+**Two traps hit while building this, both worth remembering:**
+
+- **`--color-ink` is `#fbfafc`, not a dark colour.** It's the *text* colour on
+  this dark-first site. `background: var(--color-ink); color: #fff` on the close
+  button put a white glyph on a white circle over the white logo plate and the
+  button disappeared. It's `--color-primary` (violet) now. Note
+  `.back-to-top` in `components.css` uses that same ink+white pairing.
+- **The corner dot marking a clickable tile is drawn in CSS, not as a Font
+  Awesome glyph.** `scripts/subset-icons.mjs` builds the icon font by scanning
+  **HTML** for `fa-solid fa-*` classes, so a glyph referenced only from a CSS
+  `content:` would never enter the subset and would render as tofu.
+  `fa-circle-info` is not in the current 35-icon subset; adding it would mean an
+  extra `npm install @fortawesome/fontawesome-free` plus `fonttools` and
+  regenerating the font binaries, which is not worth it for a 6px dot.
+
 ### Still open
 
+- **Pitch copy is not in yet.** The mechanism shipped with zero `data-pitch`
+  attributes — the client has the pitches from the sponsors and they drop in as
+  attributes. Until then `/sponsors/` looks and behaves exactly as it did.
 - **`/sponsors/` is unreachable from the site.** It is indexable and in the
   sitemap, but no nav item, footer link, or in-page link points to it (see the
   2026-07-27 addendum — the page was intentionally unlisted while it held only
