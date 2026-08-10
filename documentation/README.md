@@ -1547,10 +1547,13 @@ temps que les autres"). What was actually out of step:
 
 ### Still open
 
-- **Thales's pitch is written in the first person** ("*our* portfolio protects
-  applications…"), because that is how they supplied it. Left verbatim rather
-  than switched to "its" — it is their approved copy, and a pitch is read as
-  the sponsor's own voice. Flag it back to them if the mixed voice matters.
+- **Thales's pitch was switched to the third person** on the client's
+  instruction: as supplied it read "*our* portfolio protects applications…",
+  the only first-person wording in any of the three pitches, now "*its*
+  portfolio". That also makes the pitch internally consistent, since its second
+  paragraph already said "its portfolio". This is a deliberate edit to
+  sponsor-supplied copy — if Thales ever asks why their text differs, this is
+  the reason.
 - **Discoverability of the pitches now rests on a 6px dot.** With the hint line
   gone, nothing in words tells a visitor the logos are clickable. Worth watching
   whether anyone actually opens them.
