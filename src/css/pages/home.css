@@ -307,6 +307,101 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   object-fit: contain;
 }
 
+/* A tile with a pitch behind it gets an affordance the plain ones don't:
+   it lifts and picks up the violet accent on hover/focus, and carries a
+   small dot in the corner. Without this the two kinds of tile are
+   indistinguishable and nobody discovers the pitch.
+
+   The dot is drawn in CSS rather than set as a Font Awesome glyph on
+   purpose: the icon font is subsetted from the `fa-*` classes found in
+   the HTML (scripts/subset-icons.mjs), so a glyph referenced only from
+   CSS would never make it into the subset and would render as tofu. */
+.sponsor-strip a[data-pitch] {
+  position: relative;
+  cursor: pointer;
+  transition: transform var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
+}
+.sponsor-strip a[data-pitch]::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c9c4d4;
+  transition: background var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+}
+.sponsor-strip a[data-pitch]:hover,
+.sponsor-strip a[data-pitch]:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+.sponsor-strip a[data-pitch]:hover::after,
+.sponsor-strip a[data-pitch]:focus-visible::after {
+  background: var(--color-primary);
+  transform: scale(1.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-strip a[data-pitch],
+  .sponsor-strip a[data-pitch]::after { transition: none; }
+  .sponsor-strip a[data-pitch]:hover,
+  .sponsor-strip a[data-pitch]:focus-visible { transform: none; }
+  .sponsor-strip a[data-pitch]:hover::after,
+  .sponsor-strip a[data-pitch]:focus-visible::after { transform: none; }
+}
+
+/* ── Sponsor pitch modal ──────────────────────────────────────────────
+   Backdrop/dialog come from the shared .modal-backdrop/.modal-dialog in
+   components.css; only what's specific to a sponsor card lives here. The
+   logo sits on the same white plate as the strip tile — brand logos
+   assume a light background, and the dialog surface is dark. */
+.sponsor-modal-dialog { max-width: 460px; max-height: 90vh; overflow: auto; position: relative; }
+.sponsor-modal__plate {
+  background: #fff;
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+.sponsor-modal__plate img {
+  max-width: 220px;
+  max-height: 72px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.sponsor-modal__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  /* Violet, not var(--color-ink): ink is #fbfafc (the *text* colour on this
+     dark-first site), so an ink background here put a white glyph on the
+     white logo plate and the button vanished. */
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1rem;
+  transition: background var(--dur-base) var(--ease);
+}
+.sponsor-modal__close:hover { background: var(--color-primary-dark); }
+.sponsor-modal__body { padding: var(--space-5); }
+.sponsor-modal__body h2 {
+  font-size: 1.375rem;
+  margin: var(--space-2) 0 var(--space-4);
+}
+.sponsor-modal__pitch p {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.sponsor-modal__pitch p + p { margin-top: var(--space-3); }
+.sponsor-modal__body .btn { margin-top: var(--space-5); }
+
 /* ── News: full-bleed photo card, text pinned on a scrim ──────────── */
 .news-card {
   position: relative;

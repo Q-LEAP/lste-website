@@ -19,7 +19,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=b09e59f0">
+<link rel="stylesheet" href="../assets/css/styles.css?v=6c1aadea">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -120,6 +120,16 @@
       <!-- Confirmed sponsor logos from past editions are kept as image assets
            (assets/img/) even though unused below, so they can be re-added
            quickly once each sponsor confirms for 2026. -->
+
+      <!-- Each tile carries the sponsor's own pitch in data-pitch, opened in
+           #sponsor-modal by initSponsorModal() in main.js ('||' splits
+           paragraphs). The tile stays a real link to the sponsor's site, so
+           it still works without JS — a sponsor with no data-pitch yet just
+           behaves as a plain link, no empty dialog. -->
+      <!-- Hidden until initSponsorModal() confirms at least one tile actually
+           has a pitch, so the page never invites a click that does nothing. -->
+      <p class="text-muted text-center" id="sponsor-pitch-hint" style="margin-bottom:var(--space-8);font-size:0.9375rem;" hidden>Click any logo to read what that sponsor does.</p>
+
       <div class="reveal" style="margin-bottom:var(--space-10);">
         <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-trophy" aria-hidden="true" style="color:#8a94a6;"></i> Platinum sponsors</h2>
         <div class="sponsor-strip" style="justify-content:center;">
@@ -145,6 +155,23 @@
       <div class="reveal">
         <h2 style="font-size:1.5rem;margin-bottom:var(--space-5);"><i class="fa-solid fa-medal" aria-hidden="true" style="color:#7a8799;"></i> Silver sponsors</h2>
         <p class="text-muted text-center">This tier is open for 2026: <a href="../resources/index.html">become a sponsor</a> and put your brand in front of 400+ testing and QA professionals.</p>
+      </div>
+
+      <!-- One dialog, repopulated from whichever tile was clicked — no
+           per-sponsor markup to keep in sync. -->
+      <div class="modal-backdrop" id="sponsor-modal" role="dialog" aria-modal="true" aria-labelledby="sponsor-modal-name" hidden>
+        <div class="modal-dialog sponsor-modal-dialog">
+          <button type="button" class="sponsor-modal__close" id="sponsor-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          <div class="sponsor-modal__plate">
+            <img id="sponsor-modal-logo" src="" alt="" decoding="async">
+          </div>
+          <div class="sponsor-modal__body">
+            <span class="eyebrow eyebrow--lime" id="sponsor-modal-tier"></span>
+            <h2 id="sponsor-modal-name"></h2>
+            <div class="sponsor-modal__pitch" id="sponsor-modal-pitch"></div>
+            <a class="btn btn--primary" id="sponsor-modal-link" href="#" target="_blank" rel="noopener">Visit website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -223,6 +250,6 @@
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=dce32195" defer></script>
+<script src="../assets/js/main.js?v=4a00aacf" defer></script>
 </body>
 </html>

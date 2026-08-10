@@ -454,6 +454,69 @@
     });
   }
 
+  /* ── Sponsor logos: show the sponsor's own pitch in the shared modal ──
+     Progressive enhancement, deliberately. Each tile stays a real
+     <a href> to the sponsor's site, so the outbound link is still there
+     for crawlers and the tile still works with JS off or broken; the
+     click is only intercepted for sponsors that actually have a pitch to
+     show (data-pitch). A sponsor whose pitch we haven't received yet
+     simply keeps the plain link — nothing to hide, no empty dialog.
+
+     Pitches live in data-pitch, matching how data-activity/data-edition
+     already drive the other two modals. Use '||' to split a pitch into
+     paragraphs; the text is written with textContent, never innerHTML,
+     so an apostrophe or angle bracket in a sponsor's copy can't break
+     anything. ─────────────────────────────────────────────────────── */
+  function initSponsorModal() {
+    const modal = document.getElementById('sponsor-modal');
+    if (!modal) return;
+    const logoEl = document.getElementById('sponsor-modal-logo');
+    const tierEl = document.getElementById('sponsor-modal-tier');
+    const nameEl = document.getElementById('sponsor-modal-name');
+    const pitchEl = document.getElementById('sponsor-modal-pitch');
+    const linkEl = document.getElementById('sponsor-modal-link');
+    const triggers = document.querySelectorAll('.sponsor-strip a[data-pitch]');
+    if (!triggers.length) return;
+
+    // Only now is the "click a logo" hint true — it ships hidden.
+    const hint = document.getElementById('sponsor-pitch-hint');
+    if (hint) hint.hidden = false;
+
+    triggers.forEach((trigger) => {
+      // Only now that the handler exists does the tile behave as a dialog
+      // trigger, so the ARIA hint is set here rather than in the markup.
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.addEventListener('click', (e) => e.preventDefault());
+    });
+
+    initSimpleModal({
+      triggers,
+      modal,
+      closeBtn: document.getElementById('sponsor-modal-close'),
+      onOpen: (trigger) => {
+        const img = trigger.querySelector('img');
+        const name = trigger.dataset.sponsor || (img && img.alt) || '';
+        if (img) {
+          logoEl.src = img.getAttribute('src');
+          logoEl.alt = img.getAttribute('alt') || name;
+        }
+        nameEl.textContent = name;
+        tierEl.textContent = trigger.dataset.tier || '';
+        tierEl.hidden = !trigger.dataset.tier;
+        pitchEl.textContent = '';
+        trigger.dataset.pitch.split('||').forEach((para) => {
+          const text = para.trim();
+          if (!text) return;
+          const p = document.createElement('p');
+          p.textContent = text;
+          pitchEl.appendChild(p);
+        });
+        linkEl.href = trigger.getAttribute('href');
+        linkEl.setAttribute('aria-label', 'Visit ' + name + "'s website");
+      },
+    });
+  }
+
   /* ── Google Maps embeds: click-to-activate ─────────────────────────
      The map iframe is already there (native loading="lazy" defers the
      actual fetch until it's scrolled near), just visually blurred behind
@@ -518,6 +581,7 @@
     initFooterYear();
     initEmptyEditionModal();
     initLinkedInModal();
+    initSponsorModal();
     initMapEmbeds();
     initAmbientVideo();
   });
