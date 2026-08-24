@@ -289,10 +289,12 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 }
 
 /* ── Sponsor strip ───────────────────────────────────────────────── */
-/* Left-aligned, not centred: the tiles line up with their tier heading, the
-   page hero and the rest of the site. Centring only looked right back when a
-   tier held a single logo. /sponsors/ is the only consumer of this class, so
-   the base rule carries the alignment rather than a --left modifier. */
+/* Left-aligned, not centred: the tiles line up with their tier heading and
+   with the section heads above them. Centring only looked right back when a
+   tier held a single logo, and the client reviewed and rejected it. The
+   homepage's #sponsors block is the only consumer of this class (it was
+   /sponsors/ until that page became a redirect stub), so the base rule
+   carries the alignment rather than a --left modifier. */
 .sponsor-strip { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; justify-content: flex-start; }
 .sponsor-strip a {
   display: flex; align-items: center; justify-content: center;
@@ -310,6 +312,13 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   height: auto;
   object-fit: contain;
 }
+
+/* Tier label above each logo strip — one step down from the block's own h2,
+   and small enough not to compete with it. On /sponsors/ these were h2s under
+   the page h1 carrying `font-size:1.5rem` inline three times over; inside the
+   homepage section they sit under an h2, so they're h3s and the repeated
+   inline style is extracted here. */
+.sponsor-tier-heading { font-size: 1.25rem; margin-bottom: var(--space-5); }
 
 /* A tile with a pitch behind it gets an affordance the plain ones don't:
    it lifts and picks up the violet accent on hover/focus, and carries a

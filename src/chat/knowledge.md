@@ -62,11 +62,13 @@ depends entirely on it.
 ## Becoming a sponsor
 
 - LSTE offers sponsorship tiers: Platinium, Gold, and Silver.
-- For 2026, Q-Leap (the organiser) is the confirmed Platinium sponsor; Gold
-  and Silver are open for other companies to confirm.
+- For 2026, the confirmed sponsors are Q-Leap (the organiser), OctoPerf and
+  LNDS (Luxembourg National Data Service) in Platinium, and Thales and the
+  University of Luxembourg in Gold; Silver is still open for other companies
+  to confirm.
 - Interested companies can start via the "Sponsor With Us" section
-  (`/resources/`) or see current sponsors on the Sponsors & Partners page
-  (`/sponsors/`). For sponsorship enquiries, contact hello@lste.lu.
+  (`/resources/`) or see current sponsors in the Sponsors block on the
+  homepage (`/#sponsors`). For sponsorship enquiries, contact hello@lste.lu.
 
 ## Venue, getting there & practical info
 
@@ -117,7 +119,7 @@ depends entirely on it.
 - Speakers: `/speakers/`
 - Programme / Schedule: `/schedule/`
 - Venue: `/venue/`
-- Sponsors & Partners: `/sponsors/`
+- Sponsors & Partners: `/#sponsors` (a block on the homepage, not its own page)
 - Resources / Sponsor With Us / Media & Press Kit: `/resources/`
 - Gallery: `/gallery/`
 - Previous Editions: `/previous-editions/`

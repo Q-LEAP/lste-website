@@ -106,6 +106,12 @@
     trigger.addEventListener('click', () => {
       menu.hidden ? open() : close();
     });
+    // Nothing unloads the page when the target is an in-page anchor on the
+    // current page (the nav's Sponsors entry, once initSamePageAnchors has
+    // rewritten it), so the menu has to close itself.
+    menu.addEventListener('click', (e) => {
+      if (e.target.closest('a')) close();
+    });
     trigger.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !menu.hidden) close();
     });
@@ -208,6 +214,23 @@
   }
 
   /* ── Smooth in-page anchors ────────────────────────────────── */
+  /* ── Nav links pointing at the current page ───────────────────
+     The nav is authored with site-root paths ("/#sponsors") and
+     scripts/localize-paths.mjs rewrites them into real relative URLs
+     ("./index.html#sponsors") so every page also works over file://. On
+     the very page a link points at, that full URL makes the browser
+     reload rather than move down the page. Reducing those links to their
+     bare hash lets initSmoothScroll below treat them as the in-page jumps
+     they are. Runs before it, since it queries the DOM once at init. */
+  function initSamePageAnchors() {
+    const samePage = (a, b) => a.replace(/index\.html$/, '') === b.replace(/index\.html$/, '');
+    document.querySelectorAll('.main-nav a[href*="#"], .mobile-nav-list a[href*="#"]').forEach((link) => {
+      const url = new URL(link.href, location.href);
+      if (!url.hash || !samePage(url.pathname, location.pathname)) return;
+      link.setAttribute('href', url.hash);
+    });
+  }
+
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
       a.addEventListener('click', (e) => {
@@ -566,6 +589,7 @@
     initAnnouncement();
     initMobileMenu();
     initNavDropdown();
+    initSamePageAnchors();
     initCounters();
     initReveal();
     initBackToTop();

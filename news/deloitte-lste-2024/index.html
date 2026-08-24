@@ -23,7 +23,7 @@ redirect_from:
 <link rel="preload" href="../../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../assets/css/styles.css?v=7ff93b80">
+<link rel="stylesheet" href="../../assets/css/styles.css?v=541f7506">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -96,7 +96,10 @@ redirect_from:
          the footer. Speakers still isn't linked at all — that page is kept on
          disk but is a placeholder, so it stays intentionally unlisted.
          Sponsors was unlisted for the same reason until 2026-08-10, when it
-         gained real sponsors with pitches worth reaching. -->
+         gained real sponsors with pitches worth reaching; since 2026-08-24 it
+         is no longer a page at all — the entry jumps to the homepage's
+         #sponsors block (localize-paths turns "/#sponsors" into
+         "../index.html#sponsors" per page depth). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="../../about/index.html">About</a></li>
@@ -106,7 +109,7 @@ redirect_from:
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="../../sponsors/index.html">Sponsors</a></li>
+            <li><a href="../../index.html#sponsors">Sponsors</a></li>
             <li><a href="../../gallery/index.html">Gallery</a></li>
             <li><a href="../../press/index.html">Press</a></li>
             <li><a href="../../call-for-speakers/index.html">Call for Speakers</a></li>
@@ -131,7 +134,7 @@ redirect_from:
     <li><a href="../../schedule/index.html">Programme</a></li>
     <li><a href="../../venue/index.html">Venue</a></li>
     <li><a href="../../become-a-sponsor/index.html">Become a sponsor</a></li>
-    <li><a href="../../sponsors/index.html">Sponsors</a></li>
+    <li><a href="../../index.html#sponsors">Sponsors</a></li>
     <li><a href="../../gallery/index.html">Gallery</a></li>
     <li><a href="../../press/index.html">Press</a></li>
     <li><a href="../../call-for-speakers/index.html">Call for Speakers</a></li>
@@ -242,6 +245,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../../assets/js/main.js?v=3c83fefd" defer></script>
+<script src="../../assets/js/main.js?v=65b21362" defer></script>
 </body>
 </html>

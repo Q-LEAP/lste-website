@@ -1582,3 +1582,87 @@ The only real (and marginal) improvement available is extracting the style
 repeated 3× on this page into a named class such as `.sponsor-tier-heading`.
 Three `<h2>` siblings under the `h1` are a valid heading outline, so there is no
 accessibility issue either way.
+
+## 2026-08-24: LNDS + University of Luxembourg added, then `/sponsors/` folded into the homepage
+
+Two changes in sequence, on `dev` for the second one.
+
+### The two new sponsors
+
+**LNDS (Luxembourg National Data Service) joined Platinum, the University of
+Luxembourg joined Gold.** Both logos were supplied as files in
+`documentation/Logo entreprise/`, and both needed work before they could go in a
+tile:
+
+- Each arrived with a wide uniform border (white for the uni JPEG, transparent
+  for LNDS), which would have left the mark floating in a fraction of its 152×84
+  tile. Both were run through sharp's `trim()` before the usual
+  400/800/1200w AVIF/WebP/JPEG derivatives, and the trimmed results are the
+  files now in `assets/img/source/` (`uni-lu-logo.png`, `lnds-logo.png`).
+  Remember that `assets/img/source/` is gitignored — the untouched originals in
+  `documentation/Logo entreprise/` are the only committed copy.
+- **LNDS was first supplied as the pictogram alone** (the four-arrow mark, no
+  wordmark), which is unidentifiable next to Q-Leap and OctoPerf. It was
+  replaced the same day with `728x728_LNDS_Branding_1.jpg`, the full lockup. That
+  lockup is *vertical*, and the tiles are landscape, so it is constrained by
+  height: "LNDS" reads fine, the "LUXEMBOURG NATIONAL DATA SERVICE" baseline
+  under it does not, at that size. That's accepted — `alt`/`aria-label` carry the
+  expanded name in full. If LNDS ever supplies a horizontal lockup, it would
+  render better here.
+- **Neither sponsor has sent a pitch.** Their tiles carry no `data-pitch` and so
+  stay plain links to `lnds.lu` / `uni.lu`; `initSponsorModal()` skips them and
+  no empty dialog is possible. Add the attribute when the copy arrives.
+- An **older uni.lu logo already existed** as an unreferenced asset
+  (`Uni-Logo-1-e1760086446337-*`, the red/cyan wordmark with no "Université du
+  Luxembourg" line). The newly supplied navy/red version is the one in use; the
+  old files are left alone under the "past sponsors' logos stay on disk" rule.
+
+Gold's heading went plural now that Thales isn't alone in the tier.
+
+### `/sponsors/` is no longer a page
+
+**The tier strips now live on the homepage as a `#sponsors` block, and
+`/sponsors/` is a redirect stub.** Client instruction: the sponsors should be on
+the page people actually land on.
+
+- The block **takes the slot the "Become a sponsor" CTA section occupied**
+  (between Programme and News), so the `section` / `section--alt` alternation
+  down the page is untouched. That CTA is now the block's closing
+  `.btn--outline`, matching how Programme and Why-come end.
+- **The CTA's "400+ … from banking, insurance, telecom and the public sector"
+  line was dropped rather than moved.** The Why-come block higher up the same
+  page already makes that exact claim; this was the same duplication that was
+  cleaned off `/sponsors/` on 2026-08-10, just between two blocks instead of two
+  lines.
+- **It is left-aligned, not centred**, using the eyebrow + `.split-media`
+  heading/paragraph pair that Why-come already uses. Centring was deliberately
+  *not* revisited: the client reviewed centred tier headings on the old page and
+  rejected them (see the 2026-08-10 entry). `.sponsor-strip` keeps
+  `justify-content: flex-start`; only the comment naming its consumer changed.
+- **Tier labels are now `h3.sponsor-tier-heading`** — the extraction the
+  "Not a bug" note below suggested as the one real improvement available. They
+  drop from `h2` to `h3` because they now sit under the block's own `h2` rather
+  than a page `h1`, and the class pins them at `1.25rem` so they don't compete
+  with it.
+- **`sponsors/index.html` is a redirect stub** to `/#sponsors`, following the
+  same pattern as `ticket/` and `become-a-speaker/`: `noindex, follow`, a
+  canonical pointing at the new location, a meta refresh, and a visible link for
+  anyone who lands there with JS off. Rationale: the page was indexable and in
+  the sitemap since 2026-08-10, and GitHub Pages gives us no server-side
+  redirects. Like the other two stubs, it is **not** in `sitemap.xml` — the
+  `/sponsors/` entry was removed.
+- **The nav keeps its "Sponsors" entry**, now `/#sponsors` in
+  `src/partials/nav.html`. `localize-paths` turns that into
+  `../index.html#sponsors` per page depth, which works everywhere but would
+  *reload* the homepage instead of scrolling down it. So `initSamePageAnchors()`
+  (new, in `main.js`) reduces any nav link resolving to the current page down to
+  its bare hash at init, which hands it to the existing `initSmoothScroll()`.
+  It runs before that function, since that one queries the DOM once. Verified via
+  `--dump-dom`: the homepage's two entries become `#sponsors`, every other page's
+  stay `../index.html#sponsors`.
+- **The "More" dropdown now closes on link click.** It never needed to before,
+  because following any of its links unloaded the page. On the homepage the
+  Sponsors entry no longer does.
+- **`src/chat/knowledge.md` was updated** — it pointed the assistant at
+  `/sponsors/`, and separately still claimed Q-Leap was the only confirmed
+  sponsor, which had been stale since 2026-08-10.
