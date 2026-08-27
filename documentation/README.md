@@ -1854,3 +1854,16 @@ commit — partners now sit **inside `#sponsors`, directly under Silver**.
   it was already committed and pushed. The heading copy from the removed
   section ("Carrying LSTE beyond the room.") is gone with it; the block is
   covered by `#sponsors`'s own h2, "The organisations behind LSTE 2026."
+
+### And the partners' description line came off
+
+Client removed *"Not sponsors — the certification bodies and media that carry
+LSTE beyond the room."* The block is now just the cyan rule head and the two
+tiles.
+
+That leaves **the cyan bar as the only thing distinguishing partners from the
+three sponsor tiers above them.** It was flagged when the line went in that
+"Partners", fourth in a stack of Platinum/Gold/Silver, can read as a fourth
+tier; the client's call, made with that in mind. If it ever needs re-stating,
+the line belongs here again rather than in a section of its own — that shape
+was already tried and rejected the same day.

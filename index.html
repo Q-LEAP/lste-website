@@ -383,15 +383,17 @@ redirect_from:
 
            Their rule head is deliberately NOT a metal. Coming fourth, straight
            after Platinum/Gold/Silver, a fourth metallic bar would read as a
-           tier below Silver — so it's a flat cyan bar, and the line under it
-           says outright that a partner isn't a sponsor. Neither tile carries
-           data-pitch (no pitch supplied), so initSponsorModal() skips them.
+           tier below Silver — so it's a flat cyan bar. That bar is now the
+           only thing separating "Partners" from the three sponsor tiers above
+           it: a one-line "Not sponsors — the certification bodies and media
+           that carry LSTE beyond the room." sat here until 2026-08-27, when
+           the client removed it. Neither tile carries data-pitch (no pitch
+           supplied), so initSponsorModal() skips them.
 
            #partners stays as an id, not a section: src/chat/knowledge.md
            points the assistant at /#partners. -->
       <div class="reveal" id="partners">
         <h3 class="sponsor-tier-heading sponsor-tier-heading--partners">Partners</h3>
-        <p class="text-muted" style="margin-bottom:var(--space-5);">Not sponsors &mdash; the certification bodies and media that carry LSTE beyond the room.</p>
         <div class="sponsor-strip">
           <a href="https://allianceforqualification.com/" target="_blank" rel="noopener" aria-label="A4Q, Alliance for Qualification"><img src="./assets/img/a4q-logo-400.webp" width="160" height="37" loading="lazy" alt="A4Q, Alliance for Qualification" decoding="async"></a>
           <a href="https://www.siliconluxembourg.lu/" target="_blank" rel="noopener" aria-label="Silicon Luxembourg"><img src="./assets/img/silicon-luxembourg-logo-400.webp" width="120" height="82" loading="lazy" alt="Silicon Luxembourg" decoding="async"></a>
