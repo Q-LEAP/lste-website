@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=4d42d0d1">
+<link rel="stylesheet" href="./assets/css/styles.css?v=71e328bb">
 
 <style>
   /* Homepage hero: full-bleed photo + directional gradient veil (the
@@ -370,9 +370,32 @@ redirect_from:
         </div>
       </div>
 
-      <div class="reveal">
+      <div class="reveal" style="margin-bottom:var(--space-8);">
         <h3 class="sponsor-tier-heading sponsor-tier-heading--silver">Silver sponsors</h3>
         <p class="text-muted">This tier is still open for 2026. <a href="./become-a-sponsor/index.html">Become a sponsor</a> and join them.</p>
+      </div>
+
+      <!-- Partners sit under the tiers rather than in a section of their own —
+           they belong to the same "who backs LSTE" answer. A4Q and Silicon
+           Luxembourg were confirmed and their logos supplied by the client on
+           2026-08-27; nobody else from past editions is confirmed for 2026, so
+           nobody else is here.
+
+           Their rule head is deliberately NOT a metal. Coming fourth, straight
+           after Platinum/Gold/Silver, a fourth metallic bar would read as a
+           tier below Silver — so it's a flat cyan bar, and the line under it
+           says outright that a partner isn't a sponsor. Neither tile carries
+           data-pitch (no pitch supplied), so initSponsorModal() skips them.
+
+           #partners stays as an id, not a section: src/chat/knowledge.md
+           points the assistant at /#partners. -->
+      <div class="reveal" id="partners">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--partners">Partners</h3>
+        <p class="text-muted" style="margin-bottom:var(--space-5);">Not sponsors &mdash; the certification bodies and media that carry LSTE beyond the room.</p>
+        <div class="sponsor-strip">
+          <a href="https://allianceforqualification.com/" target="_blank" rel="noopener" aria-label="A4Q, Alliance for Qualification"><img src="./assets/img/a4q-logo-400.webp" width="160" height="37" loading="lazy" alt="A4Q, Alliance for Qualification" decoding="async"></a>
+          <a href="https://www.siliconluxembourg.lu/" target="_blank" rel="noopener" aria-label="Silicon Luxembourg"><img src="./assets/img/silicon-luxembourg-logo-400.webp" width="120" height="82" loading="lazy" alt="Silicon Luxembourg" decoding="async"></a>
+        </div>
       </div>
 
       <p class="text-center reveal" style="margin-top:var(--space-8);"><a class="btn btn--outline" href="./become-a-sponsor/index.html">Become a sponsor <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
@@ -397,46 +420,13 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Partners — a partner is not a sponsor: they carry LSTE to an audience
-       rather than fund it, so this block deliberately has no tiers, no
-       ranking and no "become one" price ladder, just a flat strip and an
-       invitation. It sits below #sponsors and takes the --alt slot, so News
-       below drops back to a plain .section and the alternation still holds.
-
-       A4Q and Silicon Luxembourg were confirmed and supplied by the client on
-       2026-08-27 — the first two 2026 partners. Everyone else from past
-       editions (Luxembourg Testing Board, GASQ, ISTQB, jemmic, Q-Guard, and
-       IT Nation in a media role) is still unconfirmed for 2026 and stays off
-       the page, same rule the sponsor strips follow.
-
-       Tiles reuse .sponsor-strip — same 152x84 white plate as the sponsors
-       above. Neither partner has sent a pitch, so neither carries
-       data-pitch: initSponsorModal() skips them and they stay plain links,
-       no empty dialog possible. Add the attribute if copy arrives. -->
-  <section class="section section--alt" id="partners" aria-labelledby="partners-heading">
-    <div class="container">
-      <span class="eyebrow eyebrow--cyan reveal">Partners</span>
-      <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
-        <h2 id="partners-heading" style="margin:0;">Carrying LSTE beyond the room.</h2>
-        <p class="text-muted" style="margin:0;">Partners aren&rsquo;t sponsors. They&rsquo;re the certification bodies, communities and media that bring their people to LSTE and take the day&rsquo;s takeaways back out to them.</p>
-      </div>
-
-      <div class="sponsor-strip reveal">
-        <a href="https://allianceforqualification.com/" target="_blank" rel="noopener" aria-label="A4Q, Alliance for Qualification"><img src="./assets/img/a4q-logo-400.webp" width="160" height="37" loading="lazy" alt="A4Q, Alliance for Qualification" decoding="async"></a>
-        <a href="https://www.siliconluxembourg.lu/" target="_blank" rel="noopener" aria-label="Silicon Luxembourg"><img src="./assets/img/silicon-luxembourg-logo-400.webp" width="120" height="82" loading="lazy" alt="Silicon Luxembourg" decoding="async"></a>
-      </div>
-
-      <p class="text-center reveal" style="margin-top:var(--space-8);"><a class="btn btn--outline" href="mailto:hello@lste.lu?subject=LSTE%202026%20partnership">Talk to us about a partnership <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-    </div>
-  </section>
-
   <!-- News preview — shows the site is actively updated, not a static
        brochure. An auto-scrolling ticker (all 6 real articles, duplicated
        once for a seamless loop) rather than a static 2-up grid — pauses on
        hover/focus and sits still entirely under prefers-reduced-motion
        (see news-carousel rules in home.css + initNewsCarousel in main.js
        for the hover/focus pause). -->
-  <section class="section" aria-labelledby="news-heading">
+  <section class="section section--alt" aria-labelledby="news-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--violet">News</span>

@@ -1813,3 +1813,35 @@ Image handling, following the 2026-08-24 precedent:
   tile links straight to the final URL rather than through the redirect.
 - `src/chat/knowledge.md` was updated again — it had just been told *not* to
   name any 2026 partner. It now names these two and still forbids the rest.
+
+### Same day again: the Partners section became a fourth rule head
+
+Client, on seeing it: *"Mets les partenaires juste en dessous de silver, pas
+besoin de refaire une section pour eux et enlève le 'talk to us about a
+partnership'."* So the standalone `#partners` section is gone after a single
+commit — partners now sit **inside `#sponsors`, directly under Silver**.
+
+- They're one more `.reveal` block in the same column as the tiers: a
+  `.sponsor-tier-heading` rule head, a one-line description, a
+  `.sponsor-strip`. Silver picked up the `margin-bottom: var(--space-8)` the
+  other tier blocks already carried, which it hadn't needed as the last one.
+- **Their bar is deliberately not a metal.** `--partners` sets `--tier-metal`
+  to flat brand cyan, no sheen. Coming fourth, straight after
+  Platinum/Gold/Silver, a fourth metallic bar would read as a tier *below*
+  Silver — which is exactly backwards, since a partner isn't on the tier
+  ladder at all. The line under it ("Not sponsors — the certification bodies
+  and media that carry LSTE beyond the room.") is kept for the same reason: in
+  a stack of sponsor tiers, the word "Partners" alone reads as tier four.
+- **The "Talk to us about a partnership" CTA is gone**, per the instruction.
+  The block's closing CTA is once again "Become a sponsor", the one that was
+  always there. Note this leaves **no route on the site to propose a
+  partnership** — the only invitation was that button. Worth raising if
+  partner leads matter; not re-added unasked.
+- **News goes back to `.section--alt`** — with nothing between it and
+  `#sponsors`, the original alternation is restored and the homepage's section
+  backgrounds are exactly as they were before any of this.
+- **`id="partners"` moved onto the wrapping `div`**, so `/#partners` still
+  resolves — `src/chat/knowledge.md` points the assistant at that anchor, and
+  it was already committed and pushed. The heading copy from the removed
+  section ("Carrying LSTE beyond the room.") is gone with it; the block is
+  covered by `#sponsors`'s own h2, "The organisations behind LSTE 2026."

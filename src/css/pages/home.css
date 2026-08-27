@@ -359,6 +359,10 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 .sponsor-tier-heading--platinum { --tier-metal: linear-gradient(90deg, #8e99a8, #e6ecf4 55%, #8e99a8); }
 .sponsor-tier-heading--gold     { --tier-metal: linear-gradient(90deg, #8a6b12, #f2d98a 55%, #8a6b12); }
 .sponsor-tier-heading--silver   { --tier-metal: linear-gradient(90deg, #4b5462, #949fad 55%, #4b5462); }
+/* Partners are not a fourth tier. Their rule head comes straight after Silver,
+   so a fourth metallic bar would read as one ranking below it — flat brand
+   cyan instead, no sheen, precisely because there's no metal to imply. */
+.sponsor-tier-heading--partners { --tier-metal: var(--color-cyan); }
 /* The bar is decoration, not information — the tier is already in the words
    next to it — so under forced-colors it just goes away rather than turning
    into a solid CanvasText block that reads as a fourth thing on the row. */
