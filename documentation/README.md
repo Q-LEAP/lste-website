@@ -109,6 +109,15 @@ someone confirms otherwise from Q-Leap directly.
   **not yet confirmed for 2026**. Their logo assets are kept in
   `assets/img/` unreferenced so they can be re-added quickly once/if they
   confirm — do not delete those image files.
+- **Partners (2026, confirmed only):** A4Q (Alliance for Qualification) and
+  Silicon Luxembourg — both confirmed and their logos supplied by the client
+  on 2026-08-27. A partner is not a sponsor: they carry LSTE to an audience
+  rather than fund it, so they have no tier and no ranking. Every other past
+  partner (Luxembourg Testing Board, GASQ, ISTQB, jemmic, Q-Guard, Q-Bot,
+  SQAI Suite, IBM, and IT Nation in the media-partner role the 2026 brochure
+  gives it) is **not confirmed for 2026** — same status as the non-returning
+  sponsors, and their logo assets stay on disk unreferenced for the same
+  reason.
 - **Sponsorship tiers:** Platinum / Gold / Silver (Bronze retired). The site
   originally used the client's own explicit earlier spelling, "Platinium";
   when the 2026-07-20 sponsor brochure turned up spelling it the standard
@@ -1666,3 +1675,141 @@ the page people actually land on.
 - **`src/chat/knowledge.md` was updated** — it pointed the assistant at
   `/sponsors/`, and separately still claimed Q-Leap was the only confirmed
   sponsor, which had been stale since 2026-08-10.
+
+## 2026-08-27: decorative icons dropped for a quieter treatment, plus a Partners block
+
+Client feedback, verbatim: *"Les icons font trop 'emojis', supprime-les et
+fais un truc plus premium/pro."* Scope was confirmed with them before
+touching anything: the **sponsor tier headings and the programme timeline**,
+not a site-wide icon sweep.
+
+### What went, and what replaced it
+
+- **Sponsor tiers** carried a coloured Font Awesome trophy / star / medal in
+  front of "Platinum sponsors" / "Gold sponsors" / "Silver sponsors", each
+  with its own inline `style="color:#…"`. All three glyphs and their inline
+  colours are gone. `.sponsor-tier-heading` (`src/css/pages/home.css`) is now
+  a **rule head**: a 40×2px metallic bar, the tier in small letterspaced
+  Space Grotesk caps, then a hairline fading out to the edge of the strip.
+  The tier is carried by the bar's metal — a two-stop sheen per tier
+  (`--tier-metal`, set by `--platinum` / `--gold` / `--silver`) — rather than
+  by a pictogram. Silver was deliberately darkened after a first render, where
+  it was nearly indistinguishable from platinum at that size.
+  - **Not `--font-mono`**, even though the small-caps look invites it: these
+    are `h3`s, and `tokens.css` reserves mono for eyebrows, badges and
+    timestamps, never headings.
+  - The bar is decoration (the tier is already in the words next to it), so
+    it's hidden under `forced-colors` instead of becoming a solid
+    `CanvasText` block reading as a third element on the row.
+- **Programme timeline** used `.timeline__dot--icon` — a 24px dot with a
+  coffee mug / microphone / laptop / champagne glasses inside. Those read as
+  emoji more than anything else on the site. Every timeline marker is now the
+  plain `.timeline__dot`, and the `--icon` variant is deleted from
+  `src/css/pages/inner.css` rather than left as dead CSS.
+  - **The distinction the icons carried is kept, just quieter:** a break
+    (registration, closing drinks) is now an *open ring*, a session a filled
+    dot. The ring's centre is `--color-surface`, matching the halo already on
+    `.timeline__dot`, so the connecting line doesn't show through it.
+  - This touched three pages, not one: the same component with the same
+    icon-dots also ran on `schedule/index.html` (a clock) and
+    `previous-editions/edition-2025/index.html` (two coffee mugs). Leaving
+    those would have meant the homepage's preview of the day and the full
+    programme of that same day rendering differently — outside the letter of
+    "the timeline", inside its intent.
+  - `npm run icons:build` afterwards dropped the now-unused glyphs from the
+    subset: **31 icons in the font, down from 37** (`fa-clock` and `fa-star` survive — other pages still use them), `fa-solid-900.woff2` from
+    4496 to 3604 bytes. Note `icons:build` is *not* part of `npm run build` —
+    it rewrites `src/css/icons.css`, so `css:build` has to run after it.
+- **Button arrows (`fa-arrow-right`) were left alone everywhere.** They're a
+  directional affordance on a link, not decoration, and nobody reads an arrow
+  as an emoji.
+
+### The Partners block (`#partners`)
+
+New homepage section between `#sponsors` and News. Client asked for it; what
+goes *in* it was put back to them first, because **no 2026 partner is
+confirmed** — past editions' partners (Luxembourg Testing Board, GASQ, ISTQB,
+jemmic, Q-Guard, Silicon Luxembourg, and IT Nation in a media role per the
+2026 brochure) are all documented above as unconfirmed for 2026, the same
+status as the non-returning sponsors. The client chose the **empty state**:
+structure now, names when they confirm.
+
+- So the block says what a partnership *is* and invites one. Its three cards
+  are partner **categories** — Community / Institutional / Media — generalised
+  from who actually partnered in past editions, so nothing on the page claims
+  a 2026 relationship that doesn't exist. Reuses `.numbered-card`, the same
+  01/02/03 language `/become-a-sponsor/` uses for tiers.
+- CTA is a `mailto:hello@lste.lu` with a pre-filled subject, not a link to
+  `/become-a-sponsor/` — a partner isn't buying a tier.
+- **When partners confirm, swap the `.grid` for a `.sponsor-strip`** of logo
+  tiles; the strip, its hover lift and its pitch modal are already built and
+  drop straight in. Six candidate logos are already sitting unreferenced in
+  `assets/img/` (LTB, GASQ, istqb, jemmic, QGUARD, Silicon Luxembourg).
+- **News dropped back to a plain `.section`** so the `section` /
+  `section--alt` alternation down the page still holds with one more block in
+  it. No nav or footer entry was added — pointing a menu item at an empty
+  state isn't worth it until there are partners to see.
+- `src/chat/knowledge.md` gained the `#partners` link **and an explicit
+  instruction not to name any organisation as a 2026 partner**, so the
+  assistant doesn't helpfully fill the gap from the 2025 recap page.
+
+Verified by screenshotting the rendered homepage in headless Chrome (with
+`.reveal` forced visible) rather than by reading the diff. Ran `icons:build`,
+`css:build`, `partials:inject`, `paths:localize`, `assets:version`; all three
+touched pages pass the tag-balance check.
+
+### Later the same day: the empty state lasted about an hour
+
+The client came back with two logo files — `logo-sponsor-a4q.png` and
+`Silicon_Luxembourg_Rocket.jpg` — and the instruction to put them in the
+partners block. **A4Q (Alliance for Qualification) and Silicon Luxembourg are
+therefore the first two confirmed 2026 partners** (recorded in Verified facts
+above). Nobody else from past editions is confirmed, so nobody else went on.
+
+- The three Community / Institutional / Media category cards are **gone**, not
+  kept alongside the logos. They were scaffolding for an empty state; with
+  real partners on the page they'd just be a second, vaguer answer to the same
+  question. The block is now the flat `.sponsor-strip` the previous entry said
+  to swap in — same 152×84 white plate as the sponsor tiers above.
+- The heading changed with them: "Partnerships for 2026 are open." was an
+  empty-state headline. It's now "Carrying LSTE beyond the room.", and the
+  invitation moved entirely into the closing CTA, which still
+  `mailto:`s hello@lste.lu rather than pointing at `/become-a-sponsor/`.
+- **Neither partner sent a pitch**, so neither tile carries `data-pitch` —
+  `initSponsorModal()` skips them, exactly like the LNDS and uni.lu tiles.
+- **No tier, no ranking, no ordering claim.** A4Q sits first because its
+  wordmark is wider, not because it outranks anyone.
+
+Image handling, following the 2026-08-24 precedent:
+
+- Originals are committed to `documentation/Logo entreprise/` — the only
+  committed copy, since `assets/img/source/` is gitignored. Trimmed versions
+  went to `assets/img/source/` as `a4q-logo.png` /
+  `silicon-luxembourg-logo.png`.
+- The A4Q PNG trims transparent ground on its own; **the Silicon JPEG needed
+  `trim({background:'#ffffff', threshold:12})`** — sharp won't find a white
+  ground unless you name it. It only cropped vertically (1511→1383): the
+  wordmark already touches both side edges.
+- Derivatives were generated with the **exact codec settings from
+  `scripts/optimize-images.mjs`** (avif q62 / webp q72 / mozjpeg q78, flattened
+  onto white) but run only on these two files. `npm run images:optimize`
+  reprocesses all of `assets/img/source/`, and re-encoding ~200 unrelated
+  derivatives with whatever sharp version is installed today would have been a
+  large, meaningless diff.
+- **`a4q-logo-400.*` is really 344px wide.** The supplied PNG is only 500×300
+  and trims to 344×80, and `withoutEnlargement` won't invent pixels. It's named
+  `-400` to match every other logo reference on the page rather than
+  introducing a lone `-344`; 344px still covers the ~120px it renders at.
+- **Silicon Luxembourg's supplied lockup is nearly square** (1.46:1 — the
+  rocket sits above and below the wordmark), so in a 1.81:1 landscape tile it's
+  height-constrained and "LUXEMBOURG" is not legible at that size. Same
+  accepted trade-off as the LNDS tile, and `alt`/`aria-label` carry the full
+  name. **Note there is an older, horizontal Silicon Luxembourg lockup already
+  in `assets/img/` (`Logo_Silicon-Luxembourg-*`)** which would fit the tile far
+  better — it was deliberately *not* used, because it's visibly outdated
+  branding and the client supplied the current mark. If a horizontal version of
+  the *current* logo ever turns up, it belongs here.
+- `a4q.org` / `www.a4q.org` both 301 to `allianceforqualification.com`; the
+  tile links straight to the final URL rather than through the redirect.
+- `src/chat/knowledge.md` was updated again — it had just been told *not* to
+  name any 2026 partner. It now names these two and still forbids the rest.

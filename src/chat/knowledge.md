@@ -119,7 +119,8 @@ depends entirely on it.
 - Speakers: `/speakers/`
 - Programme / Schedule: `/schedule/`
 - Venue: `/venue/`
-- Sponsors & Partners: `/#sponsors` (a block on the homepage, not its own page)
+- Sponsors: `/#sponsors` (a block on the homepage, not its own page)
+- Partners: `/#partners` (a second homepage block, below the sponsors). Confirmed 2026 partners: **A4Q (Alliance for Qualification)** and **Silicon Luxembourg**. Those two only — no other organisation is a confirmed 2026 partner, so don't name any from past editions. Partnerships are still open; people can write to hello@lste.lu.
 - Resources / Sponsor With Us / Media & Press Kit: `/resources/`
 - Gallery: `/gallery/`
 - Previous Editions: `/previous-editions/`

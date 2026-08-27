@@ -317,8 +317,54 @@ body:has(.hero) .site-header:not(.is-scrolled) {
    and small enough not to compete with it. On /sponsors/ these were h2s under
    the page h1 carrying `font-size:1.5rem` inline three times over; inside the
    homepage section they sit under an h2, so they're h3s and the repeated
-   inline style is extracted here. */
-.sponsor-tier-heading { font-size: 1.25rem; margin-bottom: var(--space-5); }
+   inline style is extracted here.
+
+   Drawn as a rule head — a short metallic bar, the tier name in small
+   letterspaced caps, then a hairline running out to the edge of the strip.
+   These used to be a coloured Font Awesome trophy / star / medal set in
+   front of the words; the client read those as emoji rather than as an
+   identity, so the tier is now carried by the bar's metal instead (see the
+   2026-08-27 entry in documentation/README.md). Space Grotesk, not
+   --font-mono: these are headings, and mono is reserved for eyebrows,
+   badges and timestamps (see tokens.css). */
+.sponsor-tier-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.sponsor-tier-heading::before {
+  content: '';
+  flex: none;
+  width: 40px;
+  height: 2px;
+  border-radius: 1px;
+  /* Two-stop sheen rather than a flat swatch — what reads as "metal" at
+     2px tall is the highlight running through the middle of the bar. */
+  background: var(--tier-metal, var(--color-border));
+}
+.sponsor-tier-heading::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: var(--space-4);
+  background: linear-gradient(90deg, var(--color-border), transparent);
+}
+.sponsor-tier-heading--platinum { --tier-metal: linear-gradient(90deg, #8e99a8, #e6ecf4 55%, #8e99a8); }
+.sponsor-tier-heading--gold     { --tier-metal: linear-gradient(90deg, #8a6b12, #f2d98a 55%, #8a6b12); }
+.sponsor-tier-heading--silver   { --tier-metal: linear-gradient(90deg, #4b5462, #949fad 55%, #4b5462); }
+/* The bar is decoration, not information — the tier is already in the words
+   next to it — so under forced-colors it just goes away rather than turning
+   into a solid CanvasText block that reads as a fourth thing on the row. */
+@media (forced-colors: active) {
+  .sponsor-tier-heading::before, .sponsor-tier-heading::after { display: none; }
+}
 
 /* A tile with a pitch behind it gets an affordance the plain ones don't:
    it lifts and picks up the violet accent on hover/focus, and carries a
