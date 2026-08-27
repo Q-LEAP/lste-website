@@ -1,13 +1,22 @@
 # LSTE website — documentation & source materials
 
-> ⚠️ **BEFORE GOING LIVE:** as of 2026-07-20, every single page carries
-> `<meta name="robots" content="noindex, nofollow">` and `robots.txt` is set
-> to `Disallow: /` — done deliberately because this build isn't at its
-> official URL yet. **Both must be reverted** (remove the meta tag
-> site-wide, restore `robots.txt`'s `Allow: /` + per-directory disallows)
-> before the real launch, or the site will never get indexed. See the
-> dated note near the bottom of this file for the exact prior `robots.txt`
-> contents to restore.
+> ✅ **THE GO-LIVE SEO BLOCK IS ALREADY LIFTED — nothing left to revert.**
+> This banner used to say every page carried
+> `<meta name="robots" content="noindex, nofollow">` and `robots.txt` said
+> `Disallow: /`, and that both had to be reverted before launch. **That was
+> done on 2026-07-30** (see the dated entry below): `robots.txt` now says
+> `Allow: /` and disallows nothing on purpose, and 39 pages are indexable and
+> in `sitemap.xml`, 39/39.
+>
+> Six pages still carry a robots meta, **all deliberately** — re-audited
+> 2026-08-27, still matching `sitemap.xml` exactly:
+> `/sponsors/`, `/ticket/`, `/become-a-speaker/` are redirect stubs with no
+> content of their own; `/speakers/` is still a placeholder and `/resources/`
+> is the sponsor-only space, both kept out by the client's own ruling; and
+> `404.html` is a 404. All five real pages use `noindex, follow` so their
+> outgoing links still carry. **Don't "fix" these** — if `/speakers/` or
+> `/resources/` should become indexable, that's a content decision plus a
+> `sitemap.xml` entry, not a stray tag someone forgot.
 
 This folder is the single place to check before making any significant
 content change to the site. It holds source materials (old programmes,
