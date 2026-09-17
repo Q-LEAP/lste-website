@@ -44,7 +44,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       # No install step on purpose: the probe uses only the Node standard
       # library, so it cannot be broken by a dependency and needs no lockfile.
