@@ -1,0 +1,139 @@
+# Watches the registration funnel and shouts when it breaks.
+#
+# The site is static, so a deploy being green says nothing about whether people
+# can actually register: the form lives on an Odoo tenant we do not control. On
+# 2026-09-17 that tenant returned HTTP 500 on every event page for an unknown
+# number of days and we learned about it from a prospective attendee's email.
+# This job closes that blind spot.
+#
+# On failure it opens a single GitHub issue (which emails everyone watching the
+# repo) and leaves it open until the funnel recovers, then comments and closes
+# it. One issue per outage, not one per run.
+name: Registration health check
+
+on:
+  schedule:
+    # Every 15 minutes. GitHub runs scheduled jobs on a best-effort basis and
+    # can delay them under load, so treat this as "roughly every 15 minutes".
+    - cron: '*/15 * * * *'
+  # Lets you re-run it by hand from the Actions tab the moment Odoo claims a fix.
+  workflow_dispatch:
+  # Catches a broken or stale registration link at the moment it is committed,
+  # rather than up to 15 minutes later.
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'scripts/check-registration.mjs'
+      - '.github/workflows/registration-healthcheck.yml'
+
+# Needed to open, comment on and close the outage issue.
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: registration-healthcheck
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # No install step on purpose: the probe uses only the Node standard
+      # library, so it cannot be broken by a dependency and needs no lockfile.
+      - name: Probe the registration funnel
+        id: probe
+        run: |
+          set +e
+          node scripts/check-registration.mjs > result.txt 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          cat result.txt
+
+      - name: Open or update the outage issue
+        if: steps.probe.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('result.txt', 'utf8');
+            const LABEL = 'registration-outage';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            // Make sure the label exists before filtering on it.
+            try {
+              await github.rest.issues.createLabel({
+                ...context.repo, name: LABEL, color: 'b60205',
+                description: 'Attendees cannot register',
+              });
+            } catch (e) { /* already exists */ }
+
+            const { data: open } = await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open', labels: LABEL,
+            });
+
+            const body = [
+              '**Attendees cannot register right now.**',
+              '',
+              'The "Register for free" buttons on the site lead to a page that is not serving a',
+              'working registration form. The site itself is fine — this is almost always the',
+              'Odoo tenant that hosts the form.',
+              '',
+              '```',
+              report.trim(),
+              '```',
+              '',
+              `[Full run log](${runUrl})`,
+              '',
+              '---',
+              'This issue closes itself automatically once the funnel recovers.',
+            ].join('\n');
+
+            if (open.length > 0) {
+              // Already reported. Stay quiet rather than commenting every 15
+              // minutes — a noisy alert is an ignored alert. Refresh the body
+              // so the issue always shows the latest probe output.
+              await github.rest.issues.update({
+                ...context.repo, issue_number: open[0].number, body,
+              });
+              core.notice(`Outage already tracked in #${open[0].number}`);
+            } else {
+              const { data: issue } = await github.rest.issues.create({
+                ...context.repo,
+                title: '🚨 Registration is broken — attendees cannot sign up',
+                body,
+                labels: [LABEL],
+              });
+              core.notice(`Opened outage issue #${issue.number}`);
+            }
+
+      - name: Close the outage issue on recovery
+        if: steps.probe.outputs.exit_code == '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const LABEL = 'registration-outage';
+            const { data: open } = await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open', labels: LABEL,
+            });
+            for (const issue of open) {
+              await github.rest.issues.createComment({
+                ...context.repo, issue_number: issue.number,
+                body: '✅ Recovered — the registration funnel is answering normally again.',
+              });
+              await github.rest.issues.update({
+                ...context.repo, issue_number: issue.number, state: 'closed',
+              });
+            }
+
+      # Keeps the run itself red, so the Actions tab and GitHub's own
+      # failure emails reflect reality too.
+      - name: Fail the run if the funnel is down
+        if: steps.probe.outputs.exit_code != '0'
+        run: exit 1
