@@ -57,6 +57,7 @@ jobs:
           cat result.txt
 
       - name: Open or update the outage issue
+        id: issue
         if: steps.probe.outputs.exit_code != '0'
         uses: actions/github-script@v7
         with:
@@ -103,6 +104,9 @@ jobs:
                 ...context.repo, issue_number: open[0].number, body,
               });
               core.notice(`Outage already tracked in #${open[0].number}`);
+              // Already-known outage: no email. This flag is what keeps a
+              // three-day outage to one alert instead of 288.
+              core.setOutput('new_outage', 'false');
             } else {
               const { data: issue } = await github.rest.issues.create({
                 ...context.repo,
@@ -111,9 +115,13 @@ jobs:
                 labels: [LABEL],
               });
               core.notice(`Opened outage issue #${issue.number}`);
+              core.setOutput('new_outage', 'true');
+              core.setOutput('issue_url', issue.html_url);
             }
+            core.setOutput('report', report.trim());
 
       - name: Close the outage issue on recovery
+        id: recovery
         if: steps.probe.outputs.exit_code == '0'
         uses: actions/github-script@v7
         with:
@@ -131,6 +139,65 @@ jobs:
                 ...context.repo, issue_number: issue.number, state: 'closed',
               });
             }
+            // Only true on the run where it actually came back, so a healthy
+            // funnel stays completely silent from then on.
+            core.setOutput('recovered', open.length > 0 ? 'true' : 'false');
+
+      # --- Email alerts -------------------------------------------------
+      # Two emails per outage at most: one when it breaks, one when it is back.
+      # A healthy funnel never sends anything.
+      #
+      # Both steps stay dormant until the SMTP secrets exist, so the check keeps
+      # working as-is if they are never set. They are also continue-on-error: a
+      # mail server problem must never turn a healthy run red, nor mask a real
+      # outage behind a delivery failure.
+      - name: Email the team — registration just broke
+        if: steps.probe.outputs.exit_code != '0' && steps.issue.outputs.new_outage == 'true' && env.SMTP_SERVER != ''
+        continue-on-error: true
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+        uses: dawidd6/action-send-mail@v22
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          from: LSTE site monitor <${{ secrets.SMTP_FROM }}>
+          to: hello@lste.lu
+          subject: '[LSTE] ALERTE — les inscriptions sont cassées'
+          body: |
+            Les boutons « Register for free » du site ne mènent plus à un
+            formulaire d'inscription fonctionnel.
+
+            Le site lste.lu est en ligne : le problème vient quasi
+            systématiquement de l'Odoo qui héberge le formulaire.
+
+            Détail de la sonde :
+
+            ${{ steps.issue.outputs.report }}
+
+            Suivi : ${{ steps.issue.outputs.issue_url }}
+
+            Vous recevrez un second mail dès le rétablissement.
+            (Un seul mail par panne — pas de rappel toutes les 15 minutes.)
+
+      - name: Email the team — registration is back
+        if: steps.probe.outputs.exit_code == '0' && steps.recovery.outputs.recovered == 'true' && env.SMTP_SERVER != ''
+        continue-on-error: true
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+        uses: dawidd6/action-send-mail@v22
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          from: LSTE site monitor <${{ secrets.SMTP_FROM }}>
+          to: hello@lste.lu
+          subject: '[LSTE] Rétabli — les inscriptions refonctionnent'
+          body: |
+            La sonde vient de confirmer que le tunnel d'inscription répond
+            de nouveau normalement. Rien à faire.
 
       # Keeps the run itself red, so the Actions tab and GitHub's own
       # failure emails reflect reality too.
