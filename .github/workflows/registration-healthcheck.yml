@@ -6,9 +6,15 @@
 # number of days and we learned about it from a prospective attendee's email.
 # This job closes that blind spot.
 #
-# On failure it opens a single GitHub issue (which emails everyone watching the
-# repo) and leaves it open until the funnel recovers, then comments and closes
-# it. One issue per outage, not one per run.
+# On failure it opens a single GitHub issue and assigns it, which is what
+# actually sends the alert email: GitHub notifies an assignee whatever their
+# watch settings are, so this works with no mail server, no API key and no
+# secret to expire. The issue stays open until the funnel recovers, then gets a
+# comment and closes itself.
+#
+# Everything here is built around one rule: one alert per outage, not one per
+# run. The issue is opened once, the run fails once, and the optional mails go
+# out once. A healthy funnel is completely silent.
 name: Registration health check
 
 on:
@@ -65,6 +71,12 @@ jobs:
             const fs = require('fs');
             const report = fs.readFileSync('result.txt', 'utf8');
             const LABEL = 'registration-outage';
+            // Being assigned an issue always sends that person a notification
+            // email, whatever their repo watch setting is — which is what makes
+            // this alert work with no mail server, no API key and no secrets to
+            // rotate. Add or remove GitHub usernames here to change who gets
+            // paged; every repo admin is a valid choice.
+            const ASSIGNEES = ['Komorebideuxiemedunom'];
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
 
             // Make sure the label exists before filtering on it.
@@ -113,6 +125,7 @@ jobs:
                 title: '🚨 Registration is broken — attendees cannot sign up',
                 body,
                 labels: [LABEL],
+                assignees: ASSIGNEES,
               });
               core.notice(`Opened outage issue #${issue.number}`);
               core.setOutput('new_outage', 'true');
@@ -199,8 +212,34 @@ jobs:
             La sonde vient de confirmer que le tunnel d'inscription répond
             de nouveau normalement. Rien à faire.
 
-      # Keeps the run itself red, so the Actions tab and GitHub's own
-      # failure emails reflect reality too.
-      - name: Fail the run if the funnel is down
-        if: steps.probe.outputs.exit_code != '0'
-        run: exit 1
+      # A failing run is GitHub's own alert channel: it emails whoever last
+      # touched this workflow, with no configuration on our side. That makes it
+      # the alert, which means it has to follow the same rule as the issue and
+      # the mails — one per outage, not one per run. Failing on every run would
+      # send ~96 mails a day and get the whole thing muted within a week.
+      #
+      # So the run status answers "did this check find something new to tell
+      # you", while the open issue answers "is the funnel broken right now".
+      # An ongoing outage therefore shows a green run and a very loud summary,
+      # and the issue stays open the whole time.
+      - name: Fail the run on a newly detected outage
+        if: steps.issue.outputs.new_outage == 'true'
+        run: |
+          {
+            echo "## 🚨 Registration just broke"
+            echo ""
+            echo "Opened ${{ steps.issue.outputs.issue_url }} and assigned it."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+      - name: Report an ongoing outage without re-alerting
+        if: steps.probe.outputs.exit_code != '0' && steps.issue.outputs.new_outage == 'false'
+        run: |
+          echo "::warning::Registration is STILL broken — already tracked, not re-alerting."
+          {
+            echo "## ⚠️ Registration is still broken"
+            echo ""
+            echo "This outage is already reported, so this run stays green on purpose"
+            echo "to avoid a duplicate alert. The open \`registration-outage\` issue is"
+            echo "the live status."
+          } >> "$GITHUB_STEP_SUMMARY"
