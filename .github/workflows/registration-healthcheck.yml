@@ -152,10 +152,10 @@ jobs:
       # mail server problem must never turn a healthy run red, nor mask a real
       # outage behind a delivery failure.
       - name: Email the team — registration just broke
-        if: steps.probe.outputs.exit_code != '0' && steps.issue.outputs.new_outage == 'true' && env.SMTP_SERVER != ''
+        if: steps.probe.outputs.exit_code != '0' && steps.issue.outputs.new_outage == 'true' && env.SMTP_PASSWORD != ''
         continue-on-error: true
         env:
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         uses: dawidd6/action-send-mail@v22
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
@@ -182,10 +182,10 @@ jobs:
             (Un seul mail par panne — pas de rappel toutes les 15 minutes.)
 
       - name: Email the team — registration is back
-        if: steps.probe.outputs.exit_code == '0' && steps.recovery.outputs.recovered == 'true' && env.SMTP_SERVER != ''
+        if: steps.probe.outputs.exit_code == '0' && steps.recovery.outputs.recovered == 'true' && env.SMTP_PASSWORD != ''
         continue-on-error: true
         env:
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         uses: dawidd6/action-send-mail@v22
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
