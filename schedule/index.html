@@ -120,9 +120,8 @@ redirect_from:
 
   <!-- Published 2026-09-28 from documentation/schedule-2026-draft.html.
        The day's fixed points (demos from 14:00, coffee at 15:00, cocktail
-       at 18:30) came from the client that day; session times did not, and
-       the client asked for the page to say they may still move — hence the
-       "TBC" slots and the note above the sessions.
+       at 18:30) came from the client that day; the session times around
+       them were picked to fit, and the hero says they may still move.
 
        Still open on purpose:
        — the OctoPerf workshop has no room badge and no ticket claim. It
@@ -142,7 +141,7 @@ redirect_from:
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Programme</span></nav>
       <span class="eyebrow eyebrow--lime">LSTE 2026</span>
       <h1>The programme is taking shape.</h1>
-      <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">One day, four tracks. Sessions are published here as they are confirmed, so check back as 26 November approaches.</p>
+      <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">One day, four tracks. Times are subject to change up until the day of LSTE, and more sessions will be added as they are confirmed. Open a session for its full abstract, or <a href="../index.html#speakers">meet the speakers</a>.</p>
       <div class="calendar-actions reveal">
         <span class="calendar-actions__label"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Save the date, 26 November 2026</span>
         <a class="btn btn--outline btn--sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=LSTE%202026%20%E2%80%94%20Luxembourg%20Software%20Testing%20Event&amp;dates=20261126T130000/20261126T210000&amp;details=Luxembourg%27s%20software%20testing%20conference%2C%208th%20edition.%20Free%20to%20attend.%20https%3A//lste.lu/&amp;location=Conference%20Center%20H%C3%B4tel%20Parc%20Belle-Vue%2C%205%20Avenue%20Marie-Th%C3%A9r%C3%A8se%2C%20L-2132%20Luxembourg&amp;ctz=Europe/Luxembourg" target="_blank" rel="noopener">Add to Google Calendar</a>
@@ -159,46 +158,17 @@ redirect_from:
         <h2>How 26 November runs.</h2>
       </div>
 
+      <!-- One timeline for the whole day. Session times are indicative
+           (client, 2026-09-28: "random but consistent" with demos at
+           14:00, coffee at 15:00, cocktail at 18:30); the hero says they
+           may change. One <details> per session carries the abstract. -->
       <div class="timeline reveal">
         <div class="timeline__item timeline__item--break"><span class="timeline__time">13:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Doors open &amp; registration</p></div></div>
         <div class="timeline__item"><span class="timeline__time">13:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks begin</p><span class="badge badge--keynote">Keynote Room</span></div></div>
         <div class="timeline__item timeline__item--demo"><span class="timeline__time">14:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Live demos begin</p><span class="badge badge--demo">Demo Room</span></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">15:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Coffee break</p></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">18:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Networking cocktail</p></div></div>
-      </div>
-
-      <div class="section-head section-head--left reveal" style="margin-top:var(--space-12);">
-        <span class="eyebrow eyebrow--violet">First sessions announced</span>
-        <h2>What's confirmed so far.</h2>
-        <p class="text-muted" style="max-width:56ch;">Session times are still being finalised and may change. Open a session for its full abstract, or <a href="../index.html#speakers">meet the speakers</a>.</p>
-      </div>
-
-      <!-- One <details> per session carries the long abstract: the timeline
-           already styles the disclosure (see .timeline__content details in
-           src/css/pages/inner.css), so a full programme stays scannable —
-           titles and speakers visible, abstracts on demand. -->
-      <div class="timeline reveal">
 
         <div class="timeline__item">
-          <span class="timeline__time">TBC</span>
-          <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
-          <div class="timeline__content">
-            <span class="badge badge--workshop" style="margin-bottom:var(--space-2);">Workshop</span>
-            <details>
-              <summary>
-                <span class="timeline__title">AI &amp; Performance Testing &mdash; How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.</span>
-                <span class="timeline__speaker">Ouamar Nedil, Director of Performance at OctoPerf</span>
-              </summary>
-              <p class="timeline__desc">Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.</p>
-              <p class="timeline__desc">During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice, making performance testing more accessible and eliminating the traditional complexity of performance testing tools.</p>
-              <p class="timeline__desc">Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.</p>
-              <p class="timeline__desc"><strong>What to bring:</strong> a laptop with an internet connection, to get the most out of the workshop.</p>
-            </details>
-          </div>
-        </div>
-
-        <div class="timeline__item">
-          <span class="timeline__time">TBC</span>
+          <span class="timeline__time">14:15</span>
           <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
           <div class="timeline__content">
             <span class="badge" style="margin-bottom:var(--space-2);">Talk</span>
@@ -215,15 +185,27 @@ redirect_from:
           </div>
         </div>
 
-        <div class="timeline__item timeline__item--break">
-          <span class="timeline__time">&ndash;</span>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">15:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Coffee break</p></div></div>
+
+        <div class="timeline__item">
+          <span class="timeline__time">15:30</span>
           <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
           <div class="timeline__content">
-            <p class="timeline__title">More sessions to come</p>
-            <p class="timeline__desc">Keynotes, further talks and demos are being finalised and will be added here as they are confirmed. The <a href="../call-for-speakers/index.html">Call for Speakers</a> is open until 30 September 2026.</p>
+            <span class="badge badge--workshop" style="margin-bottom:var(--space-2);">Workshop</span>
+            <details>
+              <summary>
+                <span class="timeline__title">AI &amp; Performance Testing &mdash; How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.</span>
+                <span class="timeline__speaker">Ouamar Nedil, Director of Performance at OctoPerf</span>
+              </summary>
+              <p class="timeline__desc">Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.</p>
+              <p class="timeline__desc">During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice, making performance testing more accessible and eliminating the traditional complexity of performance testing tools.</p>
+              <p class="timeline__desc">Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.</p>
+              <p class="timeline__desc"><strong>What to bring:</strong> a laptop with an internet connection, to get the most out of the workshop.</p>
+            </details>
           </div>
         </div>
 
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">18:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Networking cocktail</p></div></div>
       </div>
     </div>
   </section>

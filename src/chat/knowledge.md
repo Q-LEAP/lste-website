@@ -29,18 +29,19 @@ depends entirely on it.
 - **Language:** the event is held in **English**.
 - **Expected attendance:** 300+ testing and QA professionals.
 - The 2026 programme is **published progressively** on `/schedule/` as
-  sessions are confirmed. **Session times are not final and may change.**
+  sessions are confirmed. **All times are subject to change up until the day
+  of the event.**
   Confirmed so far:
   - **Workshop** — "AI & Performance Testing: How to Run an End-to-End
     Performance Testing Campaign in Natural Language with Your Favorite LLM and
     OctoPerf. From Scripting to Analysis." by **Ouamar Nedil**, Director of
     Performance at **OctoPerf**. Bring a laptop with an internet connection.
-    Time to be confirmed.
+    Currently scheduled at 15:30.
   - **Talk** — "The Devil Is in the Payloads: The Grueling Journey of
     Implementing a File Transfer Feature", by **Thales** (speaker to be
     announced), on the security risks of file uploads (PDFs). English slides;
-    delivered in English or French depending on the audience. Time to be
-    confirmed.
+    delivered in English or French depending on the audience. Currently
+    scheduled at 14:15.
   - Keynotes and further sessions are still being finalised.
 - Speakers are presented on the homepage (`/#speakers`), each with a short
   biography. Don't name speakers beyond those listed above.
