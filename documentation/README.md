@@ -109,8 +109,9 @@ someone confirms otherwise from Q-Leap directly.
     "practioners") that were silently corrected for spelling only during
     the 2026-07-17 UX/DA review pass — the wording and meaning are
     otherwise unchanged from the official source.
-- **Sponsors (2026, confirmed only):** Q-Leap (Platinum), OctoPerf (Platinum),
-  Thales (Gold) — all three per the 2026-08-10 entry below. Every other sponsor
+- **Sponsors (2026, confirmed only):** Q-Leap, OctoPerf, LNDS and Agilitest
+  (Platinum); Thales and the University of Luxembourg (Gold). See the
+  2026-08-10, 2026-08-24 and 2026-09-28 entries below. Every other sponsor
   previously listed
   (Deloitte, NSI, Sogeti, AINOS, Xray, Uni.lu,
   SQAI Suite, Tricentis, SnT, Q-Guard, jemmic, Q-Bot, Luxembourg Testing
@@ -1867,3 +1868,24 @@ three sponsor tiers above them.** It was flagged when the line went in that
 tier; the client's call, made with that in mind. If it ever needs re-stating,
 the line belongs here again rather than in a section of its own — that shape
 was already tried and rejected the same day.
+
+## 2026-09-28: Agilitest added to Platinum
+
+**Agilitest** (test automation tool, <https://fr.agilitest.com/>) joins the
+Platinum tier, fourth tile after LNDS. No logo was supplied, so it was taken
+from their own site: the light-background version of their lockup (eagle
+head plus "AGILITEST" wordmark), since the tiles are white. Their
+dark-background variant exists (white strokes) but would vanish on a tile.
+
+- source: `assets/img/source/agilitest-logo-raw.png` (gitignored, 774×436,
+  from the site's Webflow CDN, `6079963ec99a1aa9df762cb1_logo-agilitest.png`)
+- trimmed of its transparent border (695×352) before the derivatives, same
+  treatment as LNDS/uni.lu, so the mark fills the 152×84 tile
+- derivatives, committed: `assets/img/agilitest-logo-400.{avif,webp,jpg}`
+  (400w only: the source is under 800 wide)
+- link target is the French site, as given by the client; no pitch yet, so no
+  `data-pitch` and the tile stays a plain link
+- `src/chat/knowledge.md` lists it with the other Platinum sponsors
+- if Agilitest sends an official logo pack or a pitch, swap the source and
+  add `data-pitch`
+

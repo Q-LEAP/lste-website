@@ -62,8 +62,9 @@ depends entirely on it.
 ## Becoming a sponsor
 
 - LSTE offers sponsorship tiers: Platinium, Gold, and Silver.
-- For 2026, the confirmed sponsors are Q-Leap (the organiser), OctoPerf and
-  LNDS (Luxembourg National Data Service) in Platinium, and Thales and the
+- For 2026, the confirmed sponsors are Q-Leap (the organiser), OctoPerf,
+  LNDS (Luxembourg National Data Service) and Agilitest in Platinium, and
+  Thales and the
   University of Luxembourg in Gold; Silver is still open for other companies
   to confirm.
 - Interested companies can start via the "Sponsor With Us" section
