@@ -23,7 +23,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=c4e7c045">
+<link rel="stylesheet" href="../assets/css/styles.css?v=441a4a1a">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -118,97 +118,99 @@ redirect_from:
 
 <main id="main">
 
-  <!-- Published 2026-09-28 from documentation/schedule-2026-draft.html.
-       The day's fixed points (demos from 14:00, coffee at 15:00, cocktail
-       at 18:30) came from the client that day; the session times around
-       them were picked to fit, and the hero says they may still move.
+  <!-- Redesigned 2026-09-28 as a data-driven multi-track grid (see the
+       dated entry in documentation/README.md). The real sessions
+       published that same day (previous commit) used to live here as a
+       single timeline — they're now mapped into initSchedule()'s
+       SESSIONS array (src/js/main.js). Two content calls made while
+       porting them over, both one-line changes to revisit later:
+       — the OctoPerf workshop, still with no room badge in the original
+         publish, was placed in the Demo Room track.
+       — "Keynotes & talks begin" (13:30) and "Live demos begin" (14:00)
+         didn't carry over: they were markers compensating for the old
+         layout having no room columns of its own — the grid's "Keynote
+         Room" / "Demo Room" headers now do that job. "Doors open" and
+         "Coffee break" did carry over, as cross-track banners
+         (track: 'general') spanning the full grid width, since neither
+         belongs to one room; the closing cocktail sits in the
+         Networking column instead, since that track would otherwise
+         stand empty all day. -->
 
-       Still open on purpose:
-       — the OctoPerf workshop has no room badge and no ticket claim. It
-         matches the Tutorial Pass format (half-day, hands-on, paid) but
-         could equally run free in the Demo Room; `timeline__item--demo`
-         stays off until that's decided. If it turns out paid, /register/
-         needs the Tutorial Pass first — today it exists only in
-         src/chat/knowledge.md.
-       — the Thales speaker's name was never given, so the talk reads
-         "Speaker to be announced" and Thales has no card in the homepage's
-         #speakers block. Add both together once the name lands.
-       — the Thales talk may be given in French (English slides). The site
-         says LSTE is held in English; the abstract carries the nuance. -->
-
-  <section class="page-hero page-hero--left">
+  <section class="schedule-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Programme</span></nav>
-      <span class="eyebrow eyebrow--lime">LSTE 2026</span>
-      <h1>The programme is taking shape.</h1>
-      <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">One day, four tracks. Times are subject to change up until the day of LSTE, and more sessions will be added as they are confirmed. Open a session for its full abstract, or <a href="../index.html#speakers">meet the speakers</a>.</p>
+      <div class="schedule-hero__row">
+        <div>
+          <span class="eyebrow eyebrow--lime">LSTE 2026</span>
+          <h1>The programme is taking shape.</h1>
+          <p class="schedule-hero__meta">
+            <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> 26 November 2026</span>
+            <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 13:00–21:00</span>
+            <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> H&ocirc;tel Parc Belle-Vue, Luxembourg</span>
+          </p>
+          <p class="schedule-hero__note">Times are subject to change and more sessions will be added as they're confirmed. <a href="../index.html#speakers">Meet the speakers &rarr;</a></p>
+        </div>
+        <a class="btn btn--primary" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
       <div class="calendar-actions reveal">
-        <span class="calendar-actions__label"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Save the date, 26 November 2026</span>
         <a class="btn btn--outline btn--sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=LSTE%202026%20%E2%80%94%20Luxembourg%20Software%20Testing%20Event&amp;dates=20261126T130000/20261126T210000&amp;details=Luxembourg%27s%20software%20testing%20conference%2C%208th%20edition.%20Free%20to%20attend.%20https%3A//lste.lu/&amp;location=Conference%20Center%20H%C3%B4tel%20Parc%20Belle-Vue%2C%205%20Avenue%20Marie-Th%C3%A9r%C3%A8se%2C%20L-2132%20Luxembourg&amp;ctz=Europe/Luxembourg" target="_blank" rel="noopener">Add to Google Calendar</a>
         <a class="btn btn--outline btn--sm" href="../assets/downloads/lste-2026.ics" download>Download .ics <span class="text-muted" style="font-weight:400;">(Apple / Outlook)</span></a>
       </div>
     </div>
   </section>
 
-  <section class="section section--alt" style="padding-top:0;">
-    <div class="container container--left">
+  <div class="schedule-toolbar" id="schedule-toolbar" hidden>
+    <div class="container schedule-toolbar__inner">
+      <div class="schedule-filters" role="group" aria-label="Filter the programme by track">
+        <button type="button" class="schedule-filter" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="schedule-filter" data-filter="keynote" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--keynote" aria-hidden="true"></span>Keynote</button>
+        <button type="button" class="schedule-filter" data-filter="demo" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--demo" aria-hidden="true"></span>Demo</button>
+        <button type="button" class="schedule-filter" data-filter="exhibition" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--exhibition" aria-hidden="true"></span>Exhibition</button>
+        <button type="button" class="schedule-filter" data-filter="networking" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--networking" aria-hidden="true"></span>Networking</button>
+      </div>
+      <button type="button" class="btn btn--outline btn--sm schedule-now-btn" id="schedule-now-btn" hidden><i class="fa-solid fa-clock" aria-hidden="true"></i> Now</button>
+    </div>
+  </div>
 
-      <div class="section-head section-head--left reveal">
-        <span class="eyebrow eyebrow--violet">The day at a glance</span>
-        <h2>How 26 November runs.</h2>
+  <section class="section schedule-section">
+    <div class="container">
+
+      <!-- Fallback if SESSIONS (src/js/main.js) is ever emptied again. -->
+      <div id="schedule-empty" class="schedule-empty">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+        <p class="schedule-empty__title">Full programme coming soon</p>
+        <p class="schedule-empty__desc">Four tracks, one day — keynotes, live demos, the exhibition floor and networking. The 2026 line-up is being finalised and will appear here, in this same programme grid, closer to the event.</p>
+        <div class="cluster" style="justify-content:center;margin-top:var(--space-5);">
+          <span class="badge badge--keynote">Keynote Room</span>
+          <span class="badge badge--demo">Demo Room</span>
+          <span class="badge badge--exhibition">Exhibition</span>
+          <span class="badge badge--networking">Networking</span>
+        </div>
       </div>
 
-      <!-- One timeline for the whole day. Session times are indicative
-           (client, 2026-09-28: "random but consistent" with demos at
-           14:00, coffee at 15:00, cocktail at 18:30); the hero says they
-           may change. One <details> per session carries the abstract. -->
-      <div class="timeline reveal">
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">13:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Doors open &amp; registration</p></div></div>
-        <div class="timeline__item"><span class="timeline__time">13:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks begin</p><span class="badge badge--keynote">Keynote Room</span></div></div>
-        <div class="timeline__item timeline__item--demo"><span class="timeline__time">14:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Live demos begin</p><span class="badge badge--demo">Demo Room</span></div></div>
-
-        <div class="timeline__item">
-          <span class="timeline__time">14:15</span>
-          <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
-          <div class="timeline__content">
-            <span class="badge" style="margin-bottom:var(--space-2);">Talk</span>
-            <details>
-              <summary>
-                <span class="timeline__title">The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature</span>
-                <span class="timeline__speaker">Thales &mdash; speaker to be announced</span>
-              </summary>
-              <p class="timeline__desc">Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.</p>
-              <p class="timeline__desc">This talk shows how some file types &mdash; PDFs, here &mdash; can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.</p>
-              <p class="timeline__desc">It is told as a story. A development team is asked to implement file upload against a vague specification: <em>&ldquo;users must be able to send us PDF files.&rdquo;</em> An application security consultant embedded in the team tests the result, finds a way to slip malicious content through, explains the problem, and the team fixes it together &mdash; then the next iteration starts. Round after round, in true <em>die-and-retry</em> fashion, the consultant&rsquo;s health bar drops (and the lower it gets, the closer the team comes to throwing them out of the window), until the feature is finally robust. The point: all that extra work and frustration could have been avoided had the user story been clearer about security in the first place.</p>
-              <p class="timeline__desc"><strong>Slides in English.</strong> Delivered in English or French depending on the audience.</p>
-            </details>
-          </div>
+      <!-- Populated by initSchedule() (main.js) from SESSIONS. Two
+           separate markups (not one grid squeezed down): a CSS-grid
+           track/time board for desktop, a time-grouped list for mobile. -->
+      <div id="schedule-app" hidden>
+        <div class="schedule-grid-wrap">
+          <div class="schedule-grid" id="schedule-grid" aria-label="LSTE 2026 programme grid"></div>
         </div>
-
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">15:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Coffee break</p></div></div>
-
-        <div class="timeline__item">
-          <span class="timeline__time">15:30</span>
-          <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
-          <div class="timeline__content">
-            <span class="badge badge--workshop" style="margin-bottom:var(--space-2);">Workshop</span>
-            <details>
-              <summary>
-                <span class="timeline__title">AI &amp; Performance Testing &mdash; How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.</span>
-                <span class="timeline__speaker">Ouamar Nedil, Director of Performance at OctoPerf</span>
-              </summary>
-              <p class="timeline__desc">Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.</p>
-              <p class="timeline__desc">During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice, making performance testing more accessible and eliminating the traditional complexity of performance testing tools.</p>
-              <p class="timeline__desc">Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.</p>
-              <p class="timeline__desc"><strong>What to bring:</strong> a laptop with an internet connection, to get the most out of the workshop.</p>
-            </details>
-          </div>
-        </div>
-
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">18:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Networking cocktail</p></div></div>
+        <div class="schedule-mobile" id="schedule-mobile"></div>
       </div>
+
     </div>
   </section>
+
+  <div class="modal-backdrop" id="session-modal" role="dialog" aria-modal="true" aria-labelledby="session-modal-title" hidden>
+    <div class="modal-dialog session-modal-dialog">
+      <button type="button" class="session-modal__close" id="session-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <span class="badge" id="session-modal-track"></span>
+      <p class="session-modal__time" id="session-modal-time"></p>
+      <h3 id="session-modal-title"></h3>
+      <p class="session-modal__speaker" id="session-modal-speaker"></p>
+      <div class="session-modal__desc" id="session-modal-desc"></div>
+    </div>
+  </div>
 
   <section class="tickets-cta" aria-labelledby="schedule-cta-heading">
     <div class="tickets-cta__glow" aria-hidden="true"></div>
@@ -282,6 +284,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=29fed45c" defer></script>
+<script src="../assets/js/main.js?v=5249d1d6" defer></script>
 </body>
 </html>

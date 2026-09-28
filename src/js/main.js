@@ -580,6 +580,279 @@
     });
   }
 
+  /* ── Programme (Schedule): data-driven grid ───────────────────────
+     Everything (desktop grid, mobile list, track filters, "Now" line,
+     detail modal) is built from SESSIONS below. Until that array is
+     populated, #schedule-empty stays the only thing shown — see
+     schedule/index.html and src/css/pages/schedule.css for the two
+     states this toggles. `track: 'general'` is a fifth, non-column
+     value for day-wide events (doors open, coffee break) that don't
+     belong to one room — it spans every track column instead of one,
+     isn't a filter target, and isn't a modal trigger (see documentation/
+     README.md, 2026-09-28 entry, for why the published sessions map the
+     way they do below). ─────────────────────────────────────────── */
+  function initSchedule() {
+    const emptyEl = document.getElementById('schedule-empty');
+    const appEl = document.getElementById('schedule-app');
+    if (!emptyEl || !appEl) return;
+
+    const EVENT_DATE = '2026-11-26'; // yyyy-mm-dd, for the "Now" line only
+    const DAY_START = '13:00';
+    const DAY_END = '21:00';
+    const SLOT_MIN = 5; // grid resolution, in minutes
+
+    const TRACKS = [
+      { id: 'keynote', label: 'Keynote Room' },
+      { id: 'demo', label: 'Demo Room' },
+      { id: 'exhibition', label: 'Exhibition' },
+      { id: 'networking', label: 'Networking' },
+    ];
+
+    // Published 2026-09-28. Most times are indicative (client: "random
+    // but consistent") and end times are this page's own estimate where
+    // none was given — see the dated README entry for exactly which.
+    // description supports multiple paragraphs via '||', same convention
+    // as the sponsor pitch dialog (initSponsorModal above).
+    const SESSIONS = [
+      { id: 'doors-open', track: 'general', start: '13:00', end: '13:15', title: 'Doors open & registration' },
+      {
+        id: 'thales-payloads', track: 'keynote', start: '14:15', end: '15:00', type: 'Talk',
+        title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
+        speaker: 'Thales — speaker to be announced',
+        description: [
+          'Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.',
+          'This talk shows how some file types — PDFs, here — can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.',
+          'It is told as a story. A development team is asked to implement file upload against a vague specification: "users must be able to send us PDF files." An application security consultant embedded in the team tests the result, finds a way to slip malicious content through, explains the problem, and the team fixes it together — then the next iteration starts. Round after round, in true die-and-retry fashion, the consultant’s health bar drops, until the feature is finally robust. The point: all that extra work and frustration could have been avoided had the user story been clearer about security in the first place.',
+          'Slides in English. Delivered in English or French depending on the audience.',
+        ].join('||'),
+      },
+      { id: 'coffee-break', track: 'general', start: '15:00', end: '15:15', title: 'Coffee break' },
+      {
+        id: 'octoperf-ai-performance', track: 'demo', start: '15:30', end: '16:15', type: 'Workshop',
+        title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
+        speaker: 'Ouamar Nedil, Director of Performance at OctoPerf',
+        description: [
+          'Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.',
+          'During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice.',
+          'Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.',
+          'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
+        ].join('||'),
+      },
+      { id: 'networking-cocktail', track: 'networking', start: '18:30', end: '21:00', title: 'Networking cocktail' },
+    ];
+
+    if (!SESSIONS.length) return; // keep showing the "coming soon" empty state
+
+    const toolbar = document.getElementById('schedule-toolbar');
+    const gridEl = document.getElementById('schedule-grid');
+    const mobileEl = document.getElementById('schedule-mobile');
+    const nowBtn = document.getElementById('schedule-now-btn');
+
+    emptyEl.hidden = true;
+    appEl.hidden = false;
+    if (toolbar) toolbar.hidden = false;
+
+    function toMinutes(hm) {
+      const [h, m] = hm.split(':').map(Number);
+      return h * 60 + m;
+    }
+    function formatRange(start, end) {
+      return end ? start + '–' + end : start;
+    }
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text) node.textContent = text;
+      return node;
+    }
+
+    const dayStartMin = toMinutes(DAY_START);
+    const dayEndMin = toMinutes(DAY_END);
+    const totalRows = Math.round((dayEndMin - dayStartMin) / SLOT_MIN);
+
+    /* ── Desktop grid ──────────────────────────────────────────────── */
+    function buildGrid() {
+      gridEl.innerHTML = '';
+      gridEl.style.gridTemplateColumns = '84px repeat(' + TRACKS.length + ', 1fr)';
+      gridEl.style.gridTemplateRows = '40px repeat(' + totalRows + ', var(--slot-h))';
+
+      gridEl.appendChild(el('div', 'schedule-grid__head-cell schedule-grid__head-cell--corner'));
+
+      TRACKS.forEach((track, i) => {
+        const head = el('div', 'schedule-grid__head-cell');
+        head.style.gridColumn = String(i + 2);
+        head.appendChild(el('span', 'badge badge--' + track.id, track.label));
+        gridEl.appendChild(head);
+      });
+
+      for (let m = dayStartMin; m < dayEndMin; m += 30) {
+        const isHour = m % 60 === 0;
+        const label = el('div', 'schedule-grid__time' + (isHour ? ' schedule-grid__time--hour' : ''), minutesToHm(m));
+        const row = 2 + Math.round((m - dayStartMin) / SLOT_MIN);
+        label.style.gridRow = row + ' / span ' + Math.round(30 / SLOT_MIN);
+        gridEl.appendChild(label);
+      }
+
+      SESSIONS.forEach((session) => {
+        const isGeneral = session.track === 'general';
+        const trackIndex = isGeneral ? -1 : TRACKS.findIndex((t) => t.id === session.track);
+        if (!isGeneral && trackIndex === -1) return;
+        const start = toMinutes(session.start);
+        const end = session.end ? toMinutes(session.end) : start + 30;
+        const rowStart = 2 + Math.round((start - dayStartMin) / SLOT_MIN);
+        const rowEnd = 2 + Math.round((end - dayStartMin) / SLOT_MIN);
+
+        const card = document.createElement(isGeneral ? 'div' : 'button');
+        if (!isGeneral) card.type = 'button';
+        card.className = isGeneral ? 'schedule-marker' : 'session-card session-card--' + session.track;
+        card.style.gridRow = rowStart + ' / ' + rowEnd;
+        if (isGeneral) {
+          card.style.gridColumn = '2 / span ' + TRACKS.length;
+          card.appendChild(el('span', 'schedule-marker__time', formatRange(session.start, session.end)));
+          card.appendChild(el('span', 'schedule-marker__title', session.title));
+        } else {
+          card.dataset.sessionId = session.id;
+          card.dataset.track = session.track;
+          card.style.gridColumn = String(trackIndex + 2);
+          card.setAttribute('aria-haspopup', 'dialog');
+          card.appendChild(el('span', 'session-card__time', formatRange(session.start, session.end)));
+          card.appendChild(el('span', 'session-card__title', session.title));
+          if (session.speaker) card.appendChild(el('span', 'session-card__speaker', session.speaker));
+        }
+        gridEl.appendChild(card);
+      });
+    }
+
+    function minutesToHm(m) {
+      const h = Math.floor(m / 60);
+      const mm = m % 60;
+      return String(h).padStart(2, '0') + ':' + String(mm).padStart(2, '0');
+    }
+
+    /* ── Mobile list — grouped by start time, not a squeezed grid ────── */
+    function buildMobile() {
+      mobileEl.innerHTML = '';
+      const sorted = SESSIONS.slice().sort((a, b) => toMinutes(a.start) - toMinutes(b.start));
+      const groups = [];
+      sorted.forEach((session) => {
+        const last = groups[groups.length - 1];
+        if (last && last.start === session.start) last.items.push(session);
+        else groups.push({ start: session.start, items: [session] });
+      });
+
+      groups.forEach((group) => {
+        const groupEl = el('div', 'schedule-mobile__group');
+        const realSessions = group.items.filter((s) => s.track !== 'general').length;
+        const timeLabel = realSessions > 1
+          ? group.start + ' — ' + realSessions + ' sessions in parallel'
+          : group.start;
+        groupEl.appendChild(el('p', 'schedule-mobile__group-time', timeLabel));
+
+        const list = el('div', 'schedule-mobile__list');
+        group.items.forEach((session) => {
+          const isGeneral = session.track === 'general';
+          const track = TRACKS.find((t) => t.id === session.track);
+          const card = document.createElement(isGeneral ? 'div' : 'button');
+          if (isGeneral) {
+            card.className = 'schedule-mobile-marker';
+            card.appendChild(el('span', 'schedule-mobile-marker__meta', formatRange(session.start, session.end)));
+            card.appendChild(el('span', 'schedule-mobile-marker__title', session.title));
+          } else {
+            card.type = 'button';
+            card.className = 'schedule-mobile-card schedule-mobile-card--' + session.track;
+            card.dataset.sessionId = session.id;
+            card.dataset.track = session.track;
+            card.setAttribute('aria-haspopup', 'dialog');
+            card.appendChild(el('span', 'schedule-mobile-card__meta', formatRange(session.start, session.end) + (track ? ' · ' + track.label : '')));
+            card.appendChild(el('span', 'schedule-mobile-card__title', session.title));
+            if (session.speaker) card.appendChild(el('span', 'schedule-mobile-card__speaker', session.speaker));
+          }
+          list.appendChild(card);
+        });
+        groupEl.appendChild(list);
+        mobileEl.appendChild(groupEl);
+      });
+    }
+
+    /* ── Track filters (All / Keynote / Demo / Exhibition / Networking) ──
+       Cross-track markers have no data-track, so they're untouched by
+       any filter — a coffee break matters no matter which track you
+       picked. */
+    function initFilters() {
+      const buttons = document.querySelectorAll('.schedule-filter');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+          const filter = btn.dataset.filter;
+          appEl.querySelectorAll('[data-track]').forEach((card) => {
+            card.classList.toggle('is-dimmed', filter !== 'all' && card.dataset.track !== filter);
+          });
+        });
+      });
+    }
+
+    /* ── "Now" line — only during the event itself ────────────────────── */
+    function updateNowLine() {
+      const existing = gridEl.querySelector('.schedule-now-line');
+      if (existing) existing.remove();
+
+      const now = new Date();
+      const todayStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+      const minutes = now.getHours() * 60 + now.getMinutes();
+      if (todayStr !== EVENT_DATE || minutes < dayStartMin || minutes > dayEndMin) {
+        if (nowBtn) nowBtn.hidden = true;
+        return;
+      }
+
+      const row = 2 + Math.round((minutes - dayStartMin) / SLOT_MIN);
+      const line = el('div', 'schedule-now-line');
+      line.style.gridRow = String(row);
+      gridEl.appendChild(line);
+      if (nowBtn) nowBtn.hidden = false;
+    }
+
+    /* ── Session detail modal ─────────────────────────────────────────── */
+    function initModal() {
+      const byId = new Map(SESSIONS.map((s) => [s.id, s]));
+      initSimpleModal({
+        triggers: appEl.querySelectorAll('.session-card, .schedule-mobile-card'),
+        modal: document.getElementById('session-modal'),
+        closeBtn: document.getElementById('session-modal-close'),
+        onOpen: (trigger) => {
+          const session = byId.get(trigger.dataset.sessionId);
+          if (!session) return;
+          const track = TRACKS.find((t) => t.id === session.track);
+          const trackEl = document.getElementById('session-modal-track');
+          trackEl.textContent = [track && track.label, session.type].filter(Boolean).join(' · ');
+          trackEl.className = 'badge badge--' + session.track;
+          document.getElementById('session-modal-time').textContent = formatRange(session.start, session.end);
+          document.getElementById('session-modal-title').textContent = session.title;
+          document.getElementById('session-modal-speaker').textContent = session.speaker || '';
+          const descEl = document.getElementById('session-modal-desc');
+          descEl.textContent = '';
+          (session.description || '').split('||').forEach((para) => {
+            const text = para.trim();
+            if (!text) return;
+            descEl.appendChild(el('p', null, text));
+          });
+        },
+      });
+    }
+
+    buildGrid();
+    buildMobile();
+    initFilters();
+    initModal();
+    updateNowLine();
+    window.setInterval(updateNowLine, 60000);
+    if (nowBtn) {
+      nowBtn.addEventListener('click', () => {
+        const line = gridEl.querySelector('.schedule-now-line');
+        if (line) line.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+  }
+
   /* ── Google Maps embeds: click-to-activate ─────────────────────────
      The map iframe is already there (native loading="lazy" defers the
      actual fetch until it's scrolled near), just visually blurred behind
@@ -647,6 +920,7 @@
     initLinkedInModal();
     initSponsorModal();
     initSpeakerModal();
+    initSchedule();
     initMapEmbeds();
     initAmbientVideo();
   });

@@ -1889,3 +1889,75 @@ dark-background variant exists (white strokes) but would vanish on a tile.
 - if Agilitest sends an official logo pack or a pitch, swap the source and
   add `data-pitch`
 
+## 2026-09-28 (later): `/schedule/` rebuilt as a data-driven multi-track grid
+
+Client feedback on the page: too linear for a multi-track event, hard to see
+what's happening in parallel, too much intro text before the actual
+programme. Rebuilt around a compact header (date/hours/venue/CTA, no tall
+hero) and a real programme grid, replacing the single-timeline layout the
+first 2026 sessions had just been published in earlier the same day (previous
+entry above, "Give the sessions times and fold them into one programme
+timeline").
+
+Note for next time: this was built on a stale local branch and pushed to
+`dev` without checking `origin/main` first, missing that exact publish —
+caught only when asked to confirm the push target. Always fetch and diff
+against `origin/main` before starting page work, not just before pushing.
+
+- **Everything renders from one `SESSIONS` array** in `initSchedule()`
+  (`src/js/main.js`) — `{ id, track, start, end, title, speaker, type,
+  description }` per session, `description` paragraphs joined with `||`
+  (same convention as the sponsor-pitch dialog). If the array is ever empty,
+  `#schedule-empty` ("Full programme coming soon") is the only thing shown.
+- **`track: 'general'`** is a fifth, non-column value for day-wide events
+  that don't belong to one room — it spans every track column instead of
+  one, carries no `data-track` (so track filters never touch it), and isn't
+  a modal trigger (plain text, nothing to expand).
+- **Mapping the sessions published that morning into this shape required a
+  few real content calls**, not just a template swap:
+  - The OctoPerf workshop had no room assigned in the original publish
+    (could've been a paid Tutorial-Pass-style session instead of a free
+    Demo Room slot). Placed in **Demo Room** — a one-line change
+    (`track: 'demo'` → whatever it ends up being) if that's decided
+    otherwise later.
+  - Most published entries had a start time but no end time, and the copy
+    explicitly says times may still move. Gave the two real sessions
+    (Thales talk, OctoPerf workshop) a 45-minute default end time each;
+    the two logistics markers (doors open, coffee break) 15 minutes. The
+    closing "Networking cocktail" is the one exception — given 18:30–21:00
+    (running to the end of the day) rather than the 15-minute default,
+    since a closing cocktail obviously doesn't stop after 15 minutes.
+  - "Keynotes & talks begin" (13:30) and "Live demos begin" (14:00) — pure
+    markers in the old single-timeline layout, there only to tell the
+    reader which room comes next — were **dropped**, not carried over: the
+    grid's own "Keynote Room" / "Demo Room" column headers already do that
+    job. "Doors open & registration" and "Coffee break" **did** carry over,
+    as `track: 'general'` banners, since neither belongs to one room.
+    The cocktail was put in the **Networking** column instead of `general`,
+    since that track would otherwise stand empty for the entire day.
+  - The Exhibition column is honestly empty — no exhibition-specific
+    content was published, so none was invented.
+- **Desktop** (`≥900px`): a CSS grid, time column + one column per track,
+  5-minute row resolution so a session spans exactly as many rows as its
+  duration — parallel sessions land in adjacent columns at the same row.
+  Track header row and time labels are `position: sticky`.
+  - **Gotcha:** don't put `overflow: hidden` on `.schedule-grid` itself
+    (e.g. to clip rounded corners) — it makes the grid its own sticky
+    containing block, and since the grid never scrolls internally, the
+    sticky header stops sticking to the page scroll at all. Left the
+    corners un-clipped rather than reintroduce that.
+- **Mobile** (`<900px`): a separate markup, not the desktop grid squeezed
+  down — a time-ordered list grouped by start time, with a "N sessions in
+  parallel" label on any group with more than one real (non-`general`)
+  session.
+- **Filters** (All/Keynote/Demo/Exhibition/Networking) dim non-matching
+  cards via a shared `data-track` attribute, same list driving both markups.
+- **Session detail** reuses the existing `initSimpleModal()` helper (the
+  same one behind the sponsor-pitch and speaker modals).
+- **"Now" line**: only appears if the visitor's local date matches
+  `EVENT_DATE` (2026-11-26) and the time falls inside 13:00–21:00.
+- Icons are limited to what's already in the subsetted Font Awesome font
+  (`src/css/icons.css`) — e.g. the "Now" button reuses `fa-clock` rather
+  than `fa-location-crosshairs`, which isn't in the subset and would need
+  the (Python/fonttools) icon-subsetting step to add.
+
