@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=71e328bb">
+<link rel="stylesheet" href="./assets/css/styles.css?v=c4e7c045">
 
 <style>
   /* Homepage hero: full-bleed photo + directional gradient veil (the
@@ -123,9 +123,9 @@ redirect_from:
          (margin-right:auto on .main-nav pushes the actions to the edge, see
          components.css). Sponsors/Gallery/Press/Call for Speakers/Contact live
          in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
-         the footer. Speakers still isn't linked at all — that page is kept on
-         disk but is a placeholder, so it stays intentionally unlisted.
-         Sponsors was unlisted for the same reason until 2026-08-10, when it
+         the footer. Speakers was unlisted while it was a placeholder; since
+         2026-09-28 it is a #speakers block on the homepage, reached the same
+         way as Sponsors below. Sponsors was unlisted for the same reason until 2026-08-10, when it
          gained real sponsors with pitches worth reaching; since 2026-08-24 it
          is no longer a page at all — the entry jumps to the homepage's
          #sponsors block (localize-paths turns "/#sponsors" into
@@ -139,6 +139,7 @@ redirect_from:
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="./index.html#speakers">Speakers</a></li>
             <li><a href="./index.html#sponsors">Sponsors</a></li>
             <li><a href="./gallery/index.html">Gallery</a></li>
             <li><a href="./press/index.html">Press</a></li>
@@ -164,6 +165,7 @@ redirect_from:
     <li><a href="./schedule/index.html">Programme</a></li>
     <li><a href="./venue/index.html">Venue</a></li>
     <li><a href="./become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li><a href="./index.html#speakers">Speakers</a></li>
     <li><a href="./index.html#sponsors">Sponsors</a></li>
     <li><a href="./gallery/index.html">Gallery</a></li>
     <li><a href="./press/index.html">Press</a></li>
@@ -296,28 +298,79 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Speakers preview — HIDDEN per request. Previously kept a commented-out
-       block here to "re-enable later", but it carried fabricated talk-title
-       quotes attached to real past-speaker names (see speakers/index.html's
-       head comment for the full writeup) — removed rather than leave
-       fabricated copy sitting in the codebase ready to be uncommented as-is.
-       When speakers are announced, rebuild this from verified data instead. -->
-
   <!-- Programme preview -->
   <section class="section section--alt" aria-labelledby="programme-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--purple">Programme</span>
         <h2 id="programme-heading">One day, packed end to end.</h2>
-        <p>A look at the flow of the day. The detailed 2026 line-up of talks is coming soon.</p>
+        <p>A look at the flow of the day. The first confirmed sessions are on the programme page; times may still change.</p>
       </div>
       <div class="timeline reveal" style="max-width:640px;margin:0 auto;">
         <div class="timeline__item timeline__item--break"><span class="timeline__time">13:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Doors open &amp; registration</p></div></div>
         <div class="timeline__item"><span class="timeline__time">13:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks</p><span class="badge badge--keynote">Keynote Room</span></div></div>
-        <div class="timeline__item timeline__item--demo"><span class="timeline__time">13:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Live demos &amp; tool showcases</p><span class="badge badge--demo">Demo Room</span></div></div>
-        <div class="timeline__item timeline__item--break"><span class="timeline__time">18:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Closing ceremony &amp; networking drinks</p></div></div>
+        <div class="timeline__item timeline__item--demo"><span class="timeline__time">14:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Live demos &amp; tool showcases</p><span class="badge badge--demo">Demo Room</span></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">15:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Coffee break</p></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">18:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Networking cocktail</p></div></div>
       </div>
       <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./schedule/index.html">View full programme <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+    </div>
+  </section>
+
+  <!-- Speakers — built the same way as #sponsors below, at the client's
+       request (2026-09-28): one card per confirmed speaker, the biography
+       opened in #speaker-modal by initSpeakerModal() in main.js. Each card
+       is a <details>, so without JS it still unfolds in place as an
+       accordion; the script turns the summary into a dialog trigger.
+
+       Only speakers whose name the client has confirmed belong here — the
+       Thales talk on /schedule/ has no named speaker yet, so no card. Never
+       fill this from past editions or invent a bio (see
+       documentation/README.md); /speakers/ now redirects here.
+
+       This section takes the plain background, so #sponsors and the news
+       section after it swapped to keep the section / section--alt
+       alternation down the page. -->
+  <section class="section" id="speakers" aria-labelledby="speakers-heading">
+    <div class="container">
+      <span class="eyebrow eyebrow--violet reveal">Speakers</span>
+      <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
+        <h2 id="speakers-heading" style="margin:0;">Who's taking the stage.</h2>
+        <p class="text-muted" style="margin:0;">The 2026 line-up, published as speakers are confirmed. Select a speaker to read their biography.</p>
+      </div>
+
+      <div class="speaker-grid reveal">
+        <details class="card speaker-card" data-logo="./assets/img/octoperf-logo-400.webp" data-logo-alt="OctoPerf">
+          <summary>
+            <span class="avatar-initials" aria-hidden="true">ON</span>
+            <span class="speaker-card__name">Ouamar Nedil</span>
+            <span class="role">Director of Performance</span>
+            <span class="speaker-card__company">OctoPerf</span>
+          </summary>
+          <div class="speaker-card__bio">
+            <p>Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.</p>
+            <p class="speaker-card__session"><span class="badge badge--workshop">Workshop</span> <a href="./schedule/index.html">AI &amp; Performance Testing: an end-to-end performance testing campaign in natural language, from scripting to analysis</a></p>
+          </div>
+        </details>
+      </div>
+
+      <p class="text-muted reveal" style="margin-top:var(--space-6);">More speakers will be announced as the programme is confirmed.</p>
+      <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="./schedule/index.html">View the programme <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+
+      <!-- One dialog, repopulated from whichever card was opened. -->
+      <div class="modal-backdrop" id="speaker-modal" role="dialog" aria-modal="true" aria-labelledby="speaker-modal-name" hidden>
+        <div class="modal-dialog sponsor-modal-dialog">
+          <button type="button" class="sponsor-modal__close" id="speaker-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          <div class="sponsor-modal__plate" id="speaker-modal-plate">
+            <img id="speaker-modal-logo" src="" alt="" decoding="async">
+          </div>
+          <div class="sponsor-modal__body">
+            <span class="eyebrow eyebrow--violet" id="speaker-modal-role"></span>
+            <h2 id="speaker-modal-name"></h2>
+            <div class="sponsor-modal__pitch" id="speaker-modal-bio"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -334,7 +387,7 @@ redirect_from:
        lived here is now the closing button of this block, and its "400+ from
        banking, insurance, telecom and the public sector" line is dropped —
        "Why come" above already makes that exact claim. -->
-  <section class="section" id="sponsors" aria-labelledby="sponsors-heading">
+  <section class="section section--alt" id="sponsors" aria-labelledby="sponsors-heading">
     <div class="container">
       <span class="eyebrow eyebrow--lime reveal">Who backs LSTE</span>
       <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
@@ -429,7 +482,7 @@ redirect_from:
        hover/focus and sits still entirely under prefers-reduced-motion
        (see news-carousel rules in home.css + initNewsCarousel in main.js
        for the hover/focus pause). -->
-  <section class="section section--alt" aria-labelledby="news-heading">
+  <section class="section" aria-labelledby="news-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--violet">News</span>
@@ -598,6 +651,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=65b21362" defer></script>
+<script src="./assets/js/main.js?v=29fed45c" defer></script>
 </body>
 </html>

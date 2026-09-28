@@ -8,7 +8,7 @@ redirect_from:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programme: LSTE 2026 Schedule</title>
-<meta name="description" content="The LSTE 2026 programme is coming soon: keynotes, live demos, exhibition, and networking, across four tracks throughout the day.">
+<meta name="description" content="The LSTE 2026 programme: the shape of the day on 26 November, plus the first confirmed sessions — a hands-on AI and performance testing workshop with OctoPerf and a talk on file-upload security with Thales.">
 <link rel="canonical" href="https://www.lste.lu/schedule/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Programme: LSTE">
@@ -23,7 +23,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=71e328bb">
+<link rel="stylesheet" href="../assets/css/styles.css?v=c4e7c045">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,9 +62,9 @@ redirect_from:
          (margin-right:auto on .main-nav pushes the actions to the edge, see
          components.css). Sponsors/Gallery/Press/Call for Speakers/Contact live
          in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
-         the footer. Speakers still isn't linked at all — that page is kept on
-         disk but is a placeholder, so it stays intentionally unlisted.
-         Sponsors was unlisted for the same reason until 2026-08-10, when it
+         the footer. Speakers was unlisted while it was a placeholder; since
+         2026-09-28 it is a #speakers block on the homepage, reached the same
+         way as Sponsors below. Sponsors was unlisted for the same reason until 2026-08-10, when it
          gained real sponsors with pitches worth reaching; since 2026-08-24 it
          is no longer a page at all — the entry jumps to the homepage's
          #sponsors block (localize-paths turns "/#sponsors" into
@@ -78,6 +78,7 @@ redirect_from:
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../index.html#speakers">Speakers</a></li>
             <li><a href="../index.html#sponsors">Sponsors</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
             <li><a href="../press/index.html">Press</a></li>
@@ -103,6 +104,7 @@ redirect_from:
     <li><a href="../schedule/index.html">Programme</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
     <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+    <li><a href="../index.html#speakers">Speakers</a></li>
     <li><a href="../index.html#sponsors">Sponsors</a></li>
     <li><a href="../gallery/index.html">Gallery</a></li>
     <li><a href="../press/index.html">Press</a></li>
@@ -116,12 +118,31 @@ redirect_from:
 
 <main id="main">
 
+  <!-- Published 2026-09-28 from documentation/schedule-2026-draft.html.
+       The day's fixed points (demos from 14:00, coffee at 15:00, cocktail
+       at 18:30) came from the client that day; session times did not, and
+       the client asked for the page to say they may still move — hence the
+       "TBC" slots and the note above the sessions.
+
+       Still open on purpose:
+       — the OctoPerf workshop has no room badge and no ticket claim. It
+         matches the Tutorial Pass format (half-day, hands-on, paid) but
+         could equally run free in the Demo Room; `timeline__item--demo`
+         stays off until that's decided. If it turns out paid, /register/
+         needs the Tutorial Pass first — today it exists only in
+         src/chat/knowledge.md.
+       — the Thales speaker's name was never given, so the talk reads
+         "Speaker to be announced" and Thales has no card in the homepage's
+         #speakers block. Add both together once the name lands.
+       — the Thales talk may be given in French (English slides). The site
+         says LSTE is held in English; the abstract carries the nuance. -->
+
   <section class="page-hero page-hero--left">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Programme</span></nav>
       <span class="eyebrow eyebrow--lime">LSTE 2026</span>
-      <h1>Coming soon.</h1>
-      <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">Four tracks, one day; the full 2026 programme is being finalised and will be published here closer to the event.</p>
+      <h1>The programme is taking shape.</h1>
+      <p style="max-width:56ch;color:var(--color-muted);font-size:1.0625rem;">One day, four tracks. Sessions are published here as they are confirmed, so check back as 26 November approaches.</p>
       <div class="calendar-actions reveal">
         <span class="calendar-actions__label"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Save the date, 26 November 2026</span>
         <a class="btn btn--outline btn--sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=LSTE%202026%20%E2%80%94%20Luxembourg%20Software%20Testing%20Event&amp;dates=20261126T130000/20261126T210000&amp;details=Luxembourg%27s%20software%20testing%20conference%2C%208th%20edition.%20Free%20to%20attend.%20https%3A//lste.lu/&amp;location=Conference%20Center%20H%C3%B4tel%20Parc%20Belle-Vue%2C%205%20Avenue%20Marie-Th%C3%A9r%C3%A8se%2C%20L-2132%20Luxembourg&amp;ctz=Europe/Luxembourg" target="_blank" rel="noopener">Add to Google Calendar</a>
@@ -132,27 +153,77 @@ redirect_from:
 
   <section class="section section--alt" style="padding-top:0;">
     <div class="container container--left">
-      <div class="cluster reveal" style="margin-bottom:var(--space-6);">
-        <span class="badge badge--keynote">Keynote Room</span>
-        <span class="badge badge--demo">Demo Room</span>
-        <span class="badge badge--exhibition">Exhibition</span>
-        <span class="badge badge--networking">Networking</span>
+
+      <div class="section-head section-head--left reveal">
+        <span class="eyebrow eyebrow--violet">The day at a glance</span>
+        <h2>How 26 November runs.</h2>
       </div>
 
-      <!-- 2026 session content isn't published yet. A single placeholder
-           replaces the old 4-tab layout (all four tabs showed identical
-           "coming soon" text) — same information, less UI to parse.
-           Reintroduce per-track tabs (data-tabs / role=tablist, see
-           assets/js/main.js initTabs()) once real sessions differ. -->
       <div class="timeline reveal">
-        <div class="timeline__item timeline__item--break">
-          <span class="timeline__time">–</span>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">13:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Doors open &amp; registration</p></div></div>
+        <div class="timeline__item"><span class="timeline__time">13:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Keynotes &amp; talks begin</p><span class="badge badge--keynote">Keynote Room</span></div></div>
+        <div class="timeline__item timeline__item--demo"><span class="timeline__time">14:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Live demos begin</p><span class="badge badge--demo">Demo Room</span></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">15:00</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Coffee break</p></div></div>
+        <div class="timeline__item timeline__item--break"><span class="timeline__time">18:30</span><span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span><div class="timeline__content"><p class="timeline__title">Networking cocktail</p></div></div>
+      </div>
+
+      <div class="section-head section-head--left reveal" style="margin-top:var(--space-12);">
+        <span class="eyebrow eyebrow--violet">First sessions announced</span>
+        <h2>What's confirmed so far.</h2>
+        <p class="text-muted" style="max-width:56ch;">Session times are still being finalised and may change. Open a session for its full abstract, or <a href="../index.html#speakers">meet the speakers</a>.</p>
+      </div>
+
+      <!-- One <details> per session carries the long abstract: the timeline
+           already styles the disclosure (see .timeline__content details in
+           src/css/pages/inner.css), so a full programme stays scannable —
+           titles and speakers visible, abstracts on demand. -->
+      <div class="timeline reveal">
+
+        <div class="timeline__item">
+          <span class="timeline__time">TBC</span>
           <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
           <div class="timeline__content">
-            <p class="timeline__title">Programme coming soon</p>
-            <p class="timeline__desc">The full LSTE 2026 schedule across all four tracks will be published here closer to the event.</p>
+            <span class="badge badge--workshop" style="margin-bottom:var(--space-2);">Workshop</span>
+            <details>
+              <summary>
+                <span class="timeline__title">AI &amp; Performance Testing &mdash; How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.</span>
+                <span class="timeline__speaker">Ouamar Nedil, Director of Performance at OctoPerf</span>
+              </summary>
+              <p class="timeline__desc">Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.</p>
+              <p class="timeline__desc">During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice, making performance testing more accessible and eliminating the traditional complexity of performance testing tools.</p>
+              <p class="timeline__desc">Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.</p>
+              <p class="timeline__desc"><strong>What to bring:</strong> a laptop with an internet connection, to get the most out of the workshop.</p>
+            </details>
           </div>
         </div>
+
+        <div class="timeline__item">
+          <span class="timeline__time">TBC</span>
+          <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
+          <div class="timeline__content">
+            <span class="badge" style="margin-bottom:var(--space-2);">Talk</span>
+            <details>
+              <summary>
+                <span class="timeline__title">The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature</span>
+                <span class="timeline__speaker">Thales &mdash; speaker to be announced</span>
+              </summary>
+              <p class="timeline__desc">Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.</p>
+              <p class="timeline__desc">This talk shows how some file types &mdash; PDFs, here &mdash; can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.</p>
+              <p class="timeline__desc">It is told as a story. A development team is asked to implement file upload against a vague specification: <em>&ldquo;users must be able to send us PDF files.&rdquo;</em> An application security consultant embedded in the team tests the result, finds a way to slip malicious content through, explains the problem, and the team fixes it together &mdash; then the next iteration starts. Round after round, in true <em>die-and-retry</em> fashion, the consultant&rsquo;s health bar drops (and the lower it gets, the closer the team comes to throwing them out of the window), until the feature is finally robust. The point: all that extra work and frustration could have been avoided had the user story been clearer about security in the first place.</p>
+              <p class="timeline__desc"><strong>Slides in English.</strong> Delivered in English or French depending on the audience.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--break">
+          <span class="timeline__time">&ndash;</span>
+          <span class="timeline__marker"><span class="timeline__dot" aria-hidden="true"></span></span>
+          <div class="timeline__content">
+            <p class="timeline__title">More sessions to come</p>
+            <p class="timeline__desc">Keynotes, further talks and demos are being finalised and will be added here as they are confirmed. The <a href="../call-for-speakers/index.html">Call for Speakers</a> is open until 30 September 2026.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -229,6 +300,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=65b21362" defer></script>
+<script src="../assets/js/main.js?v=29fed45c" defer></script>
 </body>
 </html>

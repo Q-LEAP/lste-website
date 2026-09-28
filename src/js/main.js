@@ -536,6 +536,50 @@
     });
   }
 
+  /* ── Speaker cards: biography in a dialog, like the sponsor tiles ──
+     Each card is a <details>, so it works as an accordion without JS.
+     Here the summary becomes the dialog trigger instead: the details
+     never opens, and the dialog is filled from the card's own markup —
+     the bio lives once, in the HTML. ─────────────────────────────── */
+  function initSpeakerModal() {
+    const modal = document.getElementById('speaker-modal');
+    const grid = document.querySelector('.speaker-grid');
+    if (!modal || !grid) return;
+    const plateEl = document.getElementById('speaker-modal-plate');
+    const logoEl = document.getElementById('speaker-modal-logo');
+    const roleEl = document.getElementById('speaker-modal-role');
+    const nameEl = document.getElementById('speaker-modal-name');
+    const bioEl = document.getElementById('speaker-modal-bio');
+    const triggers = grid.querySelectorAll('.speaker-card > summary');
+    if (!triggers.length) return;
+
+    grid.classList.add('js-speaker-modal');
+    triggers.forEach((trigger) => {
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.addEventListener('click', (e) => e.preventDefault());
+    });
+
+    initSimpleModal({
+      triggers,
+      modal,
+      closeBtn: document.getElementById('speaker-modal-close'),
+      onOpen: (trigger) => {
+        const card = trigger.parentElement;
+        const text = (sel) => (card.querySelector(sel) || {}).textContent || '';
+        nameEl.textContent = text('.speaker-card__name');
+        roleEl.textContent = [text('.role'), text('.speaker-card__company')].filter(Boolean).join(' · ');
+        plateEl.hidden = !card.dataset.logo;
+        if (card.dataset.logo) {
+          logoEl.src = card.dataset.logo;
+          logoEl.alt = card.dataset.logoAlt || '';
+        }
+        bioEl.textContent = '';
+        const bio = card.querySelector('.speaker-card__bio');
+        if (bio) Array.from(bio.children).forEach((el) => bioEl.appendChild(el.cloneNode(true)));
+      },
+    });
+  }
+
   /* ── Google Maps embeds: click-to-activate ─────────────────────────
      The map iframe is already there (native loading="lazy" defers the
      actual fetch until it's scrolled near), just visually blurred behind
@@ -602,6 +646,7 @@
     initEmptyEditionModal();
     initLinkedInModal();
     initSponsorModal();
+    initSpeakerModal();
     initMapEmbeds();
     initAmbientVideo();
   });

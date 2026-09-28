@@ -465,6 +465,45 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 .sponsor-modal__pitch p + p { margin-top: var(--space-3); }
 .sponsor-modal__body .btn { margin-top: var(--space-5); }
 
+/* ── Speakers: <details> cards, biography in #speaker-modal ──────────
+   The modal reuses the sponsor-modal pieces above. Without JS each card
+   unfolds in place (the accordion fallback); with JS, initSpeakerModal()
+   intercepts the summary and the bio block is never shown inline. */
+.speaker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-5);
+}
+.speaker-card summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+.speaker-card summary::-webkit-details-marker { display: none; }
+.speaker-card summary:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
+.speaker-card { transition: transform var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease); }
+.speaker-card:hover,
+.speaker-card:focus-within {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+.speaker-card__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.0625rem; }
+.speaker-card__company { color: var(--color-primary-light); font-size: 0.8125rem; font-weight: 600; }
+.speaker-card__bio { text-align: left; margin-top: var(--space-4); }
+.speaker-card__bio p { color: var(--color-muted); font-size: 0.9375rem; line-height: 1.65; }
+.speaker-card__bio p + p { margin-top: var(--space-3); }
+.speaker-card__session .badge { margin-right: var(--space-2); }
+.js-speaker-modal .speaker-card__bio { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .speaker-card { transition: none; }
+  .speaker-card:hover,
+  .speaker-card:focus-within { transform: none; }
+}
+
 /* ── News: full-bleed photo card, text pinned on a scrim ──────────── */
 .news-card {
   position: relative;

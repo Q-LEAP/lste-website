@@ -21,16 +21,29 @@ depends entirely on it.
 ## LSTE 2026 (the upcoming, 8th edition)
 
 - **Date:** Thursday **26 November 2026**.
-- **Hours:** 08:30 – 18:00.
+- **Hours:** doors open at 13:00; keynotes and talks from 13:30, live demos
+  from 14:00, a coffee break at 15:00, and the networking cocktail from 18:30.
 - **Venue:** Conference Center of Hôtel Parc Belle-Vue, Luxembourg City —
   **5 Avenue Marie-Thérèse, L-2132 Luxembourg**.
 - **Admission:** the conference is **free to attend** (registration required).
 - **Language:** the event is held in **English**.
 - **Expected attendance:** 300+ testing and QA professionals.
-- The detailed 2026 programme (talks, tracks, times) is **not published yet** —
-  it will be released closer to the event. The `/schedule/` page shows a
-  "coming soon" placeholder for each track (Keynote Room, Demo Room,
-  Exhibition, Networking) until then.
+- The 2026 programme is **published progressively** on `/schedule/` as
+  sessions are confirmed. **Session times are not final and may change.**
+  Confirmed so far:
+  - **Workshop** — "AI & Performance Testing: How to Run an End-to-End
+    Performance Testing Campaign in Natural Language with Your Favorite LLM and
+    OctoPerf. From Scripting to Analysis." by **Ouamar Nedil**, Director of
+    Performance at **OctoPerf**. Bring a laptop with an internet connection.
+    Time to be confirmed.
+  - **Talk** — "The Devil Is in the Payloads: The Grueling Journey of
+    Implementing a File Transfer Feature", by **Thales** (speaker to be
+    announced), on the security risks of file uploads (PDFs). English slides;
+    delivered in English or French depending on the audience. Time to be
+    confirmed.
+  - Keynotes and further sessions are still being finalised.
+- Speakers are presented on the homepage (`/#speakers`), each with a short
+  biography. Don't name speakers beyond those listed above.
 
 ## Tickets & registration
 
@@ -117,7 +130,7 @@ depends entirely on it.
 - About: `/about/`
 - Register: `/register/`
 - Become a Speaker: `/become-a-speaker/`
-- Speakers: `/speakers/`
+- Speakers: `/#speakers` (homepage section; `/speakers/` redirects there)
 - Programme / Schedule: `/schedule/`
 - Venue: `/venue/`
 - Sponsors: `/#sponsors` (a block on the homepage, not its own page)
