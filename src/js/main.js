@@ -603,10 +603,14 @@
   // as the sponsor pitch dialog (initSponsorModal above). On general
   // markers, `place` is a trailing "· where" note and `accent` gives the
   // banner the draft's filled purple (closing only).
-  // Workshops also carry `booking`: the Odoo registration link of that
-  // workshop's own event (one capped Odoo event per workshop, decided with
-  // the client on 2026-09-29). Empty until Q-Leap creates it — the card on
-  // /register/ then says booking opens soon instead of linking anywhere.
+  // Workshops also carry `partner` (the company running it, shown on
+  // /register/) and `booking`: the Odoo registration link of that
+  // workshop's own event (one Odoo event per workshop, 20 seats each,
+  // events 25–31, created 2026-09-29). An empty `booking` makes the card
+  // on /register/ say booking opens soon instead of linking anywhere.
+  // Odoo resolves the event by the trailing id, so a later rename of the
+  // event doesn't break these links.
+  const WORKSHOP_SEATS = 20; // per workshop, as set on each Odoo event
   const TBA = 'Title to be announced';
   const TALK = '20-minute talk followed by 10 minutes of Q&A.';
   const SESSIONS = [
@@ -637,7 +641,7 @@
       ].join('||'),
     },
     {
-      id: 'octoperf-ai-performance', track: 'workshop', start: '13:30', end: '14:10', booking: '', type: 'Workshop 1',
+      id: 'octoperf-ai-performance', track: 'workshop', partner: 'OctoPerf', start: '13:30', end: '14:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-1-octoperf-25/register', type: 'Workshop 1',
       title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
       speaker: 'Ouamar Nedil, Director of Performance at OctoPerf',
       description: [
@@ -647,7 +651,7 @@
         'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
       ].join('||'),
     },
-    { id: 'workshop-xray', track: 'workshop', start: '14:10', end: '14:50', booking: '', type: 'Workshop 2', title: TBA, speaker: 'Xray' },
+    { id: 'workshop-xray', track: 'workshop', partner: 'Xray', start: '14:10', end: '14:50', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-2-xray-26/register', type: 'Workshop 2', title: TBA, speaker: 'Xray' },
     {
       id: 'exhibitors', track: 'exhibition', start: '13:30', end: '14:50',
       title: 'Exhibitors',
@@ -660,9 +664,9 @@
     { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Round table — topic to be announced', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
     { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Agilitest', description: TALK },
     { id: 'keynote-bianculli', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Domenico Bianculli, University of Luxembourg', description: TALK },
-    { id: 'workshop-agilitest', track: 'workshop', start: '15:20', end: '16:00', booking: '', type: 'Workshop 3', title: TBA, speaker: 'Agilitest' },
-    { id: 'workshop-qguard', track: 'workshop', start: '16:00', end: '16:30', booking: '', type: 'Workshop 4', title: TBA, speaker: 'Q-Guard by Q-Leap' },
-    { id: 'workshop-qbot', track: 'workshop', start: '16:30', end: '17:00', booking: '', type: 'Workshop 5', title: TBA, speaker: 'Q-Bot' },
+    { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3', title: TBA, speaker: 'Agilitest' },
+    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Q-Guard by Q-Leap' },
+    { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:30', end: '17:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5', title: TBA, speaker: 'Q-Bot' },
     {
       id: 'exhibition-afternoon', track: 'exhibition', start: '15:20', end: '17:00',
       title: 'Exhibitor area',
@@ -673,7 +677,7 @@
 
     { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
     { id: 'keynote-opentext', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: TBA, speaker: 'OpenText', description: TALK },
-    { id: 'workshop-sembi', track: 'workshop', start: '17:30', end: '18:10', booking: '', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
+    { id: 'workshop-sembi', track: 'workshop', partner: 'Sembi', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-sembi-30/register', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
     { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', booking: '', type: 'Workshop 7', title: 'Workshop to be announced' },
     {
       id: 'exhibition-evening', track: 'exhibition', start: '17:30', end: '18:30',
@@ -796,7 +800,9 @@
           card.dataset.track = session.track;
           card.style.gridColumn = String(trackIndex + 2);
           card.setAttribute('aria-haspopup', 'dialog');
-          card.appendChild(el('span', 'session-card__time', formatRange(session.start, session.end)));
+          const time = el('span', 'session-card__time', formatRange(session.start, session.end));
+          if (session.booking) time.appendChild(el('span', 'session-card__book', 'Book a seat'));
+          card.appendChild(time);
           card.appendChild(el('span', 'session-card__title', session.title));
           if (session.speaker) card.appendChild(el('span', 'session-card__speaker', session.speaker));
         }
@@ -845,7 +851,9 @@
             card.dataset.sessionId = session.id;
             card.dataset.track = session.track;
             card.setAttribute('aria-haspopup', 'dialog');
-            card.appendChild(el('span', 'schedule-mobile-card__meta', formatRange(session.start, session.end) + (track ? ' · ' + track.label : '')));
+            const meta = el('span', 'schedule-mobile-card__meta', formatRange(session.start, session.end) + (track ? ' · ' + track.label : ''));
+            if (session.booking) meta.appendChild(el('span', 'session-card__book', 'Book a seat'));
+            card.appendChild(meta);
             card.appendChild(el('span', 'schedule-mobile-card__title', session.title));
             if (session.speaker) card.appendChild(el('span', 'schedule-mobile-card__speaker', session.speaker));
           }
@@ -917,6 +925,25 @@
             if (!text) return;
             descEl.appendChild(el('p', null, text));
           });
+          // Workshops: book the seat right from the programme.
+          const ctaEl = document.getElementById('session-modal-cta');
+          if (ctaEl) {
+            ctaEl.hidden = session.track !== 'workshop';
+            ctaEl.textContent = '';
+            if (session.track === 'workshop') {
+              if (session.booking) {
+                const a = el('a', 'btn btn--primary', 'Reserve my seat ');
+                a.href = session.booking;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.appendChild(el('i', 'fa-solid fa-arrow-up-right-from-square'));
+                ctaEl.appendChild(a);
+                ctaEl.appendChild(el('span', 'session-modal__cta-note', 'Free · ' + WORKSHOP_SEATS + ' seats · needs your LSTE ticket'));
+              } else {
+                ctaEl.appendChild(el('span', 'session-modal__cta-note', 'Seat booking opens soon'));
+              }
+            }
+          }
         },
       });
     }
@@ -936,52 +963,41 @@
   }
 
   /* ── Workshop picker (/register/, step 2) ──────────────────────────
-     One card per workshop in SESSIONS, in running order. A workshop with
-     a `booking` link gets a "Reserve my seat" button to its own Odoo
-     event; one without says booking opens soon (no dead link). ─────── */
+     A compact agenda list, one row per workshop in running order: time,
+     title + company, and a small "Reserve" button to that workshop's own
+     Odoo event — or "Opens soon" when it has no `booking` link yet (no
+     dead link). Same data as the programme grid. ─────────────────── */
   function initWorkshopPicker() {
     const list = document.getElementById('workshop-list');
     if (!list) return;
-    const workshops = SESSIONS.filter((s) => s.track === 'workshop');
-    const toMin = (hm) => { const [h, m] = hm.split(':').map(Number); return h * 60 + m; };
-    list.textContent = '';
-    workshops.forEach((w) => {
-      const card = document.createElement('article');
-      card.className = 'card workshop-card';
-      const meta = document.createElement('p');
-      meta.className = 'workshop-card__meta';
-      const num = document.createElement('span');
-      num.className = 'badge badge--workshop';
-      num.textContent = w.type;
-      meta.appendChild(num);
-      meta.appendChild(document.createTextNode(' ' + w.start + '–' + w.end + ' · ' + (toMin(w.end) - toMin(w.start)) + ' min'));
-      card.appendChild(meta);
-      const title = document.createElement('h3');
-      title.className = 'workshop-card__title';
-      title.textContent = w.title;
-      card.appendChild(title);
-      if (w.speaker) {
-        const who = document.createElement('p');
-        who.className = 'workshop-card__speaker';
-        who.textContent = w.speaker;
-        card.appendChild(who);
-      }
+    const el = (tag, className, text) => {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text) node.textContent = text;
+      return node;
+    };
+    const ul = el('ul', 'workshop-list');
+    SESSIONS.filter((s) => s.track === 'workshop').forEach((w) => {
+      const li = el('li', 'workshop-row');
+      li.appendChild(el('span', 'workshop-row__time', w.start + '–' + w.end));
+      const body = el('div', 'workshop-row__body');
+      body.appendChild(el('span', 'workshop-row__label', w.type + ' · ' + (w.partner || 'Partner to be announced')));
+      body.appendChild(el('span', 'workshop-row__title', w.title));
+      li.appendChild(body);
       if (w.booking) {
-        const a = document.createElement('a');
-        a.className = 'btn btn--primary btn--sm workshop-card__cta';
+        const a = el('a', 'btn btn--primary btn--sm workshop-row__cta', 'Reserve');
         a.href = w.booking;
         a.target = '_blank';
         a.rel = 'noopener';
-        a.textContent = 'Reserve my seat';
-        card.appendChild(a);
+        a.setAttribute('aria-label', 'Reserve a seat: ' + w.type + ', ' + w.title);
+        li.appendChild(a);
       } else {
-        const soon = document.createElement('p');
-        soon.className = 'workshop-card__soon';
-        soon.textContent = 'Seat booking opens soon';
-        card.appendChild(soon);
+        li.appendChild(el('span', 'workshop-row__soon', 'Opens soon'));
       }
-      list.appendChild(card);
+      ul.appendChild(li);
     });
+    list.textContent = '';
+    list.appendChild(ul);
   }
 
   /* ── Google Maps embeds: click-to-activate ─────────────────────────

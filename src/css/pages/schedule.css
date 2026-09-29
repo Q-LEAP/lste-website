@@ -344,3 +344,30 @@
 .schedule-footnote { margin-top: var(--space-5); font-size: 0.875rem; color: var(--color-muted); }
 .schedule-footnote a { color: var(--color-lime); white-space: nowrap; }
 .schedule-footnote a:hover { color: var(--color-cyan); }
+
+/* Bookable workshops: a small lime "Book a seat" tag on the card, and a
+   "Reserve my seat" button in the session modal (initSchedule). */
+.session-card__book {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0 0.4em;
+  border-radius: var(--radius-pill);
+  background: rgba(163, 230, 53, 0.16);
+  color: var(--color-lime);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.session-modal__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+.session-modal__cta[hidden] { display: none; }
+.session-modal__cta-note { font-size: 0.8125rem; color: var(--color-muted); }
