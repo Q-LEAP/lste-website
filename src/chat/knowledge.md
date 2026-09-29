@@ -21,19 +21,19 @@ depends entirely on it.
 ## LSTE 2026 (the upcoming, 8th edition)
 
 - **Date:** Thursday **26 November 2026**.
-- **Hours:** 13:00 – 21:00 (doors open at 13:00; closing at 19:00, cocktail
-  from 18:30).
+- **Hours:** 13:00 – 21:00 (doors open at 13:00; closing at 18:30, cocktail
+  from 18:35).
 - **Venue:** Conference Center of Hôtel Parc Belle-Vue, Luxembourg City —
   **5 Avenue Marie-Thérèse, L-2132 Luxembourg**.
 - **Admission:** the conference is **free to attend** (registration required).
 - **Language:** the event is held in **English**.
 - **Expected attendance:** 300+ testing and QA professionals.
-- The 2026 programme is **published progressively** on `/schedule/` as
-  sessions are confirmed. **All times are subject to change up until the day
-  of the event.**
-  Rooms: the **Auditorium Room** (opening, keynotes, round table), the
-  **Workshop Room** (hands-on workshops), the **Exhibition** area (open from
-  13:00) and the **Cocktail** (from 18:30). Running order:
+- The 2026 programme is **published progressively** on the homepage
+  (`/#programme`; `/schedule/` redirects there) as sessions are confirmed.
+  **All times are subject to change up until the day of the event.**
+  Rooms: the **Auditorium** (Salle Marie-Thérèse: opening, keynotes, round
+  table), **Hands-on Workshops** (Salle Vauban) and the **Exhibitor area &
+  Cocktail** (Salle Pétrusse, exhibitors open from 13:00). Running order:
   - 13:00 Doors open & registration.
   - 13:30 Opening by **Avanti Sharma** (Master of Ceremonies).
   - 13:35 Keynote: "The Tester in 5 Years: AI Perspectives" — **Olivier
@@ -41,20 +41,26 @@ depends entirely on it.
   - 13:50 Keynote: "Are Your Testing Activities Effective? The Answer with
     TMMi v2" — **Eric Riou du Cosquer** (Certilog).
   - 14:20 Keynote: "The Devil Is in the Payloads: The Grueling Journey of
-    Implementing a File Transfer Feature" — **Thales** (speaker to be
-    announced). English slides; English or French depending on the audience.
-  - 13:30–14:50 Workshop Room: "AI & Performance Testing — How to Run an
+    Implementing a File Transfer Feature" — **Dominique Righetto** (Thales).
+    English slides; English or French depending on the audience.
+  - Workshops: 13:30–14:10 "AI & Performance Testing — How to Run an
     End-to-End Performance Testing Campaign in Natural Language with Your
     Favorite LLM and OctoPerf", **Ouamar Nedil**, Director of Performance at
-    **OctoPerf**. Bring a laptop with an internet connection.
-  - 14:50 Coffee break & networking.
+    **OctoPerf** (bring a laptop with an internet connection); 14:10–14:50
+    workshop by **Xray**.
+  - 14:50 Coffee break & networking, in the exhibitor area.
   - 15:20 Round table moderated by Avanti Sharma (topic to be announced);
-    16:00 keynote by **Agilitest**; 16:30 keynote by the **University of
-    Luxembourg**. Workshop Room 15:20–17:00: workshop by **Agilitest**.
-  - 17:00 Coffee break & booth visits.
-  - 17:30 keynote (to be announced); 18:00 keynote by **Xray**; 18:30 keynote
-    by **OpenText**. Workshop Room 17:30–19:00: **Q-Guard by Q-Leap**.
-  - 18:30 Cocktail; 19:00 Closing & thank you.
+    16:00 keynote by **Agilitest**; 16:30 keynote by **Domenico Bianculli**
+    (University of Luxembourg). Workshops: 15:20 **Agilitest**, 16:00
+    **Q-Guard by Q-Leap**, 16:30 **Q-Bot**.
+  - 17:00 Coffee break & booth visits, in the exhibitor area.
+  - 17:30 keynote by **LNDS**; 18:00 keynote by **OpenText**. Workshops:
+    17:30–18:10 **Sembi**; 18:10–18:30 a seventh workshop (partner to be
+    announced).
+  - 18:30 Closing & thank you; from 18:35 cocktail & networking in Salle
+    Pétrusse.
+  - Exhibitors: Xray, OctoPerf, Q-Leap, Q-Guard, Q-Bot, Sembi, GASQ, LNDS,
+    Agilitest.
   - Titles marked "to be announced" on the site aren't known yet — say so.
 - Speakers are presented on the homepage (`/#speakers`), each with a short
   biography. Don't name speakers beyond those listed above.
@@ -90,7 +96,7 @@ depends entirely on it.
 
 - LSTE offers sponsorship tiers: Platinium, Gold, and Silver.
 - For 2026, the confirmed sponsors are Q-Leap (the organiser), OctoPerf,
-  LNDS (Luxembourg National Data Service) and Agilitest in Platinium, and
+  LNDS (Luxembourg National Data Service), Agilitest and Xray in Platinium, and
   Thales and the
   University of Luxembourg in Gold; Silver is still open for other companies
   to confirm.
@@ -145,7 +151,7 @@ depends entirely on it.
 - Register: `/register/`
 - Become a Speaker: `/become-a-speaker/`
 - Speakers: `/#speakers` (homepage section; `/speakers/` redirects there)
-- Programme / Schedule: `/schedule/`
+- Programme / Schedule: `/#programme` (homepage section; `/schedule/` redirects there)
 - Venue: `/venue/`
 - Sponsors: `/#sponsors` (a block on the homepage, not its own page)
 - Partners: `/#partners` (a second homepage block, below the sponsors). Confirmed 2026 partners: **A4Q (Alliance for Qualification)** and **Silicon Luxembourg**. Those two only — no other organisation is a confirmed 2026 partner, so don't name any from past editions. Partnerships are still open; people can write to hello@lste.lu.

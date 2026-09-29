@@ -580,17 +580,17 @@
     });
   }
 
-  /* ── Programme (Schedule): data-driven grid ───────────────────────
+  /* ── Programme: data-driven grid ───────────────────────────────────
+     Lives in the homepage's #programme section since 2026-09-29
+     (/schedule/ now redirects there, like /speakers/ → #speakers).
      Everything (desktop grid, mobile list, track filters, "Now" line,
      detail modal) is built from SESSIONS below. Until that array is
      populated, #schedule-empty stays the only thing shown — see
-     schedule/index.html and src/css/pages/schedule.css for the two
-     states this toggles. `track: 'general'` is a fifth, non-column
-     value for day-wide events (doors open, coffee break) that don't
+     index.html and src/css/pages/schedule.css for the two states this
+     toggles. `track: 'general'` is a non-column value for day-wide
+     events (doors open, coffee breaks, closing, cocktail) that don't
      belong to one room — it spans every track column instead of one,
-     isn't a filter target, and isn't a modal trigger (see documentation/
-     README.md, 2026-09-28 entry, for why the published sessions map the
-     way they do below). ─────────────────────────────────────────── */
+     isn't a filter target, and isn't a modal trigger. ─────────────── */
   function initSchedule() {
     const emptyEl = document.getElementById('schedule-empty');
     const appEl = document.getElementById('schedule-app');
@@ -598,30 +598,33 @@
 
     const EVENT_DATE = '2026-11-26'; // yyyy-mm-dd, for the "Now" line only
     const DAY_START = '13:00';
-    const DAY_END = '21:00';
+    // The day runs to 21:00, but after 18:35 there is only the cocktail:
+    // the grid stops at 19:00 and the cocktail banner reads "From 18:35"
+    // instead of drawing two and a half empty hours in every column.
+    const GRID_END = '19:00';
     const SLOT_MIN = 5; // grid resolution, in minutes
 
-    // Rooms as named in the client's "LSTE Program DRAFT" (received
-    // 2026-09-29): Auditorium, Salle Workshop, Salle Buffet. The buffet
-    // room holds both the exhibition and the cocktail, but they stay two
-    // columns here — the client asked for "Networking" to become
-    // "Cocktail", not to merge it away.
+    // Rooms as named in the client's "LSTE2026 Draft Program" (second
+    // draft, received 2026-09-29): three rooms, the exhibitor area and
+    // the cocktail sharing Salle Pétrusse. The cocktail is no longer a
+    // column of its own — it starts once the talks are over, so it is a
+    // cross-track banner like the coffee breaks.
     const TRACKS = [
-      { id: 'keynote', label: 'Auditorium Room' },
-      { id: 'workshop', label: 'Workshop Room' },
-      { id: 'exhibition', label: 'Exhibition' },
-      { id: 'cocktail', label: 'Cocktail' },
+      { id: 'keynote', label: 'Auditorium', room: 'Salle Marie-Thérèse' },
+      { id: 'workshop', label: 'Hands-on Workshops', room: 'Salle Vauban' },
+      { id: 'exhibition', label: 'Exhibitor area', room: 'Salle Pétrusse' },
     ];
 
-    // Times, slots and company names come straight from that draft; the
-    // page says times may change up until the day. Slots the draft marks
-    // "[Title TBC]" / "[Speaker TBC]" read "to be announced" rather than
-    // "TBC" (client asked for no "TBC" on the page). The draft's closing
-    // ("Closing & thank you", 19:00–19:05) sits in the Auditorium column,
-    // not as a cross-track banner, because the cocktail runs across it.
+    // Times, slots, speakers and companies come straight from that draft;
+    // the page says times may change up until the day. Slots the draft
+    // marks "[Title TBC]" / "Content to come" read "to be announced"
+    // rather than "TBC" (the client asked for no "TBC" on the page).
     // description supports multiple paragraphs via '||', same convention
-    // as the sponsor pitch dialog (initSponsorModal above).
+    // as the sponsor pitch dialog (initSponsorModal above). On general
+    // markers, `place` is a trailing "· where" note and `accent` gives the
+    // banner the draft's filled purple (closing only).
     const TBA = 'Title to be announced';
+    const TALK = '20-minute talk followed by 10 minutes of Q&A.';
     const SESSIONS = [
       { id: 'doors-open', track: 'general', start: '13:00', end: '13:30', title: 'Doors open & registration' },
 
@@ -636,12 +639,12 @@
         id: 'keynote-riou-du-cosquer', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote',
         title: 'Are Your Testing Activities Effective? The Answer with TMMi v2',
         speaker: 'Eric Riou du Cosquer, Certilog',
-        description: '20-minute talk followed by 10 minutes of Q&A.',
+        description: TALK,
       },
       {
         id: 'thales-payloads', track: 'keynote', start: '14:20', end: '14:50', type: 'Keynote',
         title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
-        speaker: 'Thales — speaker to be announced',
+        speaker: 'Dominique Righetto, Thales',
         description: [
           'Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.',
           'This talk shows how some file types — PDFs, here — can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.',
@@ -650,7 +653,7 @@
         ].join('||'),
       },
       {
-        id: 'octoperf-ai-performance', track: 'workshop', start: '13:30', end: '14:50', type: 'Workshop',
+        id: 'octoperf-ai-performance', track: 'workshop', start: '13:30', end: '14:10', type: 'Workshop 1',
         title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
         speaker: 'Ouamar Nedil, Director of Performance at OctoPerf',
         description: [
@@ -660,28 +663,42 @@
           'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
         ].join('||'),
       },
+      { id: 'workshop-xray', track: 'workshop', start: '14:10', end: '14:50', type: 'Workshop 2', title: TBA, speaker: 'Xray' },
       {
-        id: 'exhibition-opening', track: 'exhibition', start: '13:30', end: '14:50', type: 'Exhibition',
-        title: 'Exhibition area opening',
-        description: 'The exhibition area is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
+        id: 'exhibitors', track: 'exhibition', start: '13:30', end: '14:50',
+        title: 'Exhibitors',
+        speaker: 'Xray, OctoPerf, Q-Leap, Q-Guard, Q-Bot, Sembi, GASQ, LNDS, Agilitest',
+        description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
       },
 
-      { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking' },
+      { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking', place: 'in the exhibitor area' },
 
       { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Round table — topic to be announced', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
-      { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Agilitest', description: '20-minute talk followed by 10 minutes of Q&A.' },
-      { id: 'keynote-unilu', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'University of Luxembourg', description: '20-minute talk followed by 10 minutes of Q&A.' },
-      { id: 'workshop-agilitest', track: 'workshop', start: '15:20', end: '17:00', type: 'Workshop', title: TBA, speaker: 'Agilitest' },
+      { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Agilitest', description: TALK },
+      { id: 'keynote-bianculli', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Domenico Bianculli, University of Luxembourg', description: TALK },
+      { id: 'workshop-agilitest', track: 'workshop', start: '15:20', end: '16:00', type: 'Workshop 3', title: TBA, speaker: 'Agilitest' },
+      { id: 'workshop-qguard', track: 'workshop', start: '16:00', end: '16:30', type: 'Workshop 4', title: TBA, speaker: 'Q-Guard by Q-Leap' },
+      { id: 'workshop-qbot', track: 'workshop', start: '16:30', end: '17:00', type: 'Workshop 5', title: TBA, speaker: 'Q-Bot' },
+      {
+        id: 'exhibition-afternoon', track: 'exhibition', start: '15:20', end: '17:00',
+        title: 'Exhibitor area',
+        speaker: 'Open all afternoon, including during coffee breaks and the evening cocktail.',
+      },
 
-      { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits' },
+      { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
-      { id: 'keynote-6', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: 'Keynote to be announced', description: '20-minute talk followed by 10 minutes of Q&A.' },
-      { id: 'keynote-xray', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: TBA, speaker: 'Xray', description: '20-minute talk followed by 10 minutes of Q&A.' },
-      { id: 'keynote-opentext', track: 'keynote', start: '18:30', end: '19:00', type: 'Keynote', title: TBA, speaker: 'OpenText', description: '20-minute talk followed by 10 minutes of Q&A.' },
-      { id: 'workshop-qguard', track: 'workshop', start: '17:30', end: '19:00', type: 'Workshop', title: TBA, speaker: 'Q-Guard by Q-Leap' },
-      { id: 'closing', track: 'keynote', start: '19:00', end: '19:05', type: 'Closing', title: 'Closing & thank you', speaker: 'LSTE organisers' },
+      { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
+      { id: 'keynote-opentext', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: TBA, speaker: 'OpenText', description: TALK },
+      { id: 'workshop-sembi', track: 'workshop', start: '17:30', end: '18:10', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
+      { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', type: 'Workshop 7', title: 'Workshop to be announced' },
+      {
+        id: 'exhibition-evening', track: 'exhibition', start: '17:30', end: '18:30',
+        title: 'Exhibitor area',
+        speaker: 'Booths open until the evening cocktail.',
+      },
 
-      { id: 'cocktail', track: 'cocktail', start: '18:30', end: '21:00', title: 'Cocktail' },
+      { id: 'closing', track: 'general', start: '18:30', end: '18:35', title: 'Closing & thank you', place: 'LSTE organisers', accent: true },
+      { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, title: 'Cocktail & networking', place: 'Salle Pétrusse' },
     ];
 
     if (!SESSIONS.length) return; // keep showing the "coming soon" empty state
@@ -702,6 +719,12 @@
     function formatRange(start, end) {
       return end ? start + '–' + end : start;
     }
+    function sessionTime(session) {
+      return session.openEnded ? 'From ' + session.start : formatRange(session.start, session.end);
+    }
+    function markerTitle(session) {
+      return session.place ? session.title + ' · ' + session.place : session.title;
+    }
     function el(tag, className, text) {
       const node = document.createElement(tag);
       if (className) node.className = className;
@@ -710,14 +733,14 @@
     }
 
     const dayStartMin = toMinutes(DAY_START);
-    const dayEndMin = toMinutes(DAY_END);
-    const totalRows = Math.round((dayEndMin - dayStartMin) / SLOT_MIN);
+    const gridEndMin = toMinutes(GRID_END);
+    const totalRows = Math.round((gridEndMin - dayStartMin) / SLOT_MIN);
 
     /* ── Desktop grid ──────────────────────────────────────────────── */
     function buildGrid() {
       gridEl.innerHTML = '';
       gridEl.style.gridTemplateColumns = '84px repeat(' + TRACKS.length + ', 1fr)';
-      gridEl.style.gridTemplateRows = '40px repeat(' + totalRows + ', var(--slot-h))';
+      gridEl.style.gridTemplateRows = 'auto repeat(' + totalRows + ', var(--slot-h))';
 
       gridEl.appendChild(el('div', 'schedule-grid__head-cell schedule-grid__head-cell--corner'));
 
@@ -725,10 +748,11 @@
         const head = el('div', 'schedule-grid__head-cell');
         head.style.gridColumn = String(i + 2);
         head.appendChild(el('span', 'badge badge--' + track.id, track.label));
+        if (track.room) head.appendChild(el('span', 'schedule-grid__room', track.room));
         gridEl.appendChild(head);
       });
 
-      for (let m = dayStartMin; m < dayEndMin; m += 30) {
+      for (let m = dayStartMin; m < gridEndMin; m += 30) {
         const isHour = m % 60 === 0;
         const label = el('div', 'schedule-grid__time' + (isHour ? ' schedule-grid__time--hour' : ''), minutesToHm(m));
         const row = 2 + Math.round((m - dayStartMin) / SLOT_MIN);
@@ -741,21 +765,23 @@
         const trackIndex = isGeneral ? -1 : TRACKS.findIndex((t) => t.id === session.track);
         if (!isGeneral && trackIndex === -1) return;
         const start = toMinutes(session.start);
-        const end = session.end ? toMinutes(session.end) : start + 30;
+        const end = Math.min(session.end ? toMinutes(session.end) : start + 30, gridEndMin);
         const rowStart = 2 + Math.round((start - dayStartMin) / SLOT_MIN);
         const rowEnd = 2 + Math.round((end - dayStartMin) / SLOT_MIN);
 
         const card = document.createElement(isGeneral ? 'div' : 'button');
         if (!isGeneral) card.type = 'button';
         card.className = isGeneral ? 'schedule-marker' : 'session-card session-card--' + session.track;
+        if (isGeneral && session.accent) card.classList.add('schedule-marker--accent');
+        if (isGeneral && end - start <= 5) card.classList.add('schedule-marker--tiny');
         if (!isGeneral && end - start <= 5) card.classList.add('session-card--tiny');
         else if (!isGeneral && end - start <= 15) card.classList.add('session-card--short');
         else if (!isGeneral && end - start <= 30) card.classList.add('session-card--mid');
         card.style.gridRow = rowStart + ' / ' + rowEnd;
         if (isGeneral) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
-          card.appendChild(el('span', 'schedule-marker__time', formatRange(session.start, session.end)));
-          card.appendChild(el('span', 'schedule-marker__title', session.title));
+          card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));
+          card.appendChild(el('span', 'schedule-marker__title', markerTitle(session)));
         } else {
           card.dataset.sessionId = session.id;
           card.dataset.track = session.track;
@@ -801,8 +827,9 @@
           const card = document.createElement(isGeneral ? 'div' : 'button');
           if (isGeneral) {
             card.className = 'schedule-mobile-marker';
-            card.appendChild(el('span', 'schedule-mobile-marker__meta', formatRange(session.start, session.end)));
-            card.appendChild(el('span', 'schedule-mobile-marker__title', session.title));
+            if (session.accent) card.classList.add('schedule-mobile-marker--accent');
+            card.appendChild(el('span', 'schedule-mobile-marker__meta', sessionTime(session)));
+            card.appendChild(el('span', 'schedule-mobile-marker__title', markerTitle(session)));
           } else {
             card.type = 'button';
             card.className = 'schedule-mobile-card schedule-mobile-card--' + session.track;
@@ -820,7 +847,7 @@
       });
     }
 
-    /* ── Track filters (All / Auditorium / Workshop / Exhibition / Cocktail) ──
+    /* ── Track filters (All / Auditorium / Workshops / Exhibitor area) ──
        Cross-track markers have no data-track, so they're untouched by
        any filter — a coffee break matters no matter which track you
        picked. */
@@ -845,7 +872,7 @@
       const now = new Date();
       const todayStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
       const minutes = now.getHours() * 60 + now.getMinutes();
-      if (todayStr !== EVENT_DATE || minutes < dayStartMin || minutes > dayEndMin) {
+      if (todayStr !== EVENT_DATE || minutes < dayStartMin || minutes >= gridEndMin) {
         if (nowBtn) nowBtn.hidden = true;
         return;
       }
@@ -871,7 +898,7 @@
           const trackEl = document.getElementById('session-modal-track');
           trackEl.textContent = [track && track.label, session.type].filter(Boolean).join(' · ');
           trackEl.className = 'badge badge--' + session.track;
-          document.getElementById('session-modal-time').textContent = formatRange(session.start, session.end);
+          document.getElementById('session-modal-time').textContent = [formatRange(session.start, session.end), track && track.room].filter(Boolean).join(' · ');
           document.getElementById('session-modal-title').textContent = session.title;
           document.getElementById('session-modal-speaker').textContent = session.speaker || '';
           const descEl = document.getElementById('session-modal-desc');

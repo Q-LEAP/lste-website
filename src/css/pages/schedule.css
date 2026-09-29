@@ -89,7 +89,6 @@
 .schedule-filter__dot--keynote { background: #c4b5fd; }
 .schedule-filter__dot--workshop { background: #a3e635; }
 .schedule-filter__dot--exhibition { background: #fdba74; }
-.schedule-filter__dot--cocktail { background: #22d3ee; }
 .schedule-filter[aria-pressed="true"] { background: var(--color-primary); color: #fff; }
 
 /* ── Empty state ("coming soon") ─────────────────────────────────── */
@@ -137,6 +136,13 @@
   border-left: 1px solid var(--color-border);
 }
 .schedule-grid__head-cell--corner { background: var(--color-surface-alt); border-left: none; }
+.schedule-grid__room {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-muted);
+}
 .schedule-grid__time {
   grid-column: 1;
   padding: 0 var(--space-3);
@@ -190,7 +196,6 @@
 .session-card--keynote { --track-color: #c4b5fd; }
 .session-card--workshop { --track-color: #a3e635; }
 .session-card--exhibition { --track-color: #fdba74; }
-.session-card--cocktail { --track-color: #22d3ee; }
 .session-card.is-dimmed, .schedule-mobile-card.is-dimmed { display: none; }
 
 /* Cross-track markers (doors open, coffee break…) — day-wide events that
@@ -210,6 +215,11 @@
   letter-spacing: 0.02em;
 }
 .schedule-marker__time { font-weight: 700; color: var(--color-ink); }
+/* 5-minute banner (closing): one 15px row, so no vertical padding. */
+.schedule-marker--tiny { padding-top: 0; padding-bottom: 0; font-size: 0.6875rem; line-height: 1; }
+/* Closing: the draft's one filled banner — the formal end of the talks. */
+.schedule-marker--accent { background: var(--color-primary); color: rgba(255, 255, 255, 0.85); }
+.schedule-marker--accent .schedule-marker__time { color: #fff; }
 
 .schedule-mobile-marker {
   display: flex;
@@ -221,6 +231,8 @@
   font-size: 0.8125rem;
 }
 .schedule-mobile-marker__title { color: var(--color-ink); font-weight: 700; }
+.schedule-mobile-marker--accent { padding-left: var(--space-3); border-radius: var(--radius-md); background: var(--color-primary); color: rgba(255, 255, 255, 0.85); }
+.schedule-mobile-marker--accent .schedule-mobile-marker__title { color: #fff; }
 
 .schedule-now-line {
   position: absolute;
@@ -290,7 +302,6 @@
 .schedule-mobile-card--keynote { --track-color: #c4b5fd; }
 .schedule-mobile-card--workshop { --track-color: #a3e635; }
 .schedule-mobile-card--exhibition { --track-color: #fdba74; }
-.schedule-mobile-card--cocktail { --track-color: #22d3ee; }
 
 /* ── Session detail modal ────────────────────────────────────────── */
 .session-modal-dialog { max-width: 520px; max-height: 90vh; overflow: auto; position: relative; padding: var(--space-6); }
@@ -315,3 +326,9 @@
   .schedule-hero__row { align-items: flex-start; }
   .schedule-hero__row > .btn { width: 100%; }
 }
+
+/* Homepage #programme: the same meta line as the old /schedule/ hero, but
+   under a centred .section-head, and the grid starts right after the
+   full-bleed toolbar instead of under a section's top padding. */
+.programme-section .schedule-hero__meta { justify-content: center; }
+.programme-section .schedule-toolbar { margin-bottom: var(--space-5); }
