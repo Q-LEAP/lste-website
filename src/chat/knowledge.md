@@ -37,11 +37,13 @@ depends entirely on it.
   - 13:00 Doors open & registration.
   - 13:30 Opening by **Avanti Sharma** (Master of Ceremonies).
   - 13:35 Keynote: "The Tester in 5 Years: AI Perspectives" — **Olivier
-    Denoo** (Vice-President, ps_testware SAS; Vice-President of the ISTQB).
+    Denoo** (Vice-President of ps_testware SAS, President of the CFTL and
+    Vice-President of the ISTQB).
   - 13:50 Keynote: "Are Your Testing Activities Effective? The Answer with
     TMMi v2" — **Eric Riou du Cosquer** (Certilog).
   - 14:20 Keynote: "The Devil Is in the Payloads: The Grueling Journey of
-    Implementing a File Transfer Feature" — **Dominique Righetto** (Thales).
+    Implementing a File Transfer Feature" — **Dominique Righetto** (Thales, Subject Matter Expert in Application
+    Security; leads the OWASP Secure Headers Project).
     English slides; English or French depending on the audience.
   - Workshops: 13:30–14:10 "AI & Performance Testing — How to Run an
     End-to-End Performance Testing Campaign in Natural Language with Your
