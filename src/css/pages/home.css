@@ -537,6 +537,13 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 .speaker-photo--domenico-bianculli { --photo-zoom: 1.334; --photo-x: 0.49%; --photo-y: 20.04%; --photo-bg: rgb(106 94 85); }
 .speaker-photo--ouamar-nedil { --photo-zoom: 1.036; --photo-x: 3.35%; --photo-y: 8.18%; --photo-bg: rgb(219 218 213); }
 .speaker-photo--ritabrata-banerjee { --photo-zoom: 1.146; --photo-x: -2.73%; --photo-y: 8.04%; --photo-bg: rgb(214 215 218); }
+.speaker-photo--jonathan-lopez { --photo-zoom: 1.117; --photo-x: -5.85%; --photo-y: 16.91%; --photo-bg: rgb(203 204 206); }
+/* Jonathan's source has only wall above him, so its top edge can fade
+   over a longer run (12%) without touching his hair. */
+.speaker-photo--jonathan-lopez img {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%);
+  mask-image: linear-gradient(to bottom, transparent, #000 12%);
+}
 .speaker-card__photo--initials {
   color: #fff; font-family: var(--font-heading); font-weight: 700;
   font-size: 3rem; letter-spacing: 0.02em;
