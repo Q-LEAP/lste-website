@@ -45,8 +45,8 @@ depends entirely on it.
     English slides; English or French depending on the audience.
   - Workshops: 13:30–14:10 "AI & Performance Testing — How to Run an
     End-to-End Performance Testing Campaign in Natural Language with Your
-    Favorite LLM and OctoPerf", **Ouamar Nedil**, Director of Performance at
-    **OctoPerf** (bring a laptop with an internet connection); 14:10–14:50
+    Favorite LLM and OctoPerf", **Ouamar Nedil**, Director of Performance
+    Engineering at **OctoPerf** (bring a laptop with an internet connection); 14:10–14:50
     workshop by **Xray**.
   - 14:50 Coffee break & networking, in the exhibitor area.
   - 15:20 Round table moderated by Avanti Sharma (topic to be announced);
