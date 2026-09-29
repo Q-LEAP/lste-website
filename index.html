@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=ddf260c1">
+<link rel="stylesheet" href="./assets/css/styles.css?v=345d82ea">
 
 <style>
   /* Homepage hero: full-bleed photo + directional gradient veil (the
@@ -328,7 +328,8 @@ redirect_from:
        Only speakers whose name the client has confirmed belong here — the
        Thales talk and the "to be announced" slots on /schedule/ have no
        named speaker yet, so no card. Order follows the running order of
-       the day. Never
+       the day. Photos are square crops on the face (assets/img/speaker-*-480),
+       filling the top of the card; no photo yet → an initials square. Never
        fill this from past editions or invent a bio (see
        documentation/README.md); /speakers/ now redirects here.
 
@@ -346,7 +347,7 @@ redirect_from:
       <div class="speaker-grid reveal">
         <details class="card speaker-card">
           <summary>
-            <span class="avatar-initials avatar-initials--photo" aria-hidden="true"><img src="./assets/img/lste-2025-avanti-sharma-portrait-400.webp" width="400" height="267" alt="" loading="lazy" decoding="async" style="object-position:72% 30%;transform:scale(1.9);transform-origin:72% 33%;"></span>
+            <picture class="speaker-card__photo" aria-hidden="true"><source type="image/webp" srcset="./assets/img/speaker-avanti-sharma-480.webp"><img src="./assets/img/speaker-avanti-sharma-480.jpg" width="480" height="480" alt="" loading="lazy" decoding="async"></picture>
             <span class="badge badge--keynote speaker-card__tag">Master of Ceremonies</span>
             <span class="speaker-card__name">Avanti Sharma</span>
             <span class="role">Director of Artificial Intelligence &amp; Growth</span>
@@ -362,7 +363,7 @@ redirect_from:
         </details>
         <details class="card speaker-card">
           <summary>
-            <span class="avatar-initials" aria-hidden="true">OD</span>
+            <picture class="speaker-card__photo" aria-hidden="true"><source type="image/webp" srcset="./assets/img/speaker-olivier-denoo-480.webp"><img src="./assets/img/speaker-olivier-denoo-480.jpg" width="480" height="480" alt="" loading="lazy" decoding="async"></picture>
             <span class="badge badge--keynote speaker-card__tag">Opening keynote</span>
             <span class="speaker-card__name">Olivier Denoo</span>
             <span class="role">Vice-President</span>
@@ -382,7 +383,7 @@ redirect_from:
              his LinkedIn URL. Swap in his own bio when one arrives. -->
         <details class="card speaker-card">
           <summary>
-            <span class="avatar-initials" aria-hidden="true">ER</span>
+            <span class="speaker-card__photo speaker-card__photo--initials" aria-hidden="true">ER</span>
             <span class="badge badge--keynote speaker-card__tag">Keynote</span>
             <span class="speaker-card__name">Eric Riou du Cosquer</span>
             <span class="role">TMMi Accredited Assessor &amp; Trainer</span>
@@ -396,7 +397,7 @@ redirect_from:
         </details>
         <details class="card speaker-card" data-logo="./assets/img/octoperf-logo-400.webp" data-logo-alt="OctoPerf">
           <summary>
-            <span class="avatar-initials" aria-hidden="true">ON</span>
+            <span class="speaker-card__photo speaker-card__photo--initials" aria-hidden="true">ON</span>
             <span class="badge badge--workshop speaker-card__tag">Workshop</span>
             <span class="speaker-card__name">Ouamar Nedil</span>
             <span class="role">Director of Performance</span>
