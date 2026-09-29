@@ -1,14 +1,21 @@
+---
+redirect_from:
+  - /tutorials/
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redirecting to the Programme (LSTE)</title>
-<!-- Since 2026-09-29 the programme lives in the homepage's #programme
-     block, the same move /speakers/ made on 2026-09-28. -->
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://www.lste.lu/#programme">
-<meta http-equiv="refresh" content="0; url=../index.html#programme">
+<title>Programme: LSTE 2026 Schedule</title>
+<meta name="description" content="The LSTE 2026 programme, 26 November in Luxembourg: keynotes in the auditorium, hands-on workshops and the exhibitor area, hour by hour.">
+<link rel="canonical" href="https://www.lste.lu/schedule/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Programme: LSTE">
+<meta property="og:description" content="The LSTE 2026 programme: auditorium, hands-on workshops and exhibitor area, hour by hour.">
+<meta property="og:url" content="https://www.lste.lu/schedule/">
+<meta property="og:image" content="https://www.lste.lu/assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-1200.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/img/favicon.svg?v=db5be53e" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
   <link rel="manifest" href="../manifest.json">
@@ -16,13 +23,233 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=3da9d0da">
+<link rel="stylesheet" href="../assets/css/styles.css?v=881fc218">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.lste.lu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Programme"
+    }
+  ]
+}
+</script>
 </head>
-<body style="display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:var(--space-6);">
-  <div>
-    <p class="eyebrow">This page has moved</p>
-    <h1 style="font-size:1.75rem;">The programme is now on the <a href="../index.html#programme">homepage</a>.</h1>
-    <p><a class="btn btn--primary" href="../index.html#programme">See the programme</a></p>
+<body>
+
+<!--NAV_START-->
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header">
+  <div class="container">
+    <a class="site-logo" href="../index.html" aria-label="LSTE home">
+      <img src="../assets/img/lste-logo-white.svg?v=cf8d3ff3" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
+      <span class="site-logo__tag">26 Nov 2026</span>
+    </a>
+
+    <!-- Three-zone header (see the image-typ / "6a" reference in
+         documentation/): logo + date on the left, nav links sitting right
+         after them, and the ticket button alone on the far right
+         (margin-right:auto on .main-nav pushes the actions to the edge, see
+         components.css). Sponsors/Gallery/Press/Call for Speakers/Contact live
+         in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
+         the footer. Speakers was unlisted while it was a placeholder; since
+         2026-09-29 it is its own /speakers/ page again, top-level next to
+         Programme (/schedule/), and "Become a sponsor" moved into More, both
+         at the client's request. Sponsors was unlisted for the same reason until 2026-08-10, when it
+         gained real sponsors with pitches worth reaching; since 2026-08-24 it
+         is no longer a page at all — the entry jumps to the homepage's
+         #sponsors block (localize-paths turns "/#sponsors" into
+         "../index.html#sponsors" per page depth). -->
+    <nav class="main-nav" aria-label="Primary">
+      <ul class="main-nav-list">
+        <li><a class="main-nav-link" href="../about/index.html">About</a></li>
+        <li><a class="main-nav-link" aria-current="page" href="../schedule/index.html">Programme</a></li>
+        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
+        <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
+        <li class="main-nav-item--dropdown">
+          <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+          <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
+            <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+            <li><a href="../index.html#sponsors">Sponsors</a></li>
+            <li><a href="../gallery/index.html">Gallery</a></li>
+                            <li><a href="../contact/index.html">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+</header>
+
+<!-- Mobile menu kept short at the client's request (2026-09-29): Become a
+     sponsor, Press and Call for Speakers are desktop-nav only; the footer
+     still links Become a Sponsor on every page. -->
+<div class="mobile-nav-panel" id="mobile-nav-panel">
+  <ul class="mobile-nav-list">
+    <li><a href="../about/index.html">About</a></li>
+    <li><a href="../schedule/index.html">Programme</a></li>
+    <li><a href="../speakers/index.html">Speakers</a></li>
+    <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../index.html#sponsors">Sponsors</a></li>
+    <li><a href="../gallery/index.html">Gallery</a></li>
+    <li><a href="../press/index.html">Press</a></li>
+    <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+    <li><a href="../contact/index.html">Contact</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get your free ticket</a></li>
+  </ul>
+</div>
+
+<!--NAV_END-->
+
+<main id="main">
+
+  <!-- Dedicated programme page again since 2026-09-29, at the client's
+       request (it was a redirect to /#programme for a few hours). Same
+       grid as the homepage, from initSchedule()'s SESSIONS in
+       src/js/main.js. One sentence before the grid, no more: the client
+       found the old hero too wordy. -->
+  <section class="schedule-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Programme</span></nav>
+      <h1>Programme</h1>
+      <p class="schedule-hero__lead">Thursday 26 November 2026, 13:00–21:00 at H&ocirc;tel Parc Belle-Vue: talks in the auditorium, hands-on workshops next door and exhibitors all afternoon.</p>
+    </div>
+  </section>
+
+  <div class="schedule-toolbar" id="schedule-toolbar" hidden>
+    <div class="container schedule-toolbar__inner">
+      <div class="schedule-filters" role="group" aria-label="Filter the programme by room">
+        <button type="button" class="schedule-filter" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="schedule-filter" data-filter="keynote" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--keynote" aria-hidden="true"></span>Auditorium</button>
+        <button type="button" class="schedule-filter" data-filter="workshop" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--workshop" aria-hidden="true"></span>Workshops</button>
+        <button type="button" class="schedule-filter" data-filter="exhibition" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--exhibition" aria-hidden="true"></span>Exhibitor area</button>
+      </div>
+      <button type="button" class="btn btn--outline btn--sm schedule-now-btn" id="schedule-now-btn" hidden><i class="fa-solid fa-clock" aria-hidden="true"></i> Now</button>
+    </div>
+  </div>
+
+  <section class="section schedule-section" aria-label="Programme grid">
+  <div class="container">
+    <!-- Fallback if SESSIONS (src/js/main.js) is ever emptied again. -->
+    <div id="schedule-empty" class="schedule-empty">
+      <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+      <p class="schedule-empty__title">Full programme coming soon</p>
+      <p class="schedule-empty__desc">One afternoon across the auditorium, the workshop room and the exhibitor area, ending with the cocktail. The 2026 line-up is being finalised and will appear here closer to the event.</p>
+    </div>
+
+    <!-- Populated by initSchedule() (main.js) from SESSIONS. Two
+         separate markups (not one grid squeezed down): a CSS-grid
+         room/time board for desktop, a time-grouped list for mobile. -->
+    <div id="schedule-app" hidden>
+      <div class="schedule-grid-wrap">
+        <div class="schedule-grid" id="schedule-grid" aria-label="LSTE 2026 programme grid"></div>
+      </div>
+      <div class="schedule-mobile" id="schedule-mobile"></div>
+    </div>
+    <p class="schedule-footnote">Times are subject to change up until the day of LSTE. Workshops need their own seat: <a href="../register/index.html#workshops">pick yours <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+  </div>
+  </section>
+
+  <div class="modal-backdrop" id="session-modal" role="dialog" aria-modal="true" aria-labelledby="session-modal-title" hidden>
+    <div class="modal-dialog session-modal-dialog">
+      <button type="button" class="session-modal__close" id="session-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <span class="badge" id="session-modal-track"></span>
+      <p class="session-modal__time" id="session-modal-time"></p>
+      <h3 id="session-modal-title"></h3>
+      <p class="session-modal__speaker" id="session-modal-speaker"></p>
+      <div class="session-modal__desc" id="session-modal-desc"></div>
+    </div>
+  </div>
+
+  <section class="tickets-cta" aria-labelledby="schedule-cta-heading">
+    <div class="tickets-cta__glow" aria-hidden="true"></div>
+    <div class="container tickets-cta__inner reveal">
+      <span class="eyebrow eyebrow--cyan">26 November 2026</span>
+      <h2 id="schedule-cta-heading">Join us for LSTE 2026.</h2>
+      <div class="hero__actions" style="justify-content:center;">
+        <a class="btn btn--primary btn--lg" href="../register/index.html">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!--FOOTER_START-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="site-logo" href="../index.html" aria-label="LSTE home">
+          <img src="../assets/img/lste-logo-white.svg?v=cf8d3ff3" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="lazy">
+        </a>
+        <p>One day. Luxembourg's entire QA community.</p>
+        <p><a href="mailto:hello@lste.lu">hello@lste.lu</a></p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/luxembourg-software-testing-event/" aria-label="LSTE on LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-heading">Event</p>
+        <ul>
+          <li><a href="../about/index.html">About LSTE</a></li>
+          <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+          <li><a href="../schedule/index.html">Programme</a></li>
+          <li><a href="../speakers/index.html">Speakers</a></li>
+          <li><a href="../venue/index.html">Venue</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-heading">Get Involved</p>
+        <ul>
+          <li><a href="../become-a-sponsor/index.html">Become a Sponsor</a></li>
+          <li><a href="../register/index.html">Get your free ticket</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-heading">Resources</p>
+        <ul>
+          <li><a href="../resources/index.html#media">Media Kit &amp; Resources</a></li>
+          <li><a href="../gallery/index.html">Gallery</a></li>
+          <li><a href="../news/index.html">News</a></li>
+          <li><a href="../press/index.html">Press</a></li>
+          <li><a href="../linkedin/index.html">LinkedIn Updates</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2026</span> LSTE. Organized by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap</a>.</p>
+      <ul>
+        <li><a href="../privacy-policy/index.html">Privacy Policy</a></li>
+      </ul>
+      <span class="footer-bottom__tag">Made in Luxembourg</span>
+    </div>
+  </div>
+</footer>
+
+<!--FOOTER_END-->
+
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+<script src="../assets/js/main.js?v=1a5c8956" defer></script>
 </body>
 </html>

@@ -580,6 +580,111 @@
     });
   }
 
+  /* ── Programme data — shared by the programme grid (homepage and
+     /schedule/, initSchedule) and the workshop picker on /register/
+     (initWorkshopPicker). One list, so a changed slot shows the same
+     everywhere. ─────────────────────────────────────────────────── */
+  // Rooms as named in the client's "LSTE2026 Draft Program" (second
+  // draft, received 2026-09-29): three rooms, the exhibitor area and
+  // the cocktail sharing Salle Pétrusse. The cocktail is no longer a
+  // column of its own — it starts once the talks are over, so it is a
+  // cross-track banner like the coffee breaks.
+  const TRACKS = [
+    { id: 'keynote', label: 'Auditorium', room: 'Salle Marie-Thérèse' },
+    { id: 'workshop', label: 'Hands-on Workshops', room: 'Salle Vauban' },
+    { id: 'exhibition', label: 'Exhibitor area', room: 'Salle Pétrusse' },
+  ];
+
+  // Times, slots, speakers and companies come straight from that draft;
+  // the page says times may change up until the day. Slots the draft
+  // marks "[Title TBC]" / "Content to come" read "to be announced"
+  // rather than "TBC" (the client asked for no "TBC" on the page).
+  // description supports multiple paragraphs via '||', same convention
+  // as the sponsor pitch dialog (initSponsorModal above). On general
+  // markers, `place` is a trailing "· where" note and `accent` gives the
+  // banner the draft's filled purple (closing only).
+  // Workshops also carry `booking`: the Odoo registration link of that
+  // workshop's own event (one capped Odoo event per workshop, decided with
+  // the client on 2026-09-29). Empty until Q-Leap creates it — the card on
+  // /register/ then says booking opens soon instead of linking anywhere.
+  const TBA = 'Title to be announced';
+  const TALK = '20-minute talk followed by 10 minutes of Q&A.';
+  const SESSIONS = [
+    { id: 'doors-open', track: 'general', start: '13:00', end: '13:30', title: 'Doors open & registration' },
+
+    { id: 'opening', track: 'keynote', start: '13:30', end: '13:35', type: 'Opening', title: 'Opening', speaker: 'Avanti Sharma, Master of Ceremonies' },
+    {
+      id: 'keynote-denoo', track: 'keynote', start: '13:35', end: '13:50', type: 'Keynote',
+      title: 'The Tester in 5 Years: AI Perspectives',
+      speaker: 'Olivier Denoo, ps_testware',
+      description: 'Opening keynote. 15 minutes, no Q&A.',
+    },
+    {
+      id: 'keynote-riou-du-cosquer', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote',
+      title: 'Are Your Testing Activities Effective? The Answer with TMMi v2',
+      speaker: 'Eric Riou du Cosquer, Certilog',
+      description: TALK,
+    },
+    {
+      id: 'thales-payloads', track: 'keynote', start: '14:20', end: '14:50', type: 'Keynote',
+      title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
+      speaker: 'Dominique Righetto, Thales',
+      description: [
+        'Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.',
+        'This talk shows how some file types — PDFs, here — can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.',
+        'It is told as a story. A development team is asked to implement file upload against a vague specification: "users must be able to send us PDF files." An application security consultant embedded in the team tests the result, finds a way to slip malicious content through, explains the problem, and the team fixes it together — then the next iteration starts. Round after round, in true die-and-retry fashion, the consultant’s health bar drops, until the feature is finally robust. The point: all that extra work and frustration could have been avoided had the user story been clearer about security in the first place.',
+        'Slides in English. Delivered in English or French depending on the audience.',
+      ].join('||'),
+    },
+    {
+      id: 'octoperf-ai-performance', track: 'workshop', start: '13:30', end: '14:10', booking: '', type: 'Workshop 1',
+      title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
+      speaker: 'Ouamar Nedil, Director of Performance at OctoPerf',
+      description: [
+        'Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.',
+        'During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice.',
+        'Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.',
+        'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
+      ].join('||'),
+    },
+    { id: 'workshop-xray', track: 'workshop', start: '14:10', end: '14:50', booking: '', type: 'Workshop 2', title: TBA, speaker: 'Xray' },
+    {
+      id: 'exhibitors', track: 'exhibition', start: '13:30', end: '14:50',
+      title: 'Exhibitors',
+      speaker: 'Xray, OctoPerf, Q-Leap, Q-Guard, Q-Bot, Sembi, GASQ, LNDS, Agilitest',
+      description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
+    },
+
+    { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking', place: 'in the exhibitor area' },
+
+    { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Round table — topic to be announced', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
+    { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Agilitest', description: TALK },
+    { id: 'keynote-bianculli', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Domenico Bianculli, University of Luxembourg', description: TALK },
+    { id: 'workshop-agilitest', track: 'workshop', start: '15:20', end: '16:00', booking: '', type: 'Workshop 3', title: TBA, speaker: 'Agilitest' },
+    { id: 'workshop-qguard', track: 'workshop', start: '16:00', end: '16:30', booking: '', type: 'Workshop 4', title: TBA, speaker: 'Q-Guard by Q-Leap' },
+    { id: 'workshop-qbot', track: 'workshop', start: '16:30', end: '17:00', booking: '', type: 'Workshop 5', title: TBA, speaker: 'Q-Bot' },
+    {
+      id: 'exhibition-afternoon', track: 'exhibition', start: '15:20', end: '17:00',
+      title: 'Exhibitor area',
+      speaker: 'Open all afternoon, including during coffee breaks and the evening cocktail.',
+    },
+
+    { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
+
+    { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
+    { id: 'keynote-opentext', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: TBA, speaker: 'OpenText', description: TALK },
+    { id: 'workshop-sembi', track: 'workshop', start: '17:30', end: '18:10', booking: '', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
+    { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', booking: '', type: 'Workshop 7', title: 'Workshop to be announced' },
+    {
+      id: 'exhibition-evening', track: 'exhibition', start: '17:30', end: '18:30',
+      title: 'Exhibitor area',
+      speaker: 'Booths open until the evening cocktail.',
+    },
+
+    { id: 'closing', track: 'general', start: '18:30', end: '18:35', title: 'Closing & thank you', place: 'LSTE organisers', accent: true },
+    { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, title: 'Cocktail & networking', place: 'Salle Pétrusse' },
+  ];
+
   /* ── Programme: data-driven grid ───────────────────────────────────
      Lives in the homepage's #programme section since 2026-09-29
      (/schedule/ now redirects there, like /speakers/ → #speakers).
@@ -604,102 +709,6 @@
     const GRID_END = '19:00';
     const SLOT_MIN = 5; // grid resolution, in minutes
 
-    // Rooms as named in the client's "LSTE2026 Draft Program" (second
-    // draft, received 2026-09-29): three rooms, the exhibitor area and
-    // the cocktail sharing Salle Pétrusse. The cocktail is no longer a
-    // column of its own — it starts once the talks are over, so it is a
-    // cross-track banner like the coffee breaks.
-    const TRACKS = [
-      { id: 'keynote', label: 'Auditorium', room: 'Salle Marie-Thérèse' },
-      { id: 'workshop', label: 'Hands-on Workshops', room: 'Salle Vauban' },
-      { id: 'exhibition', label: 'Exhibitor area', room: 'Salle Pétrusse' },
-    ];
-
-    // Times, slots, speakers and companies come straight from that draft;
-    // the page says times may change up until the day. Slots the draft
-    // marks "[Title TBC]" / "Content to come" read "to be announced"
-    // rather than "TBC" (the client asked for no "TBC" on the page).
-    // description supports multiple paragraphs via '||', same convention
-    // as the sponsor pitch dialog (initSponsorModal above). On general
-    // markers, `place` is a trailing "· where" note and `accent` gives the
-    // banner the draft's filled purple (closing only).
-    const TBA = 'Title to be announced';
-    const TALK = '20-minute talk followed by 10 minutes of Q&A.';
-    const SESSIONS = [
-      { id: 'doors-open', track: 'general', start: '13:00', end: '13:30', title: 'Doors open & registration' },
-
-      { id: 'opening', track: 'keynote', start: '13:30', end: '13:35', type: 'Opening', title: 'Opening', speaker: 'Avanti Sharma, Master of Ceremonies' },
-      {
-        id: 'keynote-denoo', track: 'keynote', start: '13:35', end: '13:50', type: 'Keynote',
-        title: 'The Tester in 5 Years: AI Perspectives',
-        speaker: 'Olivier Denoo, ps_testware',
-        description: 'Opening keynote. 15 minutes, no Q&A.',
-      },
-      {
-        id: 'keynote-riou-du-cosquer', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote',
-        title: 'Are Your Testing Activities Effective? The Answer with TMMi v2',
-        speaker: 'Eric Riou du Cosquer, Certilog',
-        description: TALK,
-      },
-      {
-        id: 'thales-payloads', track: 'keynote', start: '14:20', end: '14:50', type: 'Keynote',
-        title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
-        speaker: 'Dominique Righetto, Thales',
-        description: [
-          'Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.',
-          'This talk shows how some file types — PDFs, here — can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.',
-          'It is told as a story. A development team is asked to implement file upload against a vague specification: "users must be able to send us PDF files." An application security consultant embedded in the team tests the result, finds a way to slip malicious content through, explains the problem, and the team fixes it together — then the next iteration starts. Round after round, in true die-and-retry fashion, the consultant’s health bar drops, until the feature is finally robust. The point: all that extra work and frustration could have been avoided had the user story been clearer about security in the first place.',
-          'Slides in English. Delivered in English or French depending on the audience.',
-        ].join('||'),
-      },
-      {
-        id: 'octoperf-ai-performance', track: 'workshop', start: '13:30', end: '14:10', type: 'Workshop 1',
-        title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
-        speaker: 'Ouamar Nedil, Director of Performance at OctoPerf',
-        description: [
-          'Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.',
-          'During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice.',
-          'Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.',
-          'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
-        ].join('||'),
-      },
-      { id: 'workshop-xray', track: 'workshop', start: '14:10', end: '14:50', type: 'Workshop 2', title: TBA, speaker: 'Xray' },
-      {
-        id: 'exhibitors', track: 'exhibition', start: '13:30', end: '14:50',
-        title: 'Exhibitors',
-        speaker: 'Xray, OctoPerf, Q-Leap, Q-Guard, Q-Bot, Sembi, GASQ, LNDS, Agilitest',
-        description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
-      },
-
-      { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking', place: 'in the exhibitor area' },
-
-      { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Round table — topic to be announced', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
-      { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Agilitest', description: TALK },
-      { id: 'keynote-bianculli', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Domenico Bianculli, University of Luxembourg', description: TALK },
-      { id: 'workshop-agilitest', track: 'workshop', start: '15:20', end: '16:00', type: 'Workshop 3', title: TBA, speaker: 'Agilitest' },
-      { id: 'workshop-qguard', track: 'workshop', start: '16:00', end: '16:30', type: 'Workshop 4', title: TBA, speaker: 'Q-Guard by Q-Leap' },
-      { id: 'workshop-qbot', track: 'workshop', start: '16:30', end: '17:00', type: 'Workshop 5', title: TBA, speaker: 'Q-Bot' },
-      {
-        id: 'exhibition-afternoon', track: 'exhibition', start: '15:20', end: '17:00',
-        title: 'Exhibitor area',
-        speaker: 'Open all afternoon, including during coffee breaks and the evening cocktail.',
-      },
-
-      { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
-
-      { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
-      { id: 'keynote-opentext', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: TBA, speaker: 'OpenText', description: TALK },
-      { id: 'workshop-sembi', track: 'workshop', start: '17:30', end: '18:10', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
-      { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', type: 'Workshop 7', title: 'Workshop to be announced' },
-      {
-        id: 'exhibition-evening', track: 'exhibition', start: '17:30', end: '18:30',
-        title: 'Exhibitor area',
-        speaker: 'Booths open until the evening cocktail.',
-      },
-
-      { id: 'closing', track: 'general', start: '18:30', end: '18:35', title: 'Closing & thank you', place: 'LSTE organisers', accent: true },
-      { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, title: 'Cocktail & networking', place: 'Salle Pétrusse' },
-    ];
 
     if (!SESSIONS.length) return; // keep showing the "coming soon" empty state
 
@@ -926,6 +935,55 @@
     }
   }
 
+  /* ── Workshop picker (/register/, step 2) ──────────────────────────
+     One card per workshop in SESSIONS, in running order. A workshop with
+     a `booking` link gets a "Reserve my seat" button to its own Odoo
+     event; one without says booking opens soon (no dead link). ─────── */
+  function initWorkshopPicker() {
+    const list = document.getElementById('workshop-list');
+    if (!list) return;
+    const workshops = SESSIONS.filter((s) => s.track === 'workshop');
+    const toMin = (hm) => { const [h, m] = hm.split(':').map(Number); return h * 60 + m; };
+    list.textContent = '';
+    workshops.forEach((w) => {
+      const card = document.createElement('article');
+      card.className = 'card workshop-card';
+      const meta = document.createElement('p');
+      meta.className = 'workshop-card__meta';
+      const num = document.createElement('span');
+      num.className = 'badge badge--workshop';
+      num.textContent = w.type;
+      meta.appendChild(num);
+      meta.appendChild(document.createTextNode(' ' + w.start + '–' + w.end + ' · ' + (toMin(w.end) - toMin(w.start)) + ' min'));
+      card.appendChild(meta);
+      const title = document.createElement('h3');
+      title.className = 'workshop-card__title';
+      title.textContent = w.title;
+      card.appendChild(title);
+      if (w.speaker) {
+        const who = document.createElement('p');
+        who.className = 'workshop-card__speaker';
+        who.textContent = w.speaker;
+        card.appendChild(who);
+      }
+      if (w.booking) {
+        const a = document.createElement('a');
+        a.className = 'btn btn--primary btn--sm workshop-card__cta';
+        a.href = w.booking;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'Reserve my seat';
+        card.appendChild(a);
+      } else {
+        const soon = document.createElement('p');
+        soon.className = 'workshop-card__soon';
+        soon.textContent = 'Seat booking opens soon';
+        card.appendChild(soon);
+      }
+      list.appendChild(card);
+    });
+  }
+
   /* ── Google Maps embeds: click-to-activate ─────────────────────────
      The map iframe is already there (native loading="lazy" defers the
      actual fetch until it's scrolled near), just visually blurred behind
@@ -994,6 +1052,7 @@
     initSponsorModal();
     initSpeakerModal();
     initSchedule();
+    initWorkshopPicker();
     initMapEmbeds();
     initAmbientVideo();
   });

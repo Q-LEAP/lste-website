@@ -79,7 +79,9 @@
    elements default to sitting flush at their parent's left edge, so they
    hug the same x-position as the logo regardless of viewport width. */
 .page-hero--left { text-align: left; }
-.page-hero--left .breadcrumb { justify-content: flex-start; }
+.page-hero--left .breadcrumb,
+.schedule-hero .breadcrumb,
+.speakers-page .breadcrumb { justify-content: flex-start; }
 .page-hero--left .calendar-actions { justify-content: flex-start; }
 .container--left > * { max-width: var(--container-narrow); }
 
@@ -479,3 +481,92 @@
   .for-who-mosaic { scroll-behavior: auto; }
 }
 
+
+/* ── /register/ (2026-09-29): two-step journey ────────────────────────
+   Hero stepper (ticket → workshops → the day), then one section per step.
+   The workshop cards are drawn by initWorkshopPicker() in main.js. */
+.register-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  max-width: 900px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 760px) { .register-steps { grid-template-columns: repeat(3, 1fr); } }
+.register-steps__item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.register-steps__item:has(a):hover { border-color: var(--color-primary); }
+/* Steps 1–2 are links to their section, step 3 is plain text: same box. */
+.register-steps__body {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+.register-steps__num {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+.register-steps__body strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+}
+
+.register-step { scroll-margin-top: var(--header-h); }
+
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+.workshop-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-top: 3px solid #a3e635; /* workshop track colour, as on the programme */
+}
+.workshop-card__meta {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+.workshop-card__title {
+  margin: var(--space-1) 0 0;
+  font-size: 1rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.workshop-card__speaker { margin: 0; font-size: 0.875rem; color: var(--color-body-text); }
+.workshop-card__cta { margin-top: auto; align-self: flex-start; }
+.workshop-card__soon {
+  margin: auto 0 0;
+  padding-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}

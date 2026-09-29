@@ -332,3 +332,10 @@
    full-bleed toolbar instead of under a section's top padding. */
 .programme-section .schedule-hero__meta { justify-content: center; }
 .programme-section .schedule-toolbar { margin-bottom: var(--space-5); }
+.schedule-section { padding-top: var(--space-5); }
+
+/* /schedule/ hero since 2026-09-29: title + one sentence, then the grid. */
+.schedule-hero__lead { max-width: 62ch; color: var(--color-body-text); font-size: 1.0625rem; }
+.schedule-footnote { margin-top: var(--space-5); font-size: 0.875rem; color: var(--color-muted); }
+.schedule-footnote a { color: var(--color-lime); white-space: nowrap; }
+.schedule-footnote a:hover { color: var(--color-cyan); }

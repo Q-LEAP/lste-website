@@ -29,7 +29,7 @@ depends entirely on it.
 - **Language:** the event is held in **English**.
 - **Expected attendance:** 300+ testing and QA professionals.
 - The 2026 programme is **published progressively** on the homepage
-  (`/#programme`; `/schedule/` redirects there) as sessions are confirmed.
+  (`/schedule/`, and also on the homepage) as sessions are confirmed.
   **All times are subject to change up until the day of the event.**
   Rooms: the **Auditorium** (Salle Marie-Thérèse: opening, keynotes, round
   table), **Hands-on Workshops** (Salle Vauban) and the **Exhibitor area &
@@ -62,7 +62,7 @@ depends entirely on it.
   - Exhibitors: Xray, OctoPerf, Q-Leap, Q-Guard, Q-Bot, Sembi, GASQ, LNDS,
     Agilitest.
   - Titles marked "to be announced" on the site aren't known yet — say so.
-- Speakers are presented on the homepage (`/#speakers`), each with a short
+- Speakers are presented on the Speakers page (`/speakers/`), each with a short
   biography. Don't name speakers beyond those listed above.
 
 ## Tickets & registration
@@ -150,8 +150,9 @@ depends entirely on it.
 - About: `/about/`
 - Register: `/register/`
 - Become a Speaker: `/become-a-speaker/`
-- Speakers: `/#speakers` (homepage section; `/speakers/` redirects there)
-- Programme / Schedule: `/#programme` (homepage section; `/schedule/` redirects there)
+- Speakers: `/speakers/`
+- Programme / Schedule: `/schedule/` (also shown on the homepage)
+- Workshops: each hands-on workshop needs its own seat, booked from `/register/#workshops` after registering for the event.
 - Venue: `/venue/`
 - Sponsors: `/#sponsors` (a block on the homepage, not its own page)
 - Partners: `/#partners` (a second homepage block, below the sponsors). Confirmed 2026 partners: **A4Q (Alliance for Qualification)** and **Silicon Luxembourg**. Those two only — no other organisation is a confirmed 2026 partner, so don't name any from past editions. Partnerships are still open; people can write to hello@lste.lu.

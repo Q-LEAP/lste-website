@@ -641,3 +641,9 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 @keyframes auto-scroll-reverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 .news-carousel .news-card { flex: 0 0 320px; width: 320px; }
+
+/* /speakers/ page (since 2026-09-29): the homepage block, promoted to a
+   page, so it clears the fixed header itself instead of sitting under a
+   page hero. */
+.speakers-page { padding-top: calc(var(--header-h) + var(--space-6)); }
+.speakers-page .breadcrumb { margin-bottom: var(--space-5); }

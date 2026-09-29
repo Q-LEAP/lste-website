@@ -11,7 +11,8 @@
 
 - [Accueil](https://www.lste.lu/) : l'événement, la date, le lieu, l'inscription gratuite
 - [Billetterie](https://www.lste.lu/register/) : inscription gratuite, contenu du ticket, FAQ
-- [Programme](https://www.lste.lu/#programme) : déroulé de la journée
+- [Programme](https://www.lste.lu/schedule/) : déroulé de la journée
+- [Speakers](https://www.lste.lu/speakers/) : les intervenants confirmés
 - [Lieu](https://www.lste.lu/venue/) : adresse, accès, transports, accessibilité
 - [Appel à speakers](https://www.lste.lu/call-for-speakers/) : candidatures jusqu'au 30/09/2026
 - [Devenir sponsor](https://www.lste.lu/become-a-sponsor/) : formules et audience

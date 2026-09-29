@@ -14,8 +14,9 @@
          components.css). Sponsors/Gallery/Press/Call for Speakers/Contact live
          in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
          the footer. Speakers was unlisted while it was a placeholder; since
-         2026-09-28 it is a #speakers block on the homepage, reached the same
-         way as Sponsors below. Sponsors was unlisted for the same reason until 2026-08-10, when it
+         2026-09-29 it is its own /speakers/ page again, top-level next to
+         Programme (/schedule/), and "Become a sponsor" moved into More, both
+         at the client's request. Sponsors was unlisted for the same reason until 2026-08-10, when it
          gained real sponsors with pitches worth reaching; since 2026-08-24 it
          is no longer a page at all — the entry jumps to the homepage's
          #sponsors block (localize-paths turns "/#sponsors" into
@@ -23,13 +24,13 @@
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="/about/">About</a></li>
-        <li><a class="main-nav-link" href="/#programme">Programme</a></li>
+        <li><a class="main-nav-link" href="/schedule/">Programme</a></li>
+        <li><a class="main-nav-link" href="/speakers/">Speakers</a></li>
         <li><a class="main-nav-link" href="/venue/">Venue</a></li>
-        <li><a class="main-nav-link" href="/become-a-sponsor/">Become a sponsor</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="/#speakers">Speakers</a></li>
+            <li><a href="/become-a-sponsor/">Become a sponsor</a></li>
             <li><a href="/#sponsors">Sponsors</a></li>
             <li><a href="/gallery/">Gallery</a></li>
                             <li><a href="/contact/">Contact</a></li>
@@ -53,9 +54,9 @@
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
     <li><a href="/about/">About</a></li>
-    <li><a href="/#programme">Programme</a></li>
+    <li><a href="/schedule/">Programme</a></li>
+    <li><a href="/speakers/">Speakers</a></li>
     <li><a href="/venue/">Venue</a></li>
-    <li><a href="/#speakers">Speakers</a></li>
     <li><a href="/#sponsors">Sponsors</a></li>
     <li><a href="/gallery/">Gallery</a></li>
     <li><a href="/press/">Press</a></li>

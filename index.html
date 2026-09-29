@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=3da9d0da">
+<link rel="stylesheet" href="./assets/css/styles.css?v=881fc218">
 
 <style>
   /* Homepage hero: full-bleed photo + directional gradient veil (the
@@ -124,8 +124,9 @@ redirect_from:
          components.css). Sponsors/Gallery/Press/Call for Speakers/Contact live
          in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
          the footer. Speakers was unlisted while it was a placeholder; since
-         2026-09-28 it is a #speakers block on the homepage, reached the same
-         way as Sponsors below. Sponsors was unlisted for the same reason until 2026-08-10, when it
+         2026-09-29 it is its own /speakers/ page again, top-level next to
+         Programme (/schedule/), and "Become a sponsor" moved into More, both
+         at the client's request. Sponsors was unlisted for the same reason until 2026-08-10, when it
          gained real sponsors with pitches worth reaching; since 2026-08-24 it
          is no longer a page at all — the entry jumps to the homepage's
          #sponsors block (localize-paths turns "/#sponsors" into
@@ -133,13 +134,13 @@ redirect_from:
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
         <li><a class="main-nav-link" href="./about/index.html">About</a></li>
-        <li><a class="main-nav-link" href="./index.html#programme">Programme</a></li>
+        <li><a class="main-nav-link" href="./schedule/index.html">Programme</a></li>
+        <li><a class="main-nav-link" href="./speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="./venue/index.html">Venue</a></li>
-        <li><a class="main-nav-link" href="./become-a-sponsor/index.html">Become a sponsor</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="./index.html#speakers">Speakers</a></li>
+            <li><a href="./become-a-sponsor/index.html">Become a sponsor</a></li>
             <li><a href="./index.html#sponsors">Sponsors</a></li>
             <li><a href="./gallery/index.html">Gallery</a></li>
                             <li><a href="./contact/index.html">Contact</a></li>
@@ -163,9 +164,9 @@ redirect_from:
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
     <li><a href="./about/index.html">About</a></li>
-    <li><a href="./index.html#programme">Programme</a></li>
+    <li><a href="./schedule/index.html">Programme</a></li>
+    <li><a href="./speakers/index.html">Speakers</a></li>
     <li><a href="./venue/index.html">Venue</a></li>
-    <li><a href="./index.html#speakers">Speakers</a></li>
     <li><a href="./index.html#sponsors">Sponsors</a></li>
     <li><a href="./gallery/index.html">Gallery</a></li>
     <li><a href="./press/index.html">Press</a></li>
@@ -299,8 +300,9 @@ redirect_from:
   </section>
 
   <!-- Programme — the full grid, on the homepage since 2026-09-29 (the
-       client asked for it here; /schedule/ now redirects to #programme,
-       the same move /speakers/ made on 2026-09-28). Every session lives
+       client asked for it here) and on its own /schedule/ page, both
+       drawn from the same SESSIONS. The client wants a single sentence
+       before the grid, no more; the "times may change" note sits after. Every session lives
        in initSchedule()'s SESSIONS array (src/js/main.js), built from the
        client's "LSTE2026 Draft Program"; this markup is only the frame.
        The toolbar sits between two containers so it can run full-bleed
@@ -310,12 +312,7 @@ redirect_from:
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--purple">Programme</span>
         <h2 id="programme-heading">One afternoon, packed end to end.</h2>
-        <p class="schedule-hero__meta">
-          <span><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Thursday 26 November 2026</span>
-          <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 13:00–21:00</span>
-          <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> H&ocirc;tel Parc Belle-Vue, Luxembourg</span>
-        </p>
-        <p class="schedule-hero__note">Talks in the auditorium, hands-on workshops next door, exhibitors all afternoon. Click a session for details. Times are subject to change up until the day of LSTE.</p>
+        <p>Talks in the auditorium, hands-on workshops next door and exhibitors all afternoon, on 26 November from 13:00.</p>
       </div>
     </div>
 
@@ -348,6 +345,7 @@ redirect_from:
         </div>
         <div class="schedule-mobile" id="schedule-mobile"></div>
       </div>
+      <p class="schedule-footnote">Times are subject to change up until the day of LSTE. <a href="./schedule/index.html">Open the programme page <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
 
     <div class="modal-backdrop" id="session-modal" role="dialog" aria-modal="true" aria-labelledby="session-modal-title" hidden>
@@ -362,149 +360,14 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Speakers — built the same way as #sponsors below, at the client's
-       request (2026-09-28): one card per confirmed speaker, the biography
-       opened in #speaker-modal by initSpeakerModal() in main.js. Each card
-       is a <details>, so without JS it still unfolds in place as an
-       accordion; the script turns the summary into a dialog trigger.
-
-       Only speakers whose name the client has confirmed belong here — the
-       "to be announced" slots in #programme have no named speaker
-       yet, so no card. Order follows the running order of
-       the day. Photos are square crops on the face (assets/img/speaker-*-480),
-       filling the top of the card; no photo yet → an initials square. Never
-       fill this from past editions or invent a bio (see
-       documentation/README.md); /speakers/ now redirects here.
-
-       This section takes the plain background, so #sponsors and the news
-       section after it swapped to keep the section / section--alt
-       alternation down the page. -->
-  <section class="section" id="speakers" aria-labelledby="speakers-heading">
-    <div class="container">
-      <span class="eyebrow eyebrow--violet reveal">Speakers</span>
-      <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
-        <h2 id="speakers-heading" style="margin:0;">Who's taking the stage.</h2>
-        <p class="text-muted" style="margin:0;">The 2026 line-up, published as speakers are confirmed. Select a speaker to read their biography.</p>
-      </div>
-
-      <div class="speaker-grid reveal">
-        <details class="card speaker-card">
-          <summary>
-            <picture class="speaker-card__photo" aria-hidden="true"><source type="image/webp" srcset="./assets/img/speaker-avanti-sharma-480.webp"><img src="./assets/img/speaker-avanti-sharma-480.jpg" width="480" height="480" alt="" loading="lazy" decoding="async"></picture>
-            <span class="badge badge--keynote speaker-card__tag">Master of Ceremonies</span>
-            <span class="speaker-card__name">Avanti Sharma</span>
-            <span class="role">Director of Artificial Intelligence &amp; Growth</span>
-            <span class="speaker-card__company">Workshop4Me</span>
-          </summary>
-          <div class="speaker-card__bio">
-            <p>Avanti Sharma returns as Master of Ceremonies for the Luxembourg Software Testing Event 2026, following her first appearance in this role in 2025.</p>
-            <p>A young technology leader, speaker and changemaker based in Luxembourg, Avanti is particularly active in the fields of artificial intelligence, digital education, STEM and innovation. Her growing involvement in AI brings an additional dimension to this year&rsquo;s edition, complementing the event&rsquo;s focus on software testing, quality and emerging technologies.</p>
-            <p>Beyond guiding the audience throughout the day, Avanti brings her energy, curiosity and fresh perspective to the LSTE, helping create a dynamic link between speakers, sessions and participants.</p>
-            <p>She is also Director of Artificial Intelligence &amp; Growth at Workshop4Me and Founder of L&euml;tz Make SDGs Happen, and is actively involved in Luxembourg&rsquo;s technology and innovation ecosystem.</p>
-            <p class="speaker-card__session"><span class="badge badge--keynote">Opening &amp; round table</span> <a href="#programme">Opens the day at 13:30 and moderates the 15:20 round table</a></p>
-          </div>
-        </details>
-        <details class="card speaker-card">
-          <summary>
-            <picture class="speaker-card__photo" aria-hidden="true"><source type="image/webp" srcset="./assets/img/speaker-olivier-denoo-480.webp"><img src="./assets/img/speaker-olivier-denoo-480.jpg" width="480" height="480" alt="" loading="lazy" decoding="async"></picture>
-            <span class="badge badge--keynote speaker-card__tag">Opening keynote</span>
-            <span class="speaker-card__name">Olivier Denoo</span>
-            <span class="role">Vice-President</span>
-            <span class="speaker-card__company">ps_testware SAS</span>
-          </summary>
-          <div class="speaker-card__bio">
-            <p>Olivier Denoo is an internationally recognized expert in software testing and quality, with more than 25 years of experience in the IT industry.</p>
-            <p>He is currently Vice-President of ps_testware SAS, the French subsidiary of ps_testware group, where he has been leading the development of the business since 2007. His responsibilities include business development, team building, strategic partnerships, market visibility and the overall management of the subsidiary. He has also served as a Board Member of ps_testware group since 2012.</p>
-            <p>Olivier is Vice-President of the ISTQB&reg; &ndash; International Software Testing Qualifications Board, having previously served as its President from 2019 to 2023. He is also President of the CFTL &ndash; Comit&eacute; Fran&ccedil;ais des Tests Logiciels &ndash; and an IREB Ambassador for France and the French-speaking community.</p>
-            <p>Throughout his career, Olivier has managed complex projects across a wide range of industries, including telecommunications, banking and insurance, pharmaceuticals, retail, software publishing and the public sector.</p>
-            <p>A long-standing international speaker, author and advocate for software quality, Olivier regularly contributes to conferences, professional communities and certification initiatives around the world. His areas of expertise include software testing, quality assurance, quality control, auditing, testing strategy, process improvement and international standards.</p>
-            <p class="speaker-card__session"><span class="badge badge--keynote">Keynote</span> <a href="#programme">The Tester in 5 Years: AI Perspectives</a></p>
-          </div>
-        </details>
-        <!-- Eric's card was written from his public profiles (LinkedIn
-             headline: Certilog; IREB people profile) — the client sent only
-             his LinkedIn URL. Swap in his own bio when one arrives. -->
-        <details class="card speaker-card">
-          <summary>
-            <picture class="speaker-card__photo" aria-hidden="true"><source type="image/webp" srcset="./assets/img/speaker-eric-riou-du-cosquer-480.webp"><img src="./assets/img/speaker-eric-riou-du-cosquer-480.jpg" width="480" height="480" alt="" loading="lazy" decoding="async"></picture>
-            <span class="badge badge--keynote speaker-card__tag">Keynote</span>
-            <span class="speaker-card__name">Eric Riou du Cosquer</span>
-            <span class="role">TMMi Accredited Assessor &amp; Trainer</span>
-            <span class="speaker-card__company">Certilog</span>
-          </summary>
-          <div class="speaker-card__bio">
-            <p>Eric Riou du Cosquer has worked on IT projects as a developer, tester and test manager, and now operates on large IT projects to make sure QA and test activities are professionally managed and implemented at every level, by every stakeholder.</p>
-            <p>He is a TMMi accredited assessor and trainer, ISTQB Full Advanced Level certified, a former General Secretary of the ISTQB and a past president of the French ISTQB national board. His work focuses on audit, consulting and training to strengthen requirements engineering and testing processes.</p>
-            <p class="speaker-card__session"><span class="badge badge--keynote">Keynote</span> <a href="#programme">Are Your Testing Activities Effective? The Answer with TMMi v2</a></p>
-          </div>
-        </details>
-        <!-- Dominique Righetto and Domenico Bianculli were named in the
-             client's second programme draft (2026-09-29), with no bio or
-             role yet — the cards carry only what the draft says. Add
-             their bios and photos when they arrive; never write one. -->
-        <details class="card speaker-card" data-logo="./assets/img/thales-logo.svg" data-logo-alt="Thales">
-          <summary>
-            <span class="speaker-card__photo speaker-card__photo--initials" aria-hidden="true">DR</span>
-            <span class="badge badge--keynote speaker-card__tag">Keynote</span>
-            <span class="speaker-card__name">Dominique Righetto</span>
-            <span class="speaker-card__company">Thales</span>
-          </summary>
-          <div class="speaker-card__bio">
-            <p class="speaker-card__session"><span class="badge badge--keynote">Keynote</span> <a href="#programme">The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature</a></p>
-          </div>
-        </details>
-        <details class="card speaker-card" data-logo="./assets/img/uni-lu-logo-400.webp" data-logo-alt="University of Luxembourg">
-          <summary>
-            <span class="speaker-card__photo speaker-card__photo--initials" aria-hidden="true">DB</span>
-            <span class="badge badge--keynote speaker-card__tag">Keynote</span>
-            <span class="speaker-card__name">Domenico Bianculli</span>
-            <span class="speaker-card__company">University of Luxembourg</span>
-          </summary>
-          <div class="speaker-card__bio">
-            <p class="speaker-card__session"><span class="badge badge--keynote">Keynote</span> <a href="#programme">Talk at 16:30, title to be announced</a></p>
-          </div>
-        </details>
-        <details class="card speaker-card" data-logo="./assets/img/octoperf-logo-400.webp" data-logo-alt="OctoPerf">
-          <summary>
-            <span class="speaker-card__photo speaker-card__photo--initials" aria-hidden="true">ON</span>
-            <span class="badge badge--workshop speaker-card__tag">Workshop</span>
-            <span class="speaker-card__name">Ouamar Nedil</span>
-            <span class="role">Director of Performance</span>
-            <span class="speaker-card__company">OctoPerf</span>
-          </summary>
-          <div class="speaker-card__bio">
-            <p>Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.</p>
-            <p class="speaker-card__session"><span class="badge badge--workshop">Workshop</span> <a href="#programme">AI &amp; Performance Testing: an end-to-end performance testing campaign in natural language, from scripting to analysis</a></p>
-          </div>
-        </details>
-      </div>
-
-      <p class="text-muted reveal" style="margin-top:var(--space-6);">More speakers will be announced as the programme is confirmed.</p>
-      <p class="text-center reveal" style="margin-top:var(--space-6);"><a class="btn btn--outline" href="#programme">View the programme <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-
-      <!-- One dialog, repopulated from whichever card was opened. -->
-      <div class="modal-backdrop" id="speaker-modal" role="dialog" aria-modal="true" aria-labelledby="speaker-modal-name" hidden>
-        <div class="modal-dialog sponsor-modal-dialog">
-          <button type="button" class="sponsor-modal__close" id="speaker-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-          <div class="sponsor-modal__plate" id="speaker-modal-plate">
-            <img id="speaker-modal-logo" src="" alt="" decoding="async">
-          </div>
-          <div class="sponsor-modal__body">
-            <span class="eyebrow eyebrow--violet" id="speaker-modal-role"></span>
-            <h2 id="speaker-modal-name"></h2>
-            <div class="sponsor-modal__pitch" id="speaker-modal-bio"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Sponsors — the tier strips used to live on a standalone /sponsors/
        page, folded in here on 2026-08-24 so the sponsors sit on the page
        everyone actually lands on; the nav's "Sponsors" entry now points at
        #sponsors below and /sponsors/ is a redirect stub. This slot is where
-       the "Become a sponsor" CTA section used to be, so the section /
-       section--alt alternation down the page is unchanged.
+       the "Become a sponsor" CTA section used to be. Plain background
+       since 2026-09-29, when the speakers left for /speakers/: it now
+       follows the section--alt programme, and the news block after it
+       took section--alt.
 
        Left-aligned, not centred, on the same axis as "Who we are" and
        "Why come" above: the client reviewed centred tier headings on the old
@@ -512,7 +375,7 @@ redirect_from:
        lived here is now the closing button of this block, and its "400+ from
        banking, insurance, telecom and the public sector" line is dropped —
        "Why come" above already makes that exact claim. -->
-  <section class="section section--alt" id="sponsors" aria-labelledby="sponsors-heading">
+  <section class="section" id="sponsors" aria-labelledby="sponsors-heading">
     <div class="container">
       <span class="eyebrow eyebrow--lime reveal">Who backs LSTE</span>
       <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
@@ -608,7 +471,7 @@ redirect_from:
        hover/focus and sits still entirely under prefers-reduced-motion
        (see news-carousel rules in home.css + initNewsCarousel in main.js
        for the hover/focus pause). -->
-  <section class="section" aria-labelledby="news-heading">
+  <section class="section section--alt" aria-labelledby="news-heading">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow eyebrow--violet">News</span>
@@ -738,7 +601,8 @@ redirect_from:
         <ul>
           <li><a href="./about/index.html">About LSTE</a></li>
           <li><a href="./previous-editions/index.html">Previous Editions</a></li>
-          <li><a href="./index.html#programme">Programme</a></li>
+          <li><a href="./schedule/index.html">Programme</a></li>
+          <li><a href="./speakers/index.html">Speakers</a></li>
           <li><a href="./venue/index.html">Venue</a></li>
         </ul>
       </div>
@@ -777,6 +641,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=d828d505" defer></script>
+<script src="./assets/js/main.js?v=1a5c8956" defer></script>
 </body>
 </html>
