@@ -999,6 +999,31 @@
     list.appendChild(ul);
   }
 
+  /* ── Homepage speakers preview: arrow buttons for the native
+     scroll-snap row (swipe/trackpad work without them). Shown only when
+     the row actually overflows; each press moves by one visible page. */
+  function initSpeakerCarousel() {
+    const track = document.querySelector('.speaker-preview__track');
+    const nav = document.querySelector('.speaker-preview__nav');
+    if (!track || !nav) return;
+    const buttons = nav.querySelectorAll('.speaker-preview__btn');
+    function update() {
+      const max = track.scrollWidth - track.clientWidth;
+      nav.hidden = max <= 2;
+      buttons.forEach((btn) => {
+        btn.disabled = btn.dataset.dir === '-1' ? track.scrollLeft <= 2 : track.scrollLeft >= max - 2;
+      });
+    }
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        track.scrollBy({ left: Number(btn.dataset.dir) * track.clientWidth * 0.8, behavior: 'smooth' });
+      });
+    });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
   /* ── Google Maps embeds: click-to-activate ─────────────────────────
      The map iframe is already there (native loading="lazy" defers the
      actual fetch until it's scrolled near), just visually blurred behind
@@ -1068,6 +1093,7 @@
     initSpeakerModal();
     initSchedule();
     initWorkshopPicker();
+    initSpeakerCarousel();
     initMapEmbeds();
     initAmbientVideo();
   });
