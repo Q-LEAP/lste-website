@@ -330,7 +330,12 @@
 /* Homepage #programme: the same meta line as the old /schedule/ hero, but
    under a centred .section-head, and the grid starts right after the
    full-bleed toolbar instead of under a section's top padding. */
-.programme-section .schedule-hero__meta { justify-content: center; }
+/* Heading + one secondary note, then straight into the grid. */
+.programme-section__head { margin-bottom: var(--space-5); }
+.programme-section__head h2 { margin-bottom: var(--space-3); }
+.programme-section__head p { margin: 0; font-size: 0.9375rem; color: var(--color-muted); }
+.programme-section__head a { color: var(--color-lime); }
+.programme-section__head a:hover { color: var(--color-cyan); }
 .programme-section .schedule-toolbar { margin-bottom: var(--space-5); }
 .schedule-section { padding-top: var(--space-5); }
 

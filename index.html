@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=881fc218">
+<link rel="stylesheet" href="./assets/css/styles.css?v=205abd88">
 
 <style>
   /* Homepage hero: full-bleed photo + directional gradient veil (the
@@ -301,18 +301,19 @@ redirect_from:
 
   <!-- Programme — the full grid, on the homepage since 2026-09-29 (the
        client asked for it here) and on its own /schedule/ page, both
-       drawn from the same SESSIONS. The client wants a single sentence
-       before the grid, no more; the "times may change" note sits after. Every session lives
+       drawn from the same SESSIONS. Since 2026-09-29 the client wants only
+       the heading and the ticket/workshop note above the grid, nothing
+       after it, and no "coming soon" fallback on the homepage (the
+       /schedule/ page keeps one). Every session lives
        in initSchedule()'s SESSIONS array (src/js/main.js), built from the
        client's "LSTE2026 Draft Program"; this markup is only the frame.
        The toolbar sits between two containers so it can run full-bleed
        and stay sticky for as long as the grid is on screen. -->
   <section class="section section--alt programme-section" id="programme" aria-labelledby="programme-heading">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--purple">Programme</span>
-        <h2 id="programme-heading">One afternoon, packed end to end.</h2>
-        <p>Talks in the auditorium, hands-on workshops next door and exhibitors all afternoon, on 26 November from 13:00.</p>
+      <div class="section-head programme-section__head reveal">
+        <h2 id="programme-heading">Explore the LSTE 2026 programme</h2>
+        <p>One ticket gives you access to the full event. Workshops require separate <a href="./register/index.html#workshops">pre-registration</a> due to limited capacity.</p>
       </div>
     </div>
 
@@ -329,13 +330,6 @@ redirect_from:
     </div>
 
     <div class="container">
-      <!-- Fallback if SESSIONS (src/js/main.js) is ever emptied again. -->
-      <div id="schedule-empty" class="schedule-empty">
-        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
-        <p class="schedule-empty__title">Full programme coming soon</p>
-        <p class="schedule-empty__desc">One afternoon across the auditorium, the workshop room and the exhibitor area, ending with the cocktail. The 2026 line-up is being finalised and will appear here closer to the event.</p>
-      </div>
-
       <!-- Populated by initSchedule() (main.js) from SESSIONS. Two
            separate markups (not one grid squeezed down): a CSS-grid
            room/time board for desktop, a time-grouped list for mobile. -->
@@ -345,7 +339,6 @@ redirect_from:
         </div>
         <div class="schedule-mobile" id="schedule-mobile"></div>
       </div>
-      <p class="schedule-footnote">Times are subject to change up until the day of LSTE. <a href="./schedule/index.html">Open the programme page <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
 
     <div class="modal-backdrop" id="session-modal" role="dialog" aria-modal="true" aria-labelledby="session-modal-title" hidden>
@@ -565,9 +558,10 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Tickets CTA: the page's closing conversion moment (ticket + sponsor
-       CTAs together) — the detailed sponsor pitch still lives on
-       /become-a-sponsor/, this just points there. -->
+  <!-- Tickets CTA: the page's closing conversion moment. Registration
+       only since 2026-09-29: the event is close and sponsor recruitment is
+       closed, so the "Become a sponsor" button that sat here is gone (the
+       page is still in the More menu and the footer). -->
   <section class="tickets-cta" aria-labelledby="tickets-heading">
     <div class="tickets-cta__glow" aria-hidden="true"></div>
     <div class="container tickets-cta__inner reveal">
@@ -575,7 +569,6 @@ redirect_from:
       <h2 id="tickets-heading">Be part of LSTE 2026.</h2>
       <div class="hero__actions" style="justify-content:center;">
         <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-        <a class="btn btn--outline btn--lg" href="./become-a-sponsor/index.html">Become a sponsor</a>
       </div>
     </div>
   </section>
@@ -641,6 +634,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=1a5c8956" defer></script>
+<script src="./assets/js/main.js?v=b5c8efd5" defer></script>
 </body>
 </html>

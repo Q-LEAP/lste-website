@@ -697,9 +697,9 @@
      belong to one room — it spans every track column instead of one,
      isn't a filter target, and isn't a modal trigger. ─────────────── */
   function initSchedule() {
-    const emptyEl = document.getElementById('schedule-empty');
+    const emptyEl = document.getElementById('schedule-empty'); // optional: the homepage has none
     const appEl = document.getElementById('schedule-app');
-    if (!emptyEl || !appEl) return;
+    if (!appEl) return;
 
     const EVENT_DATE = '2026-11-26'; // yyyy-mm-dd, for the "Now" line only
     const DAY_START = '13:00';
@@ -717,7 +717,7 @@
     const mobileEl = document.getElementById('schedule-mobile');
     const nowBtn = document.getElementById('schedule-now-btn');
 
-    emptyEl.hidden = true;
+    if (emptyEl) emptyEl.hidden = true;
     appEl.hidden = false;
     if (toolbar) toolbar.hidden = false;
 
