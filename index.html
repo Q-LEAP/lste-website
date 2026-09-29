@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=6d268d5a">
+<link rel="stylesheet" href="./assets/css/styles.css?v=83b336f8">
 
 <style>
   /* Homepage hero: full-bleed photo + directional gradient veil (the
@@ -357,9 +357,11 @@ redirect_from:
   <!-- Speakers preview (2026-09-29, client request): a light carousel
        right after the programme, as a human pause between programme and
        sponsors. A preview only — photo, name, organisation, the talk in
-       one line; the bios stay on /speakers/. Native horizontal scroll
-       with snap (swipe on mobile, ~1.4 cards visible); the arrows are
-       progressive enhancement from initSpeakerCarousel() in main.js. The
+       one line; the bios stay on /speakers/. It loops on its own, slowly
+       (the generic .js-auto-scroll ticker, initAutoScrollCarousels() in
+       main.js; data-mobile="auto" keeps it running on phones too), pauses
+       on hover/focus, and sits still as a scrollable row under
+       prefers-reduced-motion. No arrows, at the client's request. The
        photos reuse the .speaker-photo--* framing from the speaker cards
        (home.css). Order follows the running order of the day. -->
   <section class="section speaker-preview" aria-labelledby="speaker-preview-heading">
@@ -369,12 +371,9 @@ redirect_from:
           <h2 id="speaker-preview-heading">Meet some of our speakers</h2>
           <p class="text-muted">Hear from practitioners and experts shaping today’s conversations in software testing.</p>
         </div>
-        <div class="speaker-preview__nav" hidden>
-          <button type="button" class="speaker-preview__btn" data-dir="-1" aria-label="Previous speakers"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
-          <button type="button" class="speaker-preview__btn" data-dir="1" aria-label="Next speakers"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
-        </div>
       </div>
-      <ul class="speaker-preview__track reveal" aria-label="Speakers">
+      <div class="speaker-preview__carousel js-auto-scroll reveal" data-speed="25" data-mobile="auto">
+      <ul class="js-auto-scroll__track speaker-preview__track" aria-label="Speakers">
           <li class="speaker-slide">
             <a class="speaker-slide__link" href="./speakers/index.html">
               <picture class="speaker-slide__photo speaker-photo--avanti-sharma" aria-hidden="true"><source type="image/webp" srcset="./assets/img/speaker-avanti-sharma-480.webp"><img src="./assets/img/speaker-avanti-sharma-480.jpg" width="480" height="480" alt="" loading="lazy" decoding="async"></picture>
@@ -424,6 +423,7 @@ redirect_from:
             </a>
           </li>
       </ul>
+      </div>
       <p class="speaker-preview__cta"><a href="./speakers/index.html">View all speakers <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
     </div>
   </section>
@@ -711,6 +711,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=0769bf24" defer></script>
+<script src="./assets/js/main.js?v=c0fb651b" defer></script>
 </body>
 </html>

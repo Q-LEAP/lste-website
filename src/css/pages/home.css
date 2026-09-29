@@ -510,22 +510,24 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   object-fit: cover;
   object-position: 50% 50%;
   display: block;
-  transform: scale(var(--photo-zoom, 1));
-  transform-origin: var(--photo-origin, 50% 50%);
+  transform: translate(var(--photo-x, 0%), var(--photo-y, 0%)) scale(var(--photo-zoom, 1));
+  transform-origin: 50% 50%;
 }
 /* One photographic grid for every portrait (2026-09-29, client request):
-   eye line at ~36% of the frame, eyes-to-chin ~30% of it, face centred.
-   The source files are never retouched, so the fit is done here — each
-   portrait gets a zoom (never below 1, so the square never shows a gap)
-   and the point it zooms around, measured on its 480px file. Eric's
-   source is cut at the top of his hair, so he can't gain headroom; the
-   others are matched to that tight grid instead. Reused by the homepage
-   speaker carousel. Portraits with no class are already on the grid. */
-.speaker-photo--avanti-sharma { --photo-zoom: 1.15; --photo-origin: 50% 96%; }
-.speaker-photo--olivier-denoo { --photo-zoom: 1.04; --photo-origin: 50% 36%; }
-.speaker-photo--eric-riou-du-cosquer { --photo-zoom: 1.07; --photo-origin: 50% 0%; }
-.speaker-photo--dominique-righetto { --photo-zoom: 1.04; --photo-origin: 50% 36%; }
-.speaker-photo--domenico-bianculli { --photo-zoom: 1.55; --photo-origin: 50% 31%; }
+   the point between the eyes sits at 50% across / 35% down the square,
+   and every face measures the same 40% of the square from eye line to
+   chin. The source files are never retouched: each portrait gets a zoom
+   (always ≥ 1) and an offset, computed from its eye and chin positions
+   (measured with Apple's Vision face landmarks on the 480px files) and
+   checked to never uncover the edge of the frame. Re-measure and
+   recompute these if a photo file changes. Reused by the homepage
+   speaker carousel. */
+.speaker-photo--avanti-sharma { --photo-zoom: 1.230; --photo-x: 1.73%; --photo-y: -5.86%; }
+.speaker-photo--olivier-denoo { --photo-zoom: 1.264; --photo-x: 2.98%; --photo-y: 3.77%; }
+.speaker-photo--eric-riou-du-cosquer { --photo-zoom: 1.021; --photo-x: -0.90%; --photo-y: 0.96%; }
+.speaker-photo--dominique-righetto { --photo-zoom: 1.252; --photo-x: -0.68%; --photo-y: 5.31%; }
+.speaker-photo--domenico-bianculli { --photo-zoom: 1.569; --photo-x: 0.58%; --photo-y: 13.28%; }
+.speaker-photo--ouamar-nedil { --photo-zoom: 1.219; --photo-x: 3.94%; --photo-y: -0.67%; }
 .speaker-card__photo--initials {
   color: #fff; font-family: var(--font-heading); font-weight: 700;
   font-size: 3rem; letter-spacing: 0.02em;
@@ -672,48 +674,21 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 .speakers-page .breadcrumb { margin-bottom: var(--space-5); }
 
 /* ── Homepage speakers preview carousel ───────────────────────────────
-   Native scroll-snap row: several cards on desktop, ~1.4 on mobile so
-   the next card peeking in says "swipe". Arrows only where it scrolls. */
-.speaker-preview__head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-5);
-  margin-bottom: var(--space-6);
-}
+   Runs on the generic .js-auto-scroll ticker below. Spacing is a
+   margin on each slide rather than a flex gap, so the cloned half lines
+   up exactly and the loop never jumps. Edges fade out so cards slide in
+   and out instead of being cut. */
+.speaker-preview__head { margin-bottom: var(--space-6); }
 .speaker-preview__head h2 { margin-bottom: var(--space-2); }
 .speaker-preview__head p { margin: 0; max-width: 52ch; }
-.speaker-preview__nav { display: none; gap: var(--space-2); flex-shrink: 0; }
-@media (min-width: 900px) { .speaker-preview__nav:not([hidden]) { display: flex; } }
-.speaker-preview__btn {
-  width: 40px; height: 40px;
-  display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-ink);
-  transition: border-color var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease);
+.speaker-preview__carousel {
+  margin-top: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
 }
-.speaker-preview__btn:hover:not(:disabled) { border-color: var(--color-primary); }
-.speaker-preview__btn:disabled { opacity: 0.35; cursor: default; }
-.speaker-preview__track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 70%;
-  gap: var(--space-4);
-  margin: 0;
-  padding: 0 0 var(--space-2);
-  list-style: none;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  overscroll-behavior-x: contain;
-}
-.speaker-preview__track::-webkit-scrollbar { display: none; }
-@media (min-width: 600px) { .speaker-preview__track { grid-auto-columns: calc((100% - 2 * var(--space-4)) / 3); } }
-@media (min-width: 1000px) { .speaker-preview__track { grid-auto-columns: calc((100% - 4 * var(--space-4)) / 5); } }
-.speaker-slide { scroll-snap-align: start; min-width: 0; }
+.speaker-preview__track { gap: 0; padding: 0; margin: 0; list-style: none; }
+.speaker-slide { flex: 0 0 62vw; width: 62vw; margin-right: var(--space-4); }
+@media (min-width: 600px) { .speaker-slide { flex-basis: 220px; width: 220px; } }
 .speaker-slide__link {
   display: flex;
   flex-direction: column;
@@ -725,11 +700,10 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   background: var(--color-surface);
   color: inherit;
   text-decoration: none;
-  transition: border-color var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+  transition: border-color var(--dur-base) var(--ease);
 }
-.speaker-slide__link:hover, .speaker-slide__link:focus-visible { border-color: var(--color-primary); transform: translateY(-3px); }
+.speaker-slide__link:hover, .speaker-slide__link:focus-visible { border-color: var(--color-primary); }
 .speaker-slide__photo { display: block; aspect-ratio: 1; overflow: hidden; background: var(--color-primary); margin-bottom: var(--space-2); }
-.speaker-slide__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .speaker-slide__name, .speaker-slide__org, .speaker-slide__talk { padding: 0 var(--space-4); }
 .speaker-slide__name { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--color-ink); }
 .speaker-slide__org { font-size: 0.8125rem; font-weight: 600; color: var(--color-primary-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -743,7 +717,3 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 }
 .speaker-preview__cta { margin: var(--space-5) 0 0; }
 .speaker-preview__cta a { font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem; }
-@media (prefers-reduced-motion: reduce) {
-  .speaker-preview__track { scroll-behavior: auto; }
-  .speaker-slide__link:hover, .speaker-slide__link:focus-visible { transform: none; }
-}
