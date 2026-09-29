@@ -4,7 +4,7 @@
    yet confirmed) only .schedule-empty shows; the moment it's populated,
    the toolbar/grid/mobile-list/modal switch on with no template changes
    needed. Track colors match the existing .badge--keynote/demo/
-   exhibition/networking palette (components.css) so a track reads the
+   exhibition/cocktail palette (components.css) so a track reads the
    same way here as everywhere else on the site. ─────────────────────── */
 
 /* Compact hero — essentials only, no big vertical hero. */
@@ -87,9 +87,9 @@
 .schedule-filter:hover { color: var(--color-ink); }
 .schedule-filter__dot { width: 0.6em; height: 0.6em; border-radius: 50%; flex-shrink: 0; }
 .schedule-filter__dot--keynote { background: #c4b5fd; }
-.schedule-filter__dot--demo { background: #a3e635; }
+.schedule-filter__dot--workshop { background: #a3e635; }
 .schedule-filter__dot--exhibition { background: #fdba74; }
-.schedule-filter__dot--networking { background: #22d3ee; }
+.schedule-filter__dot--cocktail { background: #22d3ee; }
 .schedule-filter[aria-pressed="true"] { background: var(--color-primary); color: #fff; }
 
 /* ── Empty state ("coming soon") ─────────────────────────────────── */
@@ -108,7 +108,7 @@
 .schedule-mobile { display: block; }
 
 .schedule-grid {
-  --slot-h: 8px; /* one 5-minute row */
+  --slot-h: 15px; /* one 5-minute row — 8px left 30-minute talks with no room for their title */
   position: relative;
   display: grid;
   gap: 1px;
@@ -173,10 +173,24 @@
   overflow: hidden;
 }
 .session-card__speaker { font-size: 0.75rem; color: var(--color-body-text); }
+.session-card__time, .session-card__speaker { flex-shrink: 0; }
+/* Short slots (set by buildGrid() from the duration): up to 15 minutes
+   drops the time line (the time column already shows it) and keeps the
+   title to one line; 5-minute slots (opening, closing) run title and
+   speaker together on a single line. The modal always has the full text. */
+.session-card--short { gap: 0; padding-top: var(--space-1); padding-bottom: var(--space-1); }
+.session-card--short .session-card__time { display: none; }
+.session-card--short .session-card__title { -webkit-line-clamp: 1; }
+.session-card--mid .session-card__title { -webkit-line-clamp: 2; } /* 30-minute slot: room for two lines */
+.session-card--tiny { flex-direction: row; align-items: center; gap: 0.5rem; padding-top: 0; padding-bottom: 0; }
+.session-card--tiny > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.6875rem; line-height: 1; }
+.session-card--tiny .session-card__time { display: none; }
+.session-card--tiny .session-card__title { display: block; flex-shrink: 0; }
+.session-card--tiny .session-card__speaker { flex-shrink: 1; min-width: 0; }
 .session-card--keynote { --track-color: #c4b5fd; }
-.session-card--demo { --track-color: #a3e635; }
+.session-card--workshop { --track-color: #a3e635; }
 .session-card--exhibition { --track-color: #fdba74; }
-.session-card--networking { --track-color: #22d3ee; }
+.session-card--cocktail { --track-color: #22d3ee; }
 .session-card.is-dimmed, .schedule-mobile-card.is-dimmed { display: none; }
 
 /* Cross-track markers (doors open, coffee break…) — day-wide events that
@@ -274,9 +288,9 @@
 .schedule-mobile-card__title { font-family: var(--font-heading); font-weight: 700; color: var(--color-ink); font-size: 0.9375rem; }
 .schedule-mobile-card__speaker { font-size: 0.8125rem; color: var(--color-body-text); }
 .schedule-mobile-card--keynote { --track-color: #c4b5fd; }
-.schedule-mobile-card--demo { --track-color: #a3e635; }
+.schedule-mobile-card--workshop { --track-color: #a3e635; }
 .schedule-mobile-card--exhibition { --track-color: #fdba74; }
-.schedule-mobile-card--networking { --track-color: #22d3ee; }
+.schedule-mobile-card--cocktail { --track-color: #22d3ee; }
 
 /* ── Session detail modal ────────────────────────────────────────── */
 .session-modal-dialog { max-width: 520px; max-height: 90vh; overflow: auto; position: relative; padding: var(--space-6); }

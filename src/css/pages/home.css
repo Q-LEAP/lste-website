@@ -491,7 +491,10 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   border-color: var(--color-primary);
   box-shadow: var(--shadow-md);
 }
-.speaker-card__name { font-family: var(--font-heading); font-weight: 700; font-size: 1.0625rem; }
+.avatar-initials--photo { overflow: hidden; background: var(--color-surface-2, #26222f); }
+.avatar-initials--photo img { width: 100%; height: 100%; object-fit: cover; }
+.speaker-card__tag { margin-bottom: var(--space-2); }
+.speaker-card__name {font-family: var(--font-heading); font-weight: 700; font-size: 1.0625rem; }
 .speaker-card__company { color: var(--color-primary-light); font-size: 0.8125rem; font-weight: 600; }
 .speaker-card__bio { text-align: left; margin-top: var(--space-4); }
 .speaker-card__bio p { color: var(--color-muted); font-size: 0.9375rem; line-height: 1.65; }

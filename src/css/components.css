@@ -507,7 +507,7 @@
 .badge--workshop, .badge--demo { background: #a3e635; color: #17141f; }
 .badge--panel { background: #8b5cf6; color: #17141f; }
 .badge--exhibition { background: #fdba74; color: #17141f; }
-.badge--networking { background: #22d3ee; color: #17141f; }
+.badge--networking, .badge--cocktail { background: #22d3ee; color: #17141f; }
 .badge--audience { background: #c4b5fd; color: #17141f; }
 .badge--visibility { background: #fdba74; color: #17141f; }
 .badge--leads { background: #a3e635; color: #17141f; }

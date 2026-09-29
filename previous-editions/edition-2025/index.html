@@ -87,7 +87,7 @@ redirect_from:
   <link rel="preload" href="../../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../assets/css/styles.css?v=441a4a1a">
+<link rel="stylesheet" href="../../assets/css/styles.css?v=ddf260c1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -151,9 +151,7 @@ redirect_from:
             <li><a href="../../index.html#speakers">Speakers</a></li>
             <li><a href="../../index.html#sponsors">Sponsors</a></li>
             <li><a href="../../gallery/index.html">Gallery</a></li>
-            <li><a href="../../press/index.html">Press</a></li>
-            <li><a href="../../call-for-speakers/index.html">Call for Speakers</a></li>
-            <li><a href="../../contact/index.html">Contact</a></li>
+                            <li><a href="../../contact/index.html">Contact</a></li>
           </ul>
         </li>
       </ul>
@@ -168,12 +166,14 @@ redirect_from:
   </div>
 </header>
 
+<!-- Mobile menu kept short at the client's request (2026-09-29): Become a
+     sponsor, Press and Call for Speakers are desktop-nav only; the footer
+     still links Become a Sponsor on every page. -->
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
     <li><a href="../../about/index.html">About</a></li>
     <li><a href="../../schedule/index.html">Programme</a></li>
     <li><a href="../../venue/index.html">Venue</a></li>
-    <li><a href="../../become-a-sponsor/index.html">Become a sponsor</a></li>
     <li><a href="../../index.html#speakers">Speakers</a></li>
     <li><a href="../../index.html#sponsors">Sponsors</a></li>
     <li><a href="../../gallery/index.html">Gallery</a></li>
@@ -396,32 +396,44 @@ redirect_from:
         <span class="eyebrow eyebrow--cyan">Sponsors &amp; partners</span>
         <h2>Who made LSTE 2025 possible.</h2>
       </div>
+      <!-- Sponsor and partner names were shown here as .edition-tag text
+           pills; on 2026-09-29, at the client's request, they were replaced by
+           the companies' logos, reusing the homepage's .sponsor-strip tiles
+           (home.css, unscoped, so it applies here too; no data-pitch, since
+           this page has no #sponsor-modal). The logo files are the past-sponsor
+           assets kept unreferenced in assets/img/. Sogeti, ainos, Xray and
+           Q-BOT have no logo on disk, so they stay as the company name set in
+           a tile of the same size — swap in an <img> once a logo is supplied.
+           The tile background stays #fff in dark mode (theme.css), hence the
+           fixed dark text colour. A tile with no href has no confirmed
+           official URL yet. Thales is credited as "Thales" only, per the
+           sponsor's communication guidance (see the homepage). -->
       <div class="grid grid--2 reveal">
         <div>
           <h3 style="margin-bottom:var(--space-4);">Sponsored by</h3>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);">
-            <span class="edition-tag">Q-LEAP</span>
-            <span class="edition-tag">Sogeti</span>
-            <span class="edition-tag">Deloitte</span>
-            <span class="edition-tag">NSI</span>
-            <span class="edition-tag">LNDS</span>
-            <span class="edition-tag">THALES</span>
-            <span class="edition-tag">Tricentis</span>
-            <span class="edition-tag">ainos</span>
-            <span class="edition-tag">Xray</span>
+          <div class="sponsor-strip">
+            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap"><img src="../../assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap" decoding="async"></a>
+            <a href="https://www.sogeti.com/" target="_blank" rel="noopener" aria-label="Sogeti"><span style="font-family:var(--font-heading);font-weight:700;font-size:1.0625rem;color:#1f1b2e;text-align:center;">Sogeti</span></a>
+            <a href="https://www.deloitte.com/" target="_blank" rel="noopener" aria-label="Deloitte"><img src="../../assets/img/Deloitte.svg-400.webp" width="160" height="35" loading="lazy" alt="Deloitte" decoding="async"></a>
+            <a href="https://www.nsi.lu/" target="_blank" rel="noopener" aria-label="NSI, a Cegeka company"><img src="../../assets/img/Logo-couleur-PNG-400.webp" width="160" height="80" loading="lazy" alt="NSI, a Cegeka company" decoding="async"></a>
+            <a href="https://www.lnds.lu/" target="_blank" rel="noopener" aria-label="LNDS, Luxembourg National Data Service"><img src="../../assets/img/lnds-logo-400.webp" width="100" height="124" loading="lazy" alt="LNDS, Luxembourg National Data Service" decoding="async"></a>
+            <a href="https://www.thalesgroup.com/en/cybersecurity" target="_blank" rel="noopener" aria-label="Thales"><img src="../../assets/img/thales-logo.svg" width="160" height="36" loading="lazy" alt="Thales" decoding="async"></a>
+            <a href="https://www.tricentis.com/" target="_blank" rel="noopener" aria-label="Tricentis"><img src="../../assets/img/Tricentis-Logo-1-1120x446-1-400.webp" width="160" height="64" loading="lazy" alt="Tricentis" decoding="async"></a>
+            <a><span style="font-family:var(--font-heading);font-weight:700;font-size:1.0625rem;color:#1f1b2e;text-align:center;">ainos</span></a>
+            <a href="https://www.getxray.app/" target="_blank" rel="noopener" aria-label="Xray"><span style="font-family:var(--font-heading);font-weight:700;font-size:1.0625rem;color:#1f1b2e;text-align:center;">Xray</span></a>
           </div>
         </div>
         <div>
           <h3 style="margin-bottom:var(--space-4);">Partners</h3>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);">
-            <span class="edition-tag">Q-BOT</span>
-            <span class="edition-tag">Q-GUARD</span>
-            <span class="edition-tag">jemmic</span>
-            <span class="edition-tag">SQAI Suite</span>
-            <span class="edition-tag">Luxembourg Testing Board</span>
-            <span class="edition-tag">GASQ</span>
-            <span class="edition-tag">ISTQB</span>
-            <span class="edition-tag">IBM</span>
+          <div class="sponsor-strip">
+            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-BOT"><span style="font-family:var(--font-heading);font-weight:700;font-size:1.0625rem;color:#1f1b2e;text-align:center;">Q-BOT</span></a>
+            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-GUARD"><img src="../../assets/img/QGUARD_01-logo-400.webp" width="160" height="42" loading="lazy" alt="Q-GUARD" decoding="async"></a>
+            <a href="https://www.jemmic.com/" target="_blank" rel="noopener" aria-label="jemmic"><img src="../../assets/img/jemmic_logo_retina-400.webp" width="160" height="53" loading="lazy" alt="jemmic" decoding="async"></a>
+            <a href="https://sqai-suite.com/" target="_blank" rel="noopener" aria-label="SQAI Suite"><img src="../../assets/img/SQAISuite-400.webp" width="160" height="89" loading="lazy" alt="SQAI Suite" decoding="async"></a>
+            <a><img src="../../assets/img/LTB-Logo-40300x-400.webp" width="160" height="42" loading="lazy" alt="Luxembourg Testing Board" decoding="async"></a>
+            <a href="https://www.gasq.org/" target="_blank" rel="noopener" aria-label="GASQ"><img src="../../assets/img/GASQ_Logo-400.webp" width="160" height="39" loading="lazy" alt="GASQ" decoding="async"></a>
+            <a href="https://www.istqb.org/" target="_blank" rel="noopener" aria-label="ISTQB"><img src="../../assets/img/istqb_logo-1920w-1024x585-1-400.webp" width="160" height="92" loading="lazy" alt="ISTQB" decoding="async"></a>
+            <a href="https://www.ibm.com/" target="_blank" rel="noopener" aria-label="IBM Platinum Partner"><img src="../../assets/img/IBM_Partner_Plus_platinum_partner_mark_pos_black_RGB-2-400.webp" width="160" height="90" loading="lazy" alt="IBM Platinum Partner" decoding="async"></a>
           </div>
         </div>
       </div>
@@ -566,7 +578,7 @@ redirect_from:
     <img class="lightbox__img" src="" alt="" decoding="async">
     <button class="lightbox__next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
   </div>
-  <script src="../../assets/js/main.js?v=5249d1d6" defer></script>
+  <script src="../../assets/js/main.js?v=3f285cd7" defer></script>
 
 </body>
 </html>

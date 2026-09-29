@@ -23,7 +23,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=441a4a1a">
+<link rel="stylesheet" href="../assets/css/styles.css?v=ddf260c1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -81,9 +81,7 @@ redirect_from:
             <li><a href="../index.html#speakers">Speakers</a></li>
             <li><a href="../index.html#sponsors">Sponsors</a></li>
             <li><a href="../gallery/index.html">Gallery</a></li>
-            <li><a href="../press/index.html">Press</a></li>
-            <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
-            <li><a href="../contact/index.html">Contact</a></li>
+                            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
       </ul>
@@ -98,12 +96,14 @@ redirect_from:
   </div>
 </header>
 
+<!-- Mobile menu kept short at the client's request (2026-09-29): Become a
+     sponsor, Press and Call for Speakers are desktop-nav only; the footer
+     still links Become a Sponsor on every page. -->
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
     <li><a href="../about/index.html">About</a></li>
     <li><a href="../schedule/index.html">Programme</a></li>
     <li><a href="../venue/index.html">Venue</a></li>
-    <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
     <li><a href="../index.html#speakers">Speakers</a></li>
     <li><a href="../index.html#sponsors">Sponsors</a></li>
     <li><a href="../gallery/index.html">Gallery</a></li>
@@ -119,22 +119,14 @@ redirect_from:
 <main id="main">
 
   <!-- Redesigned 2026-09-28 as a data-driven multi-track grid (see the
-       dated entry in documentation/README.md). The real sessions
-       published that same day (previous commit) used to live here as a
-       single timeline — they're now mapped into initSchedule()'s
-       SESSIONS array (src/js/main.js). Two content calls made while
-       porting them over, both one-line changes to revisit later:
-       — the OctoPerf workshop, still with no room badge in the original
-         publish, was placed in the Demo Room track.
-       — "Keynotes & talks begin" (13:30) and "Live demos begin" (14:00)
-         didn't carry over: they were markers compensating for the old
-         layout having no room columns of its own — the grid's "Keynote
-         Room" / "Demo Room" headers now do that job. "Doors open" and
-         "Coffee break" did carry over, as cross-track banners
-         (track: 'general') spanning the full grid width, since neither
-         belongs to one room; the closing cocktail sits in the
-         Networking column instead, since that track would otherwise
-         stand empty all day. -->
+       dated entry in documentation/README.md); every session lives in
+       initSchedule()'s SESSIONS array (src/js/main.js).
+       2026-09-29: rebuilt from the client's "LSTE Program DRAFT" — its
+       times, rooms (Auditorium / Workshop / buffet room) and slots
+       replace the placeholder times; "Networking" renamed "Cocktail",
+       "Keynote Room" renamed "Auditorium Room", and the ticket +
+       calendar buttons removed from the hero at the client's request
+       (the ticket CTA at the bottom of the page stays). -->
 
   <section class="schedule-hero">
     <div class="container">
@@ -148,13 +140,8 @@ redirect_from:
             <span><i class="fa-solid fa-clock" aria-hidden="true"></i> 13:00–21:00</span>
             <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> H&ocirc;tel Parc Belle-Vue, Luxembourg</span>
           </p>
-          <p class="schedule-hero__note">Times are subject to change and more sessions will be added as they're confirmed. <a href="../index.html#speakers">Meet the speakers &rarr;</a></p>
+          <p class="schedule-hero__note">Times are subject to change up until the day of LSTE. <a href="../index.html#speakers">Meet the speakers &rarr;</a></p>
         </div>
-        <a class="btn btn--primary" href="https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="calendar-actions reveal">
-        <a class="btn btn--outline btn--sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=LSTE%202026%20%E2%80%94%20Luxembourg%20Software%20Testing%20Event&amp;dates=20261126T130000/20261126T210000&amp;details=Luxembourg%27s%20software%20testing%20conference%2C%208th%20edition.%20Free%20to%20attend.%20https%3A//lste.lu/&amp;location=Conference%20Center%20H%C3%B4tel%20Parc%20Belle-Vue%2C%205%20Avenue%20Marie-Th%C3%A9r%C3%A8se%2C%20L-2132%20Luxembourg&amp;ctz=Europe/Luxembourg" target="_blank" rel="noopener">Add to Google Calendar</a>
-        <a class="btn btn--outline btn--sm" href="../assets/downloads/lste-2026.ics" download>Download .ics <span class="text-muted" style="font-weight:400;">(Apple / Outlook)</span></a>
       </div>
     </div>
   </section>
@@ -163,10 +150,10 @@ redirect_from:
     <div class="container schedule-toolbar__inner">
       <div class="schedule-filters" role="group" aria-label="Filter the programme by track">
         <button type="button" class="schedule-filter" data-filter="all" aria-pressed="true">All</button>
-        <button type="button" class="schedule-filter" data-filter="keynote" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--keynote" aria-hidden="true"></span>Keynote</button>
-        <button type="button" class="schedule-filter" data-filter="demo" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--demo" aria-hidden="true"></span>Demo</button>
+        <button type="button" class="schedule-filter" data-filter="keynote" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--keynote" aria-hidden="true"></span>Auditorium</button>
+        <button type="button" class="schedule-filter" data-filter="workshop" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--workshop" aria-hidden="true"></span>Workshop</button>
         <button type="button" class="schedule-filter" data-filter="exhibition" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--exhibition" aria-hidden="true"></span>Exhibition</button>
-        <button type="button" class="schedule-filter" data-filter="networking" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--networking" aria-hidden="true"></span>Networking</button>
+        <button type="button" class="schedule-filter" data-filter="cocktail" aria-pressed="false"><span class="schedule-filter__dot schedule-filter__dot--cocktail" aria-hidden="true"></span>Cocktail</button>
       </div>
       <button type="button" class="btn btn--outline btn--sm schedule-now-btn" id="schedule-now-btn" hidden><i class="fa-solid fa-clock" aria-hidden="true"></i> Now</button>
     </div>
@@ -179,12 +166,12 @@ redirect_from:
       <div id="schedule-empty" class="schedule-empty">
         <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
         <p class="schedule-empty__title">Full programme coming soon</p>
-        <p class="schedule-empty__desc">Four tracks, one day — keynotes, live demos, the exhibition floor and networking. The 2026 line-up is being finalised and will appear here, in this same programme grid, closer to the event.</p>
+        <p class="schedule-empty__desc">One day across the auditorium, the workshop room, the exhibition floor and the closing cocktail. The 2026 line-up is being finalised and will appear here, in this same programme grid, closer to the event.</p>
         <div class="cluster" style="justify-content:center;margin-top:var(--space-5);">
-          <span class="badge badge--keynote">Keynote Room</span>
-          <span class="badge badge--demo">Demo Room</span>
+          <span class="badge badge--keynote">Auditorium Room</span>
+          <span class="badge badge--workshop">Workshop Room</span>
           <span class="badge badge--exhibition">Exhibition</span>
-          <span class="badge badge--networking">Networking</span>
+          <span class="badge badge--cocktail">Cocktail</span>
         </div>
       </div>
 
@@ -284,6 +271,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=5249d1d6" defer></script>
+<script src="../assets/js/main.js?v=3f285cd7" defer></script>
 </body>
 </html>

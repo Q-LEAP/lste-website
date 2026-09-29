@@ -601,22 +601,45 @@
     const DAY_END = '21:00';
     const SLOT_MIN = 5; // grid resolution, in minutes
 
+    // Rooms as named in the client's "LSTE Program DRAFT" (received
+    // 2026-09-29): Auditorium, Salle Workshop, Salle Buffet. The buffet
+    // room holds both the exhibition and the cocktail, but they stay two
+    // columns here — the client asked for "Networking" to become
+    // "Cocktail", not to merge it away.
     const TRACKS = [
-      { id: 'keynote', label: 'Keynote Room' },
-      { id: 'demo', label: 'Demo Room' },
+      { id: 'keynote', label: 'Auditorium Room' },
+      { id: 'workshop', label: 'Workshop Room' },
       { id: 'exhibition', label: 'Exhibition' },
-      { id: 'networking', label: 'Networking' },
+      { id: 'cocktail', label: 'Cocktail' },
     ];
 
-    // Published 2026-09-28. Most times are indicative (client: "random
-    // but consistent") and end times are this page's own estimate where
-    // none was given — see the dated README entry for exactly which.
+    // Times, slots and company names come straight from that draft; the
+    // page says times may change up until the day. Slots the draft marks
+    // "[Title TBC]" / "[Speaker TBC]" read "to be announced" rather than
+    // "TBC" (client asked for no "TBC" on the page). The draft's closing
+    // ("Closing & thank you", 19:00–19:05) sits in the Auditorium column,
+    // not as a cross-track banner, because the cocktail runs across it.
     // description supports multiple paragraphs via '||', same convention
     // as the sponsor pitch dialog (initSponsorModal above).
+    const TBA = 'Title to be announced';
     const SESSIONS = [
-      { id: 'doors-open', track: 'general', start: '13:00', end: '13:15', title: 'Doors open & registration' },
+      { id: 'doors-open', track: 'general', start: '13:00', end: '13:30', title: 'Doors open & registration' },
+
+      { id: 'opening', track: 'keynote', start: '13:30', end: '13:35', type: 'Opening', title: 'Opening', speaker: 'Avanti Sharma, Master of Ceremonies' },
       {
-        id: 'thales-payloads', track: 'keynote', start: '14:15', end: '15:00', type: 'Talk',
+        id: 'keynote-denoo', track: 'keynote', start: '13:35', end: '13:50', type: 'Keynote',
+        title: 'The Tester in 5 Years: AI Perspectives',
+        speaker: 'Olivier Denoo, ps_testware',
+        description: 'Opening keynote. 15 minutes, no Q&A.',
+      },
+      {
+        id: 'keynote-riou-du-cosquer', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote',
+        title: 'Are Your Testing Activities Effective? The Answer with TMMi v2',
+        speaker: 'Eric Riou du Cosquer, Certilog',
+        description: '20-minute talk followed by 10 minutes of Q&A.',
+      },
+      {
+        id: 'thales-payloads', track: 'keynote', start: '14:20', end: '14:50', type: 'Keynote',
         title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
         speaker: 'Thales — speaker to be announced',
         description: [
@@ -626,9 +649,8 @@
           'Slides in English. Delivered in English or French depending on the audience.',
         ].join('||'),
       },
-      { id: 'coffee-break', track: 'general', start: '15:00', end: '15:15', title: 'Coffee break' },
       {
-        id: 'octoperf-ai-performance', track: 'demo', start: '15:30', end: '16:15', type: 'Workshop',
+        id: 'octoperf-ai-performance', track: 'workshop', start: '13:30', end: '14:50', type: 'Workshop',
         title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
         speaker: 'Ouamar Nedil, Director of Performance at OctoPerf',
         description: [
@@ -638,7 +660,28 @@
           'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
         ].join('||'),
       },
-      { id: 'networking-cocktail', track: 'networking', start: '18:30', end: '21:00', title: 'Networking cocktail' },
+      {
+        id: 'exhibition-opening', track: 'exhibition', start: '13:30', end: '14:50', type: 'Exhibition',
+        title: 'Exhibition area opening',
+        description: 'The exhibition area is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
+      },
+
+      { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking' },
+
+      { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Round table — topic to be announced', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
+      { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Agilitest', description: '20-minute talk followed by 10 minutes of Q&A.' },
+      { id: 'keynote-unilu', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'University of Luxembourg', description: '20-minute talk followed by 10 minutes of Q&A.' },
+      { id: 'workshop-agilitest', track: 'workshop', start: '15:20', end: '17:00', type: 'Workshop', title: TBA, speaker: 'Agilitest' },
+
+      { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits' },
+
+      { id: 'keynote-6', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: 'Keynote to be announced', description: '20-minute talk followed by 10 minutes of Q&A.' },
+      { id: 'keynote-xray', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: TBA, speaker: 'Xray', description: '20-minute talk followed by 10 minutes of Q&A.' },
+      { id: 'keynote-opentext', track: 'keynote', start: '18:30', end: '19:00', type: 'Keynote', title: TBA, speaker: 'OpenText', description: '20-minute talk followed by 10 minutes of Q&A.' },
+      { id: 'workshop-qguard', track: 'workshop', start: '17:30', end: '19:00', type: 'Workshop', title: TBA, speaker: 'Q-Guard by Q-Leap' },
+      { id: 'closing', track: 'keynote', start: '19:00', end: '19:05', type: 'Closing', title: 'Closing & thank you', speaker: 'LSTE organisers' },
+
+      { id: 'cocktail', track: 'cocktail', start: '18:30', end: '21:00', title: 'Cocktail' },
     ];
 
     if (!SESSIONS.length) return; // keep showing the "coming soon" empty state
@@ -705,6 +748,9 @@
         const card = document.createElement(isGeneral ? 'div' : 'button');
         if (!isGeneral) card.type = 'button';
         card.className = isGeneral ? 'schedule-marker' : 'session-card session-card--' + session.track;
+        if (!isGeneral && end - start <= 5) card.classList.add('session-card--tiny');
+        else if (!isGeneral && end - start <= 15) card.classList.add('session-card--short');
+        else if (!isGeneral && end - start <= 30) card.classList.add('session-card--mid');
         card.style.gridRow = rowStart + ' / ' + rowEnd;
         if (isGeneral) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
@@ -774,7 +820,7 @@
       });
     }
 
-    /* ── Track filters (All / Keynote / Demo / Exhibition / Networking) ──
+    /* ── Track filters (All / Auditorium / Workshop / Exhibition / Cocktail) ──
        Cross-track markers have no data-track, so they're untouched by
        any filter — a coffee break matters no matter which track you
        picked. */

@@ -21,8 +21,8 @@ depends entirely on it.
 ## LSTE 2026 (the upcoming, 8th edition)
 
 - **Date:** Thursday **26 November 2026**.
-- **Hours:** doors open at 13:00; keynotes and talks from 13:30, live demos
-  from 14:00, a coffee break at 15:00, and the networking cocktail from 18:30.
+- **Hours:** 13:00 – 21:00 (doors open at 13:00; closing at 19:00, cocktail
+  from 18:30).
 - **Venue:** Conference Center of Hôtel Parc Belle-Vue, Luxembourg City —
   **5 Avenue Marie-Thérèse, L-2132 Luxembourg**.
 - **Admission:** the conference is **free to attend** (registration required).
@@ -31,18 +31,31 @@ depends entirely on it.
 - The 2026 programme is **published progressively** on `/schedule/` as
   sessions are confirmed. **All times are subject to change up until the day
   of the event.**
-  Confirmed so far:
-  - **Workshop** — "AI & Performance Testing: How to Run an End-to-End
-    Performance Testing Campaign in Natural Language with Your Favorite LLM and
-    OctoPerf. From Scripting to Analysis." by **Ouamar Nedil**, Director of
-    Performance at **OctoPerf**. Bring a laptop with an internet connection.
-    Currently scheduled at 15:30.
-  - **Talk** — "The Devil Is in the Payloads: The Grueling Journey of
-    Implementing a File Transfer Feature", by **Thales** (speaker to be
-    announced), on the security risks of file uploads (PDFs). English slides;
-    delivered in English or French depending on the audience. Currently
-    scheduled at 14:15.
-  - Keynotes and further sessions are still being finalised.
+  Rooms: the **Auditorium Room** (opening, keynotes, round table), the
+  **Workshop Room** (hands-on workshops), the **Exhibition** area (open from
+  13:00) and the **Cocktail** (from 18:30). Running order:
+  - 13:00 Doors open & registration.
+  - 13:30 Opening by **Avanti Sharma** (Master of Ceremonies).
+  - 13:35 Keynote: "The Tester in 5 Years: AI Perspectives" — **Olivier
+    Denoo** (Vice-President, ps_testware SAS; Vice-President of the ISTQB).
+  - 13:50 Keynote: "Are Your Testing Activities Effective? The Answer with
+    TMMi v2" — **Eric Riou du Cosquer** (Certilog).
+  - 14:20 Keynote: "The Devil Is in the Payloads: The Grueling Journey of
+    Implementing a File Transfer Feature" — **Thales** (speaker to be
+    announced). English slides; English or French depending on the audience.
+  - 13:30–14:50 Workshop Room: "AI & Performance Testing — How to Run an
+    End-to-End Performance Testing Campaign in Natural Language with Your
+    Favorite LLM and OctoPerf", **Ouamar Nedil**, Director of Performance at
+    **OctoPerf**. Bring a laptop with an internet connection.
+  - 14:50 Coffee break & networking.
+  - 15:20 Round table moderated by Avanti Sharma (topic to be announced);
+    16:00 keynote by **Agilitest**; 16:30 keynote by the **University of
+    Luxembourg**. Workshop Room 15:20–17:00: workshop by **Agilitest**.
+  - 17:00 Coffee break & booth visits.
+  - 17:30 keynote (to be announced); 18:00 keynote by **Xray**; 18:30 keynote
+    by **OpenText**. Workshop Room 17:30–19:00: **Q-Guard by Q-Leap**.
+  - 18:30 Cocktail; 19:00 Closing & thank you.
+  - Titles marked "to be announced" on the site aren't known yet — say so.
 - Speakers are presented on the homepage (`/#speakers`), each with a short
   biography. Don't name speakers beyond those listed above.
 
