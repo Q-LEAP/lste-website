@@ -516,33 +516,25 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 /* One photographic grid for every portrait (2026-09-29, client request):
    the point between the eyes sits at 50% across / 46% down the square,
    every face measures the same 34% of the square from eye line to chin,
-   and every skull is complete with some space above it. The source files
-   are never retouched: each portrait gets a zoom and an offset computed
-   from its eye and chin positions (Apple Vision face landmarks, see
-   scripts/measure-faces.swift). Where a photo doesn't reach the top of
-   the frame, the frame shows that photo's own wall colour (--photo-bg,
-   sampled from its top rows) and the photo's top edge fades into it.
-   Eric's source is cut through his hair and is the only one zoomed below
-   1, so his fade is longer and covers the sides too. Re-measure and
-   recompute all of this if a photo file changes. Reused by the homepage
-   speaker carousel. */
-.speaker-card__photo, .speaker-slide__photo { background: var(--photo-bg, var(--color-primary)); }
-.speaker-card__photo img, .speaker-slide__photo img {
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 3%);
-  mask-image: linear-gradient(to bottom, transparent, #000 3%);
-}
-.speaker-photo--avanti-sharma { --photo-zoom: 1.045; --photo-x: 1.47%; --photo-y: 3.77%; --photo-bg: rgb(214 216 216); }
-.speaker-photo--olivier-denoo { --photo-zoom: 1.074; --photo-x: 2.53%; --photo-y: 11.95%; --photo-bg: rgb(225 226 228); }
-.speaker-photo--eric-riou-du-cosquer { --photo-zoom: 0.868; --photo-x: -0.77%; --photo-y: 9.57%; --photo-bg: rgb(217 218 214); }
-.speaker-photo--dominique-righetto { --photo-zoom: 1.064; --photo-x: -0.58%; --photo-y: 13.26%; --photo-bg: rgb(217 211 198); }
-.speaker-photo--domenico-bianculli { --photo-zoom: 1.334; --photo-x: 0.49%; --photo-y: 20.04%; --photo-bg: rgb(106 94 85); }
-.speaker-photo--ouamar-nedil { --photo-zoom: 1.036; --photo-x: 3.35%; --photo-y: 8.18%; --photo-bg: rgb(219 218 213); }
-.speaker-photo--eric-riou-du-cosquer img {
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 9%), linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, transparent, #000 9%), linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
-  mask-composite: intersect;
-}
+   and every skull is complete with some space above it. Each portrait
+   gets a zoom and an offset computed from its eye and chin positions
+   (Apple Vision face landmarks, see scripts/measure-faces.swift).
+   The photos are *-480-cutout versions of the originals (subject lifted
+   with macOS Vision, originals kept untouched next to them) on one
+   shared SaaS-white backdrop, --speaker-photo-bg, so every card has the
+   same background and a zoomed-out photo never shows a seam. Eric is
+   the exception: his source is cut through his hair, so at the client's
+   request he keeps his plain framing (no class values) and sits a
+   little higher and larger than the others. Re-measure and recompute
+   all of this if a photo file changes. Reused by the homepage speaker
+   carousel. */
+.speaker-card__photo, .speaker-slide__photo { background: var(--speaker-photo-bg); }
+:root { --speaker-photo-bg: linear-gradient(to bottom, #ffffff, #f2f3f6); }
+.speaker-photo--avanti-sharma { --photo-zoom: 1.045; --photo-x: 1.47%; --photo-y: 3.77%; }
+.speaker-photo--olivier-denoo { --photo-zoom: 1.074; --photo-x: 2.53%; --photo-y: 11.95%; }
+.speaker-photo--dominique-righetto { --photo-zoom: 1.064; --photo-x: -0.58%; --photo-y: 13.26%; }
+.speaker-photo--domenico-bianculli { --photo-zoom: 1.334; --photo-x: 0.49%; --photo-y: 20.04%; }
+.speaker-photo--ouamar-nedil { --photo-zoom: 1.036; --photo-x: 3.35%; --photo-y: 8.18%; }
 .speaker-card__photo--initials {
   color: #fff; font-family: var(--font-heading); font-weight: 700;
   font-size: 3rem; letter-spacing: 0.02em;
@@ -718,7 +710,7 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   transition: border-color var(--dur-base) var(--ease);
 }
 .speaker-slide__link:hover, .speaker-slide__link:focus-visible { border-color: var(--color-primary); }
-.speaker-slide__photo { display: block; aspect-ratio: 1; overflow: hidden; background: var(--photo-bg, var(--color-primary)); margin-bottom: var(--space-2); }
+.speaker-slide__photo { display: block; aspect-ratio: 1; overflow: hidden; background: var(--speaker-photo-bg); margin-bottom: var(--space-2); }
 .speaker-slide__name, .speaker-slide__org, .speaker-slide__talk { padding: 0 var(--space-4); }
 .speaker-slide__name { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--color-ink); }
 .speaker-slide__org { font-size: 0.8125rem; font-weight: 600; color: var(--color-primary-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
