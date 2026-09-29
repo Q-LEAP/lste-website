@@ -522,7 +522,7 @@ body:has(.hero) .site-header:not(.is-scrolled) {
    scripts/measure-faces.swift). Where a photo doesn't reach the top of
    the frame, the frame shows that photo's own wall colour (--photo-bg,
    sampled from its top rows) and the photo's top edge fades into it.
-   Eric is the exception (see below). Re-measure and
+   Re-measure and
    recompute all of this if a photo file changes. Reused by the homepage
    speaker carousel. */
 .speaker-card__photo, .speaker-slide__photo { background: var(--photo-bg, var(--color-primary)); }
@@ -532,13 +532,10 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 }
 .speaker-photo--avanti-sharma { --photo-zoom: 1.045; --photo-x: 1.47%; --photo-y: 3.77%; --photo-bg: rgb(214 216 216); }
 .speaker-photo--olivier-denoo { --photo-zoom: 1.074; --photo-x: 2.53%; --photo-y: 11.95%; --photo-bg: rgb(225 226 228); }
+.speaker-photo--eric-riou-du-cosquer { --photo-zoom: 1.298; --photo-x: 0.13%; --photo-y: 14.08%; --photo-bg: rgb(214 215 210); }
 .speaker-photo--dominique-righetto { --photo-zoom: 1.064; --photo-x: -0.58%; --photo-y: 13.26%; --photo-bg: rgb(217 211 198); }
 .speaker-photo--domenico-bianculli { --photo-zoom: 1.334; --photo-x: 0.49%; --photo-y: 20.04%; --photo-bg: rgb(106 94 85); }
 .speaker-photo--ouamar-nedil { --photo-zoom: 1.036; --photo-x: 3.35%; --photo-y: 8.18%; --photo-bg: rgb(219 218 213); }
-/* Eric's source is cut through his hair: the client prefers him shown
-   as-is (no zoom-out, no fade), so he sits a little higher and larger
-   than the others. The mask override just cancels the shared top fade. */
-.speaker-photo--eric-riou-du-cosquer img { -webkit-mask-image: none; mask-image: none; }
 .speaker-card__photo--initials {
   color: #fff; font-family: var(--font-heading); font-weight: 700;
   font-size: 3rem; letter-spacing: 0.02em;
