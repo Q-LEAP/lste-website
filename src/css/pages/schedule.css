@@ -291,12 +291,14 @@
 }
 .schedule-mobile-card__meta {
   display: flex;
+  flex-wrap: wrap; /* on a narrow phone the tag drops below the time, whole */
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-1) var(--space-2);
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--color-muted);
 }
+.schedule-mobile-card__meta .session-card__book { margin-left: 0; }
 .schedule-mobile-card__title { font-family: var(--font-heading); font-weight: 700; color: var(--color-ink); font-size: 0.9375rem; }
 .schedule-mobile-card__speaker { font-size: 0.8125rem; color: var(--color-body-text); }
 .schedule-mobile-card--keynote { --track-color: #c4b5fd; }
@@ -359,6 +361,8 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap; /* never "BOOK A / SEAT" on two lines */
+  flex-shrink: 0;
 }
 .session-modal__cta {
   display: flex;
