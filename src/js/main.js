@@ -667,7 +667,7 @@
     { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Agilitest', description: TALK },
     { id: 'keynote-bianculli', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Domenico Bianculli, University of Luxembourg', description: TALK },
     { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3', title: TBA, speaker: 'Agilitest' },
-    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Q-Guard by Q-Leap' },
+    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Ritabrata Banerjee, Tech Lead Developer of Q-Guard, Q-Leap' },
     { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:30', end: '17:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5', title: TBA, speaker: 'Q-Bot' },
     {
       id: 'exhibition-afternoon', track: 'exhibition', start: '15:20', end: '17:00',
