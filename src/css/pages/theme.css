@@ -7,7 +7,7 @@
 
 /* Cheap, general-purpose transition for anything whose background/shadow
    changes on hover/focus (cards, buttons, form fields, ...). */
-.site-header, .card, .btn, .chat-panel, .chat-launcher, .faq-item,
+.site-header, .card, .btn, .faq-item,
 .tabs-nav button, .timeline__content details, input, textarea, select,
 .mobile-nav-panel, #back-to-top {
   transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease),
@@ -60,8 +60,7 @@
 /* ── Inputs / textareas: pressed-in neu wells ─────────────────────────── */
 .form-group input,
 .form-group textarea,
-.form-group select,
-.chat-form textarea {
+.form-group select {
   background: var(--color-surface);
   border: none;
   box-shadow: var(--shadow-inset);
@@ -69,8 +68,7 @@
 }
 .form-group input:focus-visible,
 .form-group textarea:focus-visible,
-.form-group select:focus-visible,
-.chat-form textarea:focus-visible {
+.form-group select:focus-visible {
   outline: none;
   box-shadow: var(--shadow-inset), var(--shadow-focus);
 }
@@ -80,19 +78,9 @@
 .tabs-nav button:hover { box-shadow: var(--shadow-md); }
 .tabs-nav button[aria-selected="true"] { box-shadow: var(--shadow-md); }
 
-/* ── Chat quick-reply chips: same raised neu chip as tabs, not a border ── */
-.chat-suggestions button { border-color: transparent; box-shadow: var(--shadow-sm); }
-.chat-suggestions button:hover { border-color: transparent; box-shadow: var(--shadow-md); }
-
 /* ── In-page jump nav chips: same raised neu chip treatment ───────────── */
 .section-jump a { box-shadow: var(--shadow-sm); }
 .section-jump a:hover { box-shadow: var(--shadow-md); color: var(--color-primary); }
-
-/* ── Chat widget on the neu base ──────────────────────────────────────── */
-.chat-panel { border-color: transparent; box-shadow: var(--shadow-lg); }
-.chat-launcher { box-shadow: 0 8px 22px rgba(85, 70, 174, 0.4); }
-.chat-msg--bot { border-color: transparent; box-shadow: var(--shadow-sm); }
-.chat-form textarea { max-height: 120px; }
 
 /* ── Back-to-top: real neu button (also fixes the id/class style gap) ──── */
 #back-to-top {
@@ -122,7 +110,7 @@
 
 /* Never animate away the reduced-motion guarantee. */
 @media (prefers-reduced-motion: reduce) {
-  .site-header, .card, .btn, .chat-panel, .chat-launcher, .faq-item,
+  .site-header, .card, .btn, .faq-item,
   .tabs-nav button, input, textarea, select, .mobile-nav-panel, #back-to-top,
   body { transition: none; }
 }
@@ -135,17 +123,17 @@
    cards, inputs, and chips stay legible — same layout, just an outline
    where none was visually needed before. */
 @media (forced-colors: active) {
-  .card, .chat-panel, .chat-msg--bot, #back-to-top,
+  .card, #back-to-top,
   .tabs-nav button, .sponsor-strip a, .policy-toc, .policy-highlight,
-  .chat-suggestions button, .section-jump a, .resource-card__preview, .main-nav-dropdown,
-  .form-group input, .form-group textarea, .form-group select, .chat-form textarea,
+  .section-jump a, .resource-card__preview, .main-nav-dropdown,
+  .form-group input, .form-group textarea, .form-group select,
   .linkedin-card, .gallery-item, .media-modal-dialog {
     forced-color-adjust: none;
     border: 1px solid CanvasText;
     box-shadow: none;
   }
   .form-group input:focus-visible, .form-group textarea:focus-visible,
-  .form-group select:focus-visible, .chat-form textarea:focus-visible {
+  .form-group select:focus-visible {
     outline: 2px solid Highlight;
     outline-offset: 1px;
   }
