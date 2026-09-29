@@ -647,7 +647,6 @@
       description: [
         'Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.',
         'During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice.',
-        'Ouamar Nedil is a multi-tool performance testing expert with over 15 years of experience.',
         'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
       ].join('||'),
     },
