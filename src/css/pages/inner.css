@@ -822,3 +822,18 @@
 .hotel-card--photo .distance { margin-top: auto; padding-top: var(--space-2); }
 .badge--recommended { background: var(--color-primary); color: #fff; }
 .badge--onsite { background: rgba(10, 8, 24, 0.7); color: #fff; }
+
+/* ── Previous Editions: growth strip + audience (2026-09-30) ──────────
+   Three milestones in one row (stacked on mobile), the latest one
+   highlighted, then the audience as a single lead line and role chips. */
+.growth-strip { display: grid; grid-template-columns: 1fr; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 760px) { .growth-strip { grid-template-columns: 1fr 1fr 1.6fr; } }
+.growth-strip__item { display: flex; flex-direction: column; gap: 0.2rem; padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.growth-strip__item--latest { border-color: var(--color-primary); }
+.growth-strip__year { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; color: var(--color-muted); }
+.growth-strip__value { font-family: var(--font-heading); font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem); font-weight: 700; line-height: 1.1; color: var(--color-ink); }
+.growth-strip__item--latest .growth-strip__value { color: var(--color-lime); }
+.growth-strip__label { font-size: 0.875rem; color: var(--color-body-text); }
+.edition-audience-strip { margin-top: var(--space-6); }
+.edition-audience-strip__lead { max-width: 70ch; margin: 0 0 var(--space-4); color: var(--color-body-text); }
+.edition-audience-strip__lead strong { color: var(--color-ink); }
