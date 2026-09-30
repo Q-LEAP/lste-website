@@ -701,18 +701,6 @@
 .edition-feature .btn { align-self: flex-start; margin-top: auto; }
 .chip-list--sm li { padding: 0.35rem 0.8rem; font-size: 0.8125rem; }
 
-.edition-archive {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: var(--space-4);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.edition-archive__item { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
-.edition-archive__year { display: block; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; line-height: 1; color: var(--color-ink); }
-.edition-archive__edition { display: block; margin-top: var(--space-1); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-primary-light); }
-.edition-archive__facts { display: flex; flex-direction: column; gap: 0.2rem; margin: var(--space-3) 0 0; padding: 0; list-style: none; font-size: 0.875rem; color: var(--color-muted); }
 
 /* ── Press coverage on edition pages: an editorial lead + light cards ── */
 .press-source {
@@ -816,20 +804,46 @@
 .badge--recommended { background: var(--color-primary); color: #fff; }
 .badge--onsite { background: rgba(10, 8, 24, 0.7); color: #fff; }
 
-/* ── Previous Editions: growth strip + audience (2026-09-30) ──────────
-   Three milestones in one row (stacked on mobile), the latest one
-   highlighted, then the audience as a single lead line and role chips. */
-.growth-strip { display: grid; grid-template-columns: 1fr; gap: var(--space-3); margin: 0; padding: 0; list-style: none; }
-@media (min-width: 760px) { .growth-strip { grid-template-columns: 1fr 1fr 1.6fr; } }
-.growth-strip__item { display: flex; flex-direction: column; gap: 0.2rem; padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
-.growth-strip__item--latest { border-color: var(--color-primary); }
-.growth-strip__year { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; color: var(--color-muted); }
-.growth-strip__value { font-family: var(--font-heading); font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem); font-weight: 700; line-height: 1.1; color: var(--color-ink); }
-.growth-strip__item--latest .growth-strip__value { color: var(--color-lime); }
-.growth-strip__label { font-size: 0.875rem; color: var(--color-body-text); }
-.edition-audience-strip { margin-top: var(--space-6); }
-.edition-audience-strip__lead { max-width: 70ch; margin: 0 0 var(--space-4); color: var(--color-body-text); }
-.edition-audience-strip__lead strong { color: var(--color-ink); }
+/* ── Previous Editions as a story (2026-09-30) ──────────────────────
+   History: three photos with year markers and a four-step milestone
+   line; evolution: three era cards with a coloured top edge; press: a
+   slow horizontal ticker (the generic .js-auto-scroll); a light closing
+   "archives on request" box. */
+.history-photos { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+@media (min-width: 760px) { .history-photos { grid-template-columns: repeat(3, 1fr); } }
+.history-photo { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-surface-alt); }
+.history-photo picture { display: block; }
+.history-photo img { width: 100%; height: 220px; object-fit: cover; display: block; }
+.history-photo figcaption { position: absolute; left: var(--space-3); bottom: var(--space-3); padding: 0.25em 0.75em; border-radius: var(--radius-pill); background: rgba(10, 8, 24, 0.7); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 1rem; }
+.milestones { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin: var(--space-8) 0 0; padding: var(--space-5) 0 0; list-style: none; border-top: 1px solid var(--color-border); }
+@media (min-width: 760px) { .milestones { grid-template-columns: repeat(4, 1fr); } }
+.milestones li { display: flex; flex-direction: column; gap: 0.2rem; padding-left: var(--space-4); border-left: 2px solid var(--color-border); }
+.milestones__year { font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; color: var(--color-ink); }
+.milestones__text { font-size: 0.875rem; color: var(--color-body-text); }
+.milestones__now { border-left-color: var(--color-lime) !important; }
+.milestones__now .milestones__year { color: var(--color-lime); }
+
+.era-cards { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
+@media (min-width: 900px) { .era-cards { grid-template-columns: repeat(3, 1fr); } }
+.era-card { --era: var(--color-primary-light); display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); border: 1px solid var(--color-border); border-top: 2px solid var(--era); border-radius: var(--radius-md); background: linear-gradient(180deg, color-mix(in srgb, var(--era) 7%, transparent), transparent 70%), var(--color-surface); }
+.era-card--cyan { --era: var(--color-cyan); }
+.era-card--lime { --era: var(--color-lime); }
+.era-card__years { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; color: var(--era); }
+.era-card h3 { margin: 0; font-size: 1.125rem; }
+.era-card p { margin: 0; font-size: 0.9rem; color: var(--color-body-text); }
+
+.press-carousel { margin-top: 0; }
+.press-slide { flex: 0 0 300px; width: 300px; list-style: none; }
+.press-slide__link { display: flex; flex-direction: column; gap: var(--space-2); height: 100%; padding: var(--space-5); text-decoration: none; color: inherit; transition: border-color var(--dur-fast) var(--ease); }
+.press-slide__link:hover { border-color: var(--color-primary); }
+.press-slide__title { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; line-height: 1.35; color: var(--color-ink); }
+.press-slide__excerpt { font-size: 0.875rem; color: var(--color-muted); }
+.press-slide .news-link { margin-top: auto; padding-top: var(--space-2); font-size: 0.8125rem; }
+
+.archive-request { padding: var(--space-8) 0 var(--space-10); }
+.archive-request__box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4) var(--space-6); padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.archive-request__box h2 { margin: 0 0 var(--space-2); font-size: 1.25rem; }
+.archive-request__box p { margin: 0; color: var(--color-body-text); }
 
 /* ── Edition 2025 audience (2026-09-30) ────────────────────────────────
    Five light cards with a coloured top edge (palette: violet, cyan,
