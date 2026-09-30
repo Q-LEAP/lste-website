@@ -256,12 +256,120 @@ redirect_from:
     </div>
   </section>
 
+  <!-- Sponsors — the tier strips used to live on a standalone /sponsors/
+       page, folded in here on 2026-08-24 so the sponsors sit on the page
+       everyone actually lands on; the nav's "Sponsors" entry now points at
+       #sponsors below and /sponsors/ is a redirect stub. This slot is where
+       the "Become a sponsor" CTA section used to be. Since 2026-09-30 it
+       sits right after "Who we are", as an early credibility signal before
+       "Why come" and the programme (client request, content unchanged);
+       the section backgrounds below were re-alternated to match.
+
+       Left-aligned, not centred, on the same axis as "Who we are" and
+       "Why come" next to it: the client reviewed centred tier headings on the old
+       page and rejected them (see documentation/README.md). The CTA that
+       lived here is now the closing button of this block, and its "400+ from
+       banking, insurance, telecom and the public sector" line is dropped —
+       "Why come" already makes that exact claim. -->
+  <section class="section" id="sponsors" aria-labelledby="sponsors-heading">
+    <div class="container">
+      <span class="eyebrow eyebrow--lime reveal">Who backs LSTE</span>
+      <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
+        <h2 id="sponsors-heading" style="margin:0;">The organisations behind LSTE 2026.</h2>
+        <p class="text-muted" style="margin:0;">LSTE is free to attend thanks to organisations that believe in Luxembourg's testing community and invest in knowledge-sharing.</p>
+      </div>
+
+      <!-- Logos of sponsors from past editions who haven't confirmed for 2026
+           are kept as unreferenced image assets in assets/img/, so they can be
+           re-added quickly once each one confirms. Don't delete those files. -->
+
+      <!-- Each tile carries the sponsor's own pitch in data-pitch, opened in
+           #sponsor-modal by initSponsorModal() in main.js ('||' splits
+           paragraphs). The tile stays a real link to the sponsor's site, so
+           it still works without JS — a sponsor with no data-pitch just
+           behaves as a plain link, no empty dialog. -->
+      <div class="reveal" style="margin-bottom:var(--space-8);">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--platinum">Platinum sponsors</h3>
+        <div class="sponsor-strip">
+          <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap" data-sponsor="Q-Leap" data-tier="Platinum sponsor" data-pitch="Q-Leap has specialised exclusively in software testing and quality assurance since 2012. Built on that real-world experience, LSTE gives professionals a place to exchange practical knowledge, discover new approaches and connect with their peers, year after year."><img src="./assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap" decoding="async"></a>
+          <a href="https://octoperf.com/" target="_blank" rel="noopener" aria-label="OctoPerf" data-sponsor="OctoPerf" data-tier="Platinum sponsor" data-pitch="OctoPerf is an enterprise-grade performance and load testing platform available both as SaaS and on-premise, designed for engineering teams working on modern, distributed applications. It enables teams to simulate realistic user traffic, identify performance bottlenecks, and validate application scalability through scalable load test execution.||By combining advanced load modeling, deep performance analytics, and flexible deployment options, OctoPerf supports a wide range of enterprise testing scenarios while remaining significantly more cost-effective than traditional performance testing solutions. As a result, teams can test earlier in the development lifecycle, reduce release risk, and deliver reliable, high-performing applications without slowing development."><img src="./assets/img/octoperf-logo-400.webp" width="160" height="54" loading="lazy" alt="OctoPerf" decoding="async"></a>
+          <a href="https://www.lnds.lu/" target="_blank" rel="noopener" aria-label="LNDS, Luxembourg National Data Service" data-sponsor="LNDS" data-tier="Platinum sponsor"><img src="./assets/img/lnds-logo-400.webp" width="100" height="124" loading="lazy" alt="LNDS, Luxembourg National Data Service" decoding="async"></a>
+          <a href="https://fr.agilitest.com/" target="_blank" rel="noopener" aria-label="Agilitest" data-sponsor="Agilitest" data-tier="Platinum sponsor"><img src="./assets/img/agilitest-logo-400.webp" width="160" height="81" loading="lazy" alt="Agilitest" decoding="async"></a>
+          <a href="https://www.getxray.app/" target="_blank" rel="noopener" aria-label="Xray" data-sponsor="Xray" data-tier="Platinum sponsor"><img src="./assets/img/xray-logo-400.webp" width="160" height="67" loading="lazy" alt="Xray" decoding="async"></a>
+          <!-- Sembi, the company behind Xray, sits right next to it (added at
+               the client's request, 2026-09-29). -->
+          <a href="https://www.sembi.com/" target="_blank" rel="noopener" aria-label="Sembi" data-sponsor="Sembi" data-tier="Platinum sponsor"><img src="./assets/img/sembi-logo-400.webp" width="160" height="66" loading="lazy" alt="Sembi" decoding="async"></a>
+        </div>
+      </div>
+
+      <!-- Thales must be credited as "Thales" only — never the legal entity
+           name — per the sponsor's own communication guidance. -->
+      <div class="reveal" style="margin-bottom:var(--space-8);">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--gold">Gold sponsors</h3>
+        <div class="sponsor-strip">
+          <a href="https://www.thalesgroup.com/en/cybersecurity" target="_blank" rel="noopener" aria-label="Thales" data-sponsor="Thales" data-tier="Gold sponsor" data-pitch="The most trusted organisations in the world rely on Thales for cybersecurity solutions that keep critical assets safe. With more than 6,000 cybersecurity experts worldwide, its portfolio protects applications, data and identities, including services that close compliance gaps, detect and monitor threats and strengthen defences.||Thales invests in the continuous development of its portfolio by leveraging the latest artificial intelligence and post-quantum cryptography technologies."><img src="./assets/img/thales-logo.svg" width="160" height="36" loading="lazy" alt="Thales" decoding="async"></a>
+          <a href="https://www.uni.lu/en/" target="_blank" rel="noopener" aria-label="University of Luxembourg" data-sponsor="University of Luxembourg" data-tier="Gold sponsor"><img src="./assets/img/uni-lu-logo-400.webp" width="160" height="96" loading="lazy" alt="University of Luxembourg" decoding="async"></a>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-bottom:var(--space-8);">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--silver">Silver sponsors</h3>
+        <p class="text-muted">This tier is still open for 2026. <a href="./become-a-sponsor/index.html">Become a sponsor</a> and join them.</p>
+      </div>
+
+      <!-- Partners sit under the tiers rather than in a section of their own —
+           they belong to the same "who backs LSTE" answer. A4Q and Silicon
+           Luxembourg were confirmed and their logos supplied by the client on
+           2026-08-27; nobody else from past editions is confirmed for 2026, so
+           nobody else is here.
+
+           Their rule head is deliberately NOT a metal. Coming fourth, straight
+           after Platinum/Gold/Silver, a fourth metallic bar would read as a
+           tier below Silver — so it's a flat cyan bar. That bar is now the
+           only thing separating "Partners" from the three sponsor tiers above
+           it: a one-line "Not sponsors — the certification bodies and media
+           that carry LSTE beyond the room." sat here until 2026-08-27, when
+           the client removed it. Neither tile carries data-pitch (no pitch
+           supplied), so initSponsorModal() skips them.
+
+           #partners stays as an id, not a section, so /#partners links
+           keep landing here. -->
+      <div class="reveal" id="partners">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--partners">Partners</h3>
+        <div class="sponsor-strip">
+          <a href="https://allianceforqualification.com/" target="_blank" rel="noopener" aria-label="A4Q, Alliance for Qualification"><img src="./assets/img/a4q-logo-400.webp" width="160" height="37" loading="lazy" alt="A4Q, Alliance for Qualification" decoding="async"></a>
+          <a href="https://www.siliconluxembourg.lu/" target="_blank" rel="noopener" aria-label="Silicon Luxembourg"><img src="./assets/img/silicon-luxembourg-logo-400.webp" width="120" height="82" loading="lazy" alt="Silicon Luxembourg" decoding="async"></a>
+        </div>
+      </div>
+
+      <p class="text-center reveal" style="margin-top:var(--space-8);"><a class="btn btn--outline" href="./become-a-sponsor/index.html">Become a sponsor <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+
+      <!-- One dialog, repopulated from whichever tile was clicked — no
+           per-sponsor markup to keep in sync. -->
+      <div class="modal-backdrop" id="sponsor-modal" role="dialog" aria-modal="true" aria-labelledby="sponsor-modal-name" hidden>
+        <div class="modal-dialog sponsor-modal-dialog">
+          <button type="button" class="sponsor-modal__close" id="sponsor-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          <div class="sponsor-modal__plate">
+            <img id="sponsor-modal-logo" src="" alt="" decoding="async">
+          </div>
+          <div class="sponsor-modal__body">
+            <span class="eyebrow eyebrow--lime" id="sponsor-modal-tier"></span>
+            <h2 id="sponsor-modal-name"></h2>
+            <div class="sponsor-modal__pitch" id="sponsor-modal-pitch"></div>
+            <a class="btn btn--primary" id="sponsor-modal-link" href="#" target="_blank" rel="noopener">Visit website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Why attend: the "5 formats" framing (Keynotes/Workshops/Panels/
        Exhibition/Networking) told from the attendee's side (what you
        get). The same 5 formats, from the sponsor's side (visibility),
        live on /become-a-sponsor/ using .numbered-card instead — kept
        off the homepage now that the Sponsors teaser below is short. -->
-  <section class="section" aria-labelledby="why-heading">
+  <section class="section section--alt" aria-labelledby="why-heading">
     <div class="container">
       <span class="eyebrow eyebrow--cyan reveal">Why come</span>
       <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
@@ -309,7 +417,7 @@ redirect_from:
        client's "LSTE2026 Draft Program"; this markup is only the frame.
        The toolbar sits between two containers so it can run full-bleed
        and stay sticky for as long as the grid is on screen. -->
-  <section class="section section--alt programme-section" id="programme" aria-labelledby="programme-heading">
+  <section class="section programme-section" id="programme" aria-labelledby="programme-heading">
     <div class="container">
       <div class="section-head programme-section__head reveal">
         <h2 id="programme-heading">Explore the LSTE 2026 programme</h2>
@@ -364,7 +472,7 @@ redirect_from:
        prefers-reduced-motion. No arrows, at the client's request. The
        photos reuse the .speaker-photo--* framing from the speaker cards
        (home.css). Order follows the running order of the day. -->
-  <section class="section speaker-preview" aria-labelledby="speaker-preview-heading">
+  <section class="section section--alt speaker-preview" aria-labelledby="speaker-preview-heading">
     <div class="container">
       <div class="speaker-preview__head reveal">
         <div>
@@ -465,7 +573,7 @@ redirect_from:
        goes to the on-site /linkedin/ page. Thumbnails are the posts' own
        og:image, same as on /linkedin/. section--alt, so the sponsors after
        it became plain and the news block alt. -->
-  <section class="section section--alt" aria-labelledby="community-heading">
+  <section class="section" aria-labelledby="community-heading">
     <div class="container">
       <div class="section-head section-head--left reveal">
         <span class="eyebrow eyebrow--lime">Community</span>
@@ -487,113 +595,6 @@ redirect_from:
         </a>
       </div>
       <p style="margin-top:var(--space-6);"><a class="news-link" href="./linkedin/index.html">Explore LSTE on LinkedIn <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-    </div>
-  </section>
-
-  <!-- Sponsors — the tier strips used to live on a standalone /sponsors/
-       page, folded in here on 2026-08-24 so the sponsors sit on the page
-       everyone actually lands on; the nav's "Sponsors" entry now points at
-       #sponsors below and /sponsors/ is a redirect stub. This slot is where
-       the "Become a sponsor" CTA section used to be. Plain since
-       2026-09-30, when the section--alt community strip went in between
-       the speakers preview and this block; the news block after it is alt.
-
-       Left-aligned, not centred, on the same axis as "Who we are" and
-       "Why come" above: the client reviewed centred tier headings on the old
-       page and rejected them (see documentation/README.md). The CTA that
-       lived here is now the closing button of this block, and its "400+ from
-       banking, insurance, telecom and the public sector" line is dropped —
-       "Why come" above already makes that exact claim. -->
-  <section class="section" id="sponsors" aria-labelledby="sponsors-heading">
-    <div class="container">
-      <span class="eyebrow eyebrow--lime reveal">Who backs LSTE</span>
-      <div class="split-media reveal" style="margin-bottom:var(--space-10);align-items:start;">
-        <h2 id="sponsors-heading" style="margin:0;">The organisations behind LSTE 2026.</h2>
-        <p class="text-muted" style="margin:0;">LSTE is free to attend thanks to organisations that believe in Luxembourg's testing community and invest in knowledge-sharing.</p>
-      </div>
-
-      <!-- Logos of sponsors from past editions who haven't confirmed for 2026
-           are kept as unreferenced image assets in assets/img/, so they can be
-           re-added quickly once each one confirms. Don't delete those files. -->
-
-      <!-- Each tile carries the sponsor's own pitch in data-pitch, opened in
-           #sponsor-modal by initSponsorModal() in main.js ('||' splits
-           paragraphs). The tile stays a real link to the sponsor's site, so
-           it still works without JS — a sponsor with no data-pitch just
-           behaves as a plain link, no empty dialog. -->
-      <div class="reveal" style="margin-bottom:var(--space-8);">
-        <h3 class="sponsor-tier-heading sponsor-tier-heading--platinum">Platinum sponsors</h3>
-        <div class="sponsor-strip">
-          <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap" data-sponsor="Q-Leap" data-tier="Platinum sponsor" data-pitch="Q-Leap has specialised exclusively in software testing and quality assurance since 2012. Built on that real-world experience, LSTE gives professionals a place to exchange practical knowledge, discover new approaches and connect with their peers, year after year."><img src="./assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap" decoding="async"></a>
-          <a href="https://octoperf.com/" target="_blank" rel="noopener" aria-label="OctoPerf" data-sponsor="OctoPerf" data-tier="Platinum sponsor" data-pitch="OctoPerf is an enterprise-grade performance and load testing platform available both as SaaS and on-premise, designed for engineering teams working on modern, distributed applications. It enables teams to simulate realistic user traffic, identify performance bottlenecks, and validate application scalability through scalable load test execution.||By combining advanced load modeling, deep performance analytics, and flexible deployment options, OctoPerf supports a wide range of enterprise testing scenarios while remaining significantly more cost-effective than traditional performance testing solutions. As a result, teams can test earlier in the development lifecycle, reduce release risk, and deliver reliable, high-performing applications without slowing development."><img src="./assets/img/octoperf-logo-400.webp" width="160" height="54" loading="lazy" alt="OctoPerf" decoding="async"></a>
-          <a href="https://www.lnds.lu/" target="_blank" rel="noopener" aria-label="LNDS, Luxembourg National Data Service" data-sponsor="LNDS" data-tier="Platinum sponsor"><img src="./assets/img/lnds-logo-400.webp" width="100" height="124" loading="lazy" alt="LNDS, Luxembourg National Data Service" decoding="async"></a>
-          <a href="https://fr.agilitest.com/" target="_blank" rel="noopener" aria-label="Agilitest" data-sponsor="Agilitest" data-tier="Platinum sponsor"><img src="./assets/img/agilitest-logo-400.webp" width="160" height="81" loading="lazy" alt="Agilitest" decoding="async"></a>
-          <a href="https://www.getxray.app/" target="_blank" rel="noopener" aria-label="Xray" data-sponsor="Xray" data-tier="Platinum sponsor"><img src="./assets/img/xray-logo-400.webp" width="160" height="67" loading="lazy" alt="Xray" decoding="async"></a>
-          <!-- Sembi, the company behind Xray, sits right next to it (added at
-               the client's request, 2026-09-29). -->
-          <a href="https://www.sembi.com/" target="_blank" rel="noopener" aria-label="Sembi" data-sponsor="Sembi" data-tier="Platinum sponsor"><img src="./assets/img/sembi-logo-400.webp" width="160" height="66" loading="lazy" alt="Sembi" decoding="async"></a>
-        </div>
-      </div>
-
-      <!-- Thales must be credited as "Thales" only — never the legal entity
-           name — per the sponsor's own communication guidance. -->
-      <div class="reveal" style="margin-bottom:var(--space-8);">
-        <h3 class="sponsor-tier-heading sponsor-tier-heading--gold">Gold sponsors</h3>
-        <div class="sponsor-strip">
-          <a href="https://www.thalesgroup.com/en/cybersecurity" target="_blank" rel="noopener" aria-label="Thales" data-sponsor="Thales" data-tier="Gold sponsor" data-pitch="The most trusted organisations in the world rely on Thales for cybersecurity solutions that keep critical assets safe. With more than 6,000 cybersecurity experts worldwide, its portfolio protects applications, data and identities, including services that close compliance gaps, detect and monitor threats and strengthen defences.||Thales invests in the continuous development of its portfolio by leveraging the latest artificial intelligence and post-quantum cryptography technologies."><img src="./assets/img/thales-logo.svg" width="160" height="36" loading="lazy" alt="Thales" decoding="async"></a>
-          <a href="https://www.uni.lu/en/" target="_blank" rel="noopener" aria-label="University of Luxembourg" data-sponsor="University of Luxembourg" data-tier="Gold sponsor"><img src="./assets/img/uni-lu-logo-400.webp" width="160" height="96" loading="lazy" alt="University of Luxembourg" decoding="async"></a>
-        </div>
-      </div>
-
-      <div class="reveal" style="margin-bottom:var(--space-8);">
-        <h3 class="sponsor-tier-heading sponsor-tier-heading--silver">Silver sponsors</h3>
-        <p class="text-muted">This tier is still open for 2026. <a href="./become-a-sponsor/index.html">Become a sponsor</a> and join them.</p>
-      </div>
-
-      <!-- Partners sit under the tiers rather than in a section of their own —
-           they belong to the same "who backs LSTE" answer. A4Q and Silicon
-           Luxembourg were confirmed and their logos supplied by the client on
-           2026-08-27; nobody else from past editions is confirmed for 2026, so
-           nobody else is here.
-
-           Their rule head is deliberately NOT a metal. Coming fourth, straight
-           after Platinum/Gold/Silver, a fourth metallic bar would read as a
-           tier below Silver — so it's a flat cyan bar. That bar is now the
-           only thing separating "Partners" from the three sponsor tiers above
-           it: a one-line "Not sponsors — the certification bodies and media
-           that carry LSTE beyond the room." sat here until 2026-08-27, when
-           the client removed it. Neither tile carries data-pitch (no pitch
-           supplied), so initSponsorModal() skips them.
-
-           #partners stays as an id, not a section, so /#partners links
-           keep landing here. -->
-      <div class="reveal" id="partners">
-        <h3 class="sponsor-tier-heading sponsor-tier-heading--partners">Partners</h3>
-        <div class="sponsor-strip">
-          <a href="https://allianceforqualification.com/" target="_blank" rel="noopener" aria-label="A4Q, Alliance for Qualification"><img src="./assets/img/a4q-logo-400.webp" width="160" height="37" loading="lazy" alt="A4Q, Alliance for Qualification" decoding="async"></a>
-          <a href="https://www.siliconluxembourg.lu/" target="_blank" rel="noopener" aria-label="Silicon Luxembourg"><img src="./assets/img/silicon-luxembourg-logo-400.webp" width="120" height="82" loading="lazy" alt="Silicon Luxembourg" decoding="async"></a>
-        </div>
-      </div>
-
-      <p class="text-center reveal" style="margin-top:var(--space-8);"><a class="btn btn--outline" href="./become-a-sponsor/index.html">Become a sponsor <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-
-      <!-- One dialog, repopulated from whichever tile was clicked — no
-           per-sponsor markup to keep in sync. -->
-      <div class="modal-backdrop" id="sponsor-modal" role="dialog" aria-modal="true" aria-labelledby="sponsor-modal-name" hidden>
-        <div class="modal-dialog sponsor-modal-dialog">
-          <button type="button" class="sponsor-modal__close" id="sponsor-modal-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-          <div class="sponsor-modal__plate">
-            <img id="sponsor-modal-logo" src="" alt="" decoding="async">
-          </div>
-          <div class="sponsor-modal__body">
-            <span class="eyebrow eyebrow--lime" id="sponsor-modal-tier"></span>
-            <h2 id="sponsor-modal-name"></h2>
-            <div class="sponsor-modal__pitch" id="sponsor-modal-pitch"></div>
-            <a class="btn btn--primary" id="sponsor-modal-link" href="#" target="_blank" rel="noopener">Visit website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -778,6 +779,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=306f719d" defer></script>
+<script src="./assets/js/main.js?v=35dd0b6c" defer></script>
 </body>
 </html>
