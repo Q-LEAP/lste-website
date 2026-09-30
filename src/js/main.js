@@ -1012,9 +1012,9 @@
   }
 
   /* ── Google Maps embeds: click-to-activate ─────────────────────────
-     The map iframe is already there (native loading="lazy" defers the
-     actual fetch until it's scrolled near), just visually blurred behind
-     a frosted-glass overlay with pointer-events disabled — so scrolling
+     The map iframe loads right away (native loading="lazy" defers the
+     actual fetch until it's scrolled near), fully visible behind
+     a light overlay, with pointer-events disabled — so scrolling
      past it never gets captured by the map's own scroll/zoom handling.
      Clicking the overlay removes it and hands control to the map. ──── */
   function initMapEmbeds() {

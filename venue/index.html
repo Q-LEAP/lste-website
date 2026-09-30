@@ -23,7 +23,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=2b4f59be">
+<link rel="stylesheet" href="../assets/css/styles.css?v=858dd2a6">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -157,10 +157,15 @@ redirect_from:
           </div>
         </div>
         <div class="map-embed js-map-embed">
-          <iframe data-src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
-          <button type="button" class="map-embed__activate">
+          <div class="map-embed__fallback">
             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-            <span>Click to interact with the map</span>
+            <p class="map-embed__fallback-name">Conference Center, H&ocirc;tel Parc Belle-Vue</p>
+            <p>5 Avenue Marie-Th&eacute;r&egrave;se, L-2132 Luxembourg</p>
+            <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Open in Google Maps <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <iframe src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
+          <button type="button" class="map-embed__activate">
+            <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Click to interact with the map</span>
           </button>
         </div>
       </div>

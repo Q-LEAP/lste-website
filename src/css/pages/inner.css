@@ -189,42 +189,51 @@
    With no definite parent height (single-column/mobile), a percentage
    height is invalid and computes to auto, so `aspect-ratio` takes over and
    gives the iframe a sensible self-contained size instead of collapsing. */
-.map-embed { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
-.map-embed iframe { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; min-height: 320px; border: 0; pointer-events: none; }
-/* Frosted-glass "click to activate" overlay: the real map is already
-   loading underneath (native loading="lazy", so it only fetches once
-   scrolled close), just softly blurred and dimmed until the visitor
-   chooses to interact — avoids the classic scroll-jacking annoyance of
-   an embedded map capturing the mouse wheel. Reuses --header-bg, the
-   same theme-aware translucent surface already used for the frosted
-   site header, so the glass tint stays correct in dark mode too. */
+.map-embed { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); background: var(--color-surface-alt); border: 1px solid var(--color-border); }
+.map-embed iframe { position: relative; z-index: 1; display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; min-height: 320px; border: 0; pointer-events: none; }
+/* Sits under the iframe: visible while Google Maps loads, and stays the
+   whole story if the embed never arrives (blocker, strict network) — the
+   box is never a blank rectangle. Once the map paints, it covers this. */
+.map-embed__fallback {
+  position: absolute; inset: 0; z-index: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-2); padding: var(--space-6);
+  text-align: center; color: var(--color-body-text);
+}
+.map-embed__fallback > i { font-size: 2rem; color: var(--color-primary); margin-bottom: var(--space-2); }
+.map-embed__fallback p { margin: 0; }
+.map-embed__fallback-name { font-family: var(--font-heading); font-weight: 600; font-size: 1.125rem; color: var(--color-ink); }
+.map-embed__fallback .btn { margin-top: var(--space-3); }
+/* "Click to interact" overlay. The real map loads right away underneath
+   (native loading="lazy", so only once scrolled close) and stays fully
+   visible — no blur, since a blurred or unloaded map read as broken
+   (2026-09-30). The overlay only stops the iframe capturing the mouse
+   wheel while scrolling past; the pill sits at the bottom so it never
+   hides Google's venue pin in the centre. Clicking removes it and hands
+   control to the map at the same location and zoom. */
 .map-embed__activate {
   position: absolute;
   inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: var(--space-3);
-  background: var(--header-bg);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  z-index: 2;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding: var(--space-4);
+  background: linear-gradient(to top, rgba(15, 12, 22, 0.45), rgba(15, 12, 22, 0) 45%);
   color: var(--color-ink);
   font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem;
   text-align: center;
-  transition: background var(--dur-base) var(--ease), backdrop-filter var(--dur-base) var(--ease), -webkit-backdrop-filter var(--dur-base) var(--ease);
+  cursor: pointer;
 }
-.map-embed__activate i { font-size: 1.75rem; color: var(--color-primary); }
 .map-embed__activate span {
+  display: inline-flex; align-items: center; gap: 0.5em;
   background: var(--color-surface);
-  padding: 0.5em 1.1em;
+  padding: 0.55em 1.2em;
   border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
+  transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
 }
-/* Hover/focus sharpens the preview (less blur) to invite the click — it
-   must stay translucent throughout, never flip to an opaque fill, or the
-   map "disappears" behind a flat panel instead of coming into focus. */
-.map-embed__activate:hover, .map-embed__activate:focus-visible {
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
+.map-embed__activate i { color: var(--color-primary); transition: color var(--dur-base) var(--ease); }
+.map-embed__activate:hover span, .map-embed__activate:focus-visible span { background: var(--color-primary); color: #fff; transform: translateY(-2px); }
+.map-embed__activate:hover i, .map-embed__activate:focus-visible i { color: #fff; }
 
 .venue-feature-list { display: flex; flex-direction: column; gap: var(--space-3); margin: var(--space-5) 0; }
 .venue-feature-list li { display: flex; align-items: flex-start; gap: var(--space-3); font-size: 0.9375rem; color: var(--color-body-text); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }

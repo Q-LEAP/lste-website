@@ -19,7 +19,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=2b4f59be">
+<link rel="stylesheet" href="../assets/css/styles.css?v=858dd2a6">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -147,10 +147,15 @@
       </div>
 
       <div class="reveal map-embed js-map-embed" style="margin-top:var(--space-10);">
-        <iframe data-src="https://www.google.com/maps?q=10B+rue+des+m%C3%A9rovingiens,+8070+Bertrange,+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Q-Leap SA offices, Bertrange"></iframe>
-        <button type="button" class="map-embed__activate">
+        <div class="map-embed__fallback">
           <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-          <span>Click to interact with the map</span>
+          <p class="map-embed__fallback-name">Q-Leap SA</p>
+          <p>10B rue des m&eacute;rovingiens, L-8070 Bertrange, Luxembourg</p>
+          <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=10B+rue+des+m%C3%A9rovingiens%2C+8070+Bertrange%2C+Luxembourg" target="_blank" rel="noopener">Open in Google Maps <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <iframe src="https://www.google.com/maps?q=10B+rue+des+m%C3%A9rovingiens,+8070+Bertrange,+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Q-Leap SA offices, Bertrange"></iframe>
+        <button type="button" class="map-embed__activate">
+          <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Click to interact with the map</span>
         </button>
       </div>
     </div>
