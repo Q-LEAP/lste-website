@@ -26,7 +26,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=3e4ba569">
+<link rel="stylesheet" href="../assets/css/styles.css?v=1269608b">
 </head>
 <body>
 
@@ -102,70 +102,48 @@ redirect_from:
 <!--NAV_END-->
 
 <main id="main">
-  <!-- Rethought 2026-09-29 as a two-step journey, at the client's request:
-       1) the free ticket (the existing Odoo event), 2) a seat in each
-       hands-on workshop, booked separately because every workshop is its
-       own capped Odoo event. The workshop cards are drawn by
+  <!-- Simplified 2026-09-30 at the client's request: one hero with the
+       single primary CTA (the Odoo event), what the ticket includes in one
+       light line, then the workshops as an accordion (functional
+       navigation, not a FAQ), then straight to the footer. No steps, no
+       FAQ, no closing CTA banner. The workshop accordion is drawn by
        initWorkshopPicker() (main.js) from the same SESSIONS as the
        programme, so a changed slot or a new booking link shows up here
-       with no edit to this page. The stepper in the hero is the page's
-       table of contents. The FAQ was removed at the client's request
-       (2026-09-30). -->
-  <section class="page-hero page-hero--left">
+       with no edit to this page. -->
+  <section class="page-hero page-hero--left page-hero--compact register-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Tickets</span></nav>
-      <h1>Get your free ticket.</h1>
-      <p style="max-width:52ch;color:var(--color-body-text);font-size:1.125rem;">Two minutes to register, then pick the hands-on workshops you want a seat in.</p>
-      <div class="hero__meta" style="margin:var(--space-5) 0 var(--space-6);">
-        <span><i class="fa-solid fa-calendar" aria-hidden="true"></i> 26 November 2026 · 13:00–21:00</span>
-        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hôtel Parc Belle-Vue · Luxembourg City</span>
-      </div>
-      <ol class="register-steps">
-        <li class="register-steps__item"><a class="register-steps__body" href="#ticket"><span class="register-steps__num">1</span><span><strong>Register</strong> Free, for everyone</span></a></li>
-        <li class="register-steps__item"><a class="register-steps__body" href="#workshops"><span class="register-steps__num">2</span><span><strong>Pick your workshops</strong> Limited seats</span></a></li>
-        <li class="register-steps__item"><span class="register-steps__body"><span class="register-steps__num">3</span><span><strong>See you on 26 November</strong> From 13:00</span></span></li>
-      </ol>
+      <h1>Get your free ticket</h1>
+      <p class="register-hero__lead">Join Luxembourg&rsquo;s software testing and quality community for an afternoon of talks, workshops, demos and professional exchange.</p>
+      <p class="register-hero__meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> 26 November 2026 &middot; 13:00&ndash;21:00</span><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> H&ocirc;tel Parc Belle-Vue &middot; Luxembourg City</span></p>
+      <p class="register-hero__cta"><a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/lste2026-registration-24/register" target="_blank" rel="noopener">Register for free <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+      <p class="register-hero__note">Free registration &middot; Limited capacity</p>
     </div>
   </section>
 
-  <section class="section register-step" id="ticket" aria-labelledby="ticket-heading">
+  <section class="section register-includes" id="ticket" aria-labelledby="ticket-heading">
     <div class="container">
-      <div class="split-media" style="align-items:center;">
-        <div class="reveal">
-          <span class="eyebrow eyebrow--lime">Step 1 · Your ticket</span>
-          <h2 id="ticket-heading">One free ticket. The whole event.</h2>
-          <p class="text-muted">Keynotes in the auditorium, the round table, the exhibitor area, the coffee breaks and the evening cocktail. No tiers, no hidden fees.</p>
-          <p style="margin-top:var(--space-5);"><a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/lste2026-registration-24/register" target="_blank" rel="noopener">Register for free <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-          <p style="margin-top:var(--space-3);color:var(--color-muted);font-size:0.875rem;">Free registration. Limited capacity.</p>
-        </div>
-        <article class="card pricing-card reveal">
-          <p style="font-weight:600;color:var(--color-ink);margin-bottom:var(--space-3);">Your ticket includes:</p>
-          <ul class="pricing-card__features">
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> All talks and keynotes</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Exhibitor area, all afternoon</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Coffee breaks and refreshments</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Networking cocktail</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Access to the hands-on workshops (seat booked in step 2)</li>
-          </ul>
-        </article>
-      </div>
+      <h2 id="ticket-heading" class="register-section-title">Your ticket includes</h2>
+      <ul class="register-includes__list">
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Talks &amp; keynotes</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Exhibitor &amp; demo area</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Coffee breaks</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Networking cocktail</li>
+      </ul>
+      <p class="register-includes__note">One ticket, full access to the main event. Your registration remains valid throughout the event: join us at the time that suits you.</p>
     </div>
   </section>
 
-  <section class="section section--alt register-step" id="workshops" aria-labelledby="workshops-heading">
+  <section class="section section--alt register-workshops" id="workshops" aria-labelledby="workshops-heading">
     <div class="container">
-      <div class="section-head section-head--left reveal">
-        <span class="eyebrow eyebrow--lime">Step 2 · Your workshops</span>
-        <h2 id="workshops-heading">Save a seat in the hands-on workshops.</h2>
-        <p>Seven small-group workshops run one after another in Salle Vauban, alongside the talks. Seats are limited, so book each one you want once you have your ticket.</p>
-      </div>
-      <div class="reveal" id="workshop-list">
+      <h2 id="workshops-heading" class="register-section-title">Hands-on workshops</h2>
+      <p class="register-workshops__intro">Workshop seats are limited and require a separate reservation after your main event registration.</p>
+      <div id="workshop-list">
         <p class="text-muted">The workshop list needs JavaScript. See them on the <a href="../schedule/index.html">programme</a>.</p>
       </div>
-      <p class="schedule-footnote">Workshops run at the same time as some talks: <a href="../schedule/index.html">check the programme <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+      <p class="register-closing">One day. Luxembourg&rsquo;s software testing and quality community.</p>
     </div>
   </section>
-
 </main>
 
 <!--FOOTER_START-->
@@ -228,6 +206,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=197b276d" defer></script>
+<script src="../assets/js/main.js?v=306f719d" defer></script>
 </body>
 </html>

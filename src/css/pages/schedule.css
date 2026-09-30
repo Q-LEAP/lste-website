@@ -215,15 +215,21 @@
   letter-spacing: 0.02em;
 }
 .schedule-marker__time { font-weight: 700; color: var(--color-ink); }
-/* 5-minute banner (closing): one 15px row, so no vertical padding. */
-.schedule-marker--tiny { padding-top: 0; padding-bottom: 0; font-size: 0.6875rem; line-height: 1; }
+/* 5-minute banner (closing): one 15px row, so no vertical padding. Since
+   2026-09-30 it reads "18:30–18:35 · Closing" in brighter text, still
+   compact. */
+.schedule-marker--tiny { padding-top: 0; padding-bottom: 0; font-size: 0.75rem; line-height: 1; color: var(--color-body-text); background: var(--color-surface); }
+.schedule-marker--tiny .schedule-marker__title { color: var(--color-ink); font-weight: 600; }
+.schedule-marker--tiny .schedule-marker__title::before { content: "·"; margin-right: var(--space-2); color: var(--color-muted); font-weight: 400; }
 /* Closing: the draft's one filled banner — the formal end of the talks. */
 .schedule-marker--accent { background: var(--color-primary); color: rgba(255, 255, 255, 0.85); }
 .schedule-marker--accent .schedule-marker__time { color: #fff; }
 
-/* Cocktail & Networking (2026-09-30): the programme's final destination,
-   not just another banner. Full width in both layouts, stronger contrast,
-   more height, with the room on its own line. Overrides the plain
+/* Cocktail & Networking (2026-09-30): the programme's final destination.
+   Refined the same day at the client's request: a dark surface close to
+   the page, with purple kept to the accent edge, the icon and the time,
+   so the block reads as the end of the day without outweighing the
+   talks and workshops above it. Room on its own line. Overrides the plain
    .schedule-marker look on desktop. */
 .schedule-finale {
   display: flex;
@@ -231,29 +237,30 @@
   justify-content: flex-start;
   gap: var(--space-4);
   padding: var(--space-4) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary);
   border-radius: var(--radius-md);
-  background: linear-gradient(120deg, var(--color-primary), #3b1a8a);
-  color: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(90deg, rgba(109, 40, 217, 0.14), rgba(109, 40, 217, 0) 60%), var(--color-surface);
+  color: var(--color-body-text);
   font-family: var(--font-body);
   font-size: 0.9375rem;
   letter-spacing: 0;
   text-align: left;
-  box-shadow: var(--shadow-md);
 }
 .schedule-finale__icon {
   display: grid; place-items: center; flex-shrink: 0;
   width: 2.75rem; height: 2.75rem;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
-  color: var(--color-lime);
+  background: rgba(109, 40, 217, 0.18);
+  color: var(--color-primary-light);
   font-size: 1.125rem;
 }
 .schedule-finale__body { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); row-gap: 0.15rem; }
-.schedule-finale__time { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--color-lime); letter-spacing: 0.02em; }
-.schedule-finale__title { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: #fff; }
-.schedule-finale__place { font-weight: 600; color: #fff; }
+.schedule-finale__time { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--color-primary-light); letter-spacing: 0.02em; }
+.schedule-finale__title { font-family: var(--font-heading); font-size: 1.125rem; font-weight: 700; color: var(--color-ink); }
+.schedule-finale__place { font-weight: 600; color: var(--color-ink); }
 .schedule-finale__place::before { content: "·"; margin-right: var(--space-3); opacity: 0.6; }
-.schedule-finale__note { flex-basis: 100%; color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; }
+.schedule-finale__note { flex-basis: 100%; color: var(--color-muted); font-size: 0.875rem; }
 /* Mobile list: same block, stacked, with a little air above it. */
 .schedule-mobile__list > .schedule-finale { margin-top: var(--space-2); padding: var(--space-5); align-items: flex-start; }
 .schedule-mobile__list > .schedule-finale .schedule-finale__body { flex-direction: column; align-items: flex-start; }
@@ -377,13 +384,14 @@
 .programme-section__head a { color: var(--color-lime); }
 .programme-section__head a:hover { color: var(--color-cyan); }
 .programme-section .schedule-toolbar { margin-bottom: var(--space-5); }
-.schedule-section { padding-top: var(--space-5); }
+.schedule-section { padding-top: var(--space-5); padding-bottom: var(--space-6); }
 
 /* /schedule/ hero since 2026-09-29: title + one sentence, then the grid. */
 .schedule-hero__lead { max-width: 62ch; color: var(--color-body-text); font-size: 1.0625rem; }
-.schedule-footnote { margin-top: var(--space-5); font-size: 0.875rem; color: var(--color-muted); }
-.schedule-footnote a { color: var(--color-lime); white-space: nowrap; }
-.schedule-footnote a:hover { color: var(--color-cyan); }
+/* Kept discreet (2026-09-30): small muted line, link only a shade lighter. */
+.schedule-footnote { margin-top: var(--space-4); font-size: 0.8125rem; color: var(--color-muted); }
+.schedule-footnote a { color: var(--color-body-text); text-decoration: underline; text-decoration-color: var(--color-border); text-underline-offset: 3px; white-space: nowrap; }
+.schedule-footnote a:hover { color: var(--color-primary-light); text-decoration-color: currentColor; }
 
 /* Bookable workshops: a small lime "Book a seat" tag on the card, and a
    "Reserve my seat" button in the session modal (initSchedule). */

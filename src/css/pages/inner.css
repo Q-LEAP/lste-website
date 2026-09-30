@@ -491,84 +491,68 @@
 }
 
 
-/* ── /register/ (2026-09-29): two-step journey ────────────────────────
-   Hero stepper (ticket → workshops → the day), then one section per step.
-   The workshop cards are drawn by initWorkshopPicker() in main.js. */
-.register-steps {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-  max-width: 900px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-@media (min-width: 760px) { .register-steps { grid-template-columns: repeat(3, 1fr); } }
-.register-steps__item {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  transition: border-color var(--dur-fast) var(--ease);
-}
-.register-steps__item:has(a):hover { border-color: var(--color-primary); }
-/* Steps 1–2 are links to their section, step 3 is plain text: same box. */
-.register-steps__body {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  color: var(--color-muted);
-  font-size: 0.8125rem;
-  text-decoration: none;
-}
-.register-steps__num {
-  flex-shrink: 0;
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 2rem; height: 2rem;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: #fff;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.875rem;
-}
-.register-steps__body strong {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 0.9375rem;
-  color: var(--color-ink);
-}
+/* ── /register/ (simplified 2026-09-30) ─────────────────────────────
+   Compact hero with the one primary CTA, the ticket contents as a light
+   inline list, then the workshop accordion (initWorkshopPicker() in
+   main.js) and straight into the footer. */
+.register-hero { padding-bottom: var(--space-8); }
+.register-hero h1 { margin-bottom: var(--space-3); }
+.register-hero__lead { max-width: 56ch; margin: 0; font-size: 1.125rem; color: var(--color-body-text); }
+.register-hero__meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: var(--space-5) 0 0; font-weight: 600; color: var(--color-ink); }
+.register-hero__meta i { margin-right: var(--space-2); color: var(--color-primary-light); }
+.register-hero__cta { margin: var(--space-6) 0 0; }
+.register-hero__note { margin: var(--space-3) 0 0; font-size: 0.875rem; color: var(--color-muted); }
 
-.register-step { scroll-margin-top: var(--header-h); }
+.register-section-title { margin: 0 0 var(--space-4); font-size: clamp(1.375rem, 1.5vw + 1rem, 1.75rem); }
+.register-includes { padding: var(--space-8) 0; border-top: 1px solid var(--color-border); }
+.register-includes__list { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); margin: 0; padding: 0; list-style: none; font-weight: 600; color: var(--color-ink); }
+.register-includes__list i { margin-right: var(--space-2); color: var(--color-lime); }
+.register-includes__note { max-width: 62ch; margin: var(--space-4) 0 0; font-size: 0.875rem; color: var(--color-muted); }
 
-/* Workshop list: one slim row per workshop, not a wall of cards —
-   time | label + title | action. Stacks under 640px. */
-.workshop-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  overflow: hidden;
-}
-.workshop-row {
+.register-workshops { padding: var(--space-8) 0 var(--space-10); scroll-margin-top: var(--header-h); }
+.register-workshops__intro { max-width: 62ch; margin: 0 0 var(--space-5); color: var(--color-body-text); }
+.register-closing { margin: var(--space-8) 0 0; font-family: var(--font-heading); font-weight: 600; color: var(--color-muted); }
+
+/* Workshop accordion: rows, not cards. The workshop green stays a thin
+   edge, as on the programme; the reserve button is outline, secondary
+   to the hero's primary CTA. */
+.workshop-acc { border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); overflow: hidden; }
+.workshop-acc__item { border-left: 3px solid #a3e635; }
+.workshop-acc__item + .workshop-acc__item { border-top: 1px solid var(--color-border); }
+.workshop-acc__summary {
   display: grid;
-  grid-template-columns: 7.5rem 1fr auto;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   gap: var(--space-2) var(--space-5);
   padding: var(--space-4) var(--space-5);
-  border-left: 3px solid #a3e635; /* workshop colour, as on the programme */
+  cursor: pointer;
+  list-style: none;
 }
-.workshop-row + .workshop-row { border-top: 1px solid var(--color-border); }
-.workshop-row__time { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--color-ink); }
-.workshop-row__body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-.workshop-row__label { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted); }
-.workshop-row__title { font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem; line-height: 1.35; color: var(--color-ink); }
-.workshop-row__soon { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-muted); white-space: nowrap; }
+.workshop-acc__summary::-webkit-details-marker { display: none; }
+.workshop-acc__summary::after {
+  content: "";
+  width: 0.55rem; height: 0.55rem;
+  border-right: 2px solid var(--color-muted);
+  border-bottom: 2px solid var(--color-muted);
+  transform: rotate(45deg) translateY(-25%);
+  transition: transform var(--dur-base) var(--ease);
+}
+.workshop-acc__item[open] .workshop-acc__summary::after { transform: rotate(-135deg) translateY(-25%); }
+.workshop-acc__summary:hover .workshop-acc__title { color: var(--color-primary-light); }
+.workshop-acc__head { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.workshop-acc__label { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted); }
+.workshop-acc__title { font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem; line-height: 1.35; color: var(--color-ink); transition: color var(--dur-fast) var(--ease); }
+.workshop-acc__speaker { font-size: 0.8125rem; color: var(--color-body-text); }
+.workshop-acc__time { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 700; color: var(--color-ink); white-space: nowrap; }
+.workshop-acc__panel { padding: 0 var(--space-5) var(--space-5); max-width: 72ch; }
+.workshop-acc__desc { margin: 0 0 var(--space-3); font-size: 0.9rem; color: var(--color-muted); line-height: 1.6; }
+.workshop-acc__foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-5); margin-top: var(--space-4); }
+.workshop-acc__seats { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-muted); }
 @media (max-width: 639px) {
-  .workshop-row { grid-template-columns: 1fr auto; padding: var(--space-4); }
-  .workshop-row__time { grid-column: 1 / -1; }
+  .workshop-acc__summary { grid-template-columns: 1fr auto; padding: var(--space-4); }
+  .workshop-acc__time { grid-column: 1; grid-row: 2; }
+  .workshop-acc__summary::after { grid-column: 2; grid-row: 1 / 3; }
+  .workshop-acc__panel { padding: 0 var(--space-4) var(--space-4); }
 }
 
 /* ── Edition 2025 "proof of value" page (2026-09-29) ─────────────────
@@ -761,6 +745,16 @@
 .press-list { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-top: var(--space-4); }
 @media (min-width: 640px) { .press-list { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1100px) { .press-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); } }
+@media (min-width: 1100px) { .press-list--2 { grid-template-columns: repeat(2, 1fr); } }
+/* Event / pre-event groups inside a press section (edition pages). */
+.press-group-heading { margin: var(--space-8) 0 var(--space-4); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); }
+.section-head + .press-group-heading { margin-top: 0; }
+
+/* Discreet "← Back to …" link above an edition page title (2026-09-30). */
+.back-link { display: inline-flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4); font-size: 0.875rem; font-weight: 600; color: var(--color-body-text); text-decoration: none; transition: color var(--dur-base) var(--ease); }
+.back-link i { font-size: 0.8em; transition: transform var(--dur-base) var(--ease); }
+.back-link:hover, .back-link:focus-visible { color: var(--color-primary-light); }
+.back-link:hover i, .back-link:focus-visible i { transform: translateX(-3px); }
 .press-item { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); }
 .press-item h3 { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.35; }
 .press-item p { margin: 0; font-size: 0.875rem; color: var(--color-muted); }

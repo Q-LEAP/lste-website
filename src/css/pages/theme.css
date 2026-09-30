@@ -7,7 +7,7 @@
 
 /* Cheap, general-purpose transition for anything whose background/shadow
    changes on hover/focus (cards, buttons, form fields, ...). */
-.site-header, .card, .btn, .faq-item,
+.site-header, .card, .btn,
 .tabs-nav button, .timeline__content details, input, textarea, select,
 .mobile-nav-panel, #back-to-top {
   transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease),
@@ -73,7 +73,7 @@
   box-shadow: var(--shadow-inset), var(--shadow-focus);
 }
 
-/* ── Tabs / FAQ / pills use raised neu chips ──────────────────────────── */
+/* ── Tabs / pills use raised neu chips ──────────────────────────── */
 .tabs-nav button { box-shadow: var(--shadow-sm); }
 .tabs-nav button:hover { box-shadow: var(--shadow-md); }
 .tabs-nav button[aria-selected="true"] { box-shadow: var(--shadow-md); }
@@ -110,7 +110,7 @@
 
 /* Never animate away the reduced-motion guarantee. */
 @media (prefers-reduced-motion: reduce) {
-  .site-header, .card, .btn, .faq-item,
+  .site-header, .card, .btn,
   .tabs-nav button, input, textarea, select, .mobile-nav-panel, #back-to-top,
   body { transition: none; }
 }

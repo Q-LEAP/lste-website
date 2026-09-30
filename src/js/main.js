@@ -1011,28 +1011,58 @@
       if (text) node.textContent = text;
       return node;
     };
-    const ul = el('ul', 'workshop-list');
+    const toMin = (hm) => { const [h, m] = hm.split(':').map(Number); return h * 60 + m; };
+    // An accordion, one workshop per <details> (functional navigation, not
+    // a FAQ; client request 2026-09-30). Collapsed: title, speaker, time
+    // and duration. Open: a short description (the first paragraph plus
+    // any "What to bring" line), the seat count and a secondary "Reserve
+    // your seat" button. All closed by default; opening one closes the
+    // others (the shared `name` does it natively where supported, the
+    // toggle listener everywhere else).
+    const wrap = el('div', 'workshop-acc');
     SESSIONS.filter((s) => s.track === 'workshop').forEach((w) => {
-      const li = el('li', 'workshop-row');
-      li.appendChild(el('span', 'workshop-row__time', w.start + '–' + w.end));
-      const body = el('div', 'workshop-row__body');
-      body.appendChild(el('span', 'workshop-row__label', w.type + ' · ' + (w.partner || 'Partner to be announced')));
-      body.appendChild(el('span', 'workshop-row__title', w.title));
-      li.appendChild(body);
+      const item = el('details', 'workshop-acc__item');
+      item.name = 'lste-workshops';
+      const summary = el('summary', 'workshop-acc__summary');
+      const head = el('span', 'workshop-acc__head');
+      head.appendChild(el('span', 'workshop-acc__label', w.type + (w.partner ? ' · ' + w.partner : '')));
+      head.appendChild(el('span', 'workshop-acc__title', w.title));
+      const who = w.speaker || w.partner;
+      if (who) head.appendChild(el('span', 'workshop-acc__speaker', who));
+      summary.appendChild(head);
+      summary.appendChild(el('span', 'workshop-acc__time', w.start + '–' + w.end + ' · ' + (toMin(w.end) - toMin(w.start)) + ' min'));
+      item.appendChild(summary);
+
+      const panel = el('div', 'workshop-acc__panel');
+      const paras = (w.description || '').split('||').filter(Boolean);
+      const shown = paras.slice(0, 1).concat(paras.slice(1).filter((p) => /^What to bring/i.test(p)));
+      if (shown.length) shown.forEach((p) => panel.appendChild(el('p', 'workshop-acc__desc', p)));
+      else panel.appendChild(el('p', 'workshop-acc__desc', 'Details to be announced.'));
+      const foot = el('div', 'workshop-acc__foot');
       if (w.booking) {
-        const a = el('a', 'btn btn--primary btn--sm workshop-row__cta', 'Reserve');
+        foot.appendChild(el('span', 'workshop-acc__seats', WORKSHOP_SEATS + ' seats'));
+        const a = el('a', 'btn btn--outline btn--sm', 'Reserve your seat ');
         a.href = w.booking;
         a.target = '_blank';
         a.rel = 'noopener';
-        a.setAttribute('aria-label', 'Reserve a seat: ' + w.type + ', ' + w.title);
-        li.appendChild(a);
+        a.setAttribute('aria-label', 'Reserve your seat: ' + w.type + ', ' + w.title + ' (opens in a new tab)');
+        const icon = el('i', 'fa-solid fa-arrow-right');
+        icon.setAttribute('aria-hidden', 'true');
+        a.appendChild(icon);
+        foot.appendChild(a);
       } else {
-        li.appendChild(el('span', 'workshop-row__soon', 'Opens soon'));
+        foot.appendChild(el('span', 'workshop-acc__seats', 'Booking opens soon'));
       }
-      ul.appendChild(li);
+      panel.appendChild(foot);
+      item.appendChild(panel);
+      item.addEventListener('toggle', () => {
+        if (!item.open) return;
+        wrap.querySelectorAll('details[open]').forEach((d) => { if (d !== item) d.open = false; });
+      });
+      wrap.appendChild(item);
     });
     list.textContent = '';
-    list.appendChild(ul);
+    list.appendChild(wrap);
   }
 
   /* ── Google Maps embeds: click-to-activate ─────────────────────────
