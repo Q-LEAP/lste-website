@@ -497,17 +497,15 @@
    main.js) and straight into the footer. */
 .register-hero { padding-bottom: var(--space-8); }
 .register-hero h1 { margin-bottom: var(--space-3); }
-.register-hero__lead { max-width: 56ch; margin: 0; font-size: 1.125rem; color: var(--color-body-text); }
-.register-hero__meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: var(--space-5) 0 0; font-weight: 600; color: var(--color-ink); }
+.register-hero__meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: var(--space-4) 0 0; font-weight: 600; color: var(--color-ink); }
 .register-hero__meta i { margin-right: var(--space-2); color: var(--color-primary-light); }
 .register-hero__cta { margin: var(--space-6) 0 0; }
 .register-hero__note { margin: var(--space-3) 0 0; font-size: 0.875rem; color: var(--color-muted); }
+/* What the ticket includes, as one quiet line under the CTA. */
+.register-hero__included { margin: var(--space-5) 0 0; padding-top: var(--space-4); border-top: 1px solid var(--color-border); max-width: 62ch; font-size: 0.9375rem; color: var(--color-body-text); }
+.register-hero__included strong { color: var(--color-ink); font-weight: 600; }
 
 .register-section-title { margin: 0 0 var(--space-4); font-size: clamp(1.375rem, 1.5vw + 1rem, 1.75rem); }
-.register-includes { padding: var(--space-8) 0; border-top: 1px solid var(--color-border); }
-.register-includes__list { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); margin: 0; padding: 0; list-style: none; font-weight: 600; color: var(--color-ink); }
-.register-includes__list i { margin-right: var(--space-2); color: var(--color-lime); }
-.register-includes__note { max-width: 62ch; margin: var(--space-4) 0 0; font-size: 0.875rem; color: var(--color-muted); }
 
 .register-workshops { padding: var(--space-8) 0 var(--space-10); scroll-margin-top: var(--header-h); }
 .register-workshops__intro { max-width: 62ch; margin: 0 0 var(--space-5); color: var(--color-body-text); }
