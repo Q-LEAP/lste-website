@@ -582,24 +582,6 @@
   color: var(--color-muted);
 }
 
-/* Audience: profiles as a scannable list, industries as chips. Only the
-   h2 stays heavy (2026-09-30): items medium, side heading semibold, chips
-   medium, and fainter separators, so the h2 leads the hierarchy. */
-.edition-audience { gap: var(--space-8) var(--space-10); align-items: start; }
-.edition-audience__h3 { font-size: 1.25rem; font-weight: 600; margin: 0 0 var(--space-5); }
-.profile-list { margin: var(--space-5) 0 0; padding: 0; list-style: none; }
-.profile-list li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-3) 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 1.0625rem;
-  color: var(--color-ink);
-}
-.profile-list i { width: 1.25rem; text-align: center; color: var(--color-primary-light); }
 .chip-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
 .chip-list li {
   padding: 0.55rem 1rem;
@@ -693,13 +675,14 @@
 .page-hero__lead { max-width: 60ch; margin: 0; color: var(--color-body-text); font-size: 1.0625rem; }
 
 /* ── Previous editions: featured editions + a lighter archive ────────── */
-.edition-features { display: grid; gap: var(--space-6); }
-.edition-feature { display: grid; grid-template-columns: 1fr; padding: 0; overflow: hidden; }
-@media (min-width: 900px) { .edition-feature { grid-template-columns: 5fr 6fr; } }
+/* Recent editions, side by side from 900px (2026-09-30): each card is
+   photo on top, body below, and the grid stretches both to one height. */
+.edition-features { display: grid; grid-template-columns: 1fr; gap: var(--space-6); }
+@media (min-width: 900px) { .edition-features { grid-template-columns: 1fr 1fr; } }
+.edition-feature { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
 .edition-feature__media picture { display: block; height: 100%; }
-.edition-feature__media img { width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
-@media (min-width: 900px) { .edition-feature__media img { aspect-ratio: auto; min-height: 320px; } }
-.edition-feature__body { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); }
+.edition-feature__media img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.edition-feature__body { display: flex; flex-direction: column; flex: 1; gap: var(--space-4); padding: var(--space-6); }
 .edition-feature__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-3); }
 .edition-feature__year { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--color-primary-light); }
 .edition-feature__edition,
@@ -711,7 +694,7 @@
   color: var(--color-muted);
 }
 .edition-feature__label { display: block; margin-bottom: var(--space-2); }
-.edition-feature__stats { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); margin: 0; padding: 0; list-style: none; }
+.edition-feature__stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4) var(--space-6); margin: 0; padding: var(--space-4) 0; list-style: none; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
 .edition-feature__stats strong { display: block; font-family: var(--font-heading); font-size: 1.5rem; line-height: 1.1; color: var(--color-ink); }
 .edition-feature__stats span { font-size: 0.8125rem; color: var(--color-muted); }
 .edition-feature__people { margin: 0; font-size: 0.9375rem; color: var(--color-body-text); }
@@ -847,3 +830,25 @@
 .edition-audience-strip { margin-top: var(--space-6); }
 .edition-audience-strip__lead { max-width: 70ch; margin: 0 0 var(--space-4); color: var(--color-body-text); }
 .edition-audience-strip__lead strong { color: var(--color-ink); }
+
+/* ── Edition 2025 audience (2026-09-30) ────────────────────────────────
+   Five light cards with a coloured top edge (palette: violet, cyan,
+   lime, the programme's exhibitor orange, lavender); only the category
+   name is bold. Industries: one small label and one dotted line. */
+.audience-groups { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .audience-groups { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .audience-groups { grid-template-columns: repeat(5, 1fr); } }
+.audience-group { --group: var(--color-primary-light); display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); border: 1px solid var(--color-border); border-top: 2px solid var(--group); border-radius: var(--radius-md); background: linear-gradient(180deg, color-mix(in srgb, var(--group) 7%, transparent), transparent 70%), var(--color-surface); }
+.audience-group--violet   { --group: var(--color-primary-light); }
+.audience-group--cyan     { --group: var(--color-cyan); }
+.audience-group--lime     { --group: var(--color-lime); }
+.audience-group--orange   { --group: #fdba74; }
+.audience-group--lavender { --group: var(--color-link); }
+.audience-group__name { font-family: var(--font-heading); font-weight: 700; font-size: 0.9375rem; color: var(--group); }
+/* One role per line: in five narrow columns, inline "·" separators
+   kept breaking onto lines of their own. */
+.audience-group__roles { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.875rem; line-height: 1.5; color: var(--color-body-text); }
+.audience-group__roles > span[aria-hidden] { display: none; }
+.audience-industries { margin-top: var(--space-8); padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
+.audience-industries__label { display: block; margin-bottom: var(--space-2); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
+.audience-industries__list { margin: 0; font-size: 0.9375rem; font-weight: 400; color: var(--color-body-text); }

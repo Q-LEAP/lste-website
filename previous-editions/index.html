@@ -26,7 +26,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=b86a9294">
+<link rel="stylesheet" href="../assets/css/styles.css?v=855c564d">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -130,46 +130,19 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Growth and audience (2026-09-30, client brief): the figures are the
-       client's. 2014 is an approximate attendance, 2024 and 2025 are
-       registrations; "nearly 300" is how many of the 2025 registrants
-       attended at some point in the day, never a simultaneous headcount.
-       The audience is described by role, never as "100% QA". -->
-  <section class="section edition-growth" style="padding-top:0;" aria-labelledby="growth-heading">
-    <div class="container">
-      <h2 id="growth-heading" class="sr-only">How LSTE has grown</h2>
-      <ol class="growth-strip reveal">
-        <li class="growth-strip__item"><span class="growth-strip__year">2014</span><span class="growth-strip__value">~50&ndash;60</span><span class="growth-strip__label">Participants at the first edition</span></li>
-        <li class="growth-strip__item"><span class="growth-strip__year">2024</span><span class="growth-strip__value">280+</span><span class="growth-strip__label">Registrations</span></li>
-        <li class="growth-strip__item growth-strip__item--latest"><span class="growth-strip__year">2025</span><span class="growth-strip__value">400+</span><span class="growth-strip__label">Registrations, with nearly 300 participants over the day, 60+ organisations and 15+ sponsors &amp; partners</span></li>
-      </ol>
-      <div class="edition-audience-strip reveal">
-        <p class="edition-audience-strip__lead"><strong>A specialised audience around software quality, testing and digital delivery</strong>, from hands-on practitioners to senior decision-makers.</p>
-        <ul class="chip-list chip-list--sm">
-          <li>QA Engineers &amp; Testers</li>
-          <li>QA Managers &amp; Test Leads</li>
-          <li>Business Analysts</li>
-          <li>Project &amp; Product Managers</li>
-          <li>Software Engineers &amp; Developers</li>
-          <li>Engineering &amp; Technology Leads</li>
-          <li>Heads of Digitalisation</li>
-          <li>Digital Transformation Leaders</li>
-          <li>CIOs &amp; CEOs</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <!-- Reworked 2026-09-30 (client feedback): 2025 and 2024, the two
        documented editions, are featured with a detail page each; the
        earlier ones sit in a light archive below with confirmed facts only
        (documentation/README.md, "Verified facts") and no CTA, since their
        sub-pages are still placeholders. The old "More recaps coming soon"
        note is gone. Attendance for 2014–2018 is left out on purpose: the
-       2026-07-24 pass judged those counts unverified. -->
+       2026-07-24 pass judged those counts unverified.
+       Since 2026-09-30 (client brief) the two cards sit side by side right
+       under the hero, same structure (photo, year, date/venue, a 2x2 of
+       figures, topics, speakers, link), with growth and audience after. -->
   <section class="section" style="padding-top:0;" aria-labelledby="featured-heading">
     <div class="container">
-      <h2 id="featured-heading" class="sr-only">Featured editions</h2>
+      <h2 id="featured-heading" class="sr-only">Recent editions</h2>
       <div class="edition-features reveal">
 
         <article class="card edition-feature">
@@ -191,7 +164,7 @@ redirect_from:
             </ul>
             <ul class="edition-feature__stats">
               <li><strong>400+</strong><span>Registrations</span></li>
-              <li><strong>~300</strong><span>Participants over the day</span></li>
+              <li><strong>~300</strong><span>Participants throughout the day</span></li>
               <li><strong>60+</strong><span>Organisations</span></li>
               <li><strong>15+</strong><span>Sponsors &amp; partners</span></li>
             </ul>
@@ -230,6 +203,7 @@ redirect_from:
               <li><strong>280+</strong><span>Registrations</span></li>
               <li><strong>3</strong><span>Morning tutorials</span></li>
               <li><strong>Full day</strong><span>Tutorials, talks, networking</span></li>
+              <li><strong>14</strong><span>Sponsors &amp; partners</span></li>
             </ul>
             <div>
               <span class="edition-feature__label">Main topics</span>
@@ -249,7 +223,37 @@ redirect_from:
     </div>
   </section>
 
-  <section class="section section--alt" aria-labelledby="earlier-heading">
+  <!-- Growth and audience (2026-09-30, client brief): the figures are the
+       client's. 2014 is an approximate attendance, 2024 and 2025 are
+       registrations; "nearly 300" is how many of the 2025 registrants
+       attended at some point in the day, never a simultaneous headcount.
+       The audience is described by role, never as "100% QA". -->
+  <section class="section section--alt edition-growth" aria-labelledby="growth-heading">
+    <div class="container">
+      <h2 id="growth-heading" class="sr-only">How LSTE has grown</h2>
+      <ol class="growth-strip reveal">
+        <li class="growth-strip__item"><span class="growth-strip__year">2014</span><span class="growth-strip__value">~50&ndash;60</span><span class="growth-strip__label">Participants at the first edition</span></li>
+        <li class="growth-strip__item"><span class="growth-strip__year">2024</span><span class="growth-strip__value">280+</span><span class="growth-strip__label">Registrations</span></li>
+        <li class="growth-strip__item growth-strip__item--latest"><span class="growth-strip__year">2025</span><span class="growth-strip__value">400+</span><span class="growth-strip__label">Registrations, with nearly 300 participants over the day, 60+ organisations and 15+ sponsors &amp; partners</span></li>
+      </ol>
+      <div class="edition-audience-strip reveal">
+        <p class="edition-audience-strip__lead"><strong>A specialised audience around software quality, testing and digital delivery</strong>, from hands-on practitioners to senior decision-makers.</p>
+        <ul class="chip-list chip-list--sm">
+          <li>QA Engineers &amp; Testers</li>
+          <li>QA Managers &amp; Test Leads</li>
+          <li>Business Analysts</li>
+          <li>Project &amp; Product Managers</li>
+          <li>Software Engineers &amp; Developers</li>
+          <li>Engineering &amp; Technology Leads</li>
+          <li>Heads of Digitalisation</li>
+          <li>Digital Transformation Leaders</li>
+          <li>CIOs &amp; CEOs</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="earlier-heading">
     <div class="container">
       <div class="section-head section-head--left reveal">
         <span class="eyebrow eyebrow--violet">Archive</span>
