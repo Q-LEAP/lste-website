@@ -3,6 +3,7 @@
 // A page opts in by containing:
 //   <!--NAV_START--><!--NAV_END-->
 //   <!--FOOTER_START--><!--FOOTER_END-->
+//   <!--TICKETS_CTA_START--><!--TICKETS_CTA_END-->  (closing registration CTA, same on every page)
 // Pages that don't have the markers yet (not migrated to the new design
 // system) are left untouched.
 import { readFile, writeFile, readdir } from 'node:fs/promises';
@@ -53,6 +54,7 @@ function pagePathFor(filePath) {
 async function main() {
   const navPartial = await readFile(path.join(ROOT, 'src/partials/nav.html'), 'utf8');
   const footerPartial = await readFile(path.join(ROOT, 'src/partials/footer.html'), 'utf8');
+  const ctaPartial = await readFile(path.join(ROOT, 'src/partials/tickets-cta.html'), 'utf8');
   const files = await findHtmlFiles(ROOT);
 
   let migrated = 0;
@@ -67,8 +69,10 @@ async function main() {
     ({ html, changed: changedAny } = injectBetween(html, '<!--NAV_START-->', '<!--NAV_END-->', nav));
     let footerChanged = false;
     ({ html, changed: footerChanged } = injectBetween(html, '<!--FOOTER_START-->', '<!--FOOTER_END-->', footerPartial));
+    let ctaChanged = false;
+    ({ html, changed: ctaChanged } = injectBetween(html, '<!--TICKETS_CTA_START-->', '<!--TICKETS_CTA_END-->', ctaPartial));
 
-    if (changedAny || footerChanged) {
+    if (changedAny || footerChanged || ctaChanged) {
       await writeFile(file, html);
       migrated++;
     } else {

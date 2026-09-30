@@ -504,6 +504,8 @@
    tokens): the pastel-bg + ink-text pairing is self-contained and reads
    the same regardless of the page's own light/dark theme. */
 .badge--keynote { background: #c4b5fd; color: #17141f; }
+/* Master of Ceremonies: brand cyan, so the host never reads as a keynote. */
+.badge--host { background: var(--color-cyan); color: #17141f; }
 .badge--workshop, .badge--demo { background: #a3e635; color: #17141f; }
 .badge--panel { background: #8b5cf6; color: #17141f; }
 .badge--exhibition { background: #fdba74; color: #17141f; }
