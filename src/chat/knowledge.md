@@ -81,7 +81,7 @@ depends entirely on it.
   registering.
 - **How to register:** via the Register page (`/register/`), which links to the
   official registration form hosted on Q-Leap's Odoo:
-  https://q-leap.odoo.com/en_GB/event/luxembourg-software-testing-event-2026-24/register
+  https://q-leap.odoo.com/en_GB/event/lste2026-registration-24/register
 - **Cancellation:** free tickets can be cancelled any time via the confirmation
   email. Tutorial passes are fully refundable up to 14 days before the event;
   after that, a transfer to another attendee is possible — contact

@@ -33,8 +33,9 @@ const EXCLUDE_DIRS = new Set([
 
 // The external host the funnel hands off to. Anything pointing here is a
 // registration link and gets probed; keeping this as a pattern rather than a
-// full URL means a slug rename in Odoo (which has already happened once:
-// luxembourg-software-testing-event-2026-24 became inscription-lste2026-24)
+// full URL means a slug rename in Odoo (which has already happened twice:
+// luxembourg-software-testing-event-2026-24 became inscription-lste2026-24,
+// then lste2026-registration-24 by 2026-09-30)
 // is picked up automatically on the next run.
 const TICKETING_HOST = 'q-leap.odoo.com';
 
