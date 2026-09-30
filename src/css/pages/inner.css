@@ -661,6 +661,16 @@
 .sponsor-strip--main a span { font-size: 1.375rem !important; }
 .sponsor-strip--small a { width: 124px; height: 68px; padding: var(--space-3); }
 .sponsor-strip--small a span { font-size: 0.9375rem !important; }
+/* Edition pages (2026-09-30): Gold is the top tier shown, so its large
+   tiles get a thin gold edge and a soft lift, and its heading a touch
+   more weight; Silver and Partners keep the plain tiles. */
+.sponsor-strip--gold { gap: var(--space-6); }
+.sponsor-strip--gold a { border-color: rgba(242, 217, 138, 0.55); box-shadow: 0 0 0 1px rgba(242, 217, 138, 0.18), var(--shadow-md); }
+.sponsor-tier-heading--lead { font-size: 0.9375rem; }
+.sponsor-tier-heading--lead::before { width: 56px; height: 3px; }
+/* A mark with no wordmark (DEO): symbol plus the name in the tile. */
+.sponsor-strip a .sponsor-tile__name { margin-left: var(--space-2); font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; letter-spacing: 0.04em; color: #3a3a3a; }
+.sponsor-strip--small a .sponsor-tile__name { font-size: 0.9375rem; }
 
 /* Logo walls on phones: two tiles a row (three for the small partner
    tiles) instead of one fixed-width tile per row. */
