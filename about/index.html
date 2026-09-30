@@ -26,7 +26,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=b038c97c">
+<link rel="stylesheet" href="../assets/css/styles.css?v=2b4f59be">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -54,8 +54,8 @@ redirect_from:
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
   <div class="container">
-    <a class="site-logo" href="/" aria-label="LSTE home">
-      <img src="/assets/img/lste-logo-white.svg?v=cf8d3ff3" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
+    <a class="site-logo" href="../index.html" aria-label="LSTE home">
+      <img src="../assets/img/lste-logo-white.svg?v=cf8d3ff3" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="eager" fetchpriority="high">
       <span class="site-logo__tag">26 Nov 2026</span>
     </a>
 
@@ -75,24 +75,24 @@ redirect_from:
          "../index.html#sponsors" per page depth). -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" aria-current="page" href="/about/">About</a></li>
-        <li><a class="main-nav-link" href="/schedule/">Programme</a></li>
-        <li><a class="main-nav-link" href="/speakers/">Speakers</a></li>
-        <li><a class="main-nav-link" href="/venue/">Venue</a></li>
+        <li><a class="main-nav-link" aria-current="page" href="../about/index.html">About</a></li>
+        <li><a class="main-nav-link" href="../schedule/index.html">Programme</a></li>
+        <li><a class="main-nav-link" href="../speakers/index.html">Speakers</a></li>
+        <li><a class="main-nav-link" href="../venue/index.html">Venue</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="/become-a-sponsor/">Become a sponsor</a></li>
-            <li><a href="/#sponsors">Sponsors</a></li>
-            <li><a href="/gallery/">Gallery</a></li>
-                            <li><a href="/contact/">Contact</a></li>
+            <li><a href="../become-a-sponsor/index.html">Become a sponsor</a></li>
+            <li><a href="../index.html#sponsors">Sponsors</a></li>
+            <li><a href="../gallery/index.html">Gallery</a></li>
+                            <li><a href="../contact/index.html">Contact</a></li>
           </ul>
         </li>
       </ul>
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn--primary header-register-btn" href="/register/">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <a class="btn btn--primary header-register-btn" href="../register/index.html">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -105,16 +105,16 @@ redirect_from:
      still links Become a Sponsor on every page. -->
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="/about/">About</a></li>
-    <li><a href="/schedule/">Programme</a></li>
-    <li><a href="/speakers/">Speakers</a></li>
-    <li><a href="/venue/">Venue</a></li>
-    <li><a href="/#sponsors">Sponsors</a></li>
-    <li><a href="/gallery/">Gallery</a></li>
-    <li><a href="/press/">Press</a></li>
-    <li><a href="/call-for-speakers/">Call for Speakers</a></li>
-    <li><a href="/contact/">Contact</a></li>
-    <li><a class="btn btn--primary btn--block" href="/register/">Get your free ticket</a></li>
+    <li><a href="../about/index.html">About</a></li>
+    <li><a href="../schedule/index.html">Programme</a></li>
+    <li><a href="../speakers/index.html">Speakers</a></li>
+    <li><a href="../venue/index.html">Venue</a></li>
+    <li><a href="../index.html#sponsors">Sponsors</a></li>
+    <li><a href="../gallery/index.html">Gallery</a></li>
+    <li><a href="../press/index.html">Press</a></li>
+    <li><a href="../call-for-speakers/index.html">Call for Speakers</a></li>
+    <li><a href="../contact/index.html">Contact</a></li>
+    <li><a class="btn btn--primary btn--block" href="../register/index.html">Get your free ticket</a></li>
   </ul>
 </div>
 
@@ -122,26 +122,28 @@ redirect_from:
 
 <main id="main">
 
-  <section class="page-hero page-hero--left">
+  <!-- Compact intro (2026-09-30, client request): one H1, one short line,
+       the key facts right below, then the story. Replaces the old
+       "About" / "Who we are" / "Luxembourg's biggest testing event."
+       stack. This is the reference for internal-page intros
+       (.page-hero--compact, inner.css). The live page's empty
+       "Testimonials" counters stay out on purpose. -->
+  <section class="page-hero page-hero--left page-hero--compact" id="what">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">About</span></nav>
-      <h1>About</h1>
+      <h1>About LSTE</h1>
+      <p class="edition-hero__claim" style="margin-bottom:var(--space-3);">Luxembourg&rsquo;s dedicated software testing event.</p>
+      <p class="page-hero__lead">Since 2014, LSTE has brought together software testing and QA professionals from Luxembourg and the Greater Region to share practical knowledge, explore new approaches and connect with peers.</p>
     </div>
   </section>
 
-  <!-- About page narrative order: What it is (Who we are) -> Who created it
-       (Our story / Q-Leap) -> Why it exists (Our purpose) -> What people
-       experience (The LSTE experience) -> proof (Community in numbers, News)
-       -> Registration. Text ports the meaning of lste.lu/about/ (markup/DA
-       are ours); the live page's empty "Testimonials" counters are left out
-       on purpose, as they read as broken on the real site. -->
-  <section id="what" class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="reveal" style="max-width:680px;text-align:left;">
-        <span class="eyebrow eyebrow--violet">Who we are</span>
-        <h2 style="text-align:left;">Luxembourg&rsquo;s biggest testing event.</h2>
-        <p style="text-align:left;">LSTE brings together software testing and Quality Assurance professionals from Luxembourg and across the border to share knowledge, exchange best practices and explore the latest trends in software quality, all in one focused day of expert talks, practical sessions and meaningful networking.</p>
-      </div>
+  <!-- Key facts, straight under the intro (2x2 on phones via .stats-row). -->
+  <section class="stats-row" aria-label="LSTE in numbers">
+    <div class="container stats-row__grid reveal">
+      <div class="stats-row__item"><div class="stats-row__value">400<span style="color:var(--color-lime);">+</span></div><div class="stats-row__label">QA professionals</div></div>
+      <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-ink);">30<span style="color:var(--color-primary-light);">+</span></div><div class="stats-row__label">Organisations represented</div></div>
+      <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-cyan);">4</div><div class="stats-row__label">Countries connected</div></div>
+      <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-primary);">Free</div><div class="stats-row__label">Registration</div></div>
     </div>
   </section>
 
@@ -226,15 +228,8 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Community in numbers: proof. Same stats strip as the homepage. -->
-  <section class="stats-row" aria-label="Community in numbers">
-    <div class="container stats-row__grid reveal">
-      <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-ink);">30<span style="color:var(--color-primary-light);">+</span></div><div class="stats-row__label">Organisations represented</div></div>
-      <div class="stats-row__item"><div class="stats-row__value">400<span style="color:var(--color-lime);">+</span></div><div class="stats-row__label">QA professionals expected</div></div>
-      <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-cyan);">4</div><div class="stats-row__label">Countries connected</div></div>
-      <div class="stats-row__item"><div class="stats-row__value" style="color:var(--color-primary);">Free</div><div class="stats-row__label">Registration</div></div>
-    </div>
-  </section>
+  <!-- The "Community in numbers" strip that stood here moved up under the
+       intro on 2026-09-30. -->
 
   <!-- The LSTE in the press -->
   <section class="section section--alt" aria-labelledby="press-heading">
@@ -316,8 +311,8 @@ redirect_from:
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="site-logo" href="/" aria-label="LSTE home">
-          <img src="/assets/img/lste-logo-white.svg?v=cf8d3ff3" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="lazy">
+        <a class="site-logo" href="../index.html" aria-label="LSTE home">
+          <img src="../assets/img/lste-logo-white.svg?v=cf8d3ff3" alt="LSTE, Luxembourg Software Testing Event" width="128" height="32" loading="lazy">
         </a>
         <p>One day. Luxembourg's entire QA community.</p>
         <p><a href="mailto:hello@lste.lu">hello@lste.lu</a></p>
@@ -329,31 +324,31 @@ redirect_from:
       <div class="footer-col">
         <p class="footer-col-heading">Event</p>
         <ul>
-          <li><a href="/about/">About LSTE</a></li>
-          <li><a href="/previous-editions/">Previous Editions</a></li>
-          <li><a href="/schedule/">Programme</a></li>
-          <li><a href="/speakers/">Speakers</a></li>
-          <li><a href="/venue/">Venue</a></li>
+          <li><a href="../about/index.html">About LSTE</a></li>
+          <li><a href="../previous-editions/index.html">Previous Editions</a></li>
+          <li><a href="../schedule/index.html">Programme</a></li>
+          <li><a href="../speakers/index.html">Speakers</a></li>
+          <li><a href="../venue/index.html">Venue</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <p class="footer-col-heading">Get Involved</p>
         <ul>
-          <li><a href="/become-a-sponsor/">Become a Sponsor</a></li>
-          <li><a href="/register/">Get your free ticket</a></li>
+          <li><a href="../become-a-sponsor/index.html">Become a Sponsor</a></li>
+          <li><a href="../register/index.html">Get your free ticket</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <p class="footer-col-heading">Resources</p>
         <ul>
-          <li><a href="/resources/#media">Media Kit &amp; Resources</a></li>
-          <li><a href="/gallery/">Gallery</a></li>
-          <li><a href="/news/">News</a></li>
-          <li><a href="/press/">Press</a></li>
-          <li><a href="/linkedin/">LinkedIn Updates</a></li>
-          <li><a href="/contact/">Contact</a></li>
+          <li><a href="../resources/index.html#media">Media Kit &amp; Resources</a></li>
+          <li><a href="../gallery/index.html">Gallery</a></li>
+          <li><a href="../news/index.html">News</a></li>
+          <li><a href="../press/index.html">Press</a></li>
+          <li><a href="../linkedin/index.html">LinkedIn Updates</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -361,7 +356,7 @@ redirect_from:
     <div class="footer-bottom">
       <p>&copy; <span id="current-year">2026</span> LSTE. Organized by <a href="https://q-leap.eu" target="_blank" rel="noopener">Q-Leap</a>.</p>
       <ul>
-        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="../privacy-policy/index.html">Privacy Policy</a></li>
       </ul>
       <span class="footer-bottom__tag">Made in Luxembourg</span>
     </div>
@@ -371,6 +366,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=2e06f4f9" defer></script>
+<script src="../assets/js/main.js?v=03532771" defer></script>
 </body>
 </html>

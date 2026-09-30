@@ -275,6 +275,15 @@
 
       activate(0, false);
     });
+
+    // A link elsewhere on the page can pre-select a tab: <a href="#section"
+    // data-open-tab="tab-id">. The href still scrolls natively.
+    document.querySelectorAll('a[data-open-tab]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const tab = document.getElementById(link.dataset.openTab);
+        if (tab) tab.click();
+      });
+    });
   }
 
   /* ── Gallery lightbox ──────────────────────────────────────── */
