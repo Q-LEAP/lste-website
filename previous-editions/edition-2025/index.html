@@ -191,8 +191,10 @@ redirect_from:
 
   <!-- Rewritten 2026-09-29 as a "proof of value" page for decision-makers
        (VP, CIO, CTO, budget holders) who get the link internally: scale,
-       audience, organisations, seniority and value come first; the full
-       2025 programme and the sponsor tiers are kept, lower down.
+       audience, organisations, seniority and value come first.
+       Reordered 2026-09-30 (client brief, content unchanged): scale,
+       audience, sponsors & partners, speakers, themes, the day, then
+       interviews, press and photos together, and the full programme last.
        Facts only: the numbers, audience profiles and industries come from
        the client's LSTE 2026 sponsor brochure; every organisation, name and
        job title comes from this page's own 2025 programme, sponsors and
@@ -263,11 +265,68 @@ redirect_from:
     </div>
   </section>
 
+  <section class="section section--alt edition-sponsors">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <span class="eyebrow eyebrow--cyan">Sponsors &amp; partners</span>
+        <h2>The sponsors and partners of LSTE 2025</h2>
+      </div>
+      <!-- Sponsor and partner names were shown here as .edition-tag text
+           pills; on 2026-09-29, at the client's request, they were replaced by
+           the companies' logos, reusing the homepage's .sponsor-strip tiles
+           (home.css, unscoped, so it applies here too; no data-pitch, since
+           this page has no #sponsor-modal). The logo files are the past-sponsor
+           assets kept unreferenced in assets/img/. Every tile here now has a logo (Xray's, Sogeti's,
+           ainos's and Q-BOT's arrived 2026-09-29); a future name-only tile goes in
+           a tile of the same size — swap in an <img> once a logo is supplied.
+           The tile background stays #fff in dark mode (theme.css), hence the
+           fixed dark text colour. A tile with no href has no confirmed
+           official URL yet. Thales is credited as "Thales" only, per the
+           sponsor's communication guidance (see the homepage). -->
+      <!-- Sponsor hierarchy of the 2025 edition, kept on purpose (client,
+           2026-09-29): the four main sponsors (Q-Leap, Sogeti, Deloitte,
+           NSI) in the largest tiles, then the other sponsors, then the
+           partners in smaller tiles — never all logos at one size. -->
+      <div class="reveal" style="margin-bottom:var(--space-8);">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--platinum">Main sponsors</h3>
+        <div class="sponsor-strip sponsor-strip--main">
+            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap"><img src="../../assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap" decoding="async"></a>
+            <a href="https://www.sogeti.com/" target="_blank" rel="noopener" aria-label="Sogeti"><img src="../../assets/img/sogeti-logo-400.webp" width="160" height="86" loading="lazy" alt="Sogeti, part of Capgemini" decoding="async"></a>
+            <a href="https://www.deloitte.com/" target="_blank" rel="noopener" aria-label="Deloitte"><img src="../../assets/img/Deloitte.svg-400.webp" width="160" height="35" loading="lazy" alt="Deloitte" decoding="async"></a>
+            <a href="https://www.nsi.lu/" target="_blank" rel="noopener" aria-label="NSI, a Cegeka company"><img src="../../assets/img/Logo-couleur-PNG-400.webp" width="160" height="80" loading="lazy" alt="NSI, a Cegeka company" decoding="async"></a>
+        </div>
+      </div>
+      <div class="reveal" style="margin-bottom:var(--space-8);">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--gold">Sponsors</h3>
+        <div class="sponsor-strip">
+            <a href="https://www.lnds.lu/" target="_blank" rel="noopener" aria-label="LNDS, Luxembourg National Data Service"><img src="../../assets/img/lnds-logo-400.webp" width="100" height="124" loading="lazy" alt="LNDS, Luxembourg National Data Service" decoding="async"></a>
+            <a href="https://www.thalesgroup.com/en/cybersecurity" target="_blank" rel="noopener" aria-label="Thales"><img src="../../assets/img/thales-logo.svg" width="160" height="36" loading="lazy" alt="Thales" decoding="async"></a>
+            <a href="https://www.tricentis.com/" target="_blank" rel="noopener" aria-label="Tricentis"><img src="../../assets/img/Tricentis-Logo-1-1120x446-1-400.webp" width="160" height="64" loading="lazy" alt="Tricentis" decoding="async"></a>
+            <a aria-label="ainos"><img src="../../assets/img/ainos-logo-400.webp" width="160" height="44" loading="lazy" alt="ainos" decoding="async"></a>
+            <a href="https://www.getxray.app/" target="_blank" rel="noopener" aria-label="Xray"><img src="../../assets/img/xray-logo-400.webp" width="160" height="67" loading="lazy" alt="Xray" decoding="async"></a>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 class="sponsor-tier-heading sponsor-tier-heading--partners">Partners</h3>
+        <div class="sponsor-strip sponsor-strip--small">
+            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-BOT"><img src="../../assets/img/qbot-logo-300.webp" width="160" height="46" loading="lazy" alt="Q-BOT" decoding="async"></a>
+            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-GUARD"><img src="../../assets/img/QGUARD_01-logo-400.webp" width="160" height="42" loading="lazy" alt="Q-GUARD" decoding="async"></a>
+            <a href="https://www.jemmic.com/" target="_blank" rel="noopener" aria-label="jemmic"><img src="../../assets/img/jemmic_logo_retina-400.webp" width="160" height="53" loading="lazy" alt="jemmic" decoding="async"></a>
+            <a href="https://sqai-suite.com/" target="_blank" rel="noopener" aria-label="SQAI Suite"><img src="../../assets/img/SQAISuite-400.webp" width="160" height="89" loading="lazy" alt="SQAI Suite" decoding="async"></a>
+            <a><img src="../../assets/img/LTB-Logo-40300x-400.webp" width="160" height="42" loading="lazy" alt="Luxembourg Testing Board" decoding="async"></a>
+            <a href="https://www.gasq.org/" target="_blank" rel="noopener" aria-label="GASQ"><img src="../../assets/img/GASQ_Logo-400.webp" width="160" height="39" loading="lazy" alt="GASQ" decoding="async"></a>
+            <a href="https://www.istqb.org/" target="_blank" rel="noopener" aria-label="ISTQB"><img src="../../assets/img/istqb_logo-1920w-1024x585-1-400.webp" width="160" height="92" loading="lazy" alt="ISTQB" decoding="async"></a>
+            <a href="https://www.ibm.com/" target="_blank" rel="noopener" aria-label="IBM Platinum Partner"><img src="../../assets/img/IBM_Partner_Plus_platinum_partner_mark_pos_black_RGB-2-400.webp" width="160" height="90" loading="lazy" alt="IBM Platinum Partner" decoding="async"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- The "Organisations represented at LSTE 2025" logo wall was removed
        here on 2026-09-30 at the client's request; the sponsors and
-       partners keep their own logos lower down. Section backgrounds below
+       partners keep their own logos, just above. Section backgrounds below
        were re-alternated so no two plain sections touch. -->
-  <section class="section section--alt" aria-labelledby="people-heading">
+  <section class="section" aria-labelledby="people-heading">
     <div class="container">
       <div class="split-media reveal" style="margin-bottom:var(--space-8);align-items:start;">
         <div>
@@ -309,7 +368,7 @@ redirect_from:
     </div>
   </section>
 
-  <section class="section" aria-labelledby="themes-heading">
+  <section class="section section--alt" aria-labelledby="themes-heading">
     <div class="container">
       <div class="section-head section-head--left reveal">
         <span class="eyebrow eyebrow--cyan">Themes</span>
@@ -327,7 +386,7 @@ redirect_from:
     </div>
   </section>
 
-  <section class="section section--alt" aria-labelledby="formats-heading">
+  <section class="section" aria-labelledby="formats-heading">
     <div class="container">
       <div class="section-head section-head--left reveal">
         <span class="eyebrow eyebrow--lime">The day</span>
@@ -344,7 +403,7 @@ redirect_from:
     </div>
   </section>
 
-  <section class="section" aria-labelledby="value-heading">
+  <section class="section section--alt" aria-labelledby="value-heading">
     <div class="container">
       <div class="split-media reveal">
         <div class="edition-value__media">
@@ -360,65 +419,6 @@ redirect_from:
             <li>Build connections across Luxembourg&rsquo;s QA and software testing community in a single day.</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" aria-labelledby="photos-heading">
-    <div class="container">
-      <div class="section-head section-head--left reveal">
-        <span class="eyebrow eyebrow--cyan">In pictures</span>
-        <h2 id="photos-heading">LSTE 2025 in pictures</h2>
-      </div>
-      <div class="masonry gallery-grid reveal">
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-networking-crowd-400.avif 400w, ../../assets/img/lste-2025-networking-crowd-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-networking-crowd-400.webp 400w, ../../assets/img/lste-2025-networking-crowd-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-networking-crowd-800.jpg" data-full="../../assets/img/lste-2025-networking-crowd-1200.jpg" width="800" height="533" loading="lazy" alt="Attendees talking in the exhibition area at LSTE 2025" decoding="async">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-exhibitor-booth-400.avif 400w, ../../assets/img/lste-2025-exhibitor-booth-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-exhibitor-booth-400.webp 400w, ../../assets/img/lste-2025-exhibitor-booth-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-exhibitor-booth-800.jpg" data-full="../../assets/img/lste-2025-exhibitor-booth-1200.jpg" width="800" height="1067" loading="lazy" alt="Two people at a sponsor booth at LSTE 2025" decoding="async">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-workshop-session-2-400.avif 400w, ../../assets/img/lste-2025-workshop-session-2-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-workshop-session-2-400.webp 400w, ../../assets/img/lste-2025-workshop-session-2-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-workshop-session-2-800.jpg" data-full="../../assets/img/lste-2025-workshop-session-2-1200.jpg" width="800" height="600" loading="lazy" alt="A workshop in progress at LSTE 2025" decoding="async">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-keynote-speaker-400.avif 400w, ../../assets/img/lste-2025-keynote-speaker-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-keynote-speaker-400.webp 400w, ../../assets/img/lste-2025-keynote-speaker-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-keynote-speaker-800.jpg" data-full="../../assets/img/lste-2025-keynote-speaker-1200.jpg" width="800" height="533" loading="lazy" alt="A speaker addressing the audience at LSTE 2025" decoding="async">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-reception-crowd-400.avif 400w, ../../assets/img/lste-2025-reception-crowd-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-reception-crowd-400.webp 400w, ../../assets/img/lste-2025-reception-crowd-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-reception-crowd-800.jpg" data-full="../../assets/img/lste-2025-reception-crowd-1200.jpg" width="800" height="533" loading="lazy" alt="The crowd at the LSTE 2025 evening reception" decoding="async">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-networking-chat-400.avif 400w, ../../assets/img/lste-2025-networking-chat-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-networking-chat-400.webp 400w, ../../assets/img/lste-2025-networking-chat-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-networking-chat-800.jpg" data-full="../../assets/img/lste-2025-networking-chat-1200.jpg" width="800" height="1200" loading="lazy" alt="Attendees in conversation at LSTE 2025" decoding="async">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-women-testing-group-400.avif 400w, ../../assets/img/lste-2025-women-testing-group-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-women-testing-group-400.webp 400w, ../../assets/img/lste-2025-women-testing-group-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-women-testing-group-800.jpg" data-full="../../assets/img/lste-2025-women-testing-group-1200.jpg" width="800" height="1200" loading="lazy" alt="Women in testing gathered together at LSTE 2025" decoding="async" style="aspect-ratio:4/5;object-fit:cover;object-position:top;">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-qbot-crowd-400.avif 400w, ../../assets/img/lste-2025-qbot-crowd-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-qbot-crowd-400.webp 400w, ../../assets/img/lste-2025-qbot-crowd-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-qbot-crowd-800.jpg" data-full="../../assets/img/lste-2025-qbot-crowd-1200.jpg" width="800" height="533" loading="lazy" alt="Attendees gathered around a live demo at LSTE 2025" decoding="async">
-        </picture></button>
-        <button type="button" class="gallery-item"><picture>
-          <source type="image/avif" srcset="../../assets/img/lste-2025-group-cheers-400.avif 400w, ../../assets/img/lste-2025-group-cheers-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="../../assets/img/lste-2025-group-cheers-400.webp 400w, ../../assets/img/lste-2025-group-cheers-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img src="../../assets/img/lste-2025-group-cheers-800.jpg" data-full="../../assets/img/lste-2025-group-cheers-1200.jpg" width="800" height="533" loading="lazy" alt="A large group of attendees cheering at the LSTE 2025 evening reception" decoding="async">
-        </picture></button>
-      </div>
-      <div class="text-center" style="margin-top:var(--space-6);">
-        <a href="../../gallery/index.html" class="btn btn--outline">View the full gallery</a>
       </div>
     </div>
   </section>
@@ -489,7 +489,66 @@ redirect_from:
     </div>
   </section>
 
-  <section class="section" id="programme">
+  <section class="section" aria-labelledby="photos-heading">
+    <div class="container">
+      <div class="section-head section-head--left reveal">
+        <span class="eyebrow eyebrow--cyan">In pictures</span>
+        <h2 id="photos-heading">LSTE 2025 in pictures</h2>
+      </div>
+      <div class="masonry gallery-grid reveal">
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-networking-crowd-400.avif 400w, ../../assets/img/lste-2025-networking-crowd-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-networking-crowd-400.webp 400w, ../../assets/img/lste-2025-networking-crowd-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-networking-crowd-800.jpg" data-full="../../assets/img/lste-2025-networking-crowd-1200.jpg" width="800" height="533" loading="lazy" alt="Attendees talking in the exhibition area at LSTE 2025" decoding="async">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-exhibitor-booth-400.avif 400w, ../../assets/img/lste-2025-exhibitor-booth-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-exhibitor-booth-400.webp 400w, ../../assets/img/lste-2025-exhibitor-booth-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-exhibitor-booth-800.jpg" data-full="../../assets/img/lste-2025-exhibitor-booth-1200.jpg" width="800" height="1067" loading="lazy" alt="Two people at a sponsor booth at LSTE 2025" decoding="async">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-workshop-session-2-400.avif 400w, ../../assets/img/lste-2025-workshop-session-2-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-workshop-session-2-400.webp 400w, ../../assets/img/lste-2025-workshop-session-2-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-workshop-session-2-800.jpg" data-full="../../assets/img/lste-2025-workshop-session-2-1200.jpg" width="800" height="600" loading="lazy" alt="A workshop in progress at LSTE 2025" decoding="async">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-keynote-speaker-400.avif 400w, ../../assets/img/lste-2025-keynote-speaker-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-keynote-speaker-400.webp 400w, ../../assets/img/lste-2025-keynote-speaker-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-keynote-speaker-800.jpg" data-full="../../assets/img/lste-2025-keynote-speaker-1200.jpg" width="800" height="533" loading="lazy" alt="A speaker addressing the audience at LSTE 2025" decoding="async">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-reception-crowd-400.avif 400w, ../../assets/img/lste-2025-reception-crowd-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-reception-crowd-400.webp 400w, ../../assets/img/lste-2025-reception-crowd-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-reception-crowd-800.jpg" data-full="../../assets/img/lste-2025-reception-crowd-1200.jpg" width="800" height="533" loading="lazy" alt="The crowd at the LSTE 2025 evening reception" decoding="async">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-networking-chat-400.avif 400w, ../../assets/img/lste-2025-networking-chat-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-networking-chat-400.webp 400w, ../../assets/img/lste-2025-networking-chat-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-networking-chat-800.jpg" data-full="../../assets/img/lste-2025-networking-chat-1200.jpg" width="800" height="1200" loading="lazy" alt="Attendees in conversation at LSTE 2025" decoding="async">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-women-testing-group-400.avif 400w, ../../assets/img/lste-2025-women-testing-group-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-women-testing-group-400.webp 400w, ../../assets/img/lste-2025-women-testing-group-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-women-testing-group-800.jpg" data-full="../../assets/img/lste-2025-women-testing-group-1200.jpg" width="800" height="1200" loading="lazy" alt="Women in testing gathered together at LSTE 2025" decoding="async" style="aspect-ratio:4/5;object-fit:cover;object-position:top;">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-qbot-crowd-400.avif 400w, ../../assets/img/lste-2025-qbot-crowd-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-qbot-crowd-400.webp 400w, ../../assets/img/lste-2025-qbot-crowd-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-qbot-crowd-800.jpg" data-full="../../assets/img/lste-2025-qbot-crowd-1200.jpg" width="800" height="533" loading="lazy" alt="Attendees gathered around a live demo at LSTE 2025" decoding="async">
+        </picture></button>
+        <button type="button" class="gallery-item"><picture>
+          <source type="image/avif" srcset="../../assets/img/lste-2025-group-cheers-400.avif 400w, ../../assets/img/lste-2025-group-cheers-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="../../assets/img/lste-2025-group-cheers-400.webp 400w, ../../assets/img/lste-2025-group-cheers-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img src="../../assets/img/lste-2025-group-cheers-800.jpg" data-full="../../assets/img/lste-2025-group-cheers-1200.jpg" width="800" height="533" loading="lazy" alt="A large group of attendees cheering at the LSTE 2025 evening reception" decoding="async">
+        </picture></button>
+      </div>
+      <div class="text-center" style="margin-top:var(--space-6);">
+        <a href="../../gallery/index.html" class="btn btn--outline">View the full gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="programme">
     <div class="container">
       <div class="section-head section-head--left">
         <span class="eyebrow eyebrow--violet">Programme</span>
@@ -657,63 +716,6 @@ redirect_from:
               <div class="timeline__content"><p class="timeline__title">Networking cocktail</p></div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt edition-sponsors">
-    <div class="container">
-      <div class="section-head section-head--left">
-        <span class="eyebrow eyebrow--cyan">Sponsors &amp; partners</span>
-        <h2>The sponsors and partners of LSTE 2025</h2>
-      </div>
-      <!-- Sponsor and partner names were shown here as .edition-tag text
-           pills; on 2026-09-29, at the client's request, they were replaced by
-           the companies' logos, reusing the homepage's .sponsor-strip tiles
-           (home.css, unscoped, so it applies here too; no data-pitch, since
-           this page has no #sponsor-modal). The logo files are the past-sponsor
-           assets kept unreferenced in assets/img/. Every tile here now has a logo (Xray's, Sogeti's,
-           ainos's and Q-BOT's arrived 2026-09-29); a future name-only tile goes in
-           a tile of the same size — swap in an <img> once a logo is supplied.
-           The tile background stays #fff in dark mode (theme.css), hence the
-           fixed dark text colour. A tile with no href has no confirmed
-           official URL yet. Thales is credited as "Thales" only, per the
-           sponsor's communication guidance (see the homepage). -->
-      <!-- Sponsor hierarchy of the 2025 edition, kept on purpose (client,
-           2026-09-29): the four main sponsors (Q-Leap, Sogeti, Deloitte,
-           NSI) in the largest tiles, then the other sponsors, then the
-           partners in smaller tiles — never all logos at one size. -->
-      <div class="reveal" style="margin-bottom:var(--space-8);">
-        <h3 class="sponsor-tier-heading sponsor-tier-heading--platinum">Main sponsors</h3>
-        <div class="sponsor-strip sponsor-strip--main">
-            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-Leap"><img src="../../assets/img/QLEAP_01-logo-400.webp" width="160" height="48" loading="lazy" alt="Q-Leap" decoding="async"></a>
-            <a href="https://www.sogeti.com/" target="_blank" rel="noopener" aria-label="Sogeti"><img src="../../assets/img/sogeti-logo-400.webp" width="160" height="86" loading="lazy" alt="Sogeti, part of Capgemini" decoding="async"></a>
-            <a href="https://www.deloitte.com/" target="_blank" rel="noopener" aria-label="Deloitte"><img src="../../assets/img/Deloitte.svg-400.webp" width="160" height="35" loading="lazy" alt="Deloitte" decoding="async"></a>
-            <a href="https://www.nsi.lu/" target="_blank" rel="noopener" aria-label="NSI, a Cegeka company"><img src="../../assets/img/Logo-couleur-PNG-400.webp" width="160" height="80" loading="lazy" alt="NSI, a Cegeka company" decoding="async"></a>
-        </div>
-      </div>
-      <div class="reveal" style="margin-bottom:var(--space-8);">
-        <h3 class="sponsor-tier-heading sponsor-tier-heading--gold">Sponsors</h3>
-        <div class="sponsor-strip">
-            <a href="https://www.lnds.lu/" target="_blank" rel="noopener" aria-label="LNDS, Luxembourg National Data Service"><img src="../../assets/img/lnds-logo-400.webp" width="100" height="124" loading="lazy" alt="LNDS, Luxembourg National Data Service" decoding="async"></a>
-            <a href="https://www.thalesgroup.com/en/cybersecurity" target="_blank" rel="noopener" aria-label="Thales"><img src="../../assets/img/thales-logo.svg" width="160" height="36" loading="lazy" alt="Thales" decoding="async"></a>
-            <a href="https://www.tricentis.com/" target="_blank" rel="noopener" aria-label="Tricentis"><img src="../../assets/img/Tricentis-Logo-1-1120x446-1-400.webp" width="160" height="64" loading="lazy" alt="Tricentis" decoding="async"></a>
-            <a aria-label="ainos"><img src="../../assets/img/ainos-logo-400.webp" width="160" height="44" loading="lazy" alt="ainos" decoding="async"></a>
-            <a href="https://www.getxray.app/" target="_blank" rel="noopener" aria-label="Xray"><img src="../../assets/img/xray-logo-400.webp" width="160" height="67" loading="lazy" alt="Xray" decoding="async"></a>
-        </div>
-      </div>
-      <div class="reveal">
-        <h3 class="sponsor-tier-heading sponsor-tier-heading--partners">Partners</h3>
-        <div class="sponsor-strip sponsor-strip--small">
-            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-BOT"><img src="../../assets/img/qbot-logo-300.webp" width="160" height="46" loading="lazy" alt="Q-BOT" decoding="async"></a>
-            <a href="https://q-leap.eu" target="_blank" rel="noopener" aria-label="Q-GUARD"><img src="../../assets/img/QGUARD_01-logo-400.webp" width="160" height="42" loading="lazy" alt="Q-GUARD" decoding="async"></a>
-            <a href="https://www.jemmic.com/" target="_blank" rel="noopener" aria-label="jemmic"><img src="../../assets/img/jemmic_logo_retina-400.webp" width="160" height="53" loading="lazy" alt="jemmic" decoding="async"></a>
-            <a href="https://sqai-suite.com/" target="_blank" rel="noopener" aria-label="SQAI Suite"><img src="../../assets/img/SQAISuite-400.webp" width="160" height="89" loading="lazy" alt="SQAI Suite" decoding="async"></a>
-            <a><img src="../../assets/img/LTB-Logo-40300x-400.webp" width="160" height="42" loading="lazy" alt="Luxembourg Testing Board" decoding="async"></a>
-            <a href="https://www.gasq.org/" target="_blank" rel="noopener" aria-label="GASQ"><img src="../../assets/img/GASQ_Logo-400.webp" width="160" height="39" loading="lazy" alt="GASQ" decoding="async"></a>
-            <a href="https://www.istqb.org/" target="_blank" rel="noopener" aria-label="ISTQB"><img src="../../assets/img/istqb_logo-1920w-1024x585-1-400.webp" width="160" height="92" loading="lazy" alt="ISTQB" decoding="async"></a>
-            <a href="https://www.ibm.com/" target="_blank" rel="noopener" aria-label="IBM Platinum Partner"><img src="../../assets/img/IBM_Partner_Plus_platinum_partner_mark_pos_black_RGB-2-400.webp" width="160" height="90" loading="lazy" alt="IBM Platinum Partner" decoding="async"></a>
         </div>
       </div>
     </div>
