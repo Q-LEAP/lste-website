@@ -539,6 +539,7 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 .speaker-photo--sylvain-perez { --photo-zoom: 1.052; --photo-x: 0.29%; --photo-y: 0.29%; --photo-bg: rgb(234 235 237); }
 .speaker-photo--ritabrata-banerjee { --photo-zoom: 1.146; --photo-x: -2.73%; --photo-y: 8.04%; --photo-bg: rgb(214 215 218); }
 .speaker-photo--jonathan-lopez { --photo-zoom: 1.117; --photo-x: -5.85%; --photo-y: 16.91%; --photo-bg: rgb(203 204 206); }
+.speaker-photo--christophe-cressend { --photo-zoom: 1.267; --photo-x: 2.72%; --photo-y: 14.48%; --photo-bg: rgb(208 208 216); }
 /* Jonathan's source has only wall above him, so its top edge can fade
    over a longer run (12%) without touching his hair. */
 .speaker-photo--jonathan-lopez img {
