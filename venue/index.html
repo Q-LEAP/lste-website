@@ -23,24 +23,13 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=858dd2a6">
+<link rel="stylesheet" href="../assets/css/styles.css?v=62335260">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Place",
   "name": "Conference Center Hôtel Parc Belle-Vue",
   "address": { "@type": "PostalAddress", "streetAddress": "5 Avenue Marie-Thérèse", "addressLocality": "Luxembourg", "postalCode": "L-2132", "addressCountry": "LU" }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "How do I get to the venue from Findel Airport?", "acceptedAnswer": { "@type": "Answer", "text": "Take the free bus (lines 16 or 29) or the tram from the airport to Hamilius, about 25 minutes with no ticket needed, then it's a 4-minute walk to Hôtel Parc Belle-Vue." } },
-    { "@type": "Question", "name": "Is the venue wheelchair accessible?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the Conference Center of Hôtel Parc Belle-Vue is fully wheelchair accessible." } },
-    { "@type": "Question", "name": "Is Wi-Fi available?", "acceptedAnswer": { "@type": "Answer", "text": "Yes: high-speed Wi-Fi is available throughout the building for all attendees." } }
-  ]
 }
 </script>
 <script type="application/ld+json">
@@ -139,9 +128,11 @@ redirect_from:
 <main id="main">
 
   <!-- Compact intro (2026-09-30, same approach as /about/): one H1, the
-       venue and address, one line, practical actions, and the map in the
-       first screen. The "Plan your visit" eyebrow and the separate
-       "Where does LSTE take place?" block were folded into this one. -->
+       venue and address, one line, the accessibility note, practical
+       actions, and the map in the first screen. The "Plan your visit"
+       eyebrow and the separate "Where does LSTE take place?" block were
+       folded into this one; accessibility moved up here from the old venue
+       FAQ, which was removed at the client's request. -->
   <section class="page-hero page-hero--left page-hero--compact" aria-labelledby="venue-heading">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Venue</span></nav>
@@ -150,10 +141,11 @@ redirect_from:
           <h1 id="venue-heading">Venue &amp; access</h1>
           <p class="venue-address">Conference Center, H&ocirc;tel Parc Belle-Vue<span>5 Avenue Marie-Th&eacute;r&egrave;se, L-2132 Luxembourg</span></p>
           <p class="page-hero__lead">In the heart of Luxembourg City, minutes from Hamilius by tram, bus or on foot.</p>
+          <p class="venue-access-note"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i><span><strong>Accessible venue</strong> The Conference Center is fully wheelchair accessible.</span></p>
           <div class="venue-actions">
             <a class="btn btn--primary btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Open in Maps <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            <a class="btn btn--outline btn--sm" href="#getting-there" data-open-tab="tab-transit">Public transport <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            <a class="btn btn--outline btn--sm" href="#getting-there" data-open-tab="tab-car">Parking <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn btn--outline btn--sm" href="#public-transport">Public transport <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn btn--outline btn--sm" href="#by-car">Parking <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="map-embed js-map-embed">
@@ -172,20 +164,124 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Inside the venue: client-supplied photos (2026-09-30). The conference
-       room leads at its native 3:2 so the stage, screen and seating stay
-       visible; terrace and park sit beside it. -->
-  <section class="section" style="padding-top:var(--space-6);" aria-labelledby="inside-heading">
+  <!-- Getting there (2026-09-30): three compact blocks side by side
+       instead of the old traveller-profile tabs, so every option is
+       readable at a glance with nothing to click. Same sourced facts as
+       before (on-site parking, Amélie/Hamilius stops, bus 16/29 and the
+       airport tram, free public transport); Luxembourg's airport has no
+       train link. The FAQ's airport answer lives in the third block now. -->
+  <section class="section section--alt" id="getting-there" aria-labelledby="transport-heading" style="scroll-margin-top:var(--header-h);">
+    <div class="container">
+      <div class="section-head section-head--left reveal">
+        <h2 id="transport-heading">Getting there</h2>
+      </div>
+      <div class="access-grid reveal">
+        <article class="card access-card" id="by-car">
+          <h3><i class="fa-solid fa-car" aria-hidden="true"></i> By car</h3>
+          <ul class="access-card__list">
+            <li><strong>Free on-site parking</strong> for guests, 70 spaces, no reservation: take the underground garage and turn right.</li>
+            <li><strong>If it&rsquo;s full:</strong> Parkolux Monterey, 24b Av. Monterey, 5 min walk.</li>
+            <li><strong>GPS:</strong> 5 Avenue Marie-Th&eacute;r&egrave;se, L-2132 Luxembourg</li>
+          </ul>
+          <a class="news-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="card access-card" id="public-transport">
+          <h3><i class="fa-solid fa-train-tram" aria-hidden="true"></i> Public transport</h3>
+          <ul class="access-card__list">
+            <li><strong>Bus:</strong> Amélie stop, ~2 min walk</li>
+            <li><strong>Tram &amp; bus:</strong> Hamilius stop, ~4 min walk</li>
+            <li><strong>Free</strong> across Luxembourg, no ticket needed</li>
+          </ul>
+          <a class="news-link" href="https://www.mobiliteit.lu" target="_blank" rel="noopener">Plan your route on mobiliteit.lu <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="card access-card" id="from-airport">
+          <h3><i class="fa-solid fa-plane-departure" aria-hidden="true"></i> From the airport</h3>
+          <ul class="access-card__list">
+            <li><strong>Bus 16 or 29, or the tram,</strong> from Findel Airport to Hamilius</li>
+            <li><strong>~25 min</strong>, then a 4 min walk to the venue</li>
+            <li><strong>Free</strong>, no ticket needed</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="hotels-heading">
+    <div class="container">
+      <div class="section-head section-head--left reveal">
+        <h2 id="hotels-heading">Where to stay</h2>
+      </div>
+      <!-- 2026-09-30: three equal cards, same image height, same amount of
+           copy, CTA pinned to the bottom. Parc Belle-Vue is set apart only
+           by its badges, which sit on the photo so the text below still
+           lines up across the three cards. Client-supplied photos; hotel
+           links checked on 2026-09-30. -->
+      <div class="hotel-grid reveal">
+        <article class="card hotel-card hotel-card--photo">
+          <div class="hotel-card__media">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/venue-belle-vue-park-400.avif 400w, ../assets/img/venue-belle-vue-park-800.avif 800w" sizes="(max-width: 900px) 100vw, 380px">
+              <source type="image/webp" srcset="../assets/img/venue-belle-vue-park-400.webp 400w, ../assets/img/venue-belle-vue-park-800.webp 800w" sizes="(max-width: 900px) 100vw, 380px">
+              <img src="../assets/img/venue-belle-vue-park-800.jpg" width="800" height="555" loading="lazy" alt="Hôtel Parc Belle-Vue and its terrace above the park" decoding="async">
+            </picture>
+            <div class="hotel-card__badges"><span class="badge badge--recommended">Recommended</span><span class="badge badge--onsite">On site</span></div>
+          </div>
+          <div class="hotel-card__body">
+            <h3>H&ocirc;tel Parc Belle-Vue</h3>
+            <p class="text-muted">Stay directly at the LSTE venue for the simplest event experience.</p>
+            <div class="distance"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> On site</div>
+            <a class="news-link" href="https://www.goereshotels.com/en/belle-vue-en/" target="_blank" rel="noopener">View hotel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="card hotel-card hotel-card--photo">
+          <div class="hotel-card__media">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/hotel-le-royal-400.avif 400w, ../assets/img/hotel-le-royal-800.avif 766w" sizes="(max-width: 900px) 100vw, 380px">
+              <source type="image/webp" srcset="../assets/img/hotel-le-royal-400.webp 400w, ../assets/img/hotel-le-royal-800.webp 766w" sizes="(max-width: 900px) 100vw, 380px">
+              <img src="../assets/img/hotel-le-royal-800.jpg" width="766" height="764" loading="lazy" alt="The facade of Hotel Le Royal, Luxembourg City" decoding="async" style="object-position:50% 72%;">
+            </picture>
+          </div>
+          <div class="hotel-card__body">
+            <h3>Hotel Le Royal</h3>
+            <p class="text-muted">A central Luxembourg City hotel within walking distance of the venue.</p>
+            <div class="distance"><i class="fa-solid fa-person-walking" aria-hidden="true"></i> ~10 min walk</div>
+            <a class="news-link" href="https://luxembourg.leroyal.com/" target="_blank" rel="noopener">View hotel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="card hotel-card hotel-card--photo">
+          <div class="hotel-card__media">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/hotel-melia-luxembourg-400.avif 400w, ../assets/img/hotel-melia-luxembourg-800.avif 800w" sizes="(max-width: 900px) 100vw, 380px">
+              <source type="image/webp" srcset="../assets/img/hotel-melia-luxembourg-400.webp 400w, ../assets/img/hotel-melia-luxembourg-800.webp 800w" sizes="(max-width: 900px) 100vw, 380px">
+              <img src="../assets/img/hotel-melia-luxembourg-800.jpg" width="800" height="1068" loading="lazy" alt="The Meliá Luxembourg building in Kirchberg" decoding="async" style="object-position:50% 35%;">
+            </picture>
+          </div>
+          <div class="hotel-card__body">
+            <h3>Meli&aacute; Luxembourg</h3>
+            <p class="text-muted">A modern Kirchberg hotel with convenient tram access to the venue area.</p>
+            <div class="distance"><i class="fa-solid fa-train-tram" aria-hidden="true"></i> ~15 min by tram</div>
+            <a class="news-link" href="https://www.melia.com/en/hotels/luxembourg/luxembourg/melia-luxembourg" target="_blank" rel="noopener">View hotel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inside the venue (2026-09-30): moved below the hotels so the photos
+       support the practical information instead of competing with it.
+       Three equal tiles, one modest height; client-supplied photos. The
+       Wi-Fi line comes from the old venue FAQ. -->
+  <section class="section section--alt" aria-labelledby="inside-heading">
     <div class="container">
       <div class="section-head section-head--left reveal">
         <h2 id="inside-heading">Inside the venue</h2>
-        <p>Conference spaces, networking areas and a central location in the heart of Luxembourg City.</p>
+        <p>A glimpse of the conference and networking spaces. High-speed Wi-Fi is available throughout the building.</p>
       </div>
       <div class="venue-gallery reveal">
-        <figure class="venue-gallery__item venue-gallery__item--main">
+        <figure class="venue-gallery__item">
           <picture>
-            <source type="image/avif" srcset="../assets/img/venue-belle-vue-conference-room-400.avif 400w, ../assets/img/venue-belle-vue-conference-room-800.avif 800w, ../assets/img/venue-belle-vue-conference-room-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 800px">
-            <source type="image/webp" srcset="../assets/img/venue-belle-vue-conference-room-400.webp 400w, ../assets/img/venue-belle-vue-conference-room-800.webp 800w, ../assets/img/venue-belle-vue-conference-room-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 800px">
+            <source type="image/avif" srcset="../assets/img/venue-belle-vue-conference-room-400.avif 400w, ../assets/img/venue-belle-vue-conference-room-800.avif 800w" sizes="(max-width: 760px) 100vw, 400px">
+            <source type="image/webp" srcset="../assets/img/venue-belle-vue-conference-room-400.webp 400w, ../assets/img/venue-belle-vue-conference-room-800.webp 800w" sizes="(max-width: 760px) 100vw, 400px">
             <img src="../assets/img/venue-belle-vue-conference-room-800.jpg" width="800" height="533" loading="lazy" alt="The Parc Belle-Vue conference room set up theatre-style, facing the stage screen" decoding="async">
           </picture>
           <figcaption>Conference room</figcaption>
@@ -210,183 +306,11 @@ redirect_from:
     </div>
   </section>
 
-  <!-- Section 2: "How are you coming?" — organized by traveller profile
-       instead of one dense mixed block, so each visitor only reads the
-       part that applies to them. Real facts only (bus 16/29, airport tram
-       since March 2025, Hamilius/Amélie stops, on-site parking) — same
-       sourced info the old "Getting there" timeline had, just regrouped;
-       nothing invented (Luxembourg's airport has no train link, so that
-       slot became "airport tram" instead of forcing a nonexistent train). -->
-  <section class="section section--alt" id="getting-there" aria-labelledby="transport-heading" style="scroll-margin-top:var(--header-h);">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--cyan">Getting there</span>
-        <h2 id="transport-heading">How are you coming?</h2>
-        <p>Pick how you're travelling and get exactly the directions that apply to you.</p>
-      </div>
-
-      <div class="profile-tabs reveal" data-tabs>
-        <div class="profile-tabs__list" role="tablist" aria-label="Choose how you're travelling to LSTE">
-          <button type="button" class="profile-tabs__tab" id="tab-car" role="tab" aria-selected="true" aria-controls="panel-car" tabindex="0"><i class="fa-solid fa-car" aria-hidden="true"></i> By car</button>
-          <button type="button" class="profile-tabs__tab" id="tab-transit" role="tab" aria-selected="false" aria-controls="panel-transit" tabindex="-1"><i class="fa-solid fa-train-tram" aria-hidden="true"></i> By public transport</button>
-          <button type="button" class="profile-tabs__tab" id="tab-plane" role="tab" aria-selected="false" aria-controls="panel-plane" tabindex="-1"><i class="fa-solid fa-plane-departure" aria-hidden="true"></i> By plane</button>
-        </div>
-
-        <div class="profile-tabs__panel" id="panel-car" role="tabpanel" aria-labelledby="tab-car">
-          <div class="grid grid--3">
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-square-parking"></i></div>
-              <h3 style="font-size:1.0625rem;">Parking</h3>
-              <p class="text-muted" style="font-size:0.9rem;">Free on-site parking for guests, 70 spaces, no reservations: enter the underground garage and turn right.</p>
-            </div>
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-car"></i></div>
-              <h3 style="font-size:1.0625rem;">If it's full</h3>
-              <p class="text-muted" style="font-size:0.9rem;">Try Parkolux Monterey (24b Av. Monterey, 5-minute walk) or Park &amp; Ride Bouillon via bus 15. Street parking nearby is free after 6 PM.</p>
-            </div>
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
-              <h3 style="font-size:1.0625rem;">GPS</h3>
-              <p class="text-muted" style="font-size:0.9rem;">5 Avenue Marie-Thérèse, L-2132 Luxembourg.</p>
-              <p style="margin-top:var(--space-2);"><a class="news-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener" style="font-size:0.8125rem;">Get directions <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="profile-tabs__panel" id="panel-transit" role="tabpanel" aria-labelledby="tab-transit" hidden>
-          <div class="grid grid--3">
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-train-tram"></i></div>
-              <h3 style="font-size:1.0625rem;">Tram</h3>
-              <p class="text-muted" style="font-size:0.9rem;">Hamilius stop, about a 4-minute walk from the venue.</p>
-            </div>
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-bus"></i></div>
-              <h3 style="font-size:1.0625rem;">Bus</h3>
-              <p class="text-muted" style="font-size:0.9rem;">Luxembourg, Amélie stop, about a 2-minute walk. Lines 6, 10, 15, and 609 also serve Hamilius.</p>
-            </div>
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-ticket"></i></div>
-              <h3 style="font-size:1.0625rem;">Free of charge</h3>
-              <p class="text-muted" style="font-size:0.9rem;">All public transport in Luxembourg has been free since 2020, no ticket needed. Full routes at <a href="https://www.mobiliteit.lu" target="_blank" rel="noopener">mobiliteit.lu</a>.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="profile-tabs__panel" id="panel-plane" role="tabpanel" aria-labelledby="tab-plane" hidden>
-          <div class="grid grid--3">
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-plane-departure"></i></div>
-              <h3 style="font-size:1.0625rem;">Findel Airport</h3>
-              <p class="text-muted" style="font-size:0.9rem;">About 25 minutes from the venue, with two free options straight into town.</p>
-            </div>
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-bus"></i></div>
-              <h3 style="font-size:1.0625rem;">Bus 16 &amp; 29</h3>
-              <p class="text-muted" style="font-size:0.9rem;">Free buses run directly from the airport to Hamilius.</p>
-            </div>
-            <div class="card transport-card">
-              <div class="transport-card__icon" aria-hidden="true"><i class="fa-solid fa-train-tram"></i></div>
-              <h3 style="font-size:1.0625rem;">Airport tram</h3>
-              <p class="text-muted" style="font-size:0.9rem;">Live since March 2025, also running from the airport stop to Hamilius, then a 4-minute walk to the venue.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="hotels-heading">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--purple">Where to stay</span>
-        <h2 id="hotels-heading">Hotels nearby</h2>
-        <p>Recommended for attendees travelling from outside Luxembourg.</p>
-      </div>
-      <!-- 2026-09-30: Parc Belle-Vue leads as the recommended option (it is
-           the venue itself), wider with a stronger border; Le Royal and
-           Meliá stay equal alternatives. Client-supplied photos, one fixed
-           height for all three. Hotel links checked on 2026-09-30. -->
-      <div class="hotel-grid reveal">
-        <article class="card hotel-card hotel-card--photo hotel-card--recommended">
-          <picture class="hotel-card__media">
-            <source type="image/avif" srcset="../assets/img/venue-belle-vue-park-400.avif 400w, ../assets/img/venue-belle-vue-park-800.avif 800w" sizes="(max-width: 900px) 100vw, 480px">
-            <source type="image/webp" srcset="../assets/img/venue-belle-vue-park-400.webp 400w, ../assets/img/venue-belle-vue-park-800.webp 800w" sizes="(max-width: 900px) 100vw, 480px">
-            <img src="../assets/img/venue-belle-vue-park-800.jpg" width="800" height="555" loading="lazy" alt="Hôtel Parc Belle-Vue and its terrace above the park" decoding="async">
-          </picture>
-          <div class="hotel-card__body">
-            <div class="hotel-card__badges"><span class="badge badge--recommended">Recommended</span><span class="badge">On site</span></div>
-            <h3>H&ocirc;tel Parc Belle-Vue</h3>
-            <p class="text-muted">Stay where LSTE takes place. The conference venue is located directly at the hotel, making this the easiest and most convenient option for attendees.</p>
-            <ul class="hotel-card__benefits">
-              <li><i class="fa-solid fa-check" aria-hidden="true"></i>Event venue on site</li>
-              <li><i class="fa-solid fa-check" aria-hidden="true"></i>No transport needed</li>
-              <li><i class="fa-solid fa-check" aria-hidden="true"></i>Easy access before and after the event</li>
-            </ul>
-            <p class="text-muted">Best choice for the simplest LSTE experience.</p>
-            <div class="distance"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> On site</div>
-            <a class="news-link" href="https://www.goereshotels.com/en/belle-vue-en/" target="_blank" rel="noopener">View hotel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-        <article class="card hotel-card hotel-card--photo">
-          <picture class="hotel-card__media">
-            <source type="image/avif" srcset="../assets/img/hotel-le-royal-400.avif 400w, ../assets/img/hotel-le-royal-800.avif 766w" sizes="(max-width: 900px) 100vw, 380px">
-            <source type="image/webp" srcset="../assets/img/hotel-le-royal-400.webp 400w, ../assets/img/hotel-le-royal-800.webp 766w" sizes="(max-width: 900px) 100vw, 380px">
-            <img src="../assets/img/hotel-le-royal-800.jpg" width="766" height="764" loading="lazy" alt="The facade of Hotel Le Royal, Luxembourg City" decoding="async" style="object-position:50% 72%;">
-          </picture>
-          <div class="hotel-card__body">
-            <h3>Hotel Le Royal</h3>
-            <p class="text-muted">One of Luxembourg City&rsquo;s best-known central hotels, within walking distance of the venue.</p>
-            <div class="distance"><i class="fa-solid fa-person-walking" aria-hidden="true"></i> ~10 min walk</div>
-            <a class="news-link" href="https://luxembourg.leroyal.com/" target="_blank" rel="noopener">View hotel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-        <article class="card hotel-card hotel-card--photo">
-          <picture class="hotel-card__media">
-            <source type="image/avif" srcset="../assets/img/hotel-melia-luxembourg-400.avif 400w, ../assets/img/hotel-melia-luxembourg-800.avif 800w" sizes="(max-width: 900px) 100vw, 380px">
-            <source type="image/webp" srcset="../assets/img/hotel-melia-luxembourg-400.webp 400w, ../assets/img/hotel-melia-luxembourg-800.webp 800w" sizes="(max-width: 900px) 100vw, 380px">
-            <img src="../assets/img/hotel-melia-luxembourg-800.jpg" width="800" height="1068" loading="lazy" alt="The Meliá Luxembourg building in Kirchberg" decoding="async" style="object-position:50% 35%;">
-          </picture>
-          <div class="hotel-card__body">
-            <h3>Meli&aacute; Luxembourg</h3>
-            <p class="text-muted">A contemporary hotel in Kirchberg with convenient tram access to the city centre and the venue area.</p>
-            <div class="distance"><i class="fa-solid fa-train-tram" aria-hidden="true"></i> ~15 min by tram</div>
-            <a class="news-link" href="https://www.melia.com/en/hotels/luxembourg/luxembourg/melia-luxembourg" target="_blank" rel="noopener">View hotel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" aria-labelledby="venue-faq-heading">
-    <div class="container container--narrow">
-      <div class="section-head reveal">
-        <span class="eyebrow eyebrow--lime">Good to know</span>
-        <h2 id="venue-faq-heading">Venue questions.</h2>
-      </div>
-      <div class="reveal">
-        <details class="faq-item" open>
-          <summary>How do I get to the venue from Findel Airport?</summary>
-          <p>Take the free bus (lines 16 or 29) or the tram from the airport to Hamilius, about 25 minutes with no ticket needed, and then it's a 4-minute walk to Hôtel Parc Belle-Vue.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is the venue wheelchair accessible?</summary>
-          <p>Yes, the Conference Center of Hôtel Parc Belle-Vue is fully wheelchair accessible.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is Wi-Fi available?</summary>
-          <p>Yes, high-speed Wi-Fi is available throughout the building for all attendees.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
   <section class="tickets-cta" aria-labelledby="venue-cta-heading">
     <div class="tickets-cta__glow" aria-hidden="true"></div>
     <div class="container tickets-cta__inner reveal">
-      <span class="eyebrow eyebrow--cyan">26 November 2026</span>
-      <h2 id="venue-cta-heading">Ready to join us?</h2>
-      <p class="text-muted" style="max-width:44ch;margin:var(--space-3) auto 0;">Secure your place at LSTE 2026, on 26 November at Hôtel Parc Belle-Vue, Luxembourg City.</p>
+      <h2 id="venue-cta-heading">Ready for LSTE 2026?</h2>
+      <p class="text-muted" style="max-width:44ch;margin:var(--space-3) auto 0;">Join Luxembourg&rsquo;s software testing community on 26 November 2026.</p>
       <div class="hero__actions" style="justify-content:center;">
         <a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/lste2026-registration-24/register" target="_blank" rel="noopener">Get your free ticket <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </div>
@@ -455,6 +379,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=03532771" defer></script>
+<script src="../assets/js/main.js?v=921457fb" defer></script>
 </body>
 </html>

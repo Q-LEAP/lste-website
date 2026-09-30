@@ -57,8 +57,9 @@ async function main() {
     extractIconNames(text, 'brands').forEach((n) => brandsNames.add(n));
   }
   // Icons only ever referenced dynamically from JS (theme toggle swaps
-  // moon <-> sun) — grep can't see these in the HTML, so list them by hand.
-  ['sun'].forEach((n) => solidNames.add(n));
+  // moon <-> sun; the programme's cocktail block uses users) — grep can't
+  // see these in the HTML, so list them by hand.
+  ['sun', 'users'].forEach((n) => solidNames.add(n));
 
   console.log(`Found ${solidNames.size} solid + ${brandsNames.size} brand icons in use.`);
 

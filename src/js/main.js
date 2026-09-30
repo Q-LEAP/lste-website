@@ -614,7 +614,10 @@
   // description supports multiple paragraphs via '||', same convention
   // as the sponsor pitch dialog (initSponsorModal above). On general
   // markers, `place` is a trailing "· where" note and `accent` gives the
-  // banner the draft's filled purple (closing only).
+  // banner the draft's filled purple (unused since 2026-09-30). `finale`
+  // (the cocktail only) draws the day's last marker as a full-width
+  // destination block instead: icon, time, title, room on its own line
+  // and the optional `note`, at the client's request (2026-09-30).
   // Workshops also carry `partner` (the company running it, shown on
   // /register/) and `booking`: the Odoo registration link of that
   // workshop's own event (one Odoo event per workshop, 20 seats each,
@@ -696,8 +699,8 @@
       speaker: 'Booths open until the evening cocktail.',
     },
 
-    { id: 'closing', track: 'general', start: '18:30', end: '18:35', title: 'Closing & thank you', place: 'LSTE organisers', accent: true },
-    { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, title: 'Cocktail & networking', place: 'Salle Pétrusse' },
+    { id: 'closing', track: 'general', start: '18:30', end: '18:35', title: 'Closing' },
+    { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, finale: true, title: 'Cocktail & Networking', place: 'Salle Pétrusse', note: 'Wrap up the day with drinks, conversations and networking.' },
   ];
 
   /* ── Programme: data-driven grid ───────────────────────────────────
@@ -719,9 +722,10 @@
     const EVENT_DATE = '2026-11-26'; // yyyy-mm-dd, for the "Now" line only
     const DAY_START = '13:00';
     // The day runs to 21:00, but after 18:35 there is only the cocktail:
-    // the grid stops at 19:00 and the cocktail banner reads "From 18:35"
-    // instead of drawing two and a half empty hours in every column.
-    const GRID_END = '19:00';
+    // the grid stops at 19:15 and the cocktail block reads "From 18:35"
+    // instead of drawing two and a half empty hours in every column. The
+    // extra quarter hour past 19:00 gives the finale block room to breathe.
+    const GRID_END = '19:15';
     const SLOT_MIN = 5; // grid resolution, in minutes
 
 
@@ -754,6 +758,21 @@
       if (className) node.className = className;
       if (text) node.textContent = text;
       return node;
+    }
+    // Content of the cocktail's "final destination" block, shared by the
+    // desktop grid and the mobile list.
+    function fillFinale(card, session) {
+      card.classList.add('schedule-finale');
+      const icon = el('span', 'schedule-finale__icon');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.appendChild(el('i', 'fa-solid fa-users'));
+      card.appendChild(icon);
+      const body = el('span', 'schedule-finale__body');
+      body.appendChild(el('span', 'schedule-finale__time', sessionTime(session)));
+      body.appendChild(el('span', 'schedule-finale__title', session.title));
+      if (session.place) body.appendChild(el('span', 'schedule-finale__place', session.place));
+      if (session.note) body.appendChild(el('span', 'schedule-finale__note', session.note));
+      card.appendChild(body);
     }
 
     const dayStartMin = toMinutes(DAY_START);
@@ -802,7 +821,10 @@
         else if (!isGeneral && end - start <= 15) card.classList.add('session-card--short');
         else if (!isGeneral && end - start <= 30) card.classList.add('session-card--mid');
         card.style.gridRow = rowStart + ' / ' + rowEnd;
-        if (isGeneral) {
+        if (isGeneral && session.finale) {
+          card.style.gridColumn = '2 / span ' + TRACKS.length;
+          fillFinale(card, session);
+        } else if (isGeneral) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
           card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));
           card.appendChild(el('span', 'schedule-marker__title', markerTitle(session)));
@@ -851,7 +873,9 @@
           const isGeneral = session.track === 'general';
           const track = TRACKS.find((t) => t.id === session.track);
           const card = document.createElement(isGeneral ? 'div' : 'button');
-          if (isGeneral) {
+          if (isGeneral && session.finale) {
+            fillFinale(card, session);
+          } else if (isGeneral) {
             card.className = 'schedule-mobile-marker';
             if (session.accent) card.classList.add('schedule-mobile-marker--accent');
             card.appendChild(el('span', 'schedule-mobile-marker__meta', sessionTime(session)));
