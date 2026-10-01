@@ -56,7 +56,7 @@ depends entirely on it.
     (University of Luxembourg). Workshops: 15:20 **Agilitest**, 16:00
     **Q-Guard by Q-Leap**, 16:30 **Q-Bot**.
   - 17:00 Coffee break & booth visits, in the exhibitor area.
-  - 17:30 keynote by **LNDS**; 18:00 keynote by **OpenText**. Workshops:
+  - 17:30 keynote by **LNDS**; 18:00 slot to be confirmed. Workshops:
     17:30–18:10 **Sembi**; 18:10–18:30 a seventh workshop (partner to be
     announced).
   - 18:30 Closing & thank you; from 18:35 cocktail & networking in Salle

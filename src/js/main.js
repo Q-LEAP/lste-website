@@ -626,7 +626,7 @@
   // Odoo resolves the event by the trailing id, so a later rename of the
   // event doesn't break these links.
   const WORKSHOP_SEATS = 20; // per workshop, as set on each Odoo event
-  const TBA = 'Title to be announced';
+  const TBA = 'Details coming soon';
   const TALK = '20-minute talk followed by 10 minutes of Q&A.';
   const SESSIONS = [
     { id: 'doors-open', track: 'general', start: '13:00', end: '13:30', title: 'Doors open & registration' },
@@ -698,7 +698,9 @@
     { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
     { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
-    { id: 'keynote-opentext', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: TBA, speaker: 'OpenText', description: TALK },
+    // 18:00 slot held for a speaker not yet confirmed (client, 2026-10-01):
+    // no name on the site until it is.
+    { id: 'keynote-1800', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: 'Slot to be confirmed', speaker: 'Coming soon', description: TALK },
     { id: 'workshop-sembi', track: 'workshop', partner: 'Sembi', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-sembi-30/register', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
     { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', booking: '', type: 'Workshop 7', title: 'Workshop to be announced' },
     {
@@ -1045,7 +1047,7 @@
       const paras = (w.description || '').split('||').filter(Boolean);
       const shown = paras.slice(0, 1).concat(paras.slice(1).filter((p) => /^What to bring/i.test(p)));
       if (shown.length) shown.forEach((p) => panel.appendChild(el('p', 'workshop-acc__desc', p)));
-      else panel.appendChild(el('p', 'workshop-acc__desc', 'Details to be announced.'));
+      else panel.appendChild(el('p', 'workshop-acc__desc', 'Details coming soon.'));
       const foot = el('div', 'workshop-acc__foot');
       if (w.booking) {
         foot.appendChild(el('span', 'workshop-acc__seats', WORKSHOP_SEATS + ' seats'));
