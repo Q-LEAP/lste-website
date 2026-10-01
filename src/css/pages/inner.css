@@ -507,9 +507,16 @@
 
 .register-section-title { margin: 0 0 var(--space-4); font-size: clamp(1.375rem, 1.5vw + 1rem, 1.75rem); }
 
-.register-workshops { padding: var(--space-8) 0 var(--space-10); scroll-margin-top: var(--header-h); }
+/* Stage 2 sits on its own surface: a faint purple tint fading into the
+   surface colour, with a thin violet rule on top. Understated on purpose,
+   so the hero's primary CTA keeps the lead. */
+.register-workshops { padding: var(--space-10) 0 var(--space-12); scroll-margin-top: var(--header-h); border-top: 1px solid color-mix(in srgb, var(--color-primary-light) 35%, transparent); background: linear-gradient(180deg, rgba(109, 40, 217, 0.10), rgba(109, 40, 217, 0.03) 45%, transparent), var(--color-surface-alt); }
+.register-workshops .workshop-acc { background: color-mix(in srgb, var(--color-surface) 85%, transparent); }
+/* "01 — Register" / "02 — Pick your workshops": a small mono cue above
+   each stage title, not a stepper. */
+.register-step-cue { display: block; margin-bottom: var(--space-3); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary-light); }
+.register-step-cue--cyan { color: var(--color-cyan); }
 .register-workshops__intro { max-width: 62ch; margin: 0 0 var(--space-5); color: var(--color-body-text); }
-.register-closing { margin: var(--space-8) 0 0; font-family: var(--font-heading); font-weight: 600; color: var(--color-muted); }
 
 /* Workshop accordion: rows, not cards. The workshop green stays a thin
    edge, as on the programme; the reserve button is outline, secondary
@@ -864,3 +871,9 @@
 .audience-industries { margin-top: var(--space-8); padding-top: var(--space-5); border-top: 1px solid var(--color-border); }
 .audience-industries__label { display: block; margin-bottom: var(--space-2); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
 .audience-industries__list { margin: 0; font-size: 0.9375rem; font-weight: 400; color: var(--color-body-text); }
+
+/* Edition pages: small "previous / next" links where the closing CTA
+   banner used to be (2026-10-01). */
+.edition-nav { padding: var(--space-6) 0; border-top: 1px solid var(--color-border); }
+.edition-nav__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-6); }
+.edition-nav .back-link { margin-bottom: 0; }

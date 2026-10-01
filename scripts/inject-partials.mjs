@@ -3,7 +3,7 @@
 // A page opts in by containing:
 //   <!--NAV_START--><!--NAV_END-->
 //   <!--FOOTER_START--><!--FOOTER_END-->
-//   <!--TICKETS_CTA_START--><!--TICKETS_CTA_END-->  (closing registration CTA, same on every page)
+//   <!--TICKETS_CTA_START--><!--TICKETS_CTA_END-->  (closing registration CTA; since 2026-10-01 only on the homepage and /venue/, the client wants content pages to end without a banner)
 // Pages that don't have the markers yet (not migrated to the new design
 // system) are left untouched.
 import { readFile, writeFile, readdir } from 'node:fs/promises';

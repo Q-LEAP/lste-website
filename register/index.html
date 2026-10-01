@@ -26,7 +26,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=b608a0d6">
+<link rel="stylesheet" href="../assets/css/styles.css?v=11c7fd28">
 </head>
 <body>
 
@@ -106,7 +106,9 @@ redirect_from:
        single primary CTA (the Odoo event), what the ticket includes in one
        light line (tightened again the same day: no intro paragraph, the
        ticket contents as one "Included:" line in the hero), then the
-       workshops as an accordion (functional
+       workshops as an accordion (2026-10-01: two visual stages, "01 —
+       Register" on the page background and "02 — Pick your workshops" on
+       a faint purple-tinted surface with a thin top rule) (functional
        navigation, not a FAQ), then straight to the footer. No steps, no
        FAQ, no closing CTA banner. The workshop accordion is drawn by
        initWorkshopPicker() (main.js) from the same SESSIONS as the
@@ -115,22 +117,23 @@ redirect_from:
   <section class="page-hero page-hero--left page-hero--compact register-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Tickets</span></nav>
+      <span class="register-step-cue">01 &mdash; Register</span>
       <h1>Get your free ticket</h1>
       <p class="register-hero__meta"><span><i class="fa-solid fa-calendar" aria-hidden="true"></i> 26 November 2026 &middot; 13:00&ndash;21:00</span><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> H&ocirc;tel Parc Belle-Vue &middot; Luxembourg City</span></p>
       <p class="register-hero__cta"><a class="btn btn--primary btn--lg" href="https://q-leap.odoo.com/en_GB/event/lste2026-registration-24/register" target="_blank" rel="noopener">Register for free <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
       <p class="register-hero__note">Free registration &middot; Limited capacity</p>
-      <p class="register-hero__included"><strong>Included:</strong> Talks &amp; keynotes &middot; Demo area &middot; Coffee breaks &middot; Networking cocktail</p>
+      <p class="register-hero__included"><strong>Included:</strong> Talks &amp; keynotes &middot; Exhibition &middot; Coffee breaks &middot; Networking cocktail</p>
     </div>
   </section>
 
-  <section class="section section--alt register-workshops" id="workshops" aria-labelledby="workshops-heading">
+  <section class="section register-workshops" id="workshops" aria-labelledby="workshops-heading">
     <div class="container">
-      <h2 id="workshops-heading" class="register-section-title">Hands-on workshops</h2>
-      <p class="register-workshops__intro">Workshop seats are limited and require a separate reservation after your main event registration.</p>
+      <span class="register-step-cue register-step-cue--cyan">02 &mdash; Pick your workshops</span>
+      <h2 id="workshops-heading" class="register-section-title">Choose your workshops</h2>
+      <p class="register-workshops__intro">Seats are limited. Reserve the sessions you want after registering for the main event.</p>
       <div id="workshop-list">
         <p class="text-muted">The workshop list needs JavaScript. See them on the <a href="../schedule/index.html">programme</a>.</p>
       </div>
-      <p class="register-closing">One day. Luxembourg&rsquo;s software testing and quality community.</p>
     </div>
   </section>
 </main>
