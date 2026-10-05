@@ -8,9 +8,10 @@
 > `Allow: /` and disallows nothing on purpose, and 39 pages are indexable and
 > in `sitemap.xml`, 39/39.
 >
-> Six pages still carry a robots meta, **all deliberately** — re-audited
+> Seven pages still carry a robots meta, **all deliberately** — re-audited
 > 2026-08-27, still matching `sitemap.xml` exactly:
-> `/sponsors/`, `/ticket/`, `/become-a-speaker/` are redirect stubs with no
+> `/sponsors/`, `/ticket/`, `/become-a-speaker/` and (since 2026-10-05,
+> merged into News & Press) `/press/` are redirect stubs with no
 > content of their own; `/speakers/` is still a placeholder and `/resources/`
 > is the sponsor-only space, both kept out by the client's own ruling; and
 > `404.html` is a 404. All five real pages use `noindex, follow` so their
@@ -203,7 +204,37 @@ Only **public** posts can be embedded this way. If an author deletes the
 original post, both its thumbnail and the modal embed break — remove the
 card when that happens.
 
-## News page (`/news/`)
+## News & Press page (`/news/`)
+
+**2026-10-05: News and Press merged into one page, "News & Press"** (client
+feedback: one page, and a clear category label on every article). `/news/`
+now lists all 21 articles newest first; `/press/` is a redirect stub to it
+(meta refresh + canonical, `noindex, follow`, out of `sitemap.xml`), and the
+old WordPress `/category/press-release/…` redirects moved to
+`news/index.html`. Nav and footer link "News & Press" only.
+
+Every card has a `.news-tag` pill (top right, the date pill's twin, styles in
+`src/css/pages/home.css`), and every article page's eyebrow shows the same
+label. Categories, assigned on what the article itself says:
+
+- **Press**: originally published by a media outlet (the article page says
+  so): `silicon-lste-2025-press-release`, `digital-colleague`,
+  `lste-2024-landmark` (Silicon Luxembourg), `it-nation-testing-2019`,
+  `lste-2016-recap` (IT Nation), `lste-2016-announcement` (Paperjam),
+  `securitymadein-lste-2018`.
+- **Partners**: a sponsor's or partner's own participation: `deloitte-…`,
+  `sogeti-…`, `excellium-lste-2024`, `cnpd-lste-2024`, `snt-ict-community`.
+- **Insights**: the weekly articles (`src/news-queue/`, the publish script
+  tags them automatically; `category` in `schedule.json` overrides).
+- **News**: LSTE's own announcements and recaps, everything else. Four of
+  these have no stated source and may be press pieces after all:
+  `lste-2018-tresor-expertise`, `emerging-trends-lste-2018`, and the two
+  `grandes-tendances-…` (2017). Relabel if a source turns up.
+
+Cards whose picture is a logo (CNPD, IT Nation, SnT) use
+`.news-card__media--logo`: contained on white in the top of the card.
+
+### Before the merge
 
 As of 2026-07-17, the 6 articles listed on `/news/` are fully self-hosted
 (no more "Read on lste.lu" external links) — this was done ahead of the

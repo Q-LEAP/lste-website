@@ -48,6 +48,8 @@ async function exists(p) {
 // Same markup as the existing cards; `prefix` is the path back to the site root.
 function card(entry, prefix, newsHref) {
   const img = `${prefix}assets/img/${entry.image}`;
+  // The weekly articles are all "Insights" unless schedule.json says otherwise.
+  const category = entry.category || 'Insights';
   return `<article class="card news-card">
           <picture>
           <source type="image/avif" srcset="${img}-400.avif 400w, ${img}-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
@@ -55,6 +57,7 @@ function card(entry, prefix, newsHref) {
           <img class="news-card__media" src="${img}-800.jpg" width="${entry.width}" height="${entry.height}" loading="lazy" alt="${escapeHtml(entry.alt)}" decoding="async">
         </picture>
           <p class="news-date">${humanDate(entry.publish)}</p>
+          <span class="news-tag news-tag--${category.toLowerCase()}">${category}</span>
           <div class="news-card__body">
             <h3>${escapeHtml(entry.title)}</h3>
             <p class="text-muted" style="font-size:0.9rem;">${escapeHtml(entry.excerpt)}</p>

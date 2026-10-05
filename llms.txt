@@ -17,4 +17,4 @@
 - [Appel à speakers](https://www.lste.lu/call-for-speakers/) : candidatures jusqu'au 30/09/2026
 - [Devenir sponsor](https://www.lste.lu/become-a-sponsor/) : formules et audience
 - [Éditions passées](https://www.lste.lu/previous-editions/) : historique depuis 2014
-- [Presse](https://www.lste.lu/press/) : couverture média
+- [News & Press](https://www.lste.lu/news/) : actualités, couverture presse, annonces des partenaires et articles hebdomadaires sur le test logiciel
