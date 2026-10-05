@@ -1,5 +1,5 @@
 // Publishes the weekly blog articles queued in src/news-queue/ once their
-// date has come. Run every Monday morning by
+// date has come. Run every Tuesday at 09:00 (Luxembourg) by
 // .github/workflows/publish-weekly-news.yml; safe to run by hand any time.
 //
 // Each entry of src/news-queue/schedule.json is one ready-made article page

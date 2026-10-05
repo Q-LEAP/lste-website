@@ -1,4 +1,4 @@
-# Publishes the next queued blog article every Monday morning.
+# Publishes the next queued blog article every Tuesday at 09:00 Luxembourg time.
 #
 # The articles of the "LSTE Blog & SEO Content Plan" (autumn 2026) are written
 # in advance in src/news-queue/, one folder per article, with their dates in
@@ -13,9 +13,13 @@ name: Publish weekly news
 
 on:
   schedule:
-    # Mondays 05:00 UTC = 07:00 in Luxembourg in summer time, 06:00 in winter.
-    # GitHub may start scheduled jobs late under load; a few minutes is normal.
-    - cron: '0 5 * * 1'
+    # Cron is UTC-only, and 09:00 in Luxembourg is 07:00 UTC in summer time
+    # (CEST) but 08:00 UTC in winter (CET). So it fires at both, and the
+    # "Wait for 09:00" step below skips whichever run is before 09:00 local;
+    # the other run then finds nothing left to publish. GitHub may start
+    # scheduled jobs a few minutes late under load.
+    - cron: '0 7 * * 2'
+    - cron: '0 8 * * 2'
   # Publish by hand from the Actions tab (e.g. after moving a date earlier).
   workflow_dispatch:
 
@@ -31,18 +35,33 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for 09:00 Luxembourg time
+        id: gate
+        run: |
+          hour=$(TZ=Europe/Luxembourg date +%H)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$hour" -lt 9 ]; then
+            echo "It is ${hour}h in Luxembourg, the other scheduled run will publish."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.gate.outputs.go == 'true'
 
       - uses: actions/setup-node@v4
+        if: steps.gate.outputs.go == 'true'
         with:
           node-version: '22'
 
       # No install step: the publish script and the three build steps it
       # re-runs use only the Node standard library.
       - name: Publish due articles
+        if: steps.gate.outputs.go == 'true'
         run: node scripts/publish-scheduled-news.mjs
 
       - name: Commit and push
+        if: steps.gate.outputs.go == 'true'
         id: commit
         run: |
           if [ -z "$(git status --porcelain)" ]; then
@@ -54,6 +73,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A news index.html sitemap.xml
           git commit -m "News: publish this week's article"
+          git pull --rebase --quiet
           git push
           echo "pushed=true" >> "$GITHUB_OUTPUT"
 

@@ -246,8 +246,9 @@ How publishing works — nobody has to do anything weekly:
 - `src/news-queue/<slug>/index.html` holds each finished page, and
   `src/news-queue/schedule.json` its date, card title, excerpt and image.
   `src/` is excluded from Jekyll, so nothing is online before its date.
-- `.github/workflows/publish-weekly-news.yml` runs every Monday 05:00 UTC
-  and calls `scripts/publish-scheduled-news.mjs`, which copies every due
+- `.github/workflows/publish-weekly-news.yml` runs every Tuesday at 09:00
+  Luxembourg time (cron at 07:00 and 08:00 UTC, the run before 09:00 local
+  skips itself, so it holds across summer/winter time) and calls `scripts/publish-scheduled-news.mjs`, which copies every due
   article to `news/`, puts its card on top of `/news/` and of the homepage
   carousel (which keeps the 6 newest), adds it to `sitemap.xml`, re-runs
   partials/paths/asset versioning, then commits and triggers a Pages build.
@@ -258,11 +259,12 @@ How publishing works — nobody has to do anything weekly:
   today and run the workflow by hand (Actions → Publish weekly news → Run).
   `node scripts/publish-scheduled-news.mjs --date YYYY-MM-DD` simulates a day
   locally.
-- Calendar (Mondays): 5 Oct AI in testing (published at setup), 12 Oct
-  Quality Engineering, 19 Oct QA skills 2027, 26 Oct Testing community,
-  2 Nov Automation trends, 9 Nov AI in automation, 16 Nov Tech events,
-  23 Nov What to expect from LSTE 2026, 30 Nov Future of testing (after the
-  event, so its CTA points to /about/ rather than registration).
+- Calendar (Tuesdays, client's choice): 5 Oct AI in testing (published at
+  setup, a Monday), 13 Oct Quality Engineering, 20 Oct QA skills 2027,
+  27 Oct Testing community, 3 Nov Automation trends, 10 Nov AI in
+  automation, 17 Nov Tech events, 24 Nov What to expect from LSTE 2026,
+  1 Dec Future of testing (after the event, so its CTA points to /about/
+  rather than registration).
 
 ## 2026-07 audit & polish pass
 
