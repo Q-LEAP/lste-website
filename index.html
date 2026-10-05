@@ -602,8 +602,9 @@ redirect_from:
   </section>
 
   <!-- News preview — shows the site is actively updated, not a static
-       brochure. An auto-scrolling ticker (all 6 real articles, duplicated
-       once for a seamless loop) rather than a static 2-up grid — pauses on
+       brochure. An auto-scrolling ticker (the 6 newest articles, duplicated
+       once for a seamless loop; scripts/publish-scheduled-news.mjs adds each
+       weekly article on top and drops the oldest) rather than a static 2-up grid — pauses on
        hover/focus and sits still entirely under prefers-reduced-motion
        (see news-carousel rules in home.css + initNewsCarousel in main.js
        for the hover/focus pause). -->
@@ -616,6 +617,20 @@ redirect_from:
     </div>
     <div class="news-carousel js-auto-scroll reveal" data-speed="20">
       <div class="js-auto-scroll__track">
+        <!--LATEST_NEWS-->
+        <article class="card news-card">
+          <picture>
+          <source type="image/avif" srcset="./assets/img/lste-2025-keynote-speaker-400.avif 400w, ./assets/img/lste-2025-keynote-speaker-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+          <source type="image/webp" srcset="./assets/img/lste-2025-keynote-speaker-400.webp 400w, ./assets/img/lste-2025-keynote-speaker-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+          <img class="news-card__media" src="./assets/img/lste-2025-keynote-speaker-800.jpg" width="800" height="533" loading="lazy" alt="A keynote speaker on stage at LSTE 2025" decoding="async">
+        </picture>
+          <p class="news-date">5 October 2026</p>
+          <div class="news-card__body">
+            <h3>AI in Software Testing: Opportunity or Threat for QA Professionals?</h3>
+            <p class="text-muted" style="font-size:0.9rem;">Will AI replace software testers? Why AI is better seen as a powerful assistant than a threat for QA professionals.</p>
+            <a class="news-link" href="./news/ai-in-software-testing-opportunity-or-threat-for-qa-professionals/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
         <article class="card news-card">
           <picture>
             <source type="image/avif" srcset="./assets/img/rsw_1200cg_true-2-400.avif 400w, ./assets/img/rsw_1200cg_true-2-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
@@ -679,19 +694,6 @@ redirect_from:
             <h3>Deloitte at LSTE 2024: driving innovation in software testing</h3>
             <p class="text-muted" style="font-size:0.9rem;">Deloitte announced its role as a silver sponsor of LSTE 2024, held on 14 November in Esch-Belval.</p>
             <a class="news-link" href="./news/deloitte-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
-        <article class="card news-card">
-          <picture>
-            <source type="image/avif" srcset="./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-400.avif 400w, ./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-            <source type="image/webp" srcset="./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-400.webp 400w, ./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-            <img class="news-card__media" src="./assets/img/Sogeti-3-LSTE-2024--C2-A9Silicon-Luxembourg-08-min-800.jpg" width="800" height="600" loading="lazy" alt="Sogeti keynote session at LSTE 2024" decoding="async">
-          </picture>
-          <p class="news-date">11 November 2024</p>
-          <div class="news-card__body">
-            <h3>Sogeti at LSTE 2024: exploring GenAI in testing</h3>
-            <p class="text-muted" style="font-size:0.9rem;">Sogeti announced its participation as a gold sponsor, presenting a keynote on generative AI in testing.</p>
-            <a class="news-link" href="./news/sogeti-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </article>
       </div>

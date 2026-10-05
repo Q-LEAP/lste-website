@@ -231,6 +231,39 @@ points to the relevant `previous-editions/edition-2024|2025/` recap page
 edition) instead of the stale "Register for [past event]" CTA that ran in
 the original piece.
 
+### Weekly blog articles (autumn 2026, automated)
+
+Source: the client's "LSTE Blog & SEO Content Plan" (.docx, supplied
+2026-10-05), 9 articles (the plan lists the community article twice, as
+"Week3" and "Week 4"; it is published once). Text is the plan's, verbatim;
+meta descriptions and card excerpts were written for the 8 articles the plan
+gave none for. Hero images reuse existing photos from `assets/img/`. They
+live under `/news/<slug>/` (not `/blog/` as the plan suggests, so they sit
+with the rest of the news); each page has a `redirect_from: /blog/<slug>/`.
+
+How publishing works — nobody has to do anything weekly:
+
+- `src/news-queue/<slug>/index.html` holds each finished page, and
+  `src/news-queue/schedule.json` its date, card title, excerpt and image.
+  `src/` is excluded from Jekyll, so nothing is online before its date.
+- `.github/workflows/publish-weekly-news.yml` runs every Monday 05:00 UTC
+  and calls `scripts/publish-scheduled-news.mjs`, which copies every due
+  article to `news/`, puts its card on top of `/news/` and of the homepage
+  carousel (which keeps the 6 newest), adds it to `sitemap.xml`, re-runs
+  partials/paths/asset versioning, then commits and triggers a Pages build.
+  Cards are inserted after the `<!--LATEST_NEWS-->` marker in both pages —
+  keep those markers.
+- To change a date, edit `schedule.json` (and the "Published …" line plus
+  `datePublished` in that article's page). To publish early, set the date to
+  today and run the workflow by hand (Actions → Publish weekly news → Run).
+  `node scripts/publish-scheduled-news.mjs --date YYYY-MM-DD` simulates a day
+  locally.
+- Calendar (Mondays): 5 Oct AI in testing (published at setup), 12 Oct
+  Quality Engineering, 19 Oct QA skills 2027, 26 Oct Testing community,
+  2 Nov Automation trends, 9 Nov AI in automation, 16 Nov Tech events,
+  23 Nov What to expect from LSTE 2026, 30 Nov Future of testing (after the
+  event, so its CTA points to /about/ rather than registration).
+
 ## 2026-07 audit & polish pass
 
 A full-site UX/UI/accessibility/SEO/performance audit (3 parallel research
