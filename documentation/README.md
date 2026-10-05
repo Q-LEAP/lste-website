@@ -235,7 +235,7 @@ the original piece.
 
 Source: the client's "LSTE Blog & SEO Content Plan" (.docx, supplied
 2026-10-05), 9 articles (the plan lists the community article twice, as
-"Week3" and "Week 4"; it is published once). Text is the plan's, verbatim;
+"Week3" and "Week 4"; it is published once). Text is the plan's, verbatim, by Saadat Khasizada (QA Consultant), credited in each byline and as the JSON-LD author;
 meta descriptions and card excerpts were written for the 8 articles the plan
 gave none for. Hero images reuse existing photos from `assets/img/`. They
 live under `/news/<slug>/` (not `/blog/` as the plan suggests, so they sit
