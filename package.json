@@ -11,11 +11,12 @@
     "js:build": "node scripts/build-js.mjs",
     "ics:build": "node scripts/generate-ics.mjs",
     "icons:build": "node scripts/subset-icons.mjs",
+    "news:build": "node scripts/build-news.mjs",
     "partials:inject": "node scripts/inject-partials.mjs",
     "paths:localize": "node scripts/localize-paths.mjs",
     "assets:version": "node scripts/version-assets.mjs",
     "check:register": "node scripts/check-registration.mjs",
-    "build": "npm run css:build && npm run js:build && npm run ics:build && npm run images:optimize && npm run partials:inject && npm run paths:localize && npm run assets:version"
+    "build": "npm run css:build && npm run js:build && npm run ics:build && npm run images:optimize && npm run news:build && npm run partials:inject && npm run paths:localize && npm run assets:version"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

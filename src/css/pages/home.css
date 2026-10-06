@@ -592,11 +592,20 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   background: linear-gradient(180deg, rgba(10, 8, 24, 0) 0%, rgba(10, 8, 24, 0.32) 45%, rgba(10, 8, 24, 0.82) 72%, rgba(10, 8, 24, 0.95) 100%);
   pointer-events: none;
 }
-.news-card .news-date {
+.news-card__top {
   position: absolute;
   top: var(--space-4);
   left: var(--space-4);
+  right: var(--space-4);
   z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.news-card .news-date {
+  margin: 0;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -608,18 +617,18 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   padding: 0.35em 0.9em;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
-/* Category label (News / Press / Partners / Insights), the date pill's
-   twin in the opposite corner. The word carries the meaning; the dot is a
-   fixed colour per category, not theme-driven, because it always sits on
-   a photo like the date pill does. */
+/* Category label (LSTE News / Speakers & Sessions / Community / Press
+   Coverage, plus "· LinkedIn" when that's the source), the date pill's
+   twin: both sit in .news-card__top, which wraps the label under the
+   date when the card is too narrow for both. The word carries the meaning; the dot is
+   a fixed colour per category, not theme-driven, because it always sits
+   on a photo like the date pill does. Cards are rendered from
+   src/news/items.json by scripts/build-news.mjs. */
 .news-card .news-tag {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
+  white-space: nowrap;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -638,10 +647,12 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   border-radius: 50%;
   background: currentColor;
 }
-.news-tag--news::before { background: #a3e635; }
-.news-tag--press::before { background: #22d3ee; }
-.news-tag--partners::before { background: #a78bfa; }
-.news-tag--insights::before { background: #fbbf24; }
+.news-tag::before { flex-shrink: 0; }
+.news-tag--lste-news::before { background: #a3e635; }
+.news-tag--speakers-sessions::before { background: #a78bfa; }
+.news-tag--community::before { background: #fbbf24; }
+.news-tag--press-coverage::before { background: #22d3ee; }
+.news-tag__source { font-weight: 500; opacity: 0.85; }
 /* A press source's or partner's logo instead of an event photo: contained
    on white in the upper part of the card, clear of the text scrim. */
 .news-card__media--logo {
@@ -654,6 +665,20 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 .news-card__body { position: relative; z-index: 2; padding: var(--space-5); }
 .news-card h3 { margin: 0 0 var(--space-2); font-size: 1.125rem; color: #fff; }
 .news-card__body p.text-muted { color: rgba(255, 255, 255, 0.8); }
+.news-card__excerpt { font-size: 0.9rem; }
+/* Where the content comes from and what it is: the media name, "Video",
+   the author. Keeps a LinkedIn post or a press article from reading as
+   something LSTE published itself. */
+.news-card__meta {
+  margin: calc(-1 * var(--space-2)) 0 var(--space-3);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* News & Press category filters (main.js initNewsFilters). */
+.news-filters { margin-bottom: var(--space-6); }
+.news-more { margin-top: var(--space-6); }
 .news-card a.news-link { font-weight: 700; font-size: var(--fs-sm); color: #fff; }
 .news-card a.news-link:hover { color: var(--color-primary-tint); }
 .news-card a.news-link:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 2px; }
@@ -731,8 +756,6 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 /* /speakers/ page (since 2026-09-29): the homepage block, promoted to a
    page, so it clears the fixed header itself instead of sitting under a
    page hero. */
-.speakers-page { padding-top: calc(var(--header-h) + var(--space-6)); }
-.speakers-page .breadcrumb { margin-bottom: var(--space-5); }
 
 /* ── Homepage speakers preview carousel ───────────────────────────────
    Runs on the generic .js-auto-scroll ticker below. Spacing is a

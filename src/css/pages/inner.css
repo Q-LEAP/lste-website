@@ -1,12 +1,29 @@
 /* ── Shared inner-page pieces: editions, venue, hotels ────────────── */
-/* Moody ambient glow behind every inner-page header — same visual
-   language as the homepage hero's glow (not a photo: keeps every inner
-   page in the flat/neumorphic DA rather than reintroducing imagery). */
+/* ── Page Hero: the one header every inner page uses (2026-10-06) ──────
+   Reference: /news/ (News & Press). Every inner page uses this exact
+   markup; only the content changes:
+
+     <section class="page-hero">
+       <div class="container">
+         <nav class="breadcrumb" aria-label="Breadcrumb">…</nav>   secondary
+         <span class="eyebrow eyebrow--lime">Page label</span>      the page's name
+         <h1>Short editorial headline.</h1>                        dominant
+         <p class="page-hero__intro">…</p>                         right under the H1
+         <div class="page-hero__actions">…</div>                   optional: buttons, a note
+       </div>
+     </section>
+
+   Article pages put their .article-meta line where the intro goes.
+   Anything richer (a photo, a map, key facts) belongs in the first
+   section after the hero, never inside it, so every hero keeps the same
+   width and rhythm. The hero is a section of its own: ambient glow,
+   generous padding and a hairline under it, so the next section never
+   starts right against it (don't zero the next section's padding-top). */
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: calc(var(--header-h) + var(--space-10)) 0 var(--space-8);
-  text-align: center;
+  padding: calc(var(--header-h) + var(--space-10)) 0 var(--space-10);
+  border-bottom: 1px solid var(--color-border);
 }
 .page-hero::before {
   content: '';
@@ -53,11 +70,29 @@
    scale. No text-transform: the graphic charter's own title examples
    ("Charte graphique.", "Trois familles"...) are sentence case, not
    caps — matches how the homepage h1 already reads. */
+.page-hero .breadcrumb { justify-content: flex-start; }
 .page-hero h1 {
+  max-width: 20ch;
+  margin-bottom: 0;
   font-size: var(--fs-hero);
   line-height: 0.96;
   letter-spacing: -0.03em;
 }
+.page-hero__intro {
+  max-width: 56ch;
+  margin: var(--space-5) 0 0;
+  color: var(--color-muted);
+  font-size: 1.0625rem;
+}
+.page-hero .article-meta { margin: var(--space-5) 0 0; }
+.page-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-6);
+}
+.page-hero__note { font-size: 0.875rem; color: var(--color-muted); }
 
 /* Left-aligned inner pages: text/content blocks sit flush at the site's
    left edge — the same x-position as the header logo, matching the
@@ -78,11 +113,7 @@
    to reading width instead, with no centering of their own — block-level
    elements default to sitting flush at their parent's left edge, so they
    hug the same x-position as the logo regardless of viewport width. */
-.page-hero--left { text-align: left; }
-.page-hero--left .breadcrumb,
-.schedule-hero .breadcrumb,
-.speakers-page .breadcrumb { justify-content: flex-start; }
-.page-hero--left .calendar-actions { justify-content: flex-start; }
+.page-hero .calendar-actions { justify-content: flex-start; }
 .container--left > * { max-width: var(--container-narrow); }
 
 .calendar-actions {
@@ -495,8 +526,6 @@
    Compact hero with the one primary CTA, the ticket contents as a light
    inline list, then the workshop accordion (initWorkshopPicker() in
    main.js) and straight into the footer. */
-.register-hero { padding-bottom: var(--space-8); }
-.register-hero h1 { margin-bottom: var(--space-3); }
 .register-hero__meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: var(--space-4) 0 0; font-weight: 600; color: var(--color-ink); }
 .register-hero__meta i { margin-right: var(--space-2); color: var(--color-primary-light); }
 .register-hero__cta { margin: var(--space-6) 0 0; }
@@ -566,7 +595,6 @@
    sponsor-strip, card, masonry, timeline, tickets-cta); only the blocks
    below are new. */
 .edition-hero__split { align-items: center; gap: var(--space-8); }
-.edition-hero h1 { margin-bottom: var(--space-3); }
 .edition-hero__claim {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -670,14 +698,6 @@
   .sponsor-strip--main a { height: 96px; }
 }
 
-/* ── Compact internal-page intro (2026-09-30) ─────────────────────────
-   Reference: /about/. One H1, one short paragraph, content right after:
-   less top padding, a smaller breadcrumb gap and a smaller H1 than the
-   full .page-hero. Add .page-hero--compact next to .page-hero--left. */
-.page-hero--compact { padding: calc(var(--header-h) + var(--space-6)) 0 var(--space-6); }
-.page-hero--compact .breadcrumb { margin-bottom: var(--space-3); }
-.page-hero--compact h1 { font-size: clamp(2.5rem, 4vw + 1rem, 4rem); margin-bottom: var(--space-3); }
-.page-hero__lead { max-width: 60ch; margin: 0; color: var(--color-body-text); font-size: 1.0625rem; }
 
 /* ── Previous editions: featured editions + a lighter archive ────────── */
 /* Recent editions, side by side from 900px (2026-09-30): each card is

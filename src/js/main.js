@@ -1123,6 +1123,44 @@
     videos.forEach((v) => observer.observe(v));
   }
 
+  /* ── News & Press category filters ─────────────────────────────────
+     Cards carry data-category (scripts/build-news.mjs). The filter bar
+     ships hidden so a no-JS visitor simply sees every card. The chosen
+     filter is mirrored in the URL hash (/news/#community) so a filtered
+     view can be linked to. */
+  function initNewsFilters() {
+    const bar = document.querySelector('.news-filters');
+    if (!bar) return;
+    const buttons = bar.querySelectorAll('[data-news-filter]');
+    const cards = document.querySelectorAll('.news-grid .news-card');
+    const status = document.getElementById('news-filter-status');
+    const extras = document.querySelectorAll('[data-news-show]');
+
+    function apply(filter) {
+      let shown = 0;
+      buttons.forEach((btn) => btn.setAttribute('aria-pressed', String(btn.dataset.newsFilter === filter)));
+      cards.forEach((card) => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.hidden = !match;
+        if (match) shown += 1;
+      });
+      extras.forEach((el) => { el.hidden = !el.dataset.newsShow.split(' ').includes(filter); });
+      if (status) status.textContent = `${shown} ${shown === 1 ? 'item' : 'items'} shown`;
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.newsFilter;
+        apply(filter);
+        history.replaceState(null, '', filter === 'all' ? location.pathname : `#${filter}`);
+      });
+    });
+
+    bar.hidden = false;
+    const fromHash = location.hash.slice(1);
+    apply([...buttons].some((btn) => btn.dataset.newsFilter === fromHash) ? fromHash : 'all');
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initHeader();
     initAnnouncement();
@@ -1143,6 +1181,7 @@
     initSponsorModal();
     initSpeakerModal();
     initSchedule();
+    initNewsFilters();
     initWorkshopPicker();
     initMapEmbeds();
     initAmbientVideo();

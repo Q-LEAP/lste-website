@@ -26,7 +26,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=8fd2c687">
+<link rel="stylesheet" href="../assets/css/styles.css?v=d567d368">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -123,18 +123,15 @@ redirect_from:
 
 <main id="main">
 
-  <!-- Compact intro (2026-09-30, client request): one H1, one short line,
-       the key facts right below, then the story. Replaces the old
-       "About" / "Who we are" / "Luxembourg's biggest testing event."
-       stack. This is the reference for internal-page intros
-       (.page-hero--compact, inner.css). The live page's empty
-       "Testimonials" counters stay out on purpose. -->
-  <section class="page-hero page-hero--left page-hero--compact" id="what">
+  <!-- Shared Page Hero (inner.css, 2026-10-06), then the key facts and
+       the story. The live page's empty "Testimonials" counters stay out
+       on purpose. -->
+  <section class="page-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">About</span></nav>
-      <h1>About LSTE</h1>
-      <p class="edition-hero__claim" style="margin-bottom:var(--space-3);">Luxembourg&rsquo;s dedicated software testing event.</p>
-      <p class="page-hero__lead">Since 2014, LSTE has brought together software testing and QA professionals from Luxembourg and the Greater Region to share practical knowledge, explore new approaches and connect with peers.</p>
+      <span class="eyebrow eyebrow--lime">About</span>
+      <h1>Luxembourg&rsquo;s dedicated software testing event.</h1>
+      <p class="page-hero__intro">Since 2014, LSTE has brought together software testing and QA professionals from Luxembourg and the Greater Region to share practical knowledge, explore new approaches and connect with peers.</p>
     </div>
   </section>
 
@@ -356,6 +353,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=e5aaf02c" defer></script>
+<script src="../assets/js/main.js?v=c52e3828" defer></script>
 </body>
 </html>

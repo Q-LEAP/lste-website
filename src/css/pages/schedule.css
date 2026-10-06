@@ -7,49 +7,6 @@
    exhibition/cocktail palette (components.css) so a track reads the
    same way here as everywhere else on the site. ─────────────────────── */
 
-/* Compact hero — essentials only, no big vertical hero. */
-.schedule-hero {
-  position: relative;
-  overflow: hidden;
-  padding: calc(var(--header-h) + var(--space-6)) 0 var(--space-5);
-}
-.schedule-hero::before {
-  content: '';
-  position: absolute;
-  top: -160px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 360px;
-  background: radial-gradient(ellipse, rgba(109, 40, 217, 0.24), transparent 65%);
-  pointer-events: none;
-}
-.schedule-hero > .container { position: relative; }
-.schedule-hero__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-5);
-}
-.schedule-hero h1 {
-  font-size: clamp(2rem, 2vw + 1.5rem, 2.75rem);
-  margin-bottom: var(--space-3);
-}
-.schedule-hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5);
-  color: var(--color-body-text);
-  font-size: 0.9375rem;
-}
-.schedule-hero__meta span { display: inline-flex; align-items: center; gap: 0.5em; }
-.schedule-hero__meta i { color: var(--color-primary-light); }
-.schedule-hero__note { margin-top: var(--space-3); font-size: 0.875rem; color: var(--color-muted); }
-.schedule-hero__note a { color: var(--color-lime); }
-.schedule-hero__note a:hover { color: var(--color-cyan); }
-.schedule-hero .calendar-actions { margin-top: var(--space-5); justify-content: flex-start; }
-
 /* Toolbar — filters + "Now" jump, sticky under the fixed site header.
    Stays hidden until initSchedule() finds real sessions to filter. */
 .schedule-toolbar {
@@ -69,8 +26,9 @@
   flex-wrap: wrap;
   gap: var(--space-3);
 }
-.schedule-filters { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.schedule-filter {
+/* .filter-chip(s) is the same chip, shared with the News & Press filters. */
+.schedule-filters, .filter-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.schedule-filter, .filter-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.55em;
@@ -84,12 +42,12 @@
   font-size: 0.8125rem;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
-.schedule-filter:hover { color: var(--color-ink); }
+.schedule-filter:hover, .filter-chip:hover { color: var(--color-ink); }
 .schedule-filter__dot { width: 0.6em; height: 0.6em; border-radius: 50%; flex-shrink: 0; }
 .schedule-filter__dot--keynote { background: #c4b5fd; }
 .schedule-filter__dot--workshop { background: #a3e635; }
 .schedule-filter__dot--exhibition { background: #fdba74; }
-.schedule-filter[aria-pressed="true"] { background: var(--color-primary); color: #fff; }
+.schedule-filter[aria-pressed="true"], .filter-chip[aria-pressed="true"] { background: var(--color-primary); color: #fff; }
 
 /* ── Empty state ("coming soon") ─────────────────────────────────── */
 .schedule-empty {
@@ -369,10 +327,6 @@
 .session-modal__desc { color: var(--color-body-text); font-size: 0.9375rem; line-height: 1.65; }
 .session-modal__desc p + p { margin-top: var(--space-3); }
 
-@media (max-width: 560px) {
-  .schedule-hero__row { align-items: flex-start; }
-  .schedule-hero__row > .btn { width: 100%; }
-}
 
 /* Homepage #programme: the same meta line as the old /schedule/ hero, but
    under a centred .section-head, and the grid starts right after the
@@ -387,7 +341,6 @@
 .schedule-section { padding-top: var(--space-5); padding-bottom: var(--space-6); }
 
 /* /schedule/ hero since 2026-09-29: title + one sentence, then the grid. */
-.schedule-hero__lead { max-width: 62ch; color: var(--color-body-text); font-size: 1.0625rem; }
 /* Kept discreet (2026-09-30): small muted line, link only a shade lighter. */
 .schedule-footnote { margin-top: var(--space-4); font-size: 0.8125rem; color: var(--color-muted); }
 .schedule-footnote a { color: var(--color-body-text); text-decoration: underline; text-decoration-color: var(--color-border); text-underline-offset: 3px; white-space: nowrap; }

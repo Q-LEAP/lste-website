@@ -141,7 +141,7 @@
      every theme — that authored contrast is the point, so opt these bits
      out of the forced-colors recolor instead of losing the scrim (which
      would otherwise leave white text sitting straight on the photo). */
-  .news-card::after, .news-card .news-date, .news-card .news-tag, .news-card__body, .news-card__body * {
+  .news-card::after, .news-card__top, .news-card__top *, .news-card__body, .news-card__body * {
     forced-color-adjust: none;
   }
 }

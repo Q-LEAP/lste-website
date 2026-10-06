@@ -206,33 +206,58 @@ card when that happens.
 
 ## News & Press page (`/news/`)
 
-**2026-10-05: News and Press merged into one page, "News & Press"** (client
-feedback: one page, and a clear category label on every article). `/news/`
-now lists all 21 articles newest first; `/press/` is a redirect stub to it
-(meta refresh + canonical, `noindex, follow`, out of `sitemap.xml`), and the
-old WordPress `/category/press-release/…` redirects moved to
-`news/index.html`. Nav and footer link "News & Press" only.
+**2026-10-05: News and Press merged into one page, "News & Press"**;
+`/press/` is a redirect stub to `/news/` (meta refresh + canonical,
+`noindex, follow`, out of `sitemap.xml`), the old WordPress
+`/category/press-release/…` redirects live on `news/index.html`, and nav and
+footer link "News & Press" only.
 
-Every card has a `.news-tag` pill (top right, the date pill's twin, styles in
-`src/css/pages/home.css`), and every article page's eyebrow shows the same
-label. Categories, assigned on what the article itself says:
+**2026-10-06: four editorial categories, filters, LinkedIn picks.** The
+cards are data: `src/news/items.json`, rendered by `scripts/build-news.mjs`
+(part of `npm run build`, before paths:localize) into `news/index.html`
+(between `<!--NEWS_ITEMS_START/END-->`) and the homepage carousel (between
+`<!--HOME_NEWS_START/END-->`, the 6 newest items hosted on lste.lu). The
+field list is at the top of the script. Never edit the cards by hand.
 
-- **Press**: originally published by a media outlet (the article page says
-  so): `silicon-lste-2025-press-release`, `digital-colleague`,
-  `lste-2024-landmark` (Silicon Luxembourg), `it-nation-testing-2019`,
-  `lste-2016-recap` (IT Nation), `lste-2016-announcement` (Paperjam),
-  `securitymadein-lste-2018`.
-- **Partners**: a sponsor's or partner's own participation: `deloitte-…`,
-  `sogeti-…`, `excellium-lste-2024`, `cnpd-lste-2024`, `snt-ict-community`.
-- **Insights**: the weekly articles (`src/news-queue/`, the publish script
-  tags them automatically; `category` in `schedule.json` overrides).
-- **News**: LSTE's own announcements and recaps, everything else. Four of
-  these have no stated source and may be press pieces after all:
-  `lste-2018-tresor-expertise`, `emerging-trends-lste-2018`, and the two
-  `grandes-tendances-…` (2017). Relabel if a source turns up.
+- **Categories** (`category`), each a filter above the grid (All by
+  default, `/news/#community` links straight to one):
+  - `lste-news`: LSTE's own announcements, edition news, organisation
+    (2025 and 2024 editions, CNPD support, 2017/2018 recaps);
+  - `speakers-sessions`: speaker announcements, talks, interviews
+    (Avanti Sharma MC, the Deloitte/Sogeti/Excellium/SnT sessions, the 2017
+    "grandes tendances" pieces, Sylvain Perez 2018);
+  - `community`: testimonials, community content, the weekly articles
+    (Saadat Khasizada, QA Consultant);
+  - `press-coverage`: articles from external media, reproduced on lste.lu
+    with the media named (Silicon Luxembourg, IT Nation, Paperjam,
+    securitymadein.lu).
+- **Source** (`source_type`: internal, press, linkedin, external) and
+  **format** (`content_type`: article, video, interview, post) are separate
+  from the category. LinkedIn is a source, never a category or a filter: a
+  LinkedIn card reads "Community · LinkedIn" and says "Video" or "Post".
+  The call to action follows the source: Read more (lste.lu), Read article
+  (press), Watch / View on LinkedIn, Visit source; external links open in a
+  new tab with the external-link icon.
+- **LinkedIn in News & Press is a hand-picked selection, not the feed.**
+  `/linkedin/` stays the complete social feed. Pick posts with editorial
+  value (speaker interviews, strong Q&A on testing or AI, participant
+  testimonials, Women in Testing, a key event moment); skip promotional
+  posts, reminders and near-duplicates. To add one: copy its thumbnail URL
+  and caption from `/linkedin/` (see the comment there), add an item with
+  `source_type: "linkedin"`, the post URL
+  `https://www.linkedin.com/feed/update/urn:li:activity:<ID>/` and the
+  date (from the activity ID: `ID >> 22` is the post time in ms), then
+  `npm run news:build && npm run paths:localize`. A link to `/linkedin/`
+  shows under the grid for All and Community. Picks on 2026-10-06: Cristiano
+  Cunha, Jonathan Bernales, Quentin Ostertag, Patrícia Neves, Women in
+  Testing 2025.
+- Uncertain: four pieces have no stated source and may be press after all
+  (`lste-2018-tresor-expertise`, `emerging-trends-lste-2018`, the two
+  `grandes-tendances-…`). Recategorise in `items.json` if a source turns up,
+  and update the article page's eyebrow to match.
 
-Cards whose picture is a logo (CNPD, IT Nation, SnT) use
-`.news-card__media--logo`: contained on white in the top of the card.
+Cards whose picture is a logo (CNPD, IT Nation, SnT) use `image.logo`:
+contained on white in the top of the card.
 
 ### Before the merge
 
@@ -281,10 +306,9 @@ How publishing works — nobody has to do anything weekly:
   Luxembourg time (cron at 07:00 and 08:00 UTC, the run before 09:00 local
   skips itself, so it holds across summer/winter time) and calls `scripts/publish-scheduled-news.mjs`, which copies every due
   article to `news/`, puts its card on top of `/news/` and of the homepage
-  carousel (which keeps the 6 newest), adds it to `sitemap.xml`, re-runs
+  carousel (by adding it to `src/news/items.json`, category `community`,
+  and running `build-news.mjs`), adds it to `sitemap.xml`, re-runs
   partials/paths/asset versioning, then commits and triggers a Pages build.
-  Cards are inserted after the `<!--LATEST_NEWS-->` marker in both pages —
-  keep those markers.
 - To change a date, edit `schedule.json` (and the "Published …" line plus
   `datePublished` in that article's page). To publish early, set the date to
   today and run the workflow by hand (Actions → Publish weekly news → Run).
@@ -296,6 +320,29 @@ How publishing works — nobody has to do anything weekly:
   automation, 17 Nov Tech events, 24 Nov What to expect from LSTE 2026,
   1 Dec Future of testing (after the event, so its CTA points to /about/
   rather than registration).
+
+## Page Hero (2026-10-06)
+
+Every inner page opens with the same `.page-hero` component (markup and
+rules documented at the top of `src/css/pages/inner.css`), modelled on
+News & Press: breadcrumb (secondary) → eyebrow = page label → short
+editorial H1 (dominant) → `.page-hero__intro` right under it → optional
+`.page-hero__actions` (buttons, a note). Article pages put `.article-meta`
+where the intro goes. No per-page hero variants: `--left`, `--compact`,
+`.schedule-hero`, `.register-hero`, `.edition-hero` and the speakers-page
+header are gone. Anything richer (venue map and address, edition photo and
+long intro) moved to the first section after the hero. The hero ends with
+a hairline and its own padding; the next section keeps its normal top
+padding (don't add `padding-top:0` back).
+
+H1s rewritten as short editorial lines on 2026-10-06 (client brief):
+About "Luxembourg's dedicated software testing event." (the existing
+claim), Programme "Your day at LSTE 2026.", Venue "Hôtel Parc Belle-Vue.",
+Previous editions "LSTE since 2014.", Become a sponsor "Meet Luxembourg's
+QA community.", Call for speakers "Share what you've learned.", Contact
+"Let's talk.", Gallery "LSTE in pictures.", Resources "Your LSTE brand
+kit.". Unchanged: News & Press, Speakers, LinkedIn, Tickets, Privacy, the
+edition pages and articles.
 
 ## 2026-07 audit & polish pass
 

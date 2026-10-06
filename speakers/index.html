@@ -19,7 +19,7 @@
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=8fd2c687">
+<link rel="stylesheet" href="../assets/css/styles.css?v=d567d368">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -128,14 +128,17 @@
        square crops on the face (assets/img/speaker-*-480), filling the top
        of the card; no photo yet → an initials square. Never fill this from
        past editions or invent a bio (see documentation/README.md). -->
-  <section class="section speakers-page" id="speakers" aria-labelledby="speakers-heading">
+  <section class="page-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Speakers</span></nav>
-      <span class="eyebrow eyebrow--violet">Speakers</span>
-      <div class="split-media" style="margin-bottom:var(--space-10);align-items:start;">
-        <h1 id="speakers-heading" style="margin:0;">Who's taking the stage.</h1>
-        <p class="text-muted" style="margin:0;">The 2026 line-up, published as speakers are confirmed. Select a speaker to read their biography.</p>
-      </div>
+      <span class="eyebrow eyebrow--lime">Speakers</span>
+      <h1>Who's taking the stage.</h1>
+      <p class="page-hero__intro">The 2026 line-up, published as speakers are confirmed. Select a speaker to read their biography.</p>
+    </div>
+  </section>
+
+  <section class="section" id="speakers" aria-label="2026 speakers">
+    <div class="container">
 
       <div class="speaker-grid reveal">
         <details class="card speaker-card">
@@ -415,6 +418,6 @@
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=e5aaf02c" defer></script>
+<script src="../assets/js/main.js?v=c52e3828" defer></script>
 </body>
 </html>

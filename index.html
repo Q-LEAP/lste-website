@@ -30,7 +30,7 @@ redirect_from:
 <link rel="preload" href="./assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="./assets/css/styles.css?v=8fd2c687">
+<link rel="stylesheet" href="./assets/css/styles.css?v=d567d368">
 
 <style>
   /* Homepage hero: full-bleed photo + directional gradient veil (the
@@ -603,9 +603,9 @@ redirect_from:
   </section>
 
   <!-- News preview — shows the site is actively updated, not a static
-       brochure. An auto-scrolling ticker (the 6 newest articles, duplicated
-       once for a seamless loop; scripts/publish-scheduled-news.mjs adds each
-       weekly article on top and drops the oldest) rather than a static 2-up grid — pauses on
+       brochure. An auto-scrolling ticker (the 6 newest articles hosted on
+       lste.lu, rendered from src/news/items.json by scripts/build-news.mjs,
+       duplicated once for a seamless loop) rather than a static 2-up grid — pauses on
        hover/focus and sits still entirely under prefers-reduced-motion
        (see news-carousel rules in home.css + initNewsCarousel in main.js
        for the hover/focus pause). -->
@@ -618,91 +618,109 @@ redirect_from:
     </div>
     <div class="news-carousel js-auto-scroll reveal" data-speed="20">
       <div class="js-auto-scroll__track">
-        <!--LATEST_NEWS-->
-        <article class="card news-card">
+        <!--HOME_NEWS_START-->
+        <article class="card news-card" data-category="community" data-source-type="internal" data-content-type="article">
           <picture>
-          <source type="image/avif" srcset="./assets/img/lste-2025-keynote-speaker-400.avif 400w, ./assets/img/lste-2025-keynote-speaker-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-          <source type="image/webp" srcset="./assets/img/lste-2025-keynote-speaker-400.webp 400w, ./assets/img/lste-2025-keynote-speaker-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-          <img class="news-card__media" src="./assets/img/lste-2025-keynote-speaker-800.jpg" width="800" height="533" loading="lazy" alt="A keynote speaker on stage at LSTE 2025" decoding="async">
-        </picture>
-          <p class="news-date">5 October 2026</p>
-          <span class="news-tag news-tag--insights">Insights</span>
+            <source type="image/avif" srcset="./assets/img/lste-2025-keynote-speaker-400.avif 400w, ./assets/img/lste-2025-keynote-speaker-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+            <source type="image/webp" srcset="./assets/img/lste-2025-keynote-speaker-400.webp 400w, ./assets/img/lste-2025-keynote-speaker-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+            <img class="news-card__media" src="./assets/img/lste-2025-keynote-speaker-800.jpg" width="800" height="533" loading="lazy" alt="A keynote speaker on stage at LSTE 2025" decoding="async">
+          </picture>
+          <div class="news-card__top">
+            <p class="news-date"><time datetime="2026-10-05">5 October 2026</time></p>
+            <span class="news-tag news-tag--community">Community</span>
+          </div>
           <div class="news-card__body">
             <h3>AI in Software Testing: Opportunity or Threat for QA Professionals?</h3>
-            <p class="text-muted" style="font-size:0.9rem;">Will AI replace software testers? Why AI is better seen as a powerful assistant than a threat for QA professionals.</p>
+            <p class="text-muted news-card__excerpt">Will AI replace software testers? Why AI is better seen as a powerful assistant than a threat for QA professionals.</p>
+            <p class="news-card__meta">Saadat Khasizada, QA Consultant</p>
             <a class="news-link" href="./news/ai-in-software-testing-opportunity-or-threat-for-qa-professionals/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </article>
-        <article class="card news-card">
+        <article class="card news-card" data-category="speakers-sessions" data-source-type="internal" data-content-type="article">
           <picture>
             <source type="image/avif" srcset="./assets/img/rsw_1200cg_true-2-400.avif 400w, ./assets/img/rsw_1200cg_true-2-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
             <source type="image/webp" srcset="./assets/img/rsw_1200cg_true-2-400.webp 400w, ./assets/img/rsw_1200cg_true-2-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
             <img class="news-card__media" src="./assets/img/rsw_1200cg_true-2-800.jpg" width="800" height="533" loading="lazy" alt="Avanti Sharma presenting on stage" decoding="async">
           </picture>
-          <p class="news-date">19 November 2025</p>
-          <span class="news-tag news-tag--news">News</span>
+          <div class="news-card__top">
+            <p class="news-date"><time datetime="2025-11-19">19 November 2025</time></p>
+            <span class="news-tag news-tag--speakers-sessions">Speakers &amp; Sessions</span>
+          </div>
           <div class="news-card__body">
             <h3>Avanti Sharma announced as Master of Ceremonies for LSTE 2025</h3>
-            <p class="text-muted" style="font-size:0.9rem;">Avanti Sharma will moderate the main panel and act as Master of Ceremonies for this year's edition.</p>
+            <p class="text-muted news-card__excerpt">Avanti Sharma will moderate the main panel and act as Master of Ceremonies for this year's edition.</p>
             <a class="news-link" href="./news/avanti-sharma-mc/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </article>
-        <article class="card news-card">
+        <article class="card news-card" data-category="lste-news" data-source-type="internal" data-content-type="article">
           <picture>
             <source type="image/avif" srcset="./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-400.avif 400w, ./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
             <source type="image/webp" srcset="./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-400.webp 400w, ./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
             <img class="news-card__media" src="./assets/img/Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled-800.jpg" width="800" height="600" loading="lazy" alt="Full conference room at LSTE" decoding="async">
           </picture>
-          <p class="news-date">19 November 2025</p>
-          <span class="news-tag news-tag--news">News</span>
+          <div class="news-card__top">
+            <p class="news-date"><time datetime="2025-11-19">19 November 2025</time></p>
+            <span class="news-tag news-tag--lste-news">LSTE News</span>
+          </div>
           <div class="news-card__body">
             <h3>LSTE 2025: AI at the heart of the 7th edition</h3>
-            <p class="text-muted" style="font-size:0.9rem;">The 7th edition placed artificial intelligence at the centre of QA and testing discussions in Luxembourg.</p>
+            <p class="text-muted news-card__excerpt">The 7th edition placed artificial intelligence at the centre of QA and testing discussions in Luxembourg.</p>
             <a class="news-link" href="./news/lste-2025-ai-7th-edition/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </article>
-        <article class="card news-card">
+        <article class="card news-card" data-category="press-coverage" data-source-type="press" data-content-type="article">
+          <picture>
+            <source type="image/avif" srcset="./assets/img/lste-2025-keynote-speaker-400.avif 400w, ./assets/img/lste-2025-keynote-speaker-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
+            <source type="image/webp" srcset="./assets/img/lste-2025-keynote-speaker-400.webp 400w, ./assets/img/lste-2025-keynote-speaker-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
+            <img class="news-card__media" src="./assets/img/lste-2025-keynote-speaker-800.jpg" width="800" height="533" loading="lazy" alt="A keynote speaker on stage at LSTE 2025" decoding="async">
+          </picture>
+          <div class="news-card__top">
+            <p class="news-date"><time datetime="2025-11-19">19 November 2025</time></p>
+            <span class="news-tag news-tag--press-coverage">Press Coverage</span>
+          </div>
+          <div class="news-card__body">
+            <h3>Press release Silicon – Luxembourg Software Testing Event 2025</h3>
+            <p class="text-muted news-card__excerpt">Silicon Luxembourg's press release announcing the return of the Luxembourg Software Testing Event on 27 November 2025 at Hôtel Parc Belle-Vue.</p>
+            <p class="news-card__meta">Silicon Luxembourg</p>
+            <a class="news-link" href="./news/silicon-lste-2025-press-release/index.html">Read article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="card news-card" data-category="press-coverage" data-source-type="press" data-content-type="article">
           <picture>
             <source type="image/avif" srcset="./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-400.avif 400w, ./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
             <source type="image/webp" srcset="./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-400.webp 400w, ./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
             <img class="news-card__media" src="./assets/img/Smartesting-LSTE-2024--C2-A9Silicon-Luxembourg-21-scaled-800.jpg" width="800" height="600" loading="lazy" alt="Smartesting session at LSTE 2024" decoding="async">
           </picture>
-          <p class="news-date">11 December 2024</p>
-          <span class="news-tag news-tag--press">Press</span>
+          <div class="news-card__top">
+            <p class="news-date"><time datetime="2024-12-11">11 December 2024</time></p>
+            <span class="news-tag news-tag--press-coverage">Press Coverage</span>
+          </div>
           <div class="news-card__body">
             <h3>Learning how to live with the digital colleague</h3>
-            <p class="text-muted" style="font-size:0.9rem;">At LSTE 2024, Dr. Anne Kramer (Smartesting) shared her thoughts on the evolving role of software testers and AI.</p>
-            <a class="news-link" href="./news/digital-colleague/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <p class="text-muted news-card__excerpt">At LSTE 2024, Dr. Anne Kramer (Smartesting) shared her thoughts on the evolving role of software testers and AI.</p>
+            <p class="news-card__meta">Silicon Luxembourg</p>
+            <a class="news-link" href="./news/digital-colleague/index.html">Read article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </article>
-        <article class="card news-card">
+        <article class="card news-card" data-category="press-coverage" data-source-type="press" data-content-type="article">
           <picture>
             <source type="image/avif" srcset="./assets/img/Break-Tuto-4-400.avif 400w, ./assets/img/Break-Tuto-4-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
             <source type="image/webp" srcset="./assets/img/Break-Tuto-4-400.webp 400w, ./assets/img/Break-Tuto-4-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
             <img class="news-card__media" src="./assets/img/Break-Tuto-4-800.jpg" width="800" height="1067" loading="lazy" alt="Workshop break at LSTE 2024" decoding="async">
           </picture>
-          <p class="news-date">11 December 2024</p>
-          <span class="news-tag news-tag--press">Press</span>
+          <div class="news-card__top">
+            <p class="news-date"><time datetime="2024-12-11">11 December 2024</time></p>
+            <span class="news-tag news-tag--press-coverage">Press Coverage</span>
+          </div>
           <div class="news-card__body">
             <h3>LSTE: a landmark event for software testing professionals</h3>
-            <p class="text-muted" style="font-size:0.9rem;">The 6th edition at the Digital Learning Hub in Esch-Belval brought together over 280 professionals.</p>
-            <a class="news-link" href="./news/lste-2024-landmark/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <p class="text-muted news-card__excerpt">The 6th edition at the Digital Learning Hub in Esch-Belval brought together over 280 professionals.</p>
+            <p class="news-card__meta">Silicon Luxembourg</p>
+            <a class="news-link" href="./news/lste-2024-landmark/index.html">Read article <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </article>
-        <article class="card news-card">
-          <picture>
-            <source type="image/avif" srcset="./assets/img/Deloitte-2-min-400.avif 400w, ./assets/img/Deloitte-2-min-800.avif 800w" sizes="(max-width: 480px) 400px, 800px">
-            <source type="image/webp" srcset="./assets/img/Deloitte-2-min-400.webp 400w, ./assets/img/Deloitte-2-min-800.webp 800w" sizes="(max-width: 480px) 400px, 800px">
-            <img class="news-card__media" src="./assets/img/Deloitte-2-min-800.jpg" width="800" height="533" loading="lazy" alt="Deloitte booth at LSTE" decoding="async">
-          </picture>
-          <p class="news-date">11 November 2024</p>
-          <span class="news-tag news-tag--partners">Partners</span>
-          <div class="news-card__body">
-            <h3>Deloitte at LSTE 2024: driving innovation in software testing</h3>
-            <p class="text-muted" style="font-size:0.9rem;">Deloitte announced its role as a silver sponsor of LSTE 2024, held on 14 November in Esch-Belval.</p>
-            <a class="news-link" href="./news/deloitte-lste-2024/index.html">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </article>
+        
+<!--HOME_NEWS_END-->
       </div>
     </div>
     <div class="container">
@@ -790,6 +808,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="./assets/js/main.js?v=e5aaf02c" defer></script>
+<script src="./assets/js/main.js?v=c52e3828" defer></script>
 </body>
 </html>

@@ -7,7 +7,8 @@
     "image": "lste-2025-keynote-speaker",
     "width": 800,
     "height": 533,
-    "alt": "A keynote speaker on stage at LSTE 2025"
+    "alt": "A keynote speaker on stage at LSTE 2025",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "why-quality-engineering-is-replacing-traditional-qa",
@@ -17,7 +18,8 @@
     "image": "Conference-6-min-1",
     "width": 800,
     "height": 533,
-    "alt": "Attendees at an LSTE conference session"
+    "alt": "Attendees at an LSTE conference session",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "top-skills-every-qa-professional-needs-in-2027",
@@ -27,7 +29,8 @@
     "image": "Julien-Desmulier-2-min-1",
     "width": 800,
     "height": 533,
-    "alt": "Attendees in conversation at LSTE"
+    "alt": "Attendees in conversation at LSTE",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "building-a-strong-software-testing-community-in-luxembourg",
@@ -37,7 +40,8 @@
     "image": "lste-2025-group-cheers",
     "width": 800,
     "height": 533,
-    "alt": "A large group of attendees gathered at the LSTE 2025 evening reception"
+    "alt": "A large group of attendees gathered at the LSTE 2025 evening reception",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "test-automation-trends-every-team-should-watch",
@@ -47,7 +51,8 @@
     "image": "lste-2025-networking-crowd",
     "width": 800,
     "height": 533,
-    "alt": "Attendees talking in the exhibition area at LSTE 2025"
+    "alt": "Attendees talking in the exhibition area at LSTE 2025",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "how-ai-is-transforming-test-automation",
@@ -57,7 +62,8 @@
     "image": "Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1",
     "width": 800,
     "height": 600,
-    "alt": "A live demo at the Q-Guard booth at LSTE 2024"
+    "alt": "A live demo at the Q-Guard booth at LSTE 2024",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "why-technology-events-accelerate-professional-growth",
@@ -67,7 +73,8 @@
     "image": "lste-2025-networking-break",
     "width": 800,
     "height": 533,
-    "alt": "Attendees networking during a break at LSTE 2025"
+    "alt": "Attendees networking during a break at LSTE 2025",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "what-to-expect-from-lste-2026",
@@ -77,7 +84,8 @@
     "image": "lste-2025-biggest-testing-event",
     "width": 800,
     "height": 533,
-    "alt": "A group of attendees at LSTE 2025"
+    "alt": "A group of attendees at LSTE 2025",
+    "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "future-of-software-testing-trends-2027-and-beyond",
@@ -87,6 +95,7 @@
     "image": "LSTE-2018-qa-session",
     "width": 800,
     "height": 533,
-    "alt": "An attendee asking a question during a session at LSTE"
+    "alt": "An attendee asking a question during a session at LSTE",
+    "author": "Saadat Khasizada, QA Consultant"
   }
 ]
