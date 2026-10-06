@@ -315,11 +315,10 @@ How publishing works — nobody has to do anything weekly:
   `node scripts/publish-scheduled-news.mjs --date YYYY-MM-DD` simulates a day
   locally.
 - Calendar: on 2026-10-06 the client asked to publish the whole queue at
-  once, backdated every two months in continuity with the 2025 posts
-  (Tuesdays): 10 Jun 2025 Tech events, 12 Aug 2025 Testing community,
-  14 Oct 2025 Automation trends, 9 Dec 2025 AI in automation, 10 Feb 2026
-  Quality Engineering, 14 Apr 2026 Future of testing, 9 Jun 2026 QA skills
-  2027, 11 Aug 2026 What to expect from LSTE 2026, plus 5 Oct 2026 AI in
+  once, backdated within 2026, about one a month (Tuesdays): 10 Feb Tech
+  events, 10 Mar Testing community, 14 Apr Automation trends, 12 May AI in
+  automation, 9 Jun Quality Engineering, 14 Jul Future of testing, 11 Aug
+  QA skills 2027, 8 Sep What to expect from LSTE 2026, then 5 Oct AI in
   testing (published at setup). The queue is now empty: the Tuesday
   workflow runs and finds nothing until new entries are added to
   `schedule.json`.

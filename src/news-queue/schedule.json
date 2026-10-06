@@ -1,7 +1,7 @@
 [
   {
     "slug": "why-technology-events-accelerate-professional-growth",
-    "publish": "2025-06-10",
+    "publish": "2026-02-10",
     "title": "Why Technology Events Accelerate Professional Growth",
     "excerpt": "Real-world lessons, new connections and fresh ideas: why attending industry events pays off for your career.",
     "image": "lste-2025-networking-break",
@@ -12,7 +12,7 @@
   },
   {
     "slug": "building-a-strong-software-testing-community-in-luxembourg",
-    "publish": "2025-08-12",
+    "publish": "2026-03-10",
     "title": "Building a Strong Software Testing Community in Luxembourg",
     "excerpt": "Why a thriving local testing community helps professionals learn faster and raises quality across Luxembourg’s tech ecosystem.",
     "image": "lste-2025-group-cheers",
@@ -23,7 +23,7 @@
   },
   {
     "slug": "test-automation-trends-every-team-should-watch",
-    "publish": "2025-10-14",
+    "publish": "2026-04-14",
     "title": "Test Automation Trends Every Team Should Watch",
     "excerpt": "AI, API automation, continuous testing and cloud platforms: the trends reshaping test automation strategies.",
     "image": "lste-2025-networking-crowd",
@@ -34,7 +34,7 @@
   },
   {
     "slug": "how-ai-is-transforming-test-automation",
-    "publish": "2025-12-09",
+    "publish": "2026-05-12",
     "title": "How AI Is Transforming Test Automation",
     "excerpt": "Test generation, self-healing scripts and smarter defect analysis: what AI really changes in test automation.",
     "image": "Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1",
@@ -45,7 +45,7 @@
   },
   {
     "slug": "why-quality-engineering-is-replacing-traditional-qa",
-    "publish": "2026-02-10",
+    "publish": "2026-06-09",
     "title": "Why Quality Engineering Is Replacing Traditional QA",
     "excerpt": "From finding defects at the end to building quality in from the start: how Quality Engineering expands the tester’s role.",
     "image": "Conference-6-min-1",
@@ -56,7 +56,7 @@
   },
   {
     "slug": "future-of-software-testing-trends-2027-and-beyond",
-    "publish": "2026-04-14",
+    "publish": "2026-07-14",
     "title": "The Future of Software Testing: Key Trends Shaping 2027 and Beyond",
     "excerpt": "AI, quality engineering, continuous testing and soft skills: the trends that will shape software testing in 2027 and beyond.",
     "image": "LSTE-2018-qa-session",
@@ -67,7 +67,7 @@
   },
   {
     "slug": "top-skills-every-qa-professional-needs-in-2027",
-    "publish": "2026-06-09",
+    "publish": "2026-08-11",
     "title": "Top Skills Every QA Professional Needs in 2027",
     "excerpt": "Seven skills that will make QA professionals stand out in 2027, from test automation and AI to communication.",
     "image": "Julien-Desmulier-2-min-1",
@@ -78,7 +78,7 @@
   },
   {
     "slug": "what-to-expect-from-lste-2026",
-    "publish": "2026-08-11",
+    "publish": "2026-09-08",
     "title": "What to Expect from LSTE 2026",
     "excerpt": "Expert talks, emerging trends and Luxembourg’s testing community: what LSTE 2026 has in store on 26 November.",
     "image": "lste-2025-biggest-testing-event",
