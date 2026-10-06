@@ -314,12 +314,15 @@ How publishing works — nobody has to do anything weekly:
   today and run the workflow by hand (Actions → Publish weekly news → Run).
   `node scripts/publish-scheduled-news.mjs --date YYYY-MM-DD` simulates a day
   locally.
-- Calendar (Tuesdays, client's choice): 5 Oct AI in testing (published at
-  setup, a Monday), 13 Oct Quality Engineering, 20 Oct QA skills 2027,
-  27 Oct Testing community, 3 Nov Automation trends, 10 Nov AI in
-  automation, 17 Nov Tech events, 24 Nov What to expect from LSTE 2026,
-  1 Dec Future of testing (after the event, so its CTA points to /about/
-  rather than registration).
+- Calendar: on 2026-10-06 the client asked to publish the whole queue at
+  once, backdated every two months in continuity with the 2025 posts
+  (Tuesdays): 10 Jun 2025 Tech events, 12 Aug 2025 Testing community,
+  14 Oct 2025 Automation trends, 9 Dec 2025 AI in automation, 10 Feb 2026
+  Quality Engineering, 14 Apr 2026 Future of testing, 9 Jun 2026 QA skills
+  2027, 11 Aug 2026 What to expect from LSTE 2026, plus 5 Oct 2026 AI in
+  testing (published at setup). The queue is now empty: the Tuesday
+  workflow runs and finds nothing until new entries are added to
+  `schedule.json`.
 
 ## Page Hero (2026-10-06)
 

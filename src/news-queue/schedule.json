@@ -1,40 +1,18 @@
 [
   {
-    "slug": "ai-in-software-testing-opportunity-or-threat-for-qa-professionals",
-    "publish": "2026-10-05",
-    "title": "AI in Software Testing: Opportunity or Threat for QA Professionals?",
-    "excerpt": "Will AI replace software testers? Why AI is better seen as a powerful assistant than a threat for QA professionals.",
-    "image": "lste-2025-keynote-speaker",
+    "slug": "why-technology-events-accelerate-professional-growth",
+    "publish": "2025-06-10",
+    "title": "Why Technology Events Accelerate Professional Growth",
+    "excerpt": "Real-world lessons, new connections and fresh ideas: why attending industry events pays off for your career.",
+    "image": "lste-2025-networking-break",
     "width": 800,
     "height": 533,
-    "alt": "A keynote speaker on stage at LSTE 2025",
-    "author": "Saadat Khasizada, QA Consultant"
-  },
-  {
-    "slug": "why-quality-engineering-is-replacing-traditional-qa",
-    "publish": "2026-10-13",
-    "title": "Why Quality Engineering Is Replacing Traditional QA",
-    "excerpt": "From finding defects at the end to building quality in from the start: how Quality Engineering expands the tester’s role.",
-    "image": "Conference-6-min-1",
-    "width": 800,
-    "height": 533,
-    "alt": "Attendees at an LSTE conference session",
-    "author": "Saadat Khasizada, QA Consultant"
-  },
-  {
-    "slug": "top-skills-every-qa-professional-needs-in-2027",
-    "publish": "2026-10-20",
-    "title": "Top Skills Every QA Professional Needs in 2027",
-    "excerpt": "Seven skills that will make QA professionals stand out in 2027, from test automation and AI to communication.",
-    "image": "Julien-Desmulier-2-min-1",
-    "width": 800,
-    "height": 533,
-    "alt": "Attendees in conversation at LSTE",
+    "alt": "Attendees networking during a break at LSTE 2025",
     "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "building-a-strong-software-testing-community-in-luxembourg",
-    "publish": "2026-10-27",
+    "publish": "2025-08-12",
     "title": "Building a Strong Software Testing Community in Luxembourg",
     "excerpt": "Why a thriving local testing community helps professionals learn faster and raises quality across Luxembourg’s tech ecosystem.",
     "image": "lste-2025-group-cheers",
@@ -45,7 +23,7 @@
   },
   {
     "slug": "test-automation-trends-every-team-should-watch",
-    "publish": "2026-11-03",
+    "publish": "2025-10-14",
     "title": "Test Automation Trends Every Team Should Watch",
     "excerpt": "AI, API automation, continuous testing and cloud platforms: the trends reshaping test automation strategies.",
     "image": "lste-2025-networking-crowd",
@@ -56,7 +34,7 @@
   },
   {
     "slug": "how-ai-is-transforming-test-automation",
-    "publish": "2026-11-10",
+    "publish": "2025-12-09",
     "title": "How AI Is Transforming Test Automation",
     "excerpt": "Test generation, self-healing scripts and smarter defect analysis: what AI really changes in test automation.",
     "image": "Q-Gard-LSTE-2024--C2-A9Silicon-Luxembourg-min-1",
@@ -66,19 +44,41 @@
     "author": "Saadat Khasizada, QA Consultant"
   },
   {
-    "slug": "why-technology-events-accelerate-professional-growth",
-    "publish": "2026-11-17",
-    "title": "Why Technology Events Accelerate Professional Growth",
-    "excerpt": "Real-world lessons, new connections and fresh ideas: why attending industry events pays off for your career.",
-    "image": "lste-2025-networking-break",
+    "slug": "why-quality-engineering-is-replacing-traditional-qa",
+    "publish": "2026-02-10",
+    "title": "Why Quality Engineering Is Replacing Traditional QA",
+    "excerpt": "From finding defects at the end to building quality in from the start: how Quality Engineering expands the tester’s role.",
+    "image": "Conference-6-min-1",
     "width": 800,
     "height": 533,
-    "alt": "Attendees networking during a break at LSTE 2025",
+    "alt": "Attendees at an LSTE conference session",
+    "author": "Saadat Khasizada, QA Consultant"
+  },
+  {
+    "slug": "future-of-software-testing-trends-2027-and-beyond",
+    "publish": "2026-04-14",
+    "title": "The Future of Software Testing: Key Trends Shaping 2027 and Beyond",
+    "excerpt": "AI, quality engineering, continuous testing and soft skills: the trends that will shape software testing in 2027 and beyond.",
+    "image": "LSTE-2018-qa-session",
+    "width": 800,
+    "height": 533,
+    "alt": "An attendee asking a question during a session at LSTE",
+    "author": "Saadat Khasizada, QA Consultant"
+  },
+  {
+    "slug": "top-skills-every-qa-professional-needs-in-2027",
+    "publish": "2026-06-09",
+    "title": "Top Skills Every QA Professional Needs in 2027",
+    "excerpt": "Seven skills that will make QA professionals stand out in 2027, from test automation and AI to communication.",
+    "image": "Julien-Desmulier-2-min-1",
+    "width": 800,
+    "height": 533,
+    "alt": "Attendees in conversation at LSTE",
     "author": "Saadat Khasizada, QA Consultant"
   },
   {
     "slug": "what-to-expect-from-lste-2026",
-    "publish": "2026-11-24",
+    "publish": "2026-08-11",
     "title": "What to Expect from LSTE 2026",
     "excerpt": "Expert talks, emerging trends and Luxembourg’s testing community: what LSTE 2026 has in store on 26 November.",
     "image": "lste-2025-biggest-testing-event",
@@ -88,14 +88,14 @@
     "author": "Saadat Khasizada, QA Consultant"
   },
   {
-    "slug": "future-of-software-testing-trends-2027-and-beyond",
-    "publish": "2026-12-01",
-    "title": "The Future of Software Testing: Key Trends Shaping 2027 and Beyond",
-    "excerpt": "AI, quality engineering, continuous testing and soft skills: the trends that will shape software testing in 2027 and beyond.",
-    "image": "LSTE-2018-qa-session",
+    "slug": "ai-in-software-testing-opportunity-or-threat-for-qa-professionals",
+    "publish": "2026-10-05",
+    "title": "AI in Software Testing: Opportunity or Threat for QA Professionals?",
+    "excerpt": "Will AI replace software testers? Why AI is better seen as a powerful assistant than a threat for QA professionals.",
+    "image": "lste-2025-keynote-speaker",
     "width": 800,
     "height": 533,
-    "alt": "An attendee asking a question during a session at LSTE",
+    "alt": "A keynote speaker on stage at LSTE 2025",
     "author": "Saadat Khasizada, QA Consultant"
   }
 ]
