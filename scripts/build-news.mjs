@@ -18,7 +18,8 @@
 //                   variants: true  -> assets/img/<src>-400|800.avif/webp/jpg
 //                   variants: false -> assets/img/<src>.avif/webp/jpg
 //                   external: true  -> src is a full URL (LinkedIn thumbnail)
-//                 and logo: true for a logo on white instead of a photo
+//                 and logo: true for a logo on white instead of a photo,
+//                 focus_y: 0-100 to frame a portrait picture on the face
 //   source_name   optional: the media or site name (press, external)
 //   author        optional: person and/or organisation
 //   cta           optional: overrides the default call to action
@@ -54,9 +55,13 @@ function humanDate(iso) {
 }
 
 function picture(image) {
-  const cls = image.logo ? 'news-card__media news-card__media--logo' : 'news-card__media';
+  // Portrait LinkedIn video thumbnails are framed on the speaker's face (see home.css).
+  const portrait = image.height > image.width ? ' news-card__media--portrait' : '';
+  const cls = image.logo ? 'news-card__media news-card__media--logo' : `news-card__media${portrait}`;
   const alt = esc(image.alt || '');
-  const size = `width="${image.width}" height="${image.height}"`;
+  // focus_y (0-100) moves the crop down the picture so a face stays in view.
+  const focus = image.focus_y !== undefined ? ` style="--focus-y: ${Number(image.focus_y)}%"` : '';
+  const size = `width="${image.width}" height="${image.height}"${focus}`;
   if (image.external) {
     return `<img class="${cls}" src="${esc(image.src)}" ${size} loading="lazy" alt="${alt}" decoding="async" referrerpolicy="no-referrer">`;
   }
@@ -91,7 +96,8 @@ function card(item) {
   const link = external
     ? `<a class="news-link" href="${esc(item.url)}" target="_blank" rel="noopener" aria-label="${esc(`${label}: ${item.title} (opens in a new tab)`)}">${esc(label)} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`
     : `<a class="news-link" href="${item.url}">${esc(label)} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>`;
-  return `<article class="card news-card" data-category="${item.category}" data-source-type="${item.source_type}" data-content-type="${item.content_type}">
+  const portrait = item.image.height > item.image.width ? ' news-card--portrait' : '';
+  return `<article class="card news-card${portrait}" data-category="${item.category}" data-source-type="${item.source_type}" data-content-type="${item.content_type}">
           ${picture(item.image)}
           <div class="news-card__top">
             <p class="news-date"><time datetime="${item.date}">${humanDate(item.date)}</time></p>

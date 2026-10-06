@@ -85,7 +85,8 @@
       "external": true,
       "width": 720,
       "height": 1280,
-      "alt": ""
+      "alt": "",
+      "focus_y": 12
     },
     "author": "Cristiano Cunha"
   },
@@ -103,7 +104,8 @@
       "external": true,
       "width": 720,
       "height": 1280,
-      "alt": ""
+      "alt": "",
+      "focus_y": 24
     },
     "author": "Jonathan Bernales",
     "cta": "Watch interview"
@@ -140,7 +142,8 @@
       "external": true,
       "width": 720,
       "height": 1280,
-      "alt": ""
+      "alt": "",
+      "focus_y": 15
     },
     "author": "Quentin Ostertag, Ainos POST Luxembourg"
   },
@@ -230,7 +233,8 @@
       "external": true,
       "width": 720,
       "height": 1280,
-      "alt": ""
+      "alt": "",
+      "focus_y": 26
     },
     "author": "Patrícia Neves, Cargolux Airlines"
   },

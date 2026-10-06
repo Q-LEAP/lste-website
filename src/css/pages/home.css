@@ -653,6 +653,16 @@ body:has(.hero) .site-header:not(.is-scrolled) {
 .news-tag--community::before { background: #fbbf24; }
 .news-tag--press-coverage::before { background: #22d3ee; }
 .news-tag__source { font-weight: 500; opacity: 0.85; }
+/* Portrait video thumbnails (LinkedIn interviews, 9:16): the default
+   centred crop shows a torso. The face sits 15-35% down the frame in
+   these, so the crop starts near the top instead; items.json's focus_y
+   fine-tunes it per picture so the face sits above the title. */
+.news-card__media--portrait { object-position: 50% var(--focus-y, 12%); }
+/* On a phone the text takes most of a 360px card: give portrait cards
+   room for the face above it. */
+@media (max-width: 600px) {
+  .news-card--portrait { min-height: 520px; }
+}
 /* A press source's or partner's logo instead of an event photo: contained
    on white in the upper part of the card, clear of the text scrim. */
 .news-card__media--logo {
