@@ -681,7 +681,7 @@
     { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3', title: TBA, speaker: 'Maxime Goanvic, Agilitest' },
     { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Ritabrata Banerjee & Jonathan Lopez, Q-Leap' },
     { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:30', end: '17:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
-      title: 'Can You Really Automate 2FA? Let’s Break a Test Pipeline Together',
+      title: 'Q-Bot enables automated tests with 2FA',
       speaker: 'Sylvain Perez, CEO of Q-Leap · CTO & Product Manager, Q-BOT',
       description: [
         'Automating end-to-end tests becomes challenging when strong authentication and mobile 2FA enter the picture. In this hands-on workshop, we will demonstrate how Q-Bot can automate real interactions with a physical smartphone and integrate them into an existing test pipeline.',
