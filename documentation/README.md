@@ -337,6 +337,17 @@ long intro) moved to the first section after the hero. The hero ends with
 a hairline and its own padding; the next section keeps its normal top
 padding (don't add `padding-top:0` back).
 
+**One exception, `/venue/` (2026-10-07, client directive):**
+`.page-hero--venue` is a two-column hero (text left, LSTE 2025 photo of
+the venue right; stacked on mobile) carrying the address, date and time,
+accessibility line and the Get directions / Public transport actions,
+followed by a four-figure `.venue-strip`. The map moved under the
+"Getting there" cards. Reason: people open this page on their phone on
+the day, so the essentials must be in the first screen. The strip never
+shows on-site parking: there is none for attendees (client, 2026-10-06;
+see the Parking comment in `venue/index.html`).
+Don't extend this variant to other pages without a new decision.
+
 H1s rewritten as short editorial lines on 2026-10-06 (client brief):
 About "Luxembourg's dedicated software testing event." (the existing
 claim), Programme "Your day at LSTE 2026.", Venue "Hôtel Parc Belle-Vue.",

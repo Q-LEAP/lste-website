@@ -23,7 +23,7 @@ redirect_from:
 <link rel="preload" href="../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/styles.css?v=220257c1">
+<link rel="stylesheet" href="../assets/css/styles.css?v=e8b68da3">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -128,46 +128,52 @@ redirect_from:
 
 <main id="main">
 
-  <!-- Compact intro (2026-09-30, same approach as /about/): one H1, the
-       venue and address, one line, the accessibility note, practical
-       actions, and the map in the first screen. The "Plan your visit"
-       eyebrow and the separate "Where does LSTE take place?" block were
-       folded into this one; accessibility moved up here from the old venue
-       FAQ, which was removed at the client's request. -->
-  <section class="page-hero">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Venue</span></nav>
-      <span class="eyebrow eyebrow--lime">Venue</span>
-      <h1>H&ocirc;tel Parc Belle-Vue.</h1>
-      <p class="page-hero__intro">In the heart of Luxembourg City, minutes from Hamilius by tram, bus or on foot. Fully wheelchair accessible.</p>
+  <!-- Venue hero (2026-10-07, client directive): this page is the one
+       exception to the shared single-column .page-hero. On the day of the
+       event people open it on their phone, so the hero itself carries the
+       address, date and time, accessibility and the two actions they need,
+       with a photo of LSTE 2025 in this venue beside it (below it on
+       mobile). The fact strip right after it sums up access at a glance.
+       The map moved into "Getting there". Facts as elsewhere on the page:
+       there is NO parking at the hotel (client, 2026-10-06), so the strip
+       shows the Parkolux walk instead of any on-site parking figure. -->
+  <section class="page-hero page-hero--venue">
+    <div class="container venue-hero">
+      <div class="venue-hero__text">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Venue</span></nav>
+        <span class="eyebrow eyebrow--lime">Venue</span>
+        <h1>H&ocirc;tel Parc Belle-Vue.</h1>
+        <ul class="venue-hero__facts">
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><strong>5 Avenue Marie-Th&eacute;r&egrave;se</strong> L-2132 Luxembourg City &middot; Conference Center</span></li>
+          <li><i class="fa-solid fa-calendar-days" aria-hidden="true"></i><span class="venue-hero__date"><time datetime="2026-11-26T13:00">26 Nov 2026</time> &middot; 13:00&ndash;21:00</span></li>
+        </ul>
+        <p class="page-hero__intro">In the heart of Luxembourg City, minutes from Hamilius by tram, bus or on foot.</p>
+        <p class="venue-hero__access"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i> Fully wheelchair accessible.</p>
+        <div class="page-hero__actions venue-hero__actions">
+          <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Get directions <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          <a class="btn btn--outline" href="https://www.mobiliteit.lu" target="_blank" rel="noopener">Public transport <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          <a class="news-link" href="#by-car">Parking information <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <figure class="venue-hero__media">
+        <picture>
+          <source type="image/avif" srcset="../assets/img/lste-2025-networking-crowd-800.avif 800w, ../assets/img/lste-2025-networking-crowd-1200.avif 1200w" sizes="(max-width: 900px) 100vw, 640px">
+          <source type="image/webp" srcset="../assets/img/lste-2025-networking-crowd-800.webp 800w, ../assets/img/lste-2025-networking-crowd-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 640px">
+          <img src="../assets/img/lste-2025-networking-crowd-800.jpg" width="800" height="533" alt="Attendees and exhibitor stands filling the Parc Belle-Vue conference space at LSTE 2025" fetchpriority="high" decoding="async">
+        </picture>
+        <figcaption class="venue-hero__badge">Luxembourg City &middot; LSTE 2025</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="section" aria-label="Address and map">
+  <section class="venue-strip" aria-label="Getting to the venue at a glance">
     <div class="container">
-      <div class="venue-intro">
-        <div>
-          <p class="venue-address" style="margin-top:0;">Conference Center, H&ocirc;tel Parc Belle-Vue<span>5 Avenue Marie-Th&eacute;r&egrave;se, L-2132 Luxembourg</span></p>
-          <p class="venue-access-note"><i class="fa-solid fa-wheelchair" aria-hidden="true"></i><span><strong>Accessible venue</strong> The Conference Center is fully wheelchair accessible.</span></p>
-          <div class="venue-actions">
-            <a class="btn btn--primary btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Open in Maps <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            <a class="btn btn--outline btn--sm" href="#public-transport">Public transport <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-            <a class="btn btn--outline btn--sm" href="#by-car">Parking <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-        <div class="map-embed js-map-embed">
-          <div class="map-embed__fallback">
-            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-            <p class="map-embed__fallback-name">Conference Center, H&ocirc;tel Parc Belle-Vue</p>
-            <p>5 Avenue Marie-Th&eacute;r&egrave;se, L-2132 Luxembourg</p>
-            <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Open in Google Maps <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </div>
-          <iframe src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
-          <button type="button" class="map-embed__activate">
-            <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Click to interact with the map</span>
-          </button>
-        </div>
-      </div>
+      <ul class="venue-strip__list">
+        <li><a href="#public-transport"><strong>4 min</strong><span>Walk from Hamilius</span></a></li>
+        <li><a href="#public-transport"><strong>Free</strong><span>Public transport</span></a></li>
+        <li><a href="#by-car"><strong>5 min</strong><span>Walk from Parkolux Monterey</span></a></li>
+        <li><div><strong>100%</strong><span>Wheelchair accessible</span></div></li>
+      </ul>
     </div>
   </section>
 
@@ -212,6 +218,20 @@ redirect_from:
             <li><strong>Free</strong>, no ticket needed</li>
           </ul>
         </article>
+      </div>
+      <div class="venue-map reveal">
+        <div class="map-embed js-map-embed">
+          <div class="map-embed__fallback">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <p class="map-embed__fallback-name">Conference Center, H&ocirc;tel Parc Belle-Vue</p>
+            <p>5 Avenue Marie-Th&eacute;r&egrave;se, L-2132 Luxembourg</p>
+            <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=5+Avenue+Marie-Th%C3%A9r%C3%A8se%2C+L-2132+Luxembourg" target="_blank" rel="noopener">Open in Google Maps <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <iframe src="https://www.google.com/maps?q=5+Avenue+Marie-Th%C3%A9r%C3%A8se,+L-2132+Luxembourg&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Hôtel Parc Belle-Vue, Luxembourg City"></iframe>
+          <button type="button" class="map-embed__activate">
+            <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Click to interact with the map</span>
+          </button>
+        </div>
       </div>
     </div>
   </section>

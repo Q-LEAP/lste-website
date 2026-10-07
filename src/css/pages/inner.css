@@ -766,16 +766,56 @@
 .press-item p { margin: 0; font-size: 0.875rem; color: var(--color-muted); }
 .press-item .news-link { margin-top: auto; padding-top: var(--space-2); }
 
-/* ── Venue page (2026-09-30): address + map first, then photos ──────── */
-.venue-intro { display: grid; grid-template-columns: 1fr; gap: var(--space-6); align-items: stretch; }
-@media (min-width: 900px) { .venue-intro { grid-template-columns: 5fr 7fr; align-items: center; } }
-.venue-address { margin: var(--space-4) 0 var(--space-3); font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; line-height: 1.3; color: var(--color-ink); }
-.venue-address span { display: block; margin-top: 0.2rem; font-family: var(--font-body); font-size: 1rem; font-weight: 400; color: var(--color-body-text); }
-.venue-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
-/* Accessibility note, right under the address (moved up from the old FAQ). */
-.venue-access-note { display: flex; align-items: flex-start; gap: var(--space-3); margin: var(--space-4) 0 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-left: 3px solid var(--color-lime); border-radius: var(--radius-md); background: var(--color-surface); font-size: 0.9375rem; color: var(--color-body-text); }
-.venue-access-note i { margin-top: 0.15em; font-size: 1.125rem; color: var(--color-lime); }
-.venue-access-note strong { display: block; color: var(--color-ink); }
+/* ── Venue page (2026-10-07): the one two-column hero ───────────────
+   Client directive: the venue hero holds what someone needs on the day
+   (address, date and time, access, directions), with an LSTE photo of
+   the venue beside it. Tighter top/bottom padding than the shared
+   .page-hero so nav + hero stay around 600px tall on desktop. Mobile:
+   one column, photo under the text, full-width buttons. */
+.page-hero--venue { padding: calc(var(--header-h) + var(--space-6)) 0 var(--space-8); }
+.venue-hero { display: grid; grid-template-columns: 1fr; gap: var(--space-6); align-items: center; }
+@media (min-width: 900px) { .venue-hero { grid-template-columns: 7fr 6fr; gap: var(--space-10); } }
+.page-hero--venue .breadcrumb { margin-bottom: var(--space-3); font-size: 0.75rem; }
+.page-hero--venue .breadcrumb .sep::before { font-size: 0.75rem; }
+.page-hero--venue h1 { font-size: clamp(2.5rem, 2vw + 1.9rem, 4.25rem); }
+.venue-hero__facts { display: flex; flex-direction: column; gap: var(--space-2); margin: var(--space-5) 0 0; padding: 0; list-style: none; }
+.venue-hero__facts li { display: flex; align-items: baseline; gap: var(--space-3); color: var(--color-body-text); font-size: 1rem; }
+.venue-hero__facts i { width: 1.1rem; flex-shrink: 0; color: var(--color-lime); }
+.venue-hero__facts strong { display: block; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; color: var(--color-ink); }
+.venue-hero__date { font-family: var(--font-mono); font-size: 0.9375rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-ink); }
+.page-hero--venue .page-hero__intro { margin-top: var(--space-4); }
+.venue-hero__access { display: flex; align-items: center; gap: var(--space-2); margin: var(--space-2) 0 0; font-size: 0.9375rem; color: var(--color-muted); }
+.venue-hero__access i { color: var(--color-lime); }
+.venue-hero__actions { margin-top: var(--space-5); }
+@media (max-width: 599px) {
+  .venue-hero__actions .btn { flex: 1 1 100%; justify-content: center; min-height: 48px; }
+}
+.venue-hero__media { position: relative; margin: 0; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(139, 92, 246, 0.45); box-shadow: 0 24px 60px -24px rgba(109, 40, 217, 0.6); }
+.venue-hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+@media (min-width: 900px) { .venue-hero__media img { aspect-ratio: 4 / 3; max-height: 440px; } }
+.venue-hero__badge { position: absolute; left: var(--space-3); bottom: var(--space-3); padding: 0.35em 0.8em; border: 1px solid var(--color-border); border-radius: var(--radius-pill); background: rgba(12, 10, 18, 0.82); font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-lime); }
+
+/* Fact strip right under the hero: four figures, lime numbers, mono
+   labels. One continuous bordered strip, 2×2 on mobile. */
+.venue-strip { padding: var(--space-6) 0; border-bottom: 1px solid var(--color-border); }
+.venue-strip__list { display: grid; grid-template-columns: repeat(2, 1fr); margin: 0; padding: 0; list-style: none; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); overflow: hidden; }
+@media (min-width: 760px) { .venue-strip__list { grid-template-columns: repeat(4, 1fr); } }
+.venue-strip__list li { border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.venue-strip__list li:nth-child(2n) { border-right: 0; }
+.venue-strip__list li:nth-child(n+3) { border-bottom: 0; }
+@media (min-width: 760px) {
+  .venue-strip__list li { border-bottom: 0; border-right: 1px solid var(--color-border); }
+  .venue-strip__list li:nth-child(2n) { border-right: 1px solid var(--color-border); }
+  .venue-strip__list li:last-child { border-right: 0; }
+}
+.venue-strip__list a, .venue-strip__list li > div { display: flex; flex-direction: column; gap: var(--space-1); height: 100%; padding: var(--space-4) var(--space-5); color: inherit; text-decoration: none; }
+.venue-strip__list a:hover strong { color: var(--color-cyan); }
+.venue-strip__list strong { font-family: var(--font-heading); font-size: clamp(1.5rem, 1vw + 1.2rem, 2rem); font-weight: 700; line-height: 1.1; color: var(--color-lime); }
+.venue-strip__list span { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
+
+/* Map, moved under the three "Getting there" blocks. */
+.venue-map { margin-top: var(--space-5); }
+.venue-map .map-embed iframe { aspect-ratio: auto; height: 340px; min-height: 0; }
 
 /* Getting there: three compact blocks, no tabs. */
 .access-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
@@ -788,7 +828,6 @@
 .access-card__list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-primary); }
 .access-card__list strong { color: var(--color-ink); font-weight: 600; }
 .access-card .news-link { margin-top: auto; font-size: 0.875rem; }
-.venue-intro .map-embed iframe { min-height: 300px; }
 
 /* Inside the venue: secondary, three equal tiles at one modest height. */
 .venue-gallery { display: grid; grid-template-columns: 1fr; gap: var(--space-4); }
