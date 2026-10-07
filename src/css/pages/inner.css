@@ -319,6 +319,7 @@
 .resource-card__preview--dark { background: var(--panel-invert); }
 .resource-card__body { padding: var(--space-6); }
 .resource-card .file-meta { font-size: 0.8125rem; color: var(--color-muted); margin-bottom: var(--space-4); }
+.resource-card__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 
 /* ── Policy / legal content — also reused by long-form news articles
    (.article-body) since both are the same "readable prose" layout ──── */
