@@ -312,6 +312,10 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   height: auto;
   object-fit: contain;
 }
+/* A wide logo (SnT's full name next to uni.lu) gets a wider tile and a
+   little less padding so its text stays readable, with white space kept
+   around it. */
+.sponsor-strip a.sponsor-tile--wide { width: 200px; padding: 14px 18px; }
 
 /* Tier label above each logo strip — one step down from the block's own h2,
    and small enough not to compete with it. On /sponsors/ these were h2s under
