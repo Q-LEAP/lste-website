@@ -662,7 +662,7 @@
     {
       id: 'octoperf-ai-performance', track: 'workshop', partner: 'OctoPerf', start: '13:30', end: '14:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-1-octoperf-25/register', type: 'Workshop 1',
       title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
-      speaker: 'Ouamar Nedil, Director of Performance Engineering at OctoPerf',
+      speaker: 'Ouamar Nedil, Support and Performance Engineering Director at OctoPerf',
       description: [
         'Discover how OctoPerf, powered by its AI capabilities through the MCP Server, enables you to run a complete performance testing campaign in just a few minutes using nothing but natural language and the LLM of your choice.',
         'During this workshop you will learn how to create realistic test scenarios with advanced user journeys, execute performance tests, and analyse the results. From scenario creation to in-depth performance analysis, your AI agent guides you through every step in the language of your choice.',
