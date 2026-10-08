@@ -634,9 +634,13 @@
     { id: 'opening', track: 'keynote', start: '13:30', end: '13:35', type: 'Opening', title: 'Opening', speaker: 'Avanti Sharma, Master of Ceremonies' },
     {
       id: 'keynote-denoo', track: 'keynote', start: '13:35', end: '13:50', type: 'Keynote',
-      title: 'The Tester in 5 Years: AI Perspectives',
+      title: 'Fast & Furious – The Tester in 5 Years: AI Perspectives',
       speaker: 'Olivier Denoo, ps_testware',
-      description: 'Opening keynote. 15 minutes, no Q&A.',
+      description: [
+        'This presentation explores the challenges of AI from a tester’s perspective, with Olivier’s signature touch of humor and offbeat style.',
+        'What are the challenges, risks, and opportunities for reinventing ourselves in the era of augmented computing and this relentless race for speed? It raises some key questions, drawing on nearly 30 years of experience in software quality assurance.',
+        'Opening keynote. 15 minutes, no Q&A.',
+      ].join('||'),
     },
     {
       id: 'keynote-riou-du-cosquer', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote',
