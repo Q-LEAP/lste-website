@@ -1165,7 +1165,110 @@
     apply([...buttons].some((btn) => btn.dataset.newsFilter === fromHash) ? fromHash : 'all');
   }
 
+  /* ── Analytics consent: Google Analytics 4 (property "lste.lu" in the
+     qleapdigital@gmail.com account, LSTE) is only loaded after the visitor
+     accepts, as the CNPD requires for analytics cookies. Accept and Decline
+     carry the same weight. The choice lives in localStorage; any
+     .js-cookie-settings control (footer, privacy policy) reopens the banner.
+     Declining after an earlier accept switches tracking off and clears the
+     _ga cookies. ──────────────────────────────────────────────────── */
+  const GA_MEASUREMENT_ID = 'G-YY4YS2S8F8';
+  const CONSENT_KEY = 'lste-analytics-consent';
+
+  function readConsent() {
+    try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+  }
+  function saveConsent(value) {
+    try { localStorage.setItem(CONSENT_KEY, value); } catch (e) { /* private mode: ask again next visit */ }
+  }
+
+  function loadAnalytics() {
+    window['ga-disable-' + GA_MEASUREMENT_ID] = false;
+    if (window.gtag) {
+      window.gtag('consent', 'update', { analytics_storage: 'granted' });
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(script);
+  }
+
+  function stopAnalytics() {
+    window['ga-disable-' + GA_MEASUREMENT_ID] = true;
+    if (window.gtag) window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    const host = location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').map((c) => c.split('=')[0].trim())
+      .filter((name) => name === '_ga' || name.indexOf('_ga_') === 0)
+      .forEach((name) => {
+        [host, '.' + host, ''].forEach((domain) => {
+          document.cookie = name + '=; Max-Age=0; path=/' + (domain ? '; domain=' + domain : '');
+        });
+      });
+  }
+
+  function initConsent() {
+    let banner = null;
+
+    function close() {
+      if (!banner) return;
+      banner.remove();
+      banner = null;
+    }
+
+    function choose(value) {
+      saveConsent(value);
+      if (value === 'granted') loadAnalytics(); else stopAnalytics();
+      close();
+    }
+
+    function open() {
+      if (banner) { banner.querySelector('button').focus(); return; }
+      banner = document.createElement('section');
+      banner.className = 'cookie-banner';
+      banner.setAttribute('role', 'region');
+      banner.setAttribute('aria-label', 'Cookie consent');
+      banner.innerHTML =
+        '<p class="cookie-banner__title">Cookies on lste.lu</p>' +
+        '<p class="cookie-banner__text">With your consent, we use Google Analytics to count visits and see which pages are useful. ' +
+        'It stays switched off unless you accept, and you can change your choice at any time from "Cookie settings" at the bottom of every page. ' +
+        '<a href="/privacy-policy/#cookies">Privacy policy</a></p>' +
+        '<div class="cookie-banner__actions">' +
+        '<button type="button" class="btn btn--outline btn--sm" data-consent="denied">Decline</button>' +
+        '<button type="button" class="btn btn--outline btn--sm" data-consent="granted">Accept</button>' +
+        '</div>';
+      banner.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-consent]');
+        if (btn) choose(btn.dataset.consent);
+      });
+      document.body.appendChild(banner);
+    }
+
+    const stored = readConsent();
+    if (stored === 'granted') loadAnalytics();
+    else if (stored !== 'denied') open();
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.js-cookie-settings');
+      if (!trigger) return;
+      e.preventDefault();
+      open();
+      banner.querySelector('button').focus();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    initConsent();
     initHeader();
     initAnnouncement();
     initMobileMenu();

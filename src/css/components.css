@@ -694,3 +694,50 @@
   box-shadow: var(--shadow-lg);
   overflow: hidden;
 }
+
+/* Analytics consent banner (built by initConsent() in main.js). Sits above
+   the back-to-top button, below modals; Accept and Decline share one style
+   so neither is pushed. */
+.cookie-banner {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  left: var(--space-4);
+  z-index: 800;
+  max-width: 34rem;
+  margin-left: auto;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-body-text);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+.cookie-banner__title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.cookie-banner__text { margin: 0 0 var(--space-4); }
+.cookie-banner__text a { color: var(--color-link); text-decoration: underline; }
+.cookie-banner__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: flex-end; }
+.cookie-banner__actions .btn { min-width: 7.5rem; justify-content: center; }
+@media (max-width: 480px) {
+  .cookie-banner { padding: var(--space-4); }
+  .cookie-banner__actions .btn { flex: 1; }
+}
+
+/* "Cookie settings" in the footer bottom row: a button styled as its links. */
+.footer-bottom .js-cookie-settings {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+.footer-bottom .js-cookie-settings:hover { color: #fff; }
