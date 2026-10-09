@@ -626,6 +626,12 @@
   // Odoo resolves the event by the trailing id, so a later rename of the
   // event doesn't break these links.
   const WORKSHOP_SEATS = 20; // per workshop, as set on each Odoo event
+  // Workshop seat booking is closed until every workshop is set up (client,
+  // 2026-10-09): while false, no "Book a seat" badge or link appears and the
+  // cards say booking opens soon. The /register/ #workshops section is hidden
+  // in its HTML too; flip both to reopen.
+  const WORKSHOP_BOOKING_OPEN = false;
+  const bookingOf = (session) => (WORKSHOP_BOOKING_OPEN ? session.booking : '');
   const TBA = 'Details coming soon';
   const TALK = '20-minute talk followed by 10 minutes of Q&A.';
   const SESSIONS = [
@@ -848,7 +854,7 @@
           card.style.gridColumn = String(trackIndex + 2);
           card.setAttribute('aria-haspopup', 'dialog');
           const time = el('span', 'session-card__time', formatRange(session.start, session.end));
-          if (session.booking) time.appendChild(el('span', 'session-card__book', 'Book a seat'));
+          if (bookingOf(session)) time.appendChild(el('span', 'session-card__book', 'Book a seat'));
           card.appendChild(time);
           card.appendChild(el('span', 'session-card__title', session.title));
           if (session.speaker) card.appendChild(el('span', 'session-card__speaker', session.speaker));
@@ -901,7 +907,7 @@
             card.dataset.track = session.track;
             card.setAttribute('aria-haspopup', 'dialog');
             const meta = el('span', 'schedule-mobile-card__meta', formatRange(session.start, session.end) + (track ? ' · ' + track.label : ''));
-            if (session.booking) meta.appendChild(el('span', 'session-card__book', 'Book a seat'));
+            if (bookingOf(session)) meta.appendChild(el('span', 'session-card__book', 'Book a seat'));
             card.appendChild(meta);
             card.appendChild(el('span', 'schedule-mobile-card__title', session.title));
             if (session.speaker) card.appendChild(el('span', 'schedule-mobile-card__speaker', session.speaker));
@@ -980,9 +986,9 @@
             ctaEl.hidden = session.track !== 'workshop';
             ctaEl.textContent = '';
             if (session.track === 'workshop') {
-              if (session.booking) {
+              if (bookingOf(session)) {
                 const a = el('a', 'btn btn--primary', 'Reserve my seat ');
-                a.href = session.booking;
+                a.href = bookingOf(session);
                 a.target = '_blank';
                 a.rel = 'noopener';
                 a.appendChild(el('i', 'fa-solid fa-arrow-up-right-from-square'));
@@ -1053,10 +1059,10 @@
       if (shown.length) shown.forEach((p) => panel.appendChild(el('p', 'workshop-acc__desc', p)));
       else panel.appendChild(el('p', 'workshop-acc__desc', 'Details coming soon.'));
       const foot = el('div', 'workshop-acc__foot');
-      if (w.booking) {
+      if (bookingOf(w)) {
         foot.appendChild(el('span', 'workshop-acc__seats', WORKSHOP_SEATS + ' seats'));
         const a = el('a', 'btn btn--outline btn--sm', 'Reserve your seat ');
-        a.href = w.booking;
+        a.href = bookingOf(w);
         a.target = '_blank';
         a.rel = 'noopener';
         a.setAttribute('aria-label', 'Reserve your seat: ' + w.type + ', ' + w.title + ' (opens in a new tab)');

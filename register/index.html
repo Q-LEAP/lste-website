@@ -111,7 +111,10 @@ redirect_from:
     </div>
   </section>
 
-  <section class="section register-workshops" id="workshops" aria-labelledby="workshops-heading">
+  <!-- Workshop booking hidden (client, 2026-10-09) until every workshop is
+       set up: remove `hidden` and set WORKSHOP_BOOKING_OPEN = true in
+       src/js/main.js to reopen it. -->
+  <section class="section register-workshops" id="workshops" aria-labelledby="workshops-heading" hidden>
     <div class="container">
       <span class="register-step-cue register-step-cue--cyan">02 &mdash; Pick your workshops</span>
       <h2 id="workshops-heading" class="register-section-title">Choose your workshops</h2>
@@ -185,6 +188,6 @@ redirect_from:
 <!--FOOTER_END-->
 
 <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
-<script src="../assets/js/main.js?v=9d4170f3" defer></script>
+<script src="../assets/js/main.js?v=536a73ca" defer></script>
 </body>
 </html>
