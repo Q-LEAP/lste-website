@@ -42,7 +42,7 @@ const FONT_FILES = [
 // (nearly) every page via the shared nav/footer partials and per-page
 // <head> favicon/JSON-LD.
 const IMAGE_FILES = [
-  'assets/img/favicon.svg',
+  'assets/img/favicon.png',
   'assets/img/lste-logo-white.svg',
   'assets/img/lste-logo.svg',
 ];
