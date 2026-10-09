@@ -23,7 +23,7 @@ redirect_from:
 <link rel="preload" href="../../assets/fonts/space-grotesk-variable.woff2?v=a0d054c4" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/hanken-grotesk-variable.woff2?v=e9201edd" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/jetbrains-mono-500.woff2?v=615a7673" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../../assets/css/styles.css?v=9a9311ab">
+<link rel="stylesheet" href="../../assets/css/styles.css?v=37e63fc6">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -84,33 +84,24 @@ redirect_from:
       <span class="site-logo__tag">26 Nov 2026</span>
     </a>
 
-    <!-- Three-zone header (see the image-typ / "6a" reference in
-         documentation/): logo + date on the left, nav links sitting right
-         after them, and the ticket button alone on the far right
-         (margin-right:auto on .main-nav pushes the actions to the edge, see
-         components.css). Sponsors/Gallery/Call for Speakers/Contact live
-         in the "More" dropdown / mobile hamburger. Dark-mode toggle lives in
-         the footer. Speakers was unlisted while it was a placeholder; since
-         2026-09-29 it is its own /speakers/ page again, top-level next to
-         Programme (/schedule/), and "Become a sponsor" moved into More, both
-         at the client's request. Sponsors was unlisted for the same reason until 2026-08-10, when it
-         gained real sponsors with pitches worth reaching; since 2026-08-24 it
-         is no longer a page at all — the entry jumps to the homepage's
-         #sponsors block (localize-paths turns "/#sponsors" into
-         "../index.html#sponsors" per page depth). -->
+    <!-- Registration-focused header (client brief, 2026-10-09): logo on the
+         left, then free space, then Programme / Speakers / Venue / More and
+         the ticket button on the far right (margin-left:auto on .main-nav,
+         see components.css). More holds About, Previous Editions, Gallery
+         and Contact only. Sponsors, Become a Sponsor, Call for Speakers and
+         News & Press are footer-only. -->
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav-list">
-        <li><a class="main-nav-link" href="../../about/index.html">About</a></li>
         <li><a class="main-nav-link" href="../../schedule/index.html">Programme</a></li>
         <li><a class="main-nav-link" href="../../speakers/index.html">Speakers</a></li>
         <li><a class="main-nav-link" href="../../venue/index.html">Venue</a></li>
         <li class="main-nav-item--dropdown">
           <button type="button" class="main-nav-link main-nav-link--dropdown" id="nav-more-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-more-menu">More <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
           <ul class="main-nav-dropdown" id="nav-more-menu" aria-labelledby="nav-more-trigger" hidden>
-            <li><a href="../../become-a-sponsor/index.html">Become a sponsor</a></li>
-            <li><a href="../../index.html#sponsors">Sponsors</a></li>
+            <li><a href="../../about/index.html">About LSTE</a></li>
+            <li><a href="../../previous-editions/index.html">Previous Editions</a></li>
             <li><a href="../../gallery/index.html">Gallery</a></li>
-                            <li><a href="../../contact/index.html">Contact</a></li>
+            <li><a href="../../contact/index.html">Contact</a></li>
           </ul>
         </li>
       </ul>
@@ -125,21 +116,13 @@ redirect_from:
   </div>
 </header>
 
-<!-- Mobile menu kept short at the client's request (2026-09-29): Become a
-     sponsor and Call for Speakers are desktop-nav only; News &amp; Press (the
-     former Press page, merged 2026-10-05) is listed here instead; the footer
-     still links Become a Sponsor on every page. -->
+<!-- Mobile menu (client brief, 2026-10-09): Programme, Speakers, Venue and
+     the ticket button only; every other page is in the footer. -->
 <div class="mobile-nav-panel" id="mobile-nav-panel">
   <ul class="mobile-nav-list">
-    <li><a href="../../about/index.html">About</a></li>
     <li><a href="../../schedule/index.html">Programme</a></li>
     <li><a href="../../speakers/index.html">Speakers</a></li>
     <li><a href="../../venue/index.html">Venue</a></li>
-    <li><a href="../../index.html#sponsors">Sponsors</a></li>
-    <li><a href="../../gallery/index.html">Gallery</a></li>
-    <li><a href="../../news/index.html">News &amp; Press</a></li>
-    <li><a href="../../call-for-speakers/index.html">Call for Speakers</a></li>
-    <li><a href="../../contact/index.html">Contact</a></li>
     <li><a class="btn btn--primary btn--block" href="../../register/index.html">Get your free ticket</a></li>
   </ul>
 </div>
@@ -214,8 +197,10 @@ redirect_from:
       <div class="footer-col">
         <p class="footer-col-heading">Get Involved</p>
         <ul>
-          <li><a href="../../become-a-sponsor/index.html">Become a Sponsor</a></li>
           <li><a href="../../register/index.html">Get your free ticket</a></li>
+          <li><a href="../../index.html#sponsors">Sponsors</a></li>
+          <li><a href="../../become-a-sponsor/index.html">Become a Sponsor</a></li>
+          <li><a href="../../call-for-speakers/index.html">Call for Speakers</a></li>
         </ul>
       </div>
 

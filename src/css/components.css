@@ -142,7 +142,7 @@
   border-left: 1px solid var(--color-border);
 }
 /* Hidden below ~600px — logo, date and the nav toggle otherwise crowd the
-   same cramped row (nav links/CTA are already hidden until 1300px, so
+   same cramped row (nav links are already hidden until 1024px, so
    this only ever shares space with the hamburger). */
 @media (min-width: 600px) {
   .site-logo__tag { display: inline-block; }
@@ -151,16 +151,12 @@
 .main-nav { display: none; }
 .main-nav-list { display: flex; align-items: center; gap: var(--space-6); }
 
-/* Three-zone header matching the image-typ / "6a" reference in
-   documentation/: logo + date on the left, the nav links sitting right
-   after them (a fixed gap, NOT pushed to the far right), and the ticket
-   button alone on the far right. margin-right: auto on .main-nav absorbs
-   all the free space to its right, so the nav hugs the logo while the
-   actions get shoved to the edge. (Was previously margin-left: auto on
-   .main-nav, which clustered nav + button together on the right — the
-   layout the client flagged as not matching the reference.) */
-@media (min-width: 1300px) {
-  .main-nav { display: block; margin-left: var(--space-8); margin-right: auto; }
+/* Registration-focused header (client brief, 2026-10-09): logo on the left,
+   free space, then the nav links grouped right next to the ticket button.
+   margin-left: auto on .main-nav takes all the free space; the larger
+   margin-right separates "More" from the button. */
+@media (min-width: 1024px) {
+  .main-nav { display: block; margin-left: auto; margin-right: var(--space-4); }
 }
 .main-nav-link {
   font-family: var(--font-mono);
@@ -307,7 +303,7 @@
 .announcement-bar__close { color: #fff; font-size: 1.1rem; line-height: 1; opacity: 0.8; }
 .announcement-bar__close:hover { opacity: 1; }
 
-@media (min-width: 1300px) {
+@media (min-width: 1024px) {
   .nav-toggle, .mobile-nav-panel { display: none; }
 }
 
