@@ -535,15 +535,19 @@ body:has(.hero) .site-header:not(.is-scrolled) {
   mask-image: linear-gradient(to bottom, transparent, #000 3%);
 }
 .speaker-photo--avanti-sharma { --photo-zoom: 1.045; --photo-x: 1.47%; --photo-y: 3.77%; --photo-bg: rgb(214 216 216); }
-.speaker-photo--olivier-denoo { --photo-zoom: 1.074; --photo-x: 2.53%; --photo-y: 11.95%; --photo-bg: rgb(225 226 228); }
+.speaker-photo--olivier-denoo { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; --photo-bg: rgb(81 74 79); }
 .speaker-photo--eric-riou-du-cosquer { --photo-zoom: 1.298; --photo-x: 0.13%; --photo-y: 14.08%; --photo-bg: rgb(214 215 210); }
 .speaker-photo--dominique-righetto { --photo-zoom: 1.064; --photo-x: -0.58%; --photo-y: 13.26%; --photo-bg: rgb(217 211 198); }
 .speaker-photo--domenico-bianculli { --photo-zoom: 1.334; --photo-x: 0.49%; --photo-y: 20.04%; --photo-bg: rgb(106 94 85); }
-.speaker-photo--ouamar-nedil { --photo-zoom: 1.036; --photo-x: 3.35%; --photo-y: 8.18%; --photo-bg: rgb(219 218 213); }
+.speaker-photo--ouamar-nedil { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; --photo-bg: rgb(165 143 128); }
 .speaker-photo--sylvain-perez { --photo-zoom: 1.052; --photo-x: 0.29%; --photo-y: 0.29%; --photo-bg: rgb(234 235 237); }
 .speaker-photo--ritabrata-banerjee { --photo-zoom: 1.146; --photo-x: -2.73%; --photo-y: 8.04%; --photo-bg: rgb(214 215 218); }
 .speaker-photo--jonathan-lopez { --photo-zoom: 1.117; --photo-x: -5.85%; --photo-y: 16.91%; --photo-bg: rgb(203 204 206); }
 .speaker-photo--christophe-cressend { --photo-zoom: 1.267; --photo-x: 2.72%; --photo-y: 14.48%; --photo-bg: rgb(208 208 216); }
+/* Olivier Denoo and Ouamar Nedil (new photos, 2026-10-09): their 480px
+   files are cropped from the source to the grid itself (eyes at 46% down,
+   eye-to-chin 34% / 35% of the square), so no zoom or offset; the sources
+   leave no room to centre them further sideways without an empty band. */
 /* Jonathan's source has only wall above him, so its top edge can fade
    over a longer run (12%) without touching his hair. */
 .speaker-photo--jonathan-lopez img {
