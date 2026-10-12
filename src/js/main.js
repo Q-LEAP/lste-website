@@ -685,7 +685,15 @@
     { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking', place: 'in the exhibitor area' },
 
     { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Replaced, Augmented or Exhausted? Testers Facing AI', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
-    { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Christophe Cressend, CEO of Agilitest', description: TALK },
+    {
+      id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote',
+      title: 'From User Stories to AI-Generated Automated Tests: Keeping Business Users in Control',
+      speaker: 'Christophe Cressend, CEO and Co-founder of Agilitest',
+      description: [
+        'AI can generate executable automated tests from user stories without human intervention during creation. But how can teams verify that those tests reflect the intended business behavior? Agilitest presents readable functional steps that business users and testers can review, complete and approve.',
+        'This keynote explores how AI generation, human recording, manual correction and AI self-healing help teams build a trusted, maintainable test repository for deterministic replay, rather than accumulate disposable AI-generated tests.',
+      ].join('||'),
+    },
     { id: 'keynote-bianculli', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap',
       description: [
         'Every tester, whether designing acceptance tests, automating regression suites or working with AI agents, relies on knowing how an application is actually used. On existing applications, that knowledge is often missing: specifications have drifted, and real business flows live in users’ habits. Code analysis and autonomous exploration reveal what an application can do, not what its users actually do with it. Capturing real usage closes this gap, but extracting recurring flows from captured sessions is hard: users rarely follow the same path twice, and the same task appears with many variations.',
@@ -693,8 +701,28 @@
         'BlastWeb builds on Q-Guard, Q-LEAP’s toolset for capturing real web application usage and generating test scripts, which provided the industrial setting for this research. Beyond analysis, the discovered patterns offer an empirical, usage-based description of an application that every tester can build on, whether testing manually, automating, or working with AI.',
       ].join('||'),
     },
-    { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3', title: TBA, speaker: 'Maxime Goanvic, Agilitest' },
-    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap' },
+    { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3',
+      title: 'From User Story to Automated Test: A Live Demonstration of AI Generation, Human Recording, Manual Correction and Self-Healing with Agilitest',
+      speaker: 'Maxime Goanvic, Agilitest consultant & Christophe Cressend, CEO and Co-founder of Agilitest',
+      description: [
+        'Watch AI turn a user story into an executable automated test by interacting with a real application through Agilitest’s REPL connection. We will review the generated functional steps, extend the scenario through human recording and manual correction, and approve it for the test repository. We will then replay the test, introduce an interface change and demonstrate AI self-healing. Participants will see how to inspect the execution report and retain the correction in the maintained test.',
+        'The demonstration covers four processes:',
+        'AI generation: create a test from a user story without manually writing or recording its steps.',
+        'Human recording: capture additional actions to extend the scenario.',
+        'Manual correction: adjust functional steps and add missing assertions.',
+        'AI self-healing: recover from a changed locator during execution, review the repair and apply it to the test repository.',
+      ].join('||'),
+    },
+    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA,
+      speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap',
+      // Abstract from the client (2026-10-12); the title is still being decided.
+      description: [
+        'In this hands-on workshop, participants will learn a practical method for recovering knowledge of an existing application before testing it, and discover why observed usage is the missing input for all testing, whether manual, automated or AI-assisted.',
+        'Every testing effort, from manual acceptance testing to AI-driven automation, starts (or should start) with the same question: what does this application do, and how is it really used? For existing applications, the answer is rarely in the documentation. Testers reverse-engineer it by hand, acceptance scenarios are written from assumptions, and AI assistants guess from code or screens, often covering paths nobody uses while missing the critical ones.',
+        'We start from a web application with no usable documentation. Participants will use Q-Guard to capture real usage sessions and structure them into user flows and recurring interaction patterns. From these, it produces a redocumentation of the application: the business flows actually performed, their variants, and the screens and data involved.',
+        'Participants will then put this deliverable to work for three audiences: an acceptance tester deriving scenarios from real business flows, a test automation engineer designing a regression suite, and an AI assistant generating test cases and scripts, comparing its output with and without this usage-based context.',
+      ].join('||'),
+    },
     { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:30', end: '17:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
       title: 'Breaking the 2FA Testing Barrier with Q-Bot',
       speaker: 'Sylvain Perez, CEO of Q-Leap · CTO & Product Manager, Q-BOT, with Nikola Krstic (Q-Leap) and João Português (POST Luxembourg)',
