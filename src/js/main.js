@@ -649,7 +649,7 @@
       ].join('||'),
     },
     {
-      id: 'keynote-riou-du-cosquer', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
+      id: 'keynote-riou-du-cosquer', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote',
       title: 'How Effective Are Your Testing Activities? Discover with TMMi',
       speaker: 'Eric Riou du Cosquer, Certilog',
       description: TALK,
@@ -686,7 +686,13 @@
 
     { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Replaced, Augmented or Exhausted? Testers Facing AI', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
     { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Christophe Cressend, CEO of Agilitest', description: TALK },
-    { id: 'keynote-bianculli', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap', description: TALK },
+    { id: 'keynote-bianculli', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap',
+      description: [
+        'Every tester, whether designing acceptance tests, automating regression suites or working with AI agents, relies on knowing how an application is actually used. On existing applications, that knowledge is often missing: specifications have drifted, and real business flows live in users’ habits. Code analysis and autonomous exploration reveal what an application can do, not what its users actually do with it. Capturing real usage closes this gap, but extracting recurring flows from captured sessions is hard: users rarely follow the same path twice, and the same task appears with many variations.',
+        'This talk presents BlastWeb, an approach developed through a research partnership between the Software Verification and Validation Group at SnT, University of Luxembourg, and Q-LEAP. BlastWeb applies sequence analysis techniques to captured user sessions to automatically and efficiently discover recurring interaction patterns while accommodating variations in user behavior. We will discuss the industrial challenges that motivated this work, the concepts underlying the approach, and the results of an empirical evaluation on real-world applications.',
+        'BlastWeb builds on Q-Guard, Q-LEAP’s toolset for capturing real web application usage and generating test scripts, which provided the industrial setting for this research. Beyond analysis, the discovered patterns offer an empirical, usage-based description of an application that every tester can build on, whether testing manually, automating, or working with AI.',
+      ].join('||'),
+    },
     { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3', title: TBA, speaker: 'Maxime Goanvic, Agilitest' },
     { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap' },
     { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:30', end: '17:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
@@ -706,10 +712,10 @@
 
     { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
-    { id: 'keynote-lnds', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
-    // 18:00 slot held for a speaker not yet confirmed (client, 2026-10-01):
-    // no name on the site until it is.
-    { id: 'keynote-1800', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote', title: 'Slot to be confirmed', speaker: 'Coming soon', description: TALK },
+    { id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'OpenText', description: TALK },
+    // Program change (client, 2026-10-12): OpenText at 16:30, LNDS moved to
+    // 17:30 and Eric Riou du Cosquer to the closing 18:00 slot.
+    { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
     { id: 'workshop-sembi', track: 'workshop', partner: 'Sembi', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-sembi-30/register', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
     { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', booking: '', type: 'Workshop 7', title: 'Workshop to be announced' },
     {
