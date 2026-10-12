@@ -713,9 +713,10 @@
         'AI self-healing: recover from a changed locator during execution, review the repair and apply it to the test repository.',
       ].join('||'),
     },
-    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA,
+    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4',
+      title: 'Same Starting Point for Testers and AI: Q-Guard Knows How Your Application Is Really Used',
       speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap',
-      // Abstract from the client (2026-10-12); the title is still being decided.
+      // Title and abstract from the client (2026-10-12).
       description: [
         'In this hands-on workshop, participants will learn a practical method for recovering knowledge of an existing application before testing it, and discover why observed usage is the missing input for all testing, whether manual, automated or AI-assisted.',
         'Every testing effort, from manual acceptance testing to AI-driven automation, starts (or should start) with the same question: what does this application do, and how is it really used? For existing applications, the answer is rarely in the documentation. Testers reverse-engineer it by hand, acceptance scenarios are written from assumptions, and AI assistants guess from code or screens, often covering paths nobody uses while missing the critical ones.',
