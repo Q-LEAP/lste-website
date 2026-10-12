@@ -548,6 +548,11 @@ body:has(.hero) .site-header:not(.is-scrolled) {
    files are cropped from the source to the grid itself (eyes at 46% down,
    eye-to-chin 34% / 35% of the square), so no zoom or offset; the sources
    leave no room to centre them further sideways without an empty band. */
+/* João Português (new photo) and Julien Desmulier (added 2026-10-12):
+   their 480px files are cropped from the source to the grid itself, so no
+   zoom or offset. */
+.speaker-photo--joao-portugues { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
+.speaker-photo--julien-desmulier { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
 /* Jonathan's source has only wall above him, so its top edge can fade
    over a longer run (12%) without touching his hair. */
 .speaker-photo--jonathan-lopez img {

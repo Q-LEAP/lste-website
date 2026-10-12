@@ -650,7 +650,7 @@
     },
     {
       id: 'keynote-riou-du-cosquer', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
-      title: 'Are Your Testing Activities Effective? The Answer with TMMi v2',
+      title: 'How Effective Are Your Testing Activities? Discover with TMMi',
       speaker: 'Eric Riou du Cosquer, Certilog',
       description: TALK,
     },
@@ -662,7 +662,6 @@
         'Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.',
         'This talk shows how some file types — PDFs, here — can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.',
         'It is told as a story. A development team is asked to implement file upload against a vague specification: "users must be able to send us PDF files." An application security consultant embedded in the team tests the result, finds a way to slip malicious content through, explains the problem, and the team fixes it together — then the next iteration starts. Round after round, in true die-and-retry fashion, the consultant’s health bar drops, until the feature is finally robust. The point: all that extra work and frustration could have been avoided had the user story been clearer about security in the first place.',
-        'Slides in English. Delivered in English or French depending on the audience.',
       ].join('||'),
     },
     {
@@ -685,13 +684,13 @@
 
     { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking', place: 'in the exhibitor area' },
 
-    { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Round table — topic to be announced', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
+    { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Replaced, Augmented or Exhausted? Testers Facing AI', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
     { id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote', title: TBA, speaker: 'Christophe Cressend, CEO of Agilitest', description: TALK },
-    { id: 'keynote-bianculli', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote', title: 'Discovering Recurring User Interaction Patterns', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap', description: TALK },
+    { id: 'keynote-bianculli', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap', description: TALK },
     { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3', title: TBA, speaker: 'Maxime Goanvic, Agilitest' },
-    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Ritabrata Banerjee & Jonathan Lopez, Q-Leap' },
+    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4', title: TBA, speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap' },
     { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:30', end: '17:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
-      title: 'Q-Bot enables automated tests with 2FA',
+      title: 'Breaking the 2FA Testing Barrier with Q-Bot',
       speaker: 'Sylvain Perez, CEO of Q-Leap · CTO & Product Manager, Q-BOT, with Nikola Krstic (Q-Leap) and João Português (POST Luxembourg)',
       description: [
         'Automating end-to-end tests becomes challenging when strong authentication and mobile 2FA enter the picture. In this hands-on workshop, we will demonstrate how Q-Bot can automate real interactions with a physical smartphone and integrate them into an existing test pipeline.',
