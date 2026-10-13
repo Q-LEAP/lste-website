@@ -553,10 +553,11 @@ body:has(.hero) .site-header:not(.is-scrolled) {
    zoom or offset. */
 .speaker-photo--joao-portugues { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
 .speaker-photo--julien-desmulier { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
-/* Maxime Goanvic (photo from the client, 2026-10-12): cropped from an event
-   shot to the grid width; his head sits near the top of the source, so the
-   eyes land at about 36% down rather than 46%. */
+/* Maxime Goanvic, Nikola Krstic and Julien Desmulier (new photos from the
+   client, 2026-10-13): cropped from the source to the grid itself, so no
+   zoom or offset. */
 .speaker-photo--maxime-goanvic { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
+.speaker-photo--nikola-krstic { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
 /* Jonathan's source has only wall above him, so its top edge can fade
    over a longer run (12%) without touching his hair. */
 .speaker-photo--jonathan-lopez img {
