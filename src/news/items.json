@@ -1,5 +1,23 @@
 [
   {
+    "id": "silicon-lste-2026-calendar",
+    "date": "2026-10-13",
+    "category": "press-coverage",
+    "source_type": "external",
+    "content_type": "article",
+    "title": "LSTE 2026 – Silicon Luxembourg",
+    "excerpt": "Silicon Luxembourg lists the 8th Luxembourg Software Testing Event in its calendar: 26 November 2026 at Hôtel Parc Belle-Vue, on the impact of AI on software testing.",
+    "url": "https://www.siliconluxembourg.lu/calendar/lste-2026/",
+    "image": {
+      "src": "Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled",
+      "variants": true,
+      "width": 800,
+      "height": 600,
+      "alt": "Attendees in the auditorium at LSTE 2024"
+    },
+    "source_name": "Silicon Luxembourg"
+  },
+  {
     "id": "ai-in-software-testing-opportunity-or-threat-for-qa-professionals",
     "date": "2026-10-05",
     "category": "community",
