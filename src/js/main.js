@@ -418,6 +418,82 @@
     });
   }
 
+  /* ── Awards countdown (/awards/) ───────────────────────────── */
+  // [data-countdown] holds the deadline as an ISO date; its
+  // [data-unit] children get days/hours/minutes/seconds. Stays hidden
+  // without JS and hides itself again once the deadline has passed.
+  function initAwardsCountdown() {
+    const el = document.querySelector('[data-countdown]');
+    if (!el) return;
+    const end = new Date(el.dataset.countdown).getTime();
+    if (Number.isNaN(end) || end <= Date.now()) return;
+
+    const units = { days: 86400000, hours: 3600000, minutes: 60000, seconds: 1000 };
+    let timer;
+    function tick() {
+      let left = end - Date.now();
+      if (left <= 0) {
+        el.hidden = true;
+        clearInterval(timer);
+        return;
+      }
+      for (const [unit, ms] of Object.entries(units)) {
+        const value = Math.floor(left / ms);
+        left -= value * ms;
+        const out = el.querySelector(`[data-unit="${unit}"]`);
+        if (out) out.textContent = String(value).padStart(2, '0');
+      }
+    }
+    tick();
+    el.hidden = false;
+    timer = setInterval(tick, 1000);
+  }
+
+  /* ── Awards categories: judging criteria in a dialog (/awards/) ──
+     Each card's "Judging criteria" button names a <template> holding
+     that category's details; the dialog is filled from it on open.
+     The buttons stay hidden without JS (the Enter links still work). */
+  function initAwardModal() {
+    const modal = document.getElementById('award-modal');
+    if (!modal) return;
+    const dialog = modal.querySelector('.award-modal');
+    const body = document.getElementById('award-modal-body');
+    const triggers = document.querySelectorAll('.award-card__more[data-award]');
+    triggers.forEach((trigger) => {
+      trigger.hidden = false;
+      trigger.setAttribute('aria-haspopup', 'dialog');
+    });
+
+    // Page scroll is locked while the dialog is open; the scrollbar's
+    // width is padded back so the page doesn't shift sideways.
+    const root = document.documentElement;
+    function lockScroll() {
+      const gap = window.innerWidth - root.clientWidth;
+      root.style.overflow = 'hidden';
+      if (gap > 0) document.body.style.paddingRight = gap + 'px';
+    }
+    function unlockScroll() {
+      root.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+
+    initSimpleModal({
+      triggers,
+      modal,
+      closeBtn: document.getElementById('award-modal-close'),
+      onOpen: (trigger) => {
+        const tpl = document.getElementById(trigger.dataset.award);
+        if (!tpl) return;
+        body.replaceChildren(tpl.content.cloneNode(true));
+        dialog.dataset.accent = tpl.dataset.accent || '';
+        const scroller = body.querySelector('.award-modal__body');
+        if (scroller) scroller.scrollTop = 0;
+        lockScroll();
+      },
+      onClose: unlockScroll,
+    });
+  }
+
   /* ── Footer year ───────────────────────────────────────────── */
   function initFooterYear() {
     // Deliberately static content — a build-time year avoids a client
@@ -741,7 +817,8 @@
 
     { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
-    { id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'OpenText', description: TALK },
+    // Speaker from the client (2026-10-27); title and abstract still to come.
+    { id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Gerd Fladrich, OpenText', description: TALK },
     // Program change (client, 2026-10-12): OpenText at 16:30, LNDS moved to
     // 17:30 and Eric Riou du Cosquer to the closing 18:00 slot.
     { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
@@ -1323,6 +1400,8 @@
     initAutoScrollCarousels();
     initForms();
     initFooterYear();
+    initAwardsCountdown();
+    initAwardModal();
     initEmptyEditionModal();
     initLinkedInModal();
     initSponsorModal();
