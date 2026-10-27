@@ -558,6 +558,10 @@ body:has(.hero) .site-header:not(.is-scrolled) {
    zoom or offset. */
 .speaker-photo--maxime-goanvic { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
 .speaker-photo--nikola-krstic { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
+/* Gerd Fladrich (added 2026-10-27): cropped from his LinkedIn picture, which
+   leaves no room under the chin (the #OpenToWork frame), so his eyes sit a
+   little lower than the 46% grid line. */
+.speaker-photo--gerd-fladrich { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; --photo-bg: rgb(165 137 126); }
 /* Jonathan's source has only wall above him, so its top edge can fade
    over a longer run (12%) without touching his hair. */
 .speaker-photo--jonathan-lopez img {

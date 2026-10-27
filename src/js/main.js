@@ -817,8 +817,9 @@
 
     { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
-    // Speaker from the client (2026-10-27); title and abstract still to come.
-    { id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Gerd Fladrich, OpenText', description: TALK },
+    // Speaker named by the client (2026-10-27): an independent consultant
+    // speaking for OpenText; title and abstract still to come.
+    { id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Gerd Fladrich, Fladrich Consulting, for OpenText', description: TALK },
     // Program change (client, 2026-10-12): OpenText at 16:30, LNDS moved to
     // 17:30 and Eric Riou du Cosquer to the closing 18:00 slot.
     { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
