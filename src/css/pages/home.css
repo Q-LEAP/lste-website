@@ -562,6 +562,12 @@ body:has(.hero) .site-header:not(.is-scrolled) {
    leaves no room under the chin (the #OpenToWork frame), so his eyes sit a
    little lower than the 46% grid line. */
 .speaker-photo--gerd-fladrich { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; --photo-bg: rgb(165 137 126); }
+/* Emiliana Pali and Alessandro Merola (added 2026-10-28): cropped from the
+   client's photos to the grid itself, so no zoom or offset. Emiliana's is
+   framed a little wider (face 31% instead of 34%) so her hair clears the
+   top edge. */
+.speaker-photo--emiliana-pali { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
+.speaker-photo--alessandro-merola { --photo-zoom: 1; --photo-x: 0%; --photo-y: 0%; }
 /* Jonathan's source has only wall above him, so its top edge can fade
    over a longer run (12%) without touching his hair. */
 .speaker-photo--jonathan-lopez img {

@@ -822,7 +822,21 @@
     { id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Gerd Fladrich, Fladrich Consulting, for OpenText', description: TALK },
     // Program change (client, 2026-10-12): OpenText at 16:30, LNDS moved to
     // 17:30 and Eric Riou du Cosquer to the closing 18:00 slot.
-    { id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: TBA, speaker: 'LNDS', description: TALK },
+    {
+      id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
+      title: 'I Told the AI to Write My Tests. It Did. Now What?',
+      speaker: 'Emiliana Pali & Alessandro Merola, LNDS',
+      // Title and abstract from the client (2026-10-28).
+      description: [
+        'Writing end-to-end tests with Playwright is a common task for developers working on UI development. With the help of AI, Playwright has become even more powerful, enabling developers to generate and run tests automatically with less manual effort.',
+        'In this presentation, we will explore:',
+        'Playwright before AI: how developers traditionally wrote and executed end-to-end tests.',
+        'MCP and AI integration: what an MCP server is and how it connects Playwright with AI.',
+        'Live demo: a demonstration of this new approach to testing in action.',
+        'Pros and cons: the benefits, limitations, and challenges of AI-powered testing.',
+        'To make the presentation engaging and fun, we will use a realistic scenario featuring two developers working on a new UI feature, showing how they can use AI and Playwright to test it.',
+      ].join('||'),
+    },
     { id: 'workshop-sembi', track: 'workshop', partner: 'Sembi', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-sembi-30/register', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
     { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', booking: '', type: 'Workshop 7', title: 'Workshop to be announced' },
     {
