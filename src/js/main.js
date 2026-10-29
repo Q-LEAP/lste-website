@@ -768,9 +768,9 @@
       description: [
         'AI is reshaping how we test, and how testers feel about their work. Test cases appear in seconds, models triage defects, and automation scripts almost write themselves. Behind the productivity gains, a quieter question is spreading through QA teams: what is left for me?',
         'This round table explores the human side of AI adoption in software testing, through three tensions.',
-        'Replaced: the fear of obsolescence, and how it shapes motivation, career choices and the willingness to experiment.',
-        'Augmented: the promise of a tester freed from repetitive work, and what it really takes in new skills, a new professional identity and new ways of judging quality.',
-        'Exhausted: the hidden cost of reviewing AI output all day, upskilling non-stop and keeping pace with tools that change every month.',
+        '**Replaced:** the fear of obsolescence, and how it shapes motivation, career choices and the willingness to experiment.',
+        '**Augmented:** the promise of a tester freed from repetitive work, and what it really takes in new skills, a new professional identity and new ways of judging quality.',
+        '**Exhausted:** the hidden cost of reviewing AI output all day, upskilling non-stop and keeping pace with tools that change every month.',
         'Panellists from the field will share their experience, their honest doubts and the practices that actually work. They will discuss how to introduce AI without breaking teams, how to keep critical thinking alive when the machine sounds confident, and how managers can support people through the change.',
         'No hype, no doom. Just an open conversation about the people who make quality happen, and how they can thrive alongside AI.',
         'Panellists to be announced.',
@@ -1119,7 +1119,12 @@
           (session.description || '').split('||').forEach((para) => {
             const text = para.trim();
             if (!text) return;
-            descEl.appendChild(el('p', null, text));
+            // **…** marks a bold run (e.g. the round table's three tensions).
+            const p = el('p');
+            text.split('**').forEach((part, i) => {
+              if (part) p.appendChild(i % 2 ? el('strong', null, part) : document.createTextNode(part));
+            });
+            descEl.appendChild(p);
           });
           // Workshops: book the seat right from the programme.
           const ctaEl = document.getElementById('session-modal-cta');
