@@ -760,7 +760,22 @@
 
     { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking', place: 'in the exhibitor area' },
 
-    { id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table', title: 'Replaced, Augmented or Exhausted? Testers Facing AI', speaker: 'Moderated by Avanti Sharma', description: 'Panellists to be announced.' },
+    {
+      id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table',
+      title: 'Replaced, Augmented or Exhausted? Testers Facing AI',
+      speaker: 'Moderated by Avanti Sharma',
+      // Abstract from the client (2026-10-29), long version; panellists still to come.
+      description: [
+        'AI is reshaping how we test, and how testers feel about their work. Test cases appear in seconds, models triage defects, and automation scripts almost write themselves. Behind the productivity gains, a quieter question is spreading through QA teams: what is left for me?',
+        'This round table explores the human side of AI adoption in software testing, through three tensions.',
+        'Replaced: the fear of obsolescence, and how it shapes motivation, career choices and the willingness to experiment.',
+        'Augmented: the promise of a tester freed from repetitive work, and what it really takes in new skills, a new professional identity and new ways of judging quality.',
+        'Exhausted: the hidden cost of reviewing AI output all day, upskilling non-stop and keeping pace with tools that change every month.',
+        'Panellists from the field will share their experience, their honest doubts and the practices that actually work. They will discuss how to introduce AI without breaking teams, how to keep critical thinking alive when the machine sounds confident, and how managers can support people through the change.',
+        'No hype, no doom. Just an open conversation about the people who make quality happen, and how they can thrive alongside AI.',
+        'Panellists to be announced.',
+      ].join('||'),
+    },
     {
       id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote',
       title: 'From User Stories to AI-Generated Automated Tests: Keeping Business Users in Control',
