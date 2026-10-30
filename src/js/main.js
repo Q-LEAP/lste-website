@@ -833,8 +833,20 @@
     { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
     // Speaker named by the client (2026-10-27): an independent consultant
-    // speaking for OpenText; title and abstract still to come.
-    { id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote', title: TBA, speaker: 'Gerd Fladrich, Fladrich Consulting, for OpenText', description: TALK },
+    // speaking for OpenText. Title and abstract from the client (2026-10-30);
+    // their subtitle "The Real-World Transition from Jira to OpenText Octane"
+    // is left out, no other session has one.
+    {
+      id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote',
+      title: 'Stop Managing Tickets. Start Managing Delivery.',
+      speaker: 'Gerd Fladrich, Fladrich Consulting, for OpenText',
+      description: [
+        'Many organisations manage requirements, defects and tests across disconnected tools. Jira may provide visibility into individual tickets – but it does not automatically create an integrated software delivery process.',
+        'Drawing on real customer projects, Gerd Fladrich explores the transition from Jira to OpenText Octane: from analysing existing processes and mapping data to adapting workflows, roles and reporting.',
+        'The keynote highlights typical challenges, practical lessons and the changes teams experience when moving from ticket-focused work to an integrated delivery platform – where development, quality and release become part of one transparent flow.',
+        'No marketing theory – just honest insights from real-world transformations.',
+      ].join('||'),
+    },
     // Program change (client, 2026-10-12): OpenText at 16:30, LNDS moved to
     // 17:30 and Eric Riou du Cosquer to the closing 18:00 slot.
     {
