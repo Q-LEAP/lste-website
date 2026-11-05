@@ -750,7 +750,15 @@
         'What to bring: a laptop with an internet connection, to get the most out of the workshop.',
       ].join('||'),
     },
-    { id: 'workshop-xray', track: 'workshop', partner: 'Xray', start: '14:10', end: '14:50', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-2-xray-26/register', type: 'Workshop 2', title: TBA, speaker: 'Xray' },
+    {
+      id: 'workshop-xray', track: 'workshop', partner: 'Xray', start: '14:10', end: '14:50', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-2-xray-26/register', type: 'Workshop 2',
+      title: 'AI Meets Test Management: Unlock Faster, Smarter QA with Xray',
+      speaker: 'Cristiano Cunha, Solution Architect at Xray',
+      description: [
+        'Discover how Artificial Intelligence is transforming the QA ecosystem. In this session, we will explore the five live AI experiences available in Xray designed to accelerate test creation, optimization, and planning.',
+        'Additionally, we will dive into how the Xray Model Context Protocol (MCP) amplifies these capabilities, by bringing tests as context for a faster, smarter approach to quality assurance.',
+      ].join('||'),
+    },
     {
       id: 'exhibitors', track: 'exhibition', start: '13:30', end: '14:50',
       title: 'Exhibitors',
