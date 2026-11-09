@@ -843,12 +843,12 @@
     { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
     // Speaker named by the client (2026-10-27): an independent consultant
-    // speaking for OpenText. Title and abstract from the client (2026-10-30);
-    // their subtitle "The Real-World Transition from Jira to OpenText Octane"
-    // is left out, no other session has one.
+    // speaking for OpenText. Abstract from the client (2026-10-30), title
+    // changed by the client (2026-11-09); their earlier subtitle "The
+    // Real-World Transition from Jira to OpenText Octane" is left out.
     {
       id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote',
-      title: 'Stop Managing Tickets. Start Managing Delivery.',
+      title: 'Beyond Jira: Where Testing Meets Continuous Delivery',
       speaker: 'Gerd Fladrich, Fladrich Consulting, for OpenText',
       description: [
         'Many organisations manage requirements, defects and tests across disconnected tools. Jira may provide visibility into individual tickets – but it does not automatically create an integrated software delivery process.',
