@@ -873,9 +873,9 @@
       ].join('||'),
     },
     {
-      // TestRail replaces the Sembi slot (sponsor email, 2026-11-09). The booking link is the
-      // Odoo event first created for Sembi.
-      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-sembi-30/register', type: 'Workshop 6',
+      // TestRail replaces the Sembi slot (sponsor email, 2026-11-09): same Odoo event (30), renamed;
+      // the old …-sembi-30 address redirects here.
+      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-testrail-30/register', type: 'Workshop 6',
       title: 'Test Management in the Age of AI: From Basics to MCP',
       speaker: 'Patricia Mateus, TestRail',
       description: [
