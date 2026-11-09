@@ -702,11 +702,13 @@
   // Odoo resolves the event by the trailing id, so a later rename of the
   // event doesn't break these links.
   const WORKSHOP_SEATS = 20; // per workshop, as set on each Odoo event
-  // Workshop seat booking is closed until every workshop is set up (client,
-  // 2026-10-09): while false, no "Book a seat" badge or link appears and the
-  // cards say booking opens soon. The /register/ #workshops section is hidden
-  // in its HTML too; flip both to reopen.
-  const WORKSHOP_BOOKING_OPEN = false;
+  // Workshop seat booking, closed on 2026-10-09 until every workshop was set
+  // up, reopened 2026-11-09 (Workshops 1–6 aligned with Odoo events 25–30;
+  // Workshop 7 has no partner yet, so its card still says booking opens
+  // soon). While false, no "Book a seat" badge or link appears and the cards
+  // say booking opens soon; the /register/ #workshops section then needs its
+  // `hidden` attribute back.
+  const WORKSHOP_BOOKING_OPEN = true;
   const bookingOf = (session) => (WORKSHOP_BOOKING_OPEN ? session.booking : '');
   const TBA = 'Details coming soon';
   const TALK = '20-minute talk followed by 10 minutes of Q&A.';
