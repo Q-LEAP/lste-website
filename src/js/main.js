@@ -762,7 +762,7 @@
     {
       id: 'exhibitors', track: 'exhibition', start: '13:30', end: '14:50',
       title: 'Exhibitors',
-      speaker: 'Xray, OctoPerf, Q-Leap, Q-Guard, Q-Bot, Sembi, GASQ, LNDS, Agilitest',
+      speaker: 'Xray, TestRail, OctoPerf, Q-Leap, Q-Guard, Q-Bot, GASQ, LNDS, Agilitest',
       description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
     },
 
@@ -872,7 +872,17 @@
         'To make the presentation engaging and fun, we will use a realistic scenario featuring two developers working on a new UI feature, showing how they can use AI and Playwright to test it.',
       ].join('||'),
     },
-    { id: 'workshop-sembi', track: 'workshop', partner: 'Sembi', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-sembi-30/register', type: 'Workshop 6', title: TBA, speaker: 'Sembi' },
+    {
+      // TestRail replaces the Sembi slot (sponsor email, 2026-11-09). The booking link is the
+      // Odoo event first created for Sembi.
+      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-sembi-30/register', type: 'Workshop 6',
+      title: 'Test Management in the Age of AI: From Basics to MCP',
+      speaker: 'Patricia Mateus, TestRail',
+      description: [
+        'A practical walkthrough of the testing lifecycle in TestRail, from test planning and execution to reporting. We\'ll also explore how AI capabilities and MCP fit into modern QA workflows and support everyday testing activities.',
+        'Format: walkthrough session. Nothing is required from the participants.',
+      ].join('||'),
+    },
     { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', booking: '', type: 'Workshop 7', title: 'Workshop to be announced' },
     {
       id: 'exhibition-evening', track: 'exhibition', start: '17:30', end: '18:30',
