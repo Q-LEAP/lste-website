@@ -730,7 +730,7 @@
       description: [
         'This presentation explores the challenges of AI from a tester’s perspective, with Olivier’s signature touch of humor and offbeat style.',
         'What are the challenges, risks, and opportunities for reinventing ourselves in the era of augmented computing and this relentless race for speed? It raises some key questions, drawing on nearly 30 years of experience in software quality assurance.',
-        'Opening keynote, 30 minutes.',
+        'Opening keynote, 15 minutes.',
       ].join('||'),
     },
     {
