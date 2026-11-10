@@ -890,7 +890,7 @@
       ].join('||'),
     },
 
-    { id: 'closing', track: 'keynote', start: '18:20', end: '18:30', type: 'Closing', title: 'Closing', speaker: 'Avanti Sharma, Master of Ceremonies' },
+    { id: 'closing', track: 'keynote', start: '18:20', end: '18:30', type: 'Closing', title: 'Closing', speaker: 'Atreyam (Leo) Sharma, Workshop4Me' },
     { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, finale: true, title: 'Cocktail & Networking', place: 'Salle Pétrusse', note: 'Wrap up the day with drinks, conversations and networking.' },
   ];
 
