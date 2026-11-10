@@ -819,16 +819,20 @@
       ].join('||'),
     },
     {
-      id: 'exhibition-afternoon', track: 'exhibition', start: '15:40', end: '18:30',
+      id: 'exhibition-afternoon', track: 'exhibition', start: '15:40', end: '17:20',
       title: 'Exhibitor area',
       speaker: 'Open all afternoon, including during coffee breaks and the evening cocktail.',
     },
+    {
+      id: 'exhibition-evening', track: 'exhibition', start: '17:50', end: '18:30',
+      title: 'Exhibitor area',
+      speaker: 'Booths open until the evening cocktail.',
+    },
 
-    // Staggered second break (client, 2026-11-10): the auditorium breaks at
-    // 17:10, the workshop room at 17:20 so Q-Bot (16:50-17:20) runs to its
-    // end; `columns` draws a break marker in those tracks only.
-    { id: 'coffee-break-2', track: 'general', columns: ['keynote'], start: '17:10', end: '17:40', title: 'Auditorium break', place: 'coffee & booths' },
-    { id: 'coffee-break-2-workshops', track: 'general', columns: ['workshop'], start: '17:20', end: '17:50', title: 'Workshop break', place: 'coffee & booths' },
+    // Second break at 17:20 for everyone (client, 2026-11-10) so Q-Bot
+    // (16:50-17:20) runs to its end; the auditorium keeps 10 minutes of slack
+    // after OpenText (17:10-17:20) and the closing is 10 minutes.
+    { id: 'coffee-break-2', track: 'general', start: '17:20', end: '17:50', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
     // Speaker named by the client (2026-10-27): an independent consultant
     // speaking for OpenText. Abstract from the client (2026-10-30), title
@@ -854,7 +858,7 @@
     // and Agilitest swap. 30-minute slots from there, so the breaks move to
     // 15:10 and 17:10 and the day still ends at 18:30. Workshop 7 dropped.
     {
-      id: 'keynote-lnds', track: 'keynote', start: '17:40', end: '18:10', type: 'Keynote',
+      id: 'keynote-lnds', track: 'keynote', start: '17:50', end: '18:20', type: 'Keynote',
       title: 'I Told the AI to Write My Tests. It Did. Now What?',
       speaker: 'Emiliana Pali & Alessandro Merola, LNDS',
       // Title and abstract from the client (2026-10-28).
@@ -880,7 +884,7 @@
       ].join('||'),
     },
 
-    { id: 'closing', track: 'keynote', start: '18:10', end: '18:30', type: 'Closing', title: 'Closing', speaker: 'Avanti Sharma, Master of Ceremonies' },
+    { id: 'closing', track: 'keynote', start: '18:20', end: '18:30', type: 'Closing', title: 'Closing', speaker: 'Avanti Sharma, Master of Ceremonies' },
     { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, finale: true, title: 'Cocktail & Networking', place: 'Salle Pétrusse', note: 'Wrap up the day with drinks, conversations and networking.' },
   ];
 
@@ -998,22 +1002,16 @@
         card.className = isGeneral ? 'schedule-marker' : 'session-card session-card--' + session.track;
         if (isGeneral && session.accent) card.classList.add('schedule-marker--accent');
         if (isGeneral && end - start <= 5) card.classList.add('schedule-marker--tiny');
-        // Up to 10 minutes (the 13:30 opening since 2026-11-10): one line,
+        // Up to 10 minutes (the opening and the closing since 2026-11-10): one line,
         // title and speaker side by side; two stacked lines don't fit.
         if (!isGeneral && end - start <= 10) card.classList.add('session-card--tiny');
-        // Up to 20 minutes (the 18:10 closing): title and speaker, no time line.
+        // Up to 20 minutes: title and speaker, no time line.
         else if (!isGeneral && end - start <= 20) card.classList.add('session-card--short');
         else if (!isGeneral && end - start <= 30) card.classList.add('session-card--mid');
         card.style.gridRow = rowStart + ' / ' + rowEnd;
         if (isGeneral && session.finale) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
           fillFinale(card, session);
-        } else if (isGeneral && session.columns) {
-          // A break for some tracks only (contiguous columns).
-          const cols = session.columns.map((id) => TRACKS.findIndex((t) => t.id === id) + 2).sort((x, y) => x - y);
-          card.style.gridColumn = cols[0] + ' / ' + (cols[cols.length - 1] + 1);
-          card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));
-          card.appendChild(el('span', 'schedule-marker__title', markerTitle(session)));
         } else if (isGeneral) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
           card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));

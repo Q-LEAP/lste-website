@@ -374,6 +374,3 @@
 }
 .session-modal__cta[hidden] { display: none; }
 .session-modal__cta-note { font-size: 0.8125rem; color: var(--color-muted); }
-
-/* A break drawn in some tracks only (staggered breaks, 2026-11-10): keep its time on one line. */
-.schedule-marker__time { white-space: nowrap; }
