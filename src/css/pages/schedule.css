@@ -142,8 +142,19 @@
    drops the time line (the time column already shows it) and keeps the
    title to one line; 5-minute slots (opening, closing) run title and
    speaker together on a single line. The modal always has the full text. */
-.session-card--short { gap: 0; padding-top: var(--space-1); padding-bottom: var(--space-1); }
-.session-card--short .session-card__time { display: none; }
+.session-card--short {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  column-gap: 0.5rem;
+  row-gap: 0.1rem;
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+}
+/* 15-20 minute slots (opening, first keynote): time and title share a line, speaker below. */
+.session-card--short .session-card__time { align-self: baseline; }
+.session-card--short .session-card__title { align-self: baseline; }
+.session-card--short .session-card__speaker { grid-column: 1 / -1; }
 .session-card--short .session-card__title { -webkit-line-clamp: 1; }
 .session-card--mid .session-card__title { -webkit-line-clamp: 2; } /* 30-minute slot: room for two lines */
 .session-card--tiny { flex-direction: row; align-items: center; gap: 0.5rem; padding-top: 0; padding-bottom: 0; }
@@ -374,3 +385,6 @@
 }
 .session-modal__cta[hidden] { display: none; }
 .session-modal__cta-note { font-size: 0.8125rem; color: var(--color-muted); }
+
+/* Back-to-back sessions in a track: a visible gap between cards (2026-11-10). */
+.schedule-grid .session-card { margin-bottom: 4px; }

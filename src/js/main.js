@@ -712,12 +712,19 @@
   const bookingOf = (session) => (WORKSHOP_BOOKING_OPEN ? session.booking : '');
   const TBA = 'Details coming soon';
   const TALK = '20-minute talk followed by 10 minutes of Q&A.';
+  // Programme v4 (client, 2026-11-10): opening 13:30-13:45 and closing
+  // 18:20-18:30 as full-width rows (Auditorium + Workshops for the opening,
+  // since the exhibitor area is one block open 13:00-18:20), Olivier Denoo
+  // 13:45-14:00, 30-minute keynotes, breaks 15:30 and 17:00, workshops from
+  // 13:45 in their original lengths (Q-Bot and Q-Guard run 5 and 10 minutes
+  // into the breaks, so the workshop room's breaks start later), cocktail
+  // from 18:30. Older comments below describe earlier slot moves.
   const SESSIONS = [
-    { id: 'doors-open', track: 'general', start: '13:00', end: '13:30', title: 'Doors open & registration' },
+    { id: 'doors-open', track: 'general', columns: ['keynote', 'workshop'], start: '13:00', end: '13:30', title: 'Doors open & registration' },
 
-    { id: 'opening', track: 'keynote', start: '13:30', end: '13:40', type: 'Opening', title: 'Opening', speaker: 'Avanti Sharma, Master of Ceremonies' },
+    { id: 'opening', track: 'general', columns: ['keynote', 'workshop'], accent: true, start: '13:30', end: '13:45', title: 'Opening', place: 'Avanti Sharma, Master of Ceremonies' },
     {
-      id: 'keynote-denoo', track: 'keynote', start: '13:40', end: '14:10', type: 'Keynote',
+      id: 'keynote-denoo', track: 'keynote', start: '13:45', end: '14:00', type: 'Keynote',
       title: 'Fast & Furious – The Tester in 5 Years: AI Perspectives',
       speaker: 'Olivier Denoo, President of the CFTL',
       description: [
@@ -727,7 +734,7 @@
       ].join('||'),
     },
     {
-      id: 'keynote-riou-du-cosquer', track: 'keynote', start: '14:10', end: '14:40', type: 'Keynote',
+      id: 'keynote-riou-du-cosquer', track: 'keynote', start: '14:00', end: '14:30', type: 'Keynote',
       title: 'AI for Business Analysts: From Requirements to Better Solutions',
       speaker: 'Eric Riou du Cosquer, Certilog',
       // Title and abstract from the client (2026-11-10), replacing the TMMi talk.
@@ -739,7 +746,7 @@
       ].join('||'),
     },
     {
-      id: 'thales-payloads', track: 'keynote', start: '16:10', end: '16:40', type: 'Keynote',
+      id: 'thales-payloads', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote',
       title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
       speaker: 'Dominique Righetto, Thales',
       description: [
@@ -749,7 +756,7 @@
       ].join('||'),
     },
     {
-      id: 'octoperf-ai-performance', track: 'workshop', partner: 'OctoPerf', start: '13:30', end: '14:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-1-octoperf-25/register', type: 'Workshop 1',
+      id: 'octoperf-ai-performance', track: 'workshop', partner: 'OctoPerf', start: '13:45', end: '14:25', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-1-octoperf-25/register', type: 'Workshop 1',
       title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
       speaker: 'Ouamar Nedil, Support and Performance Engineering Director at OctoPerf',
       description: [
@@ -759,7 +766,7 @@
       ].join('||'),
     },
     {
-      id: 'workshop-xray', track: 'workshop', partner: 'Xray', start: '14:10', end: '14:50', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-2-xray-26/register', type: 'Workshop 2',
+      id: 'workshop-xray', track: 'workshop', partner: 'Xray', start: '14:25', end: '15:05', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-2-xray-26/register', type: 'Workshop 2',
       title: 'AI Meets Test Management: Unlock Faster, Smarter QA with Xray',
       speaker: 'Cristiano Cunha, Solution Architect at Xray',
       description: [
@@ -768,16 +775,17 @@
       ].join('||'),
     },
     {
-      id: 'exhibitors', track: 'exhibition', start: '13:30', end: '15:10',
+      id: 'exhibitors', track: 'exhibition', start: '13:00', end: '18:20',
       title: 'Exhibitors',
       speaker: 'Xray, TestRail, OctoPerf, OpenText, Q-Leap, Q-Guard, Q-Bot, GASQ, LNDS, Agilitest',
       description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
     },
 
-    { id: 'coffee-break-1', track: 'general', start: '15:10', end: '15:40', title: 'Coffee break & networking', place: 'in the exhibitor area' },
+    { id: 'coffee-break-1', track: 'general', columns: ['keynote'], start: '15:30', end: '16:00', title: 'Coffee break', place: 'networking' },
+    { id: 'coffee-break-1w', track: 'general', columns: ['workshop'], start: '15:35', end: '16:00', title: 'Coffee break' },
 
     {
-      id: 'keynote-agilitest', track: 'keynote', start: '14:40', end: '15:10', type: 'Keynote',
+      id: 'keynote-agilitest', track: 'keynote', start: '14:30', end: '15:00', type: 'Keynote',
       title: 'From User Stories to AI-Generated Automated Tests: Keeping Business Users in Control',
       speaker: 'Christophe Cressend, CEO and Co-founder of Agilitest',
       description: [
@@ -785,14 +793,14 @@
         'This keynote explores how AI generation, human recording, manual correction and AI self-healing help teams build a trusted, maintainable test repository for deterministic replay, rather than accumulate disposable AI-generated tests.',
       ].join('||'),
     },
-    { id: 'keynote-bianculli', track: 'keynote', start: '15:40', end: '16:10', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap',
+    { id: 'keynote-bianculli', track: 'keynote', start: '15:00', end: '15:30', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap',
       description: [
         'Every tester, whether designing acceptance tests, automating regression suites or working with AI agents, relies on knowing how an application is actually used. On existing applications, that knowledge is often missing: specifications have drifted, and real business flows live in users’ habits. Code analysis and autonomous exploration reveal what an application can do, not what its users actually do with it. Capturing real usage closes this gap, but extracting recurring flows from captured sessions is hard: users rarely follow the same path twice, and the same task appears with many variations.',
         'This talk presents BlastWeb, an approach developed through a research partnership between the Software Verification and Validation Group at SnT, University of Luxembourg, and Q-LEAP. BlastWeb applies sequence analysis techniques to captured user sessions to automatically and efficiently discover recurring interaction patterns while accommodating variations in user behavior. We will discuss the industrial challenges that motivated this work, the concepts underlying the approach, and the results of an empirical evaluation on real-world applications.',
         'BlastWeb builds on Q-Guard, Q-LEAP’s toolset for capturing real web application usage and generating test scripts, which provided the industrial setting for this research. Beyond analysis, the discovered patterns offer an empirical, usage-based description of an application that every tester can build on, whether testing manually, automating, or working with AI.',
       ].join('||'),
     },
-    { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:40', end: '16:20', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3',
+    { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '16:00', end: '16:40', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3',
       title: 'From User Story to Automated Test: A Live Demonstration of AI Generation, Human Recording, Manual Correction and Self-Healing with Agilitest',
       speaker: 'Maxime Goanvic, Agilitest consultant & Christophe Cressend, CEO and Co-founder of Agilitest',
       description: [
@@ -804,7 +812,7 @@
         'AI self-healing: recover from a changed locator during execution, review the repair and apply it to the test repository.',
       ].join('||'),
     },
-    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:20', end: '16:50', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4',
+    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:40', end: '17:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4',
       title: 'Same Starting Point for Testers and AI: Q-Guard Knows How Your Application Is Really Used',
       speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap',
       // Title and abstract from the client (2026-10-12).
@@ -815,7 +823,7 @@
         'Participants will then put this deliverable to work for three audiences: an acceptance tester deriving scenarios from real business flows, a test automation engineer designing a regression suite, and an AI assistant generating test cases and scripts, comparing its output with and without this usage-based context.',
       ].join('||'),
     },
-    { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:50', end: '17:20', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
+    { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '15:05', end: '15:35', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
       title: 'Breaking the 2FA Testing Barrier with Q-Bot',
       speaker: 'Sylvain Perez, CEO of Q-Leap · CTO & Product Manager, Q-BOT, with Nikola Krstic (Q-Leap) and João Português (POST Luxembourg)',
       description: [
@@ -824,28 +832,19 @@
         'What to bring: this is a practical workshop with a live demo. Participants are encouraged to bring their laptop to follow along and take part in the exercises.',
       ].join('||'),
     },
-    {
-      id: 'exhibition-afternoon', track: 'exhibition', start: '15:40', end: '17:20',
-      title: 'Exhibitor area',
-      speaker: 'Open all afternoon, including during coffee breaks and the evening cocktail.',
-    },
-    {
-      id: 'exhibition-evening', track: 'exhibition', start: '17:50', end: '18:30',
-      title: 'Exhibitor area',
-      speaker: 'Booths open until the evening cocktail.',
-    },
 
     // Second break at 17:20 for everyone (client, 2026-11-10) so Q-Bot
     // (16:50-17:20) runs to its end; the auditorium keeps 10 minutes of slack
     // after OpenText (17:10-17:20) and the closing is 10 minutes.
-    { id: 'coffee-break-2', track: 'general', start: '17:20', end: '17:50', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
+    { id: 'coffee-break-2', track: 'general', columns: ['keynote'], start: '17:00', end: '17:30', title: 'Coffee break', place: 'booth visits' },
+    { id: 'coffee-break-2w', track: 'general', columns: ['workshop'], start: '17:10', end: '17:30', title: 'Coffee break' },
 
     // Speaker named by the client (2026-10-27): an independent consultant
     // speaking for OpenText. Abstract from the client (2026-10-30), title
     // changed by the client (2026-11-09); their earlier subtitle "The
     // Real-World Transition from Jira to OpenText Octane" is left out.
     {
-      id: 'keynote-opentext', track: 'keynote', start: '16:40', end: '17:10', type: 'Keynote',
+      id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote',
       title: 'Beyond Jira: Where Testing Meets Continuous Delivery',
       speaker: 'Gerd Fladrich, Fladrich Consulting, for OpenText',
       description: [
@@ -864,7 +863,7 @@
     // and Agilitest swap. 30-minute slots from there, so the breaks move to
     // 15:10 and 17:10 and the day still ends at 18:30. Workshop 7 dropped.
     {
-      id: 'keynote-lnds', track: 'keynote', start: '17:50', end: '18:20', type: 'Keynote',
+      id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
       title: 'I Told the AI to Write My Tests. It Did. Now What?',
       speaker: 'Emiliana Pali & Alessandro Merola, LNDS',
       // Title and abstract from the client (2026-10-28).
@@ -881,7 +880,7 @@
     {
       // TestRail replaces the Sembi slot (sponsor email, 2026-11-09): same Odoo event (30), renamed;
       // the old …-sembi-30 address redirects here.
-      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:50', end: '18:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-testrail-30/register', type: 'Workshop 6',
+      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-testrail-30/register', type: 'Workshop 6',
       title: 'Test Management in the Age of AI: From Basics to MCP',
       speaker: 'Patricia Mateus, TestRail',
       description: [
@@ -890,8 +889,8 @@
       ].join('||'),
     },
 
-    { id: 'closing', track: 'keynote', start: '18:20', end: '18:30', type: 'Closing', title: 'Closing', speaker: 'Atreyam (Leo) Sharma, Workshop4Me' },
-    { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, finale: true, title: 'Cocktail & Networking', place: 'Salle Pétrusse', note: 'Wrap up the day with drinks, conversations and networking.' },
+    { id: 'closing', track: 'general', accent: true, start: '18:20', end: '18:30', title: 'Closing', place: 'Atreyam (Leo) Sharma, Workshop4Me' },
+    { id: 'cocktail', track: 'general', start: '18:30', end: '21:00', openEnded: true, finale: true, title: 'Cocktail & Networking', place: 'Salle Pétrusse', note: 'Wrap up the day with drinks, conversations and networking.' },
   ];
 
   /* ── Programme: data-driven grid ───────────────────────────────────
@@ -912,8 +911,8 @@
 
     const EVENT_DATE = '2026-11-26'; // yyyy-mm-dd, for the "Now" line only
     const DAY_START = '13:00';
-    // The day runs to 21:00, but after 18:35 there is only the cocktail:
-    // the grid stops at 19:15 and the cocktail block reads "From 18:35"
+    // The day runs to 21:00, but after 18:30 there is only the cocktail:
+    // the grid stops at 19:15 and the cocktail block reads "From 18:30"
     // instead of drawing two and a half empty hours in every column. The
     // extra quarter hour past 19:00 gives the finale block room to breathe.
     const GRID_END = '19:15';
@@ -986,13 +985,22 @@
         gridEl.appendChild(head);
       });
 
+      // Half-hour labels, plus a quarter-hour one where a session starts
+      // there (Olivier Denoo at 13:45 since 2026-11-10).
+      const quarterStarts = new Set(SESSIONS.map((s) => toMinutes(s.start)).filter((m) => m % 30 === 15));
+      const marks = [];
       for (let m = dayStartMin; m < gridEndMin; m += 30) {
+        marks.push(m);
+        if (quarterStarts.has(m + 15)) marks.push(m + 15);
+      }
+      marks.forEach((m, i) => {
+        const next = i + 1 < marks.length ? marks[i + 1] : gridEndMin;
         const isHour = m % 60 === 0;
         const label = el('div', 'schedule-grid__time' + (isHour ? ' schedule-grid__time--hour' : ''), minutesToHm(m));
         const row = 2 + Math.round((m - dayStartMin) / SLOT_MIN);
-        label.style.gridRow = row + ' / span ' + Math.round(30 / SLOT_MIN);
+        label.style.gridRow = row + ' / span ' + Math.round((next - m) / SLOT_MIN);
         gridEl.appendChild(label);
-      }
+      });
 
       SESSIONS.forEach((session) => {
         const isGeneral = session.track === 'general';
@@ -1018,6 +1026,11 @@
         if (isGeneral && session.finale) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
           fillFinale(card, session);
+        } else if (isGeneral && session.columns) {
+          const cols = session.columns.map((id) => TRACKS.findIndex((t) => t.id === id) + 2).sort((x, y) => x - y);
+          card.style.gridColumn = cols[0] + ' / ' + (cols[cols.length - 1] + 1);
+          card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));
+          card.appendChild(el('span', 'schedule-marker__title', markerTitle(session)));
         } else if (isGeneral) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
           card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));
