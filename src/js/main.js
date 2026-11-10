@@ -999,8 +999,11 @@
         card.className = isGeneral ? 'schedule-marker' : 'session-card session-card--' + session.track;
         if (isGeneral && session.accent) card.classList.add('schedule-marker--accent');
         if (isGeneral && end - start <= 5) card.classList.add('schedule-marker--tiny');
-        if (!isGeneral && end - start <= 5) card.classList.add('session-card--tiny');
-        else if (!isGeneral && end - start <= 15) card.classList.add('session-card--short');
+        // Up to 10 minutes (the 13:30 opening since 2026-11-10): one line,
+        // title and speaker side by side; two stacked lines don't fit.
+        if (!isGeneral && end - start <= 10) card.classList.add('session-card--tiny');
+        // Up to 20 minutes (the 18:10 closing): title and speaker, no time line.
+        else if (!isGeneral && end - start <= 20) card.classList.add('session-card--short');
         else if (!isGeneral && end - start <= 30) card.classList.add('session-card--mid');
         card.style.gridRow = rowStart + ' / ' + rowEnd;
         if (isGeneral && session.finale) {
