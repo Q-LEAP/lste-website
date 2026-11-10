@@ -728,9 +728,15 @@
     },
     {
       id: 'keynote-riou-du-cosquer', track: 'keynote', start: '14:10', end: '14:40', type: 'Keynote',
-      title: 'How Effective Are Your Testing Activities? Discover with TMMi',
+      title: 'AI for Business Analysts: From Requirements to Better Solutions',
       speaker: 'Eric Riou du Cosquer, Certilog',
-      description: TALK,
+      // Title and abstract from the client (2026-11-10), replacing the TMMi talk.
+      description: [
+        'Business Analysis plays a critical role in the success of IT projects, often starting long before software development and testing activities begin. Understanding business needs, identifying stakeholders, defining and managing requirements, and ensuring alignment with business objectives are essential activities for delivering successful solutions.',
+        'But mastering Business Analysis techniques is no longer enough. Artificial Intelligence is transforming the way Business Analysts work, offering new opportunities to improve efficiency, quality, and collaboration.',
+        'In this presentation, we will explore why Business Analysis matters more than ever, how AI can support Business Analysts throughout their activities, and why human expertise remains essential.',
+        'Through practical examples and demonstrations, we will illustrate how AI can help identify and refine requirements, analyze business processes, detect ambiguities and inconsistencies, generate user stories and acceptance criteria, and support requirements validation.',
+      ].join('||'),
     },
     {
       id: 'thales-payloads', track: 'keynote', start: '16:10', end: '16:40', type: 'Keynote',
