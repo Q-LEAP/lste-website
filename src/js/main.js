@@ -716,8 +716,8 @@
   // 18:20-18:30 as full-width rows (Auditorium + Workshops for the opening,
   // since the exhibitor area is one block open 13:00-18:20), Olivier Denoo
   // 13:45-14:00, 30-minute keynotes, breaks 15:30 and 17:00, workshops from
-  // 13:45 in their original lengths (Q-Bot and Q-Guard run 5 and 10 minutes
-  // into the breaks, so the workshop room's breaks start later), cocktail
+  // 13:45 (Q-Bot shortened to 15:05-15:30 so the first break is shared; Q-Guard
+  // runs 10 minutes into the second, so the workshop room's starts at 17:10), cocktail
   // from 18:30. Older comments below describe earlier slot moves.
   const SESSIONS = [
     { id: 'doors-open', track: 'general', columns: ['keynote', 'workshop'], start: '13:00', end: '13:30', title: 'Doors open & registration' },
@@ -781,8 +781,7 @@
       description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
     },
 
-    { id: 'coffee-break-1', track: 'general', columns: ['keynote'], start: '15:30', end: '16:00', title: 'Coffee break', place: 'networking' },
-    { id: 'coffee-break-1w', track: 'general', columns: ['workshop'], start: '15:35', end: '16:00', title: 'Coffee break' },
+    { id: 'coffee-break-1', track: 'general', columns: ['keynote', 'workshop'], start: '15:30', end: '16:00', title: 'Coffee break & networking', place: 'booths open' },
 
     {
       id: 'keynote-agilitest', track: 'keynote', start: '14:30', end: '15:00', type: 'Keynote',
@@ -823,7 +822,7 @@
         'Participants will then put this deliverable to work for three audiences: an acceptance tester deriving scenarios from real business flows, a test automation engineer designing a regression suite, and an AI assistant generating test cases and scripts, comparing its output with and without this usage-based context.',
       ].join('||'),
     },
-    { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '15:05', end: '15:35', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
+    { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '15:05', end: '15:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
       title: 'Breaking the 2FA Testing Barrier with Q-Bot',
       speaker: 'Sylvain Perez, CEO of Q-Leap · CTO & Product Manager, Q-BOT, with Nikola Krstic (Q-Leap) and João Português (POST Luxembourg)',
       description: [
@@ -1019,8 +1018,8 @@
         // Up to 10 minutes (the opening and the closing since 2026-11-10): one line,
         // title and speaker side by side; two stacked lines don't fit.
         if (!isGeneral && end - start <= 10) card.classList.add('session-card--tiny');
-        // Up to 20 minutes: title and speaker, no time line.
-        else if (!isGeneral && end - start <= 20) card.classList.add('session-card--short');
+        // Up to 25 minutes (Q-Bot 15:05-15:30): time and title on one line, speaker below.
+        else if (!isGeneral && end - start <= 25) card.classList.add('session-card--short');
         else if (!isGeneral && end - start <= 30) card.classList.add('session-card--mid');
         card.style.gridRow = rowStart + ' / ' + rowEnd;
         if (isGeneral && session.finale) {
