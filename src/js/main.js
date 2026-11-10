@@ -770,7 +770,7 @@
     {
       id: 'exhibitors', track: 'exhibition', start: '13:30', end: '15:10',
       title: 'Exhibitors',
-      speaker: 'Xray, TestRail, OctoPerf, Q-Leap, Q-Guard, Q-Bot, GASQ, LNDS, Agilitest',
+      speaker: 'Xray, TestRail, OctoPerf, OpenText, Q-Leap, Q-Guard, Q-Bot, GASQ, LNDS, Agilitest',
       description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
     },
 
