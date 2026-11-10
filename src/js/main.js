@@ -819,12 +819,16 @@
       ].join('||'),
     },
     {
-      id: 'exhibition-afternoon', track: 'exhibition', start: '15:40', end: '17:10',
+      id: 'exhibition-afternoon', track: 'exhibition', start: '15:40', end: '18:30',
       title: 'Exhibitor area',
       speaker: 'Open all afternoon, including during coffee breaks and the evening cocktail.',
     },
 
-    { id: 'coffee-break-2', track: 'general', start: '17:10', end: '17:40', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
+    // Staggered second break (client, 2026-11-10): the auditorium breaks at
+    // 17:10, the workshop room at 17:20 so Q-Bot (16:50-17:20) runs to its
+    // end; `columns` draws a break marker in those tracks only.
+    { id: 'coffee-break-2', track: 'general', columns: ['keynote'], start: '17:10', end: '17:40', title: 'Auditorium break', place: 'coffee & booths' },
+    { id: 'coffee-break-2-workshops', track: 'general', columns: ['workshop'], start: '17:20', end: '17:50', title: 'Workshop break', place: 'coffee & booths' },
 
     // Speaker named by the client (2026-10-27): an independent consultant
     // speaking for OpenText. Abstract from the client (2026-10-30), title
@@ -867,18 +871,13 @@
     {
       // TestRail replaces the Sembi slot (sponsor email, 2026-11-09): same Odoo event (30), renamed;
       // the old …-sembi-30 address redirects here.
-      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:40', end: '18:20', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-testrail-30/register', type: 'Workshop 6',
+      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:50', end: '18:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-testrail-30/register', type: 'Workshop 6',
       title: 'Test Management in the Age of AI: From Basics to MCP',
       speaker: 'Patricia Mateus, TestRail',
       description: [
         'A practical walkthrough of the testing lifecycle in TestRail, from test planning and execution to reporting. We\'ll also explore how AI capabilities and MCP fit into modern QA workflows and support everyday testing activities.',
         'Format: walkthrough session. Nothing is required from the participants.',
       ].join('||'),
-    },
-    {
-      id: 'exhibition-evening', track: 'exhibition', start: '17:40', end: '18:30',
-      title: 'Exhibitor area',
-      speaker: 'Booths open until the evening cocktail.',
     },
 
     { id: 'closing', track: 'keynote', start: '18:10', end: '18:30', type: 'Closing', title: 'Closing', speaker: 'Avanti Sharma, Master of Ceremonies' },
@@ -1009,6 +1008,12 @@
         if (isGeneral && session.finale) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
           fillFinale(card, session);
+        } else if (isGeneral && session.columns) {
+          // A break for some tracks only (contiguous columns).
+          const cols = session.columns.map((id) => TRACKS.findIndex((t) => t.id === id) + 2).sort((x, y) => x - y);
+          card.style.gridColumn = cols[0] + ' / ' + (cols[cols.length - 1] + 1);
+          card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));
+          card.appendChild(el('span', 'schedule-marker__title', markerTitle(session)));
         } else if (isGeneral) {
           card.style.gridColumn = '2 / span ' + TRACKS.length;
           card.appendChild(el('span', 'schedule-marker__time', sessionTime(session)));
