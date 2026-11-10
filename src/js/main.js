@@ -704,10 +704,10 @@
   const WORKSHOP_SEATS = 20; // per workshop, as set on each Odoo event
   // Workshop seat booking, closed on 2026-10-09 until every workshop was set
   // up, reopened 2026-11-09 (Workshops 1–6 aligned with Odoo events 25–30;
-  // Workshop 7 has no partner yet, so its card still says booking opens
-  // soon). While false, no "Book a seat" badge or link appears and the cards
-  // say booking opens soon; the /register/ #workshops section then needs its
-  // `hidden` attribute back.
+  // Workshop 7 was dropped from the programme on 2026-11-10). While false,
+  // no "Book a seat" badge or link appears and the cards say booking opens
+  // soon; the /register/ #workshops section then needs its `hidden`
+  // attribute back.
   const WORKSHOP_BOOKING_OPEN = true;
   const bookingOf = (session) => (WORKSHOP_BOOKING_OPEN ? session.booking : '');
   const TBA = 'Details coming soon';
@@ -715,25 +715,25 @@
   const SESSIONS = [
     { id: 'doors-open', track: 'general', start: '13:00', end: '13:30', title: 'Doors open & registration' },
 
-    { id: 'opening', track: 'keynote', start: '13:30', end: '13:35', type: 'Opening', title: 'Opening', speaker: 'Avanti Sharma, Master of Ceremonies' },
+    { id: 'opening', track: 'keynote', start: '13:30', end: '13:40', type: 'Opening', title: 'Opening', speaker: 'Avanti Sharma, Master of Ceremonies' },
     {
-      id: 'keynote-denoo', track: 'keynote', start: '13:35', end: '13:50', type: 'Keynote',
+      id: 'keynote-denoo', track: 'keynote', start: '13:40', end: '14:10', type: 'Keynote',
       title: 'Fast & Furious – The Tester in 5 Years: AI Perspectives',
       speaker: 'Olivier Denoo, President of the CFTL',
       description: [
         'This presentation explores the challenges of AI from a tester’s perspective, with Olivier’s signature touch of humor and offbeat style.',
         'What are the challenges, risks, and opportunities for reinventing ourselves in the era of augmented computing and this relentless race for speed? It raises some key questions, drawing on nearly 30 years of experience in software quality assurance.',
-        'Opening keynote. 15 minutes, no Q&A.',
+        'Opening keynote, 30 minutes.',
       ].join('||'),
     },
     {
-      id: 'keynote-riou-du-cosquer', track: 'keynote', start: '18:00', end: '18:30', type: 'Keynote',
+      id: 'keynote-riou-du-cosquer', track: 'keynote', start: '14:10', end: '14:40', type: 'Keynote',
       title: 'How Effective Are Your Testing Activities? Discover with TMMi',
       speaker: 'Eric Riou du Cosquer, Certilog',
       description: TALK,
     },
     {
-      id: 'thales-payloads', track: 'keynote', start: '14:20', end: '14:50', type: 'Keynote',
+      id: 'thales-payloads', track: 'keynote', start: '16:10', end: '16:40', type: 'Keynote',
       title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
       speaker: 'Dominique Righetto, Thales',
       description: [
@@ -762,32 +762,16 @@
       ].join('||'),
     },
     {
-      id: 'exhibitors', track: 'exhibition', start: '13:30', end: '14:50',
+      id: 'exhibitors', track: 'exhibition', start: '13:30', end: '15:10',
       title: 'Exhibitors',
       speaker: 'Xray, TestRail, OctoPerf, Q-Leap, Q-Guard, Q-Bot, GASQ, LNDS, Agilitest',
       description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
     },
 
-    { id: 'coffee-break-1', track: 'general', start: '14:50', end: '15:20', title: 'Coffee break & networking', place: 'in the exhibitor area' },
+    { id: 'coffee-break-1', track: 'general', start: '15:10', end: '15:40', title: 'Coffee break & networking', place: 'in the exhibitor area' },
 
     {
-      id: 'round-table', track: 'keynote', start: '15:20', end: '16:00', type: 'Round table',
-      title: 'Replaced, Augmented or Exhausted? Testers Facing AI',
-      speaker: 'Moderated by Avanti Sharma',
-      // Abstract from the client (2026-10-29), long version; panellists still to come.
-      description: [
-        'AI is reshaping how we test, and how testers feel about their work. Test cases appear in seconds, models triage defects, and automation scripts almost write themselves. Behind the productivity gains, a quieter question is spreading through QA teams: what is left for me?',
-        'This round table explores the human side of AI adoption in software testing, through three tensions.',
-        '**Replaced:** the fear of obsolescence, and how it shapes motivation, career choices and the willingness to experiment.',
-        '**Augmented:** the promise of a tester freed from repetitive work, and what it really takes in new skills, a new professional identity and new ways of judging quality.',
-        '**Exhausted:** the hidden cost of reviewing AI output all day, upskilling non-stop and keeping pace with tools that change every month.',
-        'Panellists from the field will share their experience, their honest doubts and the practices that actually work. They will discuss how to introduce AI without breaking teams, how to keep critical thinking alive when the machine sounds confident, and how managers can support people through the change.',
-        'No hype, no doom. Just an open conversation about the people who make quality happen, and how they can thrive alongside AI.',
-        'Panellists to be announced.',
-      ].join('||'),
-    },
-    {
-      id: 'keynote-agilitest', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote',
+      id: 'keynote-agilitest', track: 'keynote', start: '14:40', end: '15:10', type: 'Keynote',
       title: 'From User Stories to AI-Generated Automated Tests: Keeping Business Users in Control',
       speaker: 'Christophe Cressend, CEO and Co-founder of Agilitest',
       description: [
@@ -795,14 +779,14 @@
         'This keynote explores how AI generation, human recording, manual correction and AI self-healing help teams build a trusted, maintainable test repository for deterministic replay, rather than accumulate disposable AI-generated tests.',
       ].join('||'),
     },
-    { id: 'keynote-bianculli', track: 'keynote', start: '13:50', end: '14:20', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap',
+    { id: 'keynote-bianculli', track: 'keynote', start: '15:40', end: '16:10', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap',
       description: [
         'Every tester, whether designing acceptance tests, automating regression suites or working with AI agents, relies on knowing how an application is actually used. On existing applications, that knowledge is often missing: specifications have drifted, and real business flows live in users’ habits. Code analysis and autonomous exploration reveal what an application can do, not what its users actually do with it. Capturing real usage closes this gap, but extracting recurring flows from captured sessions is hard: users rarely follow the same path twice, and the same task appears with many variations.',
         'This talk presents BlastWeb, an approach developed through a research partnership between the Software Verification and Validation Group at SnT, University of Luxembourg, and Q-LEAP. BlastWeb applies sequence analysis techniques to captured user sessions to automatically and efficiently discover recurring interaction patterns while accommodating variations in user behavior. We will discuss the industrial challenges that motivated this work, the concepts underlying the approach, and the results of an empirical evaluation on real-world applications.',
         'BlastWeb builds on Q-Guard, Q-LEAP’s toolset for capturing real web application usage and generating test scripts, which provided the industrial setting for this research. Beyond analysis, the discovered patterns offer an empirical, usage-based description of an application that every tester can build on, whether testing manually, automating, or working with AI.',
       ].join('||'),
     },
-    { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:20', end: '16:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3',
+    { id: 'workshop-agilitest', track: 'workshop', partner: 'Agilitest', start: '15:40', end: '16:20', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-3-agilitest-27/register', type: 'Workshop 3',
       title: 'From User Story to Automated Test: A Live Demonstration of AI Generation, Human Recording, Manual Correction and Self-Healing with Agilitest',
       speaker: 'Maxime Goanvic, Agilitest consultant & Christophe Cressend, CEO and Co-founder of Agilitest',
       description: [
@@ -814,7 +798,7 @@
         'AI self-healing: recover from a changed locator during execution, review the repair and apply it to the test repository.',
       ].join('||'),
     },
-    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:00', end: '16:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4',
+    { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:20', end: '16:50', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4',
       title: 'Same Starting Point for Testers and AI: Q-Guard Knows How Your Application Is Really Used',
       speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap',
       // Title and abstract from the client (2026-10-12).
@@ -825,7 +809,7 @@
         'Participants will then put this deliverable to work for three audiences: an acceptance tester deriving scenarios from real business flows, a test automation engineer designing a regression suite, and an AI assistant generating test cases and scripts, comparing its output with and without this usage-based context.',
       ].join('||'),
     },
-    { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:30', end: '17:00', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
+    { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '16:50', end: '17:20', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
       title: 'Breaking the 2FA Testing Barrier with Q-Bot',
       speaker: 'Sylvain Perez, CEO of Q-Leap · CTO & Product Manager, Q-BOT, with Nikola Krstic (Q-Leap) and João Português (POST Luxembourg)',
       description: [
@@ -835,19 +819,19 @@
       ].join('||'),
     },
     {
-      id: 'exhibition-afternoon', track: 'exhibition', start: '15:20', end: '17:00',
+      id: 'exhibition-afternoon', track: 'exhibition', start: '15:40', end: '17:10',
       title: 'Exhibitor area',
       speaker: 'Open all afternoon, including during coffee breaks and the evening cocktail.',
     },
 
-    { id: 'coffee-break-2', track: 'general', start: '17:00', end: '17:30', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
+    { id: 'coffee-break-2', track: 'general', start: '17:10', end: '17:40', title: 'Coffee break & booth visits', place: 'in the exhibitor area' },
 
     // Speaker named by the client (2026-10-27): an independent consultant
     // speaking for OpenText. Abstract from the client (2026-10-30), title
     // changed by the client (2026-11-09); their earlier subtitle "The
     // Real-World Transition from Jira to OpenText Octane" is left out.
     {
-      id: 'keynote-opentext', track: 'keynote', start: '16:30', end: '17:00', type: 'Keynote',
+      id: 'keynote-opentext', track: 'keynote', start: '16:40', end: '17:10', type: 'Keynote',
       title: 'Beyond Jira: Where Testing Meets Continuous Delivery',
       speaker: 'Gerd Fladrich, Fladrich Consulting, for OpenText',
       description: [
@@ -859,8 +843,14 @@
     },
     // Program change (client, 2026-10-12): OpenText at 16:30, LNDS moved to
     // 17:30 and Eric Riou du Cosquer to the closing 18:00 slot.
+    // Program change (client, 2026-11-10): round table dropped, its extra
+    // 10 minutes go to the opening (Avanti 13:30-13:40, Olivier Denoo 30 min
+    // from 13:40), Eric Riou du Cosquer takes the University of Luxembourg
+    // slot, which moves to the round table's place after the break, Thales
+    // and Agilitest swap. 30-minute slots from there, so the breaks move to
+    // 15:10 and 17:10 and the day still ends at 18:30. Workshop 7 dropped.
     {
-      id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
+      id: 'keynote-lnds', track: 'keynote', start: '17:40', end: '18:10', type: 'Keynote',
       title: 'I Told the AI to Write My Tests. It Did. Now What?',
       speaker: 'Emiliana Pali & Alessandro Merola, LNDS',
       // Title and abstract from the client (2026-10-28).
@@ -877,7 +867,7 @@
     {
       // TestRail replaces the Sembi slot (sponsor email, 2026-11-09): same Odoo event (30), renamed;
       // the old …-sembi-30 address redirects here.
-      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:30', end: '18:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-testrail-30/register', type: 'Workshop 6',
+      id: 'workshop-testrail', track: 'workshop', partner: 'TestRail', start: '17:40', end: '18:20', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-6-testrail-30/register', type: 'Workshop 6',
       title: 'Test Management in the Age of AI: From Basics to MCP',
       speaker: 'Patricia Mateus, TestRail',
       description: [
@@ -885,14 +875,13 @@
         'Format: walkthrough session. Nothing is required from the participants.',
       ].join('||'),
     },
-    { id: 'workshop-7', track: 'workshop', start: '18:10', end: '18:30', booking: '', type: 'Workshop 7', title: 'Workshop to be announced' },
     {
-      id: 'exhibition-evening', track: 'exhibition', start: '17:30', end: '18:30',
+      id: 'exhibition-evening', track: 'exhibition', start: '17:40', end: '18:30',
       title: 'Exhibitor area',
       speaker: 'Booths open until the evening cocktail.',
     },
 
-    { id: 'closing', track: 'general', start: '18:30', end: '18:35', title: 'Closing' },
+    { id: 'closing', track: 'keynote', start: '18:10', end: '18:30', type: 'Closing', title: 'Closing', speaker: 'Avanti Sharma, Master of Ceremonies' },
     { id: 'cocktail', track: 'general', start: '18:35', end: '21:00', openEnded: true, finale: true, title: 'Cocktail & Networking', place: 'Salle Pétrusse', note: 'Wrap up the day with drinks, conversations and networking.' },
   ];
 
