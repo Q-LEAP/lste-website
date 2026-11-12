@@ -736,7 +736,7 @@
     {
       id: 'keynote-riou-du-cosquer', track: 'keynote', start: '14:00', end: '14:30', type: 'Keynote',
       title: 'AI for Business Analysts: From Requirements to Better Solutions',
-      speaker: 'Eric Riou du Cosquer, Certilog',
+      speaker: 'Eric Riou du Cosquer, ISTQB Foundation Level Working Group Chair, CFTL Treasurer, TMMi Lead Assessor (Certilog)',
       // Title and abstract from the client (2026-11-10), replacing the TMMi talk.
       description: [
         'Business Analysis plays a critical role in the success of IT projects, often starting long before software development and testing activities begin. Understanding business needs, identifying stakeholders, defining and managing requirements, and ensuring alignment with business objectives are essential activities for delivering successful solutions.',
