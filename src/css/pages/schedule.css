@@ -65,7 +65,7 @@
 .schedule-mobile { display: block; }
 
 .schedule-grid {
-  --slot-h: 15px; /* one 5-minute row — 8px left 30-minute talks with no room for their title */
+  --slot-h: 24px; /* one 5-minute row. 15px cut titles and speaker lines in 15-30 minute slots (2026-11-12) */
   position: relative;
   display: grid;
   gap: 1px;
@@ -155,8 +155,8 @@
 .session-card--short .session-card__time { align-self: baseline; }
 .session-card--short .session-card__title { align-self: baseline; }
 .session-card--short .session-card__speaker { grid-column: 1 / -1; }
-.session-card--short .session-card__title { -webkit-line-clamp: 1; }
-.session-card--mid .session-card__title { -webkit-line-clamp: 2; } /* 30-minute slot: room for two lines */
+.session-card--short .session-card__title { -webkit-line-clamp: 2; }
+.session-card--mid .session-card__title { -webkit-line-clamp: 3; } /* 30-minute slot: room for three lines */
 .session-card--tiny { flex-direction: row; align-items: center; gap: 0.5rem; padding-top: 0; padding-bottom: 0; }
 .session-card--tiny > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.6875rem; line-height: 1; }
 .session-card--tiny .session-card__time { display: none; }
