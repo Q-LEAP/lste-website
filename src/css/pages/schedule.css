@@ -65,7 +65,7 @@
 .schedule-mobile { display: block; }
 
 .schedule-grid {
-  --slot-h: 30px; /* one 5-minute row. 15px cut titles and speaker lines in 15-30 minute slots; 30px lets a 15-minute slot show time, a 2-line title and a 2-line speaker on narrow desktops (2026-11-12) */
+  --slot-h: 24px; /* one 5-minute row. 15px cut titles in 15-30 minute slots; 30px was too tall to read (2026-11-12) */
   position: relative;
   display: grid;
   gap: 1px;
@@ -142,7 +142,9 @@
 /* The title never shrinks; in a tight slot the speaker line gives way
    (cut with an ellipsis) instead of the title. */
 .session-card__speaker { min-height: 0; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; }
-.session-card--short .session-card__speaker { -webkit-line-clamp: 2; }
+.session-card--short .session-card__speaker { -webkit-line-clamp: 2; font-size: 0.6875rem; line-height: 1.25; flex-shrink: 0; }
+/* Narrower desktops: the title wraps to two lines, so the speaker keeps one. */
+@media (max-width: 1199px) { .session-card--short .session-card__speaker { -webkit-line-clamp: 1; } }
 /* Short slots (set by buildGrid() from the duration): up to 15 minutes
    drops the time line (the time column already shows it) and keeps the
    title to one line; 5-minute slots (opening, closing) run title and
