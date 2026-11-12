@@ -1018,8 +1018,8 @@
         // Up to 10 minutes (the opening and the closing since 2026-11-10): one line,
         // title and speaker side by side; two stacked lines don't fit.
         if (!isGeneral && end - start <= 10) card.classList.add('session-card--tiny');
-        // Up to 25 minutes (Q-Bot 15:05-15:30): time and title on one line, speaker below.
-        else if (!isGeneral && end - start <= 25) card.classList.add('session-card--short');
+        // Up to 15 minutes (Olivier Denoo 13:45-14:00): tighter spacing, speaker cut to 2 lines.
+        else if (!isGeneral && end - start <= 15) card.classList.add('session-card--short');
         else if (!isGeneral && end - start <= 30) card.classList.add('session-card--mid');
         card.style.gridRow = rowStart + ' / ' + rowEnd;
         if (isGeneral && session.finale) {
