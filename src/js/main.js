@@ -792,7 +792,7 @@
         'This keynote explores how AI generation, human recording, manual correction and AI self-healing help teams build a trusted, maintainable test repository for deterministic replay, rather than accumulate disposable AI-generated tests.',
       ].join('||'),
     },
-    { id: 'keynote-bianculli', track: 'keynote', start: '15:00', end: '15:30', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg · Ritabrata Banerjee, Q-Leap',
+    { id: 'keynote-bianculli', track: 'keynote', start: '15:00', end: '15:30', type: 'Keynote', title: 'Mining What Your Users Really Do for Better Software Testing', speaker: 'Domenico Bianculli & Seung Yeob Shin, University of Luxembourg',
       description: [
         'Every tester, whether designing acceptance tests, automating regression suites or working with AI agents, relies on knowing how an application is actually used. On existing applications, that knowledge is often missing: specifications have drifted, and real business flows live in users’ habits. Code analysis and autonomous exploration reveal what an application can do, not what its users actually do with it. Capturing real usage closes this gap, but extracting recurring flows from captured sessions is hard: users rarely follow the same path twice, and the same task appears with many variations.',
         'This talk presents BlastWeb, an approach developed through a research partnership between the Software Verification and Validation Group at SnT, University of Luxembourg, and Q-LEAP. BlastWeb applies sequence analysis techniques to captured user sessions to automatically and efficiently discover recurring interaction patterns while accommodating variations in user behavior. We will discuss the industrial challenges that motivated this work, the concepts underlying the approach, and the results of an empirical evaluation on real-world applications.',
@@ -813,7 +813,7 @@
     },
     { id: 'workshop-qguard', track: 'workshop', partner: 'Q-Guard by Q-Leap', start: '16:40', end: '17:10', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-4-q-guard-by-q-leap-28/register', type: 'Workshop 4',
       title: 'Same Starting Point for Testers and AI: Q-Guard Knows How Your Application Is Really Used',
-      speaker: 'Ritabrata Banerjee, Jonathan Lopez & Julien Desmulier, Q-Leap',
+      speaker: 'Julien Desmulier, Q-Leap',
       // Title and abstract from the client (2026-10-12).
       description: [
         'In this hands-on workshop, participants will learn a practical method for recovering knowledge of an existing application before testing it, and discover why observed usage is the missing input for all testing, whether manual, automated or AI-assisted.',
