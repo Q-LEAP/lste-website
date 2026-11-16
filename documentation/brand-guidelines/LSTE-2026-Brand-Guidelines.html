@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Charte graphique LSTE '26</title>
+<!--
+  Source of assets/downloads/LSTE-2026-Brand-Guidelines.pdf (2 x A4).
+  Rebuild the PDF with:  node scripts/build-brand-guidelines.mjs
+  Fonts, colours and the logo are the site's own (src/css/tokens.css,
+  assets/fonts/, assets/img/lste-logo-white.svg) — keep them in sync.
+-->
+<style>
+@font-face { font-family: 'Space Grotesk'; font-weight: 600 700; src: url('../../assets/fonts/space-grotesk-variable.woff2') format('woff2'); }
+@font-face { font-family: 'Hanken Grotesk'; font-weight: 400 700; src: url('../../assets/fonts/hanken-grotesk-variable.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 500; src: url('../../assets/fonts/jetbrains-mono-500.woff2') format('woff2'); }
+
+:root {
+  --violet: #6d28d9; --violet-light: #8b5cf6; --lime: #a3e635;
+  --ink: #17141f; --light: #f8fafc; --white: #fbfafc;
+  --body: #b8b2c4; --muted: #9a94a8; --faint: #6e687c;
+  --border: rgba(255,255,255,.08); --surface: #1c1826; --surface-alt: #211c2e;
+  --f-head: 'Space Grotesk', sans-serif; --f-body: 'Hanken Grotesk', sans-serif; --f-mono: 'JetBrains Mono', monospace;
+}
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: var(--f-body); color: var(--body); }
+
+.page { position: relative; width: 210mm; height: 297mm; padding: 56px 56px 0; overflow: hidden; background: var(--ink); page-break-after: always; break-after: page; }
+.page:last-child { page-break-after: auto; break-after: auto; }
+.glow { position: absolute; top: -170px; right: -170px; width: 560px; height: 560px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(109,40,217,.42) 0%, rgba(109,40,217,.16) 38%, rgba(109,40,217,0) 68%); }
+
+.logo { display: block; aspect-ratio: 875 / 219; color: var(--white); }
+.logo svg { display: block; width: 100%; height: 100%; fill: currentColor; }
+
+.lockup { display: flex; align-items: center; gap: 14px; }
+.lockup .logo { height: 21px; }
+.lockup .date { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; color: var(--lime); padding-left: 13px; border-left: 1px solid rgba(255,255,255,.18); line-height: 13px; }
+
+.eyebrow { font-family: var(--f-mono); font-weight: 500; font-size: 11px; letter-spacing: .32em; color: var(--violet-light); text-transform: uppercase; }
+h1 { font-family: var(--f-head); font-weight: 700; font-size: 52px; line-height: 1.02; letter-spacing: -.01em; color: var(--white); margin: 16px 0 22px; }
+h1 .dot, h2 .dot { color: var(--violet); }
+h2 { font-family: var(--f-head); font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -.01em; color: var(--white); margin: 12px 0 20px; }
+.lead { font-size: 16px; line-height: 1.55; max-width: 480px; }
+
+.section { margin-top: 44px; }
+.section > .eyebrow { margin-bottom: 14px; display: block; }
+.card { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+.label { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* Logo */
+.logo-card .stage { height: 96px; display: grid; place-items: center; border-bottom: 1px solid var(--border); }
+.logo-card .stage .logo { height: 28px; }
+.logo-card .label { padding: 12px 14px; display: block; }
+.stage--light { background: var(--light); } .stage--light .logo { color: var(--ink); }
+.stage--purple { background: var(--violet); }
+.lockup-card { margin-top: 17px; height: 64px; padding: 0 24px 0 26px; display: flex; align-items: center; justify-content: space-between; }
+
+/* Typography */
+.type-card { display: flex; flex-direction: column; }
+.type-card .specimen { padding: 16px 16px 12px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.type-card .aa { color: var(--white); font-size: 46px; line-height: 1; }
+.type-card .sample { margin-top: 10px; color: var(--body); font-size: 12.5px; line-height: 1.35; height: 34px; overflow: hidden; }
+.type-card .meta { padding: 12px 16px 14px; }
+.type-card .name { font-family: var(--f-head); font-weight: 600; font-size: 15px; color: var(--white); }
+.type-card .role { font-size: 12px; line-height: 1.45; color: var(--body); margin: 3px 0 8px; }
+.type-card .label { font-size: 9px; color: var(--muted); letter-spacing: .1em; }
+.t-head { font-family: var(--f-head); font-weight: 700; }
+.t-body { font-family: var(--f-body); font-weight: 400; }
+.t-mono { font-family: var(--f-mono); font-weight: 500; }
+.type-note { margin-top: 12px; font-size: 11.5px; color: var(--muted); }
+.type-note strong { color: var(--body); font-weight: 600; }
+
+/* Colours */
+.swatch .chip { height: 78px; border-bottom: 1px solid var(--border); }
+.swatch .info { padding: 12px 16px 14px; }
+.swatch .name { font-family: var(--f-head); font-weight: 600; font-size: 15px; color: var(--white); }
+.swatch .hex { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); margin-top: 3px; }
+
+/* Rules */
+.rule { background: var(--surface-alt); padding: 24px 24px 26px; min-height: 200px; }
+.rule .num { font-family: var(--f-head); font-weight: 700; font-size: 24px; color: var(--lime); }
+.rule h3 { font-family: var(--f-head); font-weight: 600; font-size: 16.5px; color: var(--white); margin: 16px 0 6px; }
+.rule p { font-size: 12.5px; line-height: 1.65; color: var(--body); }
+
+.cta { margin-top: 36px; border-radius: 14px; padding: 36px 34px; background: linear-gradient(115deg, #5b21b6 0%, #6d28d9 45%, #8a2fd0 100%); }
+.cta h3 { font-family: var(--f-head); font-weight: 700; font-size: 23px; color: #fff; margin-bottom: 8px; }
+.cta p { font-size: 13.5px; line-height: 1.5; color: rgba(255,255,255,.88); max-width: 400px; }
+.cta strong { color: #fff; font-weight: 600; }
+
+.foot { position: absolute; left: 56px; right: 56px; bottom: 56px; padding-top: 26px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+.foot .label { color: var(--faint); font-size: 10px; }
+</style>
+</head>
+<body>
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="glow"></div>
+  <div class="lockup">
+    <span class="logo"><svg viewBox="312 640 875 219"><path d="M507.21,803.43h-100.91c-26.46,0-34.16-7.96-34.16-35.19v-99.37c0-4.85-3.93-8.77-8.77-8.77h-21.5c-4.99,0-9.03,4.04-9.03,9.03v165.33c0,3.01,2.44,5.45,5.45,5.45h168.93c4.85,0,8.77-3.93,8.77-8.77v-18.93c0-4.85-3.93-8.77-8.77-8.77Z"/><path d="M685.01,733.3h-96.33c-8.99,0-13.36-4.88-13.36-14.38v-8.73c0-8.99,3.85-14.38,13.61-14.38h128.69c3.85,0,5.65-1.8,5.65-5.65v-24.4c0-3.85-1.8-5.65-5.65-5.65h-136.14c-31.08,0-45.47,16.95-45.47,41.87v18.75c0,28.26,15.41,44.18,44.95,44.18h96.33c8.99,0,13.36,4.88,13.36,14.39v10.53c0,8.99-3.85,14.39-13.61,14.39h-134.86c-3.85,0-5.91,1.8-5.91,5.65v24.4c0,3.85,2.06,5.65,5.91,5.65h142.31c31.08,0,45.47-16.95,45.47-41.87v-20.55c0-28.26-15.41-44.18-44.95-44.18Z"/><path d="M954.73,660.09h-200.62c-3.85,0-5.91,1.8-5.91,5.65v25.17c0,3.85,2.05,5.91,5.91,5.91h80.66v137.43c0,3.85,1.8,5.65,5.65,5.65h28c3.85,0,5.65-1.8,5.65-5.65v-137.43h80.66c3.85,0,5.91-2.06,5.91-5.91v-25.17c0-3.85-2.06-5.65-5.91-5.65Z"/><path d="M1049.01,695.8h112.25c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-113.02c-51.89,0-71.93,18.49-71.93,67.81v44.18c0,49.32,20.04,67.81,71.93,67.81h113.02c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-112.25c-26.71,0-34.16-7.96-34.16-34.94v-4.37h145.13c3.85,0,5.65-1.8,5.65-5.65v-20.29c0-3.85-1.8-5.65-5.65-5.65h-145.13v-2.57c0-26.97,7.45-34.93,34.16-34.93Z"/></svg></span>
+    <span class="date">26 NOV 2026</span>
+  </div>
+
+  <div style="margin-top:62px">
+    <span class="eyebrow">// Media kit — Sponsors &amp; Partners</span>
+    <h1>Brand assets<br>&amp; guidelines<span class="dot">.</span></h1>
+    <p class="lead">Everything you need to feature LSTE correctly: logos, colours, typefaces and three simple rules.</p>
+  </div>
+
+  <div class="section">
+    <span class="eyebrow">// Logo</span>
+    <div class="grid3">
+      <div class="card logo-card"><div class="stage"><span class="logo"><svg viewBox="312 640 875 219"><path d="M507.21,803.43h-100.91c-26.46,0-34.16-7.96-34.16-35.19v-99.37c0-4.85-3.93-8.77-8.77-8.77h-21.5c-4.99,0-9.03,4.04-9.03,9.03v165.33c0,3.01,2.44,5.45,5.45,5.45h168.93c4.85,0,8.77-3.93,8.77-8.77v-18.93c0-4.85-3.93-8.77-8.77-8.77Z"/><path d="M685.01,733.3h-96.33c-8.99,0-13.36-4.88-13.36-14.38v-8.73c0-8.99,3.85-14.38,13.61-14.38h128.69c3.85,0,5.65-1.8,5.65-5.65v-24.4c0-3.85-1.8-5.65-5.65-5.65h-136.14c-31.08,0-45.47,16.95-45.47,41.87v18.75c0,28.26,15.41,44.18,44.95,44.18h96.33c8.99,0,13.36,4.88,13.36,14.39v10.53c0,8.99-3.85,14.39-13.61,14.39h-134.86c-3.85,0-5.91,1.8-5.91,5.65v24.4c0,3.85,2.06,5.65,5.91,5.65h142.31c31.08,0,45.47-16.95,45.47-41.87v-20.55c0-28.26-15.41-44.18-44.95-44.18Z"/><path d="M954.73,660.09h-200.62c-3.85,0-5.91,1.8-5.91,5.65v25.17c0,3.85,2.05,5.91,5.91,5.91h80.66v137.43c0,3.85,1.8,5.65,5.65,5.65h28c3.85,0,5.65-1.8,5.65-5.65v-137.43h80.66c3.85,0,5.91-2.06,5.91-5.91v-25.17c0-3.85-2.06-5.65-5.91-5.65Z"/><path d="M1049.01,695.8h112.25c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-113.02c-51.89,0-71.93,18.49-71.93,67.81v44.18c0,49.32,20.04,67.81,71.93,67.81h113.02c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-112.25c-26.71,0-34.16-7.96-34.16-34.94v-4.37h145.13c3.85,0,5.65-1.8,5.65-5.65v-20.29c0-3.85-1.8-5.65-5.65-5.65h-145.13v-2.57c0-26.97,7.45-34.93,34.16-34.93Z"/></svg></span></div><span class="label">On dark</span></div>
+      <div class="card logo-card"><div class="stage stage--light"><span class="logo"><svg viewBox="312 640 875 219"><path d="M507.21,803.43h-100.91c-26.46,0-34.16-7.96-34.16-35.19v-99.37c0-4.85-3.93-8.77-8.77-8.77h-21.5c-4.99,0-9.03,4.04-9.03,9.03v165.33c0,3.01,2.44,5.45,5.45,5.45h168.93c4.85,0,8.77-3.93,8.77-8.77v-18.93c0-4.85-3.93-8.77-8.77-8.77Z"/><path d="M685.01,733.3h-96.33c-8.99,0-13.36-4.88-13.36-14.38v-8.73c0-8.99,3.85-14.38,13.61-14.38h128.69c3.85,0,5.65-1.8,5.65-5.65v-24.4c0-3.85-1.8-5.65-5.65-5.65h-136.14c-31.08,0-45.47,16.95-45.47,41.87v18.75c0,28.26,15.41,44.18,44.95,44.18h96.33c8.99,0,13.36,4.88,13.36,14.39v10.53c0,8.99-3.85,14.39-13.61,14.39h-134.86c-3.85,0-5.91,1.8-5.91,5.65v24.4c0,3.85,2.06,5.65,5.91,5.65h142.31c31.08,0,45.47-16.95,45.47-41.87v-20.55c0-28.26-15.41-44.18-44.95-44.18Z"/><path d="M954.73,660.09h-200.62c-3.85,0-5.91,1.8-5.91,5.65v25.17c0,3.85,2.05,5.91,5.91,5.91h80.66v137.43c0,3.85,1.8,5.65,5.65,5.65h28c3.85,0,5.65-1.8,5.65-5.65v-137.43h80.66c3.85,0,5.91-2.06,5.91-5.91v-25.17c0-3.85-2.06-5.65-5.91-5.65Z"/><path d="M1049.01,695.8h112.25c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-113.02c-51.89,0-71.93,18.49-71.93,67.81v44.18c0,49.32,20.04,67.81,71.93,67.81h113.02c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-112.25c-26.71,0-34.16-7.96-34.16-34.94v-4.37h145.13c3.85,0,5.65-1.8,5.65-5.65v-20.29c0-3.85-1.8-5.65-5.65-5.65h-145.13v-2.57c0-26.97,7.45-34.93,34.16-34.93Z"/></svg></span></div><span class="label">On light</span></div>
+      <div class="card logo-card"><div class="stage stage--purple"><span class="logo"><svg viewBox="312 640 875 219"><path d="M507.21,803.43h-100.91c-26.46,0-34.16-7.96-34.16-35.19v-99.37c0-4.85-3.93-8.77-8.77-8.77h-21.5c-4.99,0-9.03,4.04-9.03,9.03v165.33c0,3.01,2.44,5.45,5.45,5.45h168.93c4.85,0,8.77-3.93,8.77-8.77v-18.93c0-4.85-3.93-8.77-8.77-8.77Z"/><path d="M685.01,733.3h-96.33c-8.99,0-13.36-4.88-13.36-14.38v-8.73c0-8.99,3.85-14.38,13.61-14.38h128.69c3.85,0,5.65-1.8,5.65-5.65v-24.4c0-3.85-1.8-5.65-5.65-5.65h-136.14c-31.08,0-45.47,16.95-45.47,41.87v18.75c0,28.26,15.41,44.18,44.95,44.18h96.33c8.99,0,13.36,4.88,13.36,14.39v10.53c0,8.99-3.85,14.39-13.61,14.39h-134.86c-3.85,0-5.91,1.8-5.91,5.65v24.4c0,3.85,2.06,5.65,5.91,5.65h142.31c31.08,0,45.47-16.95,45.47-41.87v-20.55c0-28.26-15.41-44.18-44.95-44.18Z"/><path d="M954.73,660.09h-200.62c-3.85,0-5.91,1.8-5.91,5.65v25.17c0,3.85,2.05,5.91,5.91,5.91h80.66v137.43c0,3.85,1.8,5.65,5.65,5.65h28c3.85,0,5.65-1.8,5.65-5.65v-137.43h80.66c3.85,0,5.91-2.06,5.91-5.91v-25.17c0-3.85-2.06-5.65-5.91-5.65Z"/><path d="M1049.01,695.8h112.25c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-113.02c-51.89,0-71.93,18.49-71.93,67.81v44.18c0,49.32,20.04,67.81,71.93,67.81h113.02c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-112.25c-26.71,0-34.16-7.96-34.16-34.94v-4.37h145.13c3.85,0,5.65-1.8,5.65-5.65v-20.29c0-3.85-1.8-5.65-5.65-5.65h-145.13v-2.57c0-26.97,7.45-34.93,34.16-34.93Z"/></svg></span></div><span class="label">On purple</span></div>
+    </div>
+    <div class="card lockup-card">
+      <div class="lockup"><span class="logo"><svg viewBox="312 640 875 219"><path d="M507.21,803.43h-100.91c-26.46,0-34.16-7.96-34.16-35.19v-99.37c0-4.85-3.93-8.77-8.77-8.77h-21.5c-4.99,0-9.03,4.04-9.03,9.03v165.33c0,3.01,2.44,5.45,5.45,5.45h168.93c4.85,0,8.77-3.93,8.77-8.77v-18.93c0-4.85-3.93-8.77-8.77-8.77Z"/><path d="M685.01,733.3h-96.33c-8.99,0-13.36-4.88-13.36-14.38v-8.73c0-8.99,3.85-14.38,13.61-14.38h128.69c3.85,0,5.65-1.8,5.65-5.65v-24.4c0-3.85-1.8-5.65-5.65-5.65h-136.14c-31.08,0-45.47,16.95-45.47,41.87v18.75c0,28.26,15.41,44.18,44.95,44.18h96.33c8.99,0,13.36,4.88,13.36,14.39v10.53c0,8.99-3.85,14.39-13.61,14.39h-134.86c-3.85,0-5.91,1.8-5.91,5.65v24.4c0,3.85,2.06,5.65,5.91,5.65h142.31c31.08,0,45.47-16.95,45.47-41.87v-20.55c0-28.26-15.41-44.18-44.95-44.18Z"/><path d="M954.73,660.09h-200.62c-3.85,0-5.91,1.8-5.91,5.65v25.17c0,3.85,2.05,5.91,5.91,5.91h80.66v137.43c0,3.85,1.8,5.65,5.65,5.65h28c3.85,0,5.65-1.8,5.65-5.65v-137.43h80.66c3.85,0,5.91-2.06,5.91-5.91v-25.17c0-3.85-2.06-5.65-5.91-5.65Z"/><path d="M1049.01,695.8h112.25c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-113.02c-51.89,0-71.93,18.49-71.93,67.81v44.18c0,49.32,20.04,67.81,71.93,67.81h113.02c3.85,0,5.91-1.8,5.91-5.65v-24.4c0-3.85-2.06-5.65-5.91-5.65h-112.25c-26.71,0-34.16-7.96-34.16-34.94v-4.37h145.13c3.85,0,5.65-1.8,5.65-5.65v-20.29c0-3.85-1.8-5.65-5.65-5.65h-145.13v-2.57c0-26.97,7.45-34.93,34.16-34.93Z"/></svg></span><span class="date">26 NOV 2026</span></div>
+      <span class="label" style="color:var(--faint)">Lockup logo + date</span>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top:36px">
+    <span class="eyebrow">// Typography</span>
+    <div class="grid3">
+      <div class="card type-card">
+        <div class="specimen"><div class="aa t-head">Aa</div><div class="sample t-head">Luxembourg Software Testing Event</div></div>
+        <div class="meta"><div class="name">Space Grotesk</div><div class="role">Headings &amp; titles</div><span class="label">Bold 700 · SemiBold 600</span></div>
+      </div>
+      <div class="card type-card">
+        <div class="specimen"><div class="aa t-body">Aa</div><div class="sample t-body">A full day of talks and workshops on software quality.</div></div>
+        <div class="meta"><div class="name">Hanken Grotesk</div><div class="role">Body copy &amp; paragraphs</div><span class="label">Regular 400 · Bold 700</span></div>
+      </div>
+      <div class="card type-card">
+        <div class="specimen"><div class="aa t-mono">Aa</div><div class="sample t-mono" style="font-size:11px;letter-spacing:.12em">// 26 NOV 2026 · 09:00</div></div>
+        <div class="meta"><div class="name">JetBrains Mono</div><div class="role">Labels, dates, small caps</div><span class="label">Medium 500 · uppercase</span></div>
+      </div>
+    </div>
+    <p class="type-note">All three are free on <strong>Google Fonts</strong> (SIL Open Font License). Fallback: any clean sans-serif, e.g. Arial.</p>
+  </div>
+
+  <div class="foot"><span class="label">LSTE 2026 — Media kit</span><span class="label">01</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <span class="eyebrow">// Colours</span>
+  <h2>Brand palette</h2>
+  <div class="grid4">
+    <div class="card swatch"><div class="chip" style="background:#6D28D9"></div><div class="info"><div class="name">Violet</div><div class="hex">#6D28D9</div></div></div>
+    <div class="card swatch"><div class="chip" style="background:#A3E635"></div><div class="info"><div class="name">Lime</div><div class="hex">#A3E635</div></div></div>
+    <div class="card swatch"><div class="chip" style="background:#17141F"></div><div class="info"><div class="name">Ink</div><div class="hex">#17141F</div></div></div>
+    <div class="card swatch"><div class="chip" style="background:#F8FAFC"></div><div class="info"><div class="name">Light</div><div class="hex">#F8FAFC</div></div></div>
+  </div>
+
+  <div class="section" style="margin-top:44px">
+    <span class="eyebrow" style="margin-bottom:0">// Usage</span>
+    <h2>Three rules, that’s it</h2>
+    <div class="grid3">
+      <div class="card rule"><div class="num">01</div><h3>Keep clear space</h3><p>Leave breathing room around the logo — at least the height of the “L” on every side.</p></div>
+      <div class="card rule"><div class="num">02</div><h3>Don’t distort it</h3><p>Never stretch, tilt, recolour or add effects. Use the supplied files as they are.</p></div>
+      <div class="card rule"><div class="num">03</div><h3>Mind the contrast</h3><p>Pick the version that stands out on your background: light on dark, ink on light.</p></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Need something else?</h3>
+    <p>Custom formats, print-ready files or partnership questions — reach out at <strong>hello@lste.lu</strong>.</p>
+  </div>
+
+  <div class="foot"><span class="label">LSTE 2026 — Media kit · Organized by Q-LEAP</span><span class="label">02</span></div>
+</section>
+</body>
+</html>

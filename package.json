@@ -15,7 +15,8 @@
     "partials:inject": "node scripts/inject-partials.mjs",
     "paths:localize": "node scripts/localize-paths.mjs",
     "assets:version": "node scripts/version-assets.mjs",
-    "check:register": "node scripts/check-registration.mjs",
+    "brand:pdf": "node scripts/build-brand-guidelines.mjs",
+    "check:register":"node scripts/check-registration.mjs",
     "build": "npm run css:build && npm run js:build && npm run ics:build && npm run images:optimize && npm run news:build && npm run partials:inject && npm run paths:localize && npm run assets:version"
   },
   "devDependencies": {
