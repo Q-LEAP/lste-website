@@ -820,6 +820,7 @@
         'Every testing effort, from manual acceptance testing to AI-driven automation, starts (or should start) with the same question: what does this application do, and how is it really used? For existing applications, the answer is rarely in the documentation. Testers reverse-engineer it by hand, acceptance scenarios are written from assumptions, and AI assistants guess from code or screens, often covering paths nobody uses while missing the critical ones.',
         'We start from a web application with no usable documentation. Participants will use Q-Guard to capture real usage sessions and structure them into user flows and recurring interaction patterns. From these, it produces a redocumentation of the application: the business flows actually performed, their variants, and the screens and data involved.',
         'Participants will then put this deliverable to work for three audiences: an acceptance tester deriving scenarios from real business flows, a test automation engineer designing a regression suite, and an AI assistant generating test cases and scripts, comparing its output with and without this usage-based context.',
+        'What to bring: a laptop with an internet connection, to take part in the hands-on exercises.',
       ].join('||'),
     },
     { id: 'workshop-qbot', track: 'workshop', partner: 'Q-Bot', start: '15:05', end: '15:30', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-5-q-bot-29/register', type: 'Workshop 5',
