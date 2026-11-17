@@ -1,5 +1,23 @@
 [
   {
+    "id": "dlh-lste-partner-training-software-testers",
+    "date": "2026-11-17",
+    "category": "community",
+    "source_type": "internal",
+    "content_type": "article",
+    "title": "DLH, LSTE Partner: A Lasting Commitment to Training Tomorrow’s Software Testers in Luxembourg",
+    "excerpt": "After hosting LSTE in 2024, the Digital Learning Hub keeps supporting Luxembourg’s testing community, with two new Software Tester Tracks by Q-Leap in 2027.",
+    "url": "/news/dlh-lste-partner-training-software-testers/",
+    "image": {
+      "src": "Conference-LSTE-2024--C2-A9Silicon-Luxembourg-scaled",
+      "variants": true,
+      "width": 800,
+      "height": 600,
+      "alt": "Attendees in the auditorium at LSTE 2024, hosted by the Digital Learning Hub"
+    },
+    "author": "Digital Learning Hub"
+  },
+  {
     "id": "silicon-lste-2026-calendar",
     "date": "2026-10-13",
     "category": "press-coverage",
