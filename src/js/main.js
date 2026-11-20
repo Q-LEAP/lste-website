@@ -746,8 +746,13 @@
       ].join('||'),
     },
     // Dominique Righetto (Thales) cancelled (2026-11-20): his slot moves to 17:30
-    // and stays open until the client names a replacement; LNDS takes 16:00.
-    { id: 'keynote-tbc', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: 'à remplacer', speaker: 'à remplacer' },
+    // and is shown as "to be announced" until the client names a replacement.
+    {
+      id: 'keynote-tbc', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
+      title: 'Keynote to be announced',
+      speaker: 'Speaker to be confirmed',
+      description: 'Due to an unforeseen change in the programme, the keynote originally scheduled for this slot cannot take place. A replacement session will be announced here very soon.',
+    },
     {
       id: 'octoperf-ai-performance', track: 'workshop', partner: 'OctoPerf', start: '13:45', end: '14:25', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-1-octoperf-25/register', type: 'Workshop 1',
       title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
