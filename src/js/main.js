@@ -745,16 +745,9 @@
         'Through practical examples and demonstrations, we will illustrate how AI can help identify and refine requirements, analyze business processes, detect ambiguities and inconsistencies, generate user stories and acceptance criteria, and support requirements validation.',
       ].join('||'),
     },
-    {
-      id: 'thales-payloads', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote',
-      title: 'The Devil Is in the Payloads: The Grueling Journey of Implementing a File Transfer Feature',
-      speaker: 'Dominique Righetto, Thales',
-      description: [
-        'Modern web applications, classic or API, very often let a user send in a file: a document that gives context to a request or backs up a claim, as with an insurance file. Once uploaded, that file is usually handled later on, either by another application or by someone in the back office. Not every file is benign, and one that is allowed through by mistake becomes a security risk.',
-        'This talk shows how some file types — PDFs, here — can be abused and turned into an attack vector to reach a malicious objective. It also shows why it is both important and genuinely difficult, when writing the user story or the technical specification for an upload feature, to pin down which file types are accepted and to implement the matching technical validations.',
-        'It is told as a story. A development team is asked to implement file upload against a vague specification: "users must be able to send us PDF files." An application security consultant embedded in the team tests the result, finds a way to slip malicious content through, explains the problem, and the team fixes it together — then the next iteration starts. Round after round, in true die-and-retry fashion, the consultant’s health bar drops, until the feature is finally robust. The point: all that extra work and frustration could have been avoided had the user story been clearer about security in the first place.',
-      ].join('||'),
-    },
+    // Dominique Righetto (Thales) cancelled (2026-11-20): his slot moves to 17:30
+    // and stays open until the client names a replacement; LNDS takes 16:00.
+    { id: 'keynote-tbc', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote', title: 'à remplacer', speaker: 'à remplacer' },
     {
       id: 'octoperf-ai-performance', track: 'workshop', partner: 'OctoPerf', start: '13:45', end: '14:25', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-1-octoperf-25/register', type: 'Workshop 1',
       title: 'AI & Performance Testing — How to Run an End-to-End Performance Testing Campaign in Natural Language with Your Favorite LLM and OctoPerf. From Scripting to Analysis.',
@@ -781,7 +774,7 @@
       description: 'The exhibitor area in Salle Pétrusse is open from 13:00: meet the sponsors and see their tools and platforms between sessions.',
     },
 
-    { id: 'coffee-break-1', track: 'general', columns: ['keynote', 'workshop'], start: '15:30', end: '16:00', title: 'Coffee break & networking', place: 'booths open' },
+    { id: 'coffee-break-1', track: 'general', columns: ['keynote', 'workshop'], start: '15:30', end: '16:00', title: 'Coffee break & networking', place: 'booth area' },
 
     {
       id: 'keynote-agilitest', track: 'keynote', start: '14:30', end: '15:00', type: 'Keynote',
@@ -836,7 +829,7 @@
     // Second break at 17:20 for everyone (client, 2026-11-10) so Q-Bot
     // (16:50-17:20) runs to its end; the auditorium keeps 10 minutes of slack
     // after OpenText (17:10-17:20) and the closing is 10 minutes.
-    { id: 'coffee-break-2', track: 'general', columns: ['keynote'], start: '17:00', end: '17:30', title: 'Coffee break', place: 'booth visits' },
+    { id: 'coffee-break-2', track: 'general', columns: ['keynote'], start: '17:00', end: '17:30', title: 'Coffee break', place: 'booth area' },
     { id: 'coffee-break-2w', track: 'general', columns: ['workshop'], start: '17:10', end: '17:30', title: 'Coffee break' },
 
     // Speaker named by the client (2026-10-27): an independent consultant
@@ -863,7 +856,7 @@
     // and Agilitest swap. 30-minute slots from there, so the breaks move to
     // 15:10 and 17:10 and the day still ends at 18:30. Workshop 7 dropped.
     {
-      id: 'keynote-lnds', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
+      id: 'keynote-lnds', track: 'keynote', start: '16:00', end: '16:30', type: 'Keynote',
       title: 'I Told the AI to Write My Tests. It Did. Now What?',
       speaker: 'Emiliana Pali & Alessandro Merola, LNDS',
       // Title and abstract from the client (2026-10-28).
