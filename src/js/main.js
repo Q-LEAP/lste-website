@@ -746,12 +746,17 @@
       ].join('||'),
     },
     // Dominique Righetto (Thales) cancelled (2026-11-20): his slot moves to 17:30
-    // and is shown as "to be announced" until the client names a replacement.
+    // Replaced (client, 2026-11-21) by OpenText's second keynote; title,
+    // abstract, speaker and bio from the client.
     {
-      id: 'keynote-tbc', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
-      title: 'Keynote to be announced',
-      speaker: 'Speaker to be confirmed',
-      description: 'Due to an unforeseen change in the programme, the keynote originally scheduled for this slot cannot take place. A replacement session will be announced here very soon.',
+      id: 'keynote-opentext-2', track: 'keynote', start: '17:30', end: '18:00', type: 'Keynote',
+      title: 'Your Functional Tests Are Green. Your Users Are Still Waiting...',
+      speaker: 'Jerry Saelemakers, Principal Solutions Consultant at OpenText',
+      description: [
+        'Functional testing has evolved from something carried out near the end of the delivery cycle into a continuous discipline embedded across development, automation and CI/CD. Yet performance testing has not always made the same transition.',
+        'Drawing on decades of experience in performance engineering, we will explore what it takes to make performance engineering continuous and accessible to developers, testers and specialists alike, and how AI can accelerate that transformation by assisting with test creation, understanding complex results, identifying likely bottlenecks and guiding engineers toward the next action.',
+        'From intelligent assistance to increasingly agentic workflows, let’s have a look at what the next generation of performance engineering could look like.',
+      ].join('||'),
     },
     {
       id: 'octoperf-ai-performance', track: 'workshop', partner: 'OctoPerf', start: '13:45', end: '14:25', booking: 'https://q-leap.odoo.com/en_GB/event/lste-2026-workshop-1-octoperf-25/register', type: 'Workshop 1',
