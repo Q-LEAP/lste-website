@@ -13,7 +13,8 @@
       "variants": true,
       "width": 800,
       "height": 450,
-      "alt": "ADEM logo: Facilitons l’emploi"
+      "alt": "ADEM logo: Facilitons l’emploi",
+      "logo": true
     }
   },
   {
