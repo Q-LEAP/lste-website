@@ -1,5 +1,22 @@
 [
   {
+    "id": "adem-lste-partner-supporting-software-testing-community",
+    "date": "2026-11-24",
+    "category": "community",
+    "source_type": "internal",
+    "content_type": "article",
+    "title": "ADEM, LSTE 2026 Partner: Supporting Luxembourg’s Software Testing Community",
+    "excerpt": "ADEM, Luxembourg’s employment agency, joins LSTE 2026 as a partner, supporting future testers, experienced professionals and companies recruiting testing talent.",
+    "url": "/news/adem-lste-partner-supporting-software-testing-community/",
+    "image": {
+      "src": "adem-lste-2026-partner",
+      "variants": true,
+      "width": 800,
+      "height": 450,
+      "alt": "ADEM logo: Facilitons l’emploi"
+    }
+  },
+  {
     "id": "avanti-leo-sharma-masters-of-ceremonies-lste-2026",
     "date": "2026-11-23",
     "category": "speakers-sessions",
