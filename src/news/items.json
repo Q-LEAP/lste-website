@@ -8,13 +8,7 @@
     "title": "From Abidjan to Casablanca, from Tunis to Luxembourg: Olivier Denoo, Our Guest of Honour at LSTE 2026",
     "excerpt": "ISTQB® Vice-President and CFTL President Olivier Denoo opens the LSTE 2026 keynotes on 26 November with “Fast & Furious – The Tester in 5 Years: AI Perspectives”.",
     "url": "/news/olivier-denoo-guest-of-honour-lste-2026/",
-    "image": {
-      "src": "olivier-denoo-lste-2026",
-      "variants": true,
-      "width": 800,
-      "height": 1000,
-      "alt": "Olivier Denoo smiling at the entrance of a conference exhibition hall, wearing a dark suit and a red lanyard", "focus_y": 20
-    }
+    "image": {"src": "olivier-denoo-lste-2026-hall", "variants": true, "width": 800, "height": 450, "alt": "Olivier Denoo smiling in a conference exhibition hall, wearing a dark suit, a red lanyard and colourful shoes"}
   },
   {
     "id": "adem-lste-partner-supporting-software-testing-community",
