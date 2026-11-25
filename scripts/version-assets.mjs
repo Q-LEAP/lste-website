@@ -43,6 +43,7 @@ const FONT_FILES = [
 // <head> favicon/JSON-LD.
 const IMAGE_FILES = [
   'assets/img/favicon.png',
+  'assets/img/icons/apple-touch-icon.png',
   'assets/img/lste-logo-white.svg',
   'assets/img/lste-logo.svg',
 ];
