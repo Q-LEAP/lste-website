@@ -85,6 +85,16 @@
   font-size: 1.0625rem;
 }
 .page-hero .article-meta { margin: var(--space-5) 0 0; }
+/* Blog/news article titles are full sentences (often 2-3x longer than
+   the one-line page titles), so at --fs-hero they ran to 4-5 lines and
+   dwarfed the rest of the site. Articles are the only page-hero with an
+   .article-meta line: bring their h1 down to the section-title scale. */
+.page-hero:has(.article-meta) h1 {
+  max-width: 26ch;
+  font-size: var(--fs-h2);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
 .page-hero__actions {
   display: flex;
   flex-wrap: wrap;
